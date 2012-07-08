@@ -42,6 +42,11 @@ namespace Bieb.Domain.Entities
                         );
             }
         }
+
+        public override string ToString()
+        {
+            return Name != null ? Name.FullName : "Person (id: " + Id.ToString() + ")";
+        }
     }
     
     public enum Gender

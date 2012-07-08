@@ -9,5 +9,10 @@ namespace Bieb.Domain.Entities
     {
         public virtual int Id { get; set; }
         public virtual int Version { get; set; }
+
+        public override string ToString()
+        {
+            return this.GetType().Name + " (id: " + Id.ToString() + ")";
+        }
     }
 }

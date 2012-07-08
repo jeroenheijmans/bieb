@@ -23,5 +23,10 @@ namespace Bieb.Domain.Entities
 
         public virtual IList<Person> Authors { get; set; }
         public virtual IList<Person> Translators { get; set; }
+
+        public override string ToString()
+        {
+            return Title ?? "Story (id: " + Id.ToString() + ")";
+        }
     }
 }
