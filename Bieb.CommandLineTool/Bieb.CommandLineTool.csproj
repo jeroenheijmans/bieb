@@ -51,14 +51,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bieb.NHibernate\Bieb.NHibernateProvider.csproj">
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bieb.NHibernateProvider\Bieb.NHibernateProvider.csproj">
       <Project>{A98CA5A5-29DB-4E2F-BC94-9FB9C7309AD1}</Project>
       <Name>Bieb.NHibernateProvider</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
