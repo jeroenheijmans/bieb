@@ -303,12 +303,24 @@ div#title {
 ----------------------------------------------------------*/
 .display-label, 
 .editor-label {
-    margin: 1em 0 0 0;
+    font-weight: bold;
+    float: left;
+    width: 200px;
 }
 
 .display-field, 
 .editor-field {
-    margin: 0.5em 0 0 0;
+    float: left;
+}
+
+fieldset { 
+    clear: both;
+}
+
+.display-wrapper {
+    clear: both;
+    display: block;
+    padding-top: 0.5em;
 }
 
 .text-box {
