@@ -3,11 +3,15 @@
                    assembly="Bieb.Domain"
                    namespace="Bieb.Domain.Entities">
 
-  <class name="Publisher">
-    <id name="Id" column="PublisherId">
+  <class name="Story">
+    <id name="Id" column="StoryId">
       <generator class="native" />
     </id>
-    <property name="Name" not-null="true" index="IX_Publisher_Name"/>
+    <property name="Title" not-null="true" index="IX_Story_Title" />
+    <property name="SubTitle" />
+    <!--Publisher-->
+    <!--Tags-->
+    <!--Authors-->
   </class>
-  
+
 </hibernate-mapping>
