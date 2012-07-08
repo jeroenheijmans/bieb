@@ -7,7 +7,7 @@
     <id name="Id" column="BookId">
       <generator class="native" />
     </id>
-    <property name="Title" not-null="true" index="IX_Story_Title" />
+    <property name="Title" not-null="true" index="IX_Book_Title" />
     <property name="SubTitle" />
   </class>
 
