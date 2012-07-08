@@ -1,0 +1,29 @@
+﻿@model Bieb.Domain.Entities.Publisher
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Publisher</legend>
+    
+    <div class="display-wrapper">
+        <div class="display-label">Name</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">Version</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Version)
+        </div>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
