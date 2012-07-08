@@ -6,8 +6,13 @@ using System.Globalization;
 
 namespace Bieb.Domain.Entities
 {
-    class Book : BaseEntity
+    public class Book : BaseEntity
     {
+        public Book() : base()
+        {
+            Stories = new List<Story>();
+        }
+
         public string ISBN { get; set; }
 
         public string Title { get; set; }
@@ -64,12 +69,12 @@ namespace Bieb.Domain.Entities
         { 
             get
             {
-                return Stories.SelectMany(story => story.Tags);
+                return Stories.SelectMany(story => story.Tags).Distinct();
             }
         }
 
         // TODO: This should be something like a SortedList, right? Stories are in a book in a certain order.
-        public IEnumerable<Story> Stories { get; set; }
+        public IList<Story> Stories { get; set; }
 
         public IEnumerable<Person> Editors { get; set; }
 
@@ -77,7 +82,7 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                return Stories.SelectMany(story => story.Authors);
+                return Stories.SelectMany(story => story.Authors).Distinct();
             }
         }
 
@@ -85,7 +90,7 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                return Stories.SelectMany(story => story.Translators);
+                return Stories.SelectMany(story => story.Translators).Distinct();
             }
         }
     }

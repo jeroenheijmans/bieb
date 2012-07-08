@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bieb.Domain.Entities
 {
-    class Person : BaseEntity
+    public class Person : BaseEntity
     {
         public Alias Name { get; set; }
 

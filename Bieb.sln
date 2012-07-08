@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Web", "Bieb.Web\Bieb.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Domain", "Bieb.Domain\Bieb.Domain.csproj", "{FD033D56-3912-4B0F-AF94-24234D5E4389}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Tests", "Bieb.Tests\Bieb.Tests.csproj", "{B7A88C23-7EC2-4329-AB3E-5E2B7288079A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{FD033D56-3912-4B0F-AF94-24234D5E4389}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD033D56-3912-4B0F-AF94-24234D5E4389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD033D56-3912-4B0F-AF94-24234D5E4389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7A88C23-7EC2-4329-AB3E-5E2B7288079A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7A88C23-7EC2-4329-AB3E-5E2B7288079A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7A88C23-7EC2-4329-AB3E-5E2B7288079A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7A88C23-7EC2-4329-AB3E-5E2B7288079A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
