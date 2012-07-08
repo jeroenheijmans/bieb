@@ -57,6 +57,16 @@
             @Html.DisplayFor(model => model.Version)
         </div>
     </div>
+    
+    <fieldset>
+        <legend>Editors</legend>
+        <ul>
+        @foreach (var editor in Model.Editors)
+        {
+            <li>TODO: Insert FULLNAME (person id: @editor.Id)</li>
+        }
+        </ul>
+    </fieldset>
 
     <fieldset>
         <legend>Stories</legend>

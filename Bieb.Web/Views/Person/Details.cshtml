@@ -1,0 +1,57 @@
+﻿@model Bieb.Domain.Entities.Person
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Person</legend>
+    
+    <div class="display-wrapper">
+        <div class="display-label">Nationality</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Nationality)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">PlaceOfDeath</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PlaceOfDeath)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">PlaceOfBirth</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PlaceOfBirth)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">DateOfBirth</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">DateOfDeath</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateOfDeath)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">Version</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Version)
+        </div>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
