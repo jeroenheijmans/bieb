@@ -8,7 +8,8 @@ namespace Bieb.Domain.Entities
 {
     public class Book : BaseEntity
     {
-        public Book() : base()
+        public Book()
+            : base()
         {
             Stories = new SortedList<int, Story>();
         }
@@ -62,8 +63,8 @@ namespace Bieb.Domain.Entities
         /// <summary>
         /// All the Tags from all the Stories in this book
         /// </summary>
-        public IEnumerable<Tag> Tags 
-        { 
+        public IEnumerable<Tag> Tags
+        {
             get
             {
                 return Stories.SelectMany(item => item.Value.Tags).Distinct();
@@ -72,7 +73,7 @@ namespace Bieb.Domain.Entities
 
         public virtual SortedList<int, Story> Stories { get; set; }
         public virtual IEnumerable<Person> Editors { get; set; }
-        
+
         public IEnumerable<Person> Authors
         {
             get

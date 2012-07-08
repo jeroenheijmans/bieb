@@ -67,6 +67,16 @@
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Publisher.hbm.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Book.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Person.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Series.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Story.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Tag.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Alias.hbm.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
