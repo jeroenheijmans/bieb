@@ -7,10 +7,10 @@ namespace Bieb.Domain.Entities
 {
     public class Alias : BaseEntity
     {
-        public string Title { get; set; }
-        public string FirstName { get; set; }
-        public string Prefix { get; set; }
-        public string Surname { get; set; }
+        public virtual string Title { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string Prefix { get; set; }
+        public virtual string Surname { get; set; }
 
         public string FullName
         {
