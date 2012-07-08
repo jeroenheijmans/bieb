@@ -27,5 +27,10 @@ namespace Bieb.Domain.Entities
                     ).Trim();
             }
         }
+
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }

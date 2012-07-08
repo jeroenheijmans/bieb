@@ -100,5 +100,10 @@ namespace Bieb.Domain.Entities
                 return Stories.SelectMany(item => item.Value.Translators).Distinct();
             }
         }
+
+        public override string ToString()
+        {
+            return Title ?? "Book (id: " + Id.ToString() + ")";
+        }
     }
 }
