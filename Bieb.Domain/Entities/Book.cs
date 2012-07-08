@@ -13,13 +13,10 @@ namespace Bieb.Domain.Entities
             Stories = new SortedList<int, Story>();
         }
 
-        public string ISBN { get; set; }
-
-        public string Title { get; set; }
-
-        public string SubTitle { get; set; }
-
-        public int? ISBNLanguage { get; set; }
+        public virtual string ISBN { get; set; }
+        public virtual string Title { get; set; }
+        public virtual string SubTitle { get; set; }
+        public virtual int? ISBNLanguage { get; set; }
 
         /// <summary>
         /// Returns the full name of the language of the book based on the ISBNLanguage
@@ -58,9 +55,9 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public int? Year { get; set; }
+        public virtual int? Year { get; set; }
 
-        public Publisher Publisher { get; set; }
+        public virtual Publisher Publisher { get; set; }
 
         /// <summary>
         /// All the Tags from all the Stories in this book
@@ -73,10 +70,9 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public SortedList<int, Story> Stories { get; set; }
-
-        public IEnumerable<Person> Editors { get; set; }
-
+        public virtual SortedList<int, Story> Stories { get; set; }
+        public virtual IEnumerable<Person> Editors { get; set; }
+        
         public IEnumerable<Person> Authors
         {
             get

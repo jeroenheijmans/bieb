@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bieb.Web.Infrastructure;
 
 namespace Bieb.Web
 {
@@ -35,6 +36,14 @@ namespace Bieb.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+        }
+
+        protected void Application_EndRequest(object sender, EventArgs args)
+        {
+            // TODO: Refactor/replace with DI solution
+            Bieb.NHibernateProvider.Session.CloseSession();
         }
     }
 }

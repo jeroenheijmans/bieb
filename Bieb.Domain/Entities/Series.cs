@@ -12,10 +12,8 @@ namespace Bieb.Domain.Entities
             Books = new SortedList<int, Book>();
         }
 
-        public string Title { get; set; }
-
-        public string SubTitle { get; set; }
-
-        public SortedList<int, Book> Books { get; set; }
+        public virtual string Title { get; set; }
+        public virtual string SubTitle { get; set; }
+        public virtual SortedList<int, Book> Books { get; set; }
     }
 }

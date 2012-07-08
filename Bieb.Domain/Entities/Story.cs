@@ -15,14 +15,13 @@ namespace Bieb.Domain.Entities
             Translators = new List<Person>();
         }
 
-        public string Title { get; set; }
-        public string SubTitle { get; set; }
+        public virtual string Title { get; set; }
+        public virtual string SubTitle { get; set; }
+        public virtual Publisher Publisher { get; set; }
 
-        public Publisher Publisher { get; set; }
+        public virtual IList<Tag> Tags { get; set; }
 
-        public IList<Tag> Tags { get; set; }
-
-        public IList<Person> Authors { get; set; }
-        public IList<Person> Translators { get; set; }
+        public virtual IList<Person> Authors { get; set; }
+        public virtual IList<Person> Translators { get; set; }
     }
 }

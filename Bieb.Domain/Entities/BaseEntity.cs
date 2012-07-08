@@ -7,7 +7,7 @@ namespace Bieb.Domain.Entities
 {
     public abstract class BaseEntity
     {
-        public int Id { get; set; }
-        public int Version { get; set; }
+        public virtual int Id { get; set; }
+        public virtual int Version { get; set; }
     }
 }
