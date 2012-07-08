@@ -29,7 +29,7 @@ namespace Bieb.Domain.Entities
         /// <summary>
         /// All the tags from stories in edited books, plus those from translated- and authored stories
         /// </summary>
-        public IEnumerable<Tag> Tags
+        public virtual IEnumerable<Tag> Tags
         {
             get
             {

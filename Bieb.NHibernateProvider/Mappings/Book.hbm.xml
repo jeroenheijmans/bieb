@@ -12,7 +12,6 @@
     <property name="ISBN" />
     <property name="ISBNLanguage" />
     <property name="Year" />
-    <property name="Year" />
     <!--Publisher-->
     <!--Stories-->
     <!--Editors-->

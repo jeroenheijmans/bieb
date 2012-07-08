@@ -12,7 +12,7 @@ namespace Bieb.Domain.Entities
         public virtual string Prefix { get; set; }
         public virtual string Surname { get; set; }
 
-        public string FullName
+        public virtual string FullName
         {
             get
             {

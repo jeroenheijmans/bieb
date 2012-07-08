@@ -22,7 +22,7 @@ namespace Bieb.Domain.Entities
         /// <summary>
         /// Returns the full name of the language of the book based on the ISBNLanguage
         /// </summary>
-        public string Language
+        public virtual string Language
         {
             get
             {
@@ -63,7 +63,7 @@ namespace Bieb.Domain.Entities
         /// <summary>
         /// All the Tags from all the Stories in this book
         /// </summary>
-        public IEnumerable<Tag> Tags
+        public virtual IEnumerable<Tag> Tags
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Bieb.Domain.Entities
         public virtual SortedList<int, Story> Stories { get; set; }
         public virtual IEnumerable<Person> Editors { get; set; }
 
-        public IEnumerable<Person> Authors
+        public virtual IEnumerable<Person> Authors
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public IEnumerable<Person> Translators
+        public virtual IEnumerable<Person> Translators
         {
             get
             {
