@@ -13,11 +13,8 @@ namespace Bieb.CommandLineTool
             {
                 log4net.Config.XmlConfigurator.Configure();
 
-                log4net.ILog log = log4net.LogManager.GetLogger(typeof(Program));
-                log.Info("TESTING!!");
-
                 Bieb.NHibernateProvider.Factory.CreateSchema();
-                Console.WriteLine("Press enter to finish");
+                Console.WriteLine("Press enter to exit.");
                 Console.ReadLine();
             }
         }

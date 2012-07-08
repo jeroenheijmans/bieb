@@ -7,14 +7,15 @@ namespace Bieb.Domain.Entities
 {
     public class Series : BaseEntity
     {
-        public Series() : base()
-        {
-            Books = new SortedList<int, Book>();
-        }
-
         public virtual string Title { get; set; }
         public virtual string SubTitle { get; set; }
-        public virtual SortedList<int, Book> Books { get; set; }
+
+        private IDictionary<int, Book> _books = new SortedList<int, Book>();
+        public virtual IDictionary<int, Book> Books
+        {
+            get { return _books; }
+            set { _books = value; }
+        }
 
         public override string ToString()
         {

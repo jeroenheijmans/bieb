@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bieb.Domain.Entities.Story>
+﻿@model IEnumerable<Bieb.Domain.Entities.Series>
 
 @{
     ViewBag.Title = "Index";
@@ -17,21 +17,15 @@
         <th>
             SubTitle
         </th>
-        <th>
-            Publisher
-        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "Details", new { id = item.Id })
+            @Html.ActionLink(item.Title, "Details", new { id=item.Id })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SubTitle)
-        </td>
-        <td>
-            @if(item.Publisher != null) { @item.Publisher.Name }
         </td>
     </tr>
 }
