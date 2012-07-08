@@ -152,7 +152,7 @@
       <Project>{FD033D56-3912-4B0F-AF94-24234D5E4389}</Project>
       <Name>Bieb.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bieb.NHibernate\Bieb.NHibernateProvider.csproj">
+    <ProjectReference Include="..\Bieb.NHibernateProvider\Bieb.NHibernateProvider.csproj">
       <Project>{A98CA5A5-29DB-4E2F-BC94-9FB9C7309AD1}</Project>
       <Name>Bieb.NHibernateProvider</Name>
     </ProjectReference>
