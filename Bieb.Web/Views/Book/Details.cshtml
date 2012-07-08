@@ -1,0 +1,75 @@
+﻿@model Bieb.Domain.Entities.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Book</legend>
+
+    <div class="display-wrapper">
+        <div class="display-label">ISBN</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ISBN)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">Title</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+    </div>
+        
+    <div class="display-wrapper">
+        <div class="display-label">SubTitle</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.SubTitle)
+        </div>
+    </div>
+        
+    <div class="display-wrapper">
+        <div class="display-label">ISBNLanguage</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ISBNLanguage)
+        </div>
+    </div>
+        
+    <div class="display-wrapper">
+        <div class="display-label">Language</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Language)
+        </div>
+    </div>
+        
+    <div class="display-wrapper">
+        <div class="display-label">Year</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Year)
+        </div>
+    </div>
+        
+    <div class="display-wrapper">
+        <div class="display-label">Version</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Version)
+        </div>
+    </div>
+
+    <fieldset>
+        <legend>Stories</legend>
+        <ul>
+        @foreach (var story in Model.Stories)
+        {
+            <li>@story.Value.Title</li>
+        }
+        </ul>
+    </fieldset>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

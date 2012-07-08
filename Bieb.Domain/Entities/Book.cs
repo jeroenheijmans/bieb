@@ -11,7 +11,7 @@ namespace Bieb.Domain.Entities
         public Book()
             : base()
         {
-            Stories = new SortedList<int, Story>();
+            Editors = new List<Person>();
         }
 
         public virtual string ISBN { get; set; }
@@ -71,8 +71,19 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public virtual SortedList<int, Story> Stories { get; set; }
-        public virtual IEnumerable<Person> Editors { get; set; }
+        private IDictionary<int, Story> _stories = new SortedList<int, Story>();
+        public virtual IDictionary<int, Story> Stories 
+        {
+            get { return _stories; }
+            set { _stories = value; }
+        }
+
+        private IList<Person> _editors = new List<Person>();
+        public virtual IList<Person> Editors
+        {
+            get { return _editors; }
+            set { _editors = value; }
+        }
 
         public virtual IEnumerable<Person> Authors
         {
