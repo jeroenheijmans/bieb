@@ -9,6 +9,13 @@
     </id>
     <property name="Title" not-null="true" index="IX_Book_Title" />
     <property name="SubTitle" />
+    <property name="ISBN" />
+    <property name="ISBNLanguage" />
+    <property name="Year" />
+    <property name="Year" />
+    <!--Publisher-->
+    <!--Stories-->
+    <!--Editors-->
   </class>
 
 </hibernate-mapping>
