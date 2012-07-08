@@ -1,0 +1,59 @@
+﻿@model Bieb.Domain.Entities.Story
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Story</legend>
+    
+    <div class="display-wrapper">
+        <div class="display-label">Title</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">SubTitle</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.SubTitle)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">Version</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Version)
+        </div>
+    </div>
+    
+    <fieldset>
+        <legend>Authors</legend>
+        <ul>
+        @foreach (var person in Model.Authors)
+        {
+            <li>TODO: Insert FULLNAME (person id: @person.Id)</li>
+        }
+        </ul>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Translators</legend>
+        <ul>
+        @foreach (var person in Model.Translators)
+        {
+            <li>TODO: Insert FULLNAME (person id: @person.Id)</li>
+        }
+        </ul>
+    </fieldset>
+
+</fieldset>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

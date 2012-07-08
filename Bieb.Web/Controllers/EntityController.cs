@@ -12,9 +12,9 @@ namespace Bieb.Web.Controllers
     {
         protected IEntityRepository<T> Repository { get; set; }
         
-        public EntityController(IEntityRepository<T> repository)
+        public EntityController(IEntityRepository<T> Repository)
         {
-            this.Repository = repository;
+            this.Repository = Repository;
         }
 
         public ActionResult Index()

@@ -4,14 +4,27 @@
                    namespace="Bieb.Domain.Entities">
 
   <class name="Story">
+    
     <id name="Id" column="StoryId">
       <generator class="native" />
     </id>
+    
     <property name="Title" not-null="true" index="IX_Story_Title" />
     <property name="SubTitle" />
-    <!--Publisher-->
+
+    <bag name="Authors" table="StoryAuthor" lazy="true">
+      <key column="StoryId" foreign-key="FK_StoryAuthor_Story" />
+      <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryAuthor_Person" />
+    </bag>
+
+    <bag name="Translators" table="StoryTranslator" lazy="true">
+      <key column="StoryId" foreign-key="FK_StoryTranslator_Story" />
+      <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryTranslator_Person" />
+    </bag>
+
+    <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Story_Publisher" />
+    
     <!--Tags-->
-    <!--Authors-->
   </class>
 
 </hibernate-mapping>

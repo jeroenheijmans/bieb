@@ -130,6 +130,38 @@ namespace Bieb.Tests.Domain
             Assert.That(myBook.Translators.ToList(), Has.Member(michelle));
         }
 
+        [Test]
+        public void Book_With_One_Story_Is_Novel()
+        {
+            // Arrange
+            Book myBook = new Book();
+            Story story1 = new Story();
+            myBook.Stories.Add(1, story1);
+
+            // Act
+            // ...
+
+            // Assert
+            Assert.That(myBook.Type, Is.EqualTo(BookType.Novel));
+        }
+
+        [Test]
+        public void Book_With_Multiple_Stories_Is_Bundle()
+        {
+            // Arrange
+            Book myBook = new Book();
+            Story story1 = new Story();
+            Story story2 = new Story();
+            myBook.Stories.Add(1, story1);
+            myBook.Stories.Add(2, story2);
+
+            // Act
+            // ...
+
+            // Assert
+            Assert.That(myBook.Type, Is.EqualTo(BookType.Bundle));
+        }
+
         #endregion
     }
 }

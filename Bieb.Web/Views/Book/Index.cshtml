@@ -12,16 +12,13 @@
 <table>
     <tr>
         <th>
+            Type
+        </th>
+        <th>
             ISBN
         </th>
         <th>
             Title
-        </th>
-        <th>
-            SubTitle
-        </th>
-        <th>
-            ISBNLanguage
         </th>
         <th>
             Language
@@ -32,30 +29,30 @@
         <th>
             Publisher
         </th>
-        <th>
-            Version
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ISBN)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
-            <br />
-            Edited By
-            @foreach (var editor in item.Editors) { 
-                @Html.DisplayTextFor(modelItem => editor.Id)
+            @Html.ActionLink(item.Title, "Details", new { id=item.Id })
+            @if (item.SubTitle != null) { 
+                <br />
+                @Html.DisplayFor(modelItem => item.SubTitle)
             }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ISBNLanguage)
+            @if (item.Editors.Count > 0) 
+            { 
+                <br /> <span>Edited By</span>
+                     
+                foreach (var editor in item.Editors) { 
+                    <span>@Html.ActionLink(editor.ToString(), "Details", new { controller = "Person", id = editor.Id })</span>
+                }
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Language)
@@ -64,15 +61,7 @@
             @Html.DisplayFor(modelItem => item.Year)
         </td>
         <td>
-            @if(item.Publisher != null) { @item.Publisher.Name }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Version)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @if (item.Publisher != null) { @Html.ActionLink(item.Publisher.Name, "Details", new { controller = "Publisher", id = item.Publisher.Id }); }
         </td>
     </tr>
 }

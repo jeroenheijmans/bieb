@@ -101,9 +101,23 @@ namespace Bieb.Domain.Entities
             }
         }
 
+        public virtual BookType Type
+        {
+            get
+            {
+                return Stories.Count > 1 ? BookType.Bundle : BookType.Novel;
+            }
+        }
+
         public override string ToString()
         {
             return Title ?? "Book (id: " + Id.ToString() + ")";
         }
+    }
+
+    public enum BookType
+    {
+        Novel,
+        Bundle
     }
 }
