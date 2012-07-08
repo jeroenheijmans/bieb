@@ -37,8 +37,8 @@ namespace Bieb.Tests.Domain
             Tag tag2 = new Tag() { Name = "Fantasy" };
             Tag unusedTag = new Tag() { Name = "Educational" };
 
-            myBook.Stories.Add(story1);
-            myBook.Stories.Add(story2);
+            myBook.Stories.Add(1, story1);
+            myBook.Stories.Add(2, story2);
             story1.Tags.Add(tag1);
             story1.Tags.Add(tag2);
             story2.Tags.Add(tag1);
@@ -67,8 +67,8 @@ namespace Bieb.Tests.Domain
 
             story1.Authors.Add(asimov);
             story2.Authors.Add(tolkien);
-            myBook.Stories.Add(story1);
-            myBook.Stories.Add(story2);
+            myBook.Stories.Add(1, story1);
+            myBook.Stories.Add(2, story2);
 
             // Act
             // ...
@@ -92,7 +92,7 @@ namespace Bieb.Tests.Domain
 
             story1.Authors.Add(tolkien);
             story1.Authors.Add(sonOfTolkien);
-            myBook.Stories.Add(story1);
+            myBook.Stories.Add(1, story1);
 
             // Act
             // ...
@@ -118,8 +118,8 @@ namespace Bieb.Tests.Domain
             story1.Translators.Add(pjotr);
             story2.Translators.Add(pjotr);
             story2.Translators.Add(michelle);
-            myBook.Stories.Add(story1);
-            myBook.Stories.Add(story2);
+            myBook.Stories.Add(1, story1);
+            myBook.Stories.Add(2, story2);
 
             // Act
             // ...

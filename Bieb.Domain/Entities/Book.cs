@@ -10,7 +10,7 @@ namespace Bieb.Domain.Entities
     {
         public Book() : base()
         {
-            Stories = new List<Story>();
+            Stories = new SortedList<int, Story>();
         }
 
         public string ISBN { get; set; }
@@ -69,12 +69,11 @@ namespace Bieb.Domain.Entities
         { 
             get
             {
-                return Stories.SelectMany(story => story.Tags).Distinct();
+                return Stories.SelectMany(item => item.Value.Tags).Distinct();
             }
         }
 
-        // TODO: This should be something like a SortedList, right? Stories are in a book in a certain order.
-        public IList<Story> Stories { get; set; }
+        public SortedList<int, Story> Stories { get; set; }
 
         public IEnumerable<Person> Editors { get; set; }
 
@@ -82,7 +81,7 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                return Stories.SelectMany(story => story.Authors).Distinct();
+                return Stories.SelectMany(item => item.Value.Authors).Distinct();
             }
         }
 
@@ -90,7 +89,7 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                return Stories.SelectMany(story => story.Translators).Distinct();
+                return Stories.SelectMany(item => item.Value.Translators).Distinct();
             }
         }
     }
