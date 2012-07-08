@@ -24,7 +24,7 @@
 
     <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Story_Publisher" />
     
-    <!--Tags-->
+    <!--TODO: Tags-->
   </class>
 
 </hibernate-mapping>

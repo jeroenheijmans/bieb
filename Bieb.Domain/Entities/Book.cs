@@ -8,12 +8,6 @@ namespace Bieb.Domain.Entities
 {
     public class Book : BaseEntity
     {
-        public Book()
-            : base()
-        {
-            Editors = new List<Person>();
-        }
-
         public virtual string ISBN { get; set; }
         public virtual string Title { get; set; }
         public virtual string SubTitle { get; set; }
@@ -83,6 +77,22 @@ namespace Bieb.Domain.Entities
         {
             get { return _editors; }
             set { _editors = value; }
+        }
+
+        // Blast it. Wanted to name the collection with plural form, and the public property singular, but for "Series" there is no singular form :(. Hence the "db" prefix.
+        protected virtual ICollection<Series> dbSeries { get; set; }
+
+        public virtual Series Series 
+        { 
+            get
+            {
+                return dbSeries.FirstOrDefault();
+            }
+            set
+            {
+                dbSeries.Clear();
+                dbSeries.Add(value);
+            }
         }
 
         public virtual IEnumerable<Person> Authors
