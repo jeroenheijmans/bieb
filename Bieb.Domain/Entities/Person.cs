@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +29,25 @@ namespace Bieb.Domain.Entities
         }
         
         public virtual Gender Gender { get; set; }
+
+        public virtual char GenderChar 
+        { 
+            get
+            {
+                switch (Gender)
+                {
+                    case Gender.Unkown:
+                        return '?';
+                    case Gender.Male:
+                        return '♂';
+                    case Gender.Female:
+                        return '♀';
+                    case Gender.None:
+                    default:
+                        return '-';
+                }
+            }
+        }
 
         public virtual string Nationality { get; set; }
 
@@ -85,13 +104,13 @@ namespace Bieb.Domain.Entities
     
     public enum Gender
     {
-        Male = 'M',
-        Female = 'F',
-        Unkown = '?',
+        Unkown = 0,
+        Male = 1,
+        Female = 2,
 
         /// <summary>
         /// For example when one Author "Person" is in fact many different people
         /// </summary>
-        None = '-'        
+        None = 3
     }
 }

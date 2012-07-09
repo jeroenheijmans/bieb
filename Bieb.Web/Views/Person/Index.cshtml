@@ -12,16 +12,10 @@
 <table>
     <tr>
         <th>
-            Title
+            @*Gender*@
         </th>
         <th>
-            First Name
-        </th>
-        <th>
-            Prefix
-        </th>
-        <th>
-            Surname
+            Name
         </th>
         <th>
             Nationality
@@ -47,16 +41,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.GenderChar)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prefix)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
+            @Html.DisplayFor(modelItem => item.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nationality)
