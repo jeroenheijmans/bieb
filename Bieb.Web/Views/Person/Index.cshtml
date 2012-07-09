@@ -12,6 +12,18 @@
 <table>
     <tr>
         <th>
+            Title
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Prefix
+        </th>
+        <th>
+            Surname
+        </th>
+        <th>
             Nationality
         </th>
         <th>
@@ -34,6 +46,18 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prefix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nationality)
         </td>

@@ -7,10 +7,27 @@ namespace Bieb.Domain.Entities
 {
     public class Person : BaseEntity
     {
-        public virtual Alias Name { get; set; }
+        public virtual string Title { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string Prefix { get; set; }
+        public virtual string Surname { get; set; }
 
-        public virtual IEnumerable<Alias> Aliases { get; set; }
-
+        public virtual string FullName
+        {
+            get
+            {
+                return (
+                        (string.IsNullOrWhiteSpace(Title) ? "" : Title + " ")
+                        +
+                        (string.IsNullOrWhiteSpace(FirstName) ? "" : FirstName + " ")
+                        +
+                        (string.IsNullOrWhiteSpace(Prefix) ? "" : Prefix + " ")
+                        +
+                        (string.IsNullOrWhiteSpace(Surname) ? "" : Surname)
+                    ).Trim();
+            }
+        }
+        
         public virtual Gender Gender { get; set; }
 
         public virtual string Nationality { get; set; }
@@ -62,7 +79,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return Name != null ? Name.FullName : "Person (id: " + Id.ToString() + ")";
+            return FullName ?? "Person (id: " + Id.ToString() + ")";
         }
     }
     

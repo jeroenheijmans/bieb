@@ -10,12 +10,19 @@
     <legend>Person</legend>
     
     <div class="display-wrapper">
+        <div class="display-label">Name</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FullName)
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
         <div class="display-label">Nationality</div>
         <div class="display-field">
             @Html.DisplayFor(model => model.Nationality)
         </div>
     </div>
-    
+        
     <div class="display-wrapper">
         <div class="display-label">PlaceOfDeath</div>
         <div class="display-field">
