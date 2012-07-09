@@ -8,7 +8,7 @@ using Bieb.Domain.Repositories;
 
 namespace Bieb.Web.Controllers
 {
-    public abstract class EntityController<T> : Controller where T : BaseEntity
+    public abstract class EntityController<T> : Controller where T : BaseEntity, new()
     {
         protected IEntityRepository<T> Repository { get; set; }
         
@@ -25,6 +25,19 @@ namespace Bieb.Web.Controllers
         public ActionResult Details(int id)
         {
             return View(Repository.Get(id));
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View(new T());
+        }
+
+        [HttpPost]
+        public ActionResult Create(T item)
+        {
+            Repository.Save(item);
+            return RedirectToAction("Details", new { id = item.Id });
         }
 
     }
