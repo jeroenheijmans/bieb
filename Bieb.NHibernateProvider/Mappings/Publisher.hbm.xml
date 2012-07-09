@@ -4,10 +4,13 @@
                    namespace="Bieb.Domain.Entities">
 
   <class name="Publisher">
+    
     <id name="Id" column="PublisherId">
       <generator class="native" />
     </id>
+    
     <property name="Name" not-null="true" index="IX_Publisher_Name"/>
+    
   </class>
   
 </hibernate-mapping>

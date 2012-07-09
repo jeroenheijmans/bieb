@@ -4,13 +4,16 @@
                    namespace="Bieb.Domain.Entities">
 
   <class name="Alias">
+    
     <id name="Id" column="AliasId">
       <generator class="native" />
     </id>
+    
     <property name="Title" />
     <property name="FirstName" />
     <property name="Prefix" />
     <property name="Surname" />
+    
   </class>
 
 </hibernate-mapping>

@@ -65,17 +65,31 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Publisher.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Publisher.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Book.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Person.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Series.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Story.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Tag.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Book.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Person.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Series.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Story.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Tag.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Alias.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Alias.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
