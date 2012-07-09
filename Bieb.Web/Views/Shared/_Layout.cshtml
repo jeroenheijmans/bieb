@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Supr.Web.Helpers;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -18,13 +19,13 @@
             </div>
             <nav>
                 <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Books", "Index", "Book")</li>
-                    <li>@Html.ActionLink("Series", "Index", "Series")</li>
-                    <li>@Html.ActionLink("Stories", "Index", "Story")</li>
-                    <li>@Html.ActionLink("People", "Index", "Person")</li>
-                    <li>@Html.ActionLink("Publishers", "Index", "Publisher")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.MenuLink("Home", "Index", "Home")</li>
+                    <li>@Html.MenuLink("Books", "Index", "Book")</li>
+                    <li>@Html.MenuLink("Series", "Index", "Series")</li>
+                    <li>@Html.MenuLink("Stories", "Index", "Story")</li>
+                    <li>@Html.MenuLink("People", "Index", "Person")</li>
+                    <li>@Html.MenuLink("Publishers", "Index", "Publisher")</li>
+                    <li>@Html.MenuLink("About", "About", "Home")</li>
                 </ul>
             </nav>
         </header>
