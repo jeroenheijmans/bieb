@@ -22,9 +22,26 @@ namespace Bieb.Domain.Entities
         public virtual string DateOfBirth { get; set; }
         public virtual string DateOfDeath { get; set; }
 
-        public virtual IEnumerable<Book> EditedBooks { get; set; }
-        public virtual IEnumerable<Story> AuthoredStories { get; set; }
-        public virtual IEnumerable<Story> TranslatedStories { get; set; }
+        private IList<Book> _editedBooks = new List<Book>();
+        public virtual IList<Book> EditedBooks
+        {
+            get { return _editedBooks; }
+            set { _editedBooks = value; }
+        }
+
+        private IList<Story> _authoredStories = new List<Story>();
+        public virtual IList<Story> AuthoredStories
+        {
+            get { return _authoredStories; }
+            set { _authoredStories = value; }
+        }
+
+        private IList<Story> _translatedStories = new List<Story>();
+        public virtual IList<Story> TranslatedStories
+        {
+            get { return _translatedStories; }
+            set { _translatedStories = value; }
+        }
 
         /// <summary>
         /// All the tags from stories in edited books, plus those from translated- and authored stories
