@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Bieb.Tests.Domain
 {
     [TestFixture]
-    public class AliasTest
+    public class PersonTest
     {
         #region SetUp / TearDown
 
@@ -33,7 +33,7 @@ namespace Bieb.Tests.Domain
         public void Can_Create_FullName_With_All_Values()
         {
             // Arrange
-            Alias alias = new Alias()
+            Person john = new Person()
             {
                 Title = this.title,
                 FirstName = this.firstName,
@@ -47,18 +47,18 @@ namespace Bieb.Tests.Domain
             // Assert
             string expectedFullName = title + " " + firstName + " " + prefix + " " + surname;
 
-            Assert.AreEqual(alias.FullName, expectedFullName);
-            Assert.AreEqual(alias.Title, title);
-            Assert.AreEqual(alias.FirstName, firstName);
-            Assert.AreEqual(alias.Prefix, prefix);
-            Assert.AreEqual(alias.Surname, surname);
+            Assert.AreEqual(expectedFullName, john.FullName);
+            Assert.AreEqual(title, john.Title);
+            Assert.AreEqual(firstName, john.FirstName);
+            Assert.AreEqual(prefix, john.Prefix);
+            Assert.AreEqual(surname, john.Surname);
         }
 
         [Test]
         public void Can_Create_Simple_Alias()
         {
             // Arrange
-            Alias alias = new Alias()
+            Person john = new Person()
             {
                 FirstName = this.firstName,
                 Surname = this.surname
@@ -70,11 +70,11 @@ namespace Bieb.Tests.Domain
             // Assert
             string expectedFullName = firstName + " " + surname;
 
-            Assert.AreEqual(expectedFullName, alias.FullName);
-            Assert.IsNull(alias.Title);
-            Assert.AreEqual(firstName, alias.FirstName);
-            Assert.IsNull(alias.Prefix);
-            Assert.AreEqual(surname, alias.Surname);
+            Assert.AreEqual(expectedFullName, john.FullName);
+            Assert.IsNull(john.Title);
+            Assert.AreEqual(firstName, john.FirstName);
+            Assert.IsNull(john.Prefix);
+            Assert.AreEqual(surname, john.Surname);
         }
         
 

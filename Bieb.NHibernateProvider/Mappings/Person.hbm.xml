@@ -8,8 +8,11 @@
     <id name="Id" column="PersonId">
       <generator class="native" />
     </id>
-    
-    <!--Alias-->
+
+    <property name="Title" />
+    <property name="FirstName" />
+    <property name="Prefix" />
+    <property name="Surname" />
     
     <property name="Gender" /><!-- TODO: This ends up as an int in the generated database, but should be a char. -->
     <property name="Nationality" />
