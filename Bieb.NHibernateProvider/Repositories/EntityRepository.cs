@@ -29,9 +29,9 @@ namespace Bieb.NHibernateProvider.Repositories
             get { return session.Query<T>(); }
         }
 
-        public void Add(T item)
+        public T Save(T item)
         {
-            session.Save(item);
+            return (T)session.Save(item);
         }
 
         public void Delete(T item)

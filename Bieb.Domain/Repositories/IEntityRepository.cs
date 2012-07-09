@@ -10,7 +10,7 @@ namespace Bieb.Domain.Repositories
     {
         T Get(int id);
         IQueryable<T> Items { get; }
-        void Add(T item);
+        T Save(T item);
         void Delete(T item);
     }
 }
