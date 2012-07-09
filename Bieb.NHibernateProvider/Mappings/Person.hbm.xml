@@ -4,19 +4,24 @@
                    namespace="Bieb.Domain.Entities">
 
   <class name="Person">
+    
     <id name="Id" column="PersonId">
       <generator class="native" />
     </id>
+    
     <!--Alias-->
+    
     <property name="Gender" /><!-- TODO: This ends up as an int in the generated database, but should be a char. -->
     <property name="Nationality" />
     <property name="PlaceOfBirth" />
     <property name="PlaceOfDeath" />
     <property name="DateOfBirth" />
     <property name="DateOfDeath" />
+    
     <!--EditedBooks-->
     <!--AuthoredStories-->
     <!--TranslatedStories-->
+    
   </class>
 
 </hibernate-mapping>

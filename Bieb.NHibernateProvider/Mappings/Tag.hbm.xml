@@ -4,11 +4,14 @@
                    namespace="Bieb.Domain.Entities">
 
   <class name="Tag">
+    
     <id name="Id" column="TagId">
       <generator class="native" />
     </id>
+    
     <property name="Name" not-null="true" index="IX_Tag_Name" />
     <property name="Description" />
+    
   </class>
 
 </hibernate-mapping>
