@@ -68,9 +68,9 @@
     <fieldset>
         <legend>Editors</legend>
         <ul>
-        @foreach (var editor in Model.Editors)
+        @foreach (var person in Model.Editors)
         {
-            <li>TODO: Insert FULLNAME (person id: @editor.Id)</li>
+            <li>@Html.ActionLink("TODO: Insert FULLNAME", "Details", new { controller = "Person", id = person.Id })</li>
         }
         </ul>
     </fieldset>
@@ -80,13 +80,13 @@
         <ul>
         @foreach (var story in Model.Stories)
         {
-            <li>@story.Value.Title</li>
+            <li>@Html.ActionLink(story.Value.Title, "Details", new { controller = "Story", id = story.Value.Id })</li>
         }
         </ul>
     </fieldset>
 
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -17,10 +17,21 @@
     <property name="PlaceOfDeath" />
     <property name="DateOfBirth" />
     <property name="DateOfDeath" />
-    
-    <!--EditedBooks-->
-    <!--AuthoredStories-->
-    <!--TranslatedStories-->
+
+    <bag name="EditedBooks" table="BookEditor" lazy="true">
+      <key column="PersonId" foreign-key="FK_BookEditor_Person" />
+      <many-to-many column="BookId" class="Book" foreign-key="FK_BookEditor_Book" />
+    </bag>
+
+    <bag name="AuthoredStories" table="StoryAuthor" lazy="true">
+      <key column="PersonId" foreign-key="FK_StoryAuthor_Person" />
+      <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryAuthor_Story" />
+    </bag>
+
+    <bag name="TranslatedStories" table="StoryTranslator" lazy="true">
+      <key column="PersonId" foreign-key="FK_StoryTranslator_Person" />
+      <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryTranslator_Story" />
+    </bag>
     
   </class>
 

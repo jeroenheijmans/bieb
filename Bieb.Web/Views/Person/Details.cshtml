@@ -50,6 +50,37 @@
             @Html.DisplayFor(model => model.Version)
         </div>
     </div>
+
+    <fieldset>
+        <legend>Authored Stories</legend>
+        <ul>
+        @foreach (var story in Model.AuthoredStories)
+        {
+            <li>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</li>
+        }
+        </ul>
+    </fieldset>
+
+    <fieldset>
+        <legend>Translated Stories</legend>
+        <ul>
+        @foreach (var story in Model.TranslatedStories)
+        {
+            <li>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</li>
+        }
+        </ul>
+    </fieldset>
+
+    <fieldset>
+        <legend>Edited Books</legend>
+        <ul>
+        @foreach (var book in Model.EditedBooks)
+        {
+            <li>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</li>
+        }
+        </ul>
+    </fieldset>
+
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

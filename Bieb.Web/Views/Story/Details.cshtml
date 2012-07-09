@@ -29,13 +29,13 @@
             @Html.DisplayFor(model => model.Version)
         </div>
     </div>
-    
+        
     <fieldset>
         <legend>Authors</legend>
         <ul>
         @foreach (var person in Model.Authors)
         {
-            <li>TODO: Insert FULLNAME (person id: @person.Id)</li>
+            <li>@Html.ActionLink("TODO: Insert FULLNAME", "Details", new { controller = "Person", id = person.Id })</li>
         }
         </ul>
     </fieldset>
@@ -45,7 +45,7 @@
         <ul>
         @foreach (var person in Model.Translators)
         {
-            <li>TODO: Insert FULLNAME (person id: @person.Id)</li>
+            <li>@Html.ActionLink("TODO: Insert FULLNAME", "Details", new { controller = "Person", id = person.Id })</li>
         }
         </ul>
     </fieldset>
