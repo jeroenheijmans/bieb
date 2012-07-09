@@ -10,20 +10,6 @@ namespace Bieb.Tests.Domain
     [TestFixture]
     public class PersonTest
     {
-        #region SetUp / TearDown
-
-        [SetUp]
-        public void Init()
-        { }
-
-        [TearDown]
-        public void Dispose()
-        { }
-
-        #endregion
-
-        #region Tests
-
         private string title = "Dr. Mr.";
         private string firstName = "John J.";
         private string prefix = "of the";
@@ -78,6 +64,5 @@ namespace Bieb.Tests.Domain
         }
         
 
-        #endregion
     }
 }

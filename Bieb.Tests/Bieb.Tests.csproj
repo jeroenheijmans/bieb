@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BookControllerTest.cs" />
     <Compile Include="Domain\PersonTest.cs" />
     <Compile Include="Domain\BookTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

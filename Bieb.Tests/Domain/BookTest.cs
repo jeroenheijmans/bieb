@@ -10,20 +10,6 @@ namespace Bieb.Tests.Domain
     [TestFixture]
     public class BookTest
     {
-        #region SetUp / TearDown
-
-        [SetUp]
-        public void Init()
-        { }
-
-        [TearDown]
-        public void Dispose()
-        { }
-
-        #endregion
-
-        #region Tests
-
         [Test]
         public void Contains_Tags_From_Stories()
         {
@@ -162,6 +148,5 @@ namespace Bieb.Tests.Domain
             Assert.That(myBook.Type, Is.EqualTo(BookType.Bundle));
         }
 
-        #endregion
     }
 }
