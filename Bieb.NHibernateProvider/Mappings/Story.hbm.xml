@@ -26,9 +26,12 @@
     </bag>
 
     <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Story_Publisher" />
-    
-    <!--TODO: Tags-->
-    
+
+    <bag name="Tags" table="StoryTag" lazy="true">
+      <key column="StoryId" foreign-key="FK_StoryTag_Story" />
+      <many-to-many column="TagId" class="Tag" foreign-key="FK_StoryTag_Tag" />
+    </bag>
+
   </class>
 
 </hibernate-mapping>

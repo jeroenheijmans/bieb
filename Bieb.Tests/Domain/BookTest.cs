@@ -117,7 +117,7 @@ namespace Bieb.Tests.Domain
         }
 
         [Test]
-        public void Book_With_One_Story_By_One_Author_Is_Collection()
+        public void Is_Collection_If_Book_Has_One_Story_By_One_Author()
         {
             // Arrange
             Book myBook = new Book();
@@ -132,7 +132,7 @@ namespace Bieb.Tests.Domain
         }
 
         [Test]
-        public void Book_With_Zero_Stories_Is_Novel()
+        public void Is_Novel_If_Book_Has_Zero_Stories()
         {
             // Arrange
             Book myBook = new Book();
@@ -175,5 +175,30 @@ namespace Bieb.Tests.Domain
             Assert.That(anthology.Type, Is.EqualTo(BookType.Anthology));
         }
 
+        [Test]
+        public void Is_Tagged_Based_On_All_Stories()
+        {
+            // Arrang
+            Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
+
+            Story story1 = new Story() { Tags = new Tag[] { cool, hot } };
+            Story story2 = new Story() { Tags = new Tag[] { cool, old } };
+            Story story3 = new Story() { Tags = new Tag[] { sweet } };
+
+            Book theHobbit = new Book();
+            theHobbit.Stories.Add(0, story1);
+            theHobbit.Stories.Add(1, story2);
+            theHobbit.Stories.Add(2, story3);            
+
+            // Act 
+            // ...
+
+            // Assert
+            Assert.That(theHobbit.Tags.Contains(cool));
+            Assert.That(theHobbit.Tags.Contains(hot));
+            Assert.That(theHobbit.Tags.Contains(old));
+            Assert.That(theHobbit.Tags.Contains(sweet));
+            Assert.That(theHobbit.Tags.Count(), Is.EqualTo(4));
+        }
     }
 }
