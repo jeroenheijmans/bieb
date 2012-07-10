@@ -62,7 +62,35 @@ namespace Bieb.Tests.Domain
             Assert.IsNull(john.Prefix);
             Assert.AreEqual(surname, john.Surname);
         }
-        
 
+        [Test]
+        public void Has_Tags_From_All_Related_Stories()
+        {
+            // Arrange
+            Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
+
+            Story story1 = new Story() { Tags = new Tag[] { cool, hot } };
+            Story story2 = new Story() { Tags = new Tag[] { cool, old } };
+            Story story3 = new Story() { Tags = new Tag[] { sweet } };
+
+            Book someBook = new Book();
+            someBook.Stories.Add(1, story3);
+
+            Person tolkien = new Person();
+
+            tolkien.AuthoredStories.Add(story1);
+            tolkien.TranslatedStories.Add(story2);
+            tolkien.EditedBooks.Add(someBook);
+
+            // Act 
+            // ..
+
+            // Assert
+            Assert.That(tolkien.Tags.Contains(cool));
+            Assert.That(tolkien.Tags.Contains(hot));
+            Assert.That(tolkien.Tags.Contains(old));
+            Assert.That(tolkien.Tags.Contains(sweet));
+            Assert.That(tolkien.Tags.Count(), Is.EqualTo(4));
+        }
     }
 }

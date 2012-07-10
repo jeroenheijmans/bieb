@@ -57,6 +57,13 @@
             @Html.DisplayFor(model => model.Version)
         </div>
     </div>
+    
+    <div class="display-wrapper">
+        <div class="display-label">Tags</div>
+        <div class="display-field">
+            @string.Join(", ", Model.Tags)
+        </div>
+    </div>
         
     <div class="display-wrapper">
         <div class="display-label">Series</div>
