@@ -24,6 +24,13 @@
     </div>
     
     <div class="display-wrapper">
+        <div class="display-label">Book</div>
+        <div class="display-field">
+            @Html.ActionLink(Model.Book.Title, "Details", new { id = Model.Book.Id, controller = "Book" })
+        </div>
+    </div>
+    
+    <div class="display-wrapper">
         <div class="display-label">Version</div>
         <div class="display-field">
             @Html.DisplayFor(model => model.Version)

@@ -10,6 +10,8 @@ namespace Bieb.Domain.Entities
         public virtual string Title { get; set; }
         public virtual string SubTitle { get; set; }
         public virtual Publisher Publisher { get; set; }
+        public virtual Book Book { get; set; }
+        public virtual int PositionInBook { get; set; }
 
         private IList<Tag> _tags = new List<Tag>();
         public virtual IList<Tag> Tags

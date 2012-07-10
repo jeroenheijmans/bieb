@@ -31,7 +31,10 @@ namespace Bieb.NHibernateProvider.Repositories
 
         public T Save(T item)
         {
-            return (T)session.Save(item);
+            session.Save(item);
+            // Save returns the persisted ID (which will be Int32 for Bieb.Domain entities)
+            // So go ahead and just return the persisted item.
+            return item;
         }
 
         public void Delete(T item)

@@ -117,12 +117,25 @@ namespace Bieb.Tests.Domain
         }
 
         [Test]
-        public void Book_With_One_Story_Is_Novel()
+        public void Book_With_One_Story_By_One_Author_Is_Collection()
         {
             // Arrange
             Book myBook = new Book();
-            Story story1 = new Story();
+            Story story1 = new Story() { Authors = new Person[] { new Person() } };
             myBook.Stories.Add(1, story1);
+
+            // Act
+            // ...
+
+            // Assert
+            Assert.That(myBook.Type, Is.EqualTo(BookType.Collection));
+        }
+
+        [Test]
+        public void Book_With_Zero_Stories_Is_Novel()
+        {
+            // Arrange
+            Book myBook = new Book();
 
             // Act
             // ...
@@ -142,13 +155,13 @@ namespace Bieb.Tests.Domain
             Story asimovStory2 = new Story() { Authors = new Person[] { asimov } };
             Story clarkeStory = new Story() { Authors = new Person[] { clarke } };
 
-            Book novel = new Book() { Stories = new Dictionary<int, Story>() };
+            Book novel = new Book() { Title = "How Novel!" };
             Book collection = new Book() { Stories = new Dictionary<int, Story>() };
             Book anthology = new Book() { Stories = new Dictionary<int, Story>() };
 
-            novel.Stories.Add(0, asimovStory1);
             collection.Stories.Add(0, asimovStory1);
             collection.Stories.Add(1, asimovStory2);
+
             anthology.Stories.Add(0, asimovStory1);
             anthology.Stories.Add(1, asimovStory2);
             anthology.Stories.Add(2, clarkeStory);

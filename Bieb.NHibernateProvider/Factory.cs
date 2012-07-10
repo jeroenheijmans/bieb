@@ -25,7 +25,9 @@ namespace Bieb.NHibernateProvider
         public static void CreateSchema()
         {
             Configuration cfg = GetConfiguration();
-            new NHibernate.Tool.hbm2ddl.SchemaExport(cfg).Execute(true, true, false);
+            var schemaExport = new NHibernate.Tool.hbm2ddl.SchemaExport(cfg);
+            //schemaExport.Drop(true, true);
+            schemaExport.Execute(true, true, false);
         }
 
         private static ISessionFactory CreateSessionFactory()
