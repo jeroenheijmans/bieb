@@ -17,10 +17,10 @@
 
     <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Book_Publisher" />
 
-    <map name="Stories" table="BookStory" lazy="true">
-      <key column="BookId" foreign-key="FK_BookStory_Book" />
-      <index column="Position" type="Int32" />
-      <many-to-many column="StoryId" class="Story" foreign-key="FK_BookStory_Story" />
+    <map name="Stories" table="Story" lazy="true">
+      <key column="BookId" foreign-key="FK_Story_Book" />
+      <index column="PositionInBook" type="Int32" />
+      <one-to-many class="Story" />
     </map>
 
     <bag name="Editors" table="BookEditor" lazy="true">
