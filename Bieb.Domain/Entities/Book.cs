@@ -115,7 +115,16 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                return Stories.Count > 1 ? BookType.Bundle : BookType.Novel;
+                if (Stories.Count > 1)
+                {
+                    
+                    if (Stories.SelectMany(s => Authors).Distinct().Count() > 1)
+                        return BookType.Anthology;
+                    else
+                        return BookType.Collection;
+                }
+                     
+                return BookType.Novel;
             }
         }
 
@@ -127,7 +136,19 @@ namespace Bieb.Domain.Entities
 
     public enum BookType
     {
+        /// <summary>
+        /// Book with only one main story
+        /// </summary>
         Novel,
-        Bundle
+
+        /// <summary>
+        /// Book with several stories from one author
+        /// </summary>
+        Collection,
+
+        /// <summary>
+        /// Book with several stories from different authors
+        /// </summary>
+        Anthology
     }
 }
