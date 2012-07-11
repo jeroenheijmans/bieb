@@ -47,7 +47,7 @@
         @if (Model.TranslatedStories.Count > 0)
         { 
             <h2>Translated Stories</h2>
-            <ul class="bookList">
+            <ul class="itemList">
             @foreach (var story in Model.TranslatedStories)
             {
                 <li>
@@ -61,7 +61,7 @@
         @if (Model.EditedBooks.Count > 0)
         { 
             <h2>Edited Books</h2>
-            <ul class="bookList">
+            <ul class="itemList">
             @foreach (var book in Model.EditedBooks)
             {
                 <li>
@@ -75,7 +75,7 @@
         @if (Model.AuthoredStories.Count > 0)
         {
             <h2>Authored Stories</h2>
-            <ul class="bookList">
+            <ul class="itemList">
             @foreach (var story in Model.AuthoredStories)
             {
                 <li>

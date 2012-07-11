@@ -22,16 +22,16 @@
 section.books {
 }
 
-ul.bookList li {
+ul.itemList li {
     display: inline-block;
     overflow: auto;
-    border: 1px solid #CCE;
-    background-color: #EEF;
+    border: 1px solid #EADFD7;
+    background-color: #F4EEEB;
     width: 280px;
     height: 120px;
 }
 
-ul.bookList img.bookCoverIcon {
+ul.itemList img.bookCoverIcon {
     margin: 8px;
     float: left;
 }
