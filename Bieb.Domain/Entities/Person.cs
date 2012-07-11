@@ -96,6 +96,20 @@ namespace Bieb.Domain.Entities
             }
         }
 
+        public virtual IEnumerable<Role> Roles
+        {
+            get
+            {
+                var roles = new List<Role>();
+
+                if (AuthoredStories.Count > 0) roles.Add(Role.Author);
+                if (EditedBooks.Count > 0) roles.Add(Role.Editor);
+                if (TranslatedStories.Count > 0) roles.Add(Role.Translator);
+
+                return roles;
+            }
+        }
+
         public override string ToString()
         {
             return FullName ?? "Person (id: " + Id.ToString() + ")";
@@ -112,5 +126,12 @@ namespace Bieb.Domain.Entities
         /// For example when one Author "Person" is in fact many different people
         /// </summary>
         None = 3
+    }
+
+    public enum Role
+    {
+        Author,
+        Translator,
+        Editor
     }
 }
