@@ -1,0 +1,37 @@
+﻿.personCard {
+    width: 260px;
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    padding: 16px;
+    box-shadow: 2px 2px 2px #AAA;
+    float: right;
+    font-family: Serif;
+    height: 100%;
+    min-height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.personCard .portrait {
+    font-size: 120px;
+    border: 2px solid #DED;
+    display: block;
+    text-align: center;
+}
+
+section.books {
+}
+
+ul.bookList li {
+    display: inline-block;
+    overflow: auto;
+    border: 1px solid #CCE;
+    background-color: #EEF;
+    width: 280px;
+    height: 120px;
+}
+
+ul.bookList img.bookCoverIcon {
+    margin: 8px;
+    float: left;
+}
