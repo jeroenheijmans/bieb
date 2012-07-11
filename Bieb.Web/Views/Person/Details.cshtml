@@ -44,20 +44,6 @@
     </div>
 
     <section class="books">        
-        @if (Model.TranslatedStories.Count > 0)
-        { 
-            <h2>Translated Stories</h2>
-            <ul class="itemList">
-            @foreach (var story in Model.TranslatedStories)
-            {
-                <li>
-                    <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
-                    <h3>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</h3>
-                </li>
-            }
-            </ul>
-        }
-        
         @if (Model.EditedBooks.Count > 0)
         { 
             <h2>Edited Books</h2>
@@ -71,19 +57,17 @@
             }
             </ul>
         }
+            
+        @if (Model.TranslatedStories.Count > 0)
+        { 
+            <h2>Translated Stories</h2>
+            Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.TranslatedStories);
+        }
         
         @if (Model.AuthoredStories.Count > 0)
         {
             <h2>Authored Stories</h2>
-            <ul class="itemList">
-            @foreach (var story in Model.AuthoredStories)
-            {
-                <li>
-                    <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
-                    <h3>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</h3>
-                </li>
-            }
-            </ul>
+            Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredStories);
         }
     </section>
 
