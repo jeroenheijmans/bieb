@@ -5,71 +5,74 @@
 }
 
 <h1>@Html.DisplayFor(model => model.FullName)</h1>
+<p>@string.Join(", ", Model.Roles)</p>
 
 
-    <div class="personCard">
-        <img src="" alt="☺" title="Person's portrait pica" class="portrait" />
-        <h1>@Html.DisplayFor(model => model.FullName)</h1>
+<div class="personCard">
+    <img src="" alt="☺" title="Person's portrait pica" class="portrait" />
+    <h1>@Html.DisplayFor(model => model.FullName)</h1>
 
-        @if (Model.Nationality != null)
-        {
-            <p>@Model.Nationality.ToUpper()</p>
-        }
+    <p>@string.Join(", ", Model.Roles)</p>
+
+    @if (Model.Nationality != null)
+    {
+        <p>@Model.Nationality.ToUpper()</p>
+    }
         
-        @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
-        {
-            <p>
-                Born:
-                @Html.DisplayFor(model => model.DateOfBirth);
-                @Html.DisplayFor(model => model.PlaceOfBirth);
-            </p>
-        }
+    @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
+    {
+        <p>
+            Born:
+            @Html.DisplayFor(model => model.DateOfBirth);
+            @Html.DisplayFor(model => model.PlaceOfBirth);
+        </p>
+    }
         
-        @if (Model.DateOfDeath != null || Model.PlaceOfDeath != null)
-        {
-            <p>
-                Died:
-                @Html.DisplayFor(model => model.DateOfDeath);
-                @Html.DisplayFor(model => model.PlaceOfDeath);
-            </p>
-        }
+    @if (Model.DateOfDeath != null || Model.PlaceOfDeath != null)
+    {
+        <p>
+            Died:
+            @Html.DisplayFor(model => model.DateOfDeath);
+            @Html.DisplayFor(model => model.PlaceOfDeath);
+        </p>
+    }
         
-        @if (Model.Tags.Count() > 0)
-        { 
-            <p>
-                Tags:
-                @string.Join(", ", Model.Tags)
-            </p>
-        }
-    </div>
+    @if (Model.Tags.Count() > 0)
+    { 
+        <p>
+            Tags:
+            @string.Join(", ", Model.Tags)
+        </p>
+    }
+</div>
 
-    <section class="books">        
-        @if (Model.EditedBooks.Count > 0)
-        { 
-            <h2>Edited Books</h2>
-            <ul class="itemList">
-            @foreach (var book in Model.EditedBooks)
-            {
-                <li>
-                    <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
-                    <h3>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</h3>
-                </li>
-            }
-            </ul>
+<section class="books">        
+    @if (Model.EditedBooks.Count > 0)
+    { 
+        <h2>Edited Books</h2>
+        <ul class="itemList">
+        @foreach (var book in Model.EditedBooks)
+        {
+            <li>
+                <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
+                <h3>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</h3>
+            </li>
         }
+        </ul>
+    }
             
-        @if (Model.TranslatedStories.Count > 0)
-        { 
-            <h2>Translated Stories</h2>
-            Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.TranslatedStories);
-        }
+    @if (Model.TranslatedStories.Count > 0)
+    { 
+        <h2>Translated Stories</h2>
+        Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.TranslatedStories);
+    }
         
-        @if (Model.AuthoredStories.Count > 0)
-        {
-            <h2>Authored Stories</h2>
-            Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredStories);
-        }
-    </section>
+    @if (Model.AuthoredStories.Count > 0)
+    {
+        <h2>Authored Stories</h2>
+        Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredStories);
+    }
+</section>
 
 
 <p>

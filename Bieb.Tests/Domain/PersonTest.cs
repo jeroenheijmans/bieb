@@ -92,5 +92,25 @@ namespace Bieb.Tests.Domain
             Assert.That(tolkien.Tags.Contains(sweet));
             Assert.That(tolkien.Tags.Count(), Is.EqualTo(4));
         }
+
+        [Test]
+        public void Gets_Roles_From_Stories_And_Books()
+        {
+            // Arrange
+            Person SybrenPolet = new Person() { FirstName = "Sybren", Surname = "Polet" };
+            Story story = new Story();
+            Book book = new Book();
+
+            // Act
+            SybrenPolet.AuthoredStories.Add(story);
+            SybrenPolet.TranslatedStories.Add(story);
+            SybrenPolet.EditedBooks.Add(book);
+
+            // Assert
+            Assert.That(SybrenPolet.Roles.Contains(Role.Author));
+            Assert.That(SybrenPolet.Roles.Contains(Role.Editor));
+            Assert.That(SybrenPolet.Roles.Contains(Role.Translator));
+            Assert.That(SybrenPolet.Roles.Count(), Is.EqualTo(3));
+        }
     }
 }
