@@ -40,6 +40,20 @@ namespace Bieb.Tests.Domain
         }
 
         [Test]
+        public void Contains_Author_In_Novel()
+        {
+            // Arrange
+            Book novel = new Book();
+            // TODO: should a novel contain 1 story?
+            
+            // Act
+            // ...
+
+            // Assert
+            Assert.That(novel.Authors.Count(), Is.EqualTo(1));
+        }
+
+        [Test]
         public void Contains_Authors_From_Stories()
         {
             // Arrange

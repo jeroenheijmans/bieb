@@ -4,111 +4,59 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+@if (Model.SubTitle != null)
+{ 
+    <h2>@Html.DisplayFor(model => model.SubTitle)</h2>
+}
 
-<fieldset>
-    <legend>Book</legend>
+<p>
+    @Html.DisplayFor(model => model.Year), @Html.DisplayFor(model => model.Language)
+</p>
 
-    <div class="display-wrapper">
-        <div class="display-label">ISBN</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.ISBN)
-        </div>
-    </div>
+@if (Model.ISBN != null)
+{ 
+    <p>ISBN: @Html.DisplayFor(model => model.ISBN)</p>
+}
+
+@if (Model.Tags.Count() > 0)
+{ 
+    <p>Tags: @string.Join(", ", Model.Tags)</p>
+}
+
+@if (Model.Series != null)
+{
+    <p>From: @Html.DisplayFor(model => model.Series)</p>
+}
+
+@if (Model.Authors.Count() > 0)
+{
+    <h3>Authors</h3>
+    <ul>
+    @foreach (var person in Model.Authors)
+    {
+        <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
+    }
+    </ul>
+}
     
-    <div class="display-wrapper">
-        <div class="display-label">Title</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Title)
-        </div>
-    </div>
-        
-    <div class="display-wrapper">
-        <div class="display-label">SubTitle</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.SubTitle)
-        </div>
-    </div>
-        
-    <div class="display-wrapper">
-        <div class="display-label">ISBNLanguage</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.ISBNLanguage)
-        </div>
-    </div>
-        
-    <div class="display-wrapper">
-        <div class="display-label">Language</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Language)
-        </div>
-    </div>
-        
-    <div class="display-wrapper">
-        <div class="display-label">Year</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Year)
-        </div>
-    </div>
-        
-    <div class="display-wrapper">
-        <div class="display-label">Version</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Version)
-        </div>
-    </div>
+@if (Model.Editors.Count > 0)
+{
+    <h3>Editors</h3>
+    <ul>
+    @foreach (var person in Model.Editors)
+    {
+        <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
+    }
+    </ul>
+}
     
-    <div class="display-wrapper">
-        <div class="display-label">Tags</div>
-        <div class="display-field">
-            @string.Join(", ", Model.Tags)
-        </div>
-    </div>
-        
-    <div class="display-wrapper">
-        <div class="display-label">Series</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Series)
-        </div>
-    </div>
+@if (Model.Stories.Count > 0)
+{
+    <h3>Stories</h3>
+    Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.Stories.Values);
+}
     
-    <fieldset>
-        <legend>Editors</legend>
-        <ul>
-        @foreach (var person in Model.Editors)
-        {
-            <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
-        }
-        </ul>
-    </fieldset>
-
-    <fieldset>
-        <legend>Stories</legend>
-        <ul>
-        @foreach (var story in Model.Stories)
-        {
-            <li>
-                @Html.ActionLink(story.Value.Title, "Details", new { controller = "Story", id = story.Value.Id })
-                <span>Authored by:</span>
-                @if (story.Value.Authors.Count == 1)
-                {
-                    @Html.ActionLink(story.Value.Authors.First().FullName, "Details", new { controller = "Person", id = story.Value.Authors.First().Id })
-                }
-                else
-                {
-                    <ul>
-                        @foreach (var person in story.Value.Authors)
-                        { 
-                            <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
-                        }                    
-                    </ul>            
-                }
-            </li>
-        }
-        </ul>
-    </fieldset>
-
-</fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

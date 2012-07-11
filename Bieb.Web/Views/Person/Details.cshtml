@@ -7,58 +7,13 @@
 <h1>@Html.DisplayFor(model => model.FullName)</h1>
 <p>@string.Join(", ", Model.Roles)</p>
 
-
-<div class="personCard">
-    <img src="" alt="☺" title="Person's portrait pica" class="portrait" />
-    <h1>@Html.DisplayFor(model => model.FullName)</h1>
-
-    <p>@string.Join(", ", Model.Roles)</p>
-
-    @if (Model.Nationality != null)
-    {
-        <p>@Model.Nationality.ToUpper()</p>
-    }
-        
-    @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
-    {
-        <p>
-            Born:
-            @Html.DisplayFor(model => model.DateOfBirth);
-            @Html.DisplayFor(model => model.PlaceOfBirth);
-        </p>
-    }
-        
-    @if (Model.DateOfDeath != null || Model.PlaceOfDeath != null)
-    {
-        <p>
-            Died:
-            @Html.DisplayFor(model => model.DateOfDeath);
-            @Html.DisplayFor(model => model.PlaceOfDeath);
-        </p>
-    }
-        
-    @if (Model.Tags.Count() > 0)
-    { 
-        <p>
-            Tags:
-            @string.Join(", ", Model.Tags)
-        </p>
-    }
-</div>
+@{ Html.RenderPartial("Card", Model); }
 
 <section class="books">        
     @if (Model.EditedBooks.Count > 0)
     { 
         <h2>Edited Books</h2>
-        <ul class="itemList">
-        @foreach (var book in Model.EditedBooks)
-        {
-            <li>
-                <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
-                <h3>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</h3>
-            </li>
-        }
-        </ul>
+        Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.EditedBooks);
     }
             
     @if (Model.TranslatedStories.Count > 0)
