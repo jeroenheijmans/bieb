@@ -1,101 +1,93 @@
 ﻿@model Bieb.Domain.Entities.Person
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.FullName;
 }
 
-<h2>Details</h2>
+<h1>@Html.DisplayFor(model => model.FullName)</h1>
 
-<fieldset>
-    <legend>Person</legend>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Name</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.FullName)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Nationality</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Nationality)
-        </div>
-    </div>
+
+    <div class="personCard">
+        <img src="" alt="☺" title="Person's portrait pica" class="portrait" />
+        <h1>@Html.DisplayFor(model => model.FullName)</h1>
+
+        @if (Model.Nationality != null)
+        {
+            <p>@Model.Nationality.ToUpper()</p>
+        }
         
-    <div class="display-wrapper">
-        <div class="display-label">PlaceOfDeath</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.PlaceOfDeath)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">PlaceOfBirth</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.PlaceOfBirth)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">DateOfBirth</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">DateOfDeath</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.DateOfDeath)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Version</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Version)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Tags</div>
-        <div class="display-field">
-            @string.Join(", ", Model.Tags)
-        </div>
-    </div>
-
-    <fieldset>
-        <legend>Authored Stories</legend>
-        <ul>
-        @foreach (var story in Model.AuthoredStories)
+        @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
         {
-            <li>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</li>
+            <p>
+                Born:
+                @Html.DisplayFor(model => model.DateOfBirth);
+                @Html.DisplayFor(model => model.PlaceOfBirth);
+            </p>
         }
-        </ul>
-    </fieldset>
-
-    <fieldset>
-        <legend>Translated Stories</legend>
-        <ul>
-        @foreach (var story in Model.TranslatedStories)
+        
+        @if (Model.DateOfDeath != null || Model.PlaceOfDeath != null)
         {
-            <li>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</li>
+            <p>
+                Died:
+                @Html.DisplayFor(model => model.DateOfDeath);
+                @Html.DisplayFor(model => model.PlaceOfDeath);
+            </p>
         }
-        </ul>
-    </fieldset>
+        
+        @if (Model.Tags.Count() > 0)
+        { 
+            <p>
+                Tags:
+                @string.Join(", ", Model.Tags)
+            </p>
+        }
+    </div>
 
-    <fieldset>
-        <legend>Edited Books</legend>
-        <ul>
-        @foreach (var book in Model.EditedBooks)
+    <section class="books">        
+        @if (Model.TranslatedStories.Count > 0)
+        { 
+            <h2>Translated Stories</h2>
+            <ul class="bookList">
+            @foreach (var story in Model.TranslatedStories)
+            {
+                <li>
+                    <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
+                    <h3>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</h3>
+                </li>
+            }
+            </ul>
+        }
+        
+        @if (Model.EditedBooks.Count > 0)
+        { 
+            <h2>Edited Books</h2>
+            <ul class="bookList">
+            @foreach (var book in Model.EditedBooks)
+            {
+                <li>
+                    <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
+                    <h3>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</h3>
+                </li>
+            }
+            </ul>
+        }
+        
+        @if (Model.AuthoredStories.Count > 0)
         {
-            <li>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</li>
+            <h2>Authored Stories</h2>
+            <ul class="bookList">
+            @foreach (var story in Model.AuthoredStories)
+            {
+                <li>
+                    <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
+                    <h3>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</h3>
+                </li>
+            }
+            </ul>
         }
-        </ul>
-    </fieldset>
+    </section>
 
-</fieldset>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
