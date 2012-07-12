@@ -14,7 +14,7 @@
     <property name="Prefix" />
     <property name="Surname" />
     
-    <property name="Gender" />
+    <property name="Gender" type="NHibernate.Type.EnumStringType`1[[Bieb.Domain.Entities.Gender, Bieb.Domain]], NHibernate" not-null="true" />
     <property name="Nationality" />
     <property name="PlaceOfBirth" />
     <property name="PlaceOfDeath" />
