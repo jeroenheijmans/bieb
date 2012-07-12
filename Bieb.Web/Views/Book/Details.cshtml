@@ -10,45 +10,38 @@
     <h2>@Html.DisplayFor(model => model.SubTitle)</h2>
 }
 
-<p>
-    @Html.DisplayFor(model => model.Year), @Html.DisplayFor(model => model.Language)
-</p>
+<ul>
+    <li>
+        @Html.DisplayFor(model => model.Year), @Html.DisplayFor(model => model.Language)
+    </li>
 
-@if (Model.ISBN != null)
-{ 
-    <p>ISBN: @Html.DisplayFor(model => model.ISBN)</p>
-}
+    @if (Model.ISBN != null)
+    { 
+        <li>ISBN: @Html.DisplayFor(model => model.ISBN)</li>
+    }
 
-@if (Model.Tags.Count() > 0)
-{ 
-    <p>Tags: @string.Join(", ", Model.Tags)</p>
-}
+    @if (Model.Tags.Count() > 0)
+    { 
+        <li>Tags: @string.Join(", ", Model.Tags)</li>
+    }
 
-@if (Model.Series != null)
-{
-    <p>From: @Html.DisplayFor(model => model.Series)</p>
-}
+    @if (Model.Series != null)
+    {
+        <li>From: @Html.DisplayFor(model => model.Series)</li>
+    }
+</li>
+
 
 @if (Model.Authors.Count() > 0)
 {
     <h3>Authors</h3>
-    <ul>
-    @foreach (var person in Model.Authors)
-    {
-        <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
-    }
-    </ul>
+    Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Authors);
 }
     
 @if (Model.Editors.Count > 0)
 {
     <h3>Editors</h3>
-    <ul>
-    @foreach (var person in Model.Editors)
-    {
-        <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
-    }
-    </ul>
+    Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Editors);
 }
     
 @if (Model.Stories.Count > 0)
