@@ -30,11 +30,8 @@
 }
 
 .personCard .portrait {
-    font-size: 120px;
-    line-height: 120px;
-    border: 2px solid #DED;
     display: block;
-    text-align: center;
+    margin: 0 auto;
 }
 
 section.books {
