@@ -49,7 +49,7 @@
         <ul>
         @foreach (var person in Model.Authors)
         {
-            <li>@Html.ActionLink("TODO: Insert FULLNAME", "Details", new { controller = "Person", id = person.Id })</li>
+            <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
         }
         </ul>
     </fieldset>
@@ -59,7 +59,7 @@
         <ul>
         @foreach (var person in Model.Translators)
         {
-            <li>@Html.ActionLink("TODO: Insert FULLNAME", "Details", new { controller = "Person", id = person.Id })</li>
+            <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
         }
         </ul>
     </fieldset>

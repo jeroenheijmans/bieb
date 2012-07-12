@@ -4,7 +4,10 @@
     <img src="" alt="☺" title="Person's portrait pica" class="portrait" />
     <h1>@Html.DisplayFor(model => model.FullName)</h1>
 
-    <p>@string.Join(", ", Model.Roles)</p>
+    <p>
+        @Model.GenderChar
+        @string.Join(", ", Model.Roles)
+    </p>
 
     @if (Model.Nationality != null)
     {
