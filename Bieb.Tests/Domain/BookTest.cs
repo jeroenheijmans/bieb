@@ -40,17 +40,23 @@ namespace Bieb.Tests.Domain
         }
 
         [Test]
-        public void Contains_Author_In_Novel()
+        public void Has_Single_Author_For_Novel()
         {
             // Arrange
             Book novel = new Book();
-            // TODO: should a novel contain 1 story?
+            
+            Story story = new Story();
+            novel.Stories.Add(1, story);
+
+            Person person = new Person();
+            story.Authors.Add(person);
             
             // Act
             // ...
 
             // Assert
             Assert.That(novel.Authors.Count(), Is.EqualTo(1));
+            Assert.That(novel.Authors.First(), Is.EqualTo(person));
         }
 
         [Test]
@@ -129,27 +135,28 @@ namespace Bieb.Tests.Domain
             Assert.That(myBook.Translators.ToList(), Has.Member(pjotr));
             Assert.That(myBook.Translators.ToList(), Has.Member(michelle));
         }
-
-        [Test]
-        public void Is_Collection_If_Book_Has_One_Story_By_One_Author()
-        {
-            // Arrange
-            Book myBook = new Book();
-            Story story1 = new Story() { Authors = new Person[] { new Person() } };
-            myBook.Stories.Add(1, story1);
-
-            // Act
-            // ...
-
-            // Assert
-            Assert.That(myBook.Type, Is.EqualTo(BookType.Collection));
-        }
-
+        
         [Test]
         public void Is_Novel_If_Book_Has_Zero_Stories()
         {
             // Arrange
             Book myBook = new Book();
+
+            // Act
+            // ...
+
+            // Assert
+            Assert.That(myBook.Type, Is.EqualTo(BookType.Novel));
+        }
+
+        [Test]
+        public void Is_Novel_If_Book_Has_One_Story()
+        {
+            // Arrange
+            Book myBook = new Book();
+            Story story = new Story();
+            myBook.Stories.Add(1, story);
+
 
             // Act
             // ...
