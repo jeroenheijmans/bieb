@@ -115,7 +115,7 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                if (Stories.Count == 0)
+                if (Stories.Count <= 1)
                     return BookType.Novel;
 
                 else if (Stories.SelectMany(s => Authors).Distinct().Count() == 1)
