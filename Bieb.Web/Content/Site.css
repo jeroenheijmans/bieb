@@ -1,12 +1,7 @@
-﻿/*----------------------------------------------------------
-The base color for this template is #B77F50. If you'd like
-to use a different color start by replacing all instances of
-#B77F50 with your new color.
-----------------------------------------------------------*/
-body {
-    background-color: #B77F50;
-    font-size: .85em;
-    color: #696969;
+﻿body {
+	font: 18px/27px Verdana, Arial, sans-serif;
+	color: #000000;
+	background: #EEEEEE;
 }
 
 a { color: #0000FF; }
@@ -15,18 +10,20 @@ a:hover {
     color: #1d60ff;
 }
 
-/* HEADINGS   
-----------------------------------------------------------*/
+header {
+	text-align: center;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    color: #000;
+    color: #333;
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 
 h3 {
@@ -41,97 +38,16 @@ h5, h6 {
     font-size: 1em;
 }
 
-/* PRIMARY LAYOUT ELEMENTS   
-----------------------------------------------------------*/
-
-/* you can specify a greater or lesser percentage for the 
-page width. Or, you can specify an exact pixel width. */
-.page {
-    width: 90%;
-    margin: 0 auto;
+p {
+	margin-bottom: 1.5em;
 }
-
-header, #header {
-    position: relative;
-}
-
-header h1, #header h1 {
-    font-weight: bold;
-    color: #FFF;
-    line-height: 2em;
-    font-size: 32px;
-    text-shadow: 1px 1px 2px #111;
-}
-
-#main {
-    padding: 30px 30px 15px 30px;
-    background-color: #fff;
-    border-radius: 4px 0 0 0;
-    -webkit-border-radius: 4px 0 0 0;
-    -moz-border-radius: 4px 0 0 0;
-}
-
-footer, 
-#footer {
-    background-color: #FFF;
-    color: #999;
-    padding: 10px 0;
-    text-align: center;
-    line-height: normal;
-    margin: 0 0 30px 0;
-    font-size: .9em;
-    border-radius: 0 0 4px 4px;
-    -webkit-border-radius: 0 0 4px 4px;
-    -moz-border-radius: 0 0 4px 4px;
-}
-
-/* TAB MENU   
-----------------------------------------------------------*/
-ul#menu {
-    border-bottom: 1px #B77F50 solid;
-    position: relative;
-    text-align: right;
-}
-
-ul#menu li {
-    display: inline;
-}
-
-ul#menu li#greeting {
-    padding: 10px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 2.8em;
-    color: #FFF;
-}
-
-ul#menu li a {
-    padding: 10px 20px;
-    font-weight: bold;
-    line-height: 2.8em;
-    background-color: #E8EEF4;
-    color: #034AF3;
-    border-radius: 4px 4px 0 0;
-    -webkit-border-radius: 4px 4px 0 0;
-    -moz-border-radius: 4px 4px 0 0;
-}
-
-ul#menu li a:hover {
-    background-color: #FFF;
-}
-
-ul#menu li a.active {
-    color: #000;
-    background-color: #FFF;
-    border-bottom: 1px solid #FFF;
-}
-
-/* TABLE
-----------------------------------------------------------*/
 
 table td, table th  {
-    padding: 4px 6px;
+    padding: 2px 3px;
     border: solid 1px #D8DEE4;
+    font-size: 0.7em;
+    line-height: normal;
+    background-color: #FFFFFF;
 }
 
 table th {
@@ -139,67 +55,49 @@ table th {
     background-color: #e8eef4;
 }
 
-/* MISC  
-----------------------------------------------------------*/
-.clear {
-    clear: both;
+
+.wrapper {
+	max-width: 49em;
+	width: 90%;
+	margin: 1.5em auto;
+	padding: 1.5em 1em 1px;
+	background: #FFFFFF url(/Content/images/bg.png) repeat scroll top left;
 }
 
-.error {
-    color: Red;
+/* Drop-shadows on wrapper */
+.wrapper {
+	position: relative;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.1) inset;
 }
 
-nav, 
-#menucontainer {
-    margin-top: 40px;
+footer, 
+#footer {
+    color: #BBB;
+    text-align: center;
+    margin: 3em 0 0 0;
+    font-size: .7em;
+}
+
+ul#menu li {
+    display: inline-block;
+}
+
+ul#menu li a {
+    background-color: #E8EEF4;
+    color: #034AF3;
+    padding: 0.4em 1.0em;
+    display: inline-block;
+    -moz-box-sizing: border-box;
+}
+
+ul#menu li a.active, ul#menu li a:hover {
+    color: #000;
+}
+
+div#logindisplay { 
+    float: right;
 }
 
 div#title {
-    float: left;
-}
-
-#logindisplay {
-    font-size: 1.1em;
-    display: block;
-    text-align: right;
-    margin: 10px;
-    color: #FFF;
-}
-
-#logindisplay a:link {
-    color: #FFF;
-}
-
-#logindisplay a:visited {
-    color: #FFF;
-    text-decoration: underline;
-}
-
-#logindisplay a:hover {
-    color: #FFF;
-    text-decoration: underline;
-}
-
-/* Styles for validation helpers
------------------------------------------------------------*/
-.field-validation-error {
-    color: #FF0000;
-}
-
-.field-validation-valid {
-    display: none;
-}
-
-.input-validation-error {
-    border: 1px solid #FF0000;
-    background-color: #FFeeee;
-}
-
-.validation-summary-errors {
-    font-weight: bold;
-    color: #FF0000;
-}
-
-.validation-summary-valid {
-    display: none;
+    padding: 1em;
 }

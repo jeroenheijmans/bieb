@@ -10,6 +10,11 @@
     </id>
     
     <property name="Name" not-null="true" index="IX_Publisher_Name"/>
+
+    <bag name="Books" table="Book" lazy="true" access="field.camelcase-underscore">
+      <key column="PublisherId" foreign-key="FK_Book_Publisher" />
+      <one-to-many class="Book" />
+    </bag>
     
   </class>
   

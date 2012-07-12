@@ -78,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\bg.png" />
     <Content Include="Content\images\book-placeholder.png" />
     <Content Include="Content\Library.css" />
     <Content Include="Content\Reset.css" />
@@ -202,6 +203,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Book\ItemList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Person\Card.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

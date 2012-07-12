@@ -15,7 +15,7 @@
             Name
         </th>
         <th>
-            Version
+            Books from this publisher
         </th>
         <th></th>
     </tr>
@@ -26,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Version)
+            @item.Books.Count()
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
