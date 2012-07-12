@@ -15,7 +15,7 @@
             Title
         </th>
         <th>
-            SubTitle
+            Books
         </th>
     </tr>
 
@@ -25,7 +25,7 @@
             @Html.ActionLink(item.Title, "Details", new { id=item.Id })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubTitle)
+            @string.Join(", ", item.Books.Values)
         </td>
     </tr>
 }
