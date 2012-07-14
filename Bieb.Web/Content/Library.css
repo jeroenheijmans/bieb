@@ -1,7 +1,7 @@
-﻿.personCard {
+﻿.card {
 	position: relative;
 	background-color: #FFFFFF;
-	padding: 1.5em 1em 0;
+	padding: 1em;
 	margin: 0;
 	width: 15em;
 	float: right;
@@ -11,7 +11,7 @@
 }
 
 /* Lifted shadows on infobox */
-.personCard:after {
+.card:after {
 	content: "";
 	position: absolute;
 	z-index: -1;
@@ -29,7 +29,7 @@
 	transform: rotate(1deg);
 }
 
-.personCard .portrait {
+.card .portrait {
     display: block;
     margin: 0 auto;
 }
@@ -50,7 +50,7 @@ ul.itemList li {
 }
 
 
-ul.itemList img.bookCoverIcon {
+ul.itemList img.itemRepresentation {
     margin: 8px;
     float: left;
 }

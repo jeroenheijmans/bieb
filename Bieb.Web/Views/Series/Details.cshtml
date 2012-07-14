@@ -4,43 +4,15 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+@if (!string.IsNullOrEmpty(Model.Subtitle))
+{ 
+    <h2>@Model.Subtitle</h2>
+}
 
-<fieldset>
-    <legend>Series</legend>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Title</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Title)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Subtitle</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Subtitle)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Version</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Version)
-        </div>
-    </div>
-    
-    <fieldset>
-        <legend>Books</legend>
-        <ul>
-        @foreach (var book in Model.Books)
-        {
-            <li>@Html.ActionLink(book.Value.Title, "Details", new { controller = "Book", id = book.Value.Id })</li>
-        }
-        </ul>
-    </fieldset>
+@{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.Books.Values); }
 
-</fieldset>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
