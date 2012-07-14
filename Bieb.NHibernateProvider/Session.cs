@@ -7,8 +7,10 @@ using NHibernate;
 
 namespace Bieb.NHibernateProvider
 {
-    public class Session
+    public sealed class Session
     {
+        private Session() { }
+
         // TODO: Refactor this to a DI approach
         internal static ISession Instance
         {

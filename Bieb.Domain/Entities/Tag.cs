@@ -13,7 +13,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return Name ?? "Tag (id: " + Id.ToString() + ")";
+            return Name ?? base.ToString();
         }
     }
 }

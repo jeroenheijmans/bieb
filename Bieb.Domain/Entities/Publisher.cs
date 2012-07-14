@@ -17,7 +17,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return Name ?? "Publisher (id: " + Id.ToString() + ")";
+            return Name ?? base.ToString();
         }
     }
 }

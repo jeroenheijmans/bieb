@@ -10,7 +10,7 @@
     </id>
     
     <property name="Title" not-null="true" index="IX_Series_Title" />
-    <property name="SubTitle" />
+    <property name="Subtitle" />
 
     <map name="Books" table="SeriesBook" lazy="true">
       <key column="SeriesId" foreign-key="FK_SeriesBook_Series" />

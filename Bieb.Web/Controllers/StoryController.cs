@@ -10,8 +10,8 @@ namespace Bieb.Web.Controllers
 {
     public class StoryController : EntityController<Story>
     {
-        public StoryController(IEntityRepository<Story> Repository)
-            : base(Repository)
+        public StoryController(IEntityRepository<Story> repository)
+            : base(repository)
         { }
         
     }

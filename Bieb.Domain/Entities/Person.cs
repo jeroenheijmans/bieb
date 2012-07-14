@@ -112,7 +112,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return FullName ?? "Person (id: " + Id.ToString() + ")";
+            return FullName ?? base.ToString();
         }
     }
     

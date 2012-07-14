@@ -11,8 +11,10 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.NHibernateProvider
 {
-    public class Factory
+    public sealed class Factory
     {
+        private Factory() { }
+
         private static ISessionFactory _instance;
         public static ISessionFactory Instance
         {

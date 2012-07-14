@@ -12,7 +12,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return this.GetType().Name + " (id: " + Id.ToString() + ")";
+            return this.GetType().Name + " (id: " + Id.ToString(System.Globalization.CultureInfo.InvariantCulture) + ")";
         }
     }
 }

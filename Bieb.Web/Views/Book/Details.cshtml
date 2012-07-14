@@ -5,9 +5,9 @@
 }
 
 <h1>@Html.DisplayFor(model => model.Title)</h1>
-@if (Model.SubTitle != null)
+@if (Model.Subtitle != null)
 { 
-    <h2>@Html.DisplayFor(model => model.SubTitle)</h2>
+    <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
 }
 
 <ul>
@@ -15,9 +15,9 @@
         @Html.DisplayFor(model => model.Year), @Html.DisplayFor(model => model.Language)
     </li>
 
-    @if (Model.ISBN != null)
+    @if (Model.Isbn != null)
     { 
-        <li>ISBN: @Html.DisplayFor(model => model.ISBN)</li>
+        <li>Isbn: @Html.DisplayFor(model => model.Isbn)</li>
     }
 
     @if (Model.Tags.Count() > 0)

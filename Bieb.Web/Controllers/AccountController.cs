@@ -126,6 +126,7 @@ namespace Bieb.Web.Controllers
                 catch (Exception)
                 {
                     changePasswordSucceeded = false;
+                    throw;
                 }
 
                 if (changePasswordSucceeded)

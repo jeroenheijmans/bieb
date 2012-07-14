@@ -8,7 +8,7 @@ namespace Bieb.Domain.Repositories
 {
     public interface IEntityRepository<T> where T : BaseEntity
     {
-        T Get(int id);
+        T GetItem(int id);
         IQueryable<T> Items { get; }
         T Save(T item);
         void Delete(T item);

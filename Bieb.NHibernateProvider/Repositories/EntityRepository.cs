@@ -19,7 +19,7 @@ namespace Bieb.NHibernateProvider.Repositories
             }
         }
 
-        public T Get(int id)
+        public T GetItem(int id)
         {
             return session.Load<T>(id);
         }

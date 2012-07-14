@@ -8,7 +8,7 @@ namespace Bieb.Domain.Entities
     public class Story : BaseEntity
     {
         public virtual string Title { get; set; }
-        public virtual string SubTitle { get; set; }
+        public virtual string Subtitle { get; set; }
         public virtual Publisher Publisher { get; set; }
         public virtual Book Book { get; set; }
         public virtual int PositionInBook { get; set; }
@@ -36,7 +36,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return Title ?? "Story (id: " + Id.ToString() + ")";
+            return Title ?? base.ToString();
         }
     }
 }

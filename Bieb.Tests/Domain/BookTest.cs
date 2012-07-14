@@ -146,7 +146,7 @@ namespace Bieb.Tests.Domain
             // ...
 
             // Assert
-            Assert.That(myBook.Type, Is.EqualTo(BookType.Novel));
+            Assert.That(myBook.BookType, Is.EqualTo(BookType.Novel));
         }
 
         [Test]
@@ -162,7 +162,7 @@ namespace Bieb.Tests.Domain
             // ...
 
             // Assert
-            Assert.That(myBook.Type, Is.EqualTo(BookType.Novel));
+            Assert.That(myBook.BookType, Is.EqualTo(BookType.Novel));
         }
 
         [Test]
@@ -191,9 +191,9 @@ namespace Bieb.Tests.Domain
             // ...
 
             // Assert
-            Assert.That(novel.Type, Is.EqualTo(BookType.Novel));
-            Assert.That(collection.Type, Is.EqualTo(BookType.Collection));
-            Assert.That(anthology.Type, Is.EqualTo(BookType.Anthology));
+            Assert.That(novel.BookType, Is.EqualTo(BookType.Novel));
+            Assert.That(collection.BookType, Is.EqualTo(BookType.Collection));
+            Assert.That(anthology.BookType, Is.EqualTo(BookType.Anthology));
         }
 
         [Test]

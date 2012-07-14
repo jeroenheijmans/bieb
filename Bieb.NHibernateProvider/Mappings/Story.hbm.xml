@@ -10,7 +10,7 @@
     </id>
     
     <property name="Title" not-null="true" index="IX_Story_Title" />
-    <property name="SubTitle" />
+    <property name="Subtitle" />
     
     <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" not-null="true" />
     <property name="PositionInBook" />

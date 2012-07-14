@@ -8,13 +8,13 @@ namespace Bieb.Domain.Entities
 {
     public class Book : BaseEntity
     {
-        public virtual string ISBN { get; set; }
+        public virtual string Isbn { get; set; }
         public virtual string Title { get; set; }
-        public virtual string SubTitle { get; set; }
-        public virtual int? ISBNLanguage { get; set; }
+        public virtual string Subtitle { get; set; }
+        public virtual int? IsbnLanguage { get; set; }
 
         /// <summary>
-        /// Returns the full name of the language of the book based on the ISBNLanguage
+        /// Returns the full name of the language of the book based on the IsbnLanguage
         /// </summary>
         public virtual string Language
         {
@@ -26,10 +26,10 @@ namespace Bieb.Domain.Entities
                 // - Perhaps we need to solve this in the database so it's also available for reporting?
                 // - Can we use CultureInfo here?
 
-                if (ISBNLanguage == null)
+                if (IsbnLanguage == null)
                     return "Language Unkown";
 
-                switch (ISBNLanguage)
+                switch (IsbnLanguage)
                 {
                     case 0:
                     case 1:
@@ -45,7 +45,7 @@ namespace Bieb.Domain.Entities
                     case 90:
                         return "Dutch";
                     default:
-                        return "ISBN Country Code not recognized";
+                        return "Isbn Country Code not recognized";
                 }
             }
         }
@@ -80,18 +80,18 @@ namespace Bieb.Domain.Entities
         }
 
         // Blast it. Wanted to name the collection with plural form, and the public property singular, but for "Series" there is no singular form :(. Hence the "db" prefix.
-        protected virtual ICollection<Series> dbSeries { get; set; }
+        protected virtual ICollection<Series> DBSeries { get; set; }
 
         public virtual Series Series 
         { 
             get
             {
-                return dbSeries.FirstOrDefault();
+                return DBSeries.FirstOrDefault();
             }
             set
             {
-                dbSeries.Clear();
-                dbSeries.Add(value);
+                DBSeries.Clear();
+                DBSeries.Add(value);
             }
         }
 
@@ -111,7 +111,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public virtual BookType Type
+        public virtual BookType BookType
         {
             get
             {
@@ -128,7 +128,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return Title ?? "Book (id: " + Id.ToString() + ")";
+            return Title ?? base.ToString();
         }
     }
 
