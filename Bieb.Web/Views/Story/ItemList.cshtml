@@ -4,7 +4,7 @@
 @foreach (var item in Model) 
 {
     <li>
-        <img class="bookCoverIcon" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
+        <img class="itemRepresentation" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
         <h3>@Html.ActionLink(item.Title, "Details", new { controller = "Story", id = item.Id })</h3>
     </li>
 }

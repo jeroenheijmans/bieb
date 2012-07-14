@@ -1,36 +1,11 @@
 ﻿@model Bieb.Domain.Entities.Book
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
 }
 
 <h1>@Html.DisplayFor(model => model.Title)</h1>
-@if (Model.Subtitle != null)
-{ 
-    <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
-}
-
-<ul>
-    <li>
-        @Html.DisplayFor(model => model.Year), @Html.DisplayFor(model => model.Language)
-    </li>
-
-    @if (Model.Isbn != null)
-    { 
-        <li>Isbn: @Html.DisplayFor(model => model.Isbn)</li>
-    }
-
-    @if (Model.Tags.Count() > 0)
-    { 
-        <li>Tags: @string.Join(", ", Model.Tags)</li>
-    }
-
-    @if (Model.Series != null)
-    {
-        <li>From: @Html.DisplayFor(model => model.Series)</li>
-    }
-</li>
-
+@{ Html.RenderPartial("Card", Model); }
 
 @if (Model.Authors.Count() > 0)
 {

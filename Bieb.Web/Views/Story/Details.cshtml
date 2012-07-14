@@ -4,67 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h1>@Model.Title</h1>
+@{ Html.RenderPartial("Card", Model); }
 
-<fieldset>
-    <legend>Story</legend>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Title</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Title)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Subtitle</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Subtitle)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Book</div>
-        <div class="display-field">
-            @Html.ActionLink(Model.Book.Title, "Details", new { id = Model.Book.Id, controller = "Book" })
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Version</div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Version)
-        </div>
-    </div>
-    
-    <div class="display-wrapper">
-        <div class="display-label">Tags</div>
-        <div class="display-field">
-            @string.Join(", ", Model.Tags)
-        </div>
-    </div>
-        
-    <fieldset>
-        <legend>Authors</legend>
-        <ul>
-        @foreach (var person in Model.Authors)
-        {
-            <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
-        }
-        </ul>
-    </fieldset>
-    
-    <fieldset>
-        <legend>Translators</legend>
-        <ul>
-        @foreach (var person in Model.Translators)
-        {
-            <li>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</li>
-        }
-        </ul>
-    </fieldset>
 
-</fieldset>
+@if (Model.Authors.Count() > 0)
+{
+    <h3>Authors</h3>
+    Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Authors);
+}
+
+
+@if (Model.Translators.Count() > 0)
+{
+    <h3>Translators</h3>
+    Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Translators);
+}
 
 
 <p>
