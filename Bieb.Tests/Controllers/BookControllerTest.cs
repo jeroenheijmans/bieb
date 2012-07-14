@@ -20,7 +20,7 @@ namespace Bieb.Tests.Controllers
             // Arrange
             Mock<IEntityRepository<Book>> mock = new Mock<IEntityRepository<Book>>();
             Book myBook = new Book() { Id = 42 };
-            mock.Setup(repo => repo.Get(It.IsAny<int>())).Returns(() => myBook);
+            mock.Setup(repo => repo.GetItem(It.IsAny<int>())).Returns(() => myBook);
 
             // Act
             BookController controller = new BookController(mock.Object);

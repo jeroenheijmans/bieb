@@ -15,7 +15,7 @@
             Type
         </th>
         <th>
-            ISBN
+            Isbn
         </th>
         <th>
             Title
@@ -34,16 +34,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
+            @Html.DisplayFor(modelItem => item.BookType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ISBN)
+            @Html.DisplayFor(modelItem => item.Isbn)
         </td>
         <td>
             @Html.ActionLink(item.Title, "Details", new { id=item.Id })
-            @if (item.SubTitle != null) { 
+            @if (item.Subtitle != null) { 
                 <br />
-                @Html.DisplayFor(modelItem => item.SubTitle)
+                @Html.DisplayFor(modelItem => item.Subtitle)
             }
             @if (item.Editors.Count > 0) 
             { 

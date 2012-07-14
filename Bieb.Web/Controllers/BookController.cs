@@ -10,7 +10,8 @@ namespace Bieb.Web.Controllers
 {
     public class BookController : EntityController<Book>
     {
-        public BookController(IEntityRepository<Book> Repository) : base(Repository)
+        public BookController(IEntityRepository<Book> repository)
+            : base(repository)
         { }
     }
 }

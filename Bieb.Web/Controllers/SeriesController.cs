@@ -10,8 +10,8 @@ namespace Bieb.Web.Controllers
 {
     public class SeriesController : EntityController<Series>
     {
-        public SeriesController(IEntityRepository<Series> Repository)
-            : base(Repository)
+        public SeriesController(IEntityRepository<Series> repository)
+            : base(repository)
         { }
 
 

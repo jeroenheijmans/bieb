@@ -10,8 +10,8 @@ namespace Bieb.Web.Controllers
 {
     public class PersonController : EntityController<Person>
     {
-        public PersonController(IEntityRepository<Person> Repository)
-            : base(Repository)
+        public PersonController(IEntityRepository<Person> repository)
+            : base(repository)
         { }
 
     }

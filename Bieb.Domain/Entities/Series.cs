@@ -8,7 +8,7 @@ namespace Bieb.Domain.Entities
     public class Series : BaseEntity
     {
         public virtual string Title { get; set; }
-        public virtual string SubTitle { get; set; }
+        public virtual string Subtitle { get; set; }
 
         private IDictionary<int, Book> _books = new SortedList<int, Book>();
         public virtual IDictionary<int, Book> Books
@@ -19,7 +19,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return Title ?? "Series (id: " + Id.ToString() + ")";
+            return Title ?? base.ToString();
         }
     }
 }

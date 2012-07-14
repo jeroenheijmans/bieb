@@ -10,21 +10,21 @@ namespace Bieb.Web.Controllers
 {
     public abstract class EntityController<T> : Controller where T : BaseEntity, new()
     {
-        protected IEntityRepository<T> Repository { get; set; }
+        protected IEntityRepository<T> repository { get; set; }
         
-        public EntityController(IEntityRepository<T> Repository)
+        protected EntityController(IEntityRepository<T> repository)
         {
-            this.Repository = Repository;
+            this.repository = repository;
         }
 
         public ActionResult Index()
         {            
-            return View(Repository.Items);
+            return View(repository.Items);
         }
 
         public ActionResult Details(int id)
         {
-            return View(Repository.Get(id));
+            return View(repository.GetItem(id));
         }
 
         [HttpGet]
@@ -36,7 +36,7 @@ namespace Bieb.Web.Controllers
         [HttpPost]
         public ActionResult Create(T item)
         {
-            Repository.Save(item);
+            repository.Save(item);
             return RedirectToAction("Details", new { id = item.Id });
         }
 

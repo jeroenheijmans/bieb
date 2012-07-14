@@ -10,8 +10,8 @@ namespace Bieb.Web.Controllers
 {
     public class PublisherController : EntityController<Publisher>
     {
-        public PublisherController(IEntityRepository<Publisher> Repository)
-            : base(Repository)
+        public PublisherController(IEntityRepository<Publisher> repository)
+            : base(repository)
         { }
     }
 }
