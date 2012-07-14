@@ -11,7 +11,8 @@ namespace Bieb.NHibernateProvider.Repositories
 {
     public class EntityRepository<T> : IEntityRepository<T> where T : BaseEntity
     {
-        private ISession session
+        // This is static... for now, as long as it's merely referring to the static singleton anyhow
+        private static ISession session
         {
             get
             {
