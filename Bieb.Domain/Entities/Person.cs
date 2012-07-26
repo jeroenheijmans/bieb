@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bieb.Domain.Entities
 {
-    public class Person : BaseEntity
+    public class Person : BaseEntity, IReviewable
     {
         public virtual string Title { get; set; }
         public virtual string FirstName { get; set; }
@@ -36,15 +36,15 @@ namespace Bieb.Domain.Entities
             {
                 switch (Gender)
                 {
-                    case Gender.Unkown:
-                        return '?';
+                    case Gender.None:
+                        return '-';
                     case Gender.Male:
                         return '♂';
                     case Gender.Female:
                         return '♀';
-                    case Gender.None:
+                    case Gender.Unkown:
                     default:
-                        return '-';
+                        return '?';
                 }
             }
         }

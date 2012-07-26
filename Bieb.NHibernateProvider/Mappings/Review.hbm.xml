@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Review`1[Bieb.Domain.Entities.Book]" table="Review">
+    <id name="Id" column="ReviewId">
+      <generator class="native" />
+    </id>
+    <property name="ReviewText" />
+    <property name="Rating" />
+
+    <many-to-one name="Subject" column="BookId" foreign-key="FK_Review_Book" class="Bieb.Domain.Entities.Book, Bieb.Domain" />
+  </class>
+
+  <class name="Review`1[Bieb.Domain.Entities.Person]" table="Review">
+    <id name="Id" column="ReviewId">
+      <generator class="native" />
+    </id>
+    <property name="ReviewText" />
+    <property name="Rating" />
+
+    <many-to-one name="Subject" column="PersonId" foreign-key="FK_Review_Person" class="Bieb.Domain.Entities.Person, Bieb.Domain" />
+  </class>
+  
+</hibernate-mapping>

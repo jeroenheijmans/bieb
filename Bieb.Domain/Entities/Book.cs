@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace Bieb.Domain.Entities
 {
-    public class Book : BaseEntity
+    public class Book : BaseEntity, IReviewable
     {
         public virtual string Isbn { get; set; }
         public virtual string Title { get; set; }

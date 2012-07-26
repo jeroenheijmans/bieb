@@ -7,6 +7,7 @@ using Ninject;
 using System.Web.Routing;
 using Bieb.Domain.Repositories;
 using Bieb.NHibernateProvider.Repositories;
+using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Infrastructure
 {
@@ -29,7 +30,7 @@ namespace Bieb.Web.Infrastructure
 
         private void AddBindings()
         {
-            ninjectKernel.Bind(typeof(IEntityRepository<>)).To(typeof(EntityRepository<>));
+            ninjectKernel.Bind(typeof(IEntityRepository<>)).To(typeof(EntityRepository<>));            
         }
     }
 }
