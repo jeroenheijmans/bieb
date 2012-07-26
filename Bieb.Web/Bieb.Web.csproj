@@ -66,7 +66,9 @@
     <Compile Include="Controllers\EntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PersonReviewController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
+    <Compile Include="Controllers\BookReviewController.cs" />
     <Compile Include="Controllers\SeriesController.cs" />
     <Compile Include="Controllers\StoryController.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,6 +218,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Story\Card.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BookReview\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PersonReview\Details.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
