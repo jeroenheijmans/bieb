@@ -17,11 +17,12 @@
                 @Html.Partial("_LogOnPartial")
             </div>
             <div id="title">
-                <h1>Bieb: My Library</h1>
+                <h1>
+                    @Html.ActionLink("Bieb: My Library","Index", "Home")
+                </h1>
             </div>
             <nav>
                 <ul id="menu">
-                    <li>@Html.MenuLink("Home", "Index", "Home")</li>
                     <li>@Html.MenuLink("Books", "Index", "Book")</li>
                     <li>@Html.MenuLink("Series", "Index", "Series")</li>
                     <li>@Html.MenuLink("Stories", "Index", "Story")</li>

@@ -1,31 +1,26 @@
 ﻿@model IEnumerable<Bieb.Domain.Entities.Series>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Series";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+<table class="listing">
     <tr>
         <th>
             Title
         </th>
         <th>
-            Books
+            Books in this Series
         </th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var series in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "Details", new { id=item.Id })
+            @Html.ActionLink(series.Title, "Details", new { id=series.Id })
         </td>
         <td>
-            @string.Join(", ", item.Books.Values)
+            @string.Join(", ", series.Books.Values)
         </td>
     </tr>
 }

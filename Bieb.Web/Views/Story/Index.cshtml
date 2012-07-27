@@ -1,15 +1,10 @@
 ﻿@model IEnumerable<Bieb.Domain.Entities.Story>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Stories";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+<table class="listing">
     <tr>
         <th>
             Title
@@ -22,16 +17,16 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var story in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "Details", new { id = item.Id })
+            @Html.ActionLink(story.Title, "Details", new { id = story.Id })
         </td>
         <td>
-            @String.Join(", ", item.Authors)
+            @String.Join(", ", story.Authors)
         </td>
         <td>
-            @Html.ActionLink(item.Book.Title, "Details", new { id = item.Book.Id, controller = "Book" })
+            @Html.ActionLink(story.Book.Title, "Details", new { id = story.Book.Id, controller = "Book" })
         </td>
     </tr>
 }
