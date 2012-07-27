@@ -7,26 +7,7 @@
 	float: right;
 	font: 1em/1.5em Georgia, "Times New Roman", serif;
 	position: relative;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.1) inset;
-}
-
-/* Lifted shadows on infobox */
-.card:after {
-	content: "";
-	position: absolute;
-	z-index: -1;
-	top: .3em;
-	right: .6em;
-	width: 1em;
-	height: 95%;
-	max-height: 14em;
-	-webkit-box-shadow: 10px 0 4px rgba(0, 0, 0, .5);
-	-moz-box-shadow: 10px 0 4px rgba(0, 0, 0, .5);
-	box-shadow: 10px 0 4px rgba(0, 0, 0, .5);
-	-webkit-transform: rotate(1deg);
-	-moz-transform: rotate(1deg);
-	-o-transform: rotate(1deg);
-	transform: rotate(1deg);
+	border: 1px solid #D8DEE4;
 }
 
 .card .portrait {
@@ -46,7 +27,6 @@ ul.itemList li {
     width: 260px;
     height: 120px;
 	position: relative;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.1) inset;
 }
 
 
