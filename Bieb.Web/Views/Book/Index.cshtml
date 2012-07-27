@@ -1,21 +1,13 @@
 ﻿@model IEnumerable<Bieb.Domain.Entities.Book>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Books";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+<table class="listing">
     <tr>
         <th>
             Type
-        </th>
-        <th>
-            Isbn
         </th>
         <th>
             Title
@@ -27,41 +19,33 @@
             Year
         </th>
         <th>
-            Publisher
+            Author / Editor
         </th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var book in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.BookType)
+            @Html.DisplayFor(modelbook => book.BookType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Isbn)
+            @Html.ActionLink(book.Title, "Details", new { id=book.Id })
         </td>
         <td>
-            @Html.ActionLink(item.Title, "Details", new { id=item.Id })
-            @if (item.Subtitle != null) { 
-                <br />
-                @Html.DisplayFor(modelItem => item.Subtitle)
+            @Html.DisplayFor(modelbook => book.Language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelbook => book.Year)
+        </td>
+        <td>
+            @if (book.BookType == Bieb.Domain.Entities.BookType.Novel) 
+            {
+                @string.Join(", ", book.Authors)
             }
-            @if (item.Editors.Count > 0) 
-            { 
-                <br /> <span>Edited By</span>
-                     
-                foreach (var editor in item.Editors) { 
-                    <span>@Html.ActionLink(editor.ToString(), "Details", new { controller = "Person", id = editor.Id })</span>
-                }
+            else
+            {
+                @string.Join(", ", book.Editors)
             }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Language)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Year)
-        </td>
-        <td>
-            @if (item.Publisher != null) { @Html.ActionLink(item.Publisher.Name, "Details", new { controller = "Publisher", id = item.Publisher.Id }); }
         </td>
     </tr>
 }

@@ -1,15 +1,10 @@
 ﻿@model IEnumerable<Bieb.Domain.Entities.Person>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All People";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+<table class="listing">
     <tr>
         <th>
             Roles
@@ -18,27 +13,26 @@
             @*Gender*@
         </th>
         <th>
+            @*Nationality*@
+        </th>
+        <th>
             Name
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var person in Model) {
     <tr>
-        <td>
-            @string.Join(", ", item.Roles)
+        <td> 
+            @string.Join(", ", person.Roles)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GenderChar)
-            @Html.DisplayFor(modelItem => item.Nationality)
+            @Html.DisplayFor(modelperson => person.GenderChar)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FullName)
+            @Html.DisplayFor(modelperson => person.Nationality)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink(person.FullName, "Details", new { id=person.Id })
         </td>
     </tr>
 }

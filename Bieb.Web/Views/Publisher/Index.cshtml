@@ -1,15 +1,10 @@
 ﻿@model IEnumerable<Bieb.Domain.Entities.Publisher>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Publishers";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+<table class="listing">
     <tr>
         <th>
             Name
@@ -17,21 +12,15 @@
         <th>
             Books from this publisher
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var publisher in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelpublisher => publisher.Name)
         </td>
         <td>
-            @item.Books.Count()
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @publisher.Books.Count()
         </td>
     </tr>
 }
