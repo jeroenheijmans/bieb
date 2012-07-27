@@ -17,7 +17,7 @@
 @foreach (var publisher in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelpublisher => publisher.Name)
+            @Html.ActionLink(publisher.Name, "Details", new { id=publisher.Id})
         </td>
         <td>
             @publisher.Books.Count()
