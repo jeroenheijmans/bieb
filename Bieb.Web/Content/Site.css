@@ -58,7 +58,7 @@ table.listing {
 	width: 90%;
 	margin: 1.5em auto;
 	padding: 1.5em 1em 1px;
-	background: #FFFFFF url(/Content/images/bg.png) repeat scroll top left;
+	background-color: #FCFCFC;
 }
 
 .wrapper {
