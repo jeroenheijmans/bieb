@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bieb.Domain.Entities.Book>
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Book>
 
 @{
     ViewBag.Title = "All Books";
@@ -49,5 +49,35 @@
         </td>
     </tr>
 }
-
 </table>
+
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+     
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { pageNumber = 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink("< Prev", "Index", new { pageNumber = Model.PageNumber - 1 })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ");
+        @:< Prev
+    }
+     
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { pageNumber = Model.PageNumber + 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink(">>", "Index", new { pageNumber = Model.PageCount })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+    }
+</div>

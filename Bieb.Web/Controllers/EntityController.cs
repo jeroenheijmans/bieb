@@ -5,21 +5,29 @@ using System.Web;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using PagedList;
 
 namespace Bieb.Web.Controllers
 {
     public abstract class EntityController<T> : Controller where T : BaseEntity, new()
     {
+        protected int[] availablePageSizes = new int[] { 10, 25, 50, 100 };
+        protected int defaultPageSize = 25;
         protected IEntityRepository<T> Repository { get; set; }
         
         protected EntityController(IEntityRepository<T> repository)
         {
             this.Repository = repository;
         }
+        
+        public ActionResult Index(int pageSize = 25, int pageNumber = 1)
+        {
+            var items = Repository
+                        .Items
+                        .ToPagedList(pageNumber, pageSize);
 
-        public ActionResult Index()
-        {            
-            return View(Repository.Items);
+            return View(items);
+
         }
 
         public ActionResult Details(int id)
