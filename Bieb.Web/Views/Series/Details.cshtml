@@ -9,11 +9,7 @@
 { 
     <h2>@Model.Subtitle</h2>
 }
+<section class="itemList">
+    @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.Books.Values); }
+</section>
 
-@{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.Books.Values); }
-
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
