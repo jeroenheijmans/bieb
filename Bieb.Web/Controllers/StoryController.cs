@@ -13,6 +13,10 @@ namespace Bieb.Web.Controllers
         public StoryController(IEntityRepository<Story> repository)
             : base(repository)
         { }
-        
+
+        public override ActionResult Index(int pageSize = 25, int page = 1)
+        {
+            throw new NotImplementedException("Listing an index of stories is not allowed. You can get there via Books and Persons");
+        }
     }
 }
