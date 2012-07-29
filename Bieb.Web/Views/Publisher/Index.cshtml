@@ -24,7 +24,7 @@
 
 @foreach (var publisher in Model) {
     <tr>
-        <td>
+        <td class="mainColumn">
             @Html.ActionLink(publisher.Name, "Details", new { id=publisher.Id})
         </td>
         <td>
