@@ -20,11 +20,11 @@ namespace Bieb.Web.Controllers
             this.Repository = repository;
         }
         
-        public ActionResult Index(int pageSize = 25, int pageNumber = 1)
+        public ActionResult Index(int pageSize = 25, int page = 1)
         {
             var items = Repository
                         .Items
-                        .ToPagedList(pageNumber, pageSize);
+                        .ToPagedList(page, pageSize);
 
             return View(items);
 

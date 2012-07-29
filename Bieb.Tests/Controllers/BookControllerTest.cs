@@ -8,6 +8,7 @@ using Moq;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Controllers;
+using PagedList;
 
 namespace Bieb.Tests.Controllers
 {
@@ -39,8 +40,7 @@ namespace Bieb.Tests.Controllers
         {
             // Arrange
             Mock<IEntityRepository<Book>> mock = new Mock<IEntityRepository<Book>>();
-            IQueryable<Book> books = (new Book[] { new Book() { Id = 1 }, new Book() { Id = 2 }, new Book() { Id = 3 } }).AsQueryable<Book>();
-            mock.Setup(repo => repo.Items).Returns(books);
+            mock.Setup(repo => repo.Items).Returns(Enumerable.Repeat<Book>(new Book(), 3).AsQueryable());
             BookController controller = new BookController(mock.Object);
 
             // Act
@@ -108,6 +108,30 @@ namespace Bieb.Tests.Controllers
             RedirectToRouteResult redirectResult = result as RedirectToRouteResult;
             Assert.That(redirectResult.RouteValues.ContainsKey("id"));
             Assert.That(redirectResult.RouteValues["id"], Is.Not.EqualTo(default(int)));
+        }
+
+        [Test]
+        public void Index_Will_Have_Default_Page_Size_Of_25_On_PageNumber_1()
+        {
+            // Arrange
+            Mock<IEntityRepository<Book>> mock = new Mock<IEntityRepository<Book>>();
+            mock.Setup(repo => repo.Items).Returns(Enumerable.Repeat<Book>(new Book(), 100).AsQueryable());
+            BookController controller = new BookController(mock.Object);
+
+            // Act & Assert
+            ActionResult result = controller.Index();
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.InstanceOf<ViewResult>());
+            
+            ViewResult vresult = result as ViewResult;
+            
+            Assert.That(vresult.Model, Is.InstanceOf <PagedList<Book>>());
+
+            PagedList<Book> bookList = vresult.Model as PagedList<Book>;
+
+            Assert.That(bookList.PageNumber, Is.EqualTo(1));
+            Assert.That(bookList.PageSize, Is.EqualTo(25));
+            Assert.That(bookList.Count, Is.EqualTo(25));
         }
         
     }
