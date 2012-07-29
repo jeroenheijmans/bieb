@@ -192,9 +192,6 @@
     <Content Include="Views\Publisher\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Story\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Story\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>

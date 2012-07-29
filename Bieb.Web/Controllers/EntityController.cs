@@ -20,7 +20,7 @@ namespace Bieb.Web.Controllers
             this.Repository = repository;
         }
         
-        public ActionResult Index(int pageSize = 25, int page = 1)
+        public virtual ActionResult Index(int pageSize = 25, int page = 1)
         {
             var items = Repository
                         .Items
