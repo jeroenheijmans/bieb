@@ -37,15 +37,15 @@
 body {
 	font: normal 100%/1.5em "MuseoSans500Regular", Georgia, serif;
 	color: #000000;
-	background: #FFFFFF;
+	background: #FAFAF7;
 }
 
 a { 
-    color: #0000FF; 
+    color: #700041; 
 }
 
 a:hover {
-    color: #1d60ff;
+    color: #D80082;
 }
 
 header {
@@ -56,20 +56,30 @@ header .title {
 	font: normal 5em/1.5em "handwriting-draft_free-versRg", Georgia, serif;
 }
 
+header .title a {
+	color: #4C002C;
+}
+
 ul#menu li {
     display: inline-block;
 }
 
 ul#menu li a {
-    background-color: #E8EEF4;
+    background-color: #EEEEEE;
+    border: 1px solid #EEEEEE;
     color: #034AF3;
     padding: 0.4em 1.0em;
     display: inline-block;
 }
 
 ul#menu li a.active, ul#menu li a:hover {
-    color: #000;
+    border-color: #CCCCCC;
 }
+
+ul#menu .people a     { color: #DD0000; }
+ul#menu .books a      { color: #BB3300; }
+ul#menu .series a     { color: #996600; }
+ul#menu .publishers a { color: #779900; }
 
 
 h1, h2, h3, h4, h5, h6 {
@@ -94,7 +104,7 @@ p {
 
 table td, table th  {
     padding: 0.15em 0.4em;
-    border: solid 1px #D8DEE4;
+    border: solid 1px #EDE6EA;
     font-size: 0.9em;
     line-height: normal;
     background-color: #FFFFFF;
@@ -102,7 +112,7 @@ table td, table th  {
 
 table th {
     text-align: left;
-    background-color: #e8eef4;
+    background-color: #F7EFF4;
 }
 
 table.listing {
