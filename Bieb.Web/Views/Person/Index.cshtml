@@ -28,7 +28,10 @@
             @Html.DisplayFor(modelperson => person.GenderChar)
         </td>
         <td>
-            @Html.DisplayFor(modelperson => person.Nationality)
+            @if (!string.IsNullOrWhiteSpace(person.Nationality))
+            { 
+                <img src="@Url.Content("~/Content/images/flags/" + person.Nationality + "-icon.png")" alt="@person.Nationality" class="flag icon" />
+            }
         </td>
         <td class="mainColumn">
             @Html.ActionLink(person.FullName, "Details", new { id=person.Id })

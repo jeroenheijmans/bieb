@@ -74,6 +74,11 @@ ul#menu li a {
 
 ul#menu li a.active, ul#menu li a:hover {
     border-color: #CCCCCC;
+    background-color: #EAEAEA;
+    -webkit-transition: 0.5s ease-out;  
+    -moz-transition: 0.5s ease-out;
+    -o-transition: 0.5s ease-out;
+    transition: 0.5s ease-out;
 }
 
 ul#menu .people a     { color: #DD0000; }
@@ -128,6 +133,10 @@ table.listing td.mainColumn,
 table.listing th.mainColumn  {
     white-space: normal;
     width: 100%;
+}
+
+img.flag.icon {
+    border: 1px solid #700041;
 }
 
 div.paging {
