@@ -15,6 +15,9 @@ namespace Bieb.Domain.Entities
             get { return _books; }
         }
 
+        // TODO: book-originals
+        // TODO: story-originals
+
         public override string ToString()
         {
             return Name ?? base.ToString();

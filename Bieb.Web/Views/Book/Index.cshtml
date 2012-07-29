@@ -4,6 +4,8 @@
     ViewBag.Title = "All Books";
 }
 
+<p>These are all the <strong>Novels</strong> (books with a single main story), <strong>Anthologies</strong> (bundled stories by different authors), and <strong>Collections</strong> (bundled stories from a single author) that are-, have been-, or should be in my library.</p>
+
 <table class="listing">
     <tr>
         <th>
@@ -28,7 +30,7 @@
         <td>
             @Html.DisplayFor(modelbook => book.BookType)
         </td>
-        <td>
+        <td class="mainColumn">
             @Html.ActionLink(book.Title, "Details", new { id=book.Id })
         </td>
         <td>

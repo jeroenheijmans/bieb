@@ -93,7 +93,7 @@ p {
 }
 
 table td, table th  {
-    padding: 2px 3px;
+    padding: 0.15em 0.4em;
     border: solid 1px #D8DEE4;
     font-size: 0.9em;
     line-height: normal;
@@ -106,6 +106,17 @@ table th {
 }
 
 table.listing {
+    width: 100%;
+}
+
+table.listing td,
+table.listing th  {
+    white-space: nowrap;
+}
+
+table.listing td.mainColumn,
+table.listing th.mainColumn  {
+    white-space: normal;
     width: 100%;
 }
 

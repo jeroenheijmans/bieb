@@ -4,35 +4,37 @@
     ViewBag.Title = "All People";
 }
 
+<p>These are all the <strong>Authors</strong>, <strong>Editors</strong>, and <strong>Translators</strong> from books in my collection.</p>
+
 <table class="listing">
     <tr>
         <th>
-            Roles
+            Gender
         </th>
         <th>
-            @*Gender*@
-        </th>
-        <th>
-            @*Nationality*@
+            Nationality
         </th>
         <th>
             Name
+        </th>
+        <th>
+            Roles
         </th>
     </tr>
 
 @foreach (var person in Model) {
     <tr>
-        <td> 
-            @string.Join(", ", person.Roles)
-        </td>
         <td>
             @Html.DisplayFor(modelperson => person.GenderChar)
         </td>
         <td>
             @Html.DisplayFor(modelperson => person.Nationality)
         </td>
-        <td>
+        <td class="mainColumn">
             @Html.ActionLink(person.FullName, "Details", new { id=person.Id })
+        </td>
+        <td> 
+            @string.Join(", ", person.Roles)
         </td>
     </tr>
 }
