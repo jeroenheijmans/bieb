@@ -24,11 +24,13 @@ namespace Bieb.Web.Controllers
         {
             var items = Repository
                         .Items
+                        .OrderBy(SortFunc)
                         .ToPagedList(page, pageSize);
 
             return View(items);
-
         }
+
+        protected abstract System.Linq.Expressions.Expression<Func<T, IComparable>> SortFunc { get; }
 
         public ActionResult Details(int id)
         {

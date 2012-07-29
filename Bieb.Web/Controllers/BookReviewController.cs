@@ -13,5 +13,13 @@ namespace Bieb.Web.Controllers
         public BookReviewController(IEntityRepository<Review<Book>> repository)
             : base(repository)
         { }
+
+        protected override System.Linq.Expressions.Expression<Func<Review<Book>, IComparable>> SortFunc
+        {
+            get 
+            {
+                return br => br.Rating;            
+            }
+        }
     }
 }
