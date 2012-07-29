@@ -15,5 +15,10 @@ namespace Bieb.Web.Controllers
         { }
 
 
+
+        protected override System.Linq.Expressions.Expression<Func<Series, IComparable>> SortFunc
+        {
+            get { return s => s.Title; }
+        }
     }
 }

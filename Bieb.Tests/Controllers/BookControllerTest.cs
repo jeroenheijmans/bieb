@@ -134,5 +134,31 @@ namespace Bieb.Tests.Controllers
             Assert.That(bookList.Count, Is.EqualTo(25));
         }
         
+        [Test]
+        public void Index_Will_Have_Default_Title_Sorting()
+        {
+            // Arrange
+            Mock<IEntityRepository<Book>> mock = new Mock<IEntityRepository<Book>>();
+            var book1 = new Book { Title = "Zoltan the Great" };
+            var book2 = new Book { Title = "Middle-man" };
+            var book3 = new Book { Title = "Alpha came before Omega" };
+            mock.Setup(repo => repo.Items).Returns((new Book[] { book1, book2, book3 }).AsQueryable());
+            BookController controller = new BookController(mock.Object);
+
+            // Act & Assert
+            ActionResult result = controller.Index();
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.InstanceOf<ViewResult>());
+
+            ViewResult vresult = result as ViewResult;
+
+            Assert.That(vresult.Model, Is.InstanceOf<PagedList<Book>>());
+
+            PagedList<Book> bookList = vresult.Model as PagedList<Book>;
+
+            Assert.That(bookList[0], Is.EqualTo(book3));
+            Assert.That(bookList[1], Is.EqualTo(book2));
+            Assert.That(bookList[2], Is.EqualTo(book1));
+        }
     }
 }

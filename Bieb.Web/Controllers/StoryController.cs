@@ -18,5 +18,10 @@ namespace Bieb.Web.Controllers
         {
             throw new NotImplementedException("Listing an index of stories is not allowed. You can get there via Books and Persons");
         }
+
+        protected override System.Linq.Expressions.Expression<Func<Story, IComparable>> SortFunc
+        {
+            get { return s => s.Title; }
+        }
     }
 }

@@ -14,5 +14,10 @@ namespace Bieb.Web.Controllers
             : base(repository)
         { }
 
+
+        protected override System.Linq.Expressions.Expression<Func<Person, IComparable>> SortFunc
+        {
+            get { return p => p.Surname; }
+        }
     }
 }

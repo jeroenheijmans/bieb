@@ -88,6 +88,14 @@
     <Content Include="Content\fonts\museo700-webfont.svg" />
     <Content Include="Content\fonts\museo_sans500-webfont.svg" />
     <Content Include="Content\images\book-placeholder.png" />
+    <Content Include="Content\images\flags\au-icon.png" />
+    <Content Include="Content\images\flags\be-icon.png" />
+    <Content Include="Content\images\flags\ca-icon.png" />
+    <Content Include="Content\images\flags\de-icon.png" />
+    <Content Include="Content\images\flags\fr-icon.png" />
+    <Content Include="Content\images\flags\gb-icon.png" />
+    <Content Include="Content\images\flags\nl-icon.png" />
+    <Content Include="Content\images\flags\us-icon.png" />
     <Content Include="Content\images\person-placeholder.png" />
     <Content Include="Content\Reset.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

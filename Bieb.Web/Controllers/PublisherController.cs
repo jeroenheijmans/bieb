@@ -13,5 +13,10 @@ namespace Bieb.Web.Controllers
         public PublisherController(IEntityRepository<Publisher> repository)
             : base(repository)
         { }
+
+        protected override System.Linq.Expressions.Expression<Func<Publisher, IComparable>> SortFunc
+        {
+            get { return p => p.Name; }
+        }
     }
 }
