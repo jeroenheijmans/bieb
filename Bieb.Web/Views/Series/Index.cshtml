@@ -4,6 +4,8 @@
     ViewBag.Title = "All Series";
 }
 
+<p>These are all the <strong>series</strong> from which I have <strong>one or more books</strong> in my library.</p>
+
 <table class="listing">
     <tr>
         <th>
@@ -19,7 +21,7 @@
         <td>
             @Html.ActionLink(series.Title, "Details", new { id=series.Id })
         </td>
-        <td>
+        <td class="mainColumn">
             @string.Join(", ", series.Books.Values)
         </td>
     </tr>
