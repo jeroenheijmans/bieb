@@ -1,0 +1,54 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Book>
+
+@{
+    ViewBag.Title = "All Books";
+}
+
+<table class="listing">
+    <tr>
+        <th>
+            Type
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Language
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Author / Editor
+        </th>
+    </tr>
+
+@foreach (var book in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelbook => book.BookType)
+        </td>
+        <td>
+            @Html.ActionLink(book.Title, "Details", new { id=book.Id })
+        </td>
+        <td>
+            @Html.DisplayFor(modelbook => book.Language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelbook => book.Year)
+        </td>
+        <td>
+            @if (book.BookType == Bieb.Domain.Entities.BookType.Novel) 
+            {
+                @string.Join(", ", book.Authors)
+            }
+            else
+            {
+                @string.Join(", ", book.Editors)
+            }
+        </td>
+    </tr>
+}
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

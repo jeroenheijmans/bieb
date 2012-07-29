@@ -1,0 +1,42 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Person>
+
+@{
+    ViewBag.Title = "All People";
+}
+
+<table class="listing">
+    <tr>
+        <th>
+            Roles
+        </th>
+        <th>
+            @*Gender*@
+        </th>
+        <th>
+            @*Nationality*@
+        </th>
+        <th>
+            Name
+        </th>
+    </tr>
+
+@foreach (var person in Model) {
+    <tr>
+        <td> 
+            @string.Join(", ", person.Roles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelperson => person.GenderChar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelperson => person.Nationality)
+        </td>
+        <td>
+            @Html.ActionLink(person.FullName, "Details", new { id=person.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

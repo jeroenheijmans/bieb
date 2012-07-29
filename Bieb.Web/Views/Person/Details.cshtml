@@ -1,0 +1,36 @@
+﻿@model Bieb.Domain.Entities.Person
+
+@{
+    ViewBag.Title = Model.FullName;
+}
+
+<h1>@Html.DisplayFor(model => model.FullName)</h1>
+<p>@string.Join(", ", Model.Roles)</p>
+
+@{ Html.RenderPartial("Card", Model); }
+
+<section class="books">        
+    @if (Model.EditedBooks.Count > 0)
+    { 
+        <h2>Edited Books</h2>
+        Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.EditedBooks);
+    }
+            
+    @if (Model.TranslatedStories.Count > 0)
+    { 
+        <h2>Translated Stories</h2>
+        Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.TranslatedStories);
+    }
+        
+    @if (Model.AuthoredStories.Count > 0)
+    {
+        <h2>Authored Stories</h2>
+        Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredStories);
+    }
+</section>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

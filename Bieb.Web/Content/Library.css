@@ -1,0 +1,35 @@
+﻿.card {
+	position: relative;
+	background-color: #FFFFFF;
+	padding: 1em;
+	margin: 0;
+	width: 15em;
+	float: right;
+	font: 1em/1.5em Georgia, "Times New Roman", serif;
+	position: relative;
+	border: 1px solid #D8DEE4;
+}
+
+.card .portrait {
+    display: block;
+    margin: 0 auto;
+}
+
+section.books {
+}
+
+ul.itemList li {
+    display: inline-block;
+	margin: 0 1em 1.5em 0;
+    overflow: auto;
+    border: 1px solid #EADFD7;
+    background-color: #FFFFFF;
+    width: 260px;
+    height: 120px;
+	position: relative;
+}
+
+ul.itemList img.itemRepresentation {
+    margin: 8px;
+    float: left;
+}

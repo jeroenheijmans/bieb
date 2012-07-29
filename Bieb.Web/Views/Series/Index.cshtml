@@ -1,0 +1,30 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Series>
+
+@{
+    ViewBag.Title = "All Series";
+}
+
+<table class="listing">
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Books in this Series
+        </th>
+    </tr>
+
+@foreach (var series in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(series.Title, "Details", new { id=series.Id })
+        </td>
+        <td>
+            @string.Join(", ", series.Books.Values)
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

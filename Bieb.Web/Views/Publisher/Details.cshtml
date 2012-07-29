@@ -1,0 +1,9 @@
+﻿@model Bieb.Domain.Entities.Publisher
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1>@Model.Name</h1>
+
+@{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.Books); }
