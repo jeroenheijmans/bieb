@@ -7,25 +7,13 @@
 <h1>@Html.DisplayFor(model => model.Title)</h1>
 @{ Html.RenderPartial("Card", Model); }
 
-@if (Model.Authors.Count() > 0)
+<img alt="back cover" src="@Url.Content("~/Content/images/book-placeholder.png")" class="backCover" />
+<img alt="front cover" src="@Url.Content("~/Content/images/book-placeholder.png")" class="frontCover" />
+
+@if (Model.Stories.Count > 1)
 {
-    <h3>Authors</h3>
-    Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Authors);
+    <section class="itemList">
+        <h3>Stories</h3>
+        @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.Stories.Values); }
+    </section>
 }
-    
-@if (Model.Editors.Count > 0)
-{
-    <h3>Editors</h3>
-    Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Editors);
-}
-    
-@if (Model.Stories.Count > 0)
-{
-    <h3>Stories</h3>
-    Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.Stories.Values);
-}
-    
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -1,15 +1,15 @@
 ﻿@model PagedList.IPagedList<Bieb.Domain.Entities.BaseEntity>
 
 
-<div class="Paging">
-    <span class="PageNumberIndication">
+<div class="paging">
+    <span class="pageNumberIndication">
         Page 
         @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
         of 
         @Model.PageCount
     </span>
     
-    <span class="PagingLinks Previous">
+    <span class="pagingLinks previous">
     @if (Model.HasPreviousPage)
     {
         @Html.ActionLink("<<", "Index", new { page = 1 })
@@ -24,9 +24,9 @@
     }
     </span>
 
-    <span class="PagingSeperator">...</span>
+    <span class="pagingSeparator">...</span>
      
-    <span class="PagingLinks Next">
+    <span class="pagingLinks next">
     @if (Model.HasNextPage)
     {
         @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1 })
