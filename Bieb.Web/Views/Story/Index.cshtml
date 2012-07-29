@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bieb.Domain.Entities.Story>
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Story>
 
 @{
     ViewBag.Title = "All Stories";
@@ -32,3 +32,5 @@
 }
 
 </table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }
