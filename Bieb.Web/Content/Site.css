@@ -36,8 +36,9 @@
 
 body {
 	font: normal 100%/1.5em "MuseoSans500Regular", Georgia, serif;
-	color: #000000;
-	background: #FAFAF7;
+	color: #470504;
+	background: #FF0000 url('/Content/images/lightpaperfibers.png') repeat scroll top left;
+	
 }
 
 a { 
@@ -50,42 +51,62 @@ a:hover {
 
 header {
 	text-align: center;
+	width: 100%;
+	background-color: #470504;
 }
 
 header .title {
 	font: normal 5em/1.5em "handwriting-draft_free-versRg", Georgia, serif;
+	padding: .3em 0;
 }
 
 header .title a {
-	color: #4C002C;
+	color: #fff;
 }
 
-ul#menu li {
+header .title a:hover {
+	color: #ff0000;
+}
+
+#menu li {
     display: inline-block;
-}
-
-ul#menu li a {
-    background-color: #EEEEEE;
-    border: 1px solid #EEEEEE;
-    color: #034AF3;
+    background-color: inherit;
     padding: 0.4em 1.0em;
-    display: inline-block;
+    margin: 0 1em;
 }
 
-ul#menu li a.active, ul#menu li a:hover {
-    border-color: #CCCCCC;
-    background-color: #EAEAEA;
-    -webkit-transition: 0.5s ease-out;  
-    -moz-transition: 0.5s ease-out;
-    -o-transition: 0.5s ease-out;
-    transition: 0.5s ease-out;
+#menu .active, #menu a:hover {
+    position: relative;
+    background-color: #470504;
 }
 
-ul#menu .people a     { color: #DD0000; }
-ul#menu .books a      { color: #BB3300; }
-ul#menu .series a     { color: #996600; }
-ul#menu .publishers a { color: #779900; }
+#menu a:hover {
+    color: #ff0000;
+}
 
+/* TODO: Get this pointer centered! */
+#menu .active:after,
+#menu a:hover:after {
+    content: "";
+    position: absolute;
+	z-index: -1;
+    bottom: -1em;
+    left: 30%; /* this looks... arbitrary */
+    background-color: inherit;
+    width: 1.5em;
+    height: 1.5em;
+    -webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+#menu a:hover:after {
+    background-color: #ff0000;
+}
+
+
+#menu a     { color: #fff; }
 
 h1, h2, h3, h4, h5, h6 {
     color: #333;
@@ -148,9 +169,10 @@ div.paging {
 	max-width: 65em;
 	width: 90%;
 	margin: 1.5em auto;
-	padding: 1.5em 2em;
-	border: 1px solid #DDD;
-	background: #FFFFFF;
+	padding: 0 2em 1.5em;
+	border-left: 1px solid #DDD;
+	border-right: 1px solid #DDD;
+	background: inherit;
 	z-index: 0;
 	min-height: 30em;
 }
