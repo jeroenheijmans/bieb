@@ -30,7 +30,7 @@
         <td>
             @if (!string.IsNullOrWhiteSpace(person.Nationality))
             { 
-                <img src="@Url.Content("~/Content/images/flags/" + person.Nationality + "-icon.png")" alt="@person.Nationality" class="flag icon" />
+                @Html.ImageFlagFor(person)
             }
         </td>
         <td class="mainColumn">

@@ -4,23 +4,30 @@
     ViewBag.Title = Model.FullName;
 }
 
-<h1>@Html.DisplayFor(model => model.FullName)</h1>
-<p>@string.Join(", ", Model.Roles)</p>
-
 @{ Html.RenderPartial("Card", Model); }
 
-<section class="books">        
+<section class="books">
+    <p>Works by @Model.FullName in my library:</p>
+
     @if (Model.EditedBooks.Count > 0)
     { 
-        <section class="itemList">
+        <section class="itemList editedBooks">
             <h3>Edited Books</h3>
             @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.EditedBooks); }
+        </section>
+    }
+    
+    @if (Model.AuthoredCollections.Count() > 0)
+    { 
+        <section class="itemList authoredCollections">
+            <h3>Authored Collections</h3>
+            @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredCollections); }
         </section>
     }
             
     @if (Model.TranslatedStories.Count > 0)
     { 
-        <section class="itemList">
+        <section class="itemList translatedStories">
             <h3>Translated Stories</h3>
             @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.TranslatedStories); }
         </section>
@@ -28,7 +35,7 @@
         
     @if (Model.AuthoredStories.Count > 0)
     {
-        <section class="itemList">
+        <section class="itemList authoredStories">
             <h3>Authored Stories</h3>
             @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredStories); }
         </section>
