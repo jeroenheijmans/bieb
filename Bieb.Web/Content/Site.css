@@ -278,18 +278,16 @@ table.listing td.mainColumn, table.listing th.mainColumn {
 
 .frontCover, .backCover {
     width: 19em;
-    height: 30em; /* temp img only! */
     float: left;
     margin: 0;
 }
 
 .frontCover {
-    margin: 0;
+    margin: 0 0 0 2em;
 }
 
 section.itemList img.itemRepresentation {
     width: 4em;
-    height: 6em; /* temp img only! */
     margin: 0 1em 1.5em 0;
     float: left;
 }
