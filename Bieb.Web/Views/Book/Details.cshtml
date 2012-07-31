@@ -4,16 +4,14 @@
     ViewBag.Title = Model.Title;
 }
 
-<h1>@Html.DisplayFor(model => model.Title)</h1>
 @{ Html.RenderPartial("Card", Model); }
 
-<img alt="back cover" src="@Url.Content("~/Content/images/book-placeholder.png")" class="backCover" />
-<img alt="front cover" src="@Url.Content("~/Content/images/book-placeholder.png")" class="frontCover" />
+<img alt="back cover" src="@Url.Content("~/Content/images/book-placeholder-back-large.png")" class="backCover" />
+<img alt="front cover" src="@Url.Content("~/Content/images/book-placeholder-front-large.png")" class="frontCover" />
 
 @if (Model.Stories.Count > 1)
 {
     <section class="itemList">
-        <h3>Stories</h3>
         @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.Stories.Values); }
     </section>
 }

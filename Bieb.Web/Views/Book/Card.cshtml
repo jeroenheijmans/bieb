@@ -11,29 +11,7 @@
         <li>
             @Html.DisplayFor(model => model.Year), @Html.DisplayFor(model => model.Language)
         </li>
-
-        @if (Model.Editors.Count() > 0)
-        {
-            <li>Editors:<br />
-            @foreach (var person in Model.Editors)
-            {
-                 @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
-                 <br />
-            }
-             </li>
-        }
-
-        @if (Model.Authors.Count() > 0)
-        {
-            <li>Authors:<br />
-            @foreach (var person in Model.Authors)
-            {
-                 @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
-                 <br />
-            }
-             </li>
-        }
-
+        
         @if (Model.Isbn != null)
         { 
             <li>Isbn: @Html.DisplayFor(model => model.Isbn)</li>
@@ -47,6 +25,38 @@
         @if (Model.Series != null)
         {
             <li>From: @Html.ActionLink(Model.Series.Title, "Details", new { id = Model.Series.Id, controller = "series" })</li>
+        }
+        
+        @if (Model.Editors.Count() > 0)
+        {
+            <li>
+                <br />
+                Editors: 
+                <ul>
+                @foreach (var person in Model.Editors)
+                {
+                    <li>
+                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
+                    </li>
+                }
+                </ul>
+            </li>
+        }
+
+        @if (Model.Authors.Count() > 0)
+        {
+            <li>
+                <br />
+                Authors:
+                <ul>
+                @foreach (var person in Model.Authors)
+                {
+                    <li>
+                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
+                    </li>
+                }
+                </ul>
+            </li>
         }
     </ul>
 </div>
