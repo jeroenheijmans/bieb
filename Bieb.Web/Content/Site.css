@@ -1,115 +1,146 @@
-﻿@font-face {
+﻿/*************************  To Do  ****************************/
+/* Simplify colors - too many people making up colors!
+/* Fix fonts, font-sizes, etc
+/* Add responsivity
+/* Add support for all modern browsers
+/* Perhaps add support for older browsers (how far back?)
+/**************************************************************/
+
+
+
+
+
+/*************************  Colors  ***************************/
+/* Background:	 #FFFFFF
+/* Text:		 #470503
+/* Header:       #470504
+/* Accents:      #FF0000
+/* Gray 1        #DDDDDD
+/* Gray 2        #BBBBBB        Simplify! Simplify!
+/* Links         #700041
+/* Links hover   #D80082
+/* Headers       #333333
+/* Table border  #EDE6EA
+/* Table header  #F7EFF4
+/* Flag border   #700041
+/**************************************************************/
+
+
+
+
+
+/*************************  Fonts  ****************************/
+
+@font-face {
     font-family: 'Museo500Regular';
     src: url('/Content/fonts/museo500-webfont.eot');
-    src: url('/Content/fonts/museo500-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/Content/fonts/museo500-webfont.woff') format('woff'),
-         url('/Content/fonts/museo500-webfont.ttf') format('truetype'),
-         url('/Content/fonts/museo500-webfont.svg#Museo500Regular') format('svg');
+    src: url('/Content/fonts/museo500-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/museo500-webfont.woff') format('woff'), url('/Content/fonts/museo500-webfont.ttf') format('truetype'), url('/Content/fonts/museo500-webfont.svg#Museo500Regular') format('svg');
 }
 
 @font-face {
     font-family: 'Museo700Regular';
     src: url('/Content/fonts/museo700-webfont.eot');
-    src: url('/Content/fonts/museo700-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/Content/fonts/museo700-webfont.woff') format('woff'),
-         url('/Content/fonts/museo700-webfont.ttf') format('truetype'),
-         url('/Content/fonts/museo700-webfont.svg#Museo700Regular') format('svg');
+    src: url('/Content/fonts/museo700-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/museo700-webfont.woff') format('woff'), url('/Content/fonts/museo700-webfont.ttf') format('truetype'), url('/Content/fonts/museo700-webfont.svg#Museo700Regular') format('svg');
 }
 
 @font-face {
-	font-family: "MuseoSans500Regular";
-	src: url('/Content/fonts/museo_sans500-webfont.eot');
-    src: url('/Content/fonts/museo_sans500-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/Content/fonts/museo_sans500-webfont.woff') format('woff'),
-         url('/Content/fonts/museo_sans500-webfont.ttf') format('truetype'),
-         url('/Content/fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
+    font-family: "MuseoSans500Regular";
+    src: url('/Content/fonts/museo_sans500-webfont.eot');
+    src: url('/Content/fonts/museo_sans500-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/museo_sans500-webfont.woff') format('woff'), url('/Content/fonts/museo_sans500-webfont.ttf') format('truetype'), url('/Content/fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
 }
 
 @font-face {
     font-family: 'handwriting-draft_free-versRg';
     src: url('/Content/fonts/handwriting-draft_free-version-webfont.eot');
-    src: url('/Content/fonts/handwriting-draft_free-version-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/Content/fonts/handwriting-draft_free-version-webfont.woff') format('woff'),
-         url('/Content/fonts/handwriting-draft_free-version-webfont.ttf') format('truetype'),
-         url('/Content/fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_free-versRg') format('svg');
+    src: url('/Content/fonts/handwriting-draft_free-version-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/handwriting-draft_free-version-webfont.woff') format('woff'), url('/Content/fonts/handwriting-draft_free-version-webfont.ttf') format('truetype'), url('/Content/fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_free-versRg') format('svg');
 }
+
+
+
+
+
+/*************************  Main structures  ******************/
 
 body {
-	font: normal 100%/1.5em "MuseoSans500Regular", Georgia, serif;
-	color: #470504;
-	background: #FF0000 url('/Content/images/lightpaperfibers.png') repeat scroll top left;
-	
+    font: normal 100%/1.5em "MuseoSans500Regular" , Georgia, serif;
+    color: #470503;
+    background: #FFFFFF url('/Content/images/lightpaperfibers.png') repeat scroll top left;
 }
 
-a { 
-    color: #700041; 
+header {
+    text-align: center;
+    width: 100%;
+    background-color: #470504;
+}
+
+.wrapper {
+    background: #FFFFFF;
+    max-width: 65em;
+    width: 90%;
+    margin: 1.5em auto;
+    padding: 0 2em 1.5em;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    background: inherit;
+    z-index: 0;
+    min-height: 30em;
+}
+
+footer, #footer {
+    color: #BBBBBB;
+    text-align: center;
+    margin: 3em 0 0 0;
+    font-size: .7em;
+    clear: both;
+}
+
+
+section#main {
+    margin-top: 1em;
+}
+
+.card {
+    position: relative;
+    background: #FFFFFF;
+    padding: 1.5em 1em 0;
+    margin: 0 0 0 1.85em;
+    width: 19em;
+    float: right;
+    border-left: 1px solid #DDDDDD;
+    font: normal 100% "Museo500Regular", Verdana, sans-serif;
+}
+
+
+
+div#logindisplay {
+    float: right;
+}
+
+div.paging {
+    margin-top: 1em;
+}
+
+
+
+
+
+/*************************  Text elements  ********************/
+
+
+p {
+    margin-bottom: 1.5em;
+}
+
+a {
+    color: #700041;
 }
 
 a:hover {
     color: #D80082;
 }
 
-header {
-	text-align: center;
-	width: 100%;
-	background-color: #470504;
-}
-
-header .title {
-	font: normal 5em/1.5em "handwriting-draft_free-versRg", Georgia, serif;
-	padding: .3em 0;
-}
-
-header .title a {
-	color: #fff;
-}
-
-header .title a:hover {
-	color: #ff0000;
-}
-
-#menu li {
-    display: inline-block;
-    background-color: inherit;
-    padding: 0.4em 1.0em;
-    margin: 0 1em;
-}
-
-#menu .active, #menu a:hover {
-    position: relative;
-    background-color: #470504;
-}
-
-#menu a:hover {
-    color: #ff0000;
-}
-
-/* TODO: Get this pointer centered! */
-#menu .active:after,
-#menu a:hover:after {
-    content: "";
-    position: absolute;
-	z-index: -1;
-    bottom: -1em;
-    left: 30%; /* this looks... arbitrary */
-    background-color: inherit;
-    width: 1.5em;
-    height: 1.5em;
-    -webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-
-#menu a:hover:after {
-    background-color: #ff0000;
-}
-
-
-#menu a     { color: #fff; }
-
 h1, h2, h3, h4, h5, h6 {
-    color: #333;
+    color: #333333;
 }
 
 h1 {
@@ -124,11 +155,93 @@ h3, h4, h5, h6 {
     font-size: 1em;
 }
 
-p {
-	margin-bottom: 1.5em;
+header .title {
+    font: normal 5em/1.5em "handwriting-draft_free-versRg" , Georgia, serif;
+    padding: .3em 0;
 }
 
-table td, table th  {
+header .title a {
+    color: #FFFFFF;
+}
+
+header .title a:hover {
+    color: #FF0000;
+}
+
+#menu a:hover {
+    color: #FF0000;
+}
+
+#menu a {
+    color: #FFFFFF;
+}
+
+
+
+
+
+/*************************  Element specific styles  **********/
+
+/* Nav */
+#menu li {
+    display: inline-block;
+    background-color: inherit;
+    padding: 0.4em 1.0em;
+    margin: 0 1em;
+}
+
+#menu .active, #menu a:hover {
+    position: relative;
+}
+
+#menu .active:after, #menu a:hover:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -1em;
+    left: 50%;
+    margin-left: -0.8em; /* Centers pointer; must change with width/height and/or font-size */
+    background-color: #470504;
+    width: 1.5em;
+    height: 1.5em;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#menu a:hover:after {
+    background-color: #FF0000;
+}
+
+
+
+/* Itemlists */
+section.itemList {
+    clear: left;
+}
+
+section.itemList li {
+    position: relative;
+    display: inline-block;
+    width: 19em;
+    margin: 0 2em 1.5em 0;
+    padding: 1.5em 1em 0;
+    float: left;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    background: #FFFFFF;
+    overflow: auto;
+}
+
+section.itemList li:nth-child(2n) {
+    margin: 0 0 1.5em;
+}
+
+
+
+/* Tables */
+table td, table th {
     padding: 0.15em 0.4em;
     border: solid 1px #EDE6EA;
     font-size: 0.9em;
@@ -145,109 +258,44 @@ table.listing {
     width: 100%;
 }
 
-table.listing td,
-table.listing th  {
+table.listing td, table.listing th {
     white-space: nowrap;
 }
 
-table.listing td.mainColumn,
-table.listing th.mainColumn  {
+table.listing td.mainColumn, table.listing th.mainColumn {
     white-space: normal;
     width: 100%;
 }
 
-img.flag.icon {
-    border: 1px solid #700041;
-}
-
-div.paging {
-    margin-top: 1em;
-}
-
-.wrapper {
-	background: #FFF;
-	max-width: 65em;
-	width: 90%;
-	margin: 1.5em auto;
-	padding: 0 2em 1.5em;
-	border-left: 1px solid #DDD;
-	border-right: 1px solid #DDD;
-	background: inherit;
-	z-index: 0;
-	min-height: 30em;
-}
 
 
-section#main {
-    margin-top: 1em;
-}
-
-footer, 
-#footer {
-    color: #BBB;
-    text-align: center;
-    margin: 3em 0 0 0;
-    font-size: .7em;
-    clear: both;
-}
-
-div#logindisplay { 
-    float: right;
-}
-
-.card {
-    position: relative;
-	background: #FFFFFF;
-	padding: 1.5em 1em 0;
-	margin: 0 0 0 1.85em;
-	width: 19em;
-	float: right;
-	border-left: 1px solid #ddd;
-	font: normal 100% "Museo500Regular", Verdana, sans-serif;
-}
-
+/* Images */
 .card .representation {
     display: block;
     width: 19em;
     margin: 0 auto;
 }
 
-.frontCover,
-.backCover {
-	width: 19em;
-	height: 30em; /* temp img only! */
-	float: left;
-	margin: 0;
+.frontCover, .backCover {
+    width: 19em;
+    height: 30em; /* temp img only! */
+    float: left;
+    margin: 0;
 }
 
 .frontCover {
-	margin: 0 0 0 2em;
-}
-
-section.itemList {
-    clear: left;
-}
-
-section.itemList li {
-    position: relative;
-	display: inline-block;
-	width: 19em;
-	margin: 0 2em 1.5em 0;
-	padding: 1.5em 1em 0;
-	float: left;
-	border-top: 1px solid #DDD;
-	border-bottom: 1px solid #DDD;
-	background: #FFFFFF;
-	overflow: auto;
-}
-
-section.itemList li:nth-child(2n) {
-    margin: 0 0 1.5em;
+    margin: 0 0 0 2em;
 }
 
 section.itemList img.itemRepresentation {
-	width: 4em;
-	height: 6em; /* temp img only! */
-	margin: 0 1em 1.5em 0;
-	float: left;
+    width: 4em;
+    height: 6em; /* temp img only! */
+    margin: 0 1em 1.5em 0;
+    float: left;
 }
+
+
+img.flag.icon {
+    border: 1px solid #700041;
+}
+
