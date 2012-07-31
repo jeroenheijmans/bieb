@@ -2,41 +2,49 @@
 
 <div class="card person">
     <img src="@Url.Content("~/Content/images/person-placeholder.png")" alt="☺" title="Person's portrait pica" class="representation" />
-    <h1>@Html.DisplayFor(model => model.FullName)</h1>
+    <h1>
+        @Html.DisplayFor(model => model.FullName)
+        
+        @if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
+        {
+            <span>
+                @Model.GenderChar
+            </span>
+        }
 
-    <p>
-        @Model.GenderChar
-        @string.Join(", ", Model.Roles)
-    </p>
+        @if (Model.Nationality != null)
+        {
+            @Html.ImageFlagFor(Model)
+        }
+    </h1>
 
-    @if (Model.Nationality != null)
-    {
-        <p>@Model.Nationality.ToUpper()</p>
-    }
+    <h2>@string.Join(", ", Model.Roles)</h2>
+
+    <ul>
+        @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
+        {
+            <li>
+                Born:
+                @Html.DisplayFor(model => model.DateOfBirth)
+                @Html.DisplayFor(model => model.PlaceOfBirth)
+            </li>
+        }
         
-    @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
-    {
-        <p>
-            Born:
-            @Html.DisplayFor(model => model.DateOfBirth);
-            @Html.DisplayFor(model => model.PlaceOfBirth);
-        </p>
-    }
+        @if (Model.DateOfDeath != null || Model.PlaceOfDeath != null)
+        {
+            <li>
+                Died:
+                @Html.DisplayFor(model => model.DateOfDeath)
+                @Html.DisplayFor(model => model.PlaceOfDeath)
+            </li>
+        }
         
-    @if (Model.DateOfDeath != null || Model.PlaceOfDeath != null)
-    {
-        <p>
-            Died:
-            @Html.DisplayFor(model => model.DateOfDeath);
-            @Html.DisplayFor(model => model.PlaceOfDeath);
-        </p>
-    }
-        
-    @if (Model.Tags.Count() > 0)
-    { 
-        <p>
-            Tags:
-            @string.Join(", ", Model.Tags)
-        </p>
-    }
+        @if (Model.Tags.Count() > 0)
+        { 
+            <li>
+                Tags:
+                @string.Join(", ", Model.Tags)
+            </li>
+        }
+    </ul>
 </div>

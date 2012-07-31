@@ -79,6 +79,18 @@ namespace Bieb.Domain.Entities
             set { _translatedStories = value; }
         }
 
+        public virtual IEnumerable<Book> AuthoredCollections
+        {
+            get 
+            {
+                return _authoredStories
+                        .Select(s => s.Book)
+                        .Where(b => b.BookType == BookType.Collection)
+                        .Distinct();
+            }
+        }
+
+
         /// <summary>
         /// All the tags from stories in edited books, plus those from translated- and authored stories
         /// </summary>

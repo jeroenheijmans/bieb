@@ -1,11 +1,17 @@
 ﻿@model IEnumerable<Bieb.Domain.Entities.Book>
 
 <ul>
-@foreach (var item in Model) 
+@foreach (var book in Model) 
 {
     <li>
         <img class="itemRepresentation" src="@Url.Content("~/Content/images/book-placeholder.png")" alt="book cover icon" />
-        <h3>@Html.ActionLink(item.Title + item.Subtitle, "Details", new { controller = "Book", id = item.Id })</h3>
+        <h3>@Html.ActionLink(book.Title + book.Subtitle, "Details", new { controller = "Book", id = book.Id })</h3>
+        <span>@book.BookType</span>
+        @if (book.Isbn != null)
+        {
+            <br />
+            <span>@book.Isbn</span>
+        }
     </li>
 }
 </ul>
