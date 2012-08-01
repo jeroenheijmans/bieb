@@ -6,4 +6,10 @@
 
 <h1>@Model.Name</h1>
 
-@{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.Books); }
+@if (Model.Books.Count() > 0)
+{
+    <section class="itemList authoredCollections">
+        <h3>Books from this publisher</h3>
+        @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.Books); }
+    </section>
+}
