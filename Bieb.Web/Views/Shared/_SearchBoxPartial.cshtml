@@ -1,4 +1,4 @@
 ﻿@using (Html.BeginForm("Basic", "Search", FormMethod.Get)) {
-    <input type="text" name="query" placeholder="Click to search" value="@Request.QueryString["query"]" />
+    <input type="text" class="search" name="query" placeholder="Click to search" value="@Request.QueryString["query"]" />
     <input type="submit" value=">" />
 }
