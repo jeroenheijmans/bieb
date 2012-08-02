@@ -1,0 +1,83 @@
+﻿@model Bieb.Web.Models.BasicSearchResultModel
+
+@{
+    ViewBag.Title = "Basic Search";
+}
+
+<h1>Basic Search Results</h1>
+<p>There are <a href="#people">@Model.people.Count() people</a>, <a href="#books">@Model.books.Count() books</a>, and <a href="#stories">@Model.stories.Count() stories</a> that were found using your search query.</p>
+
+<section class="searchResults">
+    <h2 id="people">People</h2>
+    @if (Model.people.Count() > 0)
+    { 
+        <ul class="searchResults">
+            @foreach (var person in Model.people)
+            {
+                <li class="person">
+                    @Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })
+                    <br />
+                    @if (person.Gender != Bieb.Domain.Entities.Gender.Unkown)
+                    {
+                        <span>
+                            @person.GenderChar
+                        </span>
+                    }
+
+                    @if (person.Nationality != null)
+                    {
+                        @Html.ImageFlagFor(person)
+                    }
+                    @string.Join(", ", person.Roles)
+                </li>        
+            }
+        </ul>
+    } 
+    else 
+    {
+        <p>-</p>
+    }
+    
+    <h2 id="books">Books</h2>
+    @if (Model.books.Count() > 0)
+    { 
+        <ul class="searchResults">
+            @foreach (var book in Model.books)
+            {
+                <li class="book">
+                    @Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })
+                    <br />
+                    <span>@book.BookType</span>
+                    @if (!string.IsNullOrWhiteSpace(book.Isbn))
+                    {
+                        <span>, @book.Isbn</span>
+                    }
+                </li>     
+            }
+        </ul>
+    } 
+    else 
+    {
+        <p>-</p>
+    }
+    
+    <h2 id="stories">Stories</h2>
+    @if (Model.stories.Count() > 0)
+    { 
+        <ul class="searchResults">
+            @foreach (var story in Model.stories)
+            {
+                <li class="story">
+                    @Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })
+                    <br />
+                    From:
+                    <span>@story.Book.Title</span>            
+                </li>     
+            }
+        </ul>
+    } 
+    else 
+    {
+        <p>-</p>
+    }
+</section>

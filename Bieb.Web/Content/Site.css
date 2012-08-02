@@ -296,3 +296,28 @@ section.itemList img.itemRepresentation {
 img.flag.icon {
     border: 1px solid #700041;
 }
+
+
+
+/* Search box */
+div#search {
+    position: fixed;
+    right: 0.5em;
+    top: 0.5em;
+}
+
+div#search input[type=text] {
+    background: #FFF url('/Content/images/search-icon.png') no-repeat center right;
+    padding-right: 18px; /* width of the bg image + 2 px */
+}
+
+
+
+/* Basic Search Results */
+.searchResults h2 {
+    margin-top: 1em;
+}
+
+ul.searchResults > li + li {
+    margin-top: 0.5em;
+}
