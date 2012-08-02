@@ -21,7 +21,7 @@ namespace Bieb.Web.Controllers
 
         protected override System.Linq.Expressions.Expression<Func<Story, IComparable>> SortFunc
         {
-            get { return s => s.Title; }
+            get { return s => s.TitleSort; }
         }
     }
 }
