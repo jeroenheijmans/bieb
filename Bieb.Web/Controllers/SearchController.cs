@@ -28,40 +28,51 @@ namespace Bieb.Web.Controllers
 
         public ActionResult Basic(string query)
         {
-            var queryLowerCased = (query ?? "").ToLower();
-
-            // TODO: this now lists all matches, potentially EVERYTHING in the database. This may not be 
-            // a disaster, given the number of expected items, but is certainly not very pretty. However,
-            // given that this whole setup will probably be replaced with NHibernate Search, we'll leave
-            // it like this for now.
-
-            IEnumerable<Person> people = PersonRepository
-                                            .Items
-                                            .Where(p => p.FirstName.ToLower().Contains(queryLowerCased) || p.Surname.ToLower().Contains(queryLowerCased))
-                                            .OrderBy(p => p.Surname)
-                                            .Select(p => p);
-
-            IEnumerable<Book> books = BookRepository
-                                            .Items
-                                            .Where(b => b.Title.ToLower().Contains(queryLowerCased))
-                                            .OrderBy(b => b.Title)
-                                            .Select(b => b);
-
-            IEnumerable<Story> stories = StoryRepository
-                                            .Items
-                                            .Where(s => s.Title.ToLower().Contains(queryLowerCased))
-                                            .OrderBy(s => s.Title)
-                                            .Select(s => s);
-
-            var model = new BasicSearchResultModel()
+            if (query == null)
+                return View(new BasicSearchResultModel()
+                {
+                    books = new Book[] { }.AsEnumerable<Book>(),
+                    people = new Person[] { }.AsEnumerable<Person>(),
+                    stories = new Story[] { }.AsEnumerable<Story>(),
+                    query = null
+                });
+            else
             {
-                people = people,
-                books = books,
-                stories = stories,
-                query = query
-            };
+                var queryLowerCased = query.ToLower();
 
-            return View(model);
+                // TODO: this now lists all matches, potentially EVERYTHING in the database. This may not be 
+                // a disaster, given the number of expected items, but is certainly not very pretty. However,
+                // given that this whole setup will probably be replaced with NHibernate Search, we'll leave
+                // it like this for now.
+
+                IEnumerable<Person> people = PersonRepository
+                                                .Items
+                                                .Where(p => p.FirstName.ToLower().Contains(queryLowerCased) || p.Surname.ToLower().Contains(queryLowerCased))
+                                                .OrderBy(p => p.Surname)
+                                                .Select(p => p);
+
+                IEnumerable<Book> books = BookRepository
+                                                .Items
+                                                .Where(b => b.Title.ToLower().Contains(queryLowerCased))
+                                                .OrderBy(b => b.Title)
+                                                .Select(b => b);
+
+                IEnumerable<Story> stories = StoryRepository
+                                                .Items
+                                                .Where(s => s.Title.ToLower().Contains(queryLowerCased))
+                                                .OrderBy(s => s.Title)
+                                                .Select(s => s);
+
+                var model = new BasicSearchResultModel()
+                {
+                    people = people,
+                    books = books,
+                    stories = stories,
+                    query = query
+                };
+
+                return View(model);
+            }
         }
     }
 

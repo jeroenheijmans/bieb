@@ -258,6 +258,23 @@ nav a:hover:after {
     transform: rotate(45deg);
 }
 
+nav li.home a,
+nav li.search a,
+nav li.surprise a {
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    text-indent: -9999px; /* Doesn't look very pretty, but SEO friendly, in a way. */
+    display: block;
+}
+
+nav li.home a     { background: #333331 url('/Content/images/home-nav-icon.png') no-repeat center bottom; }
+nav li.search a   { background: #333331 url('/Content/images/search-nav-icon.png') no-repeat center bottom; }
+nav li.surprise a { background: #333331 url('/Content/images/surprise-nav-icon.png') no-repeat center bottom; }
+
+nav li.home a.active, nav li.home a:hover         { background: #333331 url('/Content/images/home-nav-icon-active.png') no-repeat center bottom; }
+nav li.search a.active, nav li.search a:hover     { background: #333331 url('/Content/images/search-nav-icon-active.png') no-repeat center bottom; }
+nav li.surprise a.active, nav li.surprise a:hover { background: #333331 url('/Content/images/surprise-nav-icon-active.png') no-repeat center bottom; }
 
 
 /* Itemlists */

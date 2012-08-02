@@ -14,6 +14,11 @@ namespace Bieb.Web.Controllers
             : base(repository)
         { }
 
+        public override ActionResult Index(int pageSize = 25, int page = 1)
+        {
+            throw new NotImplementedException("Listing an index of publishers is not allowed. You can get there via Books and Stories");
+        }
+
         protected override System.Linq.Expressions.Expression<Func<Publisher, IComparable>> SortFunc
         {
             get { return p => p.Name; }

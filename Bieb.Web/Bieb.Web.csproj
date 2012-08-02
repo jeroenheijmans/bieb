@@ -102,8 +102,12 @@
     <Content Include="Content\images\flags\gb-icon.png" />
     <Content Include="Content\images\flags\nl-icon.png" />
     <Content Include="Content\images\flags\us-icon.png" />
+    <Content Include="Content\images\home-nav-icon.png" />
     <Content Include="Content\images\lightpaperfibers.png" />
     <Content Include="Content\images\person-placeholder.png" />
+    <Content Include="Content\images\search-icon.png" />
+    <Content Include="Content\images\search-nav-icon.png" />
+    <Content Include="Content\images\surprise-nav-icon.png" />
     <Content Include="Content\Reset.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -187,9 +191,6 @@
       <Project>{A98CA5A5-29DB-4E2F-BC94-9FB9C7309AD1}</Project>
       <Name>Bieb.NHibernateProvider</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Publisher\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Book\Index.cshtml" />

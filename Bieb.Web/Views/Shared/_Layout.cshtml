@@ -16,10 +16,13 @@
         </div> <!-- end .title -->
         <nav>
             <ul id="menu">
+                <li class="home">@Html.MenuLink("Home", "", "Home")</li>
                 <li class="people">@Html.MenuLink("People", "Index", "Person")</li>
                 <li class="books">@Html.MenuLink("Books", "Index", "Book")</li>
                 <li class="series">@Html.MenuLink("Series", "Index", "Series")</li>
-                <li class="publishers">@Html.MenuLink("Publishers", "Index", "Publisher")</li>
+                <li class="search">@Html.MenuLink("Search", "Basic", "Search")</li>
+                <li class="surprise">@Html.MenuLink("Surprise me!", "Item", "Surprise")</li>
+                
             </ul> <!-- end #menu -->
 
             <div id="search">
