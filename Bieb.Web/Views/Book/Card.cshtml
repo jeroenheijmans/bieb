@@ -24,7 +24,7 @@
 
         @if (Model.Series != null)
         {
-            <li>From: @Html.ActionLink(Model.Series.Title, "Details", new { id = Model.Series.Id, controller = "series" })</li>
+            <li>Series: @Html.ActionLink(Model.Series.Title, "Details", new { id = Model.Series.Id, controller = "series" })</li>
         }
         
         @if (Model.Editors.Count() > 0)
@@ -59,4 +59,4 @@
             </li>
         }
     </ul>
-</div>
+</div> <!-- end .card.book -->
