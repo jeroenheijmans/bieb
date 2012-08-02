@@ -19,7 +19,7 @@ namespace Bieb.Web.Controllers
         {
             get
             {
-                return b => b.Title;
+                return b => b.TitleSort;
             }
         }
     }

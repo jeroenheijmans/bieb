@@ -135,7 +135,7 @@ namespace Bieb.Tests.Controllers
         }
         
         [Test]
-        public void Index_Will_Have_Default_Title_Sorting()
+        public void Index_Will_Have_Default_TitleSort_Sorting()
         {
             // Arrange
             Mock<IEntityRepository<Book>> mock = new Mock<IEntityRepository<Book>>();

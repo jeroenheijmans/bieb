@@ -10,6 +10,7 @@
     </id>
     
     <property name="Title" not-null="true" index="IX_Book_Title" />
+    <property name="TitleSort" column="TitleSort" generated="always" />
     <property name="Subtitle" />
     <property name="Isbn" />
     <property name="IsbnLanguage" />
@@ -32,7 +33,29 @@
       <key column="BookId" foreign-key="FK_SeriesBook_Book" />
       <many-to-many column="SeriesId" class="Series" foreign-key="FK_SeriesBook_Series" />
     </bag>
-    
+       
   </class>
 
+  <database-object>
+    <create>
+      ALTER TABLE Book DROP COLUMN TitleSort
+      GO
+
+      ALTER TABLE Book
+      ADD TitleSort AS (
+        CASE
+          WHEN LEFT(Title, 3) = 'De '  THEN RIGHT(Title, LEN(Title)-3) + ', De'
+          WHEN LEFT(Title, 4) = 'Het ' THEN RIGHT(Title, LEN(Title)-4) + ', Het'
+          WHEN LEFT(Title, 4) = 'Een ' THEN RIGHT(Title, LEN(Title)-4) + ', Een'
+          WHEN LEFT(Title, 4) = 'The ' THEN RIGHT(Title, LEN(Title)-4) + ', The'
+          WHEN LEFT(Title, 2) = 'A '   THEN RIGHT(Title, LEN(Title)-2) + ', A'
+          ELSE Title
+        END
+      ) PERSISTED
+    </create>
+    <drop>
+      ALTER TABLE Book DROP COLUMN TitleSort
+    </drop>
+  </database-object>
+  
 </hibernate-mapping>
