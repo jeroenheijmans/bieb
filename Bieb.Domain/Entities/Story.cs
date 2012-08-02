@@ -13,6 +13,19 @@ namespace Bieb.Domain.Entities
         public virtual Book Book { get; set; }
         public virtual int PositionInBook { get; set; }
 
+        private string _titleSort;
+        public virtual string TitleSort
+        {
+            get
+            {
+                return _titleSort ?? Title;
+            }
+            protected internal set
+            {
+                _titleSort = value;
+            }
+        }
+
         private IList<Tag> _tags = new List<Tag>();
         public virtual IList<Tag> Tags
         {
