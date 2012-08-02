@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Publisher">
+    
+    <id name="Id" column="PublisherId">
+      <generator class="native" />
+    </id>
+    
+    <property name="Name" not-null="true" index="IX_Publisher_Name"/>
+
+    <bag name="Books" table="Book" lazy="true" access="field.camelcase-underscore">
+      <key column="PublisherId" foreign-key="FK_Book_Publisher" />
+      <one-to-many class="Book" />
+    </bag>
+    
+  </class>
+  
+</hibernate-mapping>

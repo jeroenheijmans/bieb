@@ -1,0 +1,17 @@
+﻿@model Bieb.Domain.Entities.Book
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+@{ Html.RenderPartial("Card", Model); }
+
+<img alt="back cover" src="@Url.Content("~/Content/images/book-placeholder-back-large.png")" class="backCover" />
+<img alt="front cover" src="@Url.Content("~/Content/images/book-placeholder-front-large.png")" class="frontCover" />
+
+@if (Model.Stories.Count > 1)
+{
+    <section class="itemList">
+        @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.Stories.Values); }
+    </section>
+}

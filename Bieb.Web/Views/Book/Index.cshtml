@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Book>
+
+@{
+    ViewBag.Title = "All Books";
+}
+
+<p>These are all the <strong>Novels</strong> (books with a single main story), <strong>Anthologies</strong> (bundled stories by different authors), and <strong>Collections</strong> (bundled stories from a single author) that are-, have been-, or should be in my library.</p>
+
+<table class="listing">
+    <tr>
+        <th>
+            Type
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Language
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Author / Editor
+        </th>
+    </tr>
+
+@foreach (var book in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelbook => book.BookType)
+        </td>
+        <td class="mainColumn">
+            @Html.ActionLink(book.Title, "Details", new { id=book.Id })
+        </td>
+        <td>
+            @Html.DisplayFor(modelbook => book.Language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelbook => book.Year)
+        </td>
+        <td>
+            @if (book.BookType == Bieb.Domain.Entities.BookType.Novel) 
+            {
+                @string.Join(", ", book.Authors)
+            }
+            else
+            {
+                @string.Join(", ", book.Editors)
+            }
+        </td>
+    </tr>
+}
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

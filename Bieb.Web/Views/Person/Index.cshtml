@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Person>
+
+@{
+    ViewBag.Title = "All People";
+}
+
+<p>These are all the <strong>Authors</strong>, <strong>Editors</strong>, and <strong>Translators</strong> from books in my collection.</p>
+
+<table class="listing">
+    <tr>
+        <th>
+            Gender
+        </th>
+        <th>
+            Nationality
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Roles
+        </th>
+    </tr>
+
+@foreach (var person in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelperson => person.GenderChar)
+        </td>
+        <td>
+            @if (!string.IsNullOrWhiteSpace(person.Nationality))
+            { 
+                @Html.ImageFlagFor(person)
+            }
+        </td>
+        <td class="mainColumn">
+            @Html.ActionLink(person.FullName, "Details", new { id=person.Id })
+        </td>
+        <td> 
+            @string.Join(", ", person.Roles)
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

@@ -1,0 +1,26 @@
+﻿@model Bieb.Domain.Entities.Story
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1>@Model.Title</h1>
+@{ Html.RenderPartial("Card", Model); }
+
+
+@if (Model.Authors.Count() > 0)
+{
+    <section class="itemList">
+        <h3>Authors</h3>
+        @{ Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Authors); }
+    </section>
+}
+
+@if (Model.Translators.Count() > 0)
+{
+    <section class="itemList">
+        <h3>Translators</h3>
+        @{ Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Translators); }
+    </section>
+}
+

@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Publisher>
+
+@{
+    ViewBag.Title = "All Publishers";
+}
+
+<p>These are the <strong>publishers</strong> that either my own or an original edition of books and stories in my libary.</p>
+
+<table class="listing">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Books
+        </th>
+        <th>
+            Book Originals
+        </th>
+        <th>
+            Short Story Originals
+        </th>
+    </tr>
+
+@foreach (var publisher in Model) {
+    <tr>
+        <td class="mainColumn">
+            @Html.ActionLink(publisher.Name, "Details", new { id=publisher.Id})
+        </td>
+        <td>
+            @if (publisher.Books.Count() > 0) 
+            {
+                @Html.Raw(publisher.Books.Count().ToString());
+            }
+        </td>
+        <td>
+            ? @*TODO*@
+        </td>
+        <td>
+            ? @*TODO*@
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }
