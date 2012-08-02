@@ -13,28 +13,30 @@
     <header>
         <div class="title">
             @Html.ActionLink("Bieb: My Library","Index", "Home")
-        </div>
+        </div> <!-- end .title -->
         <nav>
             <ul id="menu">
                 <li class="people">@Html.MenuLink("People", "Index", "Person")</li>
                 <li class="books">@Html.MenuLink("Books", "Index", "Book")</li>
                 <li class="series">@Html.MenuLink("Series", "Index", "Series")</li>
                 <li class="publishers">@Html.MenuLink("Publishers", "Index", "Publisher")</li>
-            </ul>
+            </ul> <!-- end #menu -->
+
             <div id="search">
                 @Html.Partial("_SearchBoxPartial")
-            </div>
+            </div> <!-- end #search -->
         </nav>
     </header>
 
     <div class="wrapper">
         <section id="main">
             @RenderBody()
-        </section>
-        <footer>
-            BIEB! Books that are (and have been) in my personal library!
-        </footer>
-    </div>
+        </section> <!-- end #main -->
+    </div> <!-- end .wrapper -->
+
+    <footer>
+            <span>BIEB!</span> Books that are (and have been) in my personal library
+    </footer>
 
 </body>
 </html>
