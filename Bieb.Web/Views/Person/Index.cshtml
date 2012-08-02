@@ -24,24 +24,24 @@
 
 @foreach (var person in Model) {
     <tr>
-        <td>
+        <td class="icon">
             @Html.DisplayFor(modelperson => person.GenderChar)
         </td>
-        <td>
+        <td class="icon">
             @if (!string.IsNullOrWhiteSpace(person.Nationality))
             { 
                 @Html.ImageFlagFor(person)
             }
         </td>
-        <td class="mainColumn">
+        <td class="mainColumn" "text">
             @Html.ActionLink(person.FullName, "Details", new { id=person.Id })
         </td>
-        <td> 
+        <td class="text"> 
             @string.Join(", ", person.Roles)
         </td>
     </tr>
 }
 
-</table>
+</table> <!-- end .listing -->
 
 @{ Html.RenderPartial("PagerPartial", Model); }
