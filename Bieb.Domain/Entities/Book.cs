@@ -10,9 +10,21 @@ namespace Bieb.Domain.Entities
     {
         public virtual string Isbn { get; set; }
         public virtual string Title { get; set; }
-        public virtual string TitleSort { get; set; }
         public virtual string Subtitle { get; set; }
         public virtual int? IsbnLanguage { get; set; }
+
+        private string _titleSort;
+        public virtual string TitleSort
+        {
+            get
+            {
+                return _titleSort ?? Title;
+            }
+            protected internal set
+            {
+                _titleSort = value;
+            }
+        }
 
         /// <summary>
         /// Returns the full name of the language of the book based on the IsbnLanguage

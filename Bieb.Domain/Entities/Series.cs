@@ -10,6 +10,19 @@ namespace Bieb.Domain.Entities
         public virtual string Title { get; set; }
         public virtual string Subtitle { get; set; }
 
+        private string _titleSort;
+        public virtual string TitleSort
+        {
+            get
+            {
+                return _titleSort ?? Title;
+            }
+            protected internal set
+            {
+                _titleSort = value;
+            }
+        }
+
         private IDictionary<int, Book> _books = new SortedList<int, Book>();
         public virtual IDictionary<int, Book> Books
         {
