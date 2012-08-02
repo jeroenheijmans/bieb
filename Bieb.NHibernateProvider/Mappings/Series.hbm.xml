@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Series">
+    
+    <id name="Id" column="SeriesId">
+      <generator class="native" />
+    </id>
+    
+    <property name="Title" not-null="true" index="IX_Series_Title" />
+    <property name="Subtitle" />
+
+    <map name="Books" table="SeriesBook" lazy="true">
+      <key column="SeriesId" foreign-key="FK_SeriesBook_Series" />
+      <index column="Position" type="Int32" />
+      <many-to-many column="BookId" class="Book" foreign-key="FK_SeriesBook_Book" />
+    </map>
+    
+  </class>
+
+</hibernate-mapping>

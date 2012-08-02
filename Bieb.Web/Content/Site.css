@@ -1,0 +1,387 @@
+﻿/*************************  To Do  ****************************/
+/* Fix wonky footer
+/* Simplify colors - too many people making up colors!
+/* Fix fonts, font-sizes, etc
+/* Add responsivity
+/* Add support for all modern browsers
+/* Perhaps add support for older browsers (how far back?)
+/**************************************************************/
+
+
+
+
+
+/*************************  Colors  ***************************/
+/* Background:	 #FFFFFF
+/* Text:		 #333331  *1
+/* Header:       #333332  *1
+/* Accents:      #FF0080  *2
+/* Gray borders  #DDDDDD
+/* Footertext    #BBBBBB        Simplify! Simplify!
+/* Links         #6E0030  *3
+/* Links hover   #FF0081  *2
+/* Headers       #333333  *1
+/* Table border  #F2F2F2
+/* Table header  #F2E6EC
+/* Flag border   #6E0031  *3
+/**************************************************************/
+
+
+
+
+
+/*************************  Fonts  ****************************/
+
+@font-face {
+    font-family: 'Museo500Regular';
+    src: url('/Content/fonts/museo500-webfont.eot');
+    src: url('/Content/fonts/museo500-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/museo500-webfont.woff') format('woff'), url('/Content/fonts/museo500-webfont.ttf') format('truetype'), url('/Content/fonts/museo500-webfont.svg#Museo500Regular') format('svg');
+}
+
+@font-face {
+    font-family: 'Museo700Regular';
+    src: url('/Content/fonts/museo700-webfont.eot');
+    src: url('/Content/fonts/museo700-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/museo700-webfont.woff') format('woff'), url('/Content/fonts/museo700-webfont.ttf') format('truetype'), url('/Content/fonts/museo700-webfont.svg#Museo700Regular') format('svg');
+}
+
+@font-face {
+    font-family: "MuseoSans500Regular";
+    src: url('/Content/fonts/museo_sans500-webfont.eot');
+    src: url('/Content/fonts/museo_sans500-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/museo_sans500-webfont.woff') format('woff'), url('/Content/fonts/museo_sans500-webfont.ttf') format('truetype'), url('/Content/fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
+}
+
+@font-face {
+    font-family: 'handwriting-draft_free-versRg';
+    src: url('/Content/fonts/handwriting-draft_free-version-webfont.eot');
+    src: url('/Content/fonts/handwriting-draft_free-version-webfont.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/handwriting-draft_free-version-webfont.woff') format('woff'), url('/Content/fonts/handwriting-draft_free-version-webfont.ttf') format('truetype'), url('/Content/fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_free-versRg') format('svg');
+}
+
+
+
+
+
+/*************************  Main structures  ******************/
+
+body {
+    font: normal 100%/1.5em "MuseoSans500Regular" , Georgia, serif;
+    color: #333331;
+    background: #FFFFFF url('/Content/images/lightpaperfibers.png') repeat scroll top left;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    background-color: #333332;
+    height: 13.5em;
+    border-top: 5px solid #FF0080;
+    border-bottom: 5px solid #FF0080;
+}
+
+.wrapper {
+    background: #FFFFFF;
+    max-width: 65em;
+    width: 90%;
+    margin: 0 auto;
+    padding: 16.5em 2em 0;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    background: transparent;
+    min-height: 100%;
+}
+
+#main {
+    overflow:auto;
+	padding-bottom: 6.25em;
+}
+
+footer, 
+#footer {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 6.25em;
+    background-color: #333332;
+    color: #DDDDDD;
+    padding: 2em 0;
+    font-size: 0.7em;
+    clear: both;
+    margin-top: -6.25em;
+    border-top: 5px solid #FF0080;
+    border-bottom: 5px solid #FF0080;
+}
+
+
+.card {
+    position: relative;
+    background: #FFFFFF;
+    padding: 1.5em 1em;
+    margin: 0 0 1.5em 1.85em;
+    width: 19em;
+    float: right;
+    font: normal 100% "Museo500Regular", Verdana, sans-serif;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);   
+}
+
+
+div#logindisplay {
+    float: right;
+}
+
+div.paging {
+    padding-top: 1em;
+}
+
+
+
+
+
+/*************************  Text elements  ********************/
+
+
+p {
+    padding-bottom: 1.5em;
+}
+
+a {
+    color: #6E0030;
+}
+
+a:hover {
+    color: #FF0081;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333333;
+}
+
+h1 {
+    font-size: 1.4em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3, h4, h5, h6 {
+    font-size: 1em;
+}
+
+.subtitle {
+    font-size: 0.90625em;
+}
+
+.fullname {
+    font-weight: bold;
+}
+
+header .title {
+    font: normal 5em/1.5em "handwriting-draft_free-versRg" , Georgia, serif;
+    padding: 0.35em 0;
+}
+
+header .title a {
+    color: #FFFFFF;
+}
+
+header .title a:hover {
+    color: #FF0080;
+}
+
+
+nav a {
+    color: #FFFFFF;
+}
+
+footer span {
+    color: #FF0080;
+}
+
+
+/* Custom text selection color */
+::selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+::-webkit-selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+::-moz-selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+
+
+
+/*************************  Element specific styles  **********/
+
+/* Nav */
+nav ul {
+}
+
+nav li {
+    display: inline-block;
+    font-size: 1.25em;
+    padding: 0 1em 0.4em;
+    margin: 0 1em;
+}
+
+nav .active, nav a:hover {
+    position: relative;
+    color: #FF0080;
+}
+
+/* Pointer under nav: size also depends on font-size on nav li! */
+nav .active:after, 
+nav a:hover:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -1em;
+    left: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    margin-left: -0.75em; /* Centers pointer; should equal width/2 */
+    background-color: #FF0080;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+/* Itemlists */
+section.itemList {
+    clear: left;
+}
+
+section.itemList li {
+    position: relative;
+    display: inline-block;
+    width: 19em;
+    margin: 0 2em 1.5em 0;
+    padding: 1.5em 1em 0;
+    float: left;
+    background: #FFFFFF;
+    overflow: auto;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+section.itemList li:nth-child(2n) {
+    margin: 0 0 1.5em;
+}
+
+
+
+/* Tables */
+td, 
+th {
+    padding: 0.15em 0.4em;
+    border: solid 1px #F2F2F2;
+    font-size: 0.9em;
+    line-height: normal;
+    background-color: #FFFFFF;
+}
+
+th {
+    text-align: left;
+    background-color: #F2E6EC;
+}
+
+.listing {
+    width: 100%;
+}
+
+.listing td, 
+.listing th {
+    white-space: nowrap;
+}
+
+.mainColumn, 
+.mainColumn {
+    white-space: normal;
+    width: 100%;
+}
+
+.listing .icon {
+    text-align: center;
+}
+
+.listing .text {
+    text-align: left;
+}
+
+
+
+/* Images */
+.card .representation {
+    display: block;
+    width: 19em;
+    margin: 0 auto;
+}
+
+.frontCover, 
+.backCover {
+    width: 19em;
+    float: left;
+    margin: 0;
+}
+
+.frontCover {
+    margin: 0 0 0 2em;
+}
+
+section.itemList img.itemRepresentation {
+    width: 4em;
+    margin: 0 1em 1.5em 0;
+    float: left;
+}
+
+
+img.flag.icon {
+    border: 1px solid #6E0031;
+}
+
+
+
+/* Search box */
+div#search {
+    position: fixed;
+    right: 0.5em;
+    top: 0.5em;
+}
+
+input[type=text].search {
+    background: #FFFFFF url('/Content/images/search-icon.png') no-repeat center right;
+    padding-right: 18px; /* width of the bg image + 2 px */
+}
+
+
+
+/* Basic Search Results */
+.searchResults h2 {
+    margin-top: 1em;
+}
+
+ul.searchResults > li + li {
+    margin-top: 0.5em;
+}
