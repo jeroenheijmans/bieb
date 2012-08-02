@@ -20,7 +20,11 @@ html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquot
 	font-size: 100%;
 	vertical-align: baseline;
 	background: transparent;
-}									
+}								
+
+html, body {
+    height: 100%;
+}
 
 article, aside, figure, footer, header, hgroup, nav, section {display: block;}
 
@@ -35,7 +39,7 @@ embed {max-width: 100%;}
 html {overflow-y: scroll;}
 
 /* we use a lot of ULs that aren't bulleted. 
-	don't forget to restore the bullets within content. */
+   don't forget to restore the bullets within content. */
 ul {list-style: none;}
 
 blockquote, q {quotes: none;}
@@ -76,15 +80,13 @@ select, input, textarea {font: 90% serif;}
 table {font-size: inherit; font: 100%;}
  
 /* Accessible focus treatment
-	people.opera.com/patrickl/experiments/keyboard/test */
+   people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active {outline: none;}
-
-small {font-size: 85%;}
 
 td, td img {vertical-align: top;} 
 
 /* Make sure sup and sub don't screw with your line-heights
-	gist.github.com/413930 */
+   gist.github.com/413930 */
 sub, sup {font-size: 75%; line-height: 0; position: relative;}
 sup {top: -0.5em;}
 sub {bottom: -0.25em;}
