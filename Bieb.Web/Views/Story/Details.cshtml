@@ -13,7 +13,7 @@
     <section class="itemList">
         <h3>Authors</h3>
         @{ Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Authors); }
-    </section>
+    </section> <!-- end .itemList -->
 }
 
 @if (Model.Translators.Count() > 0)
@@ -21,6 +21,6 @@
     <section class="itemList">
         <h3>Translators</h3>
         @{ Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Translators); }
-    </section>
+    </section> <!-- end .itemList -->
 }
 
