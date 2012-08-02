@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Bieb.Domain.Entities.Story>
+
+<ul>
+@foreach (var story in Model) 
+{
+    <li>
+        <img class="itemRepresentation" src="@Url.Content("~/Content/images/book-placeholder-front-small.png")" alt="book cover icon" />
+        <h3>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</h3>
+        <span>By @string.Join(", ", story.Authors)</span>
+    </li>
+}
+</ul>

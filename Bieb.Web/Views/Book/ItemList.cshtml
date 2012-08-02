@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Bieb.Domain.Entities.Book>
+
+<ul>
+@foreach (var book in Model) 
+{
+    <li>
+        <img class="itemRepresentation" src="@Url.Content("~/Content/images/book-placeholder-front-small.png")" alt="book cover icon" />
+        <h3>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</h3>
+
+        @if (!string.IsNullOrWhiteSpace(book.Subtitle))
+        {
+            <span class="subtitle">@book.Subtitle</span><br />
+        }
+        
+        <span>@book.BookType</span>
+
+        @if (!string.IsNullOrWhiteSpace(book.Isbn))
+        {
+            <br />
+            <span>@book.Isbn</span>
+        }
+    </li>
+}
+</ul>
