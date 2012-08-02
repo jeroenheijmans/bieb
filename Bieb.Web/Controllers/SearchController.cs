@@ -28,7 +28,7 @@ namespace Bieb.Web.Controllers
 
         public ActionResult Basic(string query)
         {
-            var queryLowerCased = query.ToLower();
+            var queryLowerCased = (query ?? "").ToLower();
 
             // TODO: this now lists all matches, potentially EVERYTHING in the database. This may not be 
             // a disaster, given the number of expected items, but is certainly not very pretty. However,
