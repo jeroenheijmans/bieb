@@ -9,7 +9,9 @@
 
     <ul>
         <li>
-            @Html.DisplayFor(model => model.Year), @Html.DisplayFor(model => model.Language)
+            @Html.DisplayFor(model => model.Publisher.Name), 
+            @Html.DisplayFor(model => model.Year), 
+            @Html.DisplayFor(model => model.Language)
         </li>
         
         @if (Model.Isbn != null)
@@ -50,6 +52,22 @@
                 Authors:
                 <ul>
                 @foreach (var person in Model.Authors)
+                {
+                    <li>
+                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
+                    </li>
+                }
+                </ul>
+            </li>
+        }
+
+        @if (Model.Translators.Count() > 0)
+        {
+            <li>
+                <br />
+                Translators:
+                <ul>
+                @foreach (var person in Model.Translators)
                 {
                     <li>
                         @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
