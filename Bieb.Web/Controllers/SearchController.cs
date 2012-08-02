@@ -37,7 +37,7 @@ namespace Bieb.Web.Controllers
 
             IEnumerable<Person> people = PersonRepository
                                             .Items
-                                            .Where(p => p.Surname.ToLower().Contains(queryLowerCased))
+                                            .Where(p => p.FirstName.ToLower().Contains(queryLowerCased) || p.Surname.ToLower().Contains(queryLowerCased))
                                             .Select(p => p);
 
             IEnumerable<Book> books = BookRepository
