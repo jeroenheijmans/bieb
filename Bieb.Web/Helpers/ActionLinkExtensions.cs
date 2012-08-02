@@ -12,19 +12,16 @@ namespace Bieb.Web.Helpers
         public static MvcHtmlString MenuLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName)
         {
             string currentController = htmlHelper.ViewContext.RouteData.GetRequiredString("controller");
-            if (controllerName == currentController)
+
+            object htmlAttributes = null;
+
+            if (controllerName == currentController 
+                || (controllerName == "Book" && currentController == "Story"))
             {
-                return htmlHelper.ActionLink(
-                    linkText,
-                    actionName,
-                    controllerName,
-                    null,
-                    new
-                    {
-                        @class = "active"
-                    });
+                htmlAttributes = new { @class = "active" };
             }
-            return htmlHelper.ActionLink(linkText, actionName, controllerName);
+
+            return htmlHelper.ActionLink(linkText, actionName, controllerName, null, htmlAttributes);
         }
 
     }
