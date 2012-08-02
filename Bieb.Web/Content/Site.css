@@ -1,4 +1,5 @@
 ﻿/*************************  To Do  ****************************/
+/* Fix wonky footer
 /* Simplify colors - too many people making up colors!
 /* Fix fonts, font-sizes, etc
 /* Add responsivity
@@ -12,17 +13,17 @@
 
 /*************************  Colors  ***************************/
 /* Background:	 #FFFFFF
-/* Text:		 #470503
-/* Header:       #470504
-/* Accents:      #FF0000
-/* Gray 1        #DDDDDD
-/* Gray 2        #BBBBBB        Simplify! Simplify!
-/* Links         #700041
-/* Links hover   #D80082
-/* Headers       #333333
-/* Table border  #EDE6EA
-/* Table header  #F7EFF4
-/* Flag border   #700041
+/* Text:		 #333331  *1
+/* Header:       #333332  *1
+/* Accents:      #FF0080  *2
+/* Gray borders  #DDDDDD
+/* Footertext    #BBBBBB        Simplify! Simplify!
+/* Links         #6E0030  *3
+/* Links hover   #FF0081  *2
+/* Headers       #333333  *1
+/* Table border  #F2F2F2
+/* Table header  #F2E6EC
+/* Flag border   #6E0031  *3
 /**************************************************************/
 
 
@@ -63,53 +64,66 @@
 
 body {
     font: normal 100%/1.5em "MuseoSans500Regular" , Georgia, serif;
-    color: #470503;
+    color: #333331;
     background: #FFFFFF url('/Content/images/lightpaperfibers.png') repeat scroll top left;
 }
 
 header {
+    position: absolute;
+    top: 0;
     text-align: center;
     width: 100%;
-    background-color: #470504;
+    background-color: #333332;
+    height: 12.5em;
 }
 
 .wrapper {
     background: #FFFFFF;
     max-width: 65em;
     width: 90%;
-    margin: 1.5em auto;
-    padding: 0 2em 1.5em;
+    margin: 0 auto;
+    padding: 14em 2em 0;
     border-left: 1px solid #DDDDDD;
     border-right: 1px solid #DDDDDD;
-    background: inherit;
-    z-index: 0;
-    min-height: 30em;
+    background: transparent;
+    min-height: 100%;
 }
 
-footer, #footer {
-    color: #BBBBBB;
+footer, 
+#footer {
+    position: relative;
     text-align: center;
-    margin: 3em 0 0 0;
-    font-size: .7em;
+    width: 100%;
+    height: 6.25em;
+    background-color: #333332;
+    color: #DDDDDD;
+    padding: 2.2em 0;
+    font-size: 0.7em;
     clear: both;
+    margin-top: -6.25em;
 }
 
-
-section#main {
-    margin-top: 1em;
-}
 
 .card {
     position: relative;
     background: #FFFFFF;
-    padding: 1.5em 1em 0;
-    margin: 0 0 0 1.85em;
+    padding: 1.5em 1em;
+    margin: 0 0 1.5em 1.85em;
     width: 19em;
     float: right;
-    border-left: 1px solid #DDDDDD;
     font: normal 100% "Museo500Regular", Verdana, sans-serif;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);   
 }
 
+#main {
+    overflow:auto;
+	padding-bottom: 6.25em;
+}
 
 
 div#logindisplay {
@@ -117,7 +131,7 @@ div#logindisplay {
 }
 
 div.paging {
-    margin-top: 1em;
+    padding-top: 1em;
 }
 
 
@@ -128,15 +142,15 @@ div.paging {
 
 
 p {
-    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
 }
 
 a {
-    color: #700041;
+    color: #6E0030;
 }
 
 a:hover {
-    color: #D80082;
+    color: #FF0081;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -155,9 +169,17 @@ h3, h4, h5, h6 {
     font-size: 1em;
 }
 
+.subtitle {
+    font-size: 0.90625em;
+}
+
+.fullname {
+    font-weight: bold;
+}
+
 header .title {
     font: normal 5em/1.5em "handwriting-draft_free-versRg" , Georgia, serif;
-    padding: .3em 0;
+    padding: 0.3em 0;
 }
 
 header .title a {
@@ -165,17 +187,37 @@ header .title a {
 }
 
 header .title a:hover {
-    color: #FF0000;
+    color: #FF0080;
 }
 
-#menu a:hover {
-    color: #FF0000;
-}
 
-#menu a {
+nav a {
     color: #FFFFFF;
 }
 
+footer span {
+    color: #FF0080;
+}
+
+
+/* Custom text selection color */
+::selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+::-webkit-selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+::-moz-selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}
 
 
 
@@ -183,35 +225,37 @@ header .title a:hover {
 /*************************  Element specific styles  **********/
 
 /* Nav */
-#menu li {
+nav ul {
+}
+
+nav li {
     display: inline-block;
-    background-color: inherit;
-    padding: 0.4em 1.0em;
+    font-size: 1.2em;
+    padding: 0 1em 0.4em;
     margin: 0 1em;
 }
 
-#menu .active, #menu a:hover {
+nav .active, nav a:hover {
     position: relative;
+    color: #FF0080;
 }
 
-#menu .active:after, #menu a:hover:after {
+/* Pointer under nav: size also depends on font-size on nav li! */
+nav .active:after, 
+nav a:hover:after {
     content: "";
     position: absolute;
     z-index: -1;
-    bottom: -1em;
+    bottom: -0.75em;
     left: 50%;
-    margin-left: -0.8em; /* Centers pointer; must change with width/height and/or font-size */
-    background-color: #470504;
     width: 1.5em;
     height: 1.5em;
+    margin-left: -0.75em; /* Centers pointer; should equal width/2 */
+    background-color: #FF0080;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-#menu a:hover:after {
-    background-color: #FF0000;
 }
 
 
@@ -228,10 +272,14 @@ section.itemList li {
     margin: 0 2em 1.5em 0;
     padding: 1.5em 1em 0;
     float: left;
-    border-top: 1px solid #DDDDDD;
-    border-bottom: 1px solid #DDDDDD;
     background: #FFFFFF;
     overflow: auto;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 section.itemList li:nth-child(2n) {
@@ -241,30 +289,41 @@ section.itemList li:nth-child(2n) {
 
 
 /* Tables */
-table td, table th {
+td, 
+th {
     padding: 0.15em 0.4em;
-    border: solid 1px #EDE6EA;
+    border: solid 1px #F2F2F2;
     font-size: 0.9em;
     line-height: normal;
     background-color: #FFFFFF;
 }
 
-table th {
+th {
     text-align: left;
-    background-color: #F7EFF4;
+    background-color: #F2E6EC;
 }
 
-table.listing {
+.listing {
     width: 100%;
 }
 
-table.listing td, table.listing th {
+.listing td, 
+.listing th {
     white-space: nowrap;
 }
 
-table.listing td.mainColumn, table.listing th.mainColumn {
+.mainColumn, 
+.mainColumn {
     white-space: normal;
     width: 100%;
+}
+
+.listing .icon {
+    text-align: center;
+}
+
+.listing .text {
+    text-align: left;
 }
 
 
@@ -276,7 +335,8 @@ table.listing td.mainColumn, table.listing th.mainColumn {
     margin: 0 auto;
 }
 
-.frontCover, .backCover {
+.frontCover, 
+.backCover {
     width: 19em;
     float: left;
     margin: 0;
@@ -294,7 +354,7 @@ section.itemList img.itemRepresentation {
 
 
 img.flag.icon {
-    border: 1px solid #700041;
+    border: 1px solid #6E0031;
 }
 
 
@@ -306,8 +366,8 @@ div#search {
     top: 0.5em;
 }
 
-div#search input[type=text] {
-    background: #FFF url('/Content/images/search-icon.png') no-repeat center right;
+input[type=text].search {
+    background: #FFFFFF url('/Content/images/search-icon.png') no-repeat center right;
     padding-right: 18px; /* width of the bg image + 2 px */
 }
 
