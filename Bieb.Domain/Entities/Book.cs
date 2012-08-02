@@ -10,6 +10,7 @@ namespace Bieb.Domain.Entities
     {
         public virtual string Isbn { get; set; }
         public virtual string Title { get; set; }
+        public virtual string TitleSort { get; set; }
         public virtual string Subtitle { get; set; }
         public virtual int? IsbnLanguage { get; set; }
 

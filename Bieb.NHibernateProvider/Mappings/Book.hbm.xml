@@ -10,6 +10,7 @@
     </id>
     
     <property name="Title" not-null="true" index="IX_Book_Title" />
+    <property name="TitleSort" generated="always" />
     <property name="Subtitle" />
     <property name="Isbn" />
     <property name="IsbnLanguage" />
