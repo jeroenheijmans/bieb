@@ -38,16 +38,19 @@ namespace Bieb.Web.Controllers
             IEnumerable<Person> people = PersonRepository
                                             .Items
                                             .Where(p => p.FirstName.ToLower().Contains(queryLowerCased) || p.Surname.ToLower().Contains(queryLowerCased))
+                                            .OrderBy(p => p.Surname)
                                             .Select(p => p);
 
             IEnumerable<Book> books = BookRepository
                                             .Items
                                             .Where(b => b.Title.ToLower().Contains(queryLowerCased))
+                                            .OrderBy(b => b.Title)
                                             .Select(b => b);
 
             IEnumerable<Story> stories = StoryRepository
                                             .Items
                                             .Where(s => s.Title.ToLower().Contains(queryLowerCased))
+                                            .OrderBy(s => s.Title)
                                             .Select(s => s);
 
             var model = new BasicSearchResultModel()
