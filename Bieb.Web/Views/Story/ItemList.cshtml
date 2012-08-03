@@ -1,12 +1,30 @@
 ﻿@model IEnumerable<Bieb.Domain.Entities.Story>
 
-<ul>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>By</th>
+        <th>From</th>
+    </tr>
+
 @foreach (var story in Model) 
 {
-    <li>
-        <img class="itemRepresentation" src="@Url.Content("~/Content/images/book-placeholder-front-small.png")" alt="book cover icon" />
-        <h3>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</h3>
-        <span>By @string.Join(", ", story.Authors)</span>
-    </li>
+    <tr>
+        <td>@Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })</td>
+        <td>
+            @for (int i = 0; i < story.Authors.Count; i++ )
+            { 
+                @Html.ActionLink(story.Authors[i].FullName, "Details", new { controller = "Person", id = story.Authors[i].Id })
+                if (i < story.Authors.Count - 1)
+                { 
+                    @Html.Raw(", ")
+                }
+            }      
+        </td>
+        <td>
+            @Html.ActionLink(story.Book.Title, "Details", new { controller = "Book", id = story.Book.Id })
+            (@story.Book.BookType)
+        </td>
+    </tr>
 }
-</ul>
+</table>
