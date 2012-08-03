@@ -303,6 +303,10 @@ section.itemList li:nth-child(2n) {
     margin: 0 0 1.5em;
 }
 
+section.itemList table {
+    width: 40em;
+}
+
 
 
 /* Tables */
