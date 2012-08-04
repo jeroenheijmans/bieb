@@ -72,6 +72,26 @@ namespace Bieb.Domain.Entities
             set { _authoredStories = value; }
         }
 
+        public virtual IEnumerable<Story> AuthoredShortStories
+        {
+            get
+            {
+                return _authoredStories
+                        .Where(s => s.Book.BookType != BookType.Novel)
+                        .Select(s => s);
+            }
+        }
+
+        public virtual IEnumerable<Book> AuthoredNovels
+        {
+            get
+            {
+                return _authoredStories
+                        .Where(s => s.Book.BookType == BookType.Novel)
+                        .Select(s => s.Book);
+            }
+        }
+
         private IList<Story> _translatedStories = new List<Story>();
         public virtual IList<Story> TranslatedStories
         {

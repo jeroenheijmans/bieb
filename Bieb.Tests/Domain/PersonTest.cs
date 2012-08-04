@@ -112,5 +112,37 @@ namespace Bieb.Tests.Domain
             Assert.That(SybrenPolet.Roles.Contains(Role.Translator));
             Assert.That(SybrenPolet.Roles.Count(), Is.EqualTo(3));
         }
+
+        [Test]
+        public void Can_Distinguish_Between_ShortStories_And_Novels()
+        {
+            // Arrange
+            Person asimov = new Person() { FirstName = "Isaac", Surname = "Asimov" };
+
+            Story shortStory1 = new Story(), shortStory2 = new Story();
+            Story novelStory = new Story();
+
+            Book collection = new Book();
+            collection.Stories.Add(0, shortStory1);
+            collection.Stories.Add(1, shortStory2);
+            shortStory1.Book = collection;
+            shortStory2.Book = collection;
+
+            Book novel = new Book();
+            novel.Stories.Add(0, novelStory);
+            novelStory.Book = novel;
+
+            asimov.AuthoredStories.Add(shortStory1);
+            asimov.AuthoredStories.Add(shortStory2);
+            asimov.AuthoredStories.Add(novelStory);
+
+            // Act & Assert
+            Assert.That(asimov.AuthoredStories.Count, Is.EqualTo(3));
+            Assert.That(asimov.AuthoredNovels.Count(), Is.EqualTo(1));
+            Assert.That(asimov.AuthoredNovels.ToList()[0], Is.EqualTo(novel));
+            Assert.That(asimov.AuthoredShortStories.Count(), Is.EqualTo(2));
+            Assert.That(asimov.AuthoredShortStories.ToList()[0], Is.EqualTo(shortStory1));
+            Assert.That(asimov.AuthoredShortStories.ToList()[1], Is.EqualTo(shortStory2));
+        }
     }
 }
