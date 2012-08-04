@@ -9,6 +9,14 @@
 <section class="books">
     <p>Works by <span class="fullname">@Model.FullName</span> in my library:</p>
 
+    @if (Model.AuthoredNovels.Count() > 0)
+    { 
+        <section class="itemList authoredNovels">
+            <h3>Novels</h3>
+            @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredNovels); }
+        </section> <!-- end .itemList .authoredNovels -->
+    }
+
     @if (Model.EditedBooks.Count > 0)
     { 
         <section class="itemList editedBooks">
@@ -33,12 +41,12 @@
         </section> <!-- end .itemList .translatedStories -->
     }
         
-    @if (Model.AuthoredStories.Count > 0)
+    @if (Model.AuthoredShortStories.Count() > 0)
     {
         // TODO: Split between short stories and novels
-        <section class="itemList authoredStories">
-            <h3>Authored Stories</h3>
-            @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredStories); }
-        </section> <!-- end .itemList .authoredStories -->
+        <section class="itemList authoredShortStories">
+            <h3>Authored Short Stories</h3>
+            @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredShortStories); }
+        </section> <!-- end .itemList .authoredShortStories -->
     }
 </section> <!-- end .books -->
