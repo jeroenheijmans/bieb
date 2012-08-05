@@ -9,7 +9,7 @@ using Bieb.Domain.CustomDataTypes;
 namespace Bieb.Tests.Domain
 {
     [TestFixture]
-    public class UncertainDateTest
+    public class UncertainDateTests
     {
         #region Tests
 

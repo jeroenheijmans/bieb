@@ -13,7 +13,7 @@ using PagedList;
 namespace Bieb.Tests.Controllers
 {
     [TestFixture]
-    public class BookControllerTest
+    public class BookControllerTests
     {
         [Test]
         public void Can_Get_Book_Details()

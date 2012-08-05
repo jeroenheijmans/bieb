@@ -13,7 +13,7 @@ using Bieb.Web.Models;
 namespace Bieb.Tests.Controllers
 {
     [TestFixture]
-    public class SearchControllerTest
+    public class SearchControllerTests
     {
         [Test]
         public void Can_Find_Book_With_Basic_Search()
