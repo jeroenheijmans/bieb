@@ -1,5 +1,4 @@
 ﻿/*************************  To Do  ****************************/
-/* Fix wonky footer
 /* Fix vertical rhythm
 /* Add responsivity
 /* Add support for all modern browsers
@@ -51,6 +50,7 @@ body {
 /* Header */
 header {
 	width: 100%;
+	position: absolute;
 }
 
 /* Nav */
@@ -72,13 +72,12 @@ nav li {
     position: relative;
 	float: left;
 	display: inline-block;
-	width: 10.14em;	
+	width: 10.1671em;	
 	border-right: 1px solid #FF0080;
 }
 
 nav li a {
 	display: inline-block;
-	margin: 0 2em 0 0;
 	color: #FFFFFF;
 	padding: 0.75em;
 	width: 100%
@@ -96,7 +95,7 @@ header .title {
 	font: normal 3.5em/1.5em 'handwriting-draft_regular', Verdana, serif;		/* 56 / 16 */
 	margin: 0 auto 1em;
 	padding: 2em 0 1em;
-	width: 17.3em;																/* 976 / 56 */
+	width: 17.43em;																/* 976 / 56 */
 	border-bottom: 1px solid #333333;
 }
 
@@ -120,10 +119,16 @@ div#search {
 
 .wrapper {
 	width: 61em;
-	margin: 0 auto 3em;
+	margin: 0 auto;
+	min-height: 100%;
 }
 
-
+#main {
+    overflow:auto;
+	padding: 20em 0;
+	margin-bottom: 2em;
+	padding-bottom: 1.5em;  /* must be same height as the footer */
+}  
 
 footer {
 	position: relative;
@@ -132,6 +137,9 @@ footer {
 	width: 100%;
 	background: #333333;
 	color: #FFFFFF;
+	height: 1.5em;
+	margin-top: -1.5em;
+	clear: both;
 }
 
 footer p {
