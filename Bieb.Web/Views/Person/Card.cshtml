@@ -6,8 +6,9 @@
     <img src="@Url.Content("~/Content/images/person-placeholder.png")" alt="☺" title="Person's portrait pica" class="representation" />
     <h1>
         @Html.DisplayFor(model => model.FullName)
-        
-        @if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
+    </h1>
+
+    <h2>@if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
         {
             <span>
                 @Model.GenderChar
@@ -18,9 +19,7 @@
         {
             @Html.ImageFlagFor(Model)
         }
-    </h1>
-
-    <h2>@string.Join(", ", Model.Roles)</h2>
+        @string.Join(", ", Model.Roles)</h2>
 
     <ul>
         @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
