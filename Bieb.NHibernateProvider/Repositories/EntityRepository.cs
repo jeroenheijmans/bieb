@@ -6,6 +6,8 @@ using Bieb.Domain.Repositories;
 using NHibernate;
 using NHibernate.Linq;
 using Bieb.Domain.Entities;
+using NHibernate.Criterion;
+using NHibernate.SqlCommand;
 
 namespace Bieb.NHibernateProvider.Repositories
 {
@@ -25,6 +27,15 @@ namespace Bieb.NHibernateProvider.Repositories
             return session.Load<T>(id);
         }
 
+        public T GetRandomItem()
+        {
+            return session
+                    .CreateCriteria<T>()
+                    .AddOrder(new RandomOrder())
+                    .SetMaxResults(1)
+                    .UniqueResult<T>();
+        }
+
         public IQueryable<T> Items
         {
             get { return session.Query<T>(); }
@@ -41,6 +52,15 @@ namespace Bieb.NHibernateProvider.Repositories
         public void Delete(T item)
         {
             session.Delete(item);
+        }
+
+        private class RandomOrder : Order
+        {
+            public RandomOrder() : base("", true) { }
+            public override SqlString ToSqlString(ICriteria criteria, ICriteriaQuery criteriaQuery)
+            {
+                return new SqlString("NEWID()");
+            }
         }
     }
 }

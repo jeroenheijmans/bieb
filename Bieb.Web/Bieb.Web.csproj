@@ -75,6 +75,7 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SeriesController.cs" />
     <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Controllers\SurpriseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
