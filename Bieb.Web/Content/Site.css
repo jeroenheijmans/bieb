@@ -72,15 +72,19 @@ nav li {
     position: relative;
 	float: left;
 	display: inline-block;
-	width: 10.1671em;	
+	width: 10.167em;
 	border-right: 1px solid #FF0080;
+}
+
+nav li:first-child {   
+	border-left: 1px solid #FF0080;
 }
 
 nav li a {
 	display: inline-block;
 	color: #FFFFFF;
 	padding: 0.75em;
-	width: 100%
+	width: 100%;
 }
 
 nav li a:hover,
@@ -96,7 +100,7 @@ header .title {
 	margin: 0 auto 1em;
 	padding: 2em 0 1em;
 	width: 17.43em;																/* 976 / 56 */
-	border-bottom: 1px solid #333333;
+	border-bottom: 1px solid #666666;
 }
 
 header .title a {
@@ -124,10 +128,11 @@ div#search {
 }
 
 #main {
-    overflow:auto;
+    overflow: auto;
 	padding: 20em 0;
 	margin-bottom: 2em;
 	padding-bottom: 1.5em;  /* must be same height as the footer */
+	width: 100%;
 }  
 
 footer {
@@ -143,9 +148,9 @@ footer {
 }
 
 footer p {
-    width: 61em;
+    width: 61em;                            /* 976 / 16 */
     margin: 0 auto;
-    padding: 0 0.5em;
+    padding: 0 0.75em;
     border-left: 1px solid #FF0080;
     border-right: 1px solid #FF0080;
 }
@@ -154,13 +159,23 @@ footer span {
 	color: #FF0080;
 }
 
-.books table {
-	font-size: 0.9375em;		/* 15 / 16 */
-	width: 42.7em;				/* 640 / 15 */
+section .books {
+    width: 40em;				/* 640 / 16 */
+}
+
+section .books table {
+	width: 40em;                /* 640 / 16 */
+}
+
+section .books table td, 
+section .books table th {
+    font-size: 0.875em;	        /* 14 / 16 */
+	line-height: 1.642em;       /* 23 / 14 */   /* (compensate for 1 px border */
+    padding: 0 0.4em;
 }
 
 .card {
-	width: 19em;
+	width: 19em;                /* 304 / 16 */
 	position: relative;
 	float: right;
 }
@@ -172,6 +187,43 @@ a {
 
 a:hover {
     color: #FF0080;
+}
+
+
+td, 
+th {
+    border-bottom: solid 1px #EEEEEE;
+    vertical-align: middle;
+}
+
+th {
+    text-align: left;
+}
+
+.listing {
+    width: 100%;
+}
+
+.listing td,
+.listing th {
+    font-size: 0.9375em;        /* 15 / 16 */
+	line-height: 1.533em;       /* 23 / 15 */ /* (compensate for 1 px border */
+    padding: 0 0.4em;
+    white-space: nowrap;
+}
+
+.mainColumn {
+    white-space: normal;
+    width: 100%;
+}
+
+.listing .icon {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.listing .text {
+    text-align: left;
 }
 
 
