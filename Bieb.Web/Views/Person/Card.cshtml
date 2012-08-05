@@ -1,6 +1,8 @@
 ﻿@model Bieb.Domain.Entities.Person
 
 <div class="card person">
+    <p class="title">Basic details</p>
+    
     <img src="@Url.Content("~/Content/images/person-placeholder.png")" alt="☺" title="Person's portrait pica" class="representation" />
     <h1>
         @Html.DisplayFor(model => model.FullName)
