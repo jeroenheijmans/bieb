@@ -18,8 +18,11 @@
     <property name="Nationality" />
     <property name="PlaceOfBirth" />
     <property name="PlaceOfDeath" />
-    <property name="DateOfBirth" />
-    <property name="DateOfDeath" />
+
+    <property name="DateOfBirthFrom" type="Date" />
+    <property name="DateOfBirthUntil" type="Date" />
+    <property name="DateOfDeathFrom" type="Date" />
+    <property name="DateOfDeathUntil" type="Date" />
 
     <bag name="EditedBooks" table="BookEditor" lazy="true">
       <key column="PersonId" foreign-key="FK_BookEditor_Person" />

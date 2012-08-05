@@ -58,6 +58,7 @@
     <Compile Include="Controllers\SearchControllerTest.cs" />
     <Compile Include="Domain\PersonTest.cs" />
     <Compile Include="Domain\BookTest.cs" />
+    <Compile Include="Domain\UncertainDateTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebHelpers\ActionLinkExtensionsTest.cs" />
   </ItemGroup>

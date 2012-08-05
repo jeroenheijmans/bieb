@@ -25,7 +25,7 @@
         {
             <li>
                 Born:
-                @Html.DisplayFor(model => model.DateOfBirth)
+                @Model.DateOfBirth.ToString()
                 @Html.DisplayFor(model => model.PlaceOfBirth)
             </li>
         }
@@ -34,7 +34,7 @@
         {
             <li>
                 Died:
-                @Html.DisplayFor(model => model.DateOfDeath)
+                @Model.DateOfDeath.ToString()
                 @Html.DisplayFor(model => model.PlaceOfDeath)
             </li>
         }
