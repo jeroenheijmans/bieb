@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bieb.Domain.CustomDataTypes;
 
 namespace Bieb.Domain.Entities
 {
@@ -54,9 +55,31 @@ namespace Bieb.Domain.Entities
         public virtual string PlaceOfDeath { get; set; }
         public virtual string PlaceOfBirth { get; set; }
 
-        // TODO: Implement a "UncertainDate" solution. See also: http://stackoverflow.com/questions/6431908/how-to-design-date-of-birth-in-db-and-orm-for-mix-of-known-and-unkown-dates
-        public virtual string DateOfBirth { get; set; }
-        public virtual string DateOfDeath { get; set; }
+        // Replace DateTime to some kind of Date class vecause we don't care about the time (but this needs some work in the NHibernate layer as well...)
+        public virtual DateTime? DateOfBirthFrom { get; set; }
+        public virtual DateTime? DateOfBirthUntil { get; set; }
+        public virtual DateTime? DateOfDeathFrom { get; set; }
+        public virtual DateTime? DateOfDeathUntil { get; set; }
+
+        public virtual UncertainDate DateOfBirth 
+        { 
+            get
+            {
+                return new UncertainDate(DateOfBirthFrom, DateOfBirthUntil);
+            }
+
+            // TODO: A setter would be nice, propagating to the until/from dates
+        }
+
+        public virtual UncertainDate DateOfDeath
+        {
+            get
+            {
+                return new UncertainDate(DateOfDeathFrom, DateOfDeathUntil);
+            }
+
+            // TODO: A setter would be nice, propagating to the until/from dates
+        }
 
         private IList<Book> _editedBooks = new List<Book>();
         public virtual IList<Book> EditedBooks
