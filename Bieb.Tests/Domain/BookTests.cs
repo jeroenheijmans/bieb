@@ -8,7 +8,7 @@ using Bieb.Domain.Entities;
 namespace Bieb.Tests.Domain
 {
     [TestFixture]
-    public class BookTest
+    public class BookTests
     {
         [Test]
         public void Contains_Tags_From_Stories()

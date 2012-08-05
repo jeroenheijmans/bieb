@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Bieb.Tests.Domain
 {
     [TestFixture]
-    public class PersonTest
+    public class PersonTests
     {
         private string title = "Dr. Mr.";
         private string firstName = "John J.";

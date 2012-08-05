@@ -54,13 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BookControllerTest.cs" />
-    <Compile Include="Controllers\SearchControllerTest.cs" />
-    <Compile Include="Domain\PersonTest.cs" />
-    <Compile Include="Domain\BookTest.cs" />
-    <Compile Include="Domain\UncertainDateTest.cs" />
+    <Compile Include="Controllers\BookControllerTests.cs" />
+    <Compile Include="Controllers\SearchControllerTests.cs" />
+    <Compile Include="Domain\PersonTests.cs" />
+    <Compile Include="Domain\BookTests.cs" />
+    <Compile Include="Domain\UncertainDateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebHelpers\ActionLinkExtensionsTest.cs" />
+    <Compile Include="WebHelpers\ActionLinkExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
