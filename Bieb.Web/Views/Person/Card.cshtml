@@ -1,0 +1,53 @@
+﻿@model Bieb.Domain.Entities.Person
+
+<div class="card person">
+    <p class="title">Basic details</p>
+    
+    <img src="@Url.Content("~/Content/images/person-placeholder.png")" alt="☺" title="Person's portrait pica" class="representation" />
+    <h1>
+        @Html.DisplayFor(model => model.FullName)
+    </h1>
+
+    <h2>@if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
+        {
+            <span>
+                @Model.GenderChar
+            </span>
+        }
+
+        @if (Model.Nationality != null)
+        {
+            @Html.ImageFlagFor(Model)
+        }
+        @string.Join(", ", Model.Roles)</h2>
+
+    <ul>
+        @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
+        {
+            <li>
+                Born:
+                @Model.DateOfBirth.ToString()
+                @Html.DisplayFor(model => model.PlaceOfBirth)
+            </li>
+        }
+        
+        @if (Model.DateOfDeath != null || Model.PlaceOfDeath != null)
+        {
+            <li>
+                Died:
+                @Model.DateOfDeath.ToString()
+                @Html.DisplayFor(model => model.PlaceOfDeath)
+            </li>
+        }
+        
+        @if (Model.Tags.Count() > 0)
+        { 
+            <li>
+                Tags:
+                @string.Join(", ", Model.Tags)
+            </li>
+        }
+    </ul>
+
+    <p>Do you have additional information about this person? Please let me know!</p>
+</div> <!-- end .card .person -->

@@ -1,0 +1,248 @@
+﻿/*************************  To Do  ****************************/
+/* Fix vertical rhythm
+/* Add responsivity
+/* Add support for all modern browsers
+/* Perhaps add support for older browsers (how far back?)
+/**************************************************************/
+
+
+
+/*************************  Colors  ***************************/
+/* Links					#6E0030
+/* Links hover, details  	#FF0080
+/* Text, borders, etc		#333333
+/* Title					#666666
+/* Background, nav links	#FFFFFF
+/**************************************************************/
+
+
+
+
+
+
+@font-face {
+    font-family: "handwriting-draft_regular";
+    src: url('fonts/handwriting-draft_free-version-webfont.eot');
+    src: url('fonts/handwriting-draft_free-version-webfont.eot?#iefix') format('embedded-opentype'), 
+		 url('fonts/handwriting-draft_free-version-webfont.woff') format('woff'), 
+		 url('fonts/handwriting-draft_free-version-webfont.ttf') format('truetype'), 
+		 url('fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular') format('svg');
+}
+
+@font-face {
+    font-family: "MuseoSans500Regular";
+    src: url('fonts/museo_sans500-webfont.eot');
+    src: url('fonts/museo_sans500-webfont.eot?#iefix') format('embedded-opentype'), 
+		 url('fonts/museo_sans500-webfont.woff') format('woff'), 
+		 url('fonts/museo_sans500-webfont.ttf') format('truetype'), 
+		 url('fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
+}
+
+
+
+/* Body */
+body {
+	font: normal 100%/1.5em "MuseoSans500Regular", Georgia, serif;
+	color: #333333;
+	background: #FFFFFF;
+}
+
+/* Header */
+header {
+	width: 100%;
+	position: absolute;
+}
+
+/* Nav */
+nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #333333;
+}
+
+nav ul {
+	position: relative;
+	width: 61em;
+	margin: 0 auto;
+}
+
+nav li {
+    position: relative;
+	float: left;
+	display: inline-block;
+	width: 10.167em;
+	border-right: 1px solid #FF0080;
+}
+
+nav li:first-child {   
+	border-left: 1px solid #FF0080;
+}
+
+nav li a {
+	display: inline-block;
+	color: #FFFFFF;
+	padding: 0.75em;
+	width: 100%;
+}
+
+nav li a:hover,
+nav li a.active
+ {
+	background-color: #FF0080;
+	color: #FFFFFF;
+}
+
+/* Main title */
+header .title {
+	font: normal 3.5em/1.5em 'handwriting-draft_regular', Verdana, serif;		/* 56 / 16 */
+	margin: 0 auto 1em;
+	padding: 2em 0 1em;
+	width: 17.43em;																/* 976 / 56 */
+	border-bottom: 1px solid #666666;
+}
+
+header .title a {
+	color: #666666;
+}
+
+header .title a:hover {
+	color: #FF0080;
+}
+
+
+/* Search box */
+div#search {
+    position: absolute;
+	top: 3.5em;
+	right: 0.5em;
+}
+
+
+
+.wrapper {
+	width: 61em;
+	margin: 0 auto;
+	min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+	padding: 20em 0;
+	margin-bottom: 2em;
+	padding-bottom: 1.5em;  /* must be same height as the footer */
+	width: 100%;
+}  
+
+footer {
+	position: relative;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: #333333;
+	color: #FFFFFF;
+	height: 1.5em;
+	margin-top: -1.5em;
+	clear: both;
+}
+
+footer p {
+    width: 61em;                            /* 976 / 16 */
+    margin: 0 auto;
+    padding: 0 0.75em;
+    border-left: 1px solid #FF0080;
+    border-right: 1px solid #FF0080;
+}
+
+footer span {
+	color: #FF0080;
+}
+
+section .books {
+    width: 40em;				/* 640 / 16 */
+}
+
+section .books table {
+	width: 40em;                /* 640 / 16 */
+}
+
+section .books table td, 
+section .books table th {
+    font-size: 0.875em;	        /* 14 / 16 */
+	line-height: 1.642em;       /* 23 / 14 */   /* (compensate for 1 px border */
+    padding: 0 0.4em;
+}
+
+.card {
+	width: 19em;                /* 304 / 16 */
+	position: relative;
+	float: right;
+}
+
+
+a {
+    color: #6E0030;
+}
+
+a:hover {
+    color: #FF0080;
+}
+
+
+td, 
+th {
+    border-bottom: solid 1px #EEEEEE;
+    vertical-align: middle;
+}
+
+th {
+    text-align: left;
+}
+
+.listing {
+    width: 100%;
+}
+
+.listing td,
+.listing th {
+    font-size: 0.9375em;        /* 15 / 16 */
+	line-height: 1.533em;       /* 23 / 15 */ /* (compensate for 1 px border */
+    padding: 0 0.4em;
+    white-space: nowrap;
+}
+
+.mainColumn {
+    white-space: normal;
+    width: 100%;
+}
+
+.listing .icon {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.listing .text {
+    text-align: left;
+}
+
+
+
+/* Custom text selection color */
+::selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+::-webkit-selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+::-moz-selection {
+	background: #FF0080;
+	color: #FFFFFF;
+	text-shadow: none;
+}

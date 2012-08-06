@@ -1,0 +1,61 @@
+﻿@model Bieb.Domain.Entities.Person
+
+@{
+    ViewBag.Title = Model.FullName;
+}
+
+@{ Html.RenderPartial("Card", Model); }
+
+<section class="reviews">
+@foreach (var review in Model.Reviews)
+{ 
+    <p>@review.ReviewText</p>
+}
+</section> <!-- end .reviews -->
+
+<section class="books">
+    <p>Works by <span class="fullname">@Model.FullName</span> in my library:</p>
+
+    @if (Model.AuthoredNovels.Count() > 0)
+    { 
+        <section class="itemList authoredNovels">
+            <h3>Novels</h3>
+            @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredNovels); }
+        </section> <!-- end .itemList .authoredNovels -->
+    }
+
+    @if (Model.EditedBooks.Count > 0)
+    { 
+        <section class="itemList editedBooks">
+            <h3>Edited Books</h3>
+            @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.EditedBooks); }
+        </section> <!-- end .itemList .editedBooks -->
+    }
+    
+    @if (Model.AuthoredCollections.Count() > 0)
+    { 
+        <section class="itemList authoredCollections">
+            <h3>Authored Collections</h3>
+            @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredCollections); }
+        </section> <!-- end .itemList .authoredCollections -->
+    }
+</section> <!-- end .books -->
+
+<section class="stories">
+    @if (Model.TranslatedStories.Count > 0)
+    { 
+        <section class="itemList translatedStories">
+            <h3>Translated Stories</h3>
+            @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.TranslatedStories); }
+        </section> <!-- end .itemList .translatedStories -->
+    }
+        
+    @if (Model.AuthoredShortStories.Count() > 0)
+    {
+        // TODO: Split between short stories and novels
+        <section class="itemList authoredShortStories">
+            <h3>Authored Short Stories</h3>
+            @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredShortStories); }
+        </section> <!-- end .itemList .authoredShortStories -->
+    }
+</section> <!-- end .stories -->

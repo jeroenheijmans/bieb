@@ -1,0 +1,82 @@
+﻿@model Bieb.Domain.Entities.Book
+
+<div class="card book">
+    <p class="title">Basic details</p>
+    
+    <h1>@Html.DisplayFor(model => model.Title)</h1>
+    @if (Model.Subtitle != null)
+    { 
+        <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
+    }
+
+    <ul>
+        <li>
+            @Html.DisplayFor(model => model.Publisher.Name), 
+            @Html.DisplayFor(model => model.Year), 
+            @Html.DisplayFor(model => model.Language)
+        </li>
+        
+        @if (Model.Isbn != null)
+        { 
+            <li>Isbn: @Html.DisplayFor(model => model.Isbn)</li>
+        }
+
+        @if (Model.Tags.Count() > 0)
+        { 
+            <li>Tags: @string.Join(", ", Model.Tags)</li>
+        }
+
+        @if (Model.Series != null)
+        {
+            <li>Series: @Html.ActionLink(Model.Series.Title, "Details", new { id = Model.Series.Id, controller = "series" })</li>
+        }
+        
+        @if (Model.Editors.Count() > 0)
+        {
+            <li>
+                <br />
+                Editors: 
+                <ul>
+                @foreach (var person in Model.Editors)
+                {
+                    <li>
+                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
+                    </li>
+                }
+                </ul>
+            </li>
+        }
+
+        @if (Model.Authors.Count() > 0)
+        {
+            <li>
+                <br />
+                Authors:
+                <ul>
+                @foreach (var person in Model.Authors)
+                {
+                    <li>
+                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
+                    </li>
+                }
+                </ul>
+            </li>
+        }
+
+        @if (Model.Translators.Count() > 0)
+        {
+            <li>
+                <br />
+                Translators:
+                <ul>
+                @foreach (var person in Model.Translators)
+                {
+                    <li>
+                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "Person" })
+                    </li>
+                }
+                </ul>
+            </li>
+        }
+    </ul>
+</div> <!-- end .card.book -->
