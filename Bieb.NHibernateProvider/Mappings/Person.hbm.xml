@@ -38,6 +38,11 @@
       <key column="PersonId" foreign-key="FK_StoryTranslator_Person" />
       <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryTranslator_Story" />
     </bag>
+
+    <bag name="Reviews" table="Review" lazy="true" generic="true" inverse="true">
+      <key column="PersonId" foreign-key="FK_Review_Person" />
+      <one-to-many class="Review`1[Person]" />
+    </bag>
     
   </class>
 

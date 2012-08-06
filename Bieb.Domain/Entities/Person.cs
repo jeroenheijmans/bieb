@@ -122,6 +122,13 @@ namespace Bieb.Domain.Entities
             set { _translatedStories = value; }
         }
 
+        private IList<Review<Person>> _reviews = new List<Review<Person>>();
+        public virtual IList<Review<Person>> Reviews
+        {
+            get { return _reviews; }
+            set { _reviews = value; }
+        }
+
         public virtual IEnumerable<Book> AuthoredCollections
         {
             get 

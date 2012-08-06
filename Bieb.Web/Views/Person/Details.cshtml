@@ -6,6 +6,13 @@
 
 @{ Html.RenderPartial("Card", Model); }
 
+<section class="reviews">
+@foreach (var review in Model.Reviews)
+{ 
+    <p>@review.ReviewText</p>
+}
+</section> <!-- end .reviews -->
+
 <section class="books">
     <p>Works by <span class="fullname">@Model.FullName</span> in my library:</p>
 
@@ -32,7 +39,9 @@
             @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredCollections); }
         </section> <!-- end .itemList .authoredCollections -->
     }
-            
+</section> <!-- end .books -->
+
+<section class="stories">
     @if (Model.TranslatedStories.Count > 0)
     { 
         <section class="itemList translatedStories">
@@ -49,4 +58,4 @@
             @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredShortStories); }
         </section> <!-- end .itemList .authoredShortStories -->
     }
-</section> <!-- end .books -->
+</section> <!-- end .stories -->
