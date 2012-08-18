@@ -40,7 +40,6 @@
       ) PERSISTED
     </create>
     <drop>
-      ALTER TABLE Series DROP COLUMN TitleSort
     </drop>
   </database-object>
 </hibernate-mapping>

@@ -13,8 +13,13 @@ namespace Bieb.CommandLineTool
             {
                 log4net.Config.XmlConfigurator.Configure();
 
-                Bieb.NHibernateProvider.Factory.CreateSchema();
+                Bieb.NHibernateProvider.Factory.CreateSchema(false);
                 Console.WriteLine("Press enter to exit.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("No valid arguments provided. Press enter to exit.");
                 Console.ReadLine();
             }
         }
