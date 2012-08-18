@@ -231,6 +231,11 @@
             	The subset of items contained only within this one page of the superset.
             </summary>
         </member>
+        <member name="M:PagedList.BasePagedList`1.#ctor">
+            <summary>
+            Parameterless constructor.
+            </summary>
+        </member>
         <member name="M:PagedList.BasePagedList`1.#ctor(System.Int32,System.Int32,System.Int32)">
             <summary>
             	Initializes a new instance of a type deriving from <see cref="T:PagedList.BasePagedList`1"/> and sets properties needed to calculate position and size data on the subset and superset.
