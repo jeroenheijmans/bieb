@@ -8,6 +8,7 @@ using NHibernate.Dialect;
 using System.Reflection;
 using NHibernate.Context;
 using Bieb.Domain.Entities;
+using System.IO;
 
 namespace Bieb.NHibernateProvider
 {
@@ -24,12 +25,15 @@ namespace Bieb.NHibernateProvider
             }
         }
 
-        public static void CreateSchema()
+        public static void CreateSchema(bool executeOnDatabase)
         {
             Configuration cfg = GetConfiguration();
             var schemaExport = new NHibernate.Tool.hbm2ddl.SchemaExport(cfg);
-            //schemaExport.Drop(true, true);
-            schemaExport.Execute(true, true, false);
+
+            using (TextWriter writer = File.CreateText("BiebDatabase.sql")) 
+            {
+                schemaExport.Execute(true, executeOnDatabase, false, null, writer);
+            }
         }
 
         private static ISessionFactory CreateSessionFactory()
