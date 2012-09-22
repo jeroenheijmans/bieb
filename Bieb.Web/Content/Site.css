@@ -97,8 +97,8 @@ nav li a.active
 /* Main title */
 header .title {
 	font: normal 3.5em/1.5em 'handwriting-draft_regular', Verdana, serif;		/* 56 / 16 */
-	margin: 0 auto 1em;
-	padding: 2em 0 1em;
+	margin: 0 auto 0.5em;
+	padding: 1.5em 0 0.5em;
 	width: 17.43em;																/* 976 / 56 */
 	border-bottom: 1px solid #666666;
 }
@@ -129,7 +129,7 @@ div#search {
 
 #main {
     overflow: auto;
-	padding: 20em 0;
+	padding: 14em 0;
 	margin-bottom: 2em;
 	padding-bottom: 1.5em;  /* must be same height as the footer */
 	width: 100%;
@@ -157,6 +157,14 @@ footer p {
 
 footer span {
 	color: #FF0080;
+}
+
+footer a {
+	color: #FFFFFF;
+}
+
+footer #powered-by {
+    float: right;
 }
 
 section .books {
@@ -201,6 +209,7 @@ th {
 }
 
 .listing {
+    margin: 1em 0;
     width: 100%;
 }
 
@@ -225,6 +234,13 @@ th {
 .listing .text {
     text-align: left;
 }
+
+
+ul.searchResults > li {
+    padding: 0.5em 0;
+    border-bottom: 1px dotted #666666;
+}
+    
 
 
 

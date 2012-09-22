@@ -26,7 +26,7 @@ namespace Bieb.Web.Controllers
                         .Items
                         .OrderBy(SortFunc)
                         .ToPagedList(page, pageSize);
-
+            
             return View(items);
         }
 

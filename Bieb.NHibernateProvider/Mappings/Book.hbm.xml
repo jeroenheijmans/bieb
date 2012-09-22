@@ -53,8 +53,7 @@
         END
       ) PERSISTED
     </create>
-    <drop>
-      ALTER TABLE Book DROP COLUMN TitleSort
+    <drop>      
     </drop>
   </database-object>
   
