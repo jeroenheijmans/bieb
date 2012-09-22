@@ -3,24 +3,35 @@
                    assembly="Bieb.Domain"
                    namespace="Bieb.Domain.Entities">
 
-  <class name="Review`1[Bieb.Domain.Entities.Book]" table="Review" entity-name="Review">
+  <!-- BOOK -->
+  <class name="Review`1[Book]" table="Review">
     <id name="Id" column="ReviewId">
       <generator class="native" />
     </id>
     <property name="ReviewText" type="StringClob" />
     <property name="Rating" />
 
-    <many-to-one name="Subject" column="BookId" foreign-key="FK_Review_Book" class="Bieb.Domain.Entities.Book, Bieb.Domain" />
+    <many-to-one 
+      name="Subject" 
+      column="BookId" 
+      foreign-key="FK_Review_Book" 
+      class="Book" />
+    <!-- TODO: If you go to a PersonReview/Details/{id} URL it should throw an exception trying to load this... but it doesn't? -->
   </class>
 
-  <class name="Review`1[Person]" table="Review" entity-name="Review">
+  <!-- PERSON -->
+  <class name="Review`1[Person]" table="Review">
     <id name="Id" column="ReviewId">
       <generator class="native" />
     </id>
     <property name="ReviewText" type="StringClob" />
     <property name="Rating" />
 
-    <many-to-one name="Subject" column="PersonId" foreign-key="FK_Review_Person" class="Bieb.Domain.Entities.Person, Bieb.Domain" />
+    <many-to-one 
+      name="Subject" 
+      column="PersonId" 
+      foreign-key="FK_Review_Person" 
+      class="Person" />
   </class>
   
 </hibernate-mapping>
