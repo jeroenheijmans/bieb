@@ -40,7 +40,7 @@
     </bag>
 
     <!-- TODO: This isn't working yet... -->
-    <!--<bag name="Reviews" table="Review" lazy="true" generic="true" inverse="true">
+    <!--<bag name="Reviews" table="Review">
       <key column="PersonId" foreign-key="FK_Review_Person" />
       <one-to-many class="Review" />
     </bag>-->
