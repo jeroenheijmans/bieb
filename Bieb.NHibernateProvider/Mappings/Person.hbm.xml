@@ -39,10 +39,12 @@
       <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryTranslator_Story" />
     </bag>
 
-    <!-- TODO: This isn't working yet... -->
+    <!-- TODO: This isn't working yet... 
+         Posted it on SO: http://stackoverflow.com/q/12547084/419956
+    -->
     <!--<bag name="Reviews" table="Review">
       <key column="PersonId" foreign-key="FK_Review_Person" />
-      <one-to-many class="Review" />
+      <one-to-many class="Review`1[Person]" />
     </bag>-->
     
   </class>
