@@ -20,7 +20,7 @@
   </class>
 
   <!-- PERSON -->
-  <class name="Review`1[Person]" table="Review">
+  <class name="Review`1[Bieb.Domain.Entities.Person, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" table="Review">
     <id name="Id" column="ReviewId">
       <generator class="native" />
     </id>
