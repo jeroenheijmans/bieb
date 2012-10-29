@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
@@ -26,12 +25,12 @@ namespace Supr.Tests
             Assert.That(htmlHelper.ViewContext, Is.Not.Null);
             Assert.That(htmlHelper.ViewContext.RouteData, Is.Not.Null);
 
-            string linkText = "clicky, clicky!";
-            string actionName = "Index";
-            string controllerName = "Home";
+            const string linkText = "clicky, clicky!";
+            const string actionName = "Index";
+            const string controllerName = "Home";
 
             // Act
-            MvcHtmlString actual = ActionLinkExtensions.MenuLink(htmlHelper, linkText, actionName, controllerName);
+            MvcHtmlString actual = htmlHelper.MenuLink(linkText, actionName, controllerName);
 
             // Assert
             Assert.That(actual, Is.Not.Null);
@@ -52,12 +51,12 @@ namespace Supr.Tests
             Assert.That(htmlHelper.ViewContext, Is.Not.Null);
             Assert.That(htmlHelper.ViewContext.RouteData, Is.Not.Null);
 
-            string linkText = "clicky, clicky!";
-            string actionName = "Index";
-            string controllerName = "Book";
+            const string linkText = "clicky, clicky!";
+            const string actionName = "Index";
+            const string controllerName = "Book";
 
             // Act
-            MvcHtmlString actual = ActionLinkExtensions.MenuLink(htmlHelper, linkText, actionName, controllerName);
+            MvcHtmlString actual = htmlHelper.MenuLink(linkText, actionName, controllerName);
 
             // Assert
             Assert.That(actual, Is.Not.Null);

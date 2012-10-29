@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Bieb.CommandLineTool
 {
@@ -13,7 +11,7 @@ namespace Bieb.CommandLineTool
             {
                 log4net.Config.XmlConfigurator.Configure();
 
-                Bieb.NHibernateProvider.Factory.CreateSchema(false);
+                NHibernateProvider.Factory.CreateSchema(false);
                 Console.WriteLine("Press enter to exit.");
                 Console.ReadLine();
             }

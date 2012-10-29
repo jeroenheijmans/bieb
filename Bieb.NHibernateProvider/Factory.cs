@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NHibernate.Cfg;
+﻿using NHibernate.Cfg;
 using NHibernate;
 using NHibernate.Dialect;
 using System.Reflection;
 using NHibernate.Context;
-using Bieb.Domain.Entities;
 using System.IO;
 
 namespace Bieb.NHibernateProvider
@@ -27,7 +22,7 @@ namespace Bieb.NHibernateProvider
 
         public static void CreateSchema(bool executeOnDatabase)
         {
-            Configuration cfg = GetConfiguration();
+            var cfg = GetConfiguration();
             var schemaExport = new NHibernate.Tool.hbm2ddl.SchemaExport(cfg);
 
             using (TextWriter writer = File.CreateText("BiebDatabase.sql")) 
@@ -44,7 +39,7 @@ namespace Bieb.NHibernateProvider
 
         private static Configuration GetConfiguration()
         {
-            Configuration cfg = new Configuration();
+            var cfg = new Configuration();
 
             cfg.DataBaseIntegration(db =>
             {
