@@ -7,26 +7,33 @@ using System.Globalization;
 namespace Bieb.Domain.CustomDataTypes
 {
     // See also: http://stackoverflow.com/questions/6431908/how-to-design-date-of-birth-in-db-and-orm-for-mix-of-known-and-unkown-dates
-    public class UncertainDate
+    public struct UncertainDate
     {
-        public int? Year { get; set; }
-        public int? Month { get; set; }
-        public int? Day { get; set; }
+        public int? Year;
+        public int? Month;
+        public int? Day;
 
-        public UncertainDate(int? Year = null, int? Month = null, int? Day = null)
+        public UncertainDate(int? year = null, int? month = null, int? day = null)
         {
-            this.Year = Year;
-            this.Month = Month;
-            this.Day = Day;
+            this.Year = year;
+            this.Month = month;
+            this.Day = day;
         }
 
         public UncertainDate(DateTime? from, DateTime? until)
+            : this()
         {
             if (from.HasValue && until.HasValue)
             {
-                if (from.Value.Year == until.Value.Year) this.Year = from.Value.Year;
-                if (from.Value.Month == until.Value.Month) this.Month = from.Value.Month;
-                if (from.Value.Day == until.Value.Day) this.Day = from.Value.Day;
+                if (from.Value.Year == until.Value.Year)
+                {
+                    this.Year = from.Value.Year;
+                    if (from.Value.Month == until.Value.Month)
+                    {
+                        this.Month = from.Value.Month;
+                        if (from.Value.Day == until.Value.Day) this.Day = from.Value.Day;
+                    }
+                }
             }
         }
 

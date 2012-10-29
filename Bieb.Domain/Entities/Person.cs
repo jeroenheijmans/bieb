@@ -55,7 +55,6 @@ namespace Bieb.Domain.Entities
         public virtual string PlaceOfDeath { get; set; }
         public virtual string PlaceOfBirth { get; set; }
 
-        // Replace DateTime to some kind of Date class vecause we don't care about the time (but this needs some work in the NHibernate layer as well...)
         public virtual DateTime? DateOfBirthFrom { get; set; }
         public virtual DateTime? DateOfBirthUntil { get; set; }
         public virtual DateTime? DateOfDeathFrom { get; set; }
