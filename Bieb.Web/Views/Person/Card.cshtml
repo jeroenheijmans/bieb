@@ -22,25 +22,29 @@
         @string.Join(", ", Model.Roles)</h2>
 
     <ul>
-        @if (Model.DateOfBirth != null || Model.PlaceOfBirth != null)
+        <li>
+            Born: @Model.DateOfBirth.ToString()
+        </li>
+
+        @if (Model.PlaceOfBirth != null)
         {
             <li>
-                Born:
-                @Model.DateOfBirth.ToString()
-                @Html.DisplayFor(model => model.PlaceOfBirth)
+                Born at: @Html.DisplayFor(model => model.PlaceOfBirth)
             </li>
         }
         
-        @if (Model.DateOfDeath != null || Model.PlaceOfDeath != null)
+        <li>
+            Died: @Model.DateOfDeath.ToString()
+        </li>
+
+        @if (Model.PlaceOfDeath != null)
         {
             <li>
-                Died:
-                @Model.DateOfDeath.ToString()
-                @Html.DisplayFor(model => model.PlaceOfDeath)
+                Died at: @Html.DisplayFor(model => model.PlaceOfDeath)
             </li>
         }
         
-        @if (Model.Tags.Count() > 0)
+        @if (Model.Tags.Any())
         { 
             <li>
                 Tags:
