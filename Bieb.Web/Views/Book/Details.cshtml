@@ -6,6 +6,13 @@
 
 @{ Html.RenderPartial("Card", Model); }
 
+<section class="reviews">
+@foreach (var review in Model.Reviews)
+{ 
+    <p>@review.ReviewText</p>
+}
+</section> <!-- end .reviews -->
+
 <img alt="back cover" src="@Url.Content("~/Content/images/book-placeholder-back-large.png")" class="backCover" />
 <img alt="front cover" src="@Url.Content("~/Content/images/book-placeholder-front-large.png")" class="frontCover" />
 
