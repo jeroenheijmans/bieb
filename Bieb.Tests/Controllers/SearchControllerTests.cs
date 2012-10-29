@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 using NUnit.Framework;
 using Moq;
@@ -19,14 +16,14 @@ namespace Bieb.Tests.Controllers
         public void Can_Find_Book_With_Basic_Search()
         {
             // Arrange
-            Mock<IEntityRepository<Book>> bookMock = new Mock<IEntityRepository<Book>>();
-            Mock<IEntityRepository<Person>> personMock = new Mock<IEntityRepository<Person>>();
-            Mock<IEntityRepository<Story>> storyMock = new Mock<IEntityRepository<Story>>();
+            var bookMock = new Mock<IEntityRepository<Book>>();
+            var personMock = new Mock<IEntityRepository<Person>>();
+            var storyMock = new Mock<IEntityRepository<Story>>();
 
-            Book MarkTheMartian = new Book() { Title = "Mark the Martian" };
-            Book MartinTheEarthling = new Book() { Title = "Martin the Earthling" };
+            var markTheMartian = new Book() { Title = "Mark the Martian" };
+            var martinTheEarthling = new Book() { Title = "Martin the Earthling" };
 
-            bookMock.Setup(repo => repo.Items).Returns(new Book[] { MarkTheMartian, MartinTheEarthling }.AsQueryable());
+            bookMock.Setup(repo => repo.Items).Returns(new Book[] { markTheMartian, martinTheEarthling }.AsQueryable());
             personMock.Setup(repo => repo.Items).Returns(new Person[] {}.AsQueryable());
             storyMock.Setup(repo => repo.Items).Returns(new Story[] {}.AsQueryable());
 
@@ -38,26 +35,26 @@ namespace Bieb.Tests.Controllers
             // Assert
             Assert.That(result, Is.InstanceOf<ViewResult>());
 
-            var vResult = result as ViewResult;
+            var vResult = (ViewResult)result;
 
             Assert.That(vResult.Model, Is.InstanceOf<BasicSearchResultModel>());
 
-            var searchResults = vResult.Model as BasicSearchResultModel;
+            var searchResults = (BasicSearchResultModel)vResult.Model;
 
             Assert.That(searchResults.books.Count(), Is.EqualTo(1));
-            Assert.That(searchResults.books.ToList()[0], Is.EqualTo(MarkTheMartian));
+            Assert.That(searchResults.books.ToList()[0], Is.EqualTo(markTheMartian));
         }
 
         [Test]
         public void Can_Find_Person_With_Basic_Search()
         {
             // Arrange
-            Mock<IEntityRepository<Book>> bookMock = new Mock<IEntityRepository<Book>>();
-            Mock<IEntityRepository<Person>> personMock = new Mock<IEntityRepository<Person>>();
-            Mock<IEntityRepository<Story>> storyMock = new Mock<IEntityRepository<Story>>();
+            var bookMock = new Mock<IEntityRepository<Book>>();
+            var personMock = new Mock<IEntityRepository<Person>>();
+            var storyMock = new Mock<IEntityRepository<Story>>();
 
-            Person aldiss = new Person() { FirstName = "Brian", Surname = "Aldiss" };
-            Person asimov = new Person() { FirstName = "Isaac", Surname = "Asimov" };
+            var aldiss = new Person() { FirstName = "Brian", Surname = "Aldiss" };
+            var asimov = new Person() { FirstName = "Isaac", Surname = "Asimov" };
 
             bookMock.Setup(repo => repo.Items).Returns(new Book[] { }.AsQueryable());
             personMock.Setup(repo => repo.Items).Returns(new Person[] { aldiss, asimov }.AsQueryable());
@@ -71,11 +68,11 @@ namespace Bieb.Tests.Controllers
             // Assert
             Assert.That(result, Is.InstanceOf<ViewResult>());
 
-            var vResult = result as ViewResult;
+            var vResult = (ViewResult)result;
 
             Assert.That(vResult.Model, Is.InstanceOf<BasicSearchResultModel>());
 
-            var searchResults = vResult.Model as BasicSearchResultModel;
+            var searchResults = (BasicSearchResultModel)vResult.Model;
 
             Assert.That(searchResults.people.Count(), Is.EqualTo(1));
             Assert.That(searchResults.people.ToList()[0], Is.EqualTo(asimov));
@@ -85,12 +82,12 @@ namespace Bieb.Tests.Controllers
         public void Can_Find_Story_With_Basic_Search()
         {
             // Arrange
-            Mock<IEntityRepository<Book>> bookMock = new Mock<IEntityRepository<Book>>();
-            Mock<IEntityRepository<Person>> personMock = new Mock<IEntityRepository<Person>>();
-            Mock<IEntityRepository<Story>> storyMock = new Mock<IEntityRepository<Story>>();
+            var bookMock = new Mock<IEntityRepository<Book>>();
+            var personMock = new Mock<IEntityRepository<Person>>();
+            var storyMock = new Mock<IEntityRepository<Story>>();
 
-            Story story1 = new Story() { Title = "The first story ever" };
-            Story story2 = new Story() { Title = "The very second story" };
+            var story1 = new Story() { Title = "The first story ever" };
+            var story2 = new Story() { Title = "The very second story" };
 
             bookMock.Setup(repo => repo.Items).Returns(new Book[] { }.AsQueryable());
             personMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
@@ -104,11 +101,11 @@ namespace Bieb.Tests.Controllers
             // Assert
             Assert.That(result, Is.InstanceOf<ViewResult>());
 
-            var vResult = result as ViewResult;
+            var vResult = (ViewResult)result;
 
             Assert.That(vResult.Model, Is.InstanceOf<BasicSearchResultModel>());
 
-            var searchResults = vResult.Model as BasicSearchResultModel;
+            var searchResults = (BasicSearchResultModel)vResult.Model;
 
             Assert.That(searchResults.stories.Count(), Is.EqualTo(1));
             Assert.That(searchResults.stories.ToList()[0], Is.EqualTo(story1));

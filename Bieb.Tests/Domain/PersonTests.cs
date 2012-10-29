@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Bieb.Domain.Entities;
 using NUnit.Framework;
 
@@ -10,28 +7,28 @@ namespace Bieb.Tests.Domain
     [TestFixture]
     public class PersonTests
     {
-        private string title = "Dr. Mr.";
-        private string firstName = "John J.";
-        private string prefix = "of the";
-        private string surname = "Hard-fasters";
+        private const string title = "Dr. Mr.";
+        private const string firstName = "John J.";
+        private const string prefix = "of the";
+        private const string surname = "Hard-fasters";
 
         [Test]
         public void Can_Create_FullName_With_All_Values()
         {
             // Arrange
-            Person john = new Person()
+            var john = new Person()
             {
-                Title = this.title,
-                FirstName = this.firstName,
-                Prefix = this.prefix,
-                Surname = this.surname
+                Title = title,
+                FirstName = firstName,
+                Prefix = prefix,
+                Surname = surname
             };
 
             // Act 
             // ...
 
             // Assert
-            string expectedFullName = title + " " + firstName + " " + prefix + " " + surname;
+            const string expectedFullName = title + " " + firstName + " " + prefix + " " + surname;
 
             Assert.AreEqual(expectedFullName, john.FullName);
             Assert.AreEqual(title, john.Title);
@@ -44,17 +41,17 @@ namespace Bieb.Tests.Domain
         public void Can_Create_Simple_Alias()
         {
             // Arrange
-            Person john = new Person()
+            var john = new Person()
             {
-                FirstName = this.firstName,
-                Surname = this.surname
+                FirstName = firstName,
+                Surname = surname
             };
 
             // Act 
             // ..
 
             // Assert
-            string expectedFullName = firstName + " " + surname;
+            const string expectedFullName = firstName + " " + surname;
 
             Assert.AreEqual(expectedFullName, john.FullName);
             Assert.IsNull(john.Title);
@@ -69,14 +66,14 @@ namespace Bieb.Tests.Domain
             // Arrange
             Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
 
-            Story story1 = new Story() { Tags = new Tag[] { cool, hot } };
-            Story story2 = new Story() { Tags = new Tag[] { cool, old } };
-            Story story3 = new Story() { Tags = new Tag[] { sweet } };
+            var story1 = new Story() { Tags = new Tag[] { cool, hot } };
+            var story2 = new Story() { Tags = new Tag[] { cool, old } };
+            var story3 = new Story() { Tags = new Tag[] { sweet } };
 
-            Book someBook = new Book();
+            var someBook = new Book();
             someBook.Stories.Add(1, story3);
 
-            Person tolkien = new Person();
+            var tolkien = new Person();
 
             tolkien.AuthoredStories.Add(story1);
             tolkien.TranslatedStories.Add(story2);
@@ -97,38 +94,39 @@ namespace Bieb.Tests.Domain
         public void Gets_Roles_From_Stories_And_Books()
         {
             // Arrange
-            Person SybrenPolet = new Person() { FirstName = "Sybren", Surname = "Polet" };
-            Story story = new Story();
-            Book book = new Book();
+            var sybrenPolet = new Person() { FirstName = "Sybren", Surname = "Polet" };
+            var story = new Story();
+            var book = new Book();
 
             // Act
-            SybrenPolet.AuthoredStories.Add(story);
-            SybrenPolet.TranslatedStories.Add(story);
-            SybrenPolet.EditedBooks.Add(book);
+            sybrenPolet.AuthoredStories.Add(story);
+            sybrenPolet.TranslatedStories.Add(story);
+            sybrenPolet.EditedBooks.Add(book);
 
             // Assert
-            Assert.That(SybrenPolet.Roles.Contains(Role.Author));
-            Assert.That(SybrenPolet.Roles.Contains(Role.Editor));
-            Assert.That(SybrenPolet.Roles.Contains(Role.Translator));
-            Assert.That(SybrenPolet.Roles.Count(), Is.EqualTo(3));
+            Assert.That(sybrenPolet.Roles.Contains(Role.Author));
+            Assert.That(sybrenPolet.Roles.Contains(Role.Editor));
+            Assert.That(sybrenPolet.Roles.Contains(Role.Translator));
+            Assert.That(sybrenPolet.Roles.Count(), Is.EqualTo(3));
         }
 
         [Test]
         public void Can_Distinguish_Between_ShortStories_And_Novels()
         {
             // Arrange
-            Person asimov = new Person() { FirstName = "Isaac", Surname = "Asimov" };
+            var asimov = new Person() { FirstName = "Isaac", Surname = "Asimov" };
 
-            Story shortStory1 = new Story(), shortStory2 = new Story();
-            Story novelStory = new Story();
+            var shortStory1 = new Story();
+            var shortStory2 = new Story();
+            var novelStory = new Story();
 
-            Book collection = new Book();
+            var collection = new Book();
             collection.Stories.Add(0, shortStory1);
             collection.Stories.Add(1, shortStory2);
             shortStory1.Book = collection;
             shortStory2.Book = collection;
 
-            Book novel = new Book();
+            var novel = new Book();
             novel.Stories.Add(0, novelStory);
             novelStory.Book = novel;
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using Bieb.Domain.Repositories;
 using NHibernate;
 using NHibernate.Linq;
@@ -18,7 +15,7 @@ namespace Bieb.NHibernateProvider.Repositories
         {
             get
             {
-                return NHibernateProvider.Session.Instance;
+                return Session.Instance;
             }
         }
 

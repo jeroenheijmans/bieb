@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Ninject;
 using System.Web.Routing;
 using Bieb.Domain.Repositories;
 using Bieb.NHibernateProvider.Repositories;
-using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Infrastructure
 {

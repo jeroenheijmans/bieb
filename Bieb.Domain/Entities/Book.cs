@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Globalization;
 
 namespace Bieb.Domain.Entities
 {
@@ -131,11 +128,10 @@ namespace Bieb.Domain.Entities
                 if (Stories.Count <= 1)
                     return BookType.Novel;
 
-                else if (Stories.SelectMany(s => Authors).Distinct().Count() == 1)
+                if (Stories.SelectMany(s => Authors).Distinct().Count() == 1)
                     return BookType.Collection;
 
-                else
-                    return BookType.Anthology;
+                return BookType.Anthology;
             }
         }
 

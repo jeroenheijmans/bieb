@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Diagnostics;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Web.Security;
 using Bieb.Web.Models;
 
@@ -36,15 +33,10 @@ namespace Bieb.Web.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                }
+
+                ModelState.AddModelError("", "The user name or password provided is incorrect.");
             }
 
             // If we got this far, something failed, redisplay form
@@ -120,7 +112,8 @@ namespace Bieb.Web.Controllers
                 bool changePasswordSucceeded;
                 try
                 {
-                    MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
+                    var currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
+                    Debug.Assert(currentUser != null, "Could not find current user for changing password, even though [Authorize]ation was needed to enter this method.");
                     changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
                 }
                 catch (Exception)
@@ -133,10 +126,8 @@ namespace Bieb.Web.Controllers
                 {
                     return RedirectToAction("ChangePasswordSuccess");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
-                }
+
+                ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
             }
 
             // If we got this far, something failed, redisplay form
