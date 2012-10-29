@@ -33,6 +33,12 @@
       <key column="BookId" foreign-key="FK_SeriesBook_Book" />
       <many-to-many column="SeriesId" class="Series" foreign-key="FK_SeriesBook_Series" />
     </bag>
+
+    <!-- Fully qualified name on the generic type needed, see:  Posted it on SO: http://stackoverflow.com/q/12547084/419956 -->
+    <bag name="Reviews" table="Review">
+      <key column="BookId" foreign-key="FK_Review_Book" />
+      <one-to-many class="Review`1[Bieb.Domain.Entities.Book, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
+    </bag>
        
   </class>
 

@@ -139,11 +139,19 @@ namespace Bieb.Domain.Entities
             }
         }
 
+        private IList<Review<Book>> _reviews = new List<Review<Book>>();
+        public virtual IList<Review<Book>> Reviews
+        {
+            get { return _reviews; }
+            set { _reviews = value; }
+        }
+
         public override string ToString()
         {
             return Title ?? base.ToString();
         }
     }
+
 
     public enum BookType
     {
