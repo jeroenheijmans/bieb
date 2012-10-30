@@ -40,7 +40,7 @@ namespace Bieb.Web
         protected void Application_EndRequest(object sender, EventArgs args)
         {
             // TODO: Refactor/replace with DI solution
-            Bieb.NHibernateProvider.Session.CloseSession();
+            NHibernateProvider.Session.CloseSession();
         }
     }
 }

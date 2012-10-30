@@ -9,7 +9,7 @@ namespace Bieb.Web.Controllers
 {
     public abstract class EntityController<T> : Controller where T : BaseEntity, new()
     {
-        protected int[] availablePageSizes = new int[] { 10, 25, 50, 100 };
+        protected int[] availablePageSizes = new[] { 10, 25, 50, 100 };
         protected int defaultPageSize = 25;
         protected IEntityRepository<T> Repository { get; set; }
         

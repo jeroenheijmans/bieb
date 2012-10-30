@@ -17,9 +17,9 @@ namespace Bieb.Tests.Domain
             var story1 = new Story();
             var story2 = new Story();
 
-            var tag1 = new Tag() { Name = "Science Fiction" };
-            var tag2 = new Tag() { Name = "Fantasy" };
-            var unusedTag = new Tag() { Name = "Educational" };
+            var tag1 = new Tag { Name = "Science Fiction" };
+            var tag2 = new Tag { Name = "Fantasy" };
+            var unusedTag = new Tag { Name = "Educational" };
 
             myBook.Stories.Add(1, story1);
             myBook.Stories.Add(2, story2);
@@ -167,16 +167,16 @@ namespace Bieb.Tests.Domain
         public void Can_Discern_Different_BookTypes()
         {
             // Arrange
-            var asimov = new Person() { Surname = "Asimov" };
-            var clarke = new Person() { Surname = "Clarke" };
+            var asimov = new Person { Surname = "Asimov" };
+            var clarke = new Person { Surname = "Clarke" };
 
-            var asimovStory1 = new Story() { Authors = new Person[] { asimov } };
-            var asimovStory2 = new Story() { Authors = new Person[] { asimov } };
-            var clarkeStory = new Story() { Authors = new Person[] { clarke } };
+            var asimovStory1 = new Story { Authors = new[] { asimov } };
+            var asimovStory2 = new Story { Authors = new[] { asimov } };
+            var clarkeStory = new Story { Authors = new[] { clarke } };
 
-            var novel = new Book() { Title = "How Novel!" };
-            var collection = new Book() { Stories = new Dictionary<int, Story>() };
-            var anthology = new Book() { Stories = new Dictionary<int, Story>() };
+            var novel = new Book { Title = "How Novel!" };
+            var collection = new Book { Stories = new Dictionary<int, Story>() };
+            var anthology = new Book { Stories = new Dictionary<int, Story>() };
 
             collection.Stories.Add(0, asimovStory1);
             collection.Stories.Add(1, asimovStory2);
@@ -200,9 +200,9 @@ namespace Bieb.Tests.Domain
             // Arrang
             Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
 
-            var story1 = new Story() { Tags = new Tag[] { cool, hot } };
-            var story2 = new Story() { Tags = new Tag[] { cool, old } };
-            var story3 = new Story() { Tags = new Tag[] { sweet } };
+            var story1 = new Story { Tags = new[] { cool, hot } };
+            var story2 = new Story { Tags = new[] { cool, old } };
+            var story3 = new Story { Tags = new[] { sweet } };
 
             var theHobbit = new Book();
             theHobbit.Stories.Add(0, story1);

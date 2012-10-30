@@ -23,11 +23,9 @@ namespace Bieb.Web.Controllers
                 var person = PersonRepository.GetRandomItem();
                 return RedirectToAction("Details", "Person", new { id = person.Id });
             }
-            else
-            {
-                var book = BookRepository.GetRandomItem();
-                return RedirectToAction("Details", "Book", new { id = book.Id });
-            }
+
+            var book = BookRepository.GetRandomItem();
+            return RedirectToAction("Details", "Book", new { id = book.Id });
         }
     }
 }
