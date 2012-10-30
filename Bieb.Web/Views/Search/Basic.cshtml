@@ -11,7 +11,7 @@
 
 <section class="searchResults">
     <h2 id="people">People</h2>
-    @if (Model.people.Count() > 0)
+    @if (Model.people.Any())
     { 
         <ul class="searchResults">
             @foreach (var person in Model.people)
@@ -41,7 +41,7 @@
     }
     
     <h2 id="books">Books</h2>
-    @if (Model.books.Count() > 0)
+    @if (Model.books.Any())
     { 
         <ul class="searchResults">
             @foreach (var book in Model.books)
@@ -64,7 +64,7 @@
     }
     
     <h2 id="stories">Stories</h2>
-    @if (Model.stories.Count() > 0)
+    @if (Model.stories.Any())
     { 
         <ul class="searchResults">
             @foreach (var story in Model.stories)

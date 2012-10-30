@@ -21,7 +21,7 @@
             <li>Isbn: @Html.DisplayFor(model => model.Isbn)</li>
         }
 
-        @if (Model.Tags.Count() > 0)
+        @if (Model.Any())
         { 
             <li>Tags: @string.Join(", ", Model.Tags)</li>
         }
@@ -31,7 +31,7 @@
             <li>Series: @Html.ActionLink(Model.Series.Title, "Details", new { id = Model.Series.Id, controller = "series" })</li>
         }
         
-        @if (Model.Editors.Count() > 0)
+        @if (Model.Any())
         {
             <li>
                 <br />
@@ -47,7 +47,7 @@
             </li>
         }
 
-        @if (Model.Authors.Count() > 0)
+        @if (Model.Any())
         {
             <li>
                 <br />
@@ -63,7 +63,7 @@
             </li>
         }
 
-        @if (Model.Translators.Count() > 0)
+        @if (Model.Any())
         {
             <li>
                 <br />

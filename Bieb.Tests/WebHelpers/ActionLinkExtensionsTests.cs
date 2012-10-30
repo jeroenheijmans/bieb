@@ -6,7 +6,7 @@ using Moq;
 using NUnit.Framework;
 using Bieb.Web.Helpers;
 
-namespace Supr.Tests
+namespace Bieb.Tests.WebHelpers
 {
     [TestFixture]
     public class ActionLinkExtensionsTest
