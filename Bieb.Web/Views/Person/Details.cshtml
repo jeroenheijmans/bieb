@@ -16,7 +16,7 @@
 <section class="books">
     <p>Works by <span class="fullname">@Model.FullName</span> in my library:</p>
 
-    @if (Model.AuthoredNovels.Count() > 0)
+    @if (Model.AuthoredNovels.Any())
     { 
         <section class="itemList authoredNovels">
             <h3>Novels</h3>
@@ -32,7 +32,7 @@
         </section> <!-- end .itemList .editedBooks -->
     }
     
-    @if (Model.AuthoredCollections.Count() > 0)
+    @if (Model.AuthoredCollections.Any())
     { 
         <section class="itemList authoredCollections">
             <h3>Authored Collections</h3>
@@ -50,7 +50,7 @@
         </section> <!-- end .itemList .translatedStories -->
     }
         
-    @if (Model.AuthoredShortStories.Count() > 0)
+    @if (Model.AuthoredShortStories.Any())
     {
         // TODO: Split between short stories and novels
         <section class="itemList authoredShortStories">
