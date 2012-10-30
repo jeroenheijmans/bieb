@@ -16,7 +16,7 @@ namespace Bieb.Tests.Domain
         public void Can_Create_FullName_With_All_Values()
         {
             // Arrange
-            var john = new Person()
+            var john = new Person
             {
                 Title = title,
                 FirstName = firstName,
@@ -41,7 +41,7 @@ namespace Bieb.Tests.Domain
         public void Can_Create_Simple_Alias()
         {
             // Arrange
-            var john = new Person()
+            var john = new Person
             {
                 FirstName = firstName,
                 Surname = surname
@@ -66,9 +66,9 @@ namespace Bieb.Tests.Domain
             // Arrange
             Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
 
-            var story1 = new Story() { Tags = new Tag[] { cool, hot } };
-            var story2 = new Story() { Tags = new Tag[] { cool, old } };
-            var story3 = new Story() { Tags = new Tag[] { sweet } };
+            var story1 = new Story { Tags = new[] { cool, hot } };
+            var story2 = new Story { Tags = new[] { cool, old } };
+            var story3 = new Story { Tags = new[] { sweet } };
 
             var someBook = new Book();
             someBook.Stories.Add(1, story3);
@@ -94,7 +94,7 @@ namespace Bieb.Tests.Domain
         public void Gets_Roles_From_Stories_And_Books()
         {
             // Arrange
-            var sybrenPolet = new Person() { FirstName = "Sybren", Surname = "Polet" };
+            var sybrenPolet = new Person { FirstName = "Sybren", Surname = "Polet" };
             var story = new Story();
             var book = new Book();
 
@@ -114,7 +114,7 @@ namespace Bieb.Tests.Domain
         public void Can_Distinguish_Between_ShortStories_And_Novels()
         {
             // Arrange
-            var asimov = new Person() { FirstName = "Isaac", Surname = "Asimov" };
+            var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
 
             var shortStory1 = new Story();
             var shortStory2 = new Story();

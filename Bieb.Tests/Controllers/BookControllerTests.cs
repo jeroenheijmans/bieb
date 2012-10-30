@@ -18,7 +18,7 @@ namespace Bieb.Tests.Controllers
         {
             // Arrange
             var mock = new Mock<IEntityRepository<Book>>();
-            var myBook = new Book() { Id = 42 };
+            var myBook = new Book { Id = 42 };
             mock.Setup(repo => repo.GetItem(It.IsAny<int>())).Returns(() => myBook);
 
             // Act
@@ -38,7 +38,7 @@ namespace Bieb.Tests.Controllers
         {
             // Arrange
             var mock = new Mock<IEntityRepository<Book>>();
-            mock.Setup(repo => repo.Items).Returns(Enumerable.Repeat<Book>(new Book(), 3).AsQueryable());
+            mock.Setup(repo => repo.Items).Returns(Enumerable.Repeat(new Book(), 3).AsQueryable());
             var controller = new BookController(mock.Object);
 
             // Act
@@ -95,7 +95,7 @@ namespace Bieb.Tests.Controllers
                     }
                 );
             var controller = new BookController(mock.Object);
-            var newBook = new Book() { Title = "Lord of the Flies" };
+            var newBook = new Book { Title = "Lord of the Flies" };
 
             // Act
             ActionResult result = controller.Create(newBook);
@@ -113,7 +113,7 @@ namespace Bieb.Tests.Controllers
         {
             // Arrange
             var mock = new Mock<IEntityRepository<Book>>();
-            mock.Setup(repo => repo.Items).Returns(Enumerable.Repeat<Book>(new Book(), 100).AsQueryable());
+            mock.Setup(repo => repo.Items).Returns(Enumerable.Repeat(new Book(), 100).AsQueryable());
             var controller = new BookController(mock.Object);
 
             // Act & Assert
@@ -140,7 +140,7 @@ namespace Bieb.Tests.Controllers
             var book1 = new Book { Title = "Zoltan the Great" };
             var book2 = new Book { Title = "Middle-man" };
             var book3 = new Book { Title = "Alpha came before Omega" };
-            mock.Setup(repo => repo.Items).Returns((new Book[] { book1, book2, book3 }).AsQueryable());
+            mock.Setup(repo => repo.Items).Returns((new[] { book1, book2, book3 }).AsQueryable());
             var controller = new BookController(mock.Object);
 
             // Act & Assert

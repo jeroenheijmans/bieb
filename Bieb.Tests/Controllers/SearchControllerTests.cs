@@ -20,10 +20,10 @@ namespace Bieb.Tests.Controllers
             var personMock = new Mock<IEntityRepository<Person>>();
             var storyMock = new Mock<IEntityRepository<Story>>();
 
-            var markTheMartian = new Book() { Title = "Mark the Martian" };
-            var martinTheEarthling = new Book() { Title = "Martin the Earthling" };
+            var markTheMartian = new Book { Title = "Mark the Martian" };
+            var martinTheEarthling = new Book { Title = "Martin the Earthling" };
 
-            bookMock.Setup(repo => repo.Items).Returns(new Book[] { markTheMartian, martinTheEarthling }.AsQueryable());
+            bookMock.Setup(repo => repo.Items).Returns(new[] { markTheMartian, martinTheEarthling }.AsQueryable());
             personMock.Setup(repo => repo.Items).Returns(new Person[] {}.AsQueryable());
             storyMock.Setup(repo => repo.Items).Returns(new Story[] {}.AsQueryable());
 
@@ -53,11 +53,11 @@ namespace Bieb.Tests.Controllers
             var personMock = new Mock<IEntityRepository<Person>>();
             var storyMock = new Mock<IEntityRepository<Story>>();
 
-            var aldiss = new Person() { FirstName = "Brian", Surname = "Aldiss" };
-            var asimov = new Person() { FirstName = "Isaac", Surname = "Asimov" };
+            var aldiss = new Person { FirstName = "Brian", Surname = "Aldiss" };
+            var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
 
             bookMock.Setup(repo => repo.Items).Returns(new Book[] { }.AsQueryable());
-            personMock.Setup(repo => repo.Items).Returns(new Person[] { aldiss, asimov }.AsQueryable());
+            personMock.Setup(repo => repo.Items).Returns(new[] { aldiss, asimov }.AsQueryable());
             storyMock.Setup(repo => repo.Items).Returns(new Story[] { }.AsQueryable());
 
             var controller = new SearchController(personMock.Object, bookMock.Object, storyMock.Object);
@@ -86,12 +86,12 @@ namespace Bieb.Tests.Controllers
             var personMock = new Mock<IEntityRepository<Person>>();
             var storyMock = new Mock<IEntityRepository<Story>>();
 
-            var story1 = new Story() { Title = "The first story ever" };
-            var story2 = new Story() { Title = "The very second story" };
+            var story1 = new Story { Title = "The first story ever" };
+            var story2 = new Story { Title = "The very second story" };
 
             bookMock.Setup(repo => repo.Items).Returns(new Book[] { }.AsQueryable());
             personMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
-            storyMock.Setup(repo => repo.Items).Returns(new Story[] { story1, story2 }.AsQueryable());
+            storyMock.Setup(repo => repo.Items).Returns(new[] { story1, story2 }.AsQueryable());
 
             var controller = new SearchController(personMock.Object, bookMock.Object, storyMock.Object);
 
