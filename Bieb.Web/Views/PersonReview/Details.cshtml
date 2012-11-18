@@ -4,5 +4,5 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Review: @Html.ActionLink(Model.Subject.FullName, "Details", new { controller = "Person", id = Model.Subject.Id })</h2>
+<h2>@BiebResources.SharedStrings.Review: @Html.ActionLink(Model.Subject.FullName, "Details", new { controller = "Person", id = Model.Subject.Id })</h2>
 <p>@Model.ReviewText</p>

@@ -1,9 +1,9 @@
 ﻿@model Bieb.Domain.Entities.Person
 
 <div class="card person">
-    <p class="title">Basic details</p>
+    <p class="title">@BiebResources.PersonStrings.CardTitle</p>
     
-    <img src="@Url.Content("~/Content/images/person-placeholder.png")" alt="☺" title="Person's portrait pica" class="representation" />
+    <img src="@Url.Content("~/Content/images/person-placeholder.png")" alt="@BiebResources.PersonStrings.PortraitAlt" class="representation" />
     <h1>
         @Html.DisplayFor(model => model.FullName)
     </h1>
@@ -23,35 +23,35 @@
 
     <ul>
         <li>
-            Born: @Model.DateOfBirth.ToString()
+            @BiebResources.PersonStrings.BornOn: @Model.DateOfBirth.ToString()
         </li>
 
         @if (Model.PlaceOfBirth != null)
         {
             <li>
-                Born at: @Html.DisplayFor(model => model.PlaceOfBirth)
+                @BiebResources.PersonStrings.BornAt: @Html.DisplayFor(model => model.PlaceOfBirth)
             </li>
         }
         
         <li>
-            Died: @Model.DateOfDeath.ToString()
+            @BiebResources.PersonStrings.DiedOn: @Model.DateOfDeath.ToString()
         </li>
 
         @if (Model.PlaceOfDeath != null)
         {
             <li>
-                Died at: @Html.DisplayFor(model => model.PlaceOfDeath)
+                @BiebResources.PersonStrings.DiedAt: @Html.DisplayFor(model => model.PlaceOfDeath)
             </li>
         }
         
         @if (Model.Tags.Any())
         { 
             <li>
-                Tags:
+                @BiebResources.SharedStrings.Reviews:
                 @string.Join(", ", Model.Tags)
             </li>
         }
     </ul>
 
-    <p>Do you have additional information about this person? Please let me know!</p>
+    <p>@BiebResources.PersonStrings.RequestForAdditionalInfo</p>
 </div> <!-- end .card .person -->

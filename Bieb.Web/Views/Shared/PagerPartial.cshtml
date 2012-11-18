@@ -3,9 +3,9 @@
 
 <div class="paging">
     <span class="pageNumberIndication">
-        Page 
+        @BiebResources.SharedStrings.Page 
         @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-        of 
+        @BiebResources.SharedStrings.Of 
         @Model.PageCount
     </span> <!-- end .pageNumberIndication -->
     
@@ -20,7 +20,7 @@
     {
         @:<<
         @Html.Raw(" ");
-        @:< Prev
+        @:< @BiebResources.SharedStrings.Previous
     }
     </span> <!-- end .pagingLinks .previous -->
 
@@ -35,7 +35,7 @@
     }
     else
     {
-        @:Next >
+        @:@BiebResources.SharedStrings.Next >
         @Html.Raw(" ")
         @:>>
     }

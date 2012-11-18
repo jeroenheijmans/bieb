@@ -4,13 +4,18 @@
     ViewBag.Title = "Basic Search";
 }
 
-<h1>Basic Search Results</h1>
-<p>There are <a href="#people">@Model.people.Count() people</a>, <a href="#books">@Model.books.Count() books</a>, and <a href="#stories">@Model.stories.Count() stories</a> that were found using your search query.</p>
+<h1>@BiebResources.SearchStrings.BasicSearchHeader</h1>
+<p>@BiebResources.SearchStrings.JumpTo:</p>
+<ul>
+    <li><a href="#people">@Model.people.Count() @BiebResources.SharedStrings.People</a></li>   
+    <li><a href="#books">@Model.books.Count() @BiebResources.SharedStrings.Books</a></li>
+    <li><a href="#stories">@Model.stories.Count() @BiebResources.SharedStrings.Stories</a></li>
+</ul>
 
 @Html.Partial("_SearchBoxPartial")
 
 <section class="searchResults">
-    <h2 id="people">People</h2>
+    <h2 id="people">@BiebResources.SharedStrings.People</h2>
     @if (Model.people.Any())
     { 
         <ul class="searchResults">
@@ -40,7 +45,7 @@
         <p>-</p>
     }
     
-    <h2 id="books">Books</h2>
+    <h2 id="books">@BiebResources.SharedStrings.Books</h2>
     @if (Model.books.Any())
     { 
         <ul class="searchResults">
@@ -63,7 +68,7 @@
         <p>-</p>
     }
     
-    <h2 id="stories">Stories</h2>
+    <h2 id="stories">@BiebResources.SharedStrings.Stories</h2>
     @if (Model.stories.Any())
     { 
         <ul class="searchResults">

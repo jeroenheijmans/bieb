@@ -8,8 +8,8 @@
 
 @if (Model.Books.Any())
 {
-    <section class="itemList authoredCollections">
-        <h3>Books from this publisher</h3>
+    <section class="itemList">
+        <h3>@BiebResources.PublisherStrings.BooksFromThisPublisher</h3>
         @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.Books); }
     </section> <!-- end .itemList .authoredCollections -->
 }
