@@ -70,7 +70,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These are all the &lt;strong&gt;series&lt;/strong&gt; from which I have &lt;strong&gt;one or more books&lt;/strong&gt; in my library..
+        ///   Looks up a localized string similar to These are all the series from which I have one or more books in my library..
         /// </summary>
         public static string IndexIntroduction {
             get {

@@ -97,7 +97,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These are all the &lt;strong&gt;Novels&lt;/strong&gt; (books with a single main story), &lt;strong&gt;Anthologies&lt;/strong&gt; (bundled stories by different authors), and &lt;strong&gt;Collections&lt;/strong&gt; (bundled stories from a single author) that are-, have been-, or should be in my library..
+        ///   Looks up a localized string similar to These are all the Novels (books with a single main story), Anthologies (bundled stories by different authors), and Collections (bundled stories from a single author) that are-, have been-, or should be in my library..
         /// </summary>
         public static string IndexIntroduction {
             get {

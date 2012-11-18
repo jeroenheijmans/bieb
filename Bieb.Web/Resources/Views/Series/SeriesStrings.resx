@@ -121,7 +121,7 @@
     <value>Books in this Series</value>
   </data>
   <data name="IndexIntroduction" xml:space="preserve">
-    <value>These are all the &lt;strong&gt;series&lt;/strong&gt; from which I have &lt;strong&gt;one or more books&lt;/strong&gt; in my library.</value>
+    <value>These are all the series from which I have one or more books in my library.</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
     <value>Title</value>

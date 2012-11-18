@@ -142,7 +142,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These are all the &lt;strong&gt;Authors&lt;/strong&gt;, &lt;strong&gt;Editors&lt;/strong&gt;, and &lt;strong&gt;Translators&lt;/strong&gt; from books in my collection..
+        ///   Looks up a localized string similar to These are all the Authors, Editors, and Translators from books in my collection..
         /// </summary>
         public static string IndexIntroduction {
             get {
