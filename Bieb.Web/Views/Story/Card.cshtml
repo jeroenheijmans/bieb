@@ -7,10 +7,10 @@
         <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
     }
     <ul>
-        <li>From @Html.ActionLink(Model.Book.Title, "Details", new { id = Model.Book.Id, controller = "Book" })</li>
+        <li>@BiebResources.StoryStrings.From @Html.ActionLink(Model.Book.Title, "Details", new { id = Model.Book.Id, controller = "Book" })</li>
         @if (Model.Tags.Count > 0)
         { 
-            <li>Tags:  @string.Join(", ", Model.Tags)</li>
+            <li>@BiebResources.SharedStrings.Tags:  @string.Join(", ", Model.Tags)</li>
         }
     </ul>
 </div> <!-- end .card .story -->

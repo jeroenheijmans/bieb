@@ -14,12 +14,12 @@
 </section> <!-- end .reviews -->
 
 <section class="books">
-    <p>Works by <span class="fullname">@Model.FullName</span> in my library:</p>
+    <p>@BiebResources.PersonStrings.WorksByTitleStart <span class="fullname">@Model.FullName</span> @BiebResources.PersonStrings.WorksByTitleEnd:</p>
 
     @if (Model.AuthoredNovels.Any())
     { 
         <section class="itemList authoredNovels">
-            <h3>Novels</h3>
+            <h3>@BiebResources.SharedStrings.Novels</h3>
             @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredNovels); }
         </section> <!-- end .itemList .authoredNovels -->
     }
@@ -27,7 +27,7 @@
     @if (Model.EditedBooks.Count > 0)
     { 
         <section class="itemList editedBooks">
-            <h3>Edited Books</h3>
+            <h3>@BiebResources.PersonStrings.EditedBooks</h3>
             @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.EditedBooks); }
         </section> <!-- end .itemList .editedBooks -->
     }
@@ -35,7 +35,7 @@
     @if (Model.AuthoredCollections.Any())
     { 
         <section class="itemList authoredCollections">
-            <h3>Authored Collections</h3>
+            <h3>@BiebResources.PersonStrings.AuthoredCollections</h3>
             @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredCollections); }
         </section> <!-- end .itemList .authoredCollections -->
     }
@@ -45,7 +45,7 @@
     @if (Model.TranslatedStories.Count > 0)
     { 
         <section class="itemList translatedStories">
-            <h3>Translated Stories</h3>
+            <h3>@BiebResources.PersonStrings.TranslatedStories</h3>
             @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.TranslatedStories); }
         </section> <!-- end .itemList .translatedStories -->
     }
@@ -54,7 +54,7 @@
     {
         // TODO: Split between short stories and novels
         <section class="itemList authoredShortStories">
-            <h3>Authored Short Stories</h3>
+            <h3>@BiebResources.PersonStrings.AuthoredShortStories</h3>
             @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredShortStories); }
         </section> <!-- end .itemList .authoredShortStories -->
     }

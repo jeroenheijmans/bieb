@@ -11,7 +11,7 @@
 @if (Model.Authors.Any())
 {
     <section class="itemList">
-        <h3>Authors</h3>
+        <h3>@BiebResources.SharedStrings.Authors</h3>
         @{ Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Authors); }
     </section> <!-- end .itemList -->
 }
@@ -19,7 +19,7 @@
 @if (Model.Translators.Any())
 {
     <section class="itemList">
-        <h3>Translators</h3>
+        <h3>@BiebResources.SharedStrings.Translators</h3>
         @{ Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Translators); }
     </section> <!-- end .itemList -->
 }
