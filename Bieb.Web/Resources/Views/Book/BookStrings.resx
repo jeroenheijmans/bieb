@@ -130,7 +130,7 @@
     <value>book cover icon</value>
   </data>
   <data name="IndexIntroduction" xml:space="preserve">
-    <value>These are all the &lt;strong&gt;Novels&lt;/strong&gt; (books with a single main story), &lt;strong&gt;Anthologies&lt;/strong&gt; (bundled stories by different authors), and &lt;strong&gt;Collections&lt;/strong&gt; (bundled stories from a single author) that are-, have been-, or should be in my library.</value>
+    <value>These are all the Novels (books with a single main story), Anthologies (bundled stories by different authors), and Collections (bundled stories from a single author) that are-, have been-, or should be in my library.</value>
   </data>
   <data name="LanguageHeader" xml:space="preserve">
     <value>Language</value>
