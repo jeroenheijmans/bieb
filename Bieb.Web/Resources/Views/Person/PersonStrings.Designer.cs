@@ -97,15 +97,6 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Basic Details.
-        /// </summary>
-        public static string CardTitle {
-            get {
-                return ResourceManager.GetString("CardTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Died at.
         /// </summary>
         public static string DiedAt {

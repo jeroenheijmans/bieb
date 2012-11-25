@@ -214,20 +214,29 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BIEB!.
-        /// </summary>
-        public static string ShortSiteTitle {
-            get {
-                return ResourceManager.GetString("ShortSiteTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Books that are (and have been) in my personal library.
         /// </summary>
         public static string SiteSlogan {
             get {
                 return ResourceManager.GetString("SiteSlogan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bieb: My Library.
+        /// </summary>
+        public static string SiteTitleLong {
+            get {
+                return ResourceManager.GetString("SiteTitleLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BIEB!.
+        /// </summary>
+        public static string SiteTitleShort {
+            get {
+                return ResourceManager.GetString("SiteTitleShort", resourceCulture);
             }
         }
         

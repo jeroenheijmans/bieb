@@ -9,14 +9,12 @@
 
 /*************************  Colors  ***************************/
 /* Links					#6E0030
+/* Links (inverted)         #FFD8ED
 /* Links hover, details  	#FF0080
 /* Text, borders, etc		#333333
 /* Title					#666666
 /* Background, nav links	#FFFFFF
 /**************************************************************/
-
-
-
 
 
 
@@ -46,6 +44,21 @@ body {
 	color: #333333;
 	background: #FFFFFF;
 }
+
+/* Basic HTML elements */
+h1 { font-size: 2.0em; line-height: 1.2em; }
+h2 { font-size: 1.8em; line-height: 1.2em; }
+h3 { font-size: 1.5em; line-height: 1.2em; }
+h4 { font-size: 1.2em; line-height: 1.2em; }
+h5 { font-size: 1.1em; line-height: 1.2em; }
+h6 { font-size: 1.0em; line-height: 1.2em; }
+
+p + p,
+ul + p,
+table + p {
+    margin-top: 0.5em;
+}
+
 
 /* Header */
 header {
@@ -186,6 +199,16 @@ section .books table th {
 	width: 19em;                /* 304 / 16 */
 	position: relative;
 	float: right;
+    background: #333333;
+    color: #FFFFFF;
+    padding: 1.0em;
+}
+
+.card h1 { font-size: 1.5em; }
+.card h2 { font-size: 1.1em; }
+
+.card a {
+    color: #FFD8ED;
 }
 
 

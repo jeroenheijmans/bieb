@@ -32,3 +32,4 @@ _ReSharper*\*
 TestResult.xml
 Bieb.ncrunchsolution
 packages\*
+Bieb.sln.DotSettings

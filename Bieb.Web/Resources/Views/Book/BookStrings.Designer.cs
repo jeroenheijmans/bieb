@@ -61,15 +61,6 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Basic details.
-        /// </summary>
-        public static string CardTitle {
-            get {
-                return ResourceManager.GetString("CardTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to back cover.
         /// </summary>
         public static string CoverBackAlt {
