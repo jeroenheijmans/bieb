@@ -24,14 +24,20 @@ namespace Bieb.Web
 
             routes.MapRoute("SearchIndex",
                             "Search",
-                            new {controller = "Search", action = "Basic"});
-            
+                            new { controller = "Search", action = "Basic" });
+
             routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                "DetailsInController", // Route name
+                "{controller}/{id}", // URL with parameters
+                new { controller = "Home", action = "Details", id = UrlParameter.Optional }, // Parameter defaults
+                new { id = @"\d+" }
             );
 
+            routes.MapRoute(
+                "StraightToController", // Route name
+                "{controller}/{action}", // URL with parameters
+                new { controller = "Home", action = "Index" } // Parameter defaults
+            );
         }
 
         protected void Application_Start()
