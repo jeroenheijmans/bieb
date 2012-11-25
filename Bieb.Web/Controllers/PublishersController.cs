@@ -5,9 +5,9 @@ using Bieb.Domain.Repositories;
 
 namespace Bieb.Web.Controllers
 {
-    public class PublisherController : EntityController<Publisher>
+    public class PublishersController : EntityController<Publisher>
     {
-        public PublisherController(IEntityRepository<Publisher> repository)
+        public PublishersController(IEntityRepository<Publisher> repository)
             : base(repository)
         { }
 

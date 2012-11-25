@@ -22,7 +22,7 @@
             @foreach (var person in Model.people)
             {
                 <li class="person">
-                    @Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })
+                    @Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })
                     <br />
                     @if (person.Gender != Bieb.Domain.Entities.Gender.Unkown)
                     {
@@ -52,7 +52,7 @@
             @foreach (var book in Model.books)
             {
                 <li class="book">
-                    @Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })
+                    @Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })
                     <br />
                     <span>@book.BookType</span>
                     @if (!string.IsNullOrWhiteSpace(book.Isbn))
@@ -75,11 +75,11 @@
             @foreach (var story in Model.stories)
             {
                 <li class="story">
-                    @Html.ActionLink(story.Title, "Details", new { controller = "Story", id = story.Id })
+                    @Html.ActionLink(story.Title, "Details", new { controller = "Stories", id = story.Id })
                     <br />
                     From 
                     @story.Book.BookType:
-                    @Html.ActionLink(story.Book.Title, "Details", new { controller = "Book", id = story.Book.Id })
+                    @Html.ActionLink(story.Book.Title, "Details", new { controller = "Books", id = story.Book.Id })
                    
                 </li>     
             }

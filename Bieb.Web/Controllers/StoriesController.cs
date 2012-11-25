@@ -5,9 +5,9 @@ using Bieb.Domain.Repositories;
 
 namespace Bieb.Web.Controllers
 {
-    public class StoryController : EntityController<Story>
+    public class StoriesController : EntityController<Story>
     {
-        public StoryController(IEntityRepository<Story> repository)
+        public StoriesController(IEntityRepository<Story> repository)
             : base(repository)
         { }
 

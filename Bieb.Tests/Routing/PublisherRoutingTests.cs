@@ -12,7 +12,7 @@ namespace Bieb.Tests.Routing
     {
         protected override string PrimaryAlias
         {
-            get { return "Publisher"; }
+            get { return "Publishers"; }
         }
     }
 }

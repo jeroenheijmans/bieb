@@ -12,12 +12,7 @@ namespace Bieb.Tests.Routing
     {
         protected override string PrimaryAlias
         {
-            get { return "Person"; }
+            get { return "People"; }
         }
-        protected override IEnumerable<string> Aliases
-        {
-            get { return new[] {PrimaryAlias/*, "People"*/}; }
-        }
-
     }
 }
