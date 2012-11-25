@@ -61,6 +61,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to by.
+        /// </summary>
+        public static string By {
+            get {
+                return ResourceManager.GetString("By", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to back cover.
         /// </summary>
         public static string CoverBackAlt {
@@ -88,6 +97,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string In {
+            get {
+                return ResourceManager.GetString("In", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to These are all the Novels (books with a single main story), Anthologies (bundled stories by different authors), and Collections (bundled stories from a single author) that are-, have been-, or should be in my library..
         /// </summary>
         public static string IndexIntroduction {
@@ -111,6 +129,15 @@ namespace BiebResources {
         public static string PeopleInvolved {
             get {
                 return ResourceManager.GetString("PeopleInvolved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Published.
+        /// </summary>
+        public static string Published {
+            get {
+                return ResourceManager.GetString("Published", resourceCulture);
             }
         }
         
