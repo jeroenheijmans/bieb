@@ -5,18 +5,19 @@
         @Html.DisplayFor(model => model.FullName)
     </h1>
     
-    <h2>@if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
+    <h2>
+        @if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
         {
-            <span>
-                @Model.GenderChar
-            </span>
+            @Model.GenderChar
         }
 
         @if (Model.Nationality != null)
         {
             @Html.ImageFlagFor(Model)
         }
-        @string.Join(", ", Model.Roles)</h2>
+        
+        @string.Join(", ", Model.Roles)
+    </h2>
 
     <ul>
         <li>
@@ -44,7 +45,7 @@
         @if (Model.Tags.Any())
         { 
             <li>
-                @BiebResources.SharedStrings.Reviews:
+                @BiebResources.SharedStrings.Tags:
                 @string.Join(", ", Model.Tags)
             </li>
         }
