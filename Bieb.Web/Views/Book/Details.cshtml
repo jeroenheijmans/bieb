@@ -11,11 +11,11 @@
 { 
     <p>@review.ReviewText</p>
 }
-</section> <!-- end .reviews -->
+</section>
 
 @if (Model.Stories.Count > 1)
 {
     <section class="itemList">
         @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.Stories.Values); }
-    </section> <!-- end .itemList -->
+    </section>
 }

@@ -11,7 +11,7 @@
 { 
     <p>@review.ReviewText</p>
 }
-</section> <!-- end .reviews -->
+</section>
 
 <section class="books">
     <p>@BiebResources.PersonStrings.WorksByTitleStart <span class="fullname">@Model.FullName</span> @BiebResources.PersonStrings.WorksByTitleEnd:</p>
@@ -21,7 +21,7 @@
         <section class="itemList authoredNovels">
             <h3>@BiebResources.SharedStrings.Novels</h3>
             @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredNovels); }
-        </section> <!-- end .itemList .authoredNovels -->
+        </section>
     }
 
     @if (Model.EditedBooks.Count > 0)
@@ -29,7 +29,7 @@
         <section class="itemList editedBooks">
             <h3>@BiebResources.PersonStrings.EditedBooks</h3>
             @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.EditedBooks); }
-        </section> <!-- end .itemList .editedBooks -->
+        </section>
     }
     
     @if (Model.AuthoredCollections.Any())
@@ -37,9 +37,9 @@
         <section class="itemList authoredCollections">
             <h3>@BiebResources.PersonStrings.AuthoredCollections</h3>
             @{ Html.RenderPartial("~/Views/Book/ItemList.cshtml", Model.AuthoredCollections); }
-        </section> <!-- end .itemList .authoredCollections -->
+        </section>
     }
-</section> <!-- end .books -->
+</section>
 
 <section class="stories">
     @if (Model.TranslatedStories.Count > 0)
@@ -47,7 +47,7 @@
         <section class="itemList translatedStories">
             <h3>@BiebResources.PersonStrings.TranslatedStories</h3>
             @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.TranslatedStories); }
-        </section> <!-- end .itemList .translatedStories -->
+        </section>
     }
         
     @if (Model.AuthoredShortStories.Any())
@@ -56,6 +56,6 @@
         <section class="itemList authoredShortStories">
             <h3>@BiebResources.PersonStrings.AuthoredShortStories</h3>
             @{ Html.RenderPartial("~/Views/Story/ItemList.cshtml", Model.AuthoredShortStories); }
-        </section> <!-- end .itemList .authoredShortStories -->
+        </section>
     }
-</section> <!-- end .stories -->
+</section>

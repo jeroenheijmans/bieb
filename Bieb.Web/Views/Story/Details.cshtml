@@ -13,7 +13,7 @@
     <section class="itemList">
         <h3>@BiebResources.SharedStrings.Authors</h3>
         @{ Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Authors); }
-    </section> <!-- end .itemList -->
+    </section>
 }
 
 @if (Model.Translators.Any())
@@ -21,6 +21,6 @@
     <section class="itemList">
         <h3>@BiebResources.SharedStrings.Translators</h3>
         @{ Html.RenderPartial("~/Views/Person/ItemList.cshtml", Model.Translators); }
-    </section> <!-- end .itemList -->
+    </section>
 }
 

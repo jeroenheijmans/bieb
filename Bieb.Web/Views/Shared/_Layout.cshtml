@@ -13,7 +13,7 @@
     <header>
         <div class="title">
             @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
-        </div> <!-- end .title -->
+        </div>
         <nav>
             <ul id="menu">
                 <li class="home">@Html.MenuLink("Home", "", "Home")</li>
@@ -22,19 +22,19 @@
                 <li class="series">@Html.MenuLink("Series", "Index", "Series")</li>
                 <li class="search">@Html.MenuLink("Search", "Basic", "Search")</li>
                 <li class="surprise">@Html.MenuLink("Surprise me!", "Index", "Surprise")</li>
-            </ul> <!-- end #menu -->
+            </ul>
 
             <div id="search">
                 @Html.Partial("_SearchBoxPartial")
-            </div> <!-- end #search -->
+            </div>
         </nav>
     </header>
 
     <div class="wrapper">
         <section id="main">
             @RenderBody()
-        </section> <!-- end #main -->
-    </div> <!-- end .wrapper -->
+        </section>
+    </div>
 
     <footer>
         <p>
