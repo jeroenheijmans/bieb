@@ -63,6 +63,16 @@
     <Compile Include="Domain\BookTests.cs" />
     <Compile Include="Domain\UncertainDateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\BookRoutingTests.cs" />
+    <Compile Include="Routing\DefaultRoutingTests.cs" />
+    <Compile Include="Routing\DomainRoutingTests.cs" />
+    <Compile Include="Routing\PersonRoutingTests.cs" />
+    <Compile Include="Routing\PublisherRoutingTests.cs" />
+    <Compile Include="Routing\RoutingTests.cs" />
+    <Compile Include="Routing\SearchRoutingTests.cs" />
+    <Compile Include="Routing\SeriesRoutingTests.cs" />
+    <Compile Include="Routing\StoriesRoutingTests.cs" />
+    <Compile Include="Routing\SurpriseRoutingTests.cs" />
     <Compile Include="WebHelpers\ActionLinkExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>

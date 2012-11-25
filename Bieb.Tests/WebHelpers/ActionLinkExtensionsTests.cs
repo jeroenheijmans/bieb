@@ -65,13 +65,13 @@ namespace Bieb.Tests.WebHelpers
 
         private static HtmlHelper<string> CreateHtmlHelper(ViewDataDictionary viewData, RouteData routeData)
         {
-            var cc = new Mock<ControllerContext>(
+            var controllerContext = new Mock<ControllerContext>(
                 new Mock<HttpContextBase>().Object,
                 routeData,
                 new Mock<ControllerBase>().Object);
 
             var mockViewContext = new Mock<ViewContext>(
-                cc.Object,
+                controllerContext.Object,
                 new Mock<IView>().Object,
                 viewData,
                 new TempDataDictionary(),
@@ -82,8 +82,7 @@ namespace Bieb.Tests.WebHelpers
             mockViewContext.Setup(v => v.RouteData).Returns(routeData);
             mockViewDataContainer.Setup(v => v.ViewData).Returns(viewData);
 
-            var h = new HtmlHelper<string>(mockViewContext.Object, mockViewDataContainer.Object);
-            return h;
+            return new HtmlHelper<string>(mockViewContext.Object, mockViewDataContainer.Object);
         }
     }
 
