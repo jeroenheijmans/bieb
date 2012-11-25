@@ -27,24 +27,11 @@ namespace Bieb.Tests.Routing
         }
 
         [Test]
-        public void Aliases_With_Index_Lead_To_Index_Action()
-        {
-            foreach (var alias in Aliases)
-            {
-                var routeData = GetRouteDataForPath("~/" + alias + "/Index");
-
-                Assert.That(routeData, Is.Not.Null);
-                Assert.That(routeData.Values["Controller"], Is.EqualTo(PrimaryAlias));
-                Assert.That(routeData.Values["action"], Is.EqualTo("Index"));
-            }
-        }
-
-        [Test]
         public void Aliases_With_Details_And_Id_Lead_To_Individual_Item()
         {
             foreach (var alias in Aliases)
             {
-                var routeData = GetRouteDataForPath("~/" + alias + "/Details/1");
+                var routeData = GetRouteDataForPath("~/" + alias + "/1");
 
                 Assert.That(routeData, Is.Not.Null);
                 Assert.That(routeData.Values["Controller"], Is.EqualTo(PrimaryAlias));
