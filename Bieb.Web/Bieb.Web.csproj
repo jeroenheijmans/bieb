@@ -321,6 +321,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PersonStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Publisher\PublisherStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

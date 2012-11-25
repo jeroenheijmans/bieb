@@ -129,9 +129,6 @@
   <data name="BornOn" xml:space="preserve">
     <value>Born</value>
   </data>
-  <data name="CardTitle" xml:space="preserve">
-    <value>Basic Details</value>
-  </data>
   <data name="DiedAt" xml:space="preserve">
     <value>Died at</value>
   </data>

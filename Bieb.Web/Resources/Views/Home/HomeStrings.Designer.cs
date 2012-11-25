@@ -79,7 +79,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome!.
+        ///   Looks up a localized string similar to Greetings Earthlings!.
         /// </summary>
         public static string Title {
             get {

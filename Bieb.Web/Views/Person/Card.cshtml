@@ -1,12 +1,11 @@
 ﻿@model Bieb.Domain.Entities.Person
 
-<div class="card person">
-    <p class="title">@BiebResources.PersonStrings.CardTitle</p>
-    
-    <img src="@Url.Content("~/Content/images/person-placeholder.png")" alt="@BiebResources.PersonStrings.PortraitAlt" class="representation" />
+<div class="card">
     <h1>
         @Html.DisplayFor(model => model.FullName)
     </h1>
+    
+    @*TODO: Include portrait.*@
 
     <h2>@if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
         {

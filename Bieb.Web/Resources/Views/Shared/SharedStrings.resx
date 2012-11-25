@@ -168,11 +168,14 @@
   <data name="Series" xml:space="preserve">
     <value>Series</value>
   </data>
-  <data name="ShortSiteTitle" xml:space="preserve">
-    <value>BIEB!</value>
-  </data>
   <data name="SiteSlogan" xml:space="preserve">
     <value>Books that are (and have been) in my personal library</value>
+  </data>
+  <data name="SiteTitleLong" xml:space="preserve">
+    <value>Bieb: My Library</value>
+  </data>
+  <data name="SiteTitleShort" xml:space="preserve">
+    <value>BIEB!</value>
   </data>
   <data name="Stories" xml:space="preserve">
     <value>Stories</value>
