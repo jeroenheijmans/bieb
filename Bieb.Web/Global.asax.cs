@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bieb.Web.Infrastructure;
@@ -10,6 +11,8 @@ namespace Bieb.Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static Dictionary<string, string> ControllerAliases = new Dictionary<string, string>();
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -19,6 +22,10 @@ namespace Bieb.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("SearchIndex",
+                            "Search",
+                            new {controller = "Search", action = "Basic"});
+            
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
