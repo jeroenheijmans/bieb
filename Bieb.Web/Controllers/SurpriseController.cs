@@ -21,11 +21,11 @@ namespace Bieb.Web.Controllers
             if (new Random().Next(2) > 0)
             {
                 var person = PersonRepository.GetRandomItem();
-                return RedirectToAction("Details", "Person", new { id = person.Id });
+                return RedirectToAction("Details", "People", new { id = person.Id });
             }
 
             var book = BookRepository.GetRandomItem();
-            return RedirectToAction("Details", "Book", new { id = book.Id });
+            return RedirectToAction("Details", "Books", new { id = book.Id });
         }
     }
 }

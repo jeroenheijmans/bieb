@@ -66,16 +66,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\EntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PersonController.cs" />
-    <Compile Include="Controllers\PersonReviewController.cs" />
-    <Compile Include="Controllers\PublisherController.cs" />
-    <Compile Include="Controllers\BookReviewController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\PersonReviewsController.cs" />
+    <Compile Include="Controllers\PublishersController.cs" />
+    <Compile Include="Controllers\BookReviewsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SeriesController.cs" />
-    <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Controllers\StoriesController.cs" />
     <Compile Include="Controllers\SurpriseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -232,22 +232,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Book\Details.cshtml" />
+    <Content Include="Views\Books\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Person\Details.cshtml" />
+    <Content Include="Views\People\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Publisher\Details.cshtml" />
+    <Content Include="Views\Publishers\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Story\Details.cshtml" />
+    <Content Include="Views\Stories\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Series\Index.cshtml" />
@@ -256,28 +256,28 @@
     <Content Include="Views\Series\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Story\ItemList.cshtml" />
+    <Content Include="Views\Stories\ItemList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Book\ItemList.cshtml" />
+    <Content Include="Views\Books\ItemList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Person\Card.cshtml" />
+    <Content Include="Views\People\Card.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Person\ItemList.cshtml" />
+    <Content Include="Views\People\ItemList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Book\Card.cshtml" />
+    <Content Include="Views\Books\Card.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Story\Card.cshtml" />
+    <Content Include="Views\Stories\Card.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\BookReview\Details.cshtml" />
+    <Content Include="Views\BookReviews\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PersonReview\Details.cshtml" />
+    <Content Include="Views\PersonReviews\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\PagerPartial.cshtml" />

@@ -4,9 +4,9 @@ using Bieb.Domain.Repositories;
 
 namespace Bieb.Web.Controllers
 {
-    public class PersonReviewController : EntityController<Review<Person>>
+    public class PersonReviewsController : EntityController<Review<Person>>
     {
-        public PersonReviewController(IEntityRepository<Review<Person>> repository)
+        public PersonReviewsController(IEntityRepository<Review<Person>> repository)
             : base(repository)
         { }
 
