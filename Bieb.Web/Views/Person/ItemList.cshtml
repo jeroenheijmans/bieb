@@ -4,7 +4,7 @@
 @foreach (var person in Model) 
 {
     <li>
-        <h3>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</h3>
+        <h4>@Html.ActionLink(person.FullName, "Details", new { controller = "Person", id = person.Id })</h4>
     </li>
 }
 </ul>

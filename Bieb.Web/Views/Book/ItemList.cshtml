@@ -4,11 +4,11 @@
 @foreach (var book in Model) 
 {
     <li>
-        <h3>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</h3>
+        <h4>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</h4>
 
         @if (!string.IsNullOrWhiteSpace(book.Subtitle))
         {
-            <span class="subtitle">@book.Subtitle</span><br />
+            <span>@book.Subtitle</span><br />
         }
         
         <span>@book.BookType</span>

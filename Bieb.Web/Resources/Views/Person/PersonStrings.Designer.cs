@@ -194,23 +194,5 @@ namespace BiebResources {
                 return ResourceManager.GetString("TranslatedStories", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to in my library.
-        /// </summary>
-        public static string WorksByTitleEnd {
-            get {
-                return ResourceManager.GetString("WorksByTitleEnd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Works by.
-        /// </summary>
-        public static string WorksByTitleStart {
-            get {
-                return ResourceManager.GetString("WorksByTitleStart", resourceCulture);
-            }
-        }
     }
 }

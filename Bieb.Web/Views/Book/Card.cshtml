@@ -33,8 +33,7 @@
         @if (Model.Editors.Any())
         {
             <li>
-                <br />
-                @BiebResources.SharedStrings.Editors: 
+                <h6>@BiebResources.SharedStrings.Editors</h6>
                 <ul>
                 @foreach (var person in Model.Editors)
                 {
@@ -49,8 +48,7 @@
         @if (Model.Authors.Any())
         {
             <li>
-                <br />
-                @BiebResources.SharedStrings.Authors:
+                <h6>@BiebResources.SharedStrings.Authors</h6>
                 <ul>
                 @foreach (var person in Model.Authors)
                 {
@@ -65,8 +63,7 @@
         @if (Model.Translators.Any())
         {
             <li>
-                <br />
-                @BiebResources.SharedStrings.Translators:
+                <h6>@BiebResources.SharedStrings.Translators</h6>
                 <ul>
                 @foreach (var person in Model.Translators)
                 {
