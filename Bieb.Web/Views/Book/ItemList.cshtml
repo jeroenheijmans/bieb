@@ -4,7 +4,6 @@
 @foreach (var book in Model) 
 {
     <li>
-        <img class="itemRepresentation" src="@Url.Content("~/Content/images/book-placeholder-front-small.png")" alt="@BiebResources.BookStrings.IconAlt" />
         <h3>@Html.ActionLink(book.Title, "Details", new { controller = "Book", id = book.Id })</h3>
 
         @if (!string.IsNullOrWhiteSpace(book.Subtitle))
