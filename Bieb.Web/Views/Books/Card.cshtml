@@ -9,12 +9,22 @@
     }
 
     <ul>
-        <li>
-            @Html.DisplayFor(model => model.Publisher.Name), 
-            @Html.DisplayFor(model => model.Year), 
-            @Html.DisplayFor(model => model.Language)
-        </li>
-        
+        @if (Model.Publisher != null || Model.Year != null || Model.Language != null)
+        {
+            <li>
+                @BiebResources.BookStrings.Published: 
+                @if (Model.Year != null)
+                {
+                    <span>@Model.Year,</span>
+                }
+                @if (Model.Publisher != null)
+                {
+                    <span>@Model.Publisher,</span>
+                }
+                @Model.Language
+            </li>
+        }
+            
         @if (Model.Isbn != null)
         { 
             <li>@BiebResources.SharedStrings.Isbn: @Html.DisplayFor(model => model.Isbn)</li>
@@ -35,12 +45,12 @@
             <li>
                 <h6>@BiebResources.SharedStrings.Editors</h6>
                 <ul>
-                @foreach (var person in Model.Editors)
-                {
-                    <li>
-                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
-                    </li>
-                }
+                    @foreach (var person in Model.Editors)
+                    {
+                        <li>
+                            @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                        </li>
+                    }
                 </ul>
             </li>
         }
@@ -50,12 +60,12 @@
             <li>
                 <h6>@BiebResources.SharedStrings.Authors</h6>
                 <ul>
-                @foreach (var person in Model.Authors)
-                {
-                    <li>
-                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
-                    </li>
-                }
+                    @foreach (var person in Model.Authors)
+                    {
+                        <li>
+                            @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                        </li>
+                    }
                 </ul>
             </li>
         }
@@ -65,12 +75,12 @@
             <li>
                 <h6>@BiebResources.SharedStrings.Translators</h6>
                 <ul>
-                @foreach (var person in Model.Translators)
-                {
-                    <li>
-                        @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
-                    </li>
-                }
+                    @foreach (var person in Model.Translators)
+                    {
+                        <li>
+                            @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                        </li>
+                    }
                 </ul>
             </li>
         }
