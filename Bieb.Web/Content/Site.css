@@ -48,6 +48,10 @@ body {
 }
 
 /* Basic HTML elements */
+small {
+    font-size: 0.70em;
+}
+
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2em;
     margin: 0.5em 0 0.3em 0;
@@ -293,4 +297,10 @@ ul.searchResults > li {
 	background: #FF0080;
 	color: #FFFFFF;
 	text-shadow: none;
+}
+
+
+iframe.goodreads {
+    border: 1px solid #666666;
+    padding: 0 1em;
 }
