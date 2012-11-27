@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using System.Web.Routing;
+using Bieb.Web.Infrastructure;
+
+namespace Bieb.Web
+{
+    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
+    // visit http://go.microsoft.com/?LinkId=9394801
+
+    public class MvcApplication : System.Web.HttpApplication
+    {
+        public static Dictionary<string, string> ControllerAliases = new Dictionary<string, string>();
+
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+        }
+
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute("SearchIndex",
+                            "Search",
+                            new { controller = "Search", action = "Basic" });
+
+            routes.MapRoute(
+                "DetailsInController", // Route name
+                "{controller}/{id}", // URL with parameters
+                new { controller = "Home", action = "Details", id = UrlParameter.Optional }, // Parameter defaults
+                new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                "StraightToController", // Route name
+                "{controller}/{action}", // URL with parameters
+                new { controller = "Home", action = "Index" } // Parameter defaults
+            );
+        }
+
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+
+            RegisterGlobalFilters(GlobalFilters.Filters);
+            RegisterRoutes(RouteTable.Routes);
+
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+        }
+
+        protected void Application_EndRequest(object sender, EventArgs args)
+        {
+            // TODO: Refactor/replace with DI solution
+            NHibernateProvider.Session.CloseSession();
+        }
+    }
+}

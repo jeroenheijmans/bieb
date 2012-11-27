@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <!-- BOOK -->
+  <class name="Review`1[Book]" table="Review">
+    <id name="Id" column="ReviewId">
+      <generator class="native" />
+    </id>
+    <property name="ReviewText" type="StringClob" />
+    <property name="Rating" />
+
+    <many-to-one 
+      name="Subject" 
+      column="BookId" 
+      foreign-key="FK_Review_Book" 
+      class="Book" />
+    <!-- TODO: If you go to a PersonReview/Details/{id} URL it should throw an exception trying to load this... but it doesn't? -->
+  </class>
+
+  <!-- PERSON -->
+  <class name="Review`1[Bieb.Domain.Entities.Person, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" table="Review">
+    <id name="Id" column="ReviewId">
+      <generator class="native" />
+    </id>
+    <property name="ReviewText" type="StringClob" />
+    <property name="Rating" />
+
+    <many-to-one 
+      name="Subject" 
+      column="PersonId" 
+      foreign-key="FK_Review_Person" 
+      class="Person" />
+  </class>
+  
+</hibernate-mapping>

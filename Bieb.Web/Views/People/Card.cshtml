@@ -1,0 +1,55 @@
+﻿@model Bieb.Domain.Entities.Person
+
+<div class="card">
+    <h1>
+        @Html.DisplayFor(model => model.FullName)
+    </h1>
+    
+    <h2>
+        @if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
+        {
+            @Model.GenderChar
+        }
+
+        @if (Model.Nationality != null)
+        {
+            @Html.ImageFlagFor(Model)
+        }
+        
+        @string.Join(", ", Model.Roles)
+    </h2>
+
+    <ul>
+        <li>
+            @BiebResources.PersonStrings.BornOn: @Model.DateOfBirth.ToString()
+        </li>
+
+        @if (Model.PlaceOfBirth != null)
+        {
+            <li>
+                @BiebResources.PersonStrings.BornAt: @Html.DisplayFor(model => model.PlaceOfBirth)
+            </li>
+        }
+        
+        <li>
+            @BiebResources.PersonStrings.DiedOn: @Model.DateOfDeath.ToString()
+        </li>
+
+        @if (Model.PlaceOfDeath != null)
+        {
+            <li>
+                @BiebResources.PersonStrings.DiedAt: @Html.DisplayFor(model => model.PlaceOfDeath)
+            </li>
+        }
+        
+        @if (Model.Tags.Any())
+        { 
+            <li>
+                @BiebResources.SharedStrings.Tags:
+                @string.Join(", ", Model.Tags)
+            </li>
+        }
+    </ul>
+
+    <p>@BiebResources.PersonStrings.RequestForAdditionalInfo</p>
+</div>

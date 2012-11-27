@@ -1,0 +1,28 @@
+﻿@model Bieb.Domain.Entities.Book
+
+<div class="moreInfo">
+    
+    <article>
+        <h4>Find this book</h4>
+        <ul>
+            <li><a href="http://www.google.com/search?q=Book+@Url.Encode(Model.Title)">On Google</a></li>
+            <li><a href="http://en.wikipedia.org/wiki/Special:Search?search=@Url.Encode(Model.Title)">On Wikipedia</a></li>
+        </ul>
+    </article>
+
+    @if (!String.IsNullOrEmpty(Model.Isbn))
+    {
+        <article>
+            <h4>Good<strong>reads</strong> reviews</h4>
+            <small>The following content is from Goodreads, a book-review site.</small>
+            <div id="goodreads-widget">
+                <iframe 
+                    class="goodreads"
+                    src="http://www.goodreads.com/api/reviews_widget_iframe?isbn=@Model.Isbn&links=660&min_rating=&num_reviews=2&review_back=ffffff&stars=FFCC00&text=333333" 
+                    width="575" 
+                    height="400">
+                </iframe>
+            </div>
+        </article>
+    }
+</div>

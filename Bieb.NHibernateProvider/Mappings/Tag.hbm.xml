@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Tag">
+    
+    <id name="Id" column="TagId">
+      <generator class="native" />
+    </id>
+    
+    <property name="Name" not-null="true" index="IX_Tag_Name" />
+    <property name="Description" />
+    
+  </class>
+
+</hibernate-mapping>

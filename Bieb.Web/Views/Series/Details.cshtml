@@ -1,0 +1,16 @@
+﻿@model Bieb.Domain.Entities.Series
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+@if (!string.IsNullOrEmpty(Model.Subtitle))
+{ 
+    <h2>@Model.Subtitle</h2>
+}
+<section class="itemList">
+    <h3>@BiebResources.SharedStrings.Books</h3>
+    @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.Books.Values); }
+</section>
+

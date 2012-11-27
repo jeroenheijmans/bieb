@@ -1,0 +1,59 @@
+﻿@model Bieb.Domain.Entities.Person
+
+@{
+    ViewBag.Title = Model.FullName;
+}
+
+@{ Html.RenderPartial("Card", Model); }
+
+<section class="reviews">
+@foreach (var review in Model.Reviews)
+{ 
+    <p>@review.ReviewText</p>
+}
+</section>
+
+<section class="books">
+    @if (Model.AuthoredNovels.Any())
+    { 
+        <section class="itemList authoredNovels">
+            <h3>@BiebResources.SharedStrings.Novels</h3>
+            @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredNovels); }
+        </section>
+    }
+
+    @if (Model.EditedBooks.Count > 0)
+    { 
+        <section class="itemList editedBooks">
+            <h3>@BiebResources.PersonStrings.EditedBooks</h3>
+            @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.EditedBooks); }
+        </section>
+    }
+    
+    @if (Model.AuthoredCollections.Any())
+    { 
+        <section class="itemList authoredCollections">
+            <h3>@BiebResources.PersonStrings.AuthoredCollections</h3>
+            @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredCollections); }
+        </section>
+    }
+</section>
+
+<section class="stories">
+    @if (Model.TranslatedStories.Count > 0)
+    { 
+        <section class="itemList translatedStories">
+            <h3>@BiebResources.PersonStrings.TranslatedStories</h3>
+            @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.TranslatedStories); }
+        </section>
+    }
+        
+    @if (Model.AuthoredShortStories.Any())
+    {
+        // TODO: Split between short stories and novels
+        <section class="itemList authoredShortStories">
+            <h3>@BiebResources.PersonStrings.AuthoredShortStories</h3>
+            @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.AuthoredShortStories); }
+        </section>
+    }
+</section>

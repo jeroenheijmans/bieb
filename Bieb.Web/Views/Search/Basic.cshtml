@@ -1,0 +1,92 @@
+﻿@model Bieb.Web.Models.BasicSearchResultModel
+
+@{
+    ViewBag.Title = "Basic Search";
+}
+
+<h1>@BiebResources.SearchStrings.BasicSearchHeader</h1>
+<p>@BiebResources.SearchStrings.JumpTo:</p>
+<ul>
+    <li><a href="#people">@Model.people.Count() @BiebResources.SharedStrings.People</a></li>   
+    <li><a href="#books">@Model.books.Count() @BiebResources.SharedStrings.Books</a></li>
+    <li><a href="#stories">@Model.stories.Count() @BiebResources.SharedStrings.Stories</a></li>
+</ul>
+
+@Html.Partial("_SearchBoxPartial")
+
+<section class="searchResults">
+    <h2 id="people">@BiebResources.SharedStrings.People</h2>
+    @if (Model.people.Any())
+    { 
+        <ul class="searchResults">
+            @foreach (var person in Model.people)
+            {
+                <li class="person">
+                    @Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })
+                    <br />
+                    @if (person.Gender != Bieb.Domain.Entities.Gender.Unkown)
+                    {
+                        <span>
+                            @person.GenderChar
+                        </span>
+                    }
+
+                    @if (person.Nationality != null)
+                    {
+                        @Html.ImageFlagFor(person)
+                    }
+                    @string.Join(", ", person.Roles)
+                </li>
+            }
+        </ul>
+    } 
+    else 
+    {
+        <p>-</p>
+    }
+    
+    <h2 id="books">@BiebResources.SharedStrings.Books</h2>
+    @if (Model.books.Any())
+    { 
+        <ul class="searchResults">
+            @foreach (var book in Model.books)
+            {
+                <li class="book">
+                    @Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })
+                    <br />
+                    <span>@book.BookType</span>
+                    @if (!string.IsNullOrWhiteSpace(book.Isbn))
+                    {
+                        <span>, @book.Isbn</span>
+                    }
+                </li>     
+            }
+        </ul>
+    } 
+    else 
+    {
+        <p>-</p>
+    }
+    
+    <h2 id="stories">@BiebResources.SharedStrings.Stories</h2>
+    @if (Model.stories.Any())
+    { 
+        <ul class="searchResults">
+            @foreach (var story in Model.stories)
+            {
+                <li class="story">
+                    @Html.ActionLink(story.Title, "Details", new { controller = "Stories", id = story.Id })
+                    <br />
+                    From 
+                    @story.Book.BookType:
+                    @Html.ActionLink(story.Book.Title, "Details", new { controller = "Books", id = story.Book.Id })
+                   
+                </li>     
+            }
+        </ul>
+    } 
+    else 
+    {
+        <p>-</p>
+    }
+</section>

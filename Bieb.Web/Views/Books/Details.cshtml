@@ -1,0 +1,23 @@
+﻿@model Bieb.Domain.Entities.Book
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+@{ Html.RenderPartial("Card", Model); }
+
+<section class="reviews">
+@foreach (var review in Model.Reviews)
+{ 
+    <p>@review.ReviewText</p>
+}
+</section>
+
+@if (Model.Stories.Count > 1)
+{
+    <section class="itemList">
+        @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories.Values); }
+    </section>
+}
+
+@{ Html.RenderPartial("MoreInfo", Model); }

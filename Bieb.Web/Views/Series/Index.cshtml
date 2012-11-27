@@ -1,0 +1,32 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Series>
+
+@{
+    ViewBag.Title = "All Series";
+}
+
+<p>@BiebResources.SeriesStrings.IndexIntroduction</p>
+
+<table class="listing">
+    <tr>
+        <th>
+            @BiebResources.SeriesStrings.TitleHeader
+        </th>
+        <th>
+            @BiebResources.SeriesStrings.BooksInThisSeries
+        </th>
+    </tr>
+
+@foreach (var series in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(series.Title, "Details", new { id=series.Id })
+        </td>
+        <td class="mainColumn">
+            @string.Join(", ", series.Books.Values)
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

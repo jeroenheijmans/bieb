@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Bieb.Domain.Entities.Person>
+
+<ul>
+@foreach (var person in Model) 
+{
+    <li>
+        <h4>@Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })</h4>
+    </li>
+}
+</ul>

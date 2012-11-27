@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Person">
+    
+    <id name="Id" column="PersonId">
+      <generator class="native" />
+    </id>
+
+    <property name="Title" />
+    <property name="FirstName" />
+    <property name="Prefix" />
+    <property name="Surname" />
+    
+    <property name="Gender" type="NHibernate.Type.EnumStringType`1[[Bieb.Domain.Entities.Gender, Bieb.Domain]], NHibernate" not-null="true" />
+    <property name="Nationality" />
+    <property name="PlaceOfBirth" />
+    <property name="PlaceOfDeath" />
+
+    <property name="DateOfBirthFrom" type="Date" />
+    <property name="DateOfBirthUntil" type="Date" />
+    <property name="DateOfDeathFrom" type="Date" />
+    <property name="DateOfDeathUntil" type="Date" />
+
+    <bag name="EditedBooks" table="BookEditor" lazy="true">
+      <key column="PersonId" foreign-key="FK_BookEditor_Person" />
+      <many-to-many column="BookId" class="Book" foreign-key="FK_BookEditor_Book" />
+    </bag>
+
+    <bag name="AuthoredStories" table="StoryAuthor" lazy="true">
+      <key column="PersonId" foreign-key="FK_StoryAuthor_Person" />
+      <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryAuthor_Story" />
+    </bag>
+
+    <bag name="TranslatedStories" table="StoryTranslator" lazy="true">
+      <key column="PersonId" foreign-key="FK_StoryTranslator_Person" />
+      <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryTranslator_Story" />
+    </bag>
+
+    <!-- Fully qualified name on the generic type needed, see:  Posted it on SO: http://stackoverflow.com/q/12547084/419956 -->
+    <bag name="Reviews" table="Review">
+      <key column="PersonId" foreign-key="FK_Review_Person" />
+      <one-to-many class="Review`1[Bieb.Domain.Entities.Person, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
+    </bag>
+    
+  </class>
+
+</hibernate-mapping>

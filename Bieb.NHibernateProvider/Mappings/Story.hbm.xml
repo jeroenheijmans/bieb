@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Story">
+    
+    <id name="Id" column="StoryId">
+      <generator class="native" />
+    </id>
+    
+    <property name="Title" not-null="true" index="IX_Story_Title" />
+    <property name="TitleSort" column="TitleSort" generated="always" />
+    <property name="Subtitle" />
+    
+    <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" not-null="true" />
+    <property name="PositionInBook" />
+
+    <bag name="Authors" table="StoryAuthor" lazy="true">
+      <key column="StoryId" foreign-key="FK_StoryAuthor_Story" />
+      <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryAuthor_Person" />
+    </bag>
+
+    <bag name="Translators" table="StoryTranslator" lazy="true">
+      <key column="StoryId" foreign-key="FK_StoryTranslator_Story" />
+      <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryTranslator_Person" />
+    </bag>
+
+    <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Story_Publisher" />
+
+    <bag name="Tags" table="StoryTag" lazy="true">
+      <key column="StoryId" foreign-key="FK_StoryTag_Story" />
+      <many-to-many column="TagId" class="Tag" foreign-key="FK_StoryTag_Tag" />
+    </bag>
+
+  </class>
+
+  <database-object>
+    <create>
+      ALTER TABLE Story DROP COLUMN TitleSort
+      GO
+
+      ALTER TABLE Story
+      ADD TitleSort AS (
+        CASE
+          WHEN LEFT(Title, 3) = 'De '  THEN RIGHT(Title, LEN(Title)-3) + ', De'
+          WHEN LEFT(Title, 4) = 'Het ' THEN RIGHT(Title, LEN(Title)-4) + ', Het'
+          WHEN LEFT(Title, 4) = 'Een ' THEN RIGHT(Title, LEN(Title)-4) + ', Een'
+          WHEN LEFT(Title, 4) = 'The ' THEN RIGHT(Title, LEN(Title)-4) + ', The'
+          WHEN LEFT(Title, 2) = 'A '   THEN RIGHT(Title, LEN(Title)-2) + ', A'
+          ELSE Title
+        END
+      ) PERSISTED
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+  
+</hibernate-mapping>
