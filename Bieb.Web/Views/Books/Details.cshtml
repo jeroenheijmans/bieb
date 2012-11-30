@@ -16,6 +16,7 @@
 @if (Model.Stories.Count > 1)
 {
     <section class="itemList">
+        <h3>@BiebResources.SharedStrings.Stories:</h3>
         @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories.Values); }
     </section>
 }

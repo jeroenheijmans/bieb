@@ -214,6 +214,7 @@ table th {
     background: #333333;
     color: #FFFFFF;
     padding: 1.0em;
+    margin: 0 0 1em 1em;
 }
 
 .card h1 { font-size: 1.5em; }
@@ -270,6 +271,17 @@ th {
 .listing .text {
     text-align: left;
 }
+
+.itemList li {
+    background-color: #EEEEEE;
+    padding: 0.5em 1em;
+    margin: 0 1em 1em 0;
+    display: inline-block;
+    width: 19em;
+    min-height: 6em;
+    vertical-align: bottom;
+}
+
 
 
 ul.searchResults > li {
