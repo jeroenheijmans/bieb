@@ -126,6 +126,15 @@
   <data name="CoverFrontAlt" xml:space="preserve">
     <value>front cover</value>
   </data>
+  <data name="FindBookOn" xml:space="preserve">
+    <value>Find this book on</value>
+  </data>
+  <data name="GoodReadsDescription" xml:space="preserve">
+    <value>Let's see if we can find anything on Goodreads, a book-review site:</value>
+  </data>
+  <data name="GoodReadsReviews" xml:space="preserve">
+    <value>Goodreads Reviews</value>
+  </data>
   <data name="IconAlt" xml:space="preserve">
     <value>book cover icon</value>
   </data>
