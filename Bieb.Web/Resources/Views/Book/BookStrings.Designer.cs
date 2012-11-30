@@ -88,6 +88,33 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find this book on.
+        /// </summary>
+        public static string FindBookOn {
+            get {
+                return ResourceManager.GetString("FindBookOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s see if we can find anything on Goodreads, a book-review site:.
+        /// </summary>
+        public static string GoodReadsDescription {
+            get {
+                return ResourceManager.GetString("GoodReadsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goodreads Reviews.
+        /// </summary>
+        public static string GoodReadsReviews {
+            get {
+                return ResourceManager.GetString("GoodReadsReviews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to book cover icon.
         /// </summary>
         public static string IconAlt {

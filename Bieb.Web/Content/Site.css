@@ -48,12 +48,16 @@ body {
 }
 
 /* Basic HTML elements */
+small {
+    font-size: 0.70em;
+}
+
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2em;
     margin: 0.5em 0 0.3em 0;
 }
 
-h4, h5, h6 {
+h5, h6 {
     margin-bottom: 0;
 }
 
@@ -293,4 +297,24 @@ ul.searchResults > li {
 	background: #FF0080;
 	color: #FFFFFF;
 	text-shadow: none;
+}
+
+
+ul.search-options li {
+	display: inline-block;
+}
+
+ul.search-options li a {
+    display: block;
+	background: #333333;
+	padding: 1em;
+    color: #FFD8ED;
+}
+
+ul.search-options li a:hover {
+    color: #FF0080;
+}
+
+iframe.goodreads {
+    padding: 0 1em;
 }

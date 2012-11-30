@@ -297,6 +297,7 @@
     <None Include="Content\fonts\museo_sans500-webfont.woff" />
     <Content Include="Views\Shared\_SearchBoxPartial.cshtml" />
     <Content Include="Views\Search\Basic.cshtml" />
+    <Content Include="Views\Books\MoreInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Views\Book\BookStrings.resx">

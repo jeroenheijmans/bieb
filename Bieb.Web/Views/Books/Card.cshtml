@@ -21,7 +21,10 @@
                 {
                     <span>@Model.Publisher,</span>
                 }
-                @Model.Language
+                @if (@Model.Language != null)
+                {
+                    <span>in @Model.Language</span>
+                }
             </li>
         }
             
