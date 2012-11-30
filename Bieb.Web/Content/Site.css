@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0.5em 0 0.3em 0;
 }
 
-h4, h5, h6 {
+h5, h6 {
     margin-bottom: 0;
 }
 
@@ -300,7 +300,21 @@ ul.searchResults > li {
 }
 
 
+ul.search-options li {
+	display: inline-block;
+}
+
+ul.search-options li a {
+    display: block;
+	background: #333333;
+	padding: 1em;
+    color: #FFD8ED;
+}
+
+ul.search-options li a:hover {
+    color: #FF0080;
+}
+
 iframe.goodreads {
-    border: 1px solid #666666;
     padding: 0 1em;
 }
