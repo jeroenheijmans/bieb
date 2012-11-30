@@ -2,7 +2,7 @@
 
 <div class="moreInfo">
     
-    <article>
+    <section>
         <h4>@BiebResources.BookStrings.FindBookOn</h4>
         <ul class="search-options">
             <li><a href="http://www.google.com/search?q=Book+@Url.Encode(Model.Title)">Google</a></li>
@@ -11,11 +11,11 @@
             <li><a href="http://www.goodreads.com/search?query=@Url.Encode(Model.Title)">Goodreads</a></li>
             
         </ul>
-    </article>
+    </section>
 
     @if (!String.IsNullOrEmpty(Model.Isbn))
     {
-        <article>
+        <section>
             <h4>@BiebResources.BookStrings.GoodReadsReviews</h4>
             <small>@BiebResources.BookStrings.GoodReadsDescription</small>
             <div id="goodreads-widget">
@@ -26,6 +26,6 @@
                     height="400">
                 </iframe>
             </div>
-        </article>
+        </section>
     }
 </div>
