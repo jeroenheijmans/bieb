@@ -1,6 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FE17B862-2C91-4AE4-8529-F6B2BB3A4BEC}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Web", "Bieb.Web\Bieb.Web.csproj", "{5B0CACE4-DEDA-43CA-99FD-6476740E40CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Domain", "Bieb.Domain\Bieb.Domain.csproj", "{FD033D56-3912-4B0F-AF94-24234D5E4389}"
@@ -10,13 +17,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.CommandLineTool", "Bieb.CommandLineTool\Bieb.CommandLineTool.csproj", "{35B4B99C-C0F6-445E-8420-E94DA41C35B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.NHibernateProvider", "Bieb.NHibernateProvider\Bieb.NHibernateProvider.csproj", "{A98CA5A5-29DB-4E2F-BC94-9FB9C7309AD1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FE17B862-2C91-4AE4-8529-F6B2BB3A4BEC}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
