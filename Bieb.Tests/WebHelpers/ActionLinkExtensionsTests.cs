@@ -9,7 +9,7 @@ using Bieb.Web.Helpers;
 namespace Bieb.Tests.WebHelpers
 {
     [TestFixture]
-    public class ActionLinkExtensionsTest
+    public class ActionLinkExtensionsTest : HtmlHelperTests
     {
         [Test]
         public void MenuLink_Sets_Class_To_Active()
@@ -61,28 +61,6 @@ namespace Bieb.Tests.WebHelpers
             // Assert
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.ToHtmlString(), Contains.Substring("class=\"active\""));
-        }
-
-        private static HtmlHelper<string> CreateHtmlHelper(ViewDataDictionary viewData, RouteData routeData)
-        {
-            var controllerContext = new Mock<ControllerContext>(
-                new Mock<HttpContextBase>().Object,
-                routeData,
-                new Mock<ControllerBase>().Object);
-
-            var mockViewContext = new Mock<ViewContext>(
-                controllerContext.Object,
-                new Mock<IView>().Object,
-                viewData,
-                new TempDataDictionary(),
-                TextWriter.Null);
-
-            var mockViewDataContainer = new Mock<IViewDataContainer>();
-
-            mockViewContext.Setup(v => v.RouteData).Returns(routeData);
-            mockViewDataContainer.Setup(v => v.ViewData).Returns(viewData);
-
-            return new HtmlHelper<string>(mockViewContext.Object, mockViewDataContainer.Object);
         }
     }
 
