@@ -16,7 +16,10 @@
     </section>
 }
 
-<section class="books">
+
+@if (Model.AuthoredNovels.Any() || Model.EditedBooks.Any() || Model.AuthoredCollections.Any())
+{
+    <section class="books">
     @if (Model.AuthoredNovels.Any())
     { 
         <section class="itemList authoredNovels">
@@ -40,10 +43,13 @@
             @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredCollections); }
         </section>
     }
-</section>
+    </section>
+}
 
-<section class="stories">
-    @if (Model.TranslatedStories.Count > 0)
+@if(Model.TranslatedStories.Any() || Model.AuthoredShortStories.Any())
+{
+    <section class="stories">
+    @if (Model.TranslatedStories.Any())
     { 
         <section class="itemList translatedStories">
             <h4>@BiebResources.PersonStrings.TranslatedStories</h4>
@@ -59,4 +65,5 @@
             @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.AuthoredShortStories); }
         </section>
     }
-</section>
+    </section>
+}

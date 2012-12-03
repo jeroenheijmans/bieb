@@ -95,10 +95,19 @@ nav {
 	background: #333333;
 }
 
-nav ul {
+nav #menu {
 	position: relative;
 	width: 61em;
 	margin: 0 auto;
+}
+
+#search {
+    position: absolute;
+	top: 3.5em;
+	right: 0;
+    border: none;
+    width: 100%;
+    text-align: right;
 }
 
 nav li {
@@ -144,13 +153,6 @@ header .title a:hover {
 	color: #FF0080;
 }
 
-
-/* Search box */
-div#search {
-    position: absolute;
-	top: 3.5em;
-	right: 0.5em;
-}
 
 
 
@@ -337,6 +339,7 @@ ul.search-options li a:hover {
 }
 
 #home-image {
+    margin: 0 0 2em 2em;
     border: 1px solid #333333;
     float: right;
 }

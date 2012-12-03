@@ -16,17 +16,14 @@
         </div>
         <nav>
             <ul id="menu">
-                <li class="home">@Html.MenuLink("Home", "", "Home")</li>
-                <li class="people">@Html.MenuLink("People", "Index", "People")</li>
-                <li class="books">@Html.MenuLink("Books", "Index", "Books")</li>
-                <li class="series">@Html.MenuLink("Series", "Index", "Series")</li>
-                <li class="search">@Html.MenuLink("Search", "Basic", "Search")</li>
-                <li class="surprise">@Html.MenuLink("Surprise me!", "Index", "Surprise")</li>
+                <li>@Html.MenuLink("Home", "", "Home")</li>
+                <li>@Html.MenuLink("People", "Index", "People")</li>
+                <li>@Html.MenuLink("Books", "Index", "Books")</li>
+                <li>@Html.MenuLink("Series", "Index", "Series")</li>
+                <li>@Html.MenuLink("Search", "Basic", "Search")</li>
+                <li>@Html.MenuLink("Surprise me!", "Index", "Surprise")</li>
+                <li id="search">@Html.Partial("_SearchBoxPartial")</li>
             </ul>
-
-            <div id="search">
-                @Html.Partial("_SearchBoxPartial")
-            </div>
         </nav>
     </header>
 
