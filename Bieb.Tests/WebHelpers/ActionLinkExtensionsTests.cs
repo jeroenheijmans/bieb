@@ -53,7 +53,33 @@ namespace Bieb.Tests.WebHelpers
 
             const string linkText = "clicky, clicky!";
             const string actionName = "Index";
-            const string controllerName = "Book";
+            const string controllerName = "Books";
+
+            // Act
+            MvcHtmlString actual = htmlHelper.MenuLink(linkText, actionName, controllerName);
+
+            // Assert
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.ToHtmlString(), Contains.Substring("class=\"active\""));
+        }
+
+        [Test]
+        public void MenuLink_For_Stories_Sets_Book_To_Active()
+        {
+            // Arrange
+            var routeData = new RouteData();
+            routeData.Values.Add("controller", "Stories");
+            routeData.Values.Add("action", "Index");
+
+            HtmlHelper htmlHelper = CreateHtmlHelper(new ViewDataDictionary("Home link"), routeData);
+
+            Assert.That(htmlHelper, Is.Not.Null);
+            Assert.That(htmlHelper.ViewContext, Is.Not.Null);
+            Assert.That(htmlHelper.ViewContext.RouteData, Is.Not.Null);
+
+            const string linkText = "clicky, clicky!";
+            const string actionName = "Index";
+            const string controllerName = "Books";
 
             // Act
             MvcHtmlString actual = htmlHelper.MenuLink(linkText, actionName, controllerName);

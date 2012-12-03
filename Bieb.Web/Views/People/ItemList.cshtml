@@ -4,7 +4,20 @@
 @foreach (var person in Model) 
 {
     <li>
-        <h4>@Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })</h4>
+        <h6>@Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })</h6>
+        <p>
+            @if (person.Gender != Bieb.Domain.Entities.Gender.Unkown)
+            {
+                @person.GenderChar
+            }
+
+            @if (person.Nationality != null)
+            {
+                @Html.ImageFlagFor(person)
+            }
+        
+            @string.Join(", ", person.Roles)
+        </p>
     </li>
 }
 </ul>

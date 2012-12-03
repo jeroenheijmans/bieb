@@ -54,7 +54,7 @@ small {
 
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2em;
-    margin: 0.5em 0 0.3em 0;
+    margin-bottom: 0.3em;
 }
 
 h5, h6 {
@@ -72,6 +72,10 @@ p + p,
 ul + p,
 table + p {
     margin-top: 0.5em;
+}
+
+section + section {
+    margin-top: 1.0em;
 }
 
 
@@ -224,6 +228,9 @@ table th {
     color: #FFD8ED;
 }
 
+.info-points h6 {
+    margin-top: 0.5em;
+}
 
 a {
     color: #6E0030;
@@ -328,5 +335,6 @@ ul.search-options li a:hover {
 }
 
 iframe.goodreads {
-    padding: 0 1em;
+    width: 38em;
+    height: 30em;
 }
