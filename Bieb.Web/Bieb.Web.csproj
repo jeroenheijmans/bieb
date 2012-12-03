@@ -142,6 +142,7 @@
     <Content Include="Content\fonts\museo500-webfont.svg" />
     <Content Include="Content\fonts\museo700-webfont.svg" />
     <Content Include="Content\fonts\museo_sans500-webfont.svg" />
+    <Content Include="Content\images\background-sprite.png" />
     <Content Include="Content\images\flags\au-icon.png" />
     <Content Include="Content\images\flags\be-icon.png" />
     <Content Include="Content\images\flags\ca-icon.png" />
