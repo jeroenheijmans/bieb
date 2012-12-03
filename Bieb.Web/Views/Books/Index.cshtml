@@ -42,11 +42,11 @@
         <td>
             @if (book.BookType == Bieb.Domain.Entities.BookType.Novel) 
             {
-                @string.Join(", ", book.Authors)
+                @Html.Raw(string.Join(", ", book.Authors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
             }
             else
             {
-                @string.Join(", ", book.Editors)
+                @Html.Raw(string.Join(", ", book.Editors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
             }
         </td>
     </tr>
