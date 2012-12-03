@@ -6,17 +6,20 @@
 
 @{ Html.RenderPartial("Card", Model); }
 
-<section class="reviews">
-@foreach (var review in Model.Reviews)
-{ 
-    <p>@review.ReviewText</p>
+@if (Model.Reviews.Any())
+{
+    <section class="reviews">
+        @foreach (var review in Model.Reviews)
+        { 
+            <p>@review.ReviewText</p>
+        }
+    </section>
 }
-</section>
 
-@if (Model.Stories.Count > 1)
+@if (Model.Stories.Any())
 {
     <section class="itemList">
-        <h3>@BiebResources.SharedStrings.Stories:</h3>
+        <h4>@BiebResources.SharedStrings.Stories:</h4>
         @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories.Values); }
     </section>
 }

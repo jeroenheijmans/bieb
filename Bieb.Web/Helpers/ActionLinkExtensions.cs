@@ -12,7 +12,9 @@ namespace Bieb.Web.Helpers
             object htmlAttributes = null;
 
             if (controllerName == currentController 
-                || (controllerName == "Book" && currentController == "Story"))
+                // TODO: Refactor the following two "Exceptions" to a more solid solution.
+                || (controllerName == "Books" && currentController == "Story")
+                || (controllerName == "Books" && currentController == "Stories"))
             {
                 htmlAttributes = new { @class = "active" };
             }

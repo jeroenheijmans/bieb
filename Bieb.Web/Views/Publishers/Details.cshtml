@@ -9,7 +9,7 @@
 @if (Model.Books.Any())
 {
     <section class="itemList">
-        <h3>@BiebResources.PublisherStrings.BooksFromThisPublisher</h3>
+        <h4>@BiebResources.PublisherStrings.BooksFromThisPublisher</h4>
         @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.Books); }
     </section>
 }
