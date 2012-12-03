@@ -334,6 +334,11 @@ ul.search-options li a:hover {
     color: #FF0080;
 }
 
+#home-image {
+    border: 1px solid #333333;
+    float: right;
+}
+
 iframe.goodreads {
     width: 38em;
     height: 30em;

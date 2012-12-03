@@ -22,6 +22,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -138,10 +142,6 @@
     <Content Include="Content\fonts\museo500-webfont.svg" />
     <Content Include="Content\fonts\museo700-webfont.svg" />
     <Content Include="Content\fonts\museo_sans500-webfont.svg" />
-    <Content Include="Content\images\book-placeholder-back-large.png" />
-    <Content Include="Content\images\book-placeholder-back-small.png" />
-    <Content Include="Content\images\book-placeholder-front-large.png" />
-    <Content Include="Content\images\book-placeholder-front-small.png" />
     <Content Include="Content\images\flags\au-icon.png" />
     <Content Include="Content\images\flags\be-icon.png" />
     <Content Include="Content\images\flags\ca-icon.png" />
@@ -150,12 +150,7 @@
     <Content Include="Content\images\flags\gb-icon.png" />
     <Content Include="Content\images\flags\nl-icon.png" />
     <Content Include="Content\images\flags\us-icon.png" />
-    <Content Include="Content\images\home-nav-icon.png" />
-    <Content Include="Content\images\lightpaperfibers.png" />
-    <Content Include="Content\images\person-placeholder.png" />
-    <Content Include="Content\images\search-icon.png" />
-    <Content Include="Content\images\search-nav-icon.png" />
-    <Content Include="Content\images\surprise-nav-icon.png" />
+    <Content Include="Content\images\home-image.jpg" />
     <Content Include="Content\Reset.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
