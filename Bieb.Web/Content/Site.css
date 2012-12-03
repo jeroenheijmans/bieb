@@ -45,6 +45,7 @@ body {
 	font: normal 100%/1.5em "MuseoSans500Regular", Georgia, serif;
 	color: #333333;
 	background: #FFFFFF;
+    background-image: url('/Content/images/background-sprite.png');
 }
 
 /* Basic HTML elements */
@@ -243,6 +244,7 @@ a:hover {
 
 td, 
 th {
+    background-color: #FFFFFF;
     border: solid 1px #EEEEEE;
     vertical-align: middle;
 }
