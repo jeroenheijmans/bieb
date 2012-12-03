@@ -70,6 +70,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Image of a library.
+        /// </summary>
+        public static string HomeImageAlt {
+            get {
+                return ResourceManager.GetString("HomeImageAlt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome to this website: a listing of all the books in my library, as well as the related info on authors, editors, translators, publishers, series and short stories..
         /// </summary>
         public static string Introduction {

@@ -120,6 +120,9 @@
   <data name="Explanation" xml:space="preserve">
     <value>Browse at your leisure using the menu or links on the pages. In the future a search option will be added for improved... well... searching.</value>
   </data>
+  <data name="HomeImageAlt" xml:space="preserve">
+    <value>Image of a library</value>
+  </data>
   <data name="Introduction" xml:space="preserve">
     <value>Welcome to this website: a listing of all the books in my library, as well as the related info on authors, editors, translators, publishers, series and short stories.</value>
   </data>
