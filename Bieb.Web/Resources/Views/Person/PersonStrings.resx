@@ -150,6 +150,12 @@
   <data name="NationalityHeader" xml:space="preserve">
     <value>Nationality</value>
   </data>
+  <data name="NobodyBornToday" xml:space="preserve">
+    <value>Nobody.</value>
+  </data>
+  <data name="NobodyQuote" xml:space="preserve">
+    <value>"I see nobody on the road." said Alice. "I only wish I had such eyes," the King remarked in a fretful tone. "To be able to see Nobody!"</value>
+  </data>
   <data name="PortraitAlt" xml:space="preserve">
     <value>portrait</value>
   </data>

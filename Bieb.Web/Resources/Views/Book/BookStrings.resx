@@ -159,6 +159,12 @@
   <data name="TypeHeader" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="WasRecentlyAdded" xml:space="preserve">
+    <value>was recently added to my library</value>
+  </data>
+  <data name="WrittenBy" xml:space="preserve">
+    <value>written by</value>
+  </data>
   <data name="YearHeader" xml:space="preserve">
     <value>Year</value>
   </data>

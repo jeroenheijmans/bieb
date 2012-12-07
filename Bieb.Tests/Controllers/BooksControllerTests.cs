@@ -11,7 +11,7 @@ using PagedList;
 namespace Bieb.Tests.Controllers
 {
     [TestFixture]
-    public class BookControllerTests
+    public class BooksControllerTests
     {
         [Test]
         public void Can_Get_Book_Details()
@@ -157,6 +157,30 @@ namespace Bieb.Tests.Controllers
             Assert.That(bookList[0], Is.EqualTo(book3));
             Assert.That(bookList[1], Is.EqualTo(book2));
             Assert.That(bookList[2], Is.EqualTo(book1));
+        }
+
+        [Test]
+        public void RecentlyAdded_Action_Will_Give_Book_With_Newest_ID()
+        {
+            // Arrange
+            var mock = new Mock<IEntityRepository<Book>>();
+            var book1 = new Book { Title = "Zoltan the Great", Id = 1 };
+            var book2 = new Book { Title = "Middle-man", Id = 2 };
+            mock.Setup(repo => repo.Items).Returns((new[] { book1, book2 }).AsQueryable());
+            var controller = new BooksController(mock.Object);
+
+            // Act & Assert
+            ActionResult result = controller.RecentlyAdded();
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.InstanceOf<PartialViewResult>());
+
+            var vresult = (PartialViewResult)result;
+
+            Assert.That(vresult.Model, Is.InstanceOf<Book>());
+
+            var book = (Book)vresult.Model;
+
+            Assert.That(book.Id, Is.EqualTo(2));
         }
     }
 }

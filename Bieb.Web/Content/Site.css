@@ -10,7 +10,7 @@
 /*************************  Colors  ***************************/
 /* Links					#6E0030
 /* Links (inverted)         #FFD8ED
-/* Links hover, details  	#FF0080
+/* Links hover, details  	#FF0080  PINK!
 /* Text, borders, etc		#333333
 /* Title					#666666
 /* TH and TD border         #EEEEEE
@@ -49,6 +49,10 @@ body {
 }
 
 /* Basic HTML elements */
+blockquote {
+    font-style: italic;
+}
+
 small {
     font-size: 0.70em;
 }
@@ -165,7 +169,7 @@ header .title a:hover {
 
 #main {
     overflow: auto;
-	padding: 14em 0;
+	padding: 14em 0 2em 0;
 	margin-bottom: 2em;
 	width: 100%;
 }  
@@ -338,10 +342,26 @@ ul.search-options li a:hover {
     color: #FF0080;
 }
 
+#home-explanation p {
+    margin-top: 1.5em;
+}
+
 #home-image {
     margin: 0 0 2em 2em;
     border: 1px solid #333333;
     float: right;
+}
+
+.teaser-articles {
+    border-top: 1px solid #333333;
+    clear: both;
+}
+
+.teaser-articles article {
+    display: inline-block;
+    width: 33%;
+    padding: 2em 2em 0 0;
+    vertical-align: top;
 }
 
 iframe.goodreads {

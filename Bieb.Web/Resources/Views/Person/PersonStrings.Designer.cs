@@ -160,6 +160,24 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nobody..
+        /// </summary>
+        public static string NobodyBornToday {
+            get {
+                return ResourceManager.GetString("NobodyBornToday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;I see nobody on the road.&quot; said Alice. &quot;I only wish I had such eyes,&quot; the King remarked in a fretful tone. &quot;To be able to see Nobody!&quot;.
+        /// </summary>
+        public static string NobodyQuote {
+            get {
+                return ResourceManager.GetString("NobodyQuote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to portrait.
         /// </summary>
         public static string PortraitAlt {

@@ -61,11 +61,92 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Browse at your leisure using the menu or links on the pages. In the future a search option will be added for improved... well... searching..
+        ///   Looks up a localized string similar to authored stories in.
+        /// </summary>
+        public static string AuthoredStoriesIn {
+            get {
+                return ResourceManager.GetString("AuthoredStoriesIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse all books in my library: novels, anthologies, and collections..
+        /// </summary>
+        public static string BrowseBooks {
+            get {
+                return ResourceManager.GetString("BrowseBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read on....
+        /// </summary>
+        public static string BrowseBooksLink {
+            get {
+                return ResourceManager.GetString("BrowseBooksLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find the folks behind the books: authors, editors, and translators..
+        /// </summary>
+        public static string BrowsePeople {
+            get {
+                return ResourceManager.GetString("BrowsePeople", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Have a look....
+        /// </summary>
+        public static string BrowsePeopleLink {
+            get {
+                return ResourceManager.GetString("BrowsePeopleLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to different books in my library.
+        /// </summary>
+        public static string DifferentBooks {
+            get {
+                return ResourceManager.GetString("DifferentBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enjoy!.
+        /// </summary>
+        public static string Enjoy {
+            get {
+                return ResourceManager.GetString("Enjoy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse related info on authors, editors, translators, publishers, series and short stories..
         /// </summary>
         public static string Explanation {
             get {
                 return ResourceManager.GetString("Explanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explore The Content.
+        /// </summary>
+        public static string Explore {
+            get {
+                return ResourceManager.GetString("Explore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t know where to start? Let the site surprise you with a book or author..
+        /// </summary>
+        public static string GetSurprised {
+            get {
+                return ResourceManager.GetString("GetSurprised", resourceCulture);
             }
         }
         
@@ -79,7 +160,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to this website: a listing of all the books in my library, as well as the related info on authors, editors, translators, publishers, series and short stories..
+        ///   Looks up a localized string similar to Find all books that were, are, and should be in my personal library..
         /// </summary>
         public static string Introduction {
             get {
@@ -88,11 +169,38 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greetings Earthlings!.
+        ///   Looks up a localized string similar to Recently Added.
+        /// </summary>
+        public static string RecentlyAdded {
+            get {
+                return ResourceManager.GetString("RecentlyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surprise me!.
+        /// </summary>
+        public static string SurpriseLink {
+            get {
+                return ResourceManager.GetString("SurpriseLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse my Library!.
         /// </summary>
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today&apos;s Birth Dates.
+        /// </summary>
+        public static string TodaysBirthDates {
+            get {
+                return ResourceManager.GetString("TodaysBirthDates", resourceCulture);
             }
         }
     }
