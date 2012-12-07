@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Bieb.Domain.Entities;
 using NUnit.Framework;
@@ -141,6 +142,23 @@ namespace Bieb.Tests.Domain
             Assert.That(asimov.AuthoredShortStories.Count(), Is.EqualTo(2));
             Assert.That(asimov.AuthoredShortStories.ToList()[0], Is.EqualTo(shortStory1));
             Assert.That(asimov.AuthoredShortStories.ToList()[1], Is.EqualTo(shortStory2));
+        }
+
+        [Test]
+        public void Equal_From_And_Until_DateOfBirth_Is_Certain_Date()
+        {
+            var someDate = DateTime.Now;
+            var person = new Person { DateOfBirthFrom = someDate, DateOfBirthUntil = someDate };
+
+            Assert.That(person.DateOfBirth.IsCertain);
+        }
+
+        [Test]
+        public void Unequal_From_And_Until_DateOfBirth_Is_Not_Certain_Date()
+        {
+            var person = new Person { DateOfBirthFrom = new DateTime(1900,1,1), DateOfBirthUntil = new DateTime(2000,2,2) };
+
+            Assert.That(person.DateOfBirth.IsCertain, Is.Not.True);
         }
     }
 }

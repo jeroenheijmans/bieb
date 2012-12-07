@@ -187,6 +187,24 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to was recently added to my library.
+        /// </summary>
+        public static string WasRecentlyAdded {
+            get {
+                return ResourceManager.GetString("WasRecentlyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to written by.
+        /// </summary>
+        public static string WrittenBy {
+            get {
+                return ResourceManager.GetString("WrittenBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Year.
         /// </summary>
         public static string YearHeader {

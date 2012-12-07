@@ -2,7 +2,40 @@
     ViewBag.Title = "Home Page";
 }
 
-<img id="home-image" src="@Url.Content("~/Content/images/home-image.jpg")" alt="@BiebResources.HomeStrings.HomeImageAlt" />
-<h1>@BiebResources.HomeStrings.Title</h1>
-<p>@BiebResources.HomeStrings.Introduction</p>
-<p>@BiebResources.HomeStrings.Explanation</p>
+<section id="home-explanation">
+    <img id="home-image" src="@Url.Content("~/Content/images/home-image.jpg")" alt="@BiebResources.HomeStrings.HomeImageAlt" />
+    <h1>@BiebResources.HomeStrings.Title</h1>
+    <p><strong>@BiebResources.HomeStrings.Introduction</strong></p>
+    <p>@BiebResources.HomeStrings.Explanation</p>
+    <p>@BiebResources.HomeStrings.Enjoy</p>
+</section>
+
+<section class="teaser-articles">
+    <article>
+        <h4>@BiebResources.SharedStrings.Books</h4>
+        <p>@BiebResources.HomeStrings.BrowseBooks</p>
+        <p>@Html.ActionLink(BiebResources.HomeStrings.BrowseBooksLink, "Index", "Books")</p>
+    </article>
+
+    <article>
+        <h4>@BiebResources.SharedStrings.People</h4>
+        <p>@BiebResources.HomeStrings.BrowsePeople</p>
+        <p>@Html.ActionLink(BiebResources.HomeStrings.BrowsePeopleLink, "Index", "People")</p>
+    </article>
+
+    <article>
+        <h4>@BiebResources.HomeStrings.Explore</h4>
+        <p>@BiebResources.HomeStrings.GetSurprised</p>
+        <p>@Html.ActionLink(BiebResources.HomeStrings.SurpriseLink, "Index", "Surprise")</p>
+    </article>
+
+    <article>
+        <h4>@BiebResources.HomeStrings.RecentlyAdded</h4>
+        @Html.Action("RecentlyAdded", "Books")
+    </article>
+
+    <article>
+        <h4>@BiebResources.HomeStrings.TodaysBirthDates</h4>
+        @Html.Action("TodaysBirthDates", "People")
+    </article>
+</section>

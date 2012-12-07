@@ -117,16 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AuthoredStoriesIn" xml:space="preserve">
+    <value>authored stories in</value>
+  </data>
+  <data name="BrowseBooks" xml:space="preserve">
+    <value>Browse all books in my library: novels, anthologies, and collections.</value>
+  </data>
+  <data name="BrowseBooksLink" xml:space="preserve">
+    <value>Read on...</value>
+  </data>
+  <data name="BrowsePeople" xml:space="preserve">
+    <value>Find the folks behind the books: authors, editors, and translators.</value>
+  </data>
+  <data name="BrowsePeopleLink" xml:space="preserve">
+    <value>Have a look...</value>
+  </data>
+  <data name="DifferentBooks" xml:space="preserve">
+    <value>different books in my library</value>
+  </data>
+  <data name="Enjoy" xml:space="preserve">
+    <value>Enjoy!</value>
+  </data>
   <data name="Explanation" xml:space="preserve">
-    <value>Browse at your leisure using the menu or links on the pages. In the future a search option will be added for improved... well... searching.</value>
+    <value>Browse related info on authors, editors, translators, publishers, series and short stories.</value>
+  </data>
+  <data name="Explore" xml:space="preserve">
+    <value>Explore The Content</value>
+  </data>
+  <data name="GetSurprised" xml:space="preserve">
+    <value>Don't know where to start? Let the site surprise you with a book or author.</value>
   </data>
   <data name="HomeImageAlt" xml:space="preserve">
     <value>Image of a library</value>
   </data>
   <data name="Introduction" xml:space="preserve">
-    <value>Welcome to this website: a listing of all the books in my library, as well as the related info on authors, editors, translators, publishers, series and short stories.</value>
+    <value>Find all books that were, are, and should be in my personal library.</value>
+  </data>
+  <data name="RecentlyAdded" xml:space="preserve">
+    <value>Recently Added</value>
+  </data>
+  <data name="SurpriseLink" xml:space="preserve">
+    <value>Surprise me!</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Greetings Earthlings!</value>
+    <value>Browse my Library!</value>
+  </data>
+  <data name="TodaysBirthDates" xml:space="preserve">
+    <value>Today's Birth Dates</value>
   </data>
 </root>

@@ -47,5 +47,15 @@ namespace Bieb.Domain.CustomDataTypes
 
             return "?";
         }
+
+        public bool IsCertain
+        {
+            get
+            {
+                return Day.HasValue &&
+                       Month.HasValue &&
+                       Year.HasValue;
+            }
+        }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Web.Mvc;
+using System.Linq;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 
@@ -16,6 +18,12 @@ namespace Bieb.Web.Controllers
             {
                 return b => b.TitleSort;
             }
+        }
+
+        public ActionResult RecentlyAdded()
+        {
+            var book = Repository.Items.OrderByDescending(b => b.Id).First();
+            return PartialView(book);
         }
     }
 }
