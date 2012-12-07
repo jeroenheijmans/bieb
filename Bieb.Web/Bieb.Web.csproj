@@ -107,10 +107,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HomeStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Views\Person\PersonStrings.Designer.cs">
+    <Compile Include="Resources\Views\People\PeopleStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PersonStrings.resx</DependentUpon>
+      <DependentUpon>PeopleStrings.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Views\Publisher\PublisherStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -314,9 +314,9 @@
       <LastGenOutput>HomeStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Views\Person\PersonStrings.resx">
+    <EmbeddedResource Include="Resources\Views\People\PeopleStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PersonStrings.Designer.cs</LastGenOutput>
+      <LastGenOutput>PeopleStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>

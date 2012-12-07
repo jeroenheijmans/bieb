@@ -21,24 +21,24 @@
 
     <ul>
         <li>
-            @BiebResources.PersonStrings.BornOn: @Model.DateOfBirth.ToString()
+            @BiebResources.PeopleStrings.BornOn: @Model.DateOfBirth.ToString()
         </li>
 
         @if (Model.PlaceOfBirth != null)
         {
             <li>
-                @BiebResources.PersonStrings.BornAt: @Html.DisplayFor(model => model.PlaceOfBirth)
+                @BiebResources.PeopleStrings.BornAt: @Html.DisplayFor(model => model.PlaceOfBirth)
             </li>
         }
         
         <li>
-            @BiebResources.PersonStrings.DiedOn: @Model.DateOfDeath.ToString()
+            @BiebResources.PeopleStrings.DiedOn: @Model.DateOfDeath.ToString()
         </li>
 
         @if (Model.PlaceOfDeath != null)
         {
             <li>
-                @BiebResources.PersonStrings.DiedAt: @Html.DisplayFor(model => model.PlaceOfDeath)
+                @BiebResources.PeopleStrings.DiedAt: @Html.DisplayFor(model => model.PlaceOfDeath)
             </li>
         }
         
@@ -51,5 +51,5 @@
         }
     </ul>
 
-    <p>@BiebResources.PersonStrings.RequestForAdditionalInfo</p>
+    <p>@BiebResources.PeopleStrings.RequestForAdditionalInfo</p>
 </div>
