@@ -151,6 +151,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no books in the database yet..
+        /// </summary>
+        public static string NoBooksInDatabase {
+            get {
+                return ResourceManager.GetString("NoBooksInDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Author / Editor.
         /// </summary>
         public static string PeopleInvolved {

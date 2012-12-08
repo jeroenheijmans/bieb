@@ -60,6 +60,7 @@
     <Compile Include="Controllers\BooksControllerTests.cs" />
     <Compile Include="Controllers\PeopleControllerTests.cs" />
     <Compile Include="Controllers\SearchControllerTests.cs" />
+    <Compile Include="Controllers\SurpriseControllerTests.cs" />
     <Compile Include="Domain\PersonTests.cs" />
     <Compile Include="Domain\BookTests.cs" />
     <Compile Include="Domain\UncertainDateTests.cs" />

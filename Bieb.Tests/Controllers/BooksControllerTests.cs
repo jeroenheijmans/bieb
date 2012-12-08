@@ -182,5 +182,23 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(book.Id, Is.EqualTo(2));
         }
+
+        [Test]
+        public void RecentlyAdded_Action_Will_Return_Null_If_No_Books_Are_In_Repository()
+        {
+            // Arrange
+            var mock = new Mock<IEntityRepository<Book>>();
+            mock.Setup(repo => repo.Items).Returns((new Book[] { }).AsQueryable());
+            var controller = new BooksController(mock.Object);
+
+            // Act & Assert
+            ActionResult result = controller.RecentlyAdded();
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.InstanceOf<PartialViewResult>());
+
+            var vresult = (PartialViewResult)result;
+
+            Assert.That(vresult.Model, Is.Null);
+        }
     }
 }

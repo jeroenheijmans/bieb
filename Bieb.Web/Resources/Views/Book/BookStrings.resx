@@ -147,6 +147,9 @@
   <data name="LanguageHeader" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="NoBooksInDatabase" xml:space="preserve">
+    <value>There are no books in the database yet.</value>
+  </data>
   <data name="PeopleInvolved" xml:space="preserve">
     <value>Author / Editor</value>
   </data>

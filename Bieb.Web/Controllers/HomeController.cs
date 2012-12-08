@@ -8,5 +8,10 @@ namespace Bieb.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult EmptyDatabase()
+        {
+            return View();
+        }
     }
 }

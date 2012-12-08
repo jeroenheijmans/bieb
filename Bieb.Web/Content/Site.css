@@ -118,7 +118,7 @@ nav li {
     position: relative;
 	float: left;
 	display: inline-block;
-	width: 10.167em;
+	width: 10.167em; 
 	border-right: 1px solid #FF0080;
 }
 
@@ -221,11 +221,11 @@ table th {
 .card {
 	width: 19em;                /* 304 / 16 */
 	position: relative;
-	float: right;
+	float: left;
     background: #333333;
     color: #FFFFFF;
     padding: 1.0em;
-    margin: 0 0 1em 1em;
+    margin: 0 2em 2em 0;
 }
 
 .card h1 { font-size: 1.5em; }
