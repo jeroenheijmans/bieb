@@ -108,8 +108,9 @@ namespace Bieb.Domain.Entities
             get
             {
                 return _authoredStories
-                        .Where(s => s.Book.BookType == BookType.Novel)
-                        .Select(s => s.Book);
+                        .Select(s => s.Book)
+                        .Where(b => b.BookType == BookType.Novel)
+                        .Distinct();
             }
         }
 

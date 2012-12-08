@@ -16,7 +16,7 @@
     </section>
 }
 
-@if (Model.Stories.Any())
+@if (Model.BookType != Bieb.Domain.Entities.BookType.Novel)
 {
     <section class="itemList">
         <h4>@BiebResources.SharedStrings.Stories:</h4>

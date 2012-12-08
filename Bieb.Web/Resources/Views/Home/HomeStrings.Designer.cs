@@ -115,6 +115,24 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Library is Empty!.
+        /// </summary>
+        public static string EmptyDatabase {
+            get {
+                return ResourceManager.GetString("EmptyDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oh noes! The entire library is empty. No books, no authors, not even a bit of tumbleweed. You&apos;ll need some data before the site will be up to speed!.
+        /// </summary>
+        public static string EmptyDatabaseExplanation {
+            get {
+                return ResourceManager.GetString("EmptyDatabaseExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enjoy!.
         /// </summary>
         public static string Enjoy {

@@ -135,6 +135,12 @@
   <data name="DifferentBooks" xml:space="preserve">
     <value>different books in my library</value>
   </data>
+  <data name="EmptyDatabase" xml:space="preserve">
+    <value>Library is Empty!</value>
+  </data>
+  <data name="EmptyDatabaseExplanation" xml:space="preserve">
+    <value>Oh noes! The entire library is empty. No books, no authors, not even a bit of tumbleweed. You'll need some data before the site will be up to speed!</value>
+  </data>
   <data name="Enjoy" xml:space="preserve">
     <value>Enjoy!</value>
   </data>

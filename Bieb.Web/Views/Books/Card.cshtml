@@ -19,7 +19,7 @@
                 }
                 @if (Model.Publisher != null)
                 {
-                    <span>@Model.Publisher,</span>
+                    <span>@Html.ActionLink(Model.Publisher.Name, "Details", new { id = Model.Publisher.Id, controller = "Publishers"}),</span>
                 }
                 @if (@Model.Language != null)
                 {
