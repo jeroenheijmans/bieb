@@ -12,15 +12,15 @@
 
 <section class="teaser-articles">
     <article>
-        <h4>@BiebResources.SharedStrings.Books</h4>
-        <p>@BiebResources.HomeStrings.BrowseBooks</p>
-        <p>@Html.ActionLink(BiebResources.HomeStrings.BrowseBooksLink, "Index", "Books")</p>
-    </article>
-
-    <article>
         <h4>@BiebResources.SharedStrings.People</h4>
         <p>@BiebResources.HomeStrings.BrowsePeople</p>
         <p>@Html.ActionLink(BiebResources.HomeStrings.BrowsePeopleLink, "Index", "People")</p>
+    </article>
+
+    <article>
+        <h4>@BiebResources.SharedStrings.Books</h4>
+        <p>@BiebResources.HomeStrings.BrowseBooks</p>
+        <p>@Html.ActionLink(BiebResources.HomeStrings.BrowseBooksLink, "Index", "Books")</p>
     </article>
 
     <article>
@@ -30,12 +30,12 @@
     </article>
 
     <article>
-        <h4>@BiebResources.HomeStrings.RecentlyAdded</h4>
-        @Html.Action("RecentlyAdded", "Books")
+        <h4>@BiebResources.HomeStrings.TodaysBirthDates</h4>
+        @Html.Action("TodaysBirthDates", "People")
     </article>
 
     <article>
-        <h4>@BiebResources.HomeStrings.TodaysBirthDates</h4>
-        @Html.Action("TodaysBirthDates", "People")
+        <h4>@BiebResources.HomeStrings.RecentlyAdded</h4>
+        @Html.Action("RecentlyAdded", "Books")
     </article>
 </section>
