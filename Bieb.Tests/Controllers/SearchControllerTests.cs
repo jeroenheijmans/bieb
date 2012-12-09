@@ -86,8 +86,11 @@ namespace Bieb.Tests.Controllers
             var personMock = new Mock<IEntityRepository<Person>>();
             var storyMock = new Mock<IEntityRepository<Story>>();
 
-            var story1 = new Story { Title = "The first story ever" };
-            var story2 = new Story { Title = "The very second story" };
+            var bundle = new Book();
+            var story1 = new Story { Title = "The first story ever", Book = bundle };
+            var story2 = new Story { Title = "The very second story", Book = bundle };
+            bundle.Stories.Add(0, story1);
+            bundle.Stories.Add(1, story2);
 
             bookMock.Setup(repo => repo.Items).Returns(new Book[] { }.AsQueryable());
             personMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
@@ -109,6 +112,39 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(searchResults.stories.Count(), Is.EqualTo(1));
             Assert.That(searchResults.stories.ToList()[0], Is.EqualTo(story1));
+        }
+
+        [Test]
+        public void Will_Not_Show_Stories_From_Novels_With_Basic_Search()
+        {
+            // Arrange
+            var bookMock = new Mock<IEntityRepository<Book>>();
+            var personMock = new Mock<IEntityRepository<Person>>();
+            var storyMock = new Mock<IEntityRepository<Story>>();
+
+            var novel = new Book { };
+            var story = new Story { Title = "Best book ever", Book = novel };
+            novel.Stories.Add(0, story);
+
+            bookMock.Setup(repo => repo.Items).Returns(new Book[] { }.AsQueryable());
+            personMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
+            storyMock.Setup(repo => repo.Items).Returns(new[] { story }.AsQueryable());
+
+            var controller = new SearchController(personMock.Object, bookMock.Object, storyMock.Object);
+
+            // Act
+            var result = controller.Basic("ever");
+
+            // Assert
+            Assert.That(result, Is.InstanceOf<ViewResult>());
+
+            var vResult = (ViewResult)result;
+
+            Assert.That(vResult.Model, Is.InstanceOf<BasicSearchResultModel>());
+
+            var searchResults = (BasicSearchResultModel)vResult.Model;
+
+            Assert.That(searchResults.stories.Count(), Is.EqualTo(0));
         }
     }
 }
