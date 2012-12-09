@@ -138,6 +138,9 @@
   <data name="Isbn" xml:space="preserve">
     <value>ISBN</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Of" xml:space="preserve">
     <value>of</value>
+  </data>
+  <data name="Original" xml:space="preserve">
+    <value>Original</value>
   </data>
   <data name="Page" xml:space="preserve">
     <value>Page</value>
@@ -158,6 +164,12 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Publisher</value>
   </data>
   <data name="Review" xml:space="preserve">
     <value>Review</value>
@@ -180,8 +192,14 @@
   <data name="Stories" xml:space="preserve">
     <value>Stories</value>
   </data>
+  <data name="Subtitle" xml:space="preserve">
+    <value>Subtitle</value>
+  </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="Translators" xml:space="preserve">
     <value>Translators</value>

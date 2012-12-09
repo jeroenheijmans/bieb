@@ -59,7 +59,7 @@ namespace Bieb.Web.Controllers
                 .OrderBy(s => s.Title)
                 .Select(s => s)
                 .ToList() // Workaround, because the upcoming "Where" won't work with NHibernate (the stories are going to be enumerated anyways)
-                .Where(s => s.Book.BookType != BookType.Novel);
+                .Where(s => s.Book == null || s.Book.BookType != BookType.Novel);
 
             var model = new BasicSearchResultModel()
                             {

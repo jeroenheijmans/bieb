@@ -84,11 +84,15 @@
             {
                 <li class="story">
                     @Html.ActionLink(story.Title, "Details", new { controller = "Stories", id = story.Id })
-                    <br />
-                    From 
-                    @story.Book.BookType:
-                    @Html.ActionLink(story.Book.Title, "Details", new { controller = "Books", id = story.Book.Id })
-                   
+                    @if (story.Book != null)
+                    {
+                        <br />
+                        <span>
+                            @BiebResources.SearchStrings.From 
+                            @story.Book.BookType:
+                            @Html.ActionLink(story.Book.Title, "Details", new { controller = "Books", id = story.Book.Id })
+                        </span>
+                    }
                 </li>     
             }
         </ul>

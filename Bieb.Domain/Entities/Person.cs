@@ -98,7 +98,7 @@ namespace Bieb.Domain.Entities
             get
             {
                 return _authoredStories
-                        .Where(s => s.Book.BookType != BookType.Novel)
+                        .Where(s => s.Book != null && s.Book.BookType != BookType.Novel)
                         .Select(s => s);
             }
         }
@@ -109,7 +109,7 @@ namespace Bieb.Domain.Entities
             {
                 return _authoredStories
                         .Select(s => s.Book)
-                        .Where(b => b.BookType == BookType.Novel)
+                        .Where(b => b != null && b.BookType == BookType.Novel)
                         .Distinct();
             }
         }
@@ -136,7 +136,7 @@ namespace Bieb.Domain.Entities
             {
                 return _translatedStories
                         .Select(s => s.Book)
-                        .Where(b => b.BookType == BookType.Novel)
+                        .Where(b => b != null && b.BookType == BookType.Novel)
                         .Distinct();
             }
         }
@@ -154,7 +154,7 @@ namespace Bieb.Domain.Entities
             {
                 return _authoredStories
                         .Select(s => s.Book)
-                        .Where(b => b.BookType == BookType.Collection)
+                        .Where(b => b != null && b.BookType == BookType.Collection)
                         .Distinct();
             }
         }

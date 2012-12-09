@@ -44,7 +44,9 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\IReviewable.cs" />
+    <Compile Include="Entities\LibraryStatus.cs" />
     <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\Publishable.cs" />
     <Compile Include="Entities\Publisher.cs" />
     <Compile Include="Entities\Review.cs" />
     <Compile Include="Entities\Series.cs" />

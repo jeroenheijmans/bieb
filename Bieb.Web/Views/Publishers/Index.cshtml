@@ -4,14 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <table class="listing">
     <tr>
         <th>
-            Publisher
+            @BiebResources.SharedStrings.Publisher
         </th>
-        <th>Number of books in my library</th>
+        <th>
+            @BiebResources.SharedStrings.Books
+        </th>
+        <th>
+            @BiebResources.SharedStrings.Stories
+        </th>
     </tr>
 
 @foreach (var publisher in Model) {
@@ -21,6 +24,9 @@
         </td>
         <td>
             @publisher.Books.Count()
+        </td>
+        <td>
+            @publisher.Stories.Count()
         </td>
     </tr>
 }

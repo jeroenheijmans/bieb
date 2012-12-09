@@ -15,8 +15,11 @@
             @Html.Raw(String.Join(",<br /> ", story.Authors.Select(p => Html.ActionLink(p.FullName, "Details", new { controller = "People", id = p.Id }).ToHtmlString()).ToArray()))
         </td>
         <td>
-            @Html.ActionLink(story.Book.Title, "Details", new { controller = "Books", id = story.Book.Id })
-            (@story.Book.BookType)
+            @if(story.Book != null)
+            {
+                <span>@Html.ActionLink(story.Book.Title, "Details", new { controller = "Books", id = story.Book.Id })</span>
+                <span>(@story.Book.BookType)</span>
+            }
         </td>
     </tr>
 }
