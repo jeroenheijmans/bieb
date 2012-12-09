@@ -7,6 +7,7 @@ using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Controllers;
 using PagedList;
+using System;
 
 namespace Bieb.Tests.Controllers
 {
@@ -84,12 +85,12 @@ namespace Bieb.Tests.Controllers
                         {
                             // New object
                             target.Id = 1;
-                            target.Version = 1;
+                            target.ModifiedDate = target.CreatedDate = DateTime.Now;
                         }
                         else
                         {
                             // Save existing object
-                            target.Version++;
+                            target.ModifiedDate = DateTime.Now;
                         }
                         return target;
                     }
