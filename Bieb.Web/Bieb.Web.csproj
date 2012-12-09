@@ -144,6 +144,8 @@
     <Content Include="Content\fonts\museo700-webfont.svg" />
     <Content Include="Content\fonts\museo_sans500-webfont.svg" />
     <Content Include="Content\images\background-sprite.png" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\flags\au-icon.png" />
     <Content Include="Content\images\flags\be-icon.png" />
     <Content Include="Content\images\flags\ca-icon.png" />
@@ -305,6 +307,7 @@
     <Content Include="Views\Home\EmptyDatabase.cshtml" />
     <Content Include="Views\Publishers\Index.cshtml" />
     <Content Include="Views\People\MoreInfo.cshtml" />
+    <Content Include="Content\images\favicon.pdn" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Views\Book\BookStrings.resx">
