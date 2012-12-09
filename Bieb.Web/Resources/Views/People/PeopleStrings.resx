@@ -138,6 +138,9 @@
   <data name="EditedBooks" xml:space="preserve">
     <value>Edited Books</value>
   </data>
+  <data name="FindPersonOn" xml:space="preserve">
+    <value>Find this person on</value>
+  </data>
   <data name="GenderHeader" xml:space="preserve">
     <value>Gender</value>
   </data>

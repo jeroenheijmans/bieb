@@ -304,6 +304,7 @@
     <Content Include="Views\People\TodaysBirthDates.cshtml" />
     <Content Include="Views\Home\EmptyDatabase.cshtml" />
     <Content Include="Views\Publishers\Index.cshtml" />
+    <Content Include="Views\People\MoreInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Views\Book\BookStrings.resx">

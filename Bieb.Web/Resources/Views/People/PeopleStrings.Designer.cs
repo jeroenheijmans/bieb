@@ -124,6 +124,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find this person on.
+        /// </summary>
+        public static string FindPersonOn {
+            get {
+                return ResourceManager.GetString("FindPersonOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gender.
         /// </summary>
         public static string GenderHeader {
