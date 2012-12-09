@@ -8,6 +8,13 @@
     <id name="Id" column="BookId">
       <generator class="native" />
     </id>
+
+    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime">
+      <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
+    </version>
+    <property name="CreatedDate" generated="always" type="DateTime">
+      <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
+    </property>
     
     <property name="Title" not-null="true" index="IX_Book_Title" />
     <property name="TitleSort" column="TitleSort" generated="always" />
@@ -60,6 +67,38 @@
       ) PERSISTED
     </create>
     <drop>      
+    </drop>
+  </database-object>
+
+  <database-object>
+    <create>
+      GO
+      CREATE TRIGGER TR_BookInserted ON Book AFTER INSERT AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Book 
+        SET    ModifiedDate = GetDate(), CreatedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Book.BookId = inserted.BookId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+      CREATE TRIGGER TR_BookUpdated ON Book AFTER UPDATE AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Book 
+        SET    ModifiedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Book.BookId = inserted.BookId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+    </create>
+    <drop>
     </drop>
   </database-object>
   
