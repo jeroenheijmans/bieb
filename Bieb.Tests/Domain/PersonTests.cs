@@ -112,7 +112,40 @@ namespace Bieb.Tests.Domain
         }
 
         [Test]
-        public void Can_Distinguish_Between_ShortStories_And_Novels()
+        public void Can_Distinguish_Between_Translated_ShortStories_And_Novels()
+        {
+            // Arrange
+            var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
+
+            var shortStory1 = new Story();
+            var shortStory2 = new Story();
+            var novelStory = new Story();
+
+            var collection = new Book();
+            collection.Stories.Add(0, shortStory1);
+            collection.Stories.Add(1, shortStory2);
+            shortStory1.Book = collection;
+            shortStory2.Book = collection;
+
+            var novel = new Book();
+            novel.Stories.Add(0, novelStory);
+            novelStory.Book = novel;
+
+            asimov.TranslatedStories.Add(shortStory1);
+            asimov.TranslatedStories.Add(shortStory2);
+            asimov.TranslatedStories.Add(novelStory);
+
+            // Act & Assert
+            Assert.That(asimov.TranslatedStories.Count, Is.EqualTo(3));
+            Assert.That(asimov.TranslatedNovels.Count(), Is.EqualTo(1));
+            Assert.That(asimov.TranslatedNovels.ToList()[0], Is.EqualTo(novel));
+            Assert.That(asimov.TranslatedShortStories.Count(), Is.EqualTo(2));
+            Assert.That(asimov.TranslatedShortStories.ToList()[0], Is.EqualTo(shortStory1));
+            Assert.That(asimov.TranslatedShortStories.ToList()[1], Is.EqualTo(shortStory2));
+        }
+
+        [Test]
+        public void Can_Distinguish_Between_Authored_ShortStories_And_Novels()
         {
             // Arrange
             var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };

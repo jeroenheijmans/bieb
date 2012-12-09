@@ -165,7 +165,10 @@
   <data name="RolesHeader" xml:space="preserve">
     <value>Roles</value>
   </data>
-  <data name="TranslatedStories" xml:space="preserve">
-    <value>Translated Stories</value>
+  <data name="TranslatedNovels" xml:space="preserve">
+    <value>Translated Novels</value>
+  </data>
+  <data name="TranslatedShortStories" xml:space="preserve">
+    <value>Translated Short Stories</value>
   </data>
 </root>

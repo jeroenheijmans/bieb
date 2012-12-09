@@ -121,6 +121,26 @@ namespace Bieb.Domain.Entities
             set { _translatedStories = value; }
         }
 
+        public virtual IEnumerable<Story> TranslatedShortStories
+        {
+            get
+            {
+                return _translatedStories
+                        .Where(s => s.Book.BookType == BookType.Anthology || s.Book.BookType == BookType.Collection);
+            }
+        }
+
+        public virtual IEnumerable<Book> TranslatedNovels
+        {
+            get
+            {
+                return _translatedStories
+                        .Select(s => s.Book)
+                        .Where(b => b.BookType == BookType.Novel)
+                        .Distinct();
+            }
+        }
+
         private IList<Review<Person>> _reviews = new List<Review<Person>>();
         public virtual IList<Review<Person>> Reviews
         {

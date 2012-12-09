@@ -205,11 +205,20 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translated Stories.
+        ///   Looks up a localized string similar to Translated Novels.
         /// </summary>
-        public static string TranslatedStories {
+        public static string TranslatedNovels {
             get {
-                return ResourceManager.GetString("TranslatedStories", resourceCulture);
+                return ResourceManager.GetString("TranslatedNovels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Translated Short Stories.
+        /// </summary>
+        public static string TranslatedShortStories {
+            get {
+                return ResourceManager.GetString("TranslatedShortStories", resourceCulture);
             }
         }
     }
