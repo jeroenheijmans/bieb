@@ -229,7 +229,7 @@ table th {
 }
 
 .card h1 { font-size: 1.5em; }
-.card h2 { font-size: 1.1em; }
+.card h2 { font-size: 1.1em; margin-top: 1em; }
 
 .card a {
     color: #FFD8ED;

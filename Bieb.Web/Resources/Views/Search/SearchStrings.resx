@@ -120,6 +120,9 @@
   <data name="BasicSearchHeader" xml:space="preserve">
     <value>Basic Search Results</value>
   </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
   <data name="JumpTo" xml:space="preserve">
     <value>Jump to</value>
   </data>

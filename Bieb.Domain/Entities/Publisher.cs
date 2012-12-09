@@ -12,8 +12,11 @@ namespace Bieb.Domain.Entities
             get { return _books; }
         }
 
-        // TODO: book-originals
-        // TODO: story-originals
+        private IList<Story> _stories = new List<Story>();
+        public virtual IEnumerable<Story> Stories
+        {
+            get { return _stories; }
+        }
 
         public override string ToString()
         {

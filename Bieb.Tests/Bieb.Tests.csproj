@@ -63,6 +63,7 @@
     <Compile Include="Controllers\SurpriseControllerTests.cs" />
     <Compile Include="Domain\PersonTests.cs" />
     <Compile Include="Domain\BookTests.cs" />
+    <Compile Include="Domain\StoryTests.cs" />
     <Compile Include="Domain\UncertainDateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing\BookRoutingTests.cs" />

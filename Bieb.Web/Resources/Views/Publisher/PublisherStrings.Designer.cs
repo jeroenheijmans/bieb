@@ -68,5 +68,14 @@ namespace BiebResources {
                 return ResourceManager.GetString("BooksFromThisPublisher", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stories from this publisher.
+        /// </summary>
+        public static string StoriesFromThisPublisher {
+            get {
+                return ResourceManager.GetString("StoriesFromThisPublisher", resourceCulture);
+            }
+        }
     }
 }

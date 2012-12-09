@@ -16,11 +16,14 @@
       <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
     </property>
     
-    <property name="Title" not-null="true" index="IX_Story_Title" />
+    <property name="Title" index="IX_Story_Title" />
     <property name="TitleSort" column="TitleSort" generated="always" />
     <property name="Subtitle" />
+    <property name="LibraryStatus" not-null="true" />
+    <property name="IsbnLanguage" access="field.camelcase-underscore" />
+    <property name="Year" />
     
-    <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" not-null="true" />
+    <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" />
     <property name="PositionInBook" not-null="true" />
 
     <bag name="Authors" table="StoryAuthor" lazy="true">
@@ -39,6 +42,8 @@
       <key column="StoryId" foreign-key="FK_StoryTag_Story" />
       <many-to-many column="TagId" class="Tag" foreign-key="FK_StoryTag_Tag" />
     </bag>
+
+    <many-to-one name="ReferenceStory" column="ReferenceStoryId" foreign-key="FK_Story_ReferenceStory" />
 
   </class>
 
@@ -90,6 +95,26 @@
         SET NOCOUNT OFF
       END
       GO
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+
+  <database-object>
+    <create>
+      ALTER TABLE Story
+      ADD CONSTRAINT CT_OnlyReferenceStoryNeedsNoBook
+      CHECK (LibraryStatus = 0 OR BookId IS NOT NULL)
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+
+  <database-object>
+    <create>
+      ALTER TABLE Story
+      ADD CONSTRAINT CT_OnlyReferenceStoryNeedsNoTitle
+      CHECK (LibraryStatus = 0 OR Title IS NOT NULL)
     </create>
     <drop>
     </drop>

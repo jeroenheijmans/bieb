@@ -22,6 +22,11 @@
       <key column="PublisherId" foreign-key="FK_Book_Publisher" />
       <one-to-many class="Book" />
     </bag>
+
+    <bag name="Stories" table="Story" lazy="true" access="field.camelcase-underscore">
+      <key column="PublisherId" foreign-key="FK_Story_Publisher" />
+      <one-to-many class="Story" />
+    </bag>
     
   </class>
 

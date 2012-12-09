@@ -13,3 +13,11 @@
         @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.Books); }
     </section>
 }
+
+@if (Model.Stories.Any())
+{
+    <section class="itemList">
+        <h4>@BiebResources.PublisherStrings.StoriesFromThisPublisher</h4>
+        @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories); }
+    </section>
+}

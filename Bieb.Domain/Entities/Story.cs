@@ -2,24 +2,25 @@
 
 namespace Bieb.Domain.Entities
 {
-    public class Story : BaseEntity
+    public class Story : Publishable
     {
-        public virtual string Title { get; set; }
-        public virtual string Subtitle { get; set; }
-        public virtual Publisher Publisher { get; set; }
         public virtual Book Book { get; set; }
         public virtual int PositionInBook { get; set; }
 
-        private string _titleSort;
-        public virtual string TitleSort
+        public virtual LibraryStatus LibraryStatus { get; set; }
+
+        public override int? IsbnLanguage
         {
             get
             {
-                return _titleSort ?? Title;
+                if (_isbnLanguage == null && Book != null)
+                    return Book.IsbnLanguage;
+
+                return _isbnLanguage;
             }
-            protected internal set
+            set
             {
-                _titleSort = value;
+                _isbnLanguage = value;
             }
         }
 
@@ -43,6 +44,13 @@ namespace Bieb.Domain.Entities
             get { return _translators; }
             set { _translators = value; }
         }
+
+        public virtual Story ReferenceStory
+        {
+            get;
+            set;
+        }
+
 
         public override string ToString()
         {
