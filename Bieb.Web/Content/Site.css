@@ -235,6 +235,11 @@ table th {
     color: #FFD8ED;
 }
 
+.details {
+    display: inline-block;
+    width: 40em;
+}
+
 .info-points h6 {
     margin-top: 0.5em;
 }
@@ -289,8 +294,8 @@ th {
 
 .itemList li {
     background-color: #EEEEEE;
-    padding: 0.5em 1em;
-    margin: 0 1em 1em 0;
+    padding: 0.5em 0.5em;
+    margin: 0 0.5em 1em 0;
     display: inline-block;
     width: 19em;
     min-height: 6em;
