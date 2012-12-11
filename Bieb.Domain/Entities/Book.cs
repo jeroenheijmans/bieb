@@ -85,6 +85,8 @@ namespace Bieb.Domain.Entities
             set { _reviews = value; }
         }
 
+        public virtual Book ReferenceBook { get; set; }
+
         public override string ToString()
         {
             return Title ?? base.ToString();

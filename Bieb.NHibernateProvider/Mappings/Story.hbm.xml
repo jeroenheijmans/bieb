@@ -16,7 +16,7 @@
       <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
     </property>
     
-    <property name="Title" index="IX_Story_Title" />
+    <property name="Title" index="IX_Story_Title" not-null="true" />
     <property name="TitleSort" column="TitleSort" generated="always" />
     <property name="Subtitle" />
     <property name="LibraryStatus" not-null="true" />

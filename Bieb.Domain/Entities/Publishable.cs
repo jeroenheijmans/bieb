@@ -10,6 +10,7 @@ namespace Bieb.Domain.Entities
         public virtual string Title { get; set; }
         public virtual string Subtitle { get; set; }
         public virtual int? Year { get; set; }
+        public virtual LibraryStatus LibraryStatus { get; set; }
         public virtual Publisher Publisher { get; set; }
 
         protected int? _isbnLanguage;

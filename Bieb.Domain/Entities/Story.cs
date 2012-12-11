@@ -7,8 +7,6 @@ namespace Bieb.Domain.Entities
         public virtual Book Book { get; set; }
         public virtual int PositionInBook { get; set; }
 
-        public virtual LibraryStatus LibraryStatus { get; set; }
-
         public override int? IsbnLanguage
         {
             get

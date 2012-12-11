@@ -22,6 +22,7 @@ namespace Bieb.Tests.Controllers
             booksMock.Setup(repo => repo.Items).Returns((new Book[] { }).AsQueryable());
             var peopleMock = new Mock<IEntityRepository<Person>>();
             peopleMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
+
             var controller = new SurpriseController(peopleMock.Object, booksMock.Object);
 
             // Act
@@ -29,6 +30,31 @@ namespace Bieb.Tests.Controllers
 
             // Assert
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
+        }
+
+        [Test]
+        public void Index_Will_Skip_Reference_Only_Books()
+        {
+            // Arrange
+            var peopleMock = new Mock<IEntityRepository<Person>>();
+            peopleMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
+
+            // TODO: add books, including several "reference books"
+            // make sure these are reliable "skipped"
+            
+            var booksMock = new Mock<IEntityRepository<Book>>();
+            booksMock.Setup(repo => repo.Items).Returns((new Book[] { }).AsQueryable());
+
+            var controller = new SurpriseController(peopleMock.Object, booksMock.Object);
+
+            var randomEntityPickerMock = new Mock<IRandomEntityPicker>();
+            randomEntityPickerMock.Setup(picker => picker.getRandomEntityType()).Returns(typeof(Book));
+
+            // Act
+            ActionResult result = controller.Index(randomEntityPickerMock.Object);
+
+            // Assert
+            
         }
     }
 }
