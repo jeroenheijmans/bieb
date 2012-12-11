@@ -16,9 +16,10 @@
       <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
     </property>
     
-    <property name="Title" not-null="true" index="IX_Book_Title" />
+    <property name="Title" index="IX_Book_Title" not-null="true" />
     <property name="TitleSort" column="TitleSort" generated="always" />
     <property name="Subtitle" />
+    <property name="LibraryStatus" not-null="true" />
     <property name="Isbn" />
     <property name="IsbnLanguage" access="field.camelcase-underscore" />
     <property name="Year" />
@@ -46,6 +47,8 @@
       <key column="BookId" foreign-key="FK_Review_Book" />
       <one-to-many class="Review`1[Bieb.Domain.Entities.Book, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
     </bag>
+
+    <many-to-one name="ReferenceBook" column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
        
   </class>
 
@@ -97,6 +100,16 @@
         SET NOCOUNT OFF
       END
       GO
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+
+  <database-object>
+    <create>
+      ALTER TABLE Book
+      ADD CONSTRAINT CT_OnlyReferenceBookNeedsNoTitle
+      CHECK (LibraryStatus = 0 OR Title IS NOT NULL)
     </create>
     <drop>
     </drop>

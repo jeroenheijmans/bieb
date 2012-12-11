@@ -20,10 +20,15 @@ namespace Bieb.Web.Controllers
 
         public ActionResult Index()
         {
+            return Index(new RandomTypePicker());
+        }
+
+        internal ActionResult Index(IRandomEntityPicker RandomTypeGenerator)
+        {
             if (!PersonRepository.Items.Any() || !BookRepository.Items.Any())
                 return RedirectToAction("EmptyDatabase", "Home");
 
-            if (new Random().Next(2) > 0)
+            if (RandomTypeGenerator.getRandomEntityType() == typeof(Person))
             {
                 var person = PersonRepository.GetRandomItem();
                 Debug.Assert(person != null, "Expected to find at least one random person, but found none.");
@@ -36,5 +41,25 @@ namespace Bieb.Web.Controllers
                 return RedirectToAction("Details", "Books", new { id = book.Id });
             }
         }
+
+        private class RandomTypePicker : IRandomEntityPicker
+        {
+            Random random = new Random();
+
+            public Type getRandomEntityType()
+            {
+                if (random.Next(2) > 0)
+                    return typeof(Person);
+                else
+                    return typeof(Book);
+            }
+        }
+
     }
+
+    internal interface IRandomEntityPicker
+    {
+        Type getRandomEntityType();
+    }
+
 }

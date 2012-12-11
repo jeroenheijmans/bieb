@@ -88,4 +88,35 @@
             </li>
         }
     </ul>
+
+    @if (Model.ReferenceBook != null)
+    {
+        <h2>@BiebResources.SharedStrings.Original:</h2>
+        <ul>
+            @if (Model.ReferenceBook.Title != null)
+            {
+                <li>@BiebResources.SharedStrings.Title: @Model.ReferenceBook.Title</li>
+            }
+            @if (Model.ReferenceBook.Subtitle != null)
+            {
+                <li>@BiebResources.SharedStrings.Subtitle: @Model.ReferenceBook.Subtitle</li>
+            }
+            @if (Model.ReferenceBook.Isbn != null)
+            {
+                <li>@BiebResources.SharedStrings.Isbn: @Model.ReferenceBook.Isbn</li>
+            }
+            @if (Model.ReferenceBook.IsbnLanguage.HasValue)
+            {
+                <li>@BiebResources.SharedStrings.Language: @Model.ReferenceBook.Language</li>
+            }
+            @if (Model.ReferenceBook.Year.HasValue)
+            {
+                <li>@BiebResources.SharedStrings.Published: @Model.ReferenceBook.Year</li>
+            }
+            @if (Model.ReferenceBook.Publisher != null)
+            {
+                <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Model.ReferenceBook.Publisher.Name, "Details", new { id = Model.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
+            }
+        </ul>
+    }
 </div>
