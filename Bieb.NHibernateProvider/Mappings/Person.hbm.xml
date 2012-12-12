@@ -33,7 +33,7 @@
 
     <bag name="EditedBooks" table="BookEditor" lazy="true">
       <key column="PersonId" foreign-key="FK_BookEditor_Person" />
-      <many-to-many column="BookId" class="Book" foreign-key="FK_BookEditor_Book" />
+      <many-to-many column="BookId" class="LibraryBook" foreign-key="FK_BookEditor_Book" />
     </bag>
 
     <bag name="AuthoredStories" table="StoryAuthor" lazy="true">

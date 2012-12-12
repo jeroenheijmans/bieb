@@ -14,7 +14,11 @@ namespace Bieb.Domain.Entities
         public virtual Publisher Publisher { get; set; }
 
         protected int? _isbnLanguage;
-        public virtual int? IsbnLanguage { get; set; }
+        public virtual int? IsbnLanguage 
+        {
+            get { return _isbnLanguage; }
+            set { _isbnLanguage = value; }
+        }
 
         private string _titleSort;
         public virtual string TitleSort

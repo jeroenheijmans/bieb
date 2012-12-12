@@ -79,8 +79,8 @@ namespace Bieb.Domain.Entities
             // TODO: A setter would be nice, propagating to the until/from dates
         }
 
-        private IList<Book> _editedBooks = new List<Book>();
-        public virtual IList<Book> EditedBooks
+        private IList<LibraryBook> _editedBooks = new List<LibraryBook>();
+        public virtual IList<LibraryBook> EditedBooks
         {
             get { return _editedBooks; }
             set { _editedBooks = value; }
@@ -103,7 +103,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public virtual IEnumerable<Book> AuthoredNovels
+        public virtual IEnumerable<LibraryBook> AuthoredNovels
         {
             get
             {
@@ -130,7 +130,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public virtual IEnumerable<Book> TranslatedNovels
+        public virtual IEnumerable<LibraryBook> TranslatedNovels
         {
             get
             {
@@ -148,7 +148,7 @@ namespace Bieb.Domain.Entities
             set { _reviews = value; }
         }
 
-        public virtual IEnumerable<Book> AuthoredCollections
+        public virtual IEnumerable<LibraryBook> AuthoredCollections
         {
             get 
             {

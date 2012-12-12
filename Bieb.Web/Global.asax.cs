@@ -27,14 +27,27 @@ namespace Bieb.Web
                             new { controller = "Search", action = "Basic" });
 
             routes.MapRoute(
-                "DetailsInController", // Route name
+                "Details for a LibraryBook by ID", // Route name
+                "Books/{id}", // URL with parameters
+                new { controller = "LibraryBooks", action = "Details", id = UrlParameter.Optional }, // Parameter defaults
+                new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                "Details for any item by ID", // Route name
                 "{controller}/{id}", // URL with parameters
                 new { controller = "Home", action = "Details", id = UrlParameter.Optional }, // Parameter defaults
                 new { id = @"\d+" }
             );
 
             routes.MapRoute(
-                "StraightToController", // Route name
+                "Actions for LibraryBooks controller via 'Books'", // Route name
+                "Books/{action}", // URL with parameters
+                new { controller = "LibraryBooks", action = "Index" } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Generic Controller and Action route", // Route name
                 "{controller}/{action}", // URL with parameters
                 new { controller = "Home", action = "Index" } // Parameter defaults
             );

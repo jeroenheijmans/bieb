@@ -1,16 +1,16 @@
 ﻿@model Bieb.Domain.Entities.Publisher
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name;
 }
 
 <h1>@Model.Name</h1>
 
-@if (Model.Books.Any())
+@if (Model.LibraryBooks.Any())
 {
     <section class="itemList">
         <h4>@BiebResources.PublisherStrings.BooksFromThisPublisher</h4>
-        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.Books); }
+        @{ Html.RenderPartial("~/Views/LibraryBooks/ItemList.cshtml", Model.LibraryBooks); }
     </section>
 }
 
@@ -19,5 +19,13 @@
     <section class="itemList">
         <h4>@BiebResources.PublisherStrings.StoriesFromThisPublisher</h4>
         @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories); }
+    </section>
+}
+
+@if (Model.ReferenceBooks.Any())
+{
+    <section class="itemList">
+        <h4>@BiebResources.PublisherStrings.ReferenceBooksFromThisPublisher</h4>
+        @{ Html.RenderPartial("~/Views/ReferenceBooks/ItemList.cshtml", Model.ReferenceBooks); }
     </section>
 }

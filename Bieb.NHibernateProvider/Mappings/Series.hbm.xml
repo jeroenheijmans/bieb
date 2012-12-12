@@ -23,7 +23,7 @@
     <map name="Books" table="SeriesBook" lazy="true">
       <key column="SeriesId" foreign-key="FK_SeriesBook_Series" />
       <index column="Position" type="Int32" />
-      <many-to-many column="BookId" class="Book" foreign-key="FK_SeriesBook_Book" />
+      <many-to-many column="BookId" class="LibraryBook" foreign-key="FK_SeriesBook_Book" />
     </map>
     
   </class>

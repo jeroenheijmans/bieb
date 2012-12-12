@@ -53,7 +53,7 @@ namespace Bieb.Tests.WebHelpers
 
             const string linkText = "clicky, clicky!";
             const string actionName = "Index";
-            const string controllerName = "Books";
+            const string controllerName = "LibraryBooks";
 
             // Act
             MvcHtmlString actual = htmlHelper.MenuLink(linkText, actionName, controllerName);
@@ -79,7 +79,7 @@ namespace Bieb.Tests.WebHelpers
 
             const string linkText = "clicky, clicky!";
             const string actionName = "Index";
-            const string controllerName = "Books";
+            const string controllerName = "LibraryBooks";
 
             // Act
             MvcHtmlString actual = htmlHelper.MenuLink(linkText, actionName, controllerName);

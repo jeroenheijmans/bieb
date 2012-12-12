@@ -20,7 +20,7 @@
     <article>
         <h4>@BiebResources.SharedStrings.Books</h4>
         <p>@BiebResources.HomeStrings.BrowseBooks</p>
-        <p>@Html.ActionLink(BiebResources.HomeStrings.BrowseBooksLink, "Index", "Books")</p>
+        <p>@Html.ActionLink(BiebResources.HomeStrings.BrowseBooksLink, "Index", "LibraryBooks")</p>
     </article>
 
     <article>
@@ -36,6 +36,6 @@
 
     <article>
         <h4>@BiebResources.HomeStrings.RecentlyAdded</h4>
-        @Html.Action("RecentlyAdded", "Books")
+        @Html.Action("RecentlyAdded", "LibraryBooks")
     </article>
 </section>
