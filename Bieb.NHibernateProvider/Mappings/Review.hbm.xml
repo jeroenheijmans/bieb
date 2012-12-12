@@ -19,12 +19,7 @@
     <property name="ReviewText" type="StringClob" />
     <property name="Rating" />
 
-    <many-to-one 
-      name="Subject" 
-      column="BookId" 
-      foreign-key="FK_Review_Book" 
-      class="Book" />
-    <!-- TODO: If you go to a PersonReview/Details/{id} URL it should throw an exception trying to load this... but it doesn't? -->
+    <many-to-one name="Subject" column="BookId" foreign-key="FK_Review_Book" class="LibraryBook" />
   </class>
 
   <!-- PERSON -->

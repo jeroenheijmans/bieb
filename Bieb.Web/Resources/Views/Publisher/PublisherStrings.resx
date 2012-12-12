@@ -120,6 +120,12 @@
   <data name="BooksFromThisPublisher" xml:space="preserve">
     <value>Books from this publisher</value>
   </data>
+  <data name="ReferenceBooksFromThisPublisher" xml:space="preserve">
+    <value>Published these first editions</value>
+  </data>
+  <data name="ReferencedBy" xml:space="preserve">
+    <value>Referenced by</value>
+  </data>
   <data name="StoriesFromThisPublisher" xml:space="preserve">
     <value>Stories from this publisher</value>
   </data>

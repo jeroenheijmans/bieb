@@ -6,13 +6,13 @@ using Bieb.Domain.Repositories;
 
 namespace Bieb.Web.Controllers
 {
-    public class BooksController : EntityController<Book>
+    public class LibraryBooksController : EntityController<LibraryBook>
     {
-        public BooksController(IEntityRepository<Book> repository)
+        public LibraryBooksController(IEntityRepository<LibraryBook> repository)
             : base(repository)
         { }
 
-        protected override System.Linq.Expressions.Expression<Func<Book, IComparable>> SortFunc
+        protected override System.Linq.Expressions.Expression<Func<LibraryBook, IComparable>> SortFunc
         {
             get
             {

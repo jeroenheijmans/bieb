@@ -12,7 +12,7 @@ namespace Bieb.Tests.Domain
         public void Contains_Tags_From_Stories()
         {
             // Arrange
-            var myBook = new Book();
+            var myBook = new LibraryBook();
             
             var story1 = new Story();
             var story2 = new Story();
@@ -41,7 +41,7 @@ namespace Bieb.Tests.Domain
         public void Has_Single_Author_For_Novel()
         {
             // Arrange
-            var novel = new Book();
+            var novel = new LibraryBook();
 
             var story = new Story();
             novel.Stories.Add(1, story);
@@ -61,7 +61,7 @@ namespace Bieb.Tests.Domain
         public void Contains_Authors_From_Stories()
         {
             // Arrange
-            var myBook = new Book();
+            var myBook = new LibraryBook();
 
             var story1 = new Story();
             var story2 = new Story();
@@ -87,7 +87,7 @@ namespace Bieb.Tests.Domain
         public void Contains_CoAuthors_From_Stories()
         {
             // Arrange
-            var myBook = new Book();
+            var myBook = new LibraryBook();
 
             var story1 = new Story();
 
@@ -111,7 +111,7 @@ namespace Bieb.Tests.Domain
         public void Contains_Translators_From_Stories()
         {
             // Arrange
-            var myBook = new Book();
+            var myBook = new LibraryBook();
 
             var story1 = new Story();
             var story2 = new Story();
@@ -138,7 +138,7 @@ namespace Bieb.Tests.Domain
         public void Is_Novel_If_Book_Has_Zero_Stories()
         {
             // Arrange
-            var myBook = new Book();
+            var myBook = new LibraryBook();
 
             // Act
             // ...
@@ -151,7 +151,7 @@ namespace Bieb.Tests.Domain
         public void Is_Novel_If_Book_Has_One_Story()
         {
             // Arrange
-            var myBook = new Book();
+            var myBook = new LibraryBook();
             var story = new Story();
             myBook.Stories.Add(1, story);
 
@@ -174,9 +174,9 @@ namespace Bieb.Tests.Domain
             var asimovStory2 = new Story { Authors = new[] { asimov } };
             var clarkeStory = new Story { Authors = new[] { clarke } };
 
-            var novel = new Book { Title = "How Novel!" };
-            var collection = new Book { Stories = new Dictionary<int, Story>() };
-            var anthology = new Book { Stories = new Dictionary<int, Story>() };
+            var novel = new LibraryBook { Title = "How Novel!" };
+            var collection = new LibraryBook { Stories = new Dictionary<int, Story>() };
+            var anthology = new LibraryBook { Stories = new Dictionary<int, Story>() };
 
             collection.Stories.Add(0, asimovStory1);
             collection.Stories.Add(1, asimovStory2);
@@ -204,7 +204,7 @@ namespace Bieb.Tests.Domain
             var story2 = new Story { Tags = new[] { cool, old } };
             var story3 = new Story { Tags = new[] { sweet } };
 
-            var theHobbit = new Book();
+            var theHobbit = new LibraryBook();
             theHobbit.Stories.Add(0, story1);
             theHobbit.Stories.Add(1, story2);
             theHobbit.Stories.Add(2, story3);            

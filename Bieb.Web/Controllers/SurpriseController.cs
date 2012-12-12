@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
@@ -10,9 +11,9 @@ namespace Bieb.Web.Controllers
     public class SurpriseController : Controller
     {
         private IEntityRepository<Person> PersonRepository { get; set; }
-        private IEntityRepository<Book> BookRepository { get; set; }
+        private IEntityRepository<LibraryBook> BookRepository { get; set; }
 
-        public SurpriseController(IEntityRepository<Person> PersonRepository, IEntityRepository<Book> BookRepository)
+        public SurpriseController(IEntityRepository<Person> PersonRepository, IEntityRepository<LibraryBook> BookRepository)
         {
             this.PersonRepository = PersonRepository;
             this.BookRepository = BookRepository;
@@ -38,7 +39,7 @@ namespace Bieb.Web.Controllers
             {
                 var book = BookRepository.GetRandomItem();
                 Debug.Assert(book != null, "Expected to find at least one random book, but found none.");
-                return RedirectToAction("Details", "Books", new { id = book.Id });
+                return RedirectToAction("Details", "LibraryBooks", new { id = book.Id });
             }
         }
 
@@ -54,10 +55,9 @@ namespace Bieb.Web.Controllers
                     return typeof(Book);
             }
         }
-
     }
 
-    internal interface IRandomEntityPicker
+    public interface IRandomEntityPicker
     {
         Type getRandomEntityType();
     }

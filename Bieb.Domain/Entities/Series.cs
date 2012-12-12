@@ -20,8 +20,8 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IDictionary<int, Book> _books = new SortedList<int, Book>();
-        public virtual IDictionary<int, Book> Books
+        private IDictionary<int, LibraryBook> _books = new SortedList<int, LibraryBook>();
+        public virtual IDictionary<int, LibraryBook> Books
         {
             get { return _books; }
             set { _books = value; }

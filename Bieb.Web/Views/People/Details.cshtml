@@ -25,7 +25,7 @@
         { 
             <section class="itemList authoredNovels">
                 <h4>@BiebResources.SharedStrings.Novels</h4>
-                @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredNovels); }
+                @{ Html.RenderPartial("~/Views/LibraryBooks/ItemList.cshtml", Model.AuthoredNovels); }
             </section>
         }
 
@@ -33,7 +33,7 @@
         { 
             <section class="itemList editedBooks">
                 <h4>@BiebResources.PeopleStrings.EditedBooks</h4>
-                @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.EditedBooks); }
+                @{ Html.RenderPartial("~/Views/LibraryBooks/ItemList.cshtml", Model.EditedBooks); }
             </section>
         }
     
@@ -41,7 +41,7 @@
         { 
             <section class="itemList authoredCollections">
                 <h4>@BiebResources.PeopleStrings.AuthoredCollections</h4>
-                @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredCollections); }
+                @{ Html.RenderPartial("~/Views/LibraryBooks/ItemList.cshtml", Model.AuthoredCollections); }
             </section>
         }
     
@@ -49,7 +49,7 @@
         { 
             <section class="itemList authoredCollections">
                 <h4>@BiebResources.PeopleStrings.TranslatedNovels</h4>
-                @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.TranslatedNovels); }
+                @{ Html.RenderPartial("~/Views/LibraryBooks/ItemList.cshtml", Model.TranslatedNovels); }
             </section>
         }
         </section>

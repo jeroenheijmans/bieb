@@ -70,6 +70,24 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Published these first editions.
+        /// </summary>
+        public static string ReferenceBooksFromThisPublisher {
+            get {
+                return ResourceManager.GetString("ReferenceBooksFromThisPublisher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Referenced by.
+        /// </summary>
+        public static string ReferencedBy {
+            get {
+                return ResourceManager.GetString("ReferencedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stories from this publisher.
         /// </summary>
         public static string StoriesFromThisPublisher {

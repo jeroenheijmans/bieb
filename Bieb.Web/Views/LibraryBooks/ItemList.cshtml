@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Bieb.Domain.Entities.Book>
+﻿@model IEnumerable<Bieb.Domain.Entities.LibraryBook>
 
 <ul>
 @foreach (var book in Model) 
 {
     <li>
-        <h6>@Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })</h6>
+        <h6>@Html.ActionLink(book.Title, "Details", new { controller = "LibraryBooks", id = book.Id })</h6>
                 
         <span>@book.BookType</span>
 

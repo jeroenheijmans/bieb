@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Bieb.Domain.Entities
 {
-    public class Book : Publishable, IReviewable
+    public abstract class Book : Publishable, IReviewable
     {
         public virtual string Isbn { get; set; }
 
@@ -84,8 +84,6 @@ namespace Bieb.Domain.Entities
             get { return _reviews; }
             set { _reviews = value; }
         }
-
-        public virtual Book ReferenceBook { get; set; }
 
         public override string ToString()
         {
