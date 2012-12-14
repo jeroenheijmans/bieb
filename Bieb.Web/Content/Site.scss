@@ -8,7 +8,9 @@ $inverted-action-color: #FFD8ED;
 
 $wrapper-width: 61em;
 $footer-height: 1.5em;
+$base-line-height: 1.5em;
 $gutter: 2em;
+$text-gutter: 0.5em;
 
 $card-width: ($wrapper-width - (2 * $gutter)) / 3;
 
@@ -35,7 +37,7 @@ $card-width: ($wrapper-width - (2 * $gutter)) / 3;
 body {
 	font-weight: normal;
 	font-size: 100%;
-	line-height: 1.5em;
+	line-height: $base-line-height;
 	font-family: "MuseoSans500Regular", Georgia, serif;
 	color: $main-color;
 	background: $background-color;
@@ -74,7 +76,7 @@ a {
 p + p,
 ul + p,
 table + p {
-    margin-top: 0.5em;
+    margin-top: $text-gutter;
 }
 
 section + section {
@@ -83,12 +85,11 @@ section + section {
 
 td, 
 th {
-    padding: 0 0.4em;
+    padding: 0 $text-gutter;
     background-color: $background-color;
     border: solid 1px $background-color-darker;
     vertical-align: middle;
-	font-size: 0.9375em;        /* 15 / 16 */
-	line-height: 1.533em;       /* 23 / 15  (compensate for 1 px border) */
+	font-size: 0.9375em;
 }
 
 th {
@@ -106,6 +107,7 @@ th {
 ::selection			{ @include custom-text-selection-settings; }
 ::-webkit-selection { @include custom-text-selection-settings; }
 ::-moz-selection	{ @include custom-text-selection-settings; }
+
 
 
 /* Structure */
@@ -131,14 +133,18 @@ header {
 }
 
 header .title {
-	font: normal 3.5em/1.5em 'handwriting-draft_regular', Verdana, serif;		/* 56 / 16 */
-	margin: 0 auto 0.5em;
-	padding: 1.5em 0 0.5em;
-	width: $wrapper-width / 3.5;
+	margin: 3.5em auto;
+	padding: ($text-gutter * 3) 0 $text-gutter;
+	width: $wrapper-width;
 	border-bottom: 1px solid $main-color-lighter;
 
-	a       { color: $main-color-lighter; }
-	a:hover { color: $action-color; }
+	a { 
+		color: $main-color-lighter; 
+		font-size: 3.5em;
+		line-height: $base-line-height;
+		font-family: 'handwriting-draft_regular', Verdana, serif;
+		&:hover { color: $action-color; }
+	}
 }
 
 
@@ -158,7 +164,7 @@ nav {
 
 	#search {
 		position: absolute;
-		top: 3.5em;
+		top: ($base-line-height * 2) + $text-gutter;
 		right: 0;
 		border: none;
 		width: 100%;
@@ -175,7 +181,7 @@ nav {
 		a {
 			display: inline-block;
 			color: $background-color;
-			padding: 0.75em;
+			padding: $text-gutter * 1.5;
 			width: 100%;
 
 			&:hover,
@@ -185,7 +191,7 @@ nav {
 			}
 		}
 		
-		&:first-child {   
+		&:first-child {
 			border-left: 1px solid $action-color;
 		}
 	}
@@ -207,7 +213,7 @@ footer {
 	p {
 		width: $wrapper-width;
 		margin: 0 auto;
-		padding: 0 0.75em;
+		padding: 0 $text-gutter;
 		border-left: 1px solid $action-color;
 		border-right: 1px solid $action-color;
 	}
@@ -237,9 +243,9 @@ table.stories {
 	float: left;
     background: $main-color;
     color: $background-color;
-    padding: $gutter / 2;
+    padding: $text-gutter * 2;
     margin: 0 $gutter $gutter 0;
-
+	
 	h1 { font-size: 1.5em; }
 	h2 { font-size: 1.1em; margin-top: 1em; }
 	
@@ -249,17 +255,18 @@ table.stories {
 	}
 }
 
+
 .details {
     display: inline-block;
     width: $wrapper-width - $gutter - $card-width;
 }
 
 .info-points h6 {
-    margin-top: 0.5em;
+    margin-top: $text-gutter;
 }
 
 .listing {
-    margin: 1em 0;
+    margin: $base-line-height 0;
     width: 100%;
 	
 	td, th {
@@ -279,16 +286,16 @@ table.stories {
 
 .item-list li {
     background-color: $background-color-darker;
-    padding: 0.5em 0.5em;
-    margin: 0 0.5em 1em 0;
+    padding: $text-gutter $text-gutter;
+    margin: 0 $text-gutter 1em 0;
     display: inline-block;
     width: $card-width;
-    min-height: 6em;
+    min-height: $base-line-height * 4;
     vertical-align: bottom;
 }
 
 ul.search-results > li {
-    padding: ($gutter / 4) 0;
+    padding: $text-gutter 0;
 	&:first-child { padding-top: 0; }
 }
 
@@ -298,14 +305,14 @@ ul.search-options li {
 	a {
 		display: block;
 		background: $main-color;
-		padding: 1em;
+		padding: $text-gutter * 2;
 		color: $inverted-action-color;
 		&:hover { color: $action-color; }
 	}
 }
 
 #home-explanation p {
-    margin-top: 1.5em;
+    margin-top: $base-line-height;
 }
 
 #home-image {
@@ -327,6 +334,6 @@ ul.search-options li {
 }
 
 iframe.goodreads {
-    width: 38em;
-    height: 30em;
+    width: $wrapper-width - $gutter - $card-width;
+    height: ($wrapper-width - $gutter - $card-width) * 3 / 4;
 }
