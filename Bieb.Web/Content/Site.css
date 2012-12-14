@@ -1,19 +1,3 @@
-/*************************  To Do  ****************************/
-/* Fix vertical rhythm
-/* Add responsivity
-/* Add support for all modern browsers
-/* Perhaps add support for older browsers (how far back?)
-/**************************************************************/
-/*************************  Colors  ***************************/
-/* Links					#6E0030
-/* Links (inverted)         #FFD8ED
-/* Links hover, details  	#FF0080  PINK!
-/* Text, borders, etc		#333333
-/* Title					#666666
-/* TH and TD border         #EEEEEE
-/* TH background            #FAFAFA
-/* Background, nav links	#FFFFFF
-/**************************************************************/
 @font-face {
   font-family: "handwriting-draft_regular";
   src: url("fonts/handwriting-draft_free-version-webfont.eot");
@@ -28,7 +12,7 @@
 body {
   font: normal 100%/1.5em "MuseoSans500Regular", Georgia, serif;
   color: #333333;
-  background: #FFFFFF;
+  background: white;
   background-image: url("/Content/images/background-sprite.png"); }
 
 /* Basic HTML elements */
@@ -101,22 +85,22 @@ nav li {
   position: relative;
   float: left;
   display: inline-block;
-  width: 10.167em;
-  border-right: 1px solid #FF0080; }
+  width: 10.16667em;
+  border-right: 1px solid #ff0080; }
 
 nav li:first-child {
-  border-left: 1px solid #FF0080; }
+  border-left: 1px solid #ff0080; }
 
 nav li a {
   display: inline-block;
-  color: #FFFFFF;
+  color: white;
   padding: 0.75em;
   width: 100%; }
 
 nav li a:hover,
 nav li a.active {
-  background-color: #FF0080;
-  color: #FFFFFF; }
+  background-color: #ff0080;
+  color: white; }
 
 /* Main title */
 header .title {
@@ -124,22 +108,20 @@ header .title {
   /* 56 / 16 */
   margin: 0 auto 0.5em;
   padding: 1.5em 0 0.5em;
-  width: 17.43em;
-  /* 976 / 56 */
+  width: 17.42857em;
   border-bottom: 1px solid #666666; }
 
 header .title a {
   color: #666666; }
 
 header .title a:hover {
-  color: #FF0080; }
+  color: #ff0080; }
 
 .wrapper {
   width: 61em;
   margin: 0 auto;
   min-height: 100%;
-  padding-bottom: 1.5em;
-  /* must be same height as the footer */ }
+  padding-bottom: 1.5em; }
 
 #main {
   overflow: auto;
@@ -153,31 +135,29 @@ footer {
   left: 0;
   width: 100%;
   background: #333333;
-  color: #FFFFFF;
+  color: white;
   height: 1.5em;
   margin-top: -1.5em;
   clear: both; }
 
 footer p {
   width: 61em;
-  /* 976 / 16 */
   margin: 0 auto;
   padding: 0 0.75em;
-  border-left: 1px solid #FF0080;
-  border-right: 1px solid #FF0080; }
+  border-left: 1px solid #ff0080;
+  border-right: 1px solid #ff0080; }
 
 footer span {
-  color: #FF0080; }
+  color: #ff0080; }
 
 footer a {
-  color: #FFFFFF; }
+  color: white; }
 
 footer #powered-by {
   float: right; }
 
 table.stories {
-  width: 40em;
-  /* 640 / 16 */ }
+  width: 40em; }
 
 table td,
 table th {
@@ -186,17 +166,15 @@ table th {
   line-height: 1.642em;
   /* 23 / 14 */
   /* (compensate for 1 px border */
-  padding: 0 0.4em;
-  vertical-align: top; }
+  padding: 0 0.4em; }
 
 .card {
   width: 19em;
-  /* 304 / 16 */
   position: relative;
   float: left;
   background: #333333;
-  color: #FFFFFF;
-  padding: 1.0em;
+  color: white;
+  padding: 1em;
   margin: 0 2em 2em 0; }
 
 .card h1 {
@@ -207,7 +185,7 @@ table th {
   margin-top: 1em; }
 
 .card a {
-  color: #FFD8ED; }
+  color: #ffd8ed; }
 
 .details {
   display: inline-block;
@@ -217,19 +195,19 @@ table th {
   margin-top: 0.5em; }
 
 a {
-  color: #6E0030; }
+  color: #6e0030; }
 
 a:hover {
-  color: #FF0080; }
+  color: #ff0080; }
 
 td,
 th {
-  background-color: #FFFFFF;
-  border: solid 1px #EEEEEE;
+  background-color: white;
+  border: solid 1px #eeeeee;
   vertical-align: middle; }
 
 th {
-  background-color: #FAFAFA;
+  background-color: #eeeeee;
   text-align: left; }
 
 .listing {
@@ -258,7 +236,7 @@ th {
   text-align: left; }
 
 .itemList li {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   padding: 0.5em 0.5em;
   margin: 0 0.5em 1em 0;
   display: inline-block;
@@ -272,18 +250,18 @@ ul.searchResults > li {
 
 /* Custom text selection color */
 ::selection {
-  background: #FF0080;
-  color: #FFFFFF;
+  background: #ff0080;
+  color: white;
   text-shadow: none; }
 
 ::-webkit-selection {
-  background: #FF0080;
-  color: #FFFFFF;
+  background: #ff0080;
+  color: white;
   text-shadow: none; }
 
 ::-moz-selection {
-  background: #FF0080;
-  color: #FFFFFF;
+  background: #ff0080;
+  color: white;
   text-shadow: none; }
 
 ul.search-options li {
@@ -293,10 +271,10 @@ ul.search-options li a {
   display: block;
   background: #333333;
   padding: 1em;
-  color: #FFD8ED; }
+  color: #ffd8ed; }
 
 ul.search-options li a:hover {
-  color: #FF0080; }
+  color: #ff0080; }
 
 #home-explanation p {
   margin-top: 1.5em; }
