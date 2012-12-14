@@ -1,0 +1,339 @@
+$main-color: #333333;
+$main-color-lighter: #666666;
+$action-color: #FF0080;
+$action-color-darker: #6E0030;
+$background-color: #FFFFFF;
+$background-color-darker: #EEEEEE;
+$inverted-action-color: #FFD8ED;
+
+$wrapper-width: 61em;
+$footer-height: 1.5em;
+$base-line-height: 1.5em;
+$gutter: 2em;
+$text-gutter: 0.5em;
+
+$card-width: ($wrapper-width - (2 * $gutter)) / 3;
+
+@font-face {
+    font-family: "handwriting-draft_regular";
+    src: url('fonts/handwriting-draft_free-version-webfont.eot');
+    src: url('fonts/handwriting-draft_free-version-webfont.eot?#iefix') format('embedded-opentype'), 
+		 url('fonts/handwriting-draft_free-version-webfont.woff') format('woff'), 
+		 url('fonts/handwriting-draft_free-version-webfont.ttf') format('truetype'), 
+		 url('fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular') format('svg');
+}
+
+@font-face {
+    font-family: "MuseoSans500Regular";
+    src: url('fonts/museo_sans500-webfont.eot');
+    src: url('fonts/museo_sans500-webfont.eot?#iefix') format('embedded-opentype'), 
+		 url('fonts/museo_sans500-webfont.woff') format('woff'), 
+		 url('fonts/museo_sans500-webfont.ttf') format('truetype'), 
+		 url('fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
+}
+
+
+/* Basic HTML elements */
+body {
+	font-weight: normal;
+	font-size: 100%;
+	line-height: $base-line-height;
+	font-family: "MuseoSans500Regular", Georgia, serif;
+	color: $main-color;
+	background: $background-color;
+    background-image: url('/Content/images/background-sprite.png');
+}
+
+blockquote {
+    font-style: italic;
+}
+
+small {
+    font-size: 0.70em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2em;
+    margin-bottom: 0.3em;
+}
+
+h5, h6 {
+    margin-bottom: 0;
+}
+
+h1 { font-size: 2.0em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 1.0em; }
+
+a {
+    color: $action-color-darker;
+	&:hover { color: $action-color; }
+}
+
+p + p,
+ul + p,
+table + p {
+    margin-top: $text-gutter;
+}
+
+section + section {
+    margin-top: 1.0em;
+}
+
+td, 
+th {
+    padding: 0 $text-gutter;
+    background-color: $background-color;
+    border: solid 1px $background-color-darker;
+    vertical-align: middle;
+	font-size: 0.9375em;
+}
+
+th {
+    background-color: $background-color-darker;
+    text-align: left;
+}
+
+
+/* Custom text selection color */
+@mixin custom-text-selection-settings {
+	background: $action-color;
+	color: $background-color;
+	text-shadow: none;
+}
+::selection			{ @include custom-text-selection-settings; }
+::-webkit-selection { @include custom-text-selection-settings; }
+::-moz-selection	{ @include custom-text-selection-settings; }
+
+
+
+/* Structure */
+.wrapper {
+	width: $wrapper-width;
+	margin: 0 auto;
+	min-height: 100%;
+	padding-bottom: $footer-height;
+}
+
+#main {
+    overflow: auto;
+	padding: 14em 0 $gutter 0;
+	margin-bottom: $gutter;
+	width: 100%;
+}
+
+
+/* Header */
+header {
+	width: 100%;
+	position: absolute;
+}
+
+header .title {
+	margin: 3.5em auto;
+	padding: ($text-gutter * 3) 0 $text-gutter;
+	width: $wrapper-width;
+	border-bottom: 1px solid $main-color-lighter;
+
+	a { 
+		color: $main-color-lighter; 
+		font-size: 3.5em;
+		line-height: $base-line-height;
+		font-family: 'handwriting-draft_regular', Verdana, serif;
+		&:hover { color: $action-color; }
+	}
+}
+
+
+/* Nav */
+nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: $main-color;
+
+	#menu {
+		position: relative;
+		width: $wrapper-width;
+		margin: 0 auto;
+	}
+
+	#search {
+		position: absolute;
+		top: ($base-line-height * 2) + $text-gutter;
+		right: 0;
+		border: none;
+		width: 100%;
+		text-align: right;
+	}
+
+	li {
+		position: relative;
+		float: left;
+		display: inline-block;
+		width: $wrapper-width / 6; 
+		border-right: 1px solid $action-color;
+
+		a {
+			display: inline-block;
+			color: $background-color;
+			padding: $text-gutter * 1.5;
+			width: 100%;
+
+			&:hover,
+			&.active {
+				background-color: $action-color;
+				color: $background-color;
+			}
+		}
+		
+		&:first-child {
+			border-left: 1px solid $action-color;
+		}
+	}
+}
+
+
+/* Footer */
+footer {
+	position: relative;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: $main-color;
+	color: $background-color;
+	height: $footer-height;
+	margin-top: -$footer-height;
+	clear: both;
+
+	p {
+		width: $wrapper-width;
+		margin: 0 auto;
+		padding: 0 $text-gutter;
+		border-left: 1px solid $action-color;
+		border-right: 1px solid $action-color;
+	}
+
+	span {
+		color: $action-color;
+	}
+	
+	a {
+		color: $inverted-action-color;
+	}
+
+	#powered-by {
+		float: right;
+	}
+}
+
+
+/* Specific styles */
+table.stories {
+	width: $wrapper-width - $gutter - $card-width;
+}
+
+.card {
+	width: $card-width;
+	position: relative;
+	float: left;
+    background: $main-color;
+    color: $background-color;
+    padding: $text-gutter * 2;
+    margin: 0 $gutter $gutter 0;
+	
+	h1 { font-size: 1.5em; }
+	h2 { font-size: 1.1em; margin-top: 1em; }
+	
+	a {
+		color: $inverted-action-color;
+		&:hover { color: $action-color; }
+	}
+}
+
+
+.details {
+    display: inline-block;
+    width: $wrapper-width - $gutter - $card-width;
+}
+
+.info-points h6 {
+    margin-top: $text-gutter;
+}
+
+.listing {
+    margin: $base-line-height 0;
+    width: 100%;
+	
+	td, th {
+		white-space: nowrap;
+	}
+
+	.mainColumn {
+		white-space: normal;
+		width: 100%;
+	}
+
+	.icon {
+		text-align: center;
+		vertical-align: middle;
+	}
+}
+
+.item-list li {
+    background-color: $background-color-darker;
+    padding: $text-gutter $text-gutter;
+    margin: 0 $text-gutter 1em 0;
+    display: inline-block;
+    width: $card-width;
+    min-height: $base-line-height * 4;
+    vertical-align: bottom;
+}
+
+ul.search-results > li {
+    padding: $text-gutter 0;
+	&:first-child { padding-top: 0; }
+}
+
+ul.search-options li {
+	display: inline-block;
+
+	a {
+		display: block;
+		background: $main-color;
+		padding: $text-gutter * 2;
+		color: $inverted-action-color;
+		&:hover { color: $action-color; }
+	}
+}
+
+#home-explanation p {
+    margin-top: $base-line-height;
+}
+
+#home-image {
+    margin: 0 0 $gutter $gutter;
+    border: 1px solid $main-color;
+    float: right;
+}
+
+.teaser-articles {
+    border-top: 1px solid $main-color;
+    clear: both;
+
+	article {
+		display: inline-block;
+		width: 33%;
+		padding: $gutter $gutter 0 0;
+		vertical-align: top;
+	}
+}
+
+iframe.goodreads {
+    width: $wrapper-width - $gutter - $card-width;
+    height: ($wrapper-width - $gutter - $card-width) * 3 / 4;
+}
