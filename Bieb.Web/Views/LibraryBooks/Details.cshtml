@@ -19,7 +19,7 @@
 
     @if (Model.BookType != Bieb.Domain.Entities.BookType.Novel)
     {
-        <section class="itemList">
+        <section class="item-list">
             <h4>@BiebResources.SharedStrings.Stories:</h4>
             @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories.Values); }
         </section>

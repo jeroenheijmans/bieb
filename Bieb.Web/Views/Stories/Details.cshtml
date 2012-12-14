@@ -9,7 +9,7 @@
 <section class="details">
     @if (Model.Authors.Any())
     {
-        <section class="itemList">
+        <section class="item-list">
             <h4>@BiebResources.SharedStrings.Authors</h4>
             @{ Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Authors); }
         </section>
@@ -17,7 +17,7 @@
 
     @if (Model.Translators.Any())
     {
-        <section class="itemList">
+        <section class="item-list">
             <h4>@BiebResources.SharedStrings.Translators</h4>
             @{ Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Translators); }
         </section>

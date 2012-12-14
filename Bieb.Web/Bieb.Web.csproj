@@ -201,7 +201,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.css">
+      <DependentUpon>Site.scss</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -310,6 +312,7 @@
     <Content Include="Views\People\MoreInfo.cshtml" />
     <Content Include="Content\images\favicon.pdn" />
     <Content Include="Views\ReferenceBooks\ItemList.cshtml" />
+    <Content Include="Content\Site.scss" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Views\Book\BookStrings.resx">
