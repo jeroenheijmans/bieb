@@ -1,24 +1,16 @@
-/*************************  To Do  ****************************/
-/* Fix vertical rhythm
-/* Add responsivity
-/* Add support for all modern browsers
-/* Perhaps add support for older browsers (how far back?)
-/**************************************************************/
+$main-color: #333333;
+$main-color-lighter: #666666;
+$action-color: #FF0080;
+$action-color-darker: #6E0030;
+$background-color: #FFFFFF;
+$background-color-darker: #EEEEEE;
+$inverted-action-color: #FFD8ED;
 
+$wrapper-width: 61em;
+$footer-height: 1.5em;
+$gutter: 2em;
 
-
-/*************************  Colors  ***************************/
-/* Links					#6E0030
-/* Links (inverted)         #FFD8ED
-/* Links hover, details  	#FF0080  PINK!
-/* Text, borders, etc		#333333
-/* Title					#666666
-/* TH and TD border         #EEEEEE
-/* TH background            #FAFAFA
-/* Background, nav links	#FFFFFF
-/**************************************************************/
-
-
+$card-width: ($wrapper-width - (2 * $gutter)) / 3;
 
 @font-face {
     font-family: "handwriting-draft_regular";
@@ -43,8 +35,8 @@
 /* Body */
 body {
 	font: normal 100%/1.5em "MuseoSans500Regular", Georgia, serif;
-	color: #333333;
-	background: #FFFFFF;
+	color: $main-color;
+	background: $background-color;
     background-image: url('/Content/images/background-sprite.png');
 }
 
@@ -96,12 +88,12 @@ nav {
 	top: 0;
 	left: 0;
 	width: 100%;
-	background: #333333;
+	background: $main-color;
 }
 
 nav #menu {
 	position: relative;
-	width: 61em;
+	width: $wrapper-width;
 	margin: 0 auto;
 }
 
@@ -118,17 +110,17 @@ nav li {
     position: relative;
 	float: left;
 	display: inline-block;
-	width: 10.167em; 
-	border-right: 1px solid #FF0080;
+	width: $wrapper-width / 6; 
+	border-right: 1px solid $action-color;
 }
 
 nav li:first-child {   
-	border-left: 1px solid #FF0080;
+	border-left: 1px solid $action-color;
 }
 
 nav li a {
 	display: inline-block;
-	color: #FFFFFF;
+	color: $background-color;
 	padding: 0.75em;
 	width: 100%;
 }
@@ -136,8 +128,8 @@ nav li a {
 nav li a:hover,
 nav li a.active
  {
-	background-color: #FF0080;
-	color: #FFFFFF;
+	background-color: $action-color;
+	color: $background-color;
 }
 
 /* Main title */
@@ -145,32 +137,30 @@ header .title {
 	font: normal 3.5em/1.5em 'handwriting-draft_regular', Verdana, serif;		/* 56 / 16 */
 	margin: 0 auto 0.5em;
 	padding: 1.5em 0 0.5em;
-	width: 17.43em;																/* 976 / 56 */
-	border-bottom: 1px solid #666666;
+	width: $wrapper-width / 3.5;
+	border-bottom: 1px solid $main-color-lighter;
 }
 
 header .title a {
-	color: #666666;
+	color: $main-color-lighter;
 }
 
 header .title a:hover {
-	color: #FF0080;
+	color: $action-color;
 }
 
 
-
-
 .wrapper {
-	width: 61em;
+	width: $wrapper-width;
 	margin: 0 auto;
 	min-height: 100%;
-	padding-bottom: 1.5em;  /* must be same height as the footer */
+	padding-bottom: $footer-height;
 }
 
 #main {
     overflow: auto;
-	padding: 14em 0 2em 0;
-	margin-bottom: 2em;
+	padding: 14em 0 $gutter 0;
+	margin-bottom: $gutter;
 	width: 100%;
 }  
 
@@ -179,27 +169,27 @@ footer {
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	background: #333333;
-	color: #FFFFFF;
-	height: 1.5em;
-	margin-top: -1.5em;
+	background: $main-color;
+	color: $background-color;
+	height: $footer-height;
+	margin-top: -$footer-height;
 	clear: both;
 }
 
 footer p {
-    width: 61em;                            /* 976 / 16 */
+    width: $wrapper-width;
     margin: 0 auto;
     padding: 0 0.75em;
-    border-left: 1px solid #FF0080;
-    border-right: 1px solid #FF0080;
+    border-left: 1px solid $action-color;
+    border-right: 1px solid $action-color;
 }
 
 footer span {
-	color: #FF0080;
+	color: $action-color;
 }
 
 footer a {
-	color: #FFFFFF;
+	color: $background-color;
 }
 
 footer #powered-by {
@@ -207,7 +197,7 @@ footer #powered-by {
 }
 
 table.stories {
-	width: 40em;                /* 640 / 16 */
+	width: $wrapper-width - $gutter - $card-width;
 }
 
 table td, 
@@ -215,29 +205,28 @@ table th {
     font-size: 0.875em;	        /* 14 / 16 */
 	line-height: 1.642em;       /* 23 / 14 */   /* (compensate for 1 px border */
     padding: 0 0.4em;
-    vertical-align: top;
 }
 
 .card {
-	width: 19em;                /* 304 / 16 */
+	width: $card-width;
 	position: relative;
 	float: left;
-    background: #333333;
-    color: #FFFFFF;
-    padding: 1.0em;
-    margin: 0 2em 2em 0;
+    background: $main-color;
+    color: $background-color;
+    padding: $gutter / 2;
+    margin: 0 $gutter $gutter 0;
 }
 
 .card h1 { font-size: 1.5em; }
 .card h2 { font-size: 1.1em; margin-top: 1em; }
 
 .card a {
-    color: #FFD8ED;
+    color: $inverted-action-color;
 }
 
 .details {
     display: inline-block;
-    width: 40em;
+    width: $wrapper-width - $gutter - $card-width;
 }
 
 .info-points h6 {
@@ -245,23 +234,23 @@ table th {
 }
 
 a {
-    color: #6E0030;
+    color: $action-color-darker;
 }
 
 a:hover {
-    color: #FF0080;
+    color: $action-color;
 }
 
 
 td, 
 th {
-    background-color: #FFFFFF;
-    border: solid 1px #EEEEEE;
+    background-color: $background-color;
+    border: solid 1px $background-color-darker;
     vertical-align: middle;
 }
 
 th {
-    background-color: #FAFAFA;
+    background-color: $background-color-darker;
     text-align: left;
 }
 
@@ -293,20 +282,19 @@ th {
 }
 
 .itemList li {
-    background-color: #EEEEEE;
+    background-color: $background-color-darker;
     padding: 0.5em 0.5em;
     margin: 0 0.5em 1em 0;
     display: inline-block;
-    width: 19em;
+    width: $card-width;
     min-height: 6em;
     vertical-align: bottom;
 }
 
 
-
 ul.searchResults > li {
     padding: 0.5em 0;
-    border-bottom: 1px dotted #666666;
+    border-bottom: 1px dotted $main-color-lighter;
 }
     
 
@@ -314,20 +302,20 @@ ul.searchResults > li {
 
 /* Custom text selection color */
 ::selection {
-	background: #FF0080;
-	color: #FFFFFF;
+	background: $action-color;
+	color: $background-color;
 	text-shadow: none;
 }
 
 ::-webkit-selection {
-	background: #FF0080;
-	color: #FFFFFF;
+	background: $action-color;
+	color: $background-color;
 	text-shadow: none;
 }
 
 ::-moz-selection {
-	background: #FF0080;
-	color: #FFFFFF;
+	background: $action-color;
+	color: $background-color;
 	text-shadow: none;
 }
 
@@ -338,13 +326,13 @@ ul.search-options li {
 
 ul.search-options li a {
     display: block;
-	background: #333333;
+	background: $main-color;
 	padding: 1em;
-    color: #FFD8ED;
+    color: $inverted-action-color;
 }
 
 ul.search-options li a:hover {
-    color: #FF0080;
+    color: $action-color;
 }
 
 #home-explanation p {
@@ -352,20 +340,20 @@ ul.search-options li a:hover {
 }
 
 #home-image {
-    margin: 0 0 2em 2em;
-    border: 1px solid #333333;
+    margin: 0 0 $gutter $gutter;
+    border: 1px solid $main-color;
     float: right;
 }
 
 .teaser-articles {
-    border-top: 1px solid #333333;
+    border-top: 1px solid $main-color;
     clear: both;
 }
 
 .teaser-articles article {
     display: inline-block;
     width: 33%;
-    padding: 2em 2em 0 0;
+    padding: $gutter $gutter 0 0;
     vertical-align: top;
 }
 
