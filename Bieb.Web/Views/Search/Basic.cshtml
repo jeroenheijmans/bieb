@@ -1,7 +1,7 @@
 ﻿@model Bieb.Web.Models.BasicSearchResultModel
 
 @{
-    ViewBag.Title = "Basic Search";
+    ViewBag.Title = BiebResources.SharedStrings.SiteTitleShort + " " + " Search for \"" + Model.query + "\"";
 }
 
 <h1>@BiebResources.SearchStrings.BasicSearchHeader</h1>
@@ -22,7 +22,7 @@
     <h2>@BiebResources.SharedStrings.People</h2>
     @if (Model.people.Any())
     { 
-        <ul class="searchResults">
+        <ul class="search-results">
             @foreach (var person in Model.people)
             {
                 <li class="person">
@@ -54,7 +54,7 @@
     <h2>@BiebResources.SharedStrings.Books</h2>
     @if (Model.books.Any())
     { 
-        <ul class="searchResults">
+        <ul class="search-results">
             @foreach (var book in Model.books)
             {
                 <li class="book">
@@ -79,7 +79,7 @@
     <h2>@BiebResources.SharedStrings.Stories</h2>
     @if (Model.stories.Any())
     { 
-        <ul class="searchResults">
+        <ul class="search-results">
             @foreach (var story in Model.stories)
             {
                 <li class="story">

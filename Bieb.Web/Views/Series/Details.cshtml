@@ -9,7 +9,7 @@
 { 
     <h2>@Model.Subtitle</h2>
 }
-<section class="itemList">
+<section class="item-list">
     <h4>@BiebResources.SharedStrings.Books</h4>
     @{ Html.RenderPartial("~/Views/LibraryBooks/ItemList.cshtml", Model.Books.Values); }
 </section>
