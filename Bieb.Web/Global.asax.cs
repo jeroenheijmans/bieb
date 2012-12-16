@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Bieb.Web.Infrastructure;
+using Ninject;
+using Ninject.Web.Common;
 
 namespace Bieb.Web
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : NinjectHttpApplication
     {
         public static Dictionary<string, string> ControllerAliases = new Dictionary<string, string>();
 
@@ -53,14 +55,19 @@ namespace Bieb.Web
             );
         }
 
-        protected void Application_Start()
+        protected override Ninject.IKernel CreateKernel()
+        {
+            var kernel = new StandardKernel();
+            kernel.Load(Assembly.GetExecutingAssembly());
+            return kernel;
+        }
+        
+        protected override void OnApplicationStarted()
         {
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-
-            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
         }
 
         protected void Application_EndRequest(object sender, EventArgs args)
