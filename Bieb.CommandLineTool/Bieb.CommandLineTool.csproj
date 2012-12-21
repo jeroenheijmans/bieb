@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bieb.NHibernateProvider\Bieb.NHibernateProvider.csproj">
-      <Project>{A98CA5A5-29DB-4E2F-BC94-9FB9C7309AD1}</Project>
+      <Project>{a98ca5a5-29db-4e2f-bc94-9fb9c7309ad1}</Project>
       <Name>Bieb.NHibernateProvider</Name>
     </ProjectReference>
   </ItemGroup>
