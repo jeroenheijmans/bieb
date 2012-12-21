@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Tag">
+    
+    <id name="Id" column="TagId">
+      <generator class="native" />
+    </id>
+
+    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime">
+      <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
+    </version>
+    <property name="CreatedDate" generated="always" type="DateTime">
+      <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
+    </property>
+    
+    <property name="Name" not-null="true" index="IX_Tag_Name" />
+    <property name="Description" />
+    
+  </class>
+
+  <database-object>
+    <create>
+      GO
+      CREATE TRIGGER TR_TagInserted ON Tag AFTER INSERT AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Tag 
+        SET    ModifiedDate = GetDate(), CreatedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Tag.TagId = inserted.TagId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+      CREATE TRIGGER TR_TagUpdated ON Tag AFTER UPDATE AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Tag 
+        SET    ModifiedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Tag.TagId = inserted.TagId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+
+</hibernate-mapping>

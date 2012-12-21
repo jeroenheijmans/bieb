@@ -1,0 +1,29 @@
+﻿@model Bieb.Domain.Entities.LibraryBook
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+@{ Html.RenderPartial("Card", Model); }
+
+<section class="details">
+    @if (Model.Reviews.Any())
+    {
+        <section class="reviews">
+            @foreach (var review in Model.Reviews)
+            { 
+                <p>@review.ReviewText</p>
+            }
+        </section>
+    }
+
+    @if (Model.BookType != Bieb.Domain.Entities.BookType.Novel)
+    {
+        <section class="item-list">
+            <h4>@BiebResources.SharedStrings.Stories:</h4>
+            @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories.Values); }
+        </section>
+    }
+
+    @{ Html.RenderPartial("MoreInfo", Model); }
+</section>
