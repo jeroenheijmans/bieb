@@ -70,6 +70,7 @@
     <Compile Include="Routing\BookRoutingTests.cs" />
     <Compile Include="Routing\DefaultRoutingTests.cs" />
     <Compile Include="Routing\DomainRoutingTests.cs" />
+    <Compile Include="Routing\FaviconRoutingTests.cs" />
     <Compile Include="Routing\PersonRoutingTests.cs" />
     <Compile Include="Routing\PublisherRoutingTests.cs" />
     <Compile Include="Routing\RoutingTests.cs" />
