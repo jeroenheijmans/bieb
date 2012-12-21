@@ -129,8 +129,9 @@
     </Compile>
     <Compile Include="Helpers\ActionLinkExtensions.cs" />
     <Compile Include="Helpers\ImageExtensions.cs" />
-    <Compile Include="Infrastructure\DomainModule.cs" />
-    <Compile Include="Infrastructure\LoggingModule.cs" />
+    <Compile Include="Infrastructure\Filters\LogFilter.cs" />
+    <Compile Include="Infrastructure\NinjectModules\DomainModule.cs" />
+    <Compile Include="Infrastructure\NinjectModules\LoggingModule.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BasicSearchResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
