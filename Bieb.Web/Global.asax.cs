@@ -66,7 +66,13 @@ namespace Bieb.Web
             kernel.Load(Assembly.GetExecutingAssembly());
             return kernel;
         }
-        
+
+        protected void Application_Error(Object sender, EventArgs eventArgs)
+        {
+            Exception ex = Server.GetLastError().GetBaseException();
+            Logger.LogError(ex);
+        }
+
         protected override void OnApplicationStarted()
         {
             base.OnApplicationStarted();
