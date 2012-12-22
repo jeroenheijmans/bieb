@@ -8,12 +8,12 @@ using Bieb.Framework.Logging;
 
 namespace Bieb.Web.Infrastructure.Filters
 {
-    public class LogFilter : IActionFilter
+    public class LogActionFilter : IActionFilter
     {
         private readonly ILogger logger;
         private readonly Level logLevel;
 
-        public LogFilter(ILogger log, Level logLevel)
+        public LogActionFilter(ILogger log, Level logLevel)
         {
             this.logger = log;
             this.logLevel = logLevel;

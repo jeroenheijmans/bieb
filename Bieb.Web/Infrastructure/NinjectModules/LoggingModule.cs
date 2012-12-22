@@ -17,7 +17,10 @@ namespace Bieb.Web.Infrastructure
             // TODO: For this the Log4netLogger has to be public, but it may be better to make it internal to Bieb.Framework?
             this.Bind<ILogger>().To<Log4netLogger>().InSingletonScope();
 
-            this.BindFilter<LogFilter>(FilterScope.Controller, 0)
+            this.BindFilter<LogExceptionFilter>(FilterScope.Controller, 0)
+                .WithConstructorArgument("logLevel", Level.Error);
+
+            this.BindFilter<LogActionFilter>(FilterScope.Controller, 1)
                 .WithConstructorArgument("logLevel", Level.Information);
         }
     }

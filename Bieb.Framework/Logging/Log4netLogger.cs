@@ -54,7 +54,7 @@ namespace Bieb.Framework.Logging
         public void Log(Level level, Exception exception)
         {
             Debug.Assert(exception != null, "Argument 'exception' should not be null: logging nothing is quite pointless.");
-            Log(level, "Logging called", exception);
+            Log(level, "An error occurred.", exception);
         }
         
         public void LogInformation(string message)
