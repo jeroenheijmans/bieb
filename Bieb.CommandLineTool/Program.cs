@@ -9,8 +9,6 @@ namespace Bieb.CommandLineTool
         {
             if (args.Contains("CreateSchema"))
             {
-                log4net.Config.XmlConfigurator.Configure();
-
                 NHibernateProvider.Factory.CreateSchema(false);
                 Console.WriteLine("Press enter to exit.");
                 Console.ReadLine();
