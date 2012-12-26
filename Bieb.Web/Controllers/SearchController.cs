@@ -23,7 +23,7 @@ namespace Bieb.Web.Controllers
             this.StoryRepository = StoryRepository;
         }
 
-        public ActionResult Basic(string query)
+        public ActionResult Basic([Bind(Prefix="q")]string query)
         {
             if (query == null)
                 return View(new BasicSearchResultModel
