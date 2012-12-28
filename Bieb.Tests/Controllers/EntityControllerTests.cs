@@ -17,7 +17,7 @@ namespace Bieb.Tests.Controllers
     public class EntityControllerTests
     {
         [Test]
-        public void Can_Get_LibraryBook_Details()
+        public void Can_Get_Item_Details()
         {
             // Arrange
             var mock = new Mock<IEntityRepository<LibraryBook>>();
@@ -37,7 +37,7 @@ namespace Bieb.Tests.Controllers
         }
 
         [Test]
-        public void Can_List_All_LibraryBooks()
+        public void Can_List_All_Items()
         {
             // Arrange
             var mock = new Mock<IEntityRepository<LibraryBook>>();
@@ -136,12 +136,45 @@ namespace Bieb.Tests.Controllers
         }
 
         [Test]
-        public void RecentlyAdded_Action_Will_Give_LibraryBook_With_Newest_ID()
+        public void RecentlyAdded_Action_Will_Sort_By_CreatedDate()
         {
             // Arrange
+            var insertionDateEarly = new DateTime(2013, 01, 10);
+            var insertionDateLate = new DateTime(2013, 01, 25);
+
             var mock = new Mock<IEntityRepository<LibraryBook>>();
-            var LibraryBook1 = new LibraryBook { Title = "Zoltan the Great", Id = 1 };
-            var LibraryBook2 = new LibraryBook { Title = "Middle-man", Id = 2 };
+            var LibraryBook1 = new LibraryBook { Title = "Zoltan the Great", Id = 1, CreatedDate = insertionDateLate };
+
+            // Higher ("later") Id value, but earlier CreatedDate
+            var LibraryBook2 = new LibraryBook { Title = "Middle-man", Id = 2, CreatedDate = insertionDateEarly };
+
+            mock.Setup(repo => repo.Items).Returns((new[] { LibraryBook1, LibraryBook2 }).AsQueryable());
+            var controller = new LibraryBooksController(mock.Object);
+
+            // Act & Assert
+            ActionResult result = controller.RecentlyAdded();
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.InstanceOf<PartialViewResult>());
+
+            var vresult = (PartialViewResult)result;
+
+            Assert.That(vresult.Model, Is.InstanceOf<LibraryBook>());
+
+            var LibraryBook = (LibraryBook)vresult.Model;
+
+            Assert.That(LibraryBook.Id, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void RecentlyAdded_Action_Will_Sort_By_CreatedDate_ThenBy_Id()
+        {
+            // Arrange
+            var bulkInsertDate = new DateTime(2013, 01, 10);
+
+            var mock = new Mock<IEntityRepository<LibraryBook>>();
+            var LibraryBook1 = new LibraryBook { Title = "Zoltan the Great", Id = 1, CreatedDate = bulkInsertDate };
+            var LibraryBook2 = new LibraryBook { Title = "Middle-man", Id = 2, CreatedDate = bulkInsertDate };
+
             mock.Setup(repo => repo.Items).Returns((new[] { LibraryBook1, LibraryBook2 }).AsQueryable());
             var controller = new LibraryBooksController(mock.Object);
 
@@ -160,7 +193,7 @@ namespace Bieb.Tests.Controllers
         }
 
         [Test]
-        public void RecentlyAdded_Action_Will_Return_Null_If_No_LibraryBooks_Are_In_Repository()
+        public void RecentlyAdded_Action_Will_Return_Null_If_Repository_Is_Empty()
         {
             // Arrange
             var mock = new Mock<IEntityRepository<LibraryBook>>();
