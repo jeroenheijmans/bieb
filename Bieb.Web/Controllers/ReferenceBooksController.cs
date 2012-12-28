@@ -19,11 +19,5 @@ namespace Bieb.Web.Controllers
                 return b => b.TitleSort;
             }
         }
-
-        public ActionResult RecentlyAdded()
-        {
-            var book = Repository.Items.OrderByDescending(b => b.Id).FirstOrDefault();
-            return PartialView(book);
-        }
     }
 }
