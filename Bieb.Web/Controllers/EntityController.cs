@@ -35,6 +35,17 @@ namespace Bieb.Web.Controllers
             return View(Repository.GetItem(id));
         }
 
+        public ActionResult RecentlyAdded()
+        {
+            var item = Repository
+                .Items
+                .OrderByDescending(i => i.CreatedDate)
+                .ThenByDescending(i => i.Id)
+                .FirstOrDefault();
+
+            return PartialView(item);
+        }
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -43,6 +54,19 @@ namespace Bieb.Web.Controllers
 
         [HttpPost]
         public ActionResult Create(T item)
+        {
+            Repository.Save(item);
+            return RedirectToAction("Details", new { id = item.Id });
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            return View(Repository.GetItem(id));
+        }
+
+        [HttpPost]
+        public ActionResult Save(T item)
         {
             Repository.Save(item);
             return RedirectToAction("Details", new { id = item.Id });
