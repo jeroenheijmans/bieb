@@ -4,19 +4,24 @@ using NHibernate.Dialect;
 using System.Reflection;
 using NHibernate.Context;
 using System.IO;
+using System.Diagnostics;
 
 namespace Bieb.NHibernateProvider
 {
-    public sealed class Factory
+    public static class Factory
     {
-        private Factory() { }
+        static Factory() 
+        {
+            _instance = CreateSessionFactory();
+        }
 
         private static ISessionFactory _instance;
         public static ISessionFactory Instance
         {
             get
             {
-                return _instance ?? (_instance = CreateSessionFactory());
+                Debug.Assert(_instance != null, "Session factory was not yet created, even though it should have been created in the static constructor.");
+                return _instance;
             }
         }
 
