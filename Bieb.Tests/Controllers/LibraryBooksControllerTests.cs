@@ -12,7 +12,7 @@ using PagedList;
 namespace Bieb.Tests.Controllers
 {
     [TestFixture]
-    public class BooksControllerTests
+    public class LibraryBooksControllerTests
     {        
         [Test]
         public void Index_Will_Have_Default_TitleSort_Sorting()
