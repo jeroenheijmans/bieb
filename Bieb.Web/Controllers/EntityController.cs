@@ -71,6 +71,5 @@ namespace Bieb.Web.Controllers
             Repository.Save(item);
             return RedirectToAction("Details", new { id = item.Id });
         }
-
     }
 }

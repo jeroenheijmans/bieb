@@ -126,6 +126,9 @@
   <data name="CreateNew" xml:space="preserve">
     <value>Create new item</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="Editors" xml:space="preserve">
     <value>Editors</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Isbn" xml:space="preserve">
     <value>ISBN</value>
+  </data>
+  <data name="ItsRecord" xml:space="preserve">
+    <value>'s record</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>

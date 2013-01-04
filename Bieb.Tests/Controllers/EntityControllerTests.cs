@@ -210,5 +210,39 @@ namespace Bieb.Tests.Controllers
             Assert.That(vresult.Model, Is.Null);
         }
 
+        [Test]
+        public void Save_Action_Will_Call_Save_In_Repository()
+        {
+            // Arrange
+            var mock = new Mock<IEntityRepository<LibraryBook>>();
+            var controller = new LibraryBooksController(mock.Object);
+            var book = new LibraryBook();
+
+            // Act
+            controller.Save(book);
+
+            // Assert
+            mock.Verify(repo => repo.Save(book));
+        }
+
+        [Test]
+        public void Save_Action_Will_Redirect_To_Details_Action()
+        {
+            // Arrange
+            var mock = new Mock<IEntityRepository<LibraryBook>>();
+            var controller = new LibraryBooksController(mock.Object);
+            var book = new LibraryBook() { Id = 1 };
+            mock.Setup(repo => repo.Items).Returns(new[] { book }.AsQueryable<LibraryBook>());
+
+            // Act
+            var result = controller.Save(book);
+
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
+            var redirectResult = (RedirectToRouteResult)result;
+            Assert.That(redirectResult.RouteValues["action"], Is.EqualTo("Details"));
+            Assert.That(redirectResult.RouteValues["id"], Is.EqualTo(1));
+        }
     }
 }
