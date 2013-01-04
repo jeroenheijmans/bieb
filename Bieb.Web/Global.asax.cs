@@ -49,6 +49,20 @@ namespace Bieb.Web
             );
 
             routes.MapRoute(
+                "Books action on item route", // Route name
+                "Books/{id}/{action}", // URL with parameters
+                new { controller = "LibraryBooks", action = "Details" }, // Parameter defaults
+                new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                "Generic action on item route", // Route name
+                "{controller}/{id}/{action}", // URL with parameters
+                null, // Parameter defaults
+                new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
                 "Actions for LibraryBooks controller via 'Books'", // Route name
                 "Books/{action}", // URL with parameters
                 new { controller = "LibraryBooks", action = "Index" } // Parameter defaults

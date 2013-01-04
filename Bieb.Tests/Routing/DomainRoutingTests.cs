@@ -40,5 +40,19 @@ namespace Bieb.Tests.Routing
             }
         }
 
+        [Test]
+        public void Aliases_With_Id_And_Edit_Lead_To_Edit_Action()
+        {
+            foreach (var alias in Aliases)
+            {
+                var routeData = GetRouteDataForPath("~/" + alias + "/1/Edit");
+
+                Assert.That(routeData, Is.Not.Null);
+                Assert.That(routeData.Values["Controller"], Is.EqualTo(PrimaryAlias));
+                Assert.That(routeData.Values["action"], Is.EqualTo("Edit"));
+                Assert.That(routeData.Values["id"], Is.EqualTo("1"));
+            }
+        }
+
     }
 }

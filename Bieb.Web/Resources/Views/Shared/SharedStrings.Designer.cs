@@ -88,6 +88,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editors.
         /// </summary>
         public static string Editors {
@@ -120,6 +129,15 @@ namespace BiebResources {
         public static string Isbn {
             get {
                 return ResourceManager.GetString("Isbn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;s record.
+        /// </summary>
+        public static string ItsRecord {
+            get {
+                return ResourceManager.GetString("ItsRecord", resourceCulture);
             }
         }
         

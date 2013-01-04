@@ -97,6 +97,10 @@ th {
     text-align: left;
 }
 
+input[type="text"] {
+	padding: ($text-gutter / 4) ($text-gutter / 2);
+}
+
 
 /* Custom text selection color */
 @mixin custom-text-selection-settings {
@@ -337,3 +341,30 @@ iframe.goodreads {
     width: $wrapper-width - $gutter - $card-width;
     height: ($wrapper-width - $gutter - $card-width) * 3 / 4;
 }
+
+
+/* Editing */
+fieldset {
+	padding: $text-gutter;
+	border: 1px solid $background-color-darker;
+	background-color: $background-color;
+}
+
+fieldset div.field {
+	display: inline-block;	
+}
+
+fieldset label {
+	display: block;
+	width: auto;
+	font-size: 0.6em;
+	line-height: 1.5em;
+	color: $main-color-lighter;
+}
+
+/* Person Editing */
+input#Gender		{ width: 5em; }
+input#Title			{ width: 5em; }
+input#FirstName		{ width: 8em; }
+input#Prefix		{ width: 5em; }
+input#Surname		{ width: 14em; }
