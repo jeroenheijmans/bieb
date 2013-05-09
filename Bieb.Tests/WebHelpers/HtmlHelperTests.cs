@@ -33,7 +33,13 @@ namespace Bieb.Tests.WebHelpers
             mockViewContext.Setup(v => v.RouteData).Returns(routeData);
             mockViewDataContainer.Setup(v => v.ViewData).Returns(viewData);
 
-            return new HtmlHelper<string>(mockViewContext.Object, mockViewDataContainer.Object);
+            var htmlHelper = new HtmlHelper<string>(mockViewContext.Object, mockViewDataContainer.Object);
+
+            Assert.That(htmlHelper, Is.Not.Null);
+            Assert.That(htmlHelper.ViewContext, Is.Not.Null);
+            Assert.That(htmlHelper.ViewContext.RouteData, Is.Not.Null);
+
+            return htmlHelper;
         }
     }
 }

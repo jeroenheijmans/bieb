@@ -21,10 +21,6 @@ namespace Bieb.Tests.WebHelpers
 
             HtmlHelper htmlHelper = CreateHtmlHelper(new ViewDataDictionary("Home link"), routeData);
 
-            Assert.That(htmlHelper, Is.Not.Null);
-            Assert.That(htmlHelper.ViewContext, Is.Not.Null);
-            Assert.That(htmlHelper.ViewContext.RouteData, Is.Not.Null);
-
             const string linkText = "clicky, clicky!";
             const string actionName = "Index";
             const string controllerName = "Home";
@@ -46,11 +42,7 @@ namespace Bieb.Tests.WebHelpers
             routeData.Values.Add("action", "Index");
 
             HtmlHelper htmlHelper = CreateHtmlHelper(new ViewDataDictionary("Home link"), routeData);
-
-            Assert.That(htmlHelper, Is.Not.Null);
-            Assert.That(htmlHelper.ViewContext, Is.Not.Null);
-            Assert.That(htmlHelper.ViewContext.RouteData, Is.Not.Null);
-
+            
             const string linkText = "clicky, clicky!";
             const string actionName = "Index";
             const string controllerName = "LibraryBooks";
@@ -72,11 +64,7 @@ namespace Bieb.Tests.WebHelpers
             routeData.Values.Add("action", "Index");
 
             HtmlHelper htmlHelper = CreateHtmlHelper(new ViewDataDictionary("Home link"), routeData);
-
-            Assert.That(htmlHelper, Is.Not.Null);
-            Assert.That(htmlHelper.ViewContext, Is.Not.Null);
-            Assert.That(htmlHelper.ViewContext.RouteData, Is.Not.Null);
-
+            
             const string linkText = "clicky, clicky!";
             const string actionName = "Index";
             const string controllerName = "LibraryBooks";
