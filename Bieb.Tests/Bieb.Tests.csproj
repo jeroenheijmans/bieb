@@ -100,6 +100,7 @@
     <Compile Include="Routing\StoriesRoutingTests.cs" />
     <Compile Include="Routing\SurpriseRoutingTests.cs" />
     <Compile Include="WebHelpers\ActionLinkExtensionsTests.cs" />
+    <Compile Include="TypeExtensions\EnumExtensionsTests.cs" />
     <Compile Include="WebHelpers\HtmlHelperTests.cs" />
     <Compile Include="WebHelpers\ImageExtensionsTests.cs" />
   </ItemGroup>
