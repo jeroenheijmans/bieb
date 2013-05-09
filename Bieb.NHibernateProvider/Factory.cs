@@ -27,8 +27,8 @@ namespace Bieb.NHibernateProvider
 
         public static void CreateSchema(bool executeOnDatabase)
         {
-            var cfg = GetConfiguration();
-            var schemaExport = new NHibernate.Tool.hbm2ddl.SchemaExport(cfg);
+            var configuration = GetConfiguration();
+            var schemaExport = new NHibernate.Tool.hbm2ddl.SchemaExport(configuration);
 
             using (TextWriter writer = File.CreateText("BiebDatabase.sql")) 
             {
@@ -38,23 +38,24 @@ namespace Bieb.NHibernateProvider
 
         private static ISessionFactory CreateSessionFactory()
         {
-            Configuration cfg = GetConfiguration();
-            return cfg.BuildSessionFactory();
+            var configuration = GetConfiguration();
+            return configuration.BuildSessionFactory();
         }
 
         private static Configuration GetConfiguration()
         {
-            var cfg = new Configuration();
+            var configuration = new Configuration();
 
-            cfg.DataBaseIntegration(db =>
-            {
-                db.ConnectionStringName = "BiebDatabase";
-                db.Dialect<MsSql2008Dialect>();
-            })
-                .AddAssembly(Assembly.GetExecutingAssembly())
-                .CurrentSessionContext<WebSessionContext>();
-            
-            return cfg;
+            configuration.DataBaseIntegration(db =>
+                                        {
+                                            db.LogFormattedSql = true;
+                                            db.ConnectionStringName = "BiebDatabase";
+                                            db.Dialect<MsSql2008Dialect>();
+                                        })
+               .AddAssembly(Assembly.GetExecutingAssembly())
+               .CurrentSessionContext<WebSessionContext>();
+
+            return configuration;
         }
     }
 }
