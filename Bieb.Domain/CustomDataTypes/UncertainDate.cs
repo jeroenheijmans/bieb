@@ -34,15 +34,41 @@ namespace Bieb.Domain.CustomDataTypes
             }
         }
 
+        public DateTime? FromDate
+        {
+            get
+            {
+                if (Year.HasValue)
+                    return new DateTime(Year.Value, Month ?? 1, Day ?? 1);
+
+                return null;
+            }
+        }
+
+        public DateTime? UntilDate
+        {
+            get
+            {
+                if (Year.HasValue)
+                {
+                    var month = Month ?? 12;
+                    var day = Day ?? DateTime.DaysInMonth(Year.Value, month);
+                    return new DateTime(Year.Value, month, day);
+                }
+
+                return null;
+            }
+        }
+
         public override string ToString()
         {
-            if (Year != null && Month != null && Day != null)
+            if (Year.HasValue && Month.HasValue && Day.HasValue)
                 return new DateTime(Year.Value, Month.Value, Day.Value).ToShortDateString();
 
-            if (Year != null && Month != null)
+            if (Year.HasValue && Month.HasValue)
                 return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Month.Value) + " " + Year.ToString();
 
-            if (Year != null)
+            if (Year.HasValue)
                 return Year.ToString();
 
             return "?";

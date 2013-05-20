@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Bieb.Domain.CustomDataTypes;
 using Bieb.Domain.Entities;
 using NUnit.Framework;
 
@@ -180,18 +181,38 @@ namespace Bieb.Tests.Domain
         [Test]
         public void Equal_From_And_Until_DateOfBirth_Is_Certain_Date()
         {
+            // Arrange & Act
             var someDate = DateTime.Now;
             var person = new Person { DateOfBirthFrom = someDate, DateOfBirthUntil = someDate };
 
+            // Assert
             Assert.That(person.DateOfBirth.IsCertain);
         }
 
         [Test]
         public void Unequal_From_And_Until_DateOfBirth_Is_Not_Certain_Date()
         {
+            // Arrange & Act
             var person = new Person { DateOfBirthFrom = new DateTime(1900,1,1), DateOfBirthUntil = new DateTime(2000,2,2) };
 
+            // Assert
             Assert.That(person.DateOfBirth.IsCertain, Is.Not.True);
+        }
+
+        [Test]
+        public void Setting_Uncertain_DateOfBirth_Will_Persist_In_From_And_Until_Dates()
+        {
+            // Arrange
+            var fromDateTime = new DateTime(1950, 1, 1);
+            var untilDateTime = new DateTime(1950, 1, 31);
+            var person = new Person();
+
+            // Act
+            person.DateOfBirth = new UncertainDate(fromDateTime, untilDateTime);
+
+            // Assert
+            Assert.That(person.DateOfBirthFrom, Is.EqualTo(fromDateTime));
+            Assert.That(person.DateOfBirthUntil, Is.EqualTo(untilDateTime));
         }
     }
 }

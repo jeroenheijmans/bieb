@@ -65,8 +65,11 @@ namespace Bieb.Domain.Entities
             {
                 return new UncertainDate(DateOfBirthFrom, DateOfBirthUntil);
             }
-
-            // TODO: A setter would be nice, propagating to the until/from dates
+            set
+            {
+                DateOfBirthFrom = value.FromDate;
+                DateOfBirthUntil = value.UntilDate;
+            }
         }
 
         public virtual UncertainDate DateOfDeath
@@ -75,8 +78,11 @@ namespace Bieb.Domain.Entities
             {
                 return new UncertainDate(DateOfDeathFrom, DateOfDeathUntil);
             }
-
-            // TODO: A setter would be nice, propagating to the until/from dates
+            set
+            {
+                DateOfDeathFrom = value.FromDate;
+                DateOfDeathUntil = value.UntilDate;
+            }
         }
 
         private IList<LibraryBook> _editedBooks = new List<LibraryBook>();
