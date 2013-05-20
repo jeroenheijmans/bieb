@@ -52,7 +52,12 @@ namespace Bieb.Web.Controllers
         // TODO: Move this method to the base controller
         public ActionResult Save(EditPersonModel model)
         {
-            return HandleSave(model);
+            if (ModelState.IsValid)
+            {
+                return HandleSave(model);
+            }
+
+            return View("Edit", model);
         }
     }
 }

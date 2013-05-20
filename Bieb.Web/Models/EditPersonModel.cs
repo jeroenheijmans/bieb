@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Bieb.Domain.Entities;
@@ -19,11 +20,6 @@ namespace Bieb.Web.Models
             Surname = entity.Surname;
         }
 
-        public string Title { get; set; }
-        public string FirstName { get; set; }
-        public string Prefix { get; set; }
-        public string Surname { get; set; }
-
         protected override Person MergeWithEntitySpecifics(Person existingEntity)
         {
             existingEntity.Title = Title;
@@ -33,5 +29,12 @@ namespace Bieb.Web.Models
 
             return existingEntity;
         }
+
+        public string Title { get; set; }
+        public string FirstName { get; set; }
+        public string Prefix { get; set; }
+
+        [Required]
+        public string Surname { get; set; }
     }
 }

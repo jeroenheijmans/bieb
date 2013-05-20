@@ -5,6 +5,7 @@ $action-color-darker: #6E0030;
 $background-color: #FFFFFF;
 $background-color-darker: #EEEEEE;
 $inverted-action-color: #FFD8ED;
+$error-color: #E82300;
 
 $wrapper-width: 61em;
 $footer-height: 1.5em;
@@ -360,6 +361,10 @@ fieldset label {
 	font-size: 0.6em;
 	line-height: 1.5em;
 	color: $main-color-lighter;
+}
+
+.validation-summary-errors {
+	color: $error-color;
 }
 
 /* Person Editing */
