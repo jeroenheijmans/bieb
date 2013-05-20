@@ -285,6 +285,9 @@ fieldset label {
   line-height: 1.5em;
   color: #666666; }
 
+.validation-summary-errors {
+  color: #e82300; }
+
 /* Person Editing */
 input#Gender {
   width: 5em; }
