@@ -288,6 +288,9 @@ fieldset label {
 .validation-summary-errors {
   color: #e82300; }
 
+.input-validation-error {
+  border: 1px solid #e82300; }
+
 /* Person Editing */
 input#Gender {
   width: 5em; }

@@ -54,25 +54,47 @@ namespace Bieb.Web.Models
             return existingEntity;
         }
 
+        [Display(Name = "Gender", ResourceType = typeof(BiebResources.PeopleStrings))]
         public Gender Gender { get; set; }
 
+        [Display(Name = "Title", ResourceType = typeof(BiebResources.PeopleStrings))]
         public string Title { get; set; }
+
+        [Display(Name = "FirstName", ResourceType = typeof(BiebResources.PeopleStrings))]
         public string FirstName { get; set; }
+
+        [Display(Name = "Prefix", ResourceType = typeof(BiebResources.PeopleStrings))]
         public string Prefix { get; set; }
 
         [Required]
+        [Display(Name = "Surname", ResourceType = typeof(BiebResources.PeopleStrings))]
         public string Surname { get; set; }
 
+        [Display(Name = "Nationality", ResourceType = typeof(BiebResources.PeopleStrings))]
         public string Nationality { get; set; }
+
+        [Display(Name = "DiedAt", ResourceType = typeof(BiebResources.PeopleStrings))]
         public string PlaceOfDeath { get; set; }
+
+        [Display(Name = "BornAt", ResourceType = typeof(BiebResources.PeopleStrings))]
         public string PlaceOfBirth { get; set; }
 
+        [Display(Name = "Year", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? DeathYear { get; set; }
+
+        [Display(Name = "Month", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? DeathMonth { get; set; }
+
+        [Display(Name = "Day", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? DeathDay { get; set; }
 
+        [Display(Name = "Year", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? BirthYear { get; set; }
+
+        [Display(Name = "Month", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? BirthMonth { get; set; }
+
+        [Display(Name = "Day", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? BirthDay { get; set; }
     }
 }
