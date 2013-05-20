@@ -33,6 +33,8 @@ namespace Bieb.Web.Models
             DeathDay = entity.DateOfDeath.Day;
             DeathMonth = entity.DateOfDeath.Month;
             DeathYear = entity.DateOfDeath.Year;
+
+            FullName = entity.FullName;
         }
 
         protected override Person MergeWithEntitySpecifics(Person existingEntity)
@@ -53,6 +55,8 @@ namespace Bieb.Web.Models
 
             return existingEntity;
         }
+
+        public string FullName { get; set; }
 
         [Display(Name = "Gender", ResourceType = typeof(BiebResources.PeopleStrings))]
         public Gender Gender { get; set; }
