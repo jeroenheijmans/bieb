@@ -39,7 +39,7 @@ namespace BiebResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bieb.Web.Resources.Views.People.PeopleStrings", typeof(PeopleStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bieb.Web.Resources.PeopleStrings", typeof(PeopleStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
