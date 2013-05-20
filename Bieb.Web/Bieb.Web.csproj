@@ -138,42 +138,42 @@
     <Compile Include="Models\BasicSearchResultModel.cs" />
     <Compile Include="Models\EditPersonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Views\Book\BookStrings.Designer.cs">
+    <Compile Include="Resources\BookStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BookStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Views\Home\HomeStrings.Designer.cs">
+    <Compile Include="Resources\HomeStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HomeStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Views\People\PeopleStrings.Designer.cs">
+    <Compile Include="Resources\PeopleStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PeopleStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Views\Publisher\PublisherStrings.Designer.cs">
+    <Compile Include="Resources\PublisherStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PublisherStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Views\Search\SearchStrings.Designer.cs">
+    <Compile Include="Resources\SearchStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SearchStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Views\Series\SeriesStrings.Designer.cs">
+    <Compile Include="Resources\SeriesStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SeriesStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Views\Shared\SharedStrings.Designer.cs">
+    <Compile Include="Resources\SharedStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SharedStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Views\Story\StoryStrings.Designer.cs">
+    <Compile Include="Resources\StoryStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StoryStrings.resx</DependentUpon>
@@ -308,7 +308,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Resources\Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bieb.Domain\Bieb.Domain.csproj">
@@ -402,44 +401,44 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Views\Book\BookStrings.resx">
+    <EmbeddedResource Include="Resources\BookStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Views\Home\HomeStrings.resx">
+    <EmbeddedResource Include="Resources\HomeStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>HomeStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Views\People\PeopleStrings.resx">
+    <EmbeddedResource Include="Resources\PeopleStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PeopleStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Views\Publisher\PublisherStrings.resx">
+    <EmbeddedResource Include="Resources\PublisherStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PublisherStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Views\Search\SearchStrings.resx">
+    <EmbeddedResource Include="Resources\SearchStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SearchStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Views\Series\SeriesStrings.resx">
+    <EmbeddedResource Include="Resources\SeriesStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SeriesStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Views\Shared\SharedStrings.resx">
+    <EmbeddedResource Include="Resources\SharedStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Views\Story\StoryStrings.resx">
+    <EmbeddedResource Include="Resources\StoryStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StoryStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
