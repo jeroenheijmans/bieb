@@ -1,10 +1,11 @@
 ﻿using System;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class PersonReviewsController : EntityController<Review<Person>>
+    public class PersonReviewsController : EntityController<Review<Person>, PersonReviewModel>
     {
         public PersonReviewsController(IEntityRepository<Review<Person>> repository)
             : base(repository)

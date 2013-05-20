@@ -8,13 +8,15 @@ using PagedList;
 
 namespace Bieb.Web.Controllers
 {
-    public abstract class EntityController<T> : Controller where T : BaseEntity, new()
+    public abstract class EntityController<TEntity, TViewModel> : Controller 
+        where TEntity : BaseEntity, new()
+        where TViewModel : BaseDomainObjectModel<TEntity>, new()
     {
         protected int[] AvailablePageSizes = new[] { 10, 25, 50, 100 };
         protected int DefaultPageSize = 25;
-        protected IEntityRepository<T> Repository { get; set; }
+        protected IEntityRepository<TEntity> Repository { get; set; }
         
-        protected EntityController(IEntityRepository<T> repository)
+        protected EntityController(IEntityRepository<TEntity> repository)
         {
             this.Repository = repository;
         }
@@ -29,7 +31,7 @@ namespace Bieb.Web.Controllers
             return View(items);
         }
 
-        protected abstract System.Linq.Expressions.Expression<Func<T, IComparable>> SortFunc { get; }
+        protected abstract System.Linq.Expressions.Expression<Func<TEntity, IComparable>> SortFunc { get; }
 
         public ActionResult Details(int id)
         {
@@ -50,22 +52,34 @@ namespace Bieb.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new T());
+            return View(new TEntity());
         }
 
         [HttpPost]
-        public ActionResult Create(T item)
+        public ActionResult Create(TEntity item)
         {
             Repository.Add(item);
             return RedirectToAction("Details", new { id = item.Id });
         }
 
-        protected ActionResult HandleSave(BaseDomainObjectModel<T> model)
+        public ActionResult Edit(int id)
         {
-            var existingEntity = Repository.GetItem(model.Id);
-            var entity = model.MergeWithEntity(existingEntity);
-            Repository.NotifyItemWasChanged(entity);
-            return RedirectToAction("Details", new { id = entity.Id });
+            var item = Repository.GetItem(id);
+            var model = Activator.CreateInstance(typeof(TViewModel), new object[] { item });
+            return View(model);
+        }
+
+        public ActionResult Save(TViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingEntity = Repository.GetItem(model.Id);
+                var entity = model.MergeWithEntity(existingEntity);
+                Repository.NotifyItemWasChanged(entity);
+                return RedirectToAction("Details", new { id = entity.Id });
+            }
+
+            return View("Edit", model);
         }
     }
 }

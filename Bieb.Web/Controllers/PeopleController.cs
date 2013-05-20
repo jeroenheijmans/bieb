@@ -10,7 +10,7 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class PeopleController : EntityController<Person>
+    public class PeopleController : EntityController<Person, PersonModel>
     {
         private const int MaxNumberOfBirthDates = 5;
 
@@ -39,25 +39,6 @@ namespace Bieb.Web.Controllers
                             .Take(MaxNumberOfBirthDates);
 
             return PartialView(people);
-        }
-
-        // TODO: Move this method to the base controller
-        public ActionResult Edit(int id)
-        {
-            var person = Repository.GetItem(id);
-            var model = new EditPersonModel(person);
-            return View(model);
-        }
-
-        // TODO: Move this method to the base controller
-        public ActionResult Save(EditPersonModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return HandleSave(model);
-            }
-
-            return View("Edit", model);
         }
     }
 }
