@@ -137,7 +137,7 @@
     <Compile Include="Models\BaseDomainObjectModel.cs" />
     <Compile Include="Models\BasicSearchResultModel.cs" />
     <Compile Include="Models\BookReviewModel.cs" />
-    <Compile Include="Models\EditPersonModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\LibraryBookModel.cs" />
     <Compile Include="Models\PersonReviewModel.cs" />
     <Compile Include="Models\PublisherModel.cs" />

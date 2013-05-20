@@ -257,7 +257,7 @@ ul.search-options li {
   float: right; }
 
 .teaser-articles {
-  border-top: 1px solid #333333;
+  border-top: 1px solid #eeeeee;
   clear: both; }
   .teaser-articles article {
     display: inline-block;
