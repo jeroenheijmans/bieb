@@ -9,10 +9,10 @@
       <generator class="native" />
     </id>
 
-    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime">
+    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime2">
       <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
     </version>
-    <property name="CreatedDate" generated="always" type="DateTime">
+    <property name="CreatedDate" generated="always" type="DateTime2">
       <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
     </property>
     

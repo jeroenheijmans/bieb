@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Controllers;
+using Bieb.Web.Models;
 using Moq;
 using NUnit.Framework;
 using PagedList;
@@ -78,27 +79,9 @@ namespace Bieb.Tests.Controllers
         {
             // Arrange
             var mock = new Mock<IEntityRepository<LibraryBook>>();
-
-            // TODO: Refactor this Save mock method so it can be reused.
-            mock.Setup(repo => repo.Save(It.IsAny<LibraryBook>())).Returns(
-                    (LibraryBook target) =>
-                    {
-                        if (target.Id == default(int))
-                        {
-                            // New object
-                            target.Id = 1;
-                            target.ModifiedDate = target.CreatedDate = DateTime.Now;
-                        }
-                        else
-                        {
-                            // Save existing object
-                            target.ModifiedDate = DateTime.Now;
-                        }
-                        return target;
-                    }
-                );
+            mock.Setup(repo => repo.Add(It.IsAny<LibraryBook>()));
             var controller = new LibraryBooksController(mock.Object);
-            var newLibraryBook = new LibraryBook { Title = "Lord of the Flies" };
+            var newLibraryBook = new LibraryBook { Id = 42, Title = "Lord of the Flies" };
 
             // Act
             ActionResult result = controller.Create(newLibraryBook);
@@ -210,32 +193,37 @@ namespace Bieb.Tests.Controllers
             Assert.That(vresult.Model, Is.Null);
         }
 
+        
         [Test]
-        public void Save_Action_Will_Call_Save_In_Repository()
+        public void Save_Action_Will_Call_NotifyChanges_In_Repository()
         {
             // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            var controller = new LibraryBooksController(mock.Object);
-            var book = new LibraryBook();
+            var person = new Person();
+            var viewModel = new EditPersonModel(person);
+            var mock = new Mock<IEntityRepository<Person>>();
+            var controller = new PeopleController(mock.Object);
+
+            mock.Setup(repo => repo.GetItem(0)).Returns(person);
 
             // Act
-            controller.Save(book);
+            controller.Save(viewModel);
 
             // Assert
-            mock.Verify(repo => repo.Save(book));
+            mock.Verify(repo => repo.NotifyItemWasChanged(person));
         }
 
         [Test]
         public void Save_Action_Will_Redirect_To_Details_Action()
         {
             // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            var controller = new LibraryBooksController(mock.Object);
-            var book = new LibraryBook() { Id = 1 };
-            mock.Setup(repo => repo.Items).Returns(new[] { book }.AsQueryable<LibraryBook>());
+            var mock = new Mock<IEntityRepository<Person>>();
+            var controller = new PeopleController(mock.Object);
+            var person = new Person() { Id = 1 };
+            var viewModel = new EditPersonModel(person);
+            mock.Setup(repo => repo.GetItem(1)).Returns(person);
 
             // Act
-            var result = controller.Save(book);
+            var result = controller.Save(viewModel);
 
             // Assert
             Assert.That(result, Is.Not.Null);

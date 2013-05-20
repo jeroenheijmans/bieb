@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Bieb.Domain.Repositories;
 using NHibernate;
 using NHibernate.Linq;
@@ -11,7 +12,7 @@ namespace Bieb.NHibernateProvider.Repositories
     public class EntityRepository<T> : IEntityRepository<T> where T : BaseEntity
     {
         // This is static... for now, as long as it's merely referring to the static singleton anyhow
-        private static ISession session
+        private static ISession CurrentSession
         {
             get
             {
@@ -21,12 +22,14 @@ namespace Bieb.NHibernateProvider.Repositories
 
         public T GetItem(int id)
         {
-            return session.Load<T>(id);
+            if (id == 0) throw new ArgumentException("GetItem of id 0 will not yield any results.");
+
+            return CurrentSession.Get<T>(id);
         }
 
         public T GetRandomItem()
         {
-            return session
+            return CurrentSession
                     .CreateCriteria<T>()
                     .AddOrder(new RandomOrder())
                     .SetMaxResults(1)
@@ -35,20 +38,40 @@ namespace Bieb.NHibernateProvider.Repositories
 
         public IQueryable<T> Items
         {
-            get { return session.Query<T>(); }
+            get { return CurrentSession.Query<T>(); }
         }
 
-        public T Save(T item)
+        public void Add(T item)
         {
-            session.Save(item);
-            // Save returns the persisted ID (which will be Int32 for Bieb.Domain entities)
-            // So go ahead and just return the persisted item.
-            return item;
+            if (item == null) throw new ArgumentNullException("item");
+
+            using (var transaction = CurrentSession.BeginTransaction())
+            {
+                CurrentSession.Save(item);
+                transaction.Commit();
+            }
         }
 
-        public void Delete(T item)
+        public void Remove(T item)
         {
-            session.Delete(item);
+            if (item == null) throw new ArgumentNullException("item");
+
+            using (var transaction = CurrentSession.BeginTransaction())
+            {
+                CurrentSession.Delete(item);
+                transaction.Commit();
+            }
+        }
+
+        public void NotifyItemWasChanged(T item)
+        {
+            if (item == null) throw new ArgumentNullException("item");
+
+            using (var transaction = CurrentSession.BeginTransaction())
+            {
+                CurrentSession.Update(item);
+                transaction.Commit();
+            }
         }
 
         private class RandomOrder : Order

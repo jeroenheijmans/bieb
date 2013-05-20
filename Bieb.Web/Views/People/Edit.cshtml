@@ -1,0 +1,48 @@
+﻿@model Bieb.Web.Models.EditPersonModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>@BiebResources.SharedStrings.Edit</h1>
+
+@using (Html.BeginForm("Save", "People")) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Details</legend>
+
+        <section id="person-name">
+            <div class="field">
+                @Html.EditorFor(model => model.Title)
+                @Html.LabelFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+
+            <div class="field">
+                @Html.EditorFor(model => model.FirstName)
+                @Html.LabelFor(model => model.FirstName)
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+
+            <div class="field">
+                @Html.EditorFor(model => model.Prefix)
+                @Html.LabelFor(model => model.Prefix)
+                @Html.ValidationMessageFor(model => model.Prefix)
+            </div>
+
+            <div class="field">
+                @Html.EditorFor(model => model.Surname)
+                @Html.LabelFor(model => model.Surname)
+                @Html.ValidationMessageFor(model => model.Surname)
+            </div>
+        </section>
+        
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ModifiedDateTicks)
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}

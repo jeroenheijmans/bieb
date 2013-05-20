@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using Bieb.Web.Models;
 
 [assembly: InternalsVisibleTo("Bieb.Tests")]
 
@@ -38,6 +39,20 @@ namespace Bieb.Web.Controllers
                             .Take(MaxNumberOfBirthDates);
 
             return PartialView(people);
+        }
+
+        // TODO: Move this method to the base controller
+        public ActionResult Edit(int id)
+        {
+            var person = Repository.GetItem(id);
+            var model = new EditPersonModel(person);
+            return View(model);
+        }
+
+        // TODO: Move this method to the base controller
+        public ActionResult Save(EditPersonModel model)
+        {
+            return HandleSave(model);
         }
     }
 }
