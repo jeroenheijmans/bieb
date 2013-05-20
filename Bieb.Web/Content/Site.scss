@@ -367,6 +367,10 @@ fieldset label {
 	color: $error-color;
 }
 
+.input-validation-error {
+	border: 1px solid $error-color;
+}
+
 /* Person Editing */
 input#Gender		{ width: 5em; }
 input#Title			{ width: 5em; }
