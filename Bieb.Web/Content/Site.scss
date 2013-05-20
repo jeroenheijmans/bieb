@@ -141,7 +141,7 @@ header .title {
 	margin: 3.5em auto;
 	padding: ($text-gutter * 3) 0 $text-gutter;
 	width: $wrapper-width;
-	border-bottom: 1px solid $main-color-lighter;
+	border-bottom: 1px solid $background-color-darker;
 
 	a { 
 		color: $main-color-lighter; 
@@ -345,22 +345,22 @@ iframe.goodreads {
 
 
 /* Editing */
-fieldset {
-	padding: $text-gutter;
+.edit-form {
+	padding: $text-gutter * 2;
 	border: 1px solid $background-color-darker;
 	background-color: $background-color;
-}
 
-fieldset div.field {
-	display: inline-block;	
-}
+	div.field {
+		display: inline-block;	
+	}
 
-fieldset label {
-	display: block;
-	width: auto;
-	font-size: 0.6em;
-	line-height: 1.5em;
-	color: $main-color-lighter;
+	label {
+		display: block;
+		width: auto;
+		font-size: 0.6em;
+		line-height: 1.5em;
+		color: $main-color-lighter;
+	}
 }
 
 .validation-summary-errors {
