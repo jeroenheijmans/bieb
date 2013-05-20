@@ -199,7 +199,7 @@ namespace Bieb.Tests.Controllers
         {
             // Arrange
             var person = new Person();
-            var viewModel = new EditPersonModel(person);
+            var viewModel = new PersonModel(person);
             var mock = new Mock<IEntityRepository<Person>>();
             var controller = new PeopleController(mock.Object);
 
@@ -219,7 +219,7 @@ namespace Bieb.Tests.Controllers
             var mock = new Mock<IEntityRepository<Person>>();
             var controller = new PeopleController(mock.Object);
             var person = new Person() { Id = 1 };
-            var viewModel = new EditPersonModel(person);
+            var viewModel = new PersonModel(person);
             mock.Setup(repo => repo.GetItem(1)).Returns(person);
 
             // Act
