@@ -3,14 +3,15 @@ using System.Linq;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using Bieb.Web.Models;
 using PagedList;
 
 namespace Bieb.Web.Controllers
 {
     public abstract class EntityController<T> : Controller where T : BaseEntity, new()
     {
-        protected int[] availablePageSizes = new[] { 10, 25, 50, 100 };
-        protected int defaultPageSize = 25;
+        protected int[] AvailablePageSizes = new[] { 10, 25, 50, 100 };
+        protected int DefaultPageSize = 25;
         protected IEntityRepository<T> Repository { get; set; }
         
         protected EntityController(IEntityRepository<T> repository)
@@ -55,21 +56,16 @@ namespace Bieb.Web.Controllers
         [HttpPost]
         public ActionResult Create(T item)
         {
-            Repository.Save(item);
+            Repository.Add(item);
             return RedirectToAction("Details", new { id = item.Id });
         }
 
-        [HttpGet]
-        public ActionResult Edit(int id)
+        protected ActionResult HandleSave(BaseDomainObjectModel<T> model)
         {
-            return View(Repository.GetItem(id));
-        }
-
-        [HttpPost]
-        public ActionResult Save(T item)
-        {
-            Repository.Save(item);
-            return RedirectToAction("Details", new { id = item.Id });
+            var existingEntity = Repository.GetItem(model.Id);
+            var entity = model.MergeWithEntity(existingEntity);
+            Repository.NotifyItemWasChanged(entity);
+            return RedirectToAction("Details", new { id = entity.Id });
         }
     }
 }
