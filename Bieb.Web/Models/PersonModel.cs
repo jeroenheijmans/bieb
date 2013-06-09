@@ -8,7 +8,7 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class PersonModel : BaseDomainObjectModel<Person>
+    public class PersonModel : BaseDomainObjectCrudModel<Person>
     {
         public PersonModel() : base() 
         { }
@@ -35,25 +35,6 @@ namespace Bieb.Web.Models
             DeathYear = entity.DateOfDeath.Year;
 
             FullName = entity.FullName;
-        }
-
-        protected override Person MergeWithEntitySpecifics(Person existingEntity)
-        {
-            existingEntity.Title = Title;
-            existingEntity.FirstName = FirstName;
-            existingEntity.Prefix = Prefix;
-            existingEntity.Surname = Surname;
-
-            existingEntity.Gender = Gender;
-            existingEntity.Nationality = Nationality;
-
-            existingEntity.PlaceOfBirth = PlaceOfBirth;
-            existingEntity.PlaceOfDeath = PlaceOfDeath;
-
-            existingEntity.DateOfBirth = new UncertainDate(BirthYear, BirthMonth, BirthDay);
-            existingEntity.DateOfDeath = new UncertainDate(DeathYear, DeathMonth, DeathDay);
-
-            return existingEntity;
         }
 
         public string FullName { get; set; }
@@ -100,5 +81,24 @@ namespace Bieb.Web.Models
 
         [Display(Name = "Day", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? BirthDay { get; set; }
+
+        protected override Person MergeWithEntitySpecifics(Person existingEntity)
+        {
+            existingEntity.Title = Title;
+            existingEntity.FirstName = FirstName;
+            existingEntity.Prefix = Prefix;
+            existingEntity.Surname = Surname;
+
+            existingEntity.Gender = Gender;
+            existingEntity.Nationality = Nationality;
+
+            existingEntity.PlaceOfBirth = PlaceOfBirth;
+            existingEntity.PlaceOfDeath = PlaceOfDeath;
+
+            existingEntity.DateOfBirth = new UncertainDate(BirthYear, BirthMonth, BirthDay);
+            existingEntity.DateOfDeath = new UncertainDate(DeathYear, DeathMonth, DeathDay);
+
+            return existingEntity;
+        }
     }
 }
