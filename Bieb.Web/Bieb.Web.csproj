@@ -134,6 +134,7 @@
     <Compile Include="Infrastructure\NinjectModules\DomainModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\LoggingModule.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\BaseDomainObjectCrudModel.cs" />
     <Compile Include="Models\BaseDomainObjectModel.cs" />
     <Compile Include="Models\BasicSearchResultModel.cs" />
     <Compile Include="Models\BookReviewModel.cs" />
@@ -312,9 +313,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Scripts\jquery-2.0.0.min.map" />
+    <Content Include="Views\Publishers\Edit.cshtml" />
+    <Content Include="Views\Series\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bieb.Domain\Bieb.Domain.csproj">

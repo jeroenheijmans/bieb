@@ -6,7 +6,7 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class ReferenceBookModel : BaseDomainObjectModel<ReferenceBook>
+    public class ReferenceBookModel : BaseDomainObjectCrudModel<ReferenceBook>
     {
         protected override ReferenceBook MergeWithEntitySpecifics(ReferenceBook existingEntity)
         {
