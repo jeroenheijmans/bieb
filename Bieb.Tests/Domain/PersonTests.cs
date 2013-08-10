@@ -9,63 +9,55 @@ namespace Bieb.Tests.Domain
     [TestFixture]
     public class PersonTests
     {
-        private const string title = "Dr. Mr.";
-        private const string firstName = "John J.";
-        private const string prefix = "of the";
-        private const string surname = "Hard-fasters";
+        private const string Title = "Dr. Mr.";
+        private const string FirstName = "John J.";
+        private const string Prefix = "of the";
+        private const string Surname = "Hard-fasters";
+
 
         [Test]
         public void Can_Create_FullName_With_All_Values()
         {
-            // Arrange
             var john = new Person
             {
-                Title = title,
-                FirstName = firstName,
-                Prefix = prefix,
-                Surname = surname
+                Title = Title,
+                FirstName = FirstName,
+                Prefix = Prefix,
+                Surname = Surname
             };
 
-            // Act 
-            // ...
-
-            // Assert
-            const string expectedFullName = title + " " + firstName + " " + prefix + " " + surname;
+            const string expectedFullName = Title + " " + FirstName + " " + Prefix + " " + Surname;
 
             Assert.AreEqual(expectedFullName, john.FullName);
-            Assert.AreEqual(title, john.Title);
-            Assert.AreEqual(firstName, john.FirstName);
-            Assert.AreEqual(prefix, john.Prefix);
-            Assert.AreEqual(surname, john.Surname);
+            Assert.AreEqual(Title, john.Title);
+            Assert.AreEqual(FirstName, john.FirstName);
+            Assert.AreEqual(Prefix, john.Prefix);
+            Assert.AreEqual(Surname, john.Surname);
         }
+
 
         [Test]
         public void Can_Create_Simple_Alias()
         {
-            // Arrange
             var john = new Person
             {
-                FirstName = firstName,
-                Surname = surname
+                FirstName = FirstName,
+                Surname = Surname
             };
 
-            // Act 
-            // ..
-
-            // Assert
-            const string expectedFullName = firstName + " " + surname;
+            const string expectedFullName = FirstName + " " + Surname;
 
             Assert.AreEqual(expectedFullName, john.FullName);
             Assert.IsNull(john.Title);
-            Assert.AreEqual(firstName, john.FirstName);
+            Assert.AreEqual(FirstName, john.FirstName);
             Assert.IsNull(john.Prefix);
-            Assert.AreEqual(surname, john.Surname);
+            Assert.AreEqual(Surname, john.Surname);
         }
+
 
         [Test]
         public void Has_Tags_From_All_Related_Stories()
         {
-            // Arrange
             Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
 
             var story1 = new Story { Tags = new[] { cool, hot } };
@@ -81,10 +73,6 @@ namespace Bieb.Tests.Domain
             tolkien.TranslatedStories.Add(story2);
             tolkien.EditedBooks.Add(someBook);
 
-            // Act 
-            // ..
-
-            // Assert
             Assert.That(tolkien.Tags.Contains(cool));
             Assert.That(tolkien.Tags.Contains(hot));
             Assert.That(tolkien.Tags.Contains(old));
@@ -92,30 +80,28 @@ namespace Bieb.Tests.Domain
             Assert.That(tolkien.Tags.Count(), Is.EqualTo(4));
         }
 
+
         [Test]
         public void Gets_Roles_From_Stories_And_Books()
         {
-            // Arrange
             var sybrenPolet = new Person { FirstName = "Sybren", Surname = "Polet" };
             var story = new Story();
             var book = new LibraryBook();
 
-            // Act
             sybrenPolet.AuthoredStories.Add(story);
             sybrenPolet.TranslatedStories.Add(story);
             sybrenPolet.EditedBooks.Add(book);
 
-            // Assert
             Assert.That(sybrenPolet.Roles.Contains(Role.Author));
             Assert.That(sybrenPolet.Roles.Contains(Role.Editor));
             Assert.That(sybrenPolet.Roles.Contains(Role.Translator));
             Assert.That(sybrenPolet.Roles.Count(), Is.EqualTo(3));
         }
 
+
         [Test]
         public void Can_Distinguish_Between_Translated_ShortStories_And_Novels()
         {
-            // Arrange
             var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
 
             var shortStory1 = new Story();
@@ -136,7 +122,6 @@ namespace Bieb.Tests.Domain
             asimov.TranslatedStories.Add(shortStory2);
             asimov.TranslatedStories.Add(novelStory);
 
-            // Act & Assert
             Assert.That(asimov.TranslatedStories.Count, Is.EqualTo(3));
             Assert.That(asimov.TranslatedNovels.Count(), Is.EqualTo(1));
             Assert.That(asimov.TranslatedNovels.ToList()[0], Is.EqualTo(novel));
@@ -145,10 +130,10 @@ namespace Bieb.Tests.Domain
             Assert.That(asimov.TranslatedShortStories.ToList()[1], Is.EqualTo(shortStory2));
         }
 
+
         [Test]
         public void Can_Distinguish_Between_Authored_ShortStories_And_Novels()
         {
-            // Arrange
             var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
 
             var shortStory1 = new Story();
@@ -169,7 +154,6 @@ namespace Bieb.Tests.Domain
             asimov.AuthoredStories.Add(shortStory2);
             asimov.AuthoredStories.Add(novelStory);
 
-            // Act & Assert
             Assert.That(asimov.AuthoredStories.Count, Is.EqualTo(3));
             Assert.That(asimov.AuthoredNovels.Count(), Is.EqualTo(1));
             Assert.That(asimov.AuthoredNovels.ToList()[0], Is.EqualTo(novel));
@@ -178,39 +162,35 @@ namespace Bieb.Tests.Domain
             Assert.That(asimov.AuthoredShortStories.ToList()[1], Is.EqualTo(shortStory2));
         }
 
+
         [Test]
         public void Equal_From_And_Until_DateOfBirth_Is_Certain_Date()
         {
-            // Arrange & Act
             var someDate = DateTime.Now;
             var person = new Person { DateOfBirthFrom = someDate, DateOfBirthUntil = someDate };
 
-            // Assert
             Assert.That(person.DateOfBirth.IsCertain);
         }
+
 
         [Test]
         public void Unequal_From_And_Until_DateOfBirth_Is_Not_Certain_Date()
         {
-            // Arrange & Act
             var person = new Person { DateOfBirthFrom = new DateTime(1900,1,1), DateOfBirthUntil = new DateTime(2000,2,2) };
 
-            // Assert
             Assert.That(person.DateOfBirth.IsCertain, Is.Not.True);
         }
+
 
         [Test]
         public void Setting_Uncertain_DateOfBirth_Will_Persist_In_From_And_Until_Dates()
         {
-            // Arrange
             var fromDateTime = new DateTime(1950, 1, 1);
             var untilDateTime = new DateTime(1950, 1, 31);
             var person = new Person();
 
-            // Act
             person.DateOfBirth = new UncertainDate(fromDateTime, untilDateTime);
 
-            // Assert
             Assert.That(person.DateOfBirthFrom, Is.EqualTo(fromDateTime));
             Assert.That(person.DateOfBirthUntil, Is.EqualTo(untilDateTime));
         }

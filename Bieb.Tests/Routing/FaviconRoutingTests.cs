@@ -21,6 +21,7 @@ namespace Bieb.Tests.Routing
             Assert.IsInstanceOf<StopRoutingHandler>(routeData.RouteHandler);
         }
 
+
         [Test]
         public void Content_Favicon_Route_Is_Ignored()
         {

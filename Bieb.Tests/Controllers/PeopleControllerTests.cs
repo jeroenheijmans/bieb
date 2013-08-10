@@ -10,21 +10,31 @@ using Bieb.Web.Controllers;
 using Moq;
 using NUnit.Framework;
 
+
 namespace Bieb.Tests.Controllers
 {
     [TestFixture]
     public class PeopleControllerTests
     {
+        private Mock<IEntityRepository<Person>> repositoryMock;
+        private PeopleController controller;
+
+        
+        [SetUp]
+        public void SetUp()
+        {
+            repositoryMock = new Mock<IEntityRepository<Person>>();
+            controller = new PeopleController(repositoryMock.Object);
+        }
+
         [Test]
         public void Will_Show_Max_Five_Todays_Birth_Dates()
         {
             // Arrange
-            var mock = new Mock<IEntityRepository<Person>>();
-            var people = Enumerable.Repeat(new Person() { DateOfBirthFrom = DateTime.Now, DateOfBirthUntil = DateTime.Now }, 10);
-            mock.Setup(repo => repo.Items).Returns(people.AsQueryable());
+            var people = Enumerable.Repeat(new Person { DateOfBirthFrom = DateTime.Now, DateOfBirthUntil = DateTime.Now }, 10);
+            repositoryMock.Setup(repo => repo.Items).Returns(people.AsQueryable());
 
             // Act
-            var controller = new PeopleController(mock.Object);
             var result = controller.TodaysBirthDates();
 
             // Assert
@@ -42,18 +52,15 @@ namespace Bieb.Tests.Controllers
         public void TodaysBirthDates_Will_Skip_People_Without_Birth_Date()
         {
             // Arrange
-            var mock = new Mock<IEntityRepository<Person>>();
             var dateOfBirth = new DateTime(1950, 11, 11);
             var people = new[] { new Person { DateOfBirthFrom = dateOfBirth, DateOfBirthUntil = dateOfBirth },
                                  new Person { } };
-            mock.Setup(repo => repo.Items).Returns(people.AsQueryable());
+            repositoryMock.Setup(repo => repo.Items).Returns(people.AsQueryable());
 
             // Act
-            var controller = new PeopleController(mock.Object);
             var result = controller.BirthDates(dateOfBirth);
 
             // Assert
-            Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
             var partialViewResult = (PartialViewResult)result;
@@ -68,15 +75,13 @@ namespace Bieb.Tests.Controllers
         public void TodaysBirthDates_Will_Skip_People_With_Uncertain_Birth_Date()
         {
             // Arrange
-            var mock = new Mock<IEntityRepository<Person>>();
             var dateOfBirthFrom = new DateTime(1950, 11, 11);
             var dateOfBirthUntil = new DateTime(1950, 11, 12);
             var people = new[] { new Person { DateOfBirthFrom = dateOfBirthFrom, DateOfBirthUntil = dateOfBirthUntil },
                                  new Person { } };
-            mock.Setup(repo => repo.Items).Returns(people.AsQueryable());
+            repositoryMock.Setup(repo => repo.Items).Returns(people.AsQueryable());
 
             // Act
-            var controller = new PeopleController(mock.Object);
             var result = controller.BirthDates(dateOfBirthFrom);
 
             // Assert

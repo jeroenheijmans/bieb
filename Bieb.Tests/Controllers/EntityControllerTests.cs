@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
@@ -12,157 +10,151 @@ using Moq;
 using NUnit.Framework;
 using PagedList;
 
+
 namespace Bieb.Tests.Controllers
 {
     [TestFixture]
     public class EntityControllerTests
     {
+        private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
+        private LibraryBooksController booksController;
+        private LibraryBook someBook;
+        private LibraryBook otherBook;
+        
+
+        [SetUp]
+        public void SetUp()
+        {
+            bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
+            booksController = new LibraryBooksController(bookRepositoryMock.Object);
+
+            someBook = new LibraryBook
+            {
+                Id = 42,
+                Title = "Hitching Guide"
+            };
+
+            otherBook = new LibraryBook
+            {
+                Id = 9000,
+                Title = "It's over!"
+            };
+        }
+
+
         [Test]
         public void Can_Get_Item_Details()
         {
-            // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            var myLibraryBook = new LibraryBook { Id = 42 };
-            mock.Setup(repo => repo.GetItem(It.IsAny<int>())).Returns(() => myLibraryBook);
+            bookRepositoryMock.Setup(repo => repo.GetItem(It.IsAny<int>())).Returns(() => someBook);
 
-            // Act
-            var controller = new LibraryBooksController(mock.Object);
-            ActionResult result = controller.Details(23);
+            var result = booksController.Details(someBook.Id);
 
-            // Assert
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.InstanceOf(typeof(ViewResult)));
+            Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf(typeof(LibraryBook)));
-            Assert.That(((LibraryBook)vResult.Model).Id, Is.EqualTo(42));
+            Assert.That(vResult.Model, Is.InstanceOf<LibraryBook>());
+            Assert.That(((LibraryBook)vResult.Model).Id, Is.EqualTo(someBook.Id));
         }
+
 
         [Test]
         public void Can_List_All_Items()
         {
-            // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            mock.Setup(repo => repo.Items).Returns(Enumerable.Repeat(new LibraryBook(), 3).AsQueryable());
-            var controller = new LibraryBooksController(mock.Object);
+            bookRepositoryMock.Setup(repo => repo.Items).Returns(Enumerable.Repeat(someBook, 3).AsQueryable());
 
-            // Act
-            ActionResult result = controller.Index();
+            var result = booksController.Index();
 
-            // Assert
-            Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
             Assert.That(vResult.Model, Is.InstanceOf<IEnumerable<LibraryBook>>());
             Assert.That(((IEnumerable<LibraryBook>)vResult.Model).Count(), Is.EqualTo(3));
         }
 
+
         [Test]
         public void Can_Start_Creating_New_Item()
         {
-            // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            var controller = new LibraryBooksController(mock.Object);
+            var result = booksController.Create();
 
-            // Act
-            ActionResult result = controller.Create();
-
-            // Assert
-            Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
             Assert.That(vResult.Model, Is.InstanceOf<LibraryBook>());
-            Assert.That(((LibraryBook)vResult.Model).Id, Is.EqualTo(default(int)));
+            Assert.That(((LibraryBook)vResult.Model).Id, Is.EqualTo(0));
         }
+
 
         [Test]
         public void Can_Create_New_Item()
         {
-            // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            mock.Setup(repo => repo.Add(It.IsAny<LibraryBook>()));
-            var controller = new LibraryBooksController(mock.Object);
-            var newLibraryBook = new LibraryBook { Id = 42, Title = "Lord of the Flies" };
+            var result = booksController.Create(someBook);
 
-            // Act
-            ActionResult result = controller.Create(newLibraryBook);
-
-            // Assert
-            Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
             var redirectResult = (RedirectToRouteResult)result;
             Assert.That(redirectResult.RouteValues.ContainsKey("id"));
-            Assert.That(redirectResult.RouteValues["id"], Is.Not.EqualTo(default(int)));
+            Assert.That(redirectResult.RouteValues["id"], Is.Not.EqualTo(0));
         }
+
 
         [Test]
         public void Index_Will_Have_Default_Page_Size_Of_25_On_PageNumber_1()
         {
-            // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            mock.Setup(repo => repo.Items).Returns(Enumerable.Repeat(new LibraryBook(), 100).AsQueryable());
-            var controller = new LibraryBooksController(mock.Object);
+            bookRepositoryMock.Setup(repo => repo.Items).Returns(Enumerable.Repeat(new LibraryBook(), 100).AsQueryable());
 
-            // Act & Assert
-            ActionResult result = controller.Index();
-            Assert.That(result, Is.Not.Null);
+            var result = booksController.Index();
+
             Assert.That(result, Is.InstanceOf<ViewResult>());
 
             var vresult = (ViewResult)result;
 
             Assert.That(vresult.Model, Is.InstanceOf<PagedList<LibraryBook>>());
 
-            var LibraryBookList = (PagedList<LibraryBook>)vresult.Model;
+            var libraryBookList = (PagedList<LibraryBook>)vresult.Model;
 
-            Assert.That(LibraryBookList.PageNumber, Is.EqualTo(1));
-            Assert.That(LibraryBookList.PageSize, Is.EqualTo(25));
-            Assert.That(LibraryBookList.Count, Is.EqualTo(25));
+            Assert.That(libraryBookList.PageNumber, Is.EqualTo(1));
+            Assert.That(libraryBookList.PageSize, Is.EqualTo(25));
+            Assert.That(libraryBookList.Count, Is.EqualTo(25));
         }
+
 
         [Test]
         public void RecentlyAdded_Action_Will_Sort_By_CreatedDate()
         {
-            // Arrange
             var insertionDateEarly = new DateTime(2013, 01, 10);
             var insertionDateLate = new DateTime(2013, 01, 25);
 
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            var LibraryBook1 = new LibraryBook { Title = "Zoltan the Great", Id = 1, CreatedDate = insertionDateLate };
+            someBook.Id = 1;
+            someBook.CreatedDate = insertionDateLate;
 
             // Higher ("later") Id value, but earlier CreatedDate
-            var LibraryBook2 = new LibraryBook { Title = "Middle-man", Id = 2, CreatedDate = insertionDateEarly };
+            otherBook.Id = 2;
+            otherBook.CreatedDate = insertionDateEarly;
 
-            mock.Setup(repo => repo.Items).Returns((new[] { LibraryBook1, LibraryBook2 }).AsQueryable());
-            var controller = new LibraryBooksController(mock.Object);
+            bookRepositoryMock.Setup(repo => repo.Items).Returns((new[] { someBook, otherBook }).AsQueryable());
 
-            // Act & Assert
-            ActionResult result = controller.RecentlyAdded();
-            Assert.That(result, Is.Not.Null);
+            var result = booksController.RecentlyAdded();
+
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
             var vresult = (PartialViewResult)result;
 
             Assert.That(vresult.Model, Is.InstanceOf<LibraryBook>());
 
-            var LibraryBook = (LibraryBook)vresult.Model;
+            var libraryBook = (LibraryBook)vresult.Model;
 
-            Assert.That(LibraryBook.Id, Is.EqualTo(1));
+            Assert.That(libraryBook.Id, Is.EqualTo(1));
         }
+
 
         [Test]
         public void RecentlyAdded_Action_Will_Sort_By_CreatedDate_ThenBy_Id()
         {
-            // Arrange
             var bulkInsertDate = new DateTime(2013, 01, 10);
 
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            var LibraryBook1 = new LibraryBook { Title = "Zoltan the Great", Id = 1, CreatedDate = bulkInsertDate };
-            var LibraryBook2 = new LibraryBook { Title = "Middle-man", Id = 2, CreatedDate = bulkInsertDate };
+            var libraryBook1 = new LibraryBook { Title = "Zoltan the Great", Id = 1, CreatedDate = bulkInsertDate };
+            var libraryBook2 = new LibraryBook { Title = "Middle-man", Id = 2, CreatedDate = bulkInsertDate };
 
-            mock.Setup(repo => repo.Items).Returns((new[] { LibraryBook1, LibraryBook2 }).AsQueryable());
-            var controller = new LibraryBooksController(mock.Object);
+            bookRepositoryMock.Setup(repo => repo.Items).Returns((new[] { libraryBook1, libraryBook2 }).AsQueryable());
 
-            // Act & Assert
-            ActionResult result = controller.RecentlyAdded();
+            var result = booksController.RecentlyAdded();
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
@@ -170,21 +162,18 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(vresult.Model, Is.InstanceOf<LibraryBook>());
 
-            var LibraryBook = (LibraryBook)vresult.Model;
+            var libraryBook = (LibraryBook)vresult.Model;
 
-            Assert.That(LibraryBook.Id, Is.EqualTo(2));
+            Assert.That(libraryBook.Id, Is.EqualTo(2));
         }
+
 
         [Test]
         public void RecentlyAdded_Action_Will_Return_Null_If_Repository_Is_Empty()
         {
-            // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
-            mock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
-            var controller = new LibraryBooksController(mock.Object);
+            bookRepositoryMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
 
-            // Act & Assert
-            ActionResult result = controller.RecentlyAdded();
+            var result = booksController.RecentlyAdded();
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
@@ -197,7 +186,6 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Save_Action_Will_Call_NotifyChanges_In_Repository()
         {
-            // Arrange
             var person = new Person();
             var viewModel = new PersonModel(person);
             var mock = new Mock<IEntityRepository<Person>>();
@@ -205,27 +193,23 @@ namespace Bieb.Tests.Controllers
 
             mock.Setup(repo => repo.GetItem(0)).Returns(person);
 
-            // Act
             controller.Save(viewModel);
 
-            // Assert
             mock.Verify(repo => repo.NotifyItemWasChanged(person));
         }
+
 
         [Test]
         public void Save_Action_Will_Redirect_To_Details_Action()
         {
-            // Arrange
             var mock = new Mock<IEntityRepository<Person>>();
             var controller = new PeopleController(mock.Object);
-            var person = new Person() { Id = 1 };
+            var person = new Person { Id = 1 };
             var viewModel = new PersonModel(person);
             mock.Setup(repo => repo.GetItem(1)).Returns(person);
 
-            // Act
             var result = controller.Save(viewModel);
 
-            // Assert
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
             var redirectResult = (RedirectToRouteResult)result;

@@ -19,10 +19,10 @@ namespace Bieb.Tests.Controllers
         {
             // Arrange
             var mock = new Mock<IEntityRepository<LibraryBook>>();
-            var LibraryBook1 = new LibraryBook { Title = "Zoltan the Great" };
-            var LibraryBook2 = new LibraryBook { Title = "Middle-man" };
-            var LibraryBook3 = new LibraryBook { Title = "Alpha came before Omega" };
-            mock.Setup(repo => repo.Items).Returns((new[] { LibraryBook1, LibraryBook2, LibraryBook3 }).AsQueryable());
+            var libraryBook1 = new LibraryBook { Title = "Zoltan the Great" };
+            var libraryBook2 = new LibraryBook { Title = "Middle-man" };
+            var libraryBook3 = new LibraryBook { Title = "Alpha came before Omega" };
+            mock.Setup(repo => repo.Items).Returns((new[] { libraryBook1, libraryBook2, libraryBook3 }).AsQueryable());
             var controller = new LibraryBooksController(mock.Object);
 
             // Act & Assert
@@ -34,11 +34,11 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(vresult.Model, Is.InstanceOf<PagedList<LibraryBook>>());
 
-            var LibraryBookList = (PagedList<LibraryBook>)vresult.Model;
+            var libraryBookList = (PagedList<LibraryBook>)vresult.Model;
 
-            Assert.That(LibraryBookList[0], Is.EqualTo(LibraryBook3));
-            Assert.That(LibraryBookList[1], Is.EqualTo(LibraryBook2));
-            Assert.That(LibraryBookList[2], Is.EqualTo(LibraryBook1));
+            Assert.That(libraryBookList[0], Is.EqualTo(libraryBook3));
+            Assert.That(libraryBookList[1], Is.EqualTo(libraryBook2));
+            Assert.That(libraryBookList[2], Is.EqualTo(libraryBook1));
         }
     }
 }
