@@ -387,9 +387,13 @@ iframe.goodreads {
 	input#DeathYear		{ width: 5em; }
 }
 
-.series.edit-form {
+.series.edit-form, .book.edit-form {
 	input#Title			{ width: 24em; }
 	input#Subtitle		{ width: 24em; }
+	input#Isbn			{ width: 12em; }
+	input#IsbnLanguage	{ width: 3em; }
+	input#Year			{ width: 4em; }
+	select#Publisher	{ width: 24em; }
 }
 
 .publisher.edit-form {
