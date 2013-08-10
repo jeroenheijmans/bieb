@@ -314,9 +314,17 @@ iframe.goodreads {
 .person.edit-form input#DeathYear {
   width: 5em; }
 
-.series.edit-form input#Title {
+.series.edit-form input#Title, .book.edit-form input#Title {
   width: 24em; }
-.series.edit-form input#Subtitle {
+.series.edit-form input#Subtitle, .book.edit-form input#Subtitle {
+  width: 24em; }
+.series.edit-form input#Isbn, .book.edit-form input#Isbn {
+  width: 12em; }
+.series.edit-form input#IsbnLanguage, .book.edit-form input#IsbnLanguage {
+  width: 3em; }
+.series.edit-form input#Year, .book.edit-form input#Year {
+  width: 4em; }
+.series.edit-form select#Publisher, .book.edit-form select#Publisher {
   width: 24em; }
 
 .publisher.edit-form input#Name {

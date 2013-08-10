@@ -142,11 +142,38 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ISBN.
+        /// </summary>
+        public static string Isbn {
+            get {
+                return ResourceManager.GetString("Isbn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ISBN Language ID.
+        /// </summary>
+        public static string IsbnLanguage {
+            get {
+                return ResourceManager.GetString("IsbnLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string LanguageHeader {
             get {
                 return ResourceManager.GetString("LanguageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string LibraryStatus {
+            get {
+                return ResourceManager.GetString("LibraryStatus", resourceCulture);
             }
         }
         
@@ -174,6 +201,33 @@ namespace BiebResources {
         public static string Published {
             get {
                 return ResourceManager.GetString("Published", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Published By.
+        /// </summary>
+        public static string PublishedBy {
+            get {
+                return ResourceManager.GetString("PublishedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subtitle.
+        /// </summary>
+        public static string Subtitle {
+            get {
+                return ResourceManager.GetString("Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         
@@ -210,6 +264,15 @@ namespace BiebResources {
         public static string WrittenBy {
             get {
                 return ResourceManager.GetString("WrittenBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        public static string Year {
+            get {
+                return ResourceManager.GetString("Year", resourceCulture);
             }
         }
         
