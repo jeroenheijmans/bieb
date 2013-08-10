@@ -1,0 +1,36 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Publisher>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="listing">
+    <tr>
+        <th>
+            @BiebResources.SharedStrings.Publisher
+        </th>
+        <th>
+            @BiebResources.SharedStrings.Books
+        </th>
+        <th>
+            @BiebResources.SharedStrings.Stories
+        </th>
+    </tr>
+
+@foreach (var publisher in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(publisher.Name, "Details", new { id = publisher.Id, controller = "Publishers"})
+        </td>
+        <td>
+            @publisher.Books.Count()
+        </td>
+        <td>
+            @publisher.Stories.Count()
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

@@ -1,0 +1,31 @@
+﻿@model Bieb.Domain.Entities.Publisher
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h1>@Model.Name</h1>
+
+@if (Model.LibraryBooks.Any())
+{
+    <section class="item-list">
+        <h4>@BiebResources.PublisherStrings.BooksFromThisPublisher</h4>
+        @{ Html.RenderPartial("~/Views/LibraryBooks/ItemList.cshtml", Model.LibraryBooks); }
+    </section>
+}
+
+@if (Model.Stories.Any())
+{
+    <section class="item-list">
+        <h4>@BiebResources.PublisherStrings.StoriesFromThisPublisher</h4>
+        @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories); }
+    </section>
+}
+
+@if (Model.ReferenceBooks.Any())
+{
+    <section class="item-list">
+        <h4>@BiebResources.PublisherStrings.ReferenceBooksFromThisPublisher</h4>
+        @{ Html.RenderPartial("~/Views/ReferenceBooks/ItemList.cshtml", Model.ReferenceBooks); }
+    </section>
+}

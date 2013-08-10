@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <!-- Discriminator-value is required by NH. We set it to NULL; the discriminator-column is not nullable, but the base class is abstract anyways. -->
+  <class name="Book" discriminator-value="null"> 
+    
+    <id name="Id" column="BookId">
+      <generator class="native" />
+    </id>
+
+    <discriminator column="LibraryStatus" not-null="true" type="System.Int32" force="true" />
+    
+    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime2">
+      <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
+    </version>
+    <property name="CreatedDate" generated="always" type="DateTime2">
+      <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
+    </property>
+    
+    <property name="Title" index="IX_Book_Title" not-null="true" />
+    <property name="TitleSort" column="TitleSort" generated="always" />
+    <property name="Subtitle" />
+    <property name="LibraryStatus" not-null="true" />
+    <property name="Isbn" />
+    <property name="IsbnLanguage" access="field.camelcase-underscore" />
+    <property name="Year" />
+
+    <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Book_Publisher" />
+
+    <map name="Stories" table="Story" lazy="true">
+      <key column="BookId" foreign-key="FK_Story_Book" />
+      <index column="PositionInBook" type="Int32" />
+      <one-to-many class="Story" />
+    </map>
+
+    <bag name="Editors" table="BookEditor" lazy="true">
+      <key column="BookId" foreign-key="FK_BookEditor_Book" />
+      <many-to-many column="PersonId" class="Person" foreign-key="FK_BookEditor_Person" />
+    </bag>
+
+    <bag name="DBSeries" table="SeriesBook" lazy="true">
+      <key column="BookId" foreign-key="FK_SeriesBook_Book" />
+      <many-to-many column="SeriesId" class="Series" foreign-key="FK_SeriesBook_Series" />
+    </bag>
+
+    <!-- Fully qualified name on the generic type needed, see: http://stackoverflow.com/q/12547084/419956 -->
+    <bag name="Reviews" table="Review">
+      <key column="BookId" foreign-key="FK_Review_Book" />
+      <one-to-many class="Review`1[Bieb.Domain.Entities.Book, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
+    </bag>
+
+    <!-- REFERENCE BOOKS -->
+    <subclass discriminator-value="0" name="ReferenceBook">
+      <bag name="ReferencedByBooks" lazy="true" access="field.camelcase-underscore">
+        <key column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
+        <one-to-many class="LibraryBook" />
+      </bag>
+    </subclass>
+    
+    <!-- LIBRARY BOOKS -->
+    <subclass discriminator-value="1" name="LibraryBook">
+      <many-to-one name="ReferenceBook" column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
+    </subclass>
+       
+  </class>
+
+  <database-object>
+    <create>
+      ALTER TABLE Book DROP COLUMN TitleSort
+      GO
+
+      ALTER TABLE Book
+      ADD TitleSort AS (
+        CASE
+          WHEN LEFT(Title, 3) = 'De '  THEN RIGHT(Title, LEN(Title)-3) + ', De'
+          WHEN LEFT(Title, 4) = 'Het ' THEN RIGHT(Title, LEN(Title)-4) + ', Het'
+          WHEN LEFT(Title, 4) = 'Een ' THEN RIGHT(Title, LEN(Title)-4) + ', Een'
+          WHEN LEFT(Title, 4) = 'The ' THEN RIGHT(Title, LEN(Title)-4) + ', The'
+          WHEN LEFT(Title, 2) = 'A '   THEN RIGHT(Title, LEN(Title)-2) + ', A'
+          ELSE Title
+        END
+      ) PERSISTED
+    </create>
+    <drop>      
+    </drop>
+  </database-object>
+
+  <database-object>
+    <create>
+      GO
+      CREATE TRIGGER TR_BookInserted ON Book AFTER INSERT AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Book 
+        SET    ModifiedDate = GetDate(), CreatedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Book.BookId = inserted.BookId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+      CREATE TRIGGER TR_BookUpdated ON Book AFTER UPDATE AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Book 
+        SET    ModifiedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Book.BookId = inserted.BookId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+
+  <database-object>
+    <create>
+      ALTER TABLE Book
+      ADD CONSTRAINT CT_OnlyReferenceBookNeedsNoTitle
+      CHECK (LibraryStatus = 0 OR Title IS NOT NULL)
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+  
+</hibernate-mapping>

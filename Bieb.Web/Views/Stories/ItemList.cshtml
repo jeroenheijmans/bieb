@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Bieb.Domain.Entities.Story>
+
+<table class="stories">
+    <tr>
+        <th>@BiebResources.StoryStrings.TitleHeader</th>
+        <th>@BiebResources.StoryStrings.ByHeader</th>
+        <th>@BiebResources.StoryStrings.FromHeader</th>
+    </tr>
+
+@foreach (var story in Model) 
+{
+    <tr>
+        <td>@Html.ActionLink(story.Title, "Details", new { controller = "Stories", id = story.Id })</td>
+        <td>
+            @Html.Raw(String.Join(",<br /> ", story.Authors.Select(p => Html.ActionLink(p.FullName, "Details", new { controller = "People", id = p.Id }).ToHtmlString()).ToArray()))
+        </td>
+        <td>
+            @if(story.Book != null)
+            {
+                <span>@Html.ActionLink(story.Book.Title, "Details", new { controller = "LibraryBooks", id = story.Book.Id })</span>
+                <span>(@story.Book.BookType)</span>
+            }
+        </td>
+    </tr>
+}
+</table>

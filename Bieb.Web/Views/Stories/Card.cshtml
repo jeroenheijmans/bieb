@@ -1,0 +1,56 @@
+﻿@model Bieb.Domain.Entities.Story
+
+<div class="card">
+    <h1>@Html.DisplayFor(model => model.Title)</h1>
+    @if (Model.Subtitle != null) 
+    { 
+        <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
+    }
+    <ul>
+        @if (Model.Book != null)
+        {
+            <li>@BiebResources.StoryStrings.From @Html.ActionLink(Model.Book.Title, "Details", new { id = Model.Book.Id, controller = "LibraryBooks" })</li>
+        }
+        @if (Model.Tags.Count > 0)
+        { 
+            <li>@BiebResources.SharedStrings.Tags:  @string.Join(", ", Model.Tags)</li>
+        }
+        @if (Model.Publisher != null)
+        {
+            <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Model.Publisher.Name, "Details", new { id = Model.Publisher.Id, controller = "Publishers" })</li>
+        }
+    </ul>
+
+    @if (Model.ReferenceStory != null)
+    {
+        <h2>@BiebResources.SharedStrings.Original:</h2>
+        <ul>
+        @if (Model.Title != Model.ReferenceStory.Title)
+        {
+            // No ActionLink yet, a page for a ReferenceStory is a bit too boring for that
+            <li>@BiebResources.SharedStrings.Title: @Model.ReferenceStory.Title</li>
+        }
+        @if (Model.ReferenceStory.Publisher != null)
+        {
+            <li>
+                @BiebResources.SharedStrings.Publisher: 
+                @Html.ActionLink(Model.ReferenceStory.Publisher.Name, "Details", new { id = Model.ReferenceStory.Publisher.Id, controller = "Publishers" })
+            </li>
+        }
+        @if (Model.ReferenceStory.Year.HasValue)
+        {
+            <li>
+                @BiebResources.SharedStrings.Published:
+                <span>@Model.ReferenceStory.Year.Value</span>
+            </li>
+        }
+        @if (Model.ReferenceStory.IsbnLanguage.HasValue)
+        {
+            <li>
+                @BiebResources.SharedStrings.Language:
+                <span>@Model.ReferenceStory.Language</span>
+            </li>
+        }
+        </ul>
+    }
+</div>
