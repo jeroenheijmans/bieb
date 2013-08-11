@@ -47,7 +47,14 @@ namespace Bieb.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            return View(Repository.GetItem(id));
+            var item = Repository.GetItem(id);
+
+            if (item == null)
+            {
+                return PageNotFound();
+            }
+
+            return View(item);
         }
 
 
