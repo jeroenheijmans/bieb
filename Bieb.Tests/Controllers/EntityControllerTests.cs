@@ -234,6 +234,14 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
+        public void Details_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
+        {
+            var result = (ViewResult)booksController.Details(123456789);
+            Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
+        }
+
+
+        [Test]
         public void Http404_Will_Set_Response_Code()
         {
             responseMock.SetupProperty(response => response.StatusCode);
