@@ -14,16 +14,26 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class SurpriseControllerTests
     {
+        private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
+        private Mock<IEntityRepository<Person>> peopleRepositoryMock;
+        private SurpriseController controller;
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
+            peopleRepositoryMock = new Mock<IEntityRepository<Person>>();
+            controller = new SurpriseController(peopleRepositoryMock.Object, bookRepositoryMock.Object);
+        }
+
+
         [Test]
         public void Index_Will_Redirect_To_Empty_Database_Page_If_No_Books_In_Database()
         {
             // Arrange
-            var booksMock = new Mock<IEntityRepository<LibraryBook>>();
-            booksMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
-            var peopleMock = new Mock<IEntityRepository<Person>>();
-            peopleMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
-
-            var controller = new SurpriseController(peopleMock.Object, booksMock.Object);
+            bookRepositoryMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
+            peopleRepositoryMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
 
             // Act
             ActionResult result = controller.Index();
@@ -36,17 +46,13 @@ namespace Bieb.Tests.Controllers
         public void Index_Will_Skip_Reference_Only_Books()
         {
             // Arrange
-            var peopleMock = new Mock<IEntityRepository<Person>>();
-            peopleMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
+            peopleRepositoryMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
 
             // TODO: add books, including several "reference books"
             // make sure these are reliable "skipped"
 
-            var booksMock = new Mock<IEntityRepository<LibraryBook>>();
-            booksMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
-
-            var controller = new SurpriseController(peopleMock.Object, booksMock.Object);
-
+            bookRepositoryMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
+            
             var randomEntityPickerMock = new Mock<IRandomEntityPicker>();
             randomEntityPickerMock.Setup(picker => picker.getRandomEntityType()).Returns(typeof(LibraryBook));
 
@@ -54,7 +60,7 @@ namespace Bieb.Tests.Controllers
             ActionResult result = controller.Index(randomEntityPickerMock.Object);
 
             // Assert
-            
+            throw new InconclusiveException("Test not finished yet.");
         }
     }
 }

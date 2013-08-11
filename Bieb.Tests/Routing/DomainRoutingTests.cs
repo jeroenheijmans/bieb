@@ -13,6 +13,7 @@ namespace Bieb.Tests.Routing
         protected abstract string PrimaryAlias { get; }
         protected virtual IEnumerable<string> Aliases { get { return new[] {PrimaryAlias}; } }
 
+
         [Test]
         public void Aliases_Lead_To_Index_Action()
         {
@@ -25,6 +26,7 @@ namespace Bieb.Tests.Routing
                 Assert.That(routeData.Values["action"], Is.EqualTo("Index"));
             }
         }
+
 
         [Test]
         public void Aliases_With_Details_And_Id_Lead_To_Individual_Item()
@@ -39,6 +41,7 @@ namespace Bieb.Tests.Routing
                 Assert.That(routeData.Values["id"], Is.EqualTo("1"));
             }
         }
+
 
         [Test]
         public void Aliases_With_Id_And_Edit_Lead_To_Edit_Action()
