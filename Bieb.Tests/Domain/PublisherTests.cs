@@ -13,14 +13,12 @@ namespace Bieb.Tests.Domain
         [Test]
         public void Books_Is_LibraryBooks_And_ReferenceBooks_Joined()
         {
-            // Arrange
             var book1 = new LibraryBook();
             var book2 = new ReferenceBook();
             var publisher = new Publisher();
             publisher.LibraryBooks.Add(book1);
             publisher.ReferenceBooks.Add(book2);
 
-            // Act & Assert
             Assert.That(publisher.Books.Count(), Is.EqualTo(2));
             CollectionAssert.Contains(publisher.Books, book1);
             CollectionAssert.Contains(publisher.Books, book2);

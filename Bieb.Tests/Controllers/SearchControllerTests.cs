@@ -12,22 +12,32 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class SearchControllerTests
     {
+        private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
+        private Mock<IEntityRepository<Person>> peopleRepositoryMock;
+        private Mock<IEntityRepository<Story>> storyRepositoryMock;
+        private SearchController controller;
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
+            peopleRepositoryMock = new Mock<IEntityRepository<Person>>();
+            storyRepositoryMock = new Mock<IEntityRepository<Story>>();
+            controller = new SearchController(peopleRepositoryMock.Object, bookRepositoryMock.Object, storyRepositoryMock.Object);
+        }
+
+
         [Test]
         public void Can_Find_Book_With_Basic_Search()
         {
             // Arrange
-            var bookMock = new Mock<IEntityRepository<LibraryBook>>();
-            var personMock = new Mock<IEntityRepository<Person>>();
-            var storyMock = new Mock<IEntityRepository<Story>>();
-
             var markTheMartian = new LibraryBook { Title = "Mark the Martian" };
             var martinTheEarthling = new LibraryBook { Title = "Martin the Earthling" };
 
-            bookMock.Setup(repo => repo.Items).Returns(new[] { markTheMartian, martinTheEarthling }.AsQueryable());
-            personMock.Setup(repo => repo.Items).Returns(new Person[] {}.AsQueryable());
-            storyMock.Setup(repo => repo.Items).Returns(new Story[] {}.AsQueryable());
-
-            var controller = new SearchController(personMock.Object, bookMock.Object, storyMock.Object);
+            bookRepositoryMock.Setup(repo => repo.Items).Returns(new[] { markTheMartian, martinTheEarthling }.AsQueryable());
+            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new Person[] {}.AsQueryable());
+            storyRepositoryMock.Setup(repo => repo.Items).Returns(new Story[] {}.AsQueryable());
 
             // Act
             var result = controller.Basic("Mark");
@@ -45,22 +55,18 @@ namespace Bieb.Tests.Controllers
             Assert.That(searchResults.books.ToList()[0], Is.EqualTo(markTheMartian));
         }
 
+
         [Test]
         public void Can_Find_Person_With_Basic_Search()
         {
             // Arrange
-            var bookMock = new Mock<IEntityRepository<LibraryBook>>();
-            var personMock = new Mock<IEntityRepository<Person>>();
-            var storyMock = new Mock<IEntityRepository<Story>>();
-
             var aldiss = new Person { FirstName = "Brian", Surname = "Aldiss" };
             var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
 
-            bookMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
-            personMock.Setup(repo => repo.Items).Returns(new[] { aldiss, asimov }.AsQueryable());
-            storyMock.Setup(repo => repo.Items).Returns(new Story[] { }.AsQueryable());
+            bookRepositoryMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
+            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new[] { aldiss, asimov }.AsQueryable());
+            storyRepositoryMock.Setup(repo => repo.Items).Returns(new Story[] { }.AsQueryable());
 
-            var controller = new SearchController(personMock.Object, bookMock.Object, storyMock.Object);
 
             // Act
             var result = controller.Basic("asimov");
@@ -78,25 +84,21 @@ namespace Bieb.Tests.Controllers
             Assert.That(searchResults.people.ToList()[0], Is.EqualTo(asimov));
         }
 
+
         [Test]
         public void Can_Find_Story_With_Basic_Search()
         {
             // Arrange
-            var bookMock = new Mock<IEntityRepository<LibraryBook>>();
-            var personMock = new Mock<IEntityRepository<Person>>();
-            var storyMock = new Mock<IEntityRepository<Story>>();
-
             var bundle = new LibraryBook();
             var story1 = new Story { Title = "The first story ever", Book = bundle };
             var story2 = new Story { Title = "The very second story", Book = bundle };
             bundle.Stories.Add(0, story1);
             bundle.Stories.Add(1, story2);
 
-            bookMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
-            personMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
-            storyMock.Setup(repo => repo.Items).Returns(new[] { story1, story2 }.AsQueryable());
+            bookRepositoryMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
+            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
+            storyRepositoryMock.Setup(repo => repo.Items).Returns(new[] { story1, story2 }.AsQueryable());
 
-            var controller = new SearchController(personMock.Object, bookMock.Object, storyMock.Object);
 
             // Act
             var result = controller.Basic("ever");
@@ -114,23 +116,19 @@ namespace Bieb.Tests.Controllers
             Assert.That(searchResults.stories.ToList()[0], Is.EqualTo(story1));
         }
 
+
         [Test]
         public void Will_Not_Show_Stories_From_Novels_With_Basic_Search()
         {
             // Arrange
-            var bookMock = new Mock<IEntityRepository<LibraryBook>>();
-            var personMock = new Mock<IEntityRepository<Person>>();
-            var storyMock = new Mock<IEntityRepository<Story>>();
-
             var novel = new LibraryBook { };
             var story = new Story { Title = "Best book ever", Book = novel };
             novel.Stories.Add(0, story);
 
-            bookMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
-            personMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
-            storyMock.Setup(repo => repo.Items).Returns(new[] { story }.AsQueryable());
+            bookRepositoryMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
+            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
+            storyRepositoryMock.Setup(repo => repo.Items).Returns(new[] { story }.AsQueryable());
 
-            var controller = new SearchController(personMock.Object, bookMock.Object, storyMock.Object);
 
             // Act
             var result = controller.Basic("ever");
