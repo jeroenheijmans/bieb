@@ -14,8 +14,8 @@ namespace Bieb.Web.Controllers
             : base(repository)
         { }
 
-        public LibraryBooksController(IEntityRepository<LibraryBook> repository, HttpResponseBase customResponse, HttpContextBase customContext)
-            : base(repository, customResponse, customContext)
+        public LibraryBooksController(IEntityRepository<LibraryBook> repository, HttpResponseBase customResponse)
+            : base(repository, customResponse)
         { }
 
         protected override System.Linq.Expressions.Expression<Func<LibraryBook, IComparable>> SortFunc

@@ -19,13 +19,13 @@ namespace Bieb.Web.Controllers
 
 
         protected EntityController(IEntityRepository<TEntity> repository)
-            : base(null, null)
+            : base(null)
         {
             this.Repository = repository;
         }
 
-        protected EntityController(IEntityRepository<TEntity> repository, HttpResponseBase customResponse, HttpContextBase customContext)
-            : base(customResponse, customContext)
+        protected EntityController(IEntityRepository<TEntity> repository, HttpResponseBase customResponse)
+            : base(customResponse)
         {
             this.Repository = repository;
         }
@@ -84,7 +84,7 @@ namespace Bieb.Web.Controllers
 
             if (item == null)
             {
-                return InvokeHttp404();
+                return PageNotFound();
             }
 
             var model = Activator.CreateInstance(typeof(TViewModel), new object[] { item });
