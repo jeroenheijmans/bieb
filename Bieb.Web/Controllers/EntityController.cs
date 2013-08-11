@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
@@ -8,19 +9,28 @@ using PagedList;
 
 namespace Bieb.Web.Controllers
 {
-    public abstract class EntityController<TEntity, TViewModel> : Controller 
+    public abstract class EntityController<TEntity, TViewModel> : BaseController 
         where TEntity : BaseEntity, new()
         where TViewModel : BaseDomainObjectCrudModel<TEntity>, new()
     {
         protected int[] AvailablePageSizes = new[] { 10, 25, 50, 100 };
         protected int DefaultPageSize = 25;
         protected IEntityRepository<TEntity> Repository { get; set; }
-        
+
+
         protected EntityController(IEntityRepository<TEntity> repository)
+            : base(null, null)
+        {
+            this.Repository = repository;
+        }
+
+        protected EntityController(IEntityRepository<TEntity> repository, HttpResponseBase customResponse, HttpContextBase customContext)
+            : base(customResponse, customContext)
         {
             this.Repository = repository;
         }
         
+
         public virtual ActionResult Index(int pageSize = 25, int page = 1)
         {
             var items = Repository
@@ -31,12 +41,15 @@ namespace Bieb.Web.Controllers
             return View(items);
         }
 
+
         protected abstract System.Linq.Expressions.Expression<Func<TEntity, IComparable>> SortFunc { get; }
+
 
         public ActionResult Details(int id)
         {
             return View(Repository.GetItem(id));
         }
+
 
         public ActionResult RecentlyAdded()
         {
@@ -49,11 +62,13 @@ namespace Bieb.Web.Controllers
             return PartialView(item);
         }
 
+
         [HttpGet]
         public ActionResult Create()
         {
             return View(new TEntity());
         }
+
 
         [HttpPost]
         public ActionResult Create(TEntity item)
@@ -62,12 +77,20 @@ namespace Bieb.Web.Controllers
             return RedirectToAction("Details", new { id = item.Id });
         }
 
+
         public ActionResult Edit(int id)
         {
             var item = Repository.GetItem(id);
+
+            if (item == null)
+            {
+                return InvokeHttp404();
+            }
+
             var model = Activator.CreateInstance(typeof(TViewModel), new object[] { item });
             return View(model);
         }
+
 
         public ActionResult Save(TViewModel model)
         {

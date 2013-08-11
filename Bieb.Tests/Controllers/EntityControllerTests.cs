@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Controllers;
@@ -215,6 +217,19 @@ namespace Bieb.Tests.Controllers
             var redirectResult = (RedirectToRouteResult)result;
             Assert.That(redirectResult.RouteValues["action"], Is.EqualTo("Details"));
             Assert.That(redirectResult.RouteValues["id"], Is.EqualTo(1));
+        }
+
+        private readonly Mock<HttpResponseBase> responseMock = new Mock<HttpResponseBase>();
+        private readonly Mock<HttpContextBase> contextMock = new Mock<HttpContextBase>();
+
+        [Test]
+        public void Edit_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
+        {
+            throw new InconclusiveException("NullReferenceException will occur in MVC somewhere because of missing stuff in these mocks.");
+            booksController = new LibraryBooksController(bookRepositoryMock.Object, responseMock.Object, contextMock.Object);
+            var result = booksController.Edit(123456789);
+
+            Assert.That(result, Is.Not.Null);
         }
     }
 }

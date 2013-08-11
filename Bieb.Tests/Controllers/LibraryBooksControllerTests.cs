@@ -13,17 +13,26 @@ namespace Bieb.Tests.Controllers
 {
     [TestFixture]
     public class LibraryBooksControllerTests
-    {        
+    {
+        private Mock<IEntityRepository<LibraryBook>> repositoryMock;
+
+
+        [SetUp]
+        public void SetUp()
+        {
+            repositoryMock = new Mock<IEntityRepository<LibraryBook>>();
+        }
+
+
         [Test]
         public void Index_Will_Have_Default_TitleSort_Sorting()
         {
             // Arrange
-            var mock = new Mock<IEntityRepository<LibraryBook>>();
             var libraryBook1 = new LibraryBook { Title = "Zoltan the Great" };
             var libraryBook2 = new LibraryBook { Title = "Middle-man" };
             var libraryBook3 = new LibraryBook { Title = "Alpha came before Omega" };
-            mock.Setup(repo => repo.Items).Returns((new[] { libraryBook1, libraryBook2, libraryBook3 }).AsQueryable());
-            var controller = new LibraryBooksController(mock.Object);
+            repositoryMock.Setup(repo => repo.Items).Returns((new[] { libraryBook1, libraryBook2, libraryBook3 }).AsQueryable());
+            var controller = new LibraryBooksController(repositoryMock.Object);
 
             // Act & Assert
             ActionResult result = controller.Index();
