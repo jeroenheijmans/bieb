@@ -113,7 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ReferenceBooksController.cs" />
     <Compile Include="Controllers\LibraryBooksController.cs" />
     <Compile Include="Controllers\EntityController.cs" />
@@ -318,7 +317,7 @@
     <Content Include="Views\Publishers\Edit.cshtml" />
     <Content Include="Views\Series\Edit.cshtml" />
     <Content Include="Views\LibraryBooks\Edit.cshtml" />
-    <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\Shared\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

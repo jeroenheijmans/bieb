@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,7 +20,10 @@ namespace Bieb.Tests.Controllers
     public class EntityControllerTests
     {
         private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
+
+        private Mock<HttpResponseBase> responseMock;
         private LibraryBooksController booksController;
+
         private LibraryBook someBook;
         private LibraryBook otherBook;
         
@@ -28,7 +32,8 @@ namespace Bieb.Tests.Controllers
         public void SetUp()
         {
             bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
-            booksController = new LibraryBooksController(bookRepositoryMock.Object);
+            responseMock = new Mock<HttpResponseBase>();
+            booksController = new LibraryBooksController(bookRepositoryMock.Object, responseMock.Object);
 
             someBook = new LibraryBook
             {
@@ -219,17 +224,21 @@ namespace Bieb.Tests.Controllers
             Assert.That(redirectResult.RouteValues["id"], Is.EqualTo(1));
         }
 
-        private readonly Mock<HttpResponseBase> responseMock = new Mock<HttpResponseBase>();
-        private readonly Mock<HttpContextBase> contextMock = new Mock<HttpContextBase>();
 
         [Test]
         public void Edit_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
         {
-            throw new InconclusiveException("NullReferenceException will occur in MVC somewhere because of missing stuff in these mocks.");
-            booksController = new LibraryBooksController(bookRepositoryMock.Object, responseMock.Object, contextMock.Object);
-            var result = booksController.Edit(123456789);
+            var result = (ViewResult)booksController.Edit(123456789);
+            Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
+        }
 
-            Assert.That(result, Is.Not.Null);
+
+        [Test]
+        public void Http404_Will_Set_Response_Code()
+        {
+            responseMock.SetupProperty(response => response.StatusCode);
+            booksController.PageNotFound();
+            Assert.That(responseMock.Object.StatusCode, Is.EqualTo(404));
         }
     }
 }
