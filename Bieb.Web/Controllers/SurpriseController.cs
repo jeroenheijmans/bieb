@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
@@ -13,10 +12,10 @@ namespace Bieb.Web.Controllers
         private IEntityRepository<Person> PersonRepository { get; set; }
         private IEntityRepository<LibraryBook> BookRepository { get; set; }
 
-        public SurpriseController(IEntityRepository<Person> PersonRepository, IEntityRepository<LibraryBook> BookRepository)
+        public SurpriseController(IEntityRepository<Person> personRepository, IEntityRepository<LibraryBook> bookRepository)
         {
-            this.PersonRepository = PersonRepository;
-            this.BookRepository = BookRepository;
+            this.PersonRepository = personRepository;
+            this.BookRepository = bookRepository;
         }
 
         public ActionResult Index()
@@ -24,12 +23,12 @@ namespace Bieb.Web.Controllers
             return Index(new RandomTypePicker());
         }
 
-        internal ActionResult Index(IRandomEntityPicker RandomTypeGenerator)
+        internal ActionResult Index(IRandomEntityPicker randomTypeGenerator)
         {
             if (!PersonRepository.Items.Any() || !BookRepository.Items.Any())
                 return RedirectToAction("EmptyDatabase", "Home");
 
-            if (RandomTypeGenerator.getRandomEntityType() == typeof(Person))
+            if (randomTypeGenerator.GetRandomEntityType() == typeof(Person))
             {
                 var person = PersonRepository.GetRandomItem();
                 Debug.Assert(person != null, "Expected to find at least one random person, but found none.");
@@ -45,9 +44,9 @@ namespace Bieb.Web.Controllers
 
         private class RandomTypePicker : IRandomEntityPicker
         {
-            Random random = new Random();
+            readonly Random random = new Random();
 
-            public Type getRandomEntityType()
+            public Type GetRandomEntityType()
             {
                 if (random.Next(2) > 0)
                     return typeof(Person);
@@ -59,7 +58,7 @@ namespace Bieb.Web.Controllers
 
     public interface IRandomEntityPicker
     {
-        Type getRandomEntityType();
+        Type GetRandomEntityType();
     }
 
 }

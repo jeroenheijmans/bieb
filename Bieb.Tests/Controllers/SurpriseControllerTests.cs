@@ -52,7 +52,7 @@ namespace Bieb.Tests.Controllers
             bookRepositoryMock.Setup(repo => repo.GetRandomItem()).Returns(testBook);
             
             var randomEntityPickerMock = new Mock<IRandomEntityPicker>();
-            randomEntityPickerMock.Setup(picker => picker.getRandomEntityType()).Returns(typeof(LibraryBook));
+            randomEntityPickerMock.Setup(picker => picker.GetRandomEntityType()).Returns(typeof(LibraryBook));
 
             var result = (RedirectToRouteResult)controller.Index(randomEntityPickerMock.Object);
 
