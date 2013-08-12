@@ -12,7 +12,7 @@ using PagedList;
 namespace Bieb.Tests.Controllers
 {
     [TestFixture]
-    public class LibraryBooksControllerTests
+    public class BooksControllerTests
     {
         private Mock<IEntityRepository<LibraryBook>> repositoryMock;
 
@@ -32,7 +32,7 @@ namespace Bieb.Tests.Controllers
             var libraryBook2 = new LibraryBook { Title = "Middle-man" };
             var libraryBook3 = new LibraryBook { Title = "Alpha came before Omega" };
             repositoryMock.Setup(repo => repo.Items).Returns((new[] { libraryBook1, libraryBook2, libraryBook3 }).AsQueryable());
-            var controller = new LibraryBooksController(repositoryMock.Object);
+            var controller = new BooksController(repositoryMock.Object);
 
             // Act & Assert
             ActionResult result = controller.Index();

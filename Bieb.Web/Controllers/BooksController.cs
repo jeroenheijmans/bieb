@@ -8,13 +8,13 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class LibraryBooksController : EntityController<LibraryBook, LibraryBookModel>
+    public class BooksController : EntityController<LibraryBook, LibraryBookModel>
     {
-        public LibraryBooksController(IEntityRepository<LibraryBook> repository)
+        public BooksController(IEntityRepository<LibraryBook> repository)
             : base(repository)
         { }
 
-        public LibraryBooksController(IEntityRepository<LibraryBook> repository, HttpResponseBase customResponse)
+        public BooksController(IEntityRepository<LibraryBook> repository, HttpResponseBase customResponse)
             : base(repository, customResponse)
         { }
 

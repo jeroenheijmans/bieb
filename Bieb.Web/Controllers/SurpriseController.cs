@@ -39,7 +39,7 @@ namespace Bieb.Web.Controllers
             {
                 var book = BookRepository.GetRandomItem();
                 Debug.Assert(book != null, "Expected to find at least one random book, but found none.");
-                return RedirectToAction("Details", "LibraryBooks", new { id = book.Id });
+                return RedirectToAction("Details", "Books", new { id = book.Id });
             }
         }
 

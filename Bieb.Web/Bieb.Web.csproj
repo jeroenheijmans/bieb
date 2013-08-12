@@ -113,8 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\ReferenceBooksController.cs" />
-    <Compile Include="Controllers\LibraryBooksController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\EntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
@@ -316,7 +315,7 @@
     <Content Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="Views\Publishers\Edit.cshtml" />
     <Content Include="Views\Series\Edit.cshtml" />
-    <Content Include="Views\LibraryBooks\Edit.cshtml" />
+    <Content Include="Views\Books\Edit.cshtml" />
     <Content Include="Views\Shared\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -338,10 +337,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\LibraryBooks\Index.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\LibraryBooks\Details.cshtml" />
+    <Content Include="Views\Books\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\People\Index.cshtml" />
@@ -365,7 +364,7 @@
     <Content Include="Views\Stories\ItemList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\LibraryBooks\ItemList.cshtml" />
+    <Content Include="Views\Books\ItemList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\People\Card.cshtml" />
@@ -374,7 +373,7 @@
     <Content Include="Views\People\ItemList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\LibraryBooks\Card.cshtml" />
+    <Content Include="Views\Books\Card.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Stories\Card.cshtml" />
@@ -403,14 +402,13 @@
     <None Include="Content\fonts\museo_sans500-webfont.woff" />
     <Content Include="Views\Shared\_SearchBoxPartial.cshtml" />
     <Content Include="Views\Search\Basic.cshtml" />
-    <Content Include="Views\LibraryBooks\MoreInfo.cshtml" />
-    <Content Include="Views\LibraryBooks\RecentlyAdded.cshtml" />
+    <Content Include="Views\Books\MoreInfo.cshtml" />
+    <Content Include="Views\Books\RecentlyAdded.cshtml" />
     <Content Include="Views\People\TodaysBirthDates.cshtml" />
     <Content Include="Views\Home\EmptyDatabase.cshtml" />
     <Content Include="Views\Publishers\Index.cshtml" />
     <Content Include="Views\People\MoreInfo.cshtml" />
     <Content Include="Content\images\favicon.pdn" />
-    <Content Include="Views\ReferenceBooks\ItemList.cshtml" />
     <Content Include="Content\Site.scss" />
     <Content Include="packages.config" />
   </ItemGroup>
