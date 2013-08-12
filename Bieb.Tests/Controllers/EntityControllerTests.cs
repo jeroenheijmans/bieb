@@ -22,7 +22,7 @@ namespace Bieb.Tests.Controllers
         private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
 
         private Mock<HttpResponseBase> responseMock;
-        private LibraryBooksController booksController;
+        private BooksController booksController;
 
         private LibraryBook someBook;
         private LibraryBook otherBook;
@@ -33,7 +33,7 @@ namespace Bieb.Tests.Controllers
         {
             bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
             responseMock = new Mock<HttpResponseBase>();
-            booksController = new LibraryBooksController(bookRepositoryMock.Object, responseMock.Object);
+            booksController = new BooksController(bookRepositoryMock.Object, responseMock.Object);
 
             someBook = new LibraryBook
             {

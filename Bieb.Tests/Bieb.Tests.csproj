@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
-    <Compile Include="Controllers\LibraryBooksControllerTests.cs" />
+    <Compile Include="Controllers\BooksControllerTests.cs" />
     <Compile Include="Controllers\EntityControllerTests.cs" />
     <Compile Include="Controllers\PeopleControllerTests.cs" />
     <Compile Include="Controllers\SearchControllerTests.cs" />
