@@ -7,12 +7,12 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class LibraryBookModel : BaseDomainObjectCrudModel<LibraryBook>
+    public class BookModel : BaseDomainObjectCrudModel<Book>
     {
-        public LibraryBookModel() : base()
+        public BookModel() : base()
         { }
 
-        public LibraryBookModel(LibraryBook entity) : base(entity)
+        public BookModel(Book entity) : base(entity)
         {
             Isbn = entity.Isbn;
             IsbnLanguage = entity.IsbnLanguage;
@@ -44,7 +44,7 @@ namespace Bieb.Web.Models
         [Display(Name = "PublishedBy", ResourceType = typeof(BiebResources.BookStrings))]
         public Publisher Publisher { get; set; }
 
-        protected override LibraryBook MergeWithEntitySpecifics(LibraryBook existingEntity)
+        protected override Book MergeWithEntitySpecifics(Book existingEntity)
         {
             existingEntity.Isbn = Isbn;
             existingEntity.IsbnLanguage = IsbnLanguage;

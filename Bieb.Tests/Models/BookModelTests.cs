@@ -10,23 +10,18 @@ using NUnit.Framework;
 namespace Bieb.Tests.Models
 {
     [TestFixture]
-    public class LibraryBookModelTests
+    public class BookModelTests
     {
         [Test]
         public void Constructor_for_Domain_Item_Sets_Base_Domain_Properties_on_Model()
         {
-            // Arrange
-            var id = 42;
-            var modified = DateTime.Now;
-            var book = new LibraryBook {Id = id, ModifiedDate = modified};
+            var book = new LibraryBook { Id = 42, ModifiedDate = DateTime.Now };
 
-            // Act
-            var model = new LibraryBookModel(book);
+            var model = new BookModel(book);
 
-            // Assert
-            Assert.That(model.Id, Is.EqualTo(id));
+            Assert.That(model.Id, Is.EqualTo(book.Id));
             Assert.That(model.ModifiedDateTicks.HasValue);
-            Assert.That(model.ModifiedDateTicks.Value, Is.EqualTo(modified.Ticks));
+            Assert.That(model.ModifiedDateTicks.Value, Is.EqualTo(book.ModifiedDate.Value.Ticks));
         }
     }
 }

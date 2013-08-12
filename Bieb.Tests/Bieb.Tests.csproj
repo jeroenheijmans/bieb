@@ -87,7 +87,7 @@
     <Compile Include="Domain\PublisherTests.cs" />
     <Compile Include="Domain\StoryTests.cs" />
     <Compile Include="Domain\UncertainDateTests.cs" />
-    <Compile Include="Models\LibraryBookModelTests.cs" />
+    <Compile Include="Models\BookModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing\BookRoutingTests.cs" />
     <Compile Include="Routing\DefaultRoutingTests.cs" />
