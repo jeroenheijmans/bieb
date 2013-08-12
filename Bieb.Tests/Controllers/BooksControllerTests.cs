@@ -14,13 +14,13 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class BooksControllerTests
     {
-        private Mock<IEntityRepository<LibraryBook>> repositoryMock;
+        private Mock<IEntityRepository<Book>> repositoryMock;
 
 
         [SetUp]
         public void SetUp()
         {
-            repositoryMock = new Mock<IEntityRepository<LibraryBook>>();
+            repositoryMock = new Mock<IEntityRepository<Book>>();
         }
 
 

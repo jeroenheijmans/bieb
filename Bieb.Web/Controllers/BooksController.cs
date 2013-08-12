@@ -8,17 +8,17 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class BooksController : EntityController<LibraryBook, LibraryBookModel>
+    public class BooksController : EntityController<Book, BookModel>
     {
-        public BooksController(IEntityRepository<LibraryBook> repository)
+        public BooksController(IEntityRepository<Book> repository)
             : base(repository)
         { }
 
-        public BooksController(IEntityRepository<LibraryBook> repository, HttpResponseBase customResponse)
+        public BooksController(IEntityRepository<Book> repository, HttpResponseBase customResponse)
             : base(repository, customResponse)
         { }
 
-        protected override System.Linq.Expressions.Expression<Func<LibraryBook, IComparable>> SortFunc
+        protected override System.Linq.Expressions.Expression<Func<Book, IComparable>> SortFunc
         {
             get
             {

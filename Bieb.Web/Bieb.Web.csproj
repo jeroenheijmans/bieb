@@ -139,10 +139,9 @@
     <Compile Include="Models\BasicSearchResultModel.cs" />
     <Compile Include="Models\BookReviewModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
-    <Compile Include="Models\LibraryBookModel.cs" />
+    <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\PersonReviewModel.cs" />
     <Compile Include="Models\PublisherModel.cs" />
-    <Compile Include="Models\ReferenceBookModel.cs" />
     <Compile Include="Models\SeriesModel.cs" />
     <Compile Include="Models\StoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

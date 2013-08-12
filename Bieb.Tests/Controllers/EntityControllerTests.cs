@@ -19,7 +19,7 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class EntityControllerTests
     {
-        private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
+        private Mock<IEntityRepository<Book>> bookRepositoryMock;
 
         private Mock<HttpResponseBase> responseMock;
         private BooksController booksController;
@@ -31,7 +31,7 @@ namespace Bieb.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
+            bookRepositoryMock = new Mock<IEntityRepository<Book>>();
             responseMock = new Mock<HttpResponseBase>();
             booksController = new BooksController(bookRepositoryMock.Object, responseMock.Object);
 
