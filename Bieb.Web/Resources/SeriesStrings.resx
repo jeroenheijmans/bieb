@@ -126,10 +126,16 @@
   <data name="Subtitle" xml:space="preserve">
     <value>Subtitle</value>
   </data>
+  <data name="SubtitlePlaceholder" xml:space="preserve">
+    <value>a collection of great books</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
   </data>
   <data name="TitleHeader" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="TitlePlaceholder" xml:space="preserve">
+    <value>Pluto Awards</value>
   </data>
 </root>

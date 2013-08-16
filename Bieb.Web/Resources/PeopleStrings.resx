@@ -126,14 +126,23 @@
   <data name="BornAt" xml:space="preserve">
     <value>Born at</value>
   </data>
+  <data name="BornAtPlaceholder" xml:space="preserve">
+    <value>New York</value>
+  </data>
   <data name="BornOn" xml:space="preserve">
     <value>Born</value>
   </data>
   <data name="Day" xml:space="preserve">
     <value>Day</value>
   </data>
+  <data name="DayPlaceholder" xml:space="preserve">
+    <value>d</value>
+  </data>
   <data name="DiedAt" xml:space="preserve">
     <value>Died at</value>
+  </data>
+  <data name="DiedAtPlaceholder" xml:space="preserve">
+    <value>Madagascar</value>
   </data>
   <data name="DiedOn" xml:space="preserve">
     <value>Died</value>
@@ -147,6 +156,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="FirstNamePlaceholder" xml:space="preserve">
+    <value>Augusto</value>
+  </data>
   <data name="Gender" xml:space="preserve">
     <value>Gender</value>
   </data>
@@ -156,6 +168,9 @@
   <data name="Month" xml:space="preserve">
     <value>Month</value>
   </data>
+  <data name="MonthPlaceholder" xml:space="preserve">
+    <value>m</value>
+  </data>
   <data name="NameHeader" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -164,6 +179,9 @@
   </data>
   <data name="NationalityHeader" xml:space="preserve">
     <value>Nationality</value>
+  </data>
+  <data name="NationalityPlaceholder" xml:space="preserve">
+    <value>us</value>
   </data>
   <data name="NobodyBornToday" xml:space="preserve">
     <value>Nobody.</value>
@@ -177,6 +195,9 @@
   <data name="Prefix" xml:space="preserve">
     <value>Prefix</value>
   </data>
+  <data name="PrefixPlaceholder" xml:space="preserve">
+    <value>von</value>
+  </data>
   <data name="RequestForAdditionalInfo" xml:space="preserve">
     <value>Do you have additional information about this person? Please let me know!</value>
   </data>
@@ -186,8 +207,14 @@
   <data name="Surname" xml:space="preserve">
     <value>Surname</value>
   </data>
+  <data name="SurnamePlaceholder" xml:space="preserve">
+    <value>Graffenwald</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="TitlePlaceholder" xml:space="preserve">
+    <value>Dr.</value>
   </data>
   <data name="TranslatedNovels" xml:space="preserve">
     <value>Translated Novels</value>
@@ -197,5 +224,8 @@
   </data>
   <data name="Year" xml:space="preserve">
     <value>Year</value>
+  </data>
+  <data name="YearPlaceholder" xml:space="preserve">
+    <value>yyyy</value>
   </data>
 </root>

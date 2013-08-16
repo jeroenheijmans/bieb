@@ -19,10 +19,11 @@ namespace Bieb.Web.Models
             Subtitle = entity.Subtitle;
         }
 
-        [Display(Name = "Title", ResourceType = typeof(BiebResources.SeriesStrings))]
+        [Required]
+        [Display(Name = "Title", Prompt = "TitlePlaceholder", ResourceType = typeof(BiebResources.SeriesStrings))]
         public string Title { get; set; }
 
-        [Display(Name = "Subtitle", ResourceType = typeof(BiebResources.SeriesStrings))]
+        [Display(Name = "Subtitle", Prompt = "SubtitlePlaceholder", ResourceType = typeof(BiebResources.SeriesStrings))]
         public string Subtitle { get; set; }
 
         protected override Series MergeWithEntitySpecifics(Series existingEntity)

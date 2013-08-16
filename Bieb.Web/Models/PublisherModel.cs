@@ -17,7 +17,8 @@ namespace Bieb.Web.Models
             Name = entity.Name;
         }
 
-        [Display(Name = "Name", ResourceType = typeof(BiebResources.PublisherStrings))]
+        [Required]
+        [Display(Name = "Name", Prompt = "NamePlaceholder", ResourceType = typeof(BiebResources.PublisherStrings))]
         public string Name { get; set; }
 
         protected override Publisher MergeWithEntitySpecifics(Publisher existingEntity)
