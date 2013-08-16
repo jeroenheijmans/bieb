@@ -17,7 +17,7 @@
         <td>
             @if(story.Book != null)
             {
-                <span>@Html.ActionLink(story.Book.Title, "Details", new { controller = "LibraryBooks", id = story.Book.Id })</span>
+                <span>@Html.ActionLink(story.Book.Title, "Details", new { controller = "Books", id = story.Book.Id })</span>
                 <span>(@story.Book.BookType)</span>
             }
         </td>

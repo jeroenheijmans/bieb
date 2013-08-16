@@ -10,7 +10,7 @@
 {
     <section class="item-list">
         <h4>@BiebResources.PublisherStrings.BooksFromThisPublisher</h4>
-        @{ Html.RenderPartial("~/Views/LibraryBooks/ItemList.cshtml", Model.LibraryBooks); }
+        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.LibraryBooks); }
     </section>
 }
 
@@ -26,6 +26,6 @@
 {
     <section class="item-list">
         <h4>@BiebResources.PublisherStrings.ReferenceBooksFromThisPublisher</h4>
-        @{ Html.RenderPartial("~/Views/ReferenceBooks/ItemList.cshtml", Model.ReferenceBooks); }
+        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.ReferenceBooks); }
     </section>
 }

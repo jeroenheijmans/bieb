@@ -289,40 +289,44 @@ iframe.goodreads {
 .input-validation-error {
   border: 1px solid #e82300; }
 
-/* Person Editing */
-input#Gender {
+.person.edit-form input#Gender {
   width: 5em; }
-
-input#Title {
+.person.edit-form input#Title {
   width: 5em; }
-
-input#FirstName {
+.person.edit-form input#FirstName {
   width: 8em; }
-
-input#Prefix {
+.person.edit-form input#Prefix {
   width: 5em; }
-
-input#Surname {
+.person.edit-form input#Surname {
   width: 14em; }
-
-input#Nationality {
+.person.edit-form input#Nationality {
   width: 3em; }
-
-input#BirthDay {
+.person.edit-form input#BirthDay {
   width: 4em; }
-
-input#BirthMonth {
+.person.edit-form input#BirthMonth {
   width: 4em; }
-
-input#BirthYear {
+.person.edit-form input#BirthYear {
+  width: 5em; }
+.person.edit-form input#DeathDay {
+  width: 4em; }
+.person.edit-form input#DeathMonth {
+  width: 4em; }
+.person.edit-form input#DeathYear {
   width: 5em; }
 
-input#DeathDay {
+.series.edit-form input#Title, .book.edit-form input#Title {
+  width: 24em; }
+.series.edit-form input#Subtitle, .book.edit-form input#Subtitle {
+  width: 24em; }
+.series.edit-form input#Isbn, .book.edit-form input#Isbn {
+  width: 12em; }
+.series.edit-form input#IsbnLanguage, .book.edit-form input#IsbnLanguage {
+  width: 3em; }
+.series.edit-form input#Year, .book.edit-form input#Year {
   width: 4em; }
+.series.edit-form select#Publisher, .book.edit-form select#Publisher {
+  width: 24em; }
 
-input#DeathMonth {
-  width: 4em; }
-
-input#DeathYear {
-  width: 5em; }
+.publisher.edit-form input#Name {
+  width: 24em; }
 

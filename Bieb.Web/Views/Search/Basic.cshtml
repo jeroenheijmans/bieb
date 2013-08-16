@@ -58,7 +58,7 @@
             @foreach (var book in Model.books)
             {
                 <li class="book">
-                    @Html.ActionLink(book.Title, "Details", new { controller = "LibraryBooks", id = book.Id })
+                    @Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })
                     <br />
                     <span>@book.BookType</span>
                     @if (!string.IsNullOrWhiteSpace(book.Isbn))
@@ -90,7 +90,7 @@
                         <span>
                             @BiebResources.SearchStrings.From 
                             @story.Book.BookType:
-                            @Html.ActionLink(story.Book.Title, "Details", new { controller = "LibraryBooks", id = story.Book.Id })
+                            @Html.ActionLink(story.Book.Title, "Details", new { controller = "Books", id = story.Book.Id })
                         </span>
                     }
                 </li>     

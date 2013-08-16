@@ -25,23 +25,5 @@ namespace Bieb.Web.Models
         
         // Ticks, because MVC looses milliseconds if it renders EditorFor DateTime properties...
         public long? ModifiedDateTicks { get; set; }
-
-        public T MergeWithEntity(T existingEntity)
-        {
-            if (existingEntity == null) throw new ArgumentNullException("existingEntity");
-
-            if (ModifiedDateTicks.HasValue)
-            {
-                existingEntity.ModifiedDate = new DateTime(ModifiedDateTicks.Value);
-            }
-            else
-            {
-                existingEntity.ModifiedDate = null;
-            }
-
-            return MergeWithEntitySpecifics(existingEntity);
-        }
-
-        protected abstract T MergeWithEntitySpecifics(T existingEntity);
     }
 }

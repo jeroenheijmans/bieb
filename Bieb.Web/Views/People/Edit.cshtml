@@ -9,8 +9,9 @@
 
 <h1>@Model.FullName</h1>
 
-@using (Html.BeginForm("Save", "People")) {
-    <div class="edit-form">
+@using (Html.BeginForm("Save", "People")) 
+{
+    <div class="edit-form person">
         <section id="person-name">
             <div class="field">
                 @Html.EditorFor(model => model.Title)

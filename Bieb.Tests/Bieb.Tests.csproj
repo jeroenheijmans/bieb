@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
-    <Compile Include="Controllers\LibraryBooksControllerTests.cs" />
+    <Compile Include="Controllers\BooksControllerTests.cs" />
     <Compile Include="Controllers\EntityControllerTests.cs" />
     <Compile Include="Controllers\PeopleControllerTests.cs" />
     <Compile Include="Controllers\SearchControllerTests.cs" />
@@ -87,6 +87,7 @@
     <Compile Include="Domain\PublisherTests.cs" />
     <Compile Include="Domain\StoryTests.cs" />
     <Compile Include="Domain\UncertainDateTests.cs" />
+    <Compile Include="Models\BookModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing\BookRoutingTests.cs" />
     <Compile Include="Routing\DefaultRoutingTests.cs" />
@@ -108,6 +109,10 @@
     <ProjectReference Include="..\Bieb.Domain\Bieb.Domain.csproj">
       <Project>{FD033D56-3912-4B0F-AF94-24234D5E4389}</Project>
       <Name>Bieb.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bieb.Framework\Bieb.Framework.csproj">
+      <Project>{705a6b64-a200-4c69-be44-7ec71fd13fcb}</Project>
+      <Name>Bieb.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bieb.Web\Bieb.Web.csproj">
       <Project>{5B0CACE4-DEDA-43CA-99FD-6476740E40CB}</Project>
