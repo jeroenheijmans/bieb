@@ -1,0 +1,35 @@
+﻿@model Bieb.Web.Models.SeriesModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<h1>@Model.Title</h1>
+
+@using (Html.BeginForm("Save", "Series"))
+{
+    <div class="edit-form series">
+        <section id="series-title">
+            <div class="field">
+                @Html.EditorFor(model => model.Title)
+                @Html.LabelFor(model => model.Title)
+            </div>
+            <div class="field">
+                @Html.EditorFor(model => model.Subtitle)
+                @Html.LabelFor(model => model.Subtitle)
+            </div>
+        </section>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ModifiedDateTicks)
+
+        @Html.ValidationSummary()
+
+        <p>
+            <input type="submit" value="@BiebResources.SharedStrings.Save" />
+        </p>
+    </div>
+}

@@ -1,0 +1,32 @@
+﻿@model Bieb.Web.Models.PublisherModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<h1>@Model.Name</h1>
+
+@using (Html.BeginForm("Save", "Publishers"))
+{
+    <div class="edit-form publisher">
+        <section id="publisher-name">
+            <div class="field">
+                @Html.EditorFor(model => model.Name)
+                @Html.LabelFor(model => model.Name)
+            </div>
+        </section>
+        
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ModifiedDateTicks)
+        
+        @Html.ValidationSummary()
+
+        <p>
+            <input type="submit" value="@BiebResources.SharedStrings.Save" />
+        </p>
+
+    </div>
+}

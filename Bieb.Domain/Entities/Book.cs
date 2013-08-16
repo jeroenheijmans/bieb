@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Bieb.Domain.Entities
 {
-    public abstract class Book : Publishable, IReviewable
+    public class Book : Publishable, IReviewable
     {
         public virtual string Isbn { get; set; }
 

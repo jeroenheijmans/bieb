@@ -17,6 +17,8 @@ namespace Bieb.Tests.Controllers
         private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
         private Mock<IEntityRepository<Person>> peopleRepositoryMock;
         private SurpriseController controller;
+        private LibraryBook testBook;
+        private Person testPerson;
 
 
         [SetUp]
@@ -25,42 +27,36 @@ namespace Bieb.Tests.Controllers
             bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
             peopleRepositoryMock = new Mock<IEntityRepository<Person>>();
             controller = new SurpriseController(peopleRepositoryMock.Object, bookRepositoryMock.Object);
+            testBook = new LibraryBook();
+            testPerson = new Person();
         }
 
 
         [Test]
         public void Index_Will_Redirect_To_Empty_Database_Page_If_No_Books_In_Database()
         {
-            // Arrange
             bookRepositoryMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
             peopleRepositoryMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
 
-            // Act
             ActionResult result = controller.Index();
 
-            // Assert
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
         }
 
         [Test]
-        public void Index_Will_Skip_Reference_Only_Books()
+        public void Index_Will_Redirect_To_Books_Controller_For_Surprise_Books()
         {
-            // Arrange
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
+            peopleRepositoryMock.Setup(repo => repo.Items).Returns((new [] { testPerson }).AsQueryable());
+            bookRepositoryMock.Setup(repo => repo.Items).Returns((new [] { testBook }).AsQueryable());
 
-            // TODO: add books, including several "reference books"
-            // make sure these are reliable "skipped"
-
-            bookRepositoryMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
+            bookRepositoryMock.Setup(repo => repo.GetRandomItem()).Returns(testBook);
             
             var randomEntityPickerMock = new Mock<IRandomEntityPicker>();
-            randomEntityPickerMock.Setup(picker => picker.getRandomEntityType()).Returns(typeof(LibraryBook));
+            randomEntityPickerMock.Setup(picker => picker.GetRandomEntityType()).Returns(typeof(LibraryBook));
 
-            // Act
-            ActionResult result = controller.Index(randomEntityPickerMock.Object);
+            var result = (RedirectToRouteResult)controller.Index(randomEntityPickerMock.Object);
 
-            // Assert
-            throw new InconclusiveException("Test not finished yet.");
+            Assert.That(result.RouteValues["controller"], Is.EqualTo("Books"));
         }
     }
 }

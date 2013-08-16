@@ -6,7 +6,7 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class PersonReviewModel : BaseDomainObjectModel<Review<Person>>
+    public class PersonReviewModel : BaseDomainObjectCrudModel<Review<Person>>
     {
         protected override Review<Person> MergeWithEntitySpecifics(Review<Person> existingEntity)
         {

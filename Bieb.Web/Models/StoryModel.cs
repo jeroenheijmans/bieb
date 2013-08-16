@@ -6,7 +6,7 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class StoryModel : BaseDomainObjectModel<Story>
+    public class StoryModel : BaseDomainObjectCrudModel<Story>
     {
         protected override Story MergeWithEntitySpecifics(Story existingEntity)
         {

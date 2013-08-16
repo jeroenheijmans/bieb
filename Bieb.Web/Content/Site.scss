@@ -371,16 +371,31 @@ iframe.goodreads {
 	border: 1px solid $error-color;
 }
 
-/* Person Editing */
-input#Gender		{ width: 5em; }
-input#Title			{ width: 5em; }
-input#FirstName		{ width: 8em; }
-input#Prefix		{ width: 5em; }
-input#Surname		{ width: 14em; }
-input#Nationality	{ width: 3em; }
-input#BirthDay		{ width: 4em; }
-input#BirthMonth	{ width: 4em; }
-input#BirthYear		{ width: 5em; }
-input#DeathDay		{ width: 4em; }
-input#DeathMonth	{ width: 4em; }
-input#DeathYear		{ width: 5em; }
+
+.person.edit-form {
+	input#Gender		{ width: 5em; }
+	input#Title			{ width: 5em; }
+	input#FirstName		{ width: 8em; }
+	input#Prefix		{ width: 5em; }
+	input#Surname		{ width: 14em; }
+	input#Nationality	{ width: 3em; }
+	input#BirthDay		{ width: 4em; }
+	input#BirthMonth	{ width: 4em; }
+	input#BirthYear		{ width: 5em; }
+	input#DeathDay		{ width: 4em; }
+	input#DeathMonth	{ width: 4em; }
+	input#DeathYear		{ width: 5em; }
+}
+
+.series.edit-form, .book.edit-form {
+	input#Title			{ width: 24em; }
+	input#Subtitle		{ width: 24em; }
+	input#Isbn			{ width: 12em; }
+	input#IsbnLanguage	{ width: 3em; }
+	input#Year			{ width: 4em; }
+	select#Publisher	{ width: 24em; }
+}
+
+.publisher.edit-form {
+	input#Name			{ width: 24em; }
+}

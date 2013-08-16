@@ -1,4 +1,5 @@
-﻿@model Bieb.Domain.Entities.LibraryBook
+﻿@using Bieb.Domain.Entities
+@model Bieb.Domain.Entities.Book
 
 <div class="card">
     <h1>@Html.DisplayFor(model => model.Title)</h1>
@@ -88,35 +89,41 @@
             </li>
         }
     </ul>
-
-    @if (Model.ReferenceBook != null)
+    
+    @*Hmm, not very clean View - should move this to the model and/or controller*@
+    @if (Model is LibraryBook)
     {
-        <h2>@BiebResources.SharedStrings.Original:</h2>
-        <ul>
-            @if (Model.ReferenceBook.Title != null)
-            {
-                <li>@BiebResources.SharedStrings.Title: @Model.ReferenceBook.Title</li>
-            }
-            @if (Model.ReferenceBook.Subtitle != null)
-            {
-                <li>@BiebResources.SharedStrings.Subtitle: @Model.ReferenceBook.Subtitle</li>
-            }
-            @if (Model.ReferenceBook.Isbn != null)
-            {
-                <li>@BiebResources.SharedStrings.Isbn: @Model.ReferenceBook.Isbn</li>
-            }
-            @if (Model.ReferenceBook.IsbnLanguage.HasValue)
-            {
-                <li>@BiebResources.SharedStrings.Language: @Model.ReferenceBook.Language</li>
-            }
-            @if (Model.ReferenceBook.Year.HasValue)
-            {
-                <li>@BiebResources.SharedStrings.Published: @Model.ReferenceBook.Year</li>
-            }
-            @if (Model.ReferenceBook.Publisher != null)
-            {
-                <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Model.ReferenceBook.Publisher.Name, "Details", new { id = Model.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
-            }
-        </ul>
+        var libraryBook = Model as LibraryBook;
+        if (libraryBook.ReferenceBook != null)
+         {
+             <h2>@BiebResources.SharedStrings.Original:</h2>
+             <ul>
+                 @if (libraryBook.ReferenceBook.Title != null)
+                 {
+                     <li>@BiebResources.SharedStrings.Title: @libraryBook.ReferenceBook.Title</li>
+                 }
+                 @if (libraryBook.ReferenceBook.Subtitle != null)
+                 {
+                     <li>@BiebResources.SharedStrings.Subtitle: @libraryBook.ReferenceBook.Subtitle</li>
+                 }
+                 @if (libraryBook.ReferenceBook.Isbn != null)
+                 {
+                     <li>@BiebResources.SharedStrings.Isbn: @libraryBook.ReferenceBook.Isbn</li>
+                 }
+                 @if (libraryBook.ReferenceBook.IsbnLanguage.HasValue)
+                 {
+                     <li>@BiebResources.SharedStrings.Language: @libraryBook.ReferenceBook.Language</li>
+                 }
+                 @if (libraryBook.ReferenceBook.Year.HasValue)
+                 {
+                     <li>@BiebResources.SharedStrings.Published: @libraryBook.ReferenceBook.Year</li>
+                 }
+                 @if (libraryBook.ReferenceBook.Publisher != null)
+                 {
+                     <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(libraryBook.ReferenceBook.Publisher.Name, "Details", new {id = libraryBook.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
+                 }
+             </ul>
+         }
     }
+
 </div>

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Controllers;
@@ -16,8 +19,11 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class EntityControllerTests
     {
-        private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
-        private LibraryBooksController booksController;
+        private Mock<IEntityRepository<Book>> bookRepositoryMock;
+
+        private Mock<HttpResponseBase> responseMock;
+        private BooksController booksController;
+
         private LibraryBook someBook;
         private LibraryBook otherBook;
         
@@ -25,8 +31,9 @@ namespace Bieb.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
-            booksController = new LibraryBooksController(bookRepositoryMock.Object);
+            bookRepositoryMock = new Mock<IEntityRepository<Book>>();
+            responseMock = new Mock<HttpResponseBase>();
+            booksController = new BooksController(bookRepositoryMock.Object, responseMock.Object);
 
             someBook = new LibraryBook
             {
@@ -65,8 +72,8 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<IEnumerable<LibraryBook>>());
-            Assert.That(((IEnumerable<LibraryBook>)vResult.Model).Count(), Is.EqualTo(3));
+            Assert.That(vResult.Model, Is.InstanceOf<IEnumerable<Book>>());
+            Assert.That(((IEnumerable<Book>)vResult.Model).Count(), Is.EqualTo(3));
         }
 
 
@@ -77,8 +84,8 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<LibraryBook>());
-            Assert.That(((LibraryBook)vResult.Model).Id, Is.EqualTo(0));
+            Assert.That(vResult.Model, Is.InstanceOf<Book>());
+            Assert.That(((Book)vResult.Model).Id, Is.EqualTo(0));
         }
 
 
@@ -105,9 +112,9 @@ namespace Bieb.Tests.Controllers
 
             var vresult = (ViewResult)result;
 
-            Assert.That(vresult.Model, Is.InstanceOf<PagedList<LibraryBook>>());
+            Assert.That(vresult.Model, Is.InstanceOf<PagedList<Book>>());
 
-            var libraryBookList = (PagedList<LibraryBook>)vresult.Model;
+            var libraryBookList = (PagedList<Book>)vresult.Model;
 
             Assert.That(libraryBookList.PageNumber, Is.EqualTo(1));
             Assert.That(libraryBookList.PageSize, Is.EqualTo(25));
@@ -215,6 +222,31 @@ namespace Bieb.Tests.Controllers
             var redirectResult = (RedirectToRouteResult)result;
             Assert.That(redirectResult.RouteValues["action"], Is.EqualTo("Details"));
             Assert.That(redirectResult.RouteValues["id"], Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Edit_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
+        {
+            var result = (ViewResult)booksController.Edit(123456789);
+            Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
+        }
+
+
+        [Test]
+        public void Details_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
+        {
+            var result = (ViewResult)booksController.Details(123456789);
+            Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
+        }
+
+
+        [Test]
+        public void Http404_Will_Set_Response_Code()
+        {
+            responseMock.SetupProperty(response => response.StatusCode);
+            booksController.PageNotFound();
+            Assert.That(responseMock.Object.StatusCode, Is.EqualTo(404));
         }
     }
 }
