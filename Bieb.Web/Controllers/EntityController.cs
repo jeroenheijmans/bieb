@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
@@ -35,6 +36,7 @@ namespace Bieb.Web.Controllers
         {
             var items = Repository
                         .Items
+                        .Where(IndexFilterFunc)
                         .OrderBy(SortFunc)
                         .ToPagedList(page, pageSize);
             
@@ -42,7 +44,12 @@ namespace Bieb.Web.Controllers
         }
 
 
-        protected abstract System.Linq.Expressions.Expression<Func<TEntity, IComparable>> SortFunc { get; }
+        protected abstract Expression<Func<TEntity, IComparable>> SortFunc { get; }
+
+        protected virtual Expression<Func<TEntity, bool>> IndexFilterFunc 
+        { 
+            get { return entity => true; }
+        } 
 
 
         public ActionResult Details(int id)

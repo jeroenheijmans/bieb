@@ -25,5 +25,13 @@ namespace Bieb.Web.Controllers
                 return b => b.TitleSort;
             }
         }
+
+        protected override System.Linq.Expressions.Expression<Func<Book, bool>> IndexFilterFunc
+        {
+            get
+            {
+                return book => book is LibraryBook;
+            }
+        }
     }
 }
