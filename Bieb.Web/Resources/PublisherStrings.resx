@@ -123,6 +123,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NamePlaceholder" xml:space="preserve">
+    <value>Jupiter Books ltd.</value>
+  </data>
   <data name="ReferenceBooksFromThisPublisher" xml:space="preserve">
     <value>Published these first editions</value>
   </data>
