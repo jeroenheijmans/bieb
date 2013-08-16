@@ -72,8 +72,8 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<IEnumerable<LibraryBook>>());
-            Assert.That(((IEnumerable<LibraryBook>)vResult.Model).Count(), Is.EqualTo(3));
+            Assert.That(vResult.Model, Is.InstanceOf<IEnumerable<Book>>());
+            Assert.That(((IEnumerable<Book>)vResult.Model).Count(), Is.EqualTo(3));
         }
 
 
@@ -84,8 +84,8 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<LibraryBook>());
-            Assert.That(((LibraryBook)vResult.Model).Id, Is.EqualTo(0));
+            Assert.That(vResult.Model, Is.InstanceOf<Book>());
+            Assert.That(((Book)vResult.Model).Id, Is.EqualTo(0));
         }
 
 
@@ -112,9 +112,9 @@ namespace Bieb.Tests.Controllers
 
             var vresult = (ViewResult)result;
 
-            Assert.That(vresult.Model, Is.InstanceOf<PagedList<LibraryBook>>());
+            Assert.That(vresult.Model, Is.InstanceOf<PagedList<Book>>());
 
-            var libraryBookList = (PagedList<LibraryBook>)vresult.Model;
+            var libraryBookList = (PagedList<Book>)vresult.Model;
 
             Assert.That(libraryBookList.PageNumber, Is.EqualTo(1));
             Assert.That(libraryBookList.PageSize, Is.EqualTo(25));
