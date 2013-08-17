@@ -1,8 +1,8 @@
-using NUnit.Framework;
-using System.Web.Routing;
-using Bieb.Web;
-using Moq;
 using System.Web;
+using System.Web.Routing;
+using Bieb.Web.App_Start;
+using Moq;
+using NUnit.Framework;
 
 namespace Bieb.Tests.Routing
 {
@@ -12,7 +12,7 @@ namespace Bieb.Tests.Routing
         protected RouteData GetRouteDataForPath(string path)
         {
             var routes = new RouteCollection();
-            MvcApplication.RegisterRoutes(routes);
+            RouteConfig.RegisterRoutes(routes);
             var httpContextMock = new Mock<HttpContextBase>();
             httpContextMock.Setup(context => context.Request.AppRelativeCurrentExecutionFilePath).Returns(path);
 

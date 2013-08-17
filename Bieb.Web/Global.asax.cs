@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bieb.Framework.Logging;
+using Bieb.Web.App_Start;
 using Ninject;
 using Ninject.Web.Common;
 
@@ -18,61 +19,6 @@ namespace Bieb.Web
                 // Using Service Locator here because there seems to be no way to inject an ILogger with Ninject here
                 return DependencyResolver.Current.GetService<ILogger>();
             }
-        }
-        
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-        {
-            filters.Add(new HandleErrorAttribute());
-        }
-
-        public static void RegisterRoutes(RouteCollection routes)
-        {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon\.ico(/.*)?" });
-
-            routes.MapRoute("SearchIndex",
-                            "Search",
-                            new { controller = "Search", action = "Basic" });
-
-            routes.MapRoute(
-                "Details for a LibraryBook by ID", // Route name
-                "Books/{id}", // URL with parameters
-                new { controller = "Books", action = "Details", id = UrlParameter.Optional }, // Parameter defaults
-                new { id = @"\d+" }
-            );
-
-            routes.MapRoute(
-                "Details for any item by ID", // Route name
-                "{controller}/{id}", // URL with parameters
-                new { controller = "Home", action = "Details", id = UrlParameter.Optional }, // Parameter defaults
-                new { id = @"\d+" }
-            );
-
-            routes.MapRoute(
-                "Books action on item route", // Route name
-                "Books/{id}/{action}", // URL with parameters
-                new { controller = "Books", action = "Details" }, // Parameter defaults
-                new { id = @"\d+" }
-            );
-
-            routes.MapRoute(
-                "Generic action on item route", // Route name
-                "{controller}/{id}/{action}", // URL with parameters
-                null, // Parameter defaults
-                new { id = @"\d+" }
-            );
-
-            routes.MapRoute(
-                "Actions for Books controller via 'Books'", // Route name
-                "Books/{action}", // URL with parameters
-                new { controller = "Books", action = "Index" } // Parameter defaults
-            );
-
-            routes.MapRoute(
-                "Generic Controller and Action route", // Route name
-                "{controller}/{action}", // URL with parameters
-                new { controller = "Home", action = "Index" } // Parameter defaults
-            );
         }
 
         protected override Ninject.IKernel CreateKernel()
@@ -92,8 +38,9 @@ namespace Bieb.Web
         {
             base.OnApplicationStarted();
             AreaRegistration.RegisterAllAreas();
-            RegisterGlobalFilters(GlobalFilters.Filters);
-            RegisterRoutes(RouteTable.Routes);
+
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             Logger.LogInformation("Application started.");
         }
