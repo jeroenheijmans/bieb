@@ -78,6 +78,7 @@ namespace Bieb.Web.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             return View(new TEntity());
@@ -85,6 +86,8 @@ namespace Bieb.Web.Controllers
 
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(TEntity item)
         {
             Repository.Add(item);
@@ -92,6 +95,7 @@ namespace Bieb.Web.Controllers
         }
 
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var item = Repository.GetItem(id);
@@ -106,6 +110,8 @@ namespace Bieb.Web.Controllers
         }
 
 
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(TViewModel model)
         {
             if (ModelState.IsValid)
