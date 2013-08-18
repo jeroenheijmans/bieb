@@ -117,8 +117,9 @@ header {
       float: right;
       margin-left: 1em; }
   header .title {
-    margin: 4em auto;
-    padding: 1.5em 0 0.5em;
+    clear: both;
+    margin: 0 auto;
+    padding: 0;
     width: 61em;
     border-bottom: 1px solid #eeeeee; }
     header .title a {
@@ -215,6 +216,8 @@ table.stories {
     color: #ffd8ed; }
     .card a:hover {
       color: #ff0080; }
+  .card .edit-link {
+    float: right; }
 
 .details {
   display: inline-block;

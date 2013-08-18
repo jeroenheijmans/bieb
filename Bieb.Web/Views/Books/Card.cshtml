@@ -2,8 +2,13 @@
 @model Bieb.Domain.Entities.Book
 
 <div class="card">
-    <h1>@Html.DisplayFor(model => model.Title)</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <span class="edit-link">@Html.ActionLink("Edit", "Edit", new {Model.Id})</span>
+    }
 
+    <h1>@Html.DisplayFor(model => model.Title)</h1>
+    
     @if (Model.Subtitle != null)
     { 
         <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
