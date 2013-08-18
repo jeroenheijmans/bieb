@@ -154,8 +154,9 @@ header {
 	}
 
 	.title {
-		margin: 4em auto;
-		padding: ($text-gutter * 3) 0 $text-gutter;
+		clear: both;
+		margin: 0 auto;
+		padding: 0;
 		width: $wrapper-width;
 		border-bottom: 1px solid $background-color-darker;
 
@@ -285,6 +286,10 @@ table.stories {
 	a {
 		color: $inverted-action-color;
 		&:hover { color: $action-color; }
+	}
+
+	.edit-link {
+		float: right;
 	}
 }
 

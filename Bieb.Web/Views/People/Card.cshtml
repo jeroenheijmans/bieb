@@ -1,6 +1,11 @@
 ﻿@model Bieb.Domain.Entities.Person
 
 <div class="card">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <span class="edit-link">@Html.ActionLink("Edit", "Edit", new {Model.Id})</span>
+    }
+
     <h1>
         @Html.DisplayFor(model => model.FullName)
     </h1>

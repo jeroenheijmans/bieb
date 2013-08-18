@@ -6,6 +6,11 @@
 
 <h1>@Model.Name</h1>
 
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="edit-link">@Html.ActionLink("Edit", "Edit", new {Model.Id})</span>
+}
+
 @if (Model.LibraryBooks.Any())
 {
     <section class="item-list">
