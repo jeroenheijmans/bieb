@@ -4,6 +4,7 @@ $action-color: #FF0080;
 $action-color-darker: #6E0030;
 $background-color: #FFFFFF;
 $background-color-darker: #EEEEEE;
+$background-color-darkest: #DDDDDD;
 $inverted-action-color: #FFD8ED;
 $error-color: #E82300;
 
@@ -290,6 +291,40 @@ table.stories {
 
 	.edit-link {
 		float: right;
+	}
+}
+
+
+.cover {
+	display: inline-block;
+	margin-bottom: $gutter;
+	border: 1px solid $background-color-darkest;
+	opacity: 0.8;
+
+	.front, .back {
+		position: relative;
+		float: left;
+		display: inline-block;
+		background-color: $background-color-darker;
+		height: $card-width * 5/4;
+		width: $card-width;
+		padding: $text-gutter * 3;
+	}
+	
+	.back {
+		border-right: 8px solid $background-color-darkest;
+
+		.publisher {
+			position: absolute;
+			bottom: $gutter;
+			font-size: 0.7em;
+		}
+	}
+
+	.front {
+		.title {
+			font-size: 1.5em;
+		}
 	}
 }
 

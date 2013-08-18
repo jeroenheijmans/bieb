@@ -16,6 +16,8 @@
             }
         </section>
     }
+    
+    @{ Html.RenderPartial("Cover", Model); }
 
     @if (Model.BookType != Bieb.Domain.Entities.BookType.Novel)
     {
