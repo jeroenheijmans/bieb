@@ -12,12 +12,12 @@
     <header>
         <nav>
             <ul id="menu">
-                <li>@Html.MenuLink("Home", "", "Home")</li>
-                <li>@Html.MenuLink("People", "Index", "People")</li>
-                <li>@Html.MenuLink("Books", "Index", "Books")</li>
-                <li>@Html.MenuLink("Series", "Index", "Series")</li>
-                <li>@Html.MenuLink("Publishers", "Index", "Publishers")</li>
-                <li>@Html.MenuLink("Surprise me!", "Index", "Surprise")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")</li>
             </ul>
         </nav>
         <div class="utilities">
@@ -41,9 +41,15 @@
 
     <footer>
         <p>
-            <span>@BiebResources.SharedStrings.SiteTitleShort</span> @BiebResources.SharedStrings.SiteSlogan
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.About, "About", "Home")</span>
+            |
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.Disclaimer, "Disclaimer", "Home")</span>
+            |
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.SiteMap, "SiteMap", "Home")</span>
+            
             <span id="powered-by">@BiebResources.SharedStrings.PoweredBy <a href="http://bieb.codeplex.com" target="_blank">bieb.codeplex.com</a></span>
-        </p>       
+        </p>
+        <hr />
     </footer>
     
     @Scripts.Render("~/bundles/jquery")

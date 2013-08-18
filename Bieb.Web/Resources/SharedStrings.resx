@@ -117,14 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="Authors" xml:space="preserve">
     <value>Authors</value>
   </data>
   <data name="Books" xml:space="preserve">
     <value>Books</value>
   </data>
+  <data name="BooksMenuItem" xml:space="preserve">
+    <value>Books</value>
+  </data>
+  <data name="BooksMenuItemDescription" xml:space="preserve">
+    <value>A link to all the books that are, have been, or should be in my library. This includes novels (covers with just one story), collections (multiple stories by one author), and anthologies (multiple stories by different authors).</value>
+  </data>
   <data name="CreateNew" xml:space="preserve">
     <value>Create new item</value>
+  </data>
+  <data name="Disclaimer" xml:space="preserve">
+    <value>Disclaimer</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -137,6 +149,12 @@
   </data>
   <data name="ErrorOccurredTitle" xml:space="preserve">
     <value>Sorry, an error occurred while processing your request. Enjoy this quote instead:</value>
+  </data>
+  <data name="HomeMenuItem" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HomeMenuItemDescription" xml:space="preserve">
+    <value>The site's starting grounds. No site can do without one, even if it tried.</value>
   </data>
   <data name="Isbn" xml:space="preserve">
     <value>ISBN</value>
@@ -165,6 +183,12 @@
   <data name="People" xml:space="preserve">
     <value>People</value>
   </data>
+  <data name="PeopleMenuItem" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="PeopleMenuItemDescription" xml:space="preserve">
+    <value>There are various types of people to be found on this site, each of whom has something to do with books in my library. Included are authors, translators, and editors.</value>
+  </data>
   <data name="PoweredBy" xml:space="preserve">
     <value>Powered by</value>
   </data>
@@ -176,6 +200,12 @@
   </data>
   <data name="Publisher" xml:space="preserve">
     <value>Publisher</value>
+  </data>
+  <data name="PublishersMenuItem" xml:space="preserve">
+    <value>Publishers</value>
+  </data>
+  <data name="PublishersMenuItemDescription" xml:space="preserve">
+    <value>All the publishers related to books in my library can be found here, including ones that published originals for which I own a new or translated edition.</value>
   </data>
   <data name="Review" xml:space="preserve">
     <value>Review</value>
@@ -189,20 +219,29 @@
   <data name="Series" xml:space="preserve">
     <value>Series</value>
   </data>
-  <data name="SiteSlogan" xml:space="preserve">
-    <value>Books that are (and have been) in my personal library</value>
+  <data name="SeriesMenuItem" xml:space="preserve">
+    <value>Series</value>
+  </data>
+  <data name="SeriesMenuItemDescription" xml:space="preserve">
+    <value>Some of my books are part of a series. All the series that are related to books in my libraries can be found here.</value>
+  </data>
+  <data name="SiteMap" xml:space="preserve">
+    <value>Site Map</value>
   </data>
   <data name="SiteTitleLong" xml:space="preserve">
     <value>Bieb: My Library</value>
-  </data>
-  <data name="SiteTitleShort" xml:space="preserve">
-    <value>BIEB!</value>
   </data>
   <data name="Stories" xml:space="preserve">
     <value>Stories</value>
   </data>
   <data name="Subtitle" xml:space="preserve">
     <value>Subtitle</value>
+  </data>
+  <data name="SurpriseMeMenuItem" xml:space="preserve">
+    <value>Surprise me!</value>
+  </data>
+  <data name="SurpriseMeMenuItemDescription" xml:space="preserve">
+    <value>Find a random book or person in my library database. Go on: try it!</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>

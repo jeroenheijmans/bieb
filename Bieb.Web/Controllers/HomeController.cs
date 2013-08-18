@@ -13,5 +13,20 @@ namespace Bieb.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Disclaimer()
+        {
+            return View();
+        }
+
+        public ActionResult SiteMap()
+        {
+            return View();
+        }
     }
 }
