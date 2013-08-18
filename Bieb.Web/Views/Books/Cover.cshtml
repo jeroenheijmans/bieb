@@ -1,0 +1,27 @@
+﻿@model Bieb.Domain.Entities.Book
+
+@* Placeholder view. We need infrastructure for actual cover pictures before we can finish this view. *@
+
+<div class="cover">
+    <div class="back">
+        <p class="publisher">
+            @Model.Publisher.Name
+        </p>
+    </div>
+    <div class="front">
+        <p class="main-person">
+            @if (Model.Editors.Any())
+            {
+                @Html.Raw(string.Join(", ", Model.Editors.Select(person => person.FullName)))
+            } else if (Model.Authors.Any())
+            {
+                @Html.Raw(string.Join(", ", Model.Authors.Select(person => person.FullName)))
+            }
+        </p>
+        <p class="title">
+            @Model.Title
+        </p>
+    </div>
+    
+    <div class="clearfix"></div>
+</div>

@@ -219,6 +219,28 @@ table.stories {
   .card .edit-link {
     float: right; }
 
+.cover {
+  display: inline-block;
+  margin-bottom: 2em;
+  border: 1px solid #dddddd;
+  opacity: 0.8; }
+  .cover .front, .cover .back {
+    position: relative;
+    float: left;
+    display: inline-block;
+    background-color: #eeeeee;
+    height: 23.75em;
+    width: 19em;
+    padding: 1.5em; }
+  .cover .back {
+    border-right: 8px solid #dddddd; }
+    .cover .back .publisher {
+      position: absolute;
+      bottom: 2em;
+      font-size: 0.7em; }
+  .cover .front .title {
+    font-size: 1.5em; }
+
 .details {
   display: inline-block;
   width: 40em; }
