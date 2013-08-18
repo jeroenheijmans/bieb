@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutDetails" xml:space="preserve">
+    <value>Browse this site at your leisure, and for those interested there may even be some wish list books floating around ;-).</value>
+  </data>
+  <data name="AboutHeader" xml:space="preserve">
+    <value>About this site</value>
+  </data>
+  <data name="AboutIntro" xml:space="preserve">
+    <value>This site contains all the books that were, are, or should be in my personal library. It is foremost a personal reference (you know, so you can check it on your mobile when you're in the book shop to make sure you won't buy dupes), but may equally enjoy friends, family and strangers as well.</value>
+  </data>
+  <data name="AboutOutro" xml:space="preserve">
+    <value>If you know what you're looking for we recommend searching. If you have no clue, we recommend the "Surprise Me!" option. Enjoy!</value>
+  </data>
   <data name="AuthoredStoriesIn" xml:space="preserve">
     <value>authored stories in</value>
   </data>
@@ -134,6 +146,18 @@
   </data>
   <data name="DifferentBooks" xml:space="preserve">
     <value>different books in my library</value>
+  </data>
+  <data name="DisclaimerDetails" xml:space="preserve">
+    <value>Any suggestions, corrections, information, praise, or critique is much welcome, feel free to e-mail me.</value>
+  </data>
+  <data name="DisclaimerHeader" xml:space="preserve">
+    <value>Disclaimer</value>
+  </data>
+  <data name="DisclaimerIntro" xml:space="preserve">
+    <value>This site is merely meant as a personal reference. No warranty is provided about correctness or any other aspect of the information on this site. Use it entirely at your own risk (and for your own browsing pleasure, of course!).</value>
+  </data>
+  <data name="DisclaimerOutro" xml:space="preserve">
+    <value>The site and its design are based on the source code that's freely available at http://bieb.codeplex.com, where you can find relevant information about licensing and related issues.</value>
   </data>
   <data name="EmptyDatabase" xml:space="preserve">
     <value>Library is Empty!</value>
@@ -161,6 +185,12 @@
   </data>
   <data name="RecentlyAdded" xml:space="preserve">
     <value>Recently Added</value>
+  </data>
+  <data name="SiteMap" xml:space="preserve">
+    <value>Site Map</value>
+  </data>
+  <data name="SiteMapIntro" xml:space="preserve">
+    <value>The structure of this website is really flat. The items you see in the menu at the top are really the only main items on this website. Each one can be explained as follows:</value>
   </data>
   <data name="SurpriseLink" xml:space="preserve">
     <value>Surprise me!</value>

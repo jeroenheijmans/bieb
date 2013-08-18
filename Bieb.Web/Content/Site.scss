@@ -82,6 +82,18 @@ a {
 	&:hover { color: $action-color; }
 }
 
+dl {
+	margin: $gutter;
+
+	dt { 
+		font-weight: bold;
+	}
+
+	dd + dt {
+		margin-top: $text-gutter;
+	}
+}
+
 p + p,
 ul + p,
 table + p {
@@ -234,7 +246,7 @@ footer {
 	}
 
 	span {
-		color: $action-color;
+		color: background-color-darker;
 	}
 	
 	a {

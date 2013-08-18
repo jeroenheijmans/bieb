@@ -54,6 +54,13 @@ a {
   a:hover {
     color: #ff0080; }
 
+dl {
+  margin: 2em; }
+  dl dt {
+    font-weight: bold; }
+  dl dd + dt {
+    margin-top: 0.5em; }
+
 p + p,
 ul + p,
 table + p {
@@ -176,7 +183,7 @@ footer {
     border-left: 1px solid #ff0080;
     border-right: 1px solid #ff0080; }
   footer span {
-    color: #ff0080; }
+    color: background-color-darker; }
   footer a {
     color: #ffd8ed; }
   footer #powered-by {
