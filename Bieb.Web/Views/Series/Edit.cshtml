@@ -11,6 +11,8 @@
 
 @using (Html.BeginForm("Save", "Series"))
 {
+    @Html.AntiForgeryToken()
+
     <div class="edit-form series">
         <section id="series-title">
             <div class="field">

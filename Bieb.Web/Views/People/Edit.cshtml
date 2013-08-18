@@ -11,6 +11,8 @@
 
 @using (Html.BeginForm("Save", "People")) 
 {
+    @Html.AntiForgeryToken()
+
     <div class="edit-form person">
         <section id="person-name">
             <div class="field">
