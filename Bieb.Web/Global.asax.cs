@@ -8,6 +8,7 @@ using Bieb.Framework.Logging;
 using Bieb.Web.App_Start;
 using Ninject;
 using Ninject.Web.Common;
+using WebMatrix.WebData;
 
 namespace Bieb.Web
 {
@@ -43,6 +44,8 @@ namespace Bieb.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            WebSecurity.InitializeDatabaseConnection("BiebDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
             Logger.LogInformation("Application started.");
         }

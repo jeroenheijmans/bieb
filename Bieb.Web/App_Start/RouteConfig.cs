@@ -14,6 +14,12 @@ namespace Bieb.Web.App_Start
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon\.ico(/.*)?" });
 
+            routes.MapRoute(
+                "Account management", // Route name
+                "Account", // URL with parameters
+                new { controller = "Account", action = "Manage" } // Parameter defaults
+            );
+
             routes.MapRoute("SearchIndex",
                             "Search",
                             new { controller = "Search", action = "Basic" });

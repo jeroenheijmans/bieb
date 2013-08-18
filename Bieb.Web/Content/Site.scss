@@ -15,6 +15,13 @@ $text-gutter: 0.5em;
 
 $card-width: ($wrapper-width - (2 * $gutter)) / 3;
 
+@mixin form-base {
+	padding: $text-gutter * 2;
+	border: 1px solid $background-color-darker;
+	background-color: $background-color;
+}
+
+
 @font-face {
     font-family: "handwriting-draft_regular";
     src: url('fonts/handwriting-draft_free-version-webfont.eot');
@@ -98,7 +105,7 @@ th {
     text-align: left;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
 	padding: ($text-gutter / 4) ($text-gutter / 2);
 }
 
@@ -135,20 +142,30 @@ input[type="text"] {
 header {
 	width: 100%;
 	position: absolute;
-}
 
-header .title {
-	margin: 3.5em auto;
-	padding: ($text-gutter * 3) 0 $text-gutter;
-	width: $wrapper-width;
-	border-bottom: 1px solid $background-color-darker;
+	.utilities {
+		margin: 3.2em auto;
+		width: $wrapper-width;
 
-	a { 
-		color: $main-color-lighter; 
-		font-size: 3.5em;
-		line-height: $base-line-height;
-		font-family: 'handwriting-draft_regular', Verdana, serif;
-		&:hover { color: $action-color; }
+		#account, #search {
+			float: right;
+			margin-left: $text-gutter * 2;
+		}
+	}
+
+	.title {
+		margin: 4em auto;
+		padding: ($text-gutter * 3) 0 $text-gutter;
+		width: $wrapper-width;
+		border-bottom: 1px solid $background-color-darker;
+
+		a { 
+			color: $main-color-lighter; 
+			font-size: 3.5em;
+			line-height: $base-line-height;
+			font-family: 'handwriting-draft_regular', Verdana, serif;
+			&:hover { color: $action-color; }
+		}
 	}
 }
 
@@ -165,15 +182,6 @@ nav {
 		position: relative;
 		width: $wrapper-width;
 		margin: 0 auto;
-	}
-
-	#search {
-		position: absolute;
-		top: ($base-line-height * 2) + $text-gutter;
-		right: 0;
-		border: none;
-		width: 100%;
-		text-align: right;
 	}
 
 	li {
@@ -235,6 +243,26 @@ footer {
 		float: right;
 	}
 }
+
+
+/* Login */
+.account-form {
+	@include form-base;
+
+	input[type="text"], input[type="password"] {
+		width: 14em;
+	}
+
+	.remember-me {
+		margin-bottom: $text-gutter;
+		font-size: 0.70em;
+
+		* {
+			vertical-align: middle;
+		}
+	}
+}
+
 
 
 /* Specific styles */
@@ -346,9 +374,7 @@ iframe.goodreads {
 
 /* Editing */
 .edit-form {
-	padding: $text-gutter * 2;
-	border: 1px solid $background-color-darker;
-	background-color: $background-color;
+	@include form-base;
 
 	div.field {
 		display: inline-block;	

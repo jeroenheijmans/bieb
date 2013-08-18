@@ -74,7 +74,7 @@ th {
   background-color: #eeeeee;
   text-align: left; }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
   padding: 0.125em 0.25em; }
 
 /* Custom text selection color */
@@ -110,19 +110,24 @@ input[type="text"] {
 header {
   width: 100%;
   position: absolute; }
-
-header .title {
-  margin: 3.5em auto;
-  padding: 1.5em 0 0.5em;
-  width: 61em;
-  border-bottom: 1px solid #eeeeee; }
-  header .title a {
-    color: #666666;
-    font-size: 3.5em;
-    line-height: 1.5em;
-    font-family: 'handwriting-draft_regular', Verdana, serif; }
-    header .title a:hover {
-      color: #ff0080; }
+  header .utilities {
+    margin: 3.2em auto;
+    width: 61em; }
+    header .utilities #account, header .utilities #search {
+      float: right;
+      margin-left: 1em; }
+  header .title {
+    margin: 4em auto;
+    padding: 1.5em 0 0.5em;
+    width: 61em;
+    border-bottom: 1px solid #eeeeee; }
+    header .title a {
+      color: #666666;
+      font-size: 3.5em;
+      line-height: 1.5em;
+      font-family: 'handwriting-draft_regular', Verdana, serif; }
+      header .title a:hover {
+        color: #ff0080; }
 
 /* Nav */
 nav {
@@ -135,13 +140,6 @@ nav {
     position: relative;
     width: 61em;
     margin: 0 auto; }
-  nav #search {
-    position: absolute;
-    top: 3.5em;
-    right: 0;
-    border: none;
-    width: 100%;
-    text-align: right; }
   nav li {
     position: relative;
     float: left;
@@ -182,6 +180,19 @@ footer {
     color: #ffd8ed; }
   footer #powered-by {
     float: right; }
+
+/* Login */
+.account-form {
+  padding: 1em;
+  border: 1px solid #eeeeee;
+  background-color: white; }
+  .account-form input[type="text"], .account-form input[type="password"] {
+    width: 14em; }
+  .account-form .remember-me {
+    margin-bottom: 0.5em;
+    font-size: 0.70em; }
+    .account-form .remember-me * {
+      vertical-align: middle; }
 
 /* Specific styles */
 table.stories {

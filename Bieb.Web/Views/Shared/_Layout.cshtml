@@ -10,9 +10,6 @@
 <body>
     
     <header>
-        <div class="title">
-            @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
-        </div>
         <nav>
             <ul id="menu">
                 <li>@Html.MenuLink("Home", "", "Home")</li>
@@ -21,9 +18,19 @@
                 <li>@Html.MenuLink("Series", "Index", "Series")</li>
                 <li>@Html.MenuLink("Publishers", "Index", "Publishers")</li>
                 <li>@Html.MenuLink("Surprise me!", "Index", "Surprise")</li>
-                <li id="search">@Html.Partial("_SearchBoxPartial")</li>
             </ul>
         </nav>
+        <div class="utilities">
+            <div id="search">
+                @Html.Partial("_SearchBoxPartial")
+            </div>
+            <div id="account">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        <div class="title">
+            @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
+        </div>
     </header>
 
     <div class="wrapper">
