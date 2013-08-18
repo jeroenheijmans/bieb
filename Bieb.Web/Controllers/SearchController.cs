@@ -69,6 +69,21 @@ namespace Bieb.Web.Controllers
                                 query = query
                             };
 
+            if (people.Count() == 1 && !books.Any() && !stories.Any())
+            {
+                return RedirectToAction("Details", "People", new { id = people.First().Id });
+            }
+
+            if (books.Count() == 1 && !people.Any() && !stories.Any())
+            {
+                return RedirectToAction("Details", "Books", new { id = books.First().Id });
+            }
+
+            if (stories.Count() == 1 && !people.Any() && !books.Any())
+            {
+                return RedirectToAction("Details", "Books", new { id = stories.First().Id });
+            }
+
             return View(model);
         }
     }
