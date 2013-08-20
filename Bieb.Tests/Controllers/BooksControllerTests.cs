@@ -39,9 +39,9 @@ namespace Bieb.Tests.Controllers
 
             var vresult = (ViewResult)result;
 
-            Assert.That(vresult.Model, Is.InstanceOf<PagedList<LibraryBook>>());
+            Assert.That(vresult.Model, Is.InstanceOf<PagedList<Book>>());
 
-            var libraryBookList = (PagedList<LibraryBook>)vresult.Model;
+            var libraryBookList = (PagedList<Book>)vresult.Model;
 
             Assert.That(libraryBookList[0], Is.EqualTo(libraryBook3));
             Assert.That(libraryBookList[1], Is.EqualTo(libraryBook2));
