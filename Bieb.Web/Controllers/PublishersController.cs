@@ -6,7 +6,7 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class PublishersController : EntityController<Publisher, PublisherModel>
+    public class PublishersController : EntityController<Publisher, EditPublisherModel>
     {
         public PublishersController(IEntityRepository<Publisher> repository)
             : base(repository)

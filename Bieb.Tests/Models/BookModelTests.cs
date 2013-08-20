@@ -17,7 +17,7 @@ namespace Bieb.Tests.Models
         {
             var book = new LibraryBook { Id = 42, ModifiedDate = DateTime.Now };
 
-            var model = new BookModel(book);
+            var model = new EditBookModel(book);
 
             Assert.That(model.Id, Is.EqualTo(book.Id));
             Assert.That(model.ModifiedDateTicks.HasValue);

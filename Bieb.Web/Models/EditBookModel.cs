@@ -7,12 +7,12 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class BookModel : BaseDomainObjectCrudModel<Book>
+    public class EditBookModel : EditEntityModel<Book>
     {
-        public BookModel() : base()
+        public EditBookModel() : base()
         { }
 
-        public BookModel(Book entity) : base(entity)
+        public EditBookModel(Book entity) : base(entity)
         {
             Isbn = entity.Isbn;
             IsbnLanguage = entity.IsbnLanguage;

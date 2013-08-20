@@ -12,7 +12,7 @@ namespace Bieb.Web.Controllers
 {
     public abstract class EntityController<TEntity, TViewModel> : BaseController 
         where TEntity : BaseEntity, new()
-        where TViewModel : BaseDomainObjectCrudModel<TEntity>, new()
+        where TViewModel : EditEntityModel<TEntity>, new()
     {
         protected int[] AvailablePageSizes = new[] { 10, 25, 50, 100 };
         protected int DefaultPageSize = 25;

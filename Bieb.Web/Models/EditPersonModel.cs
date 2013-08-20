@@ -8,12 +8,12 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class PersonModel : BaseDomainObjectCrudModel<Person>
+    public class EditPersonModel : EditEntityModel<Person>
     {
-        public PersonModel() : base() 
+        public EditPersonModel() : base() 
         { }
 
-        public PersonModel(Person entity) : base(entity)
+        public EditPersonModel(Person entity) : base(entity)
         {
             Title = entity.Title;
             FirstName = entity.FirstName;

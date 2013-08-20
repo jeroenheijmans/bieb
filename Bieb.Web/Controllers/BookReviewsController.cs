@@ -5,7 +5,7 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class BookReviewsController : EntityController<Review<Book>, BookReviewModel> 
+    public class BookReviewsController : EntityController<Review<Book>, EditBookReviewModel> 
     {
         public BookReviewsController(IEntityRepository<Review<Book>> repository)
             : base(repository)

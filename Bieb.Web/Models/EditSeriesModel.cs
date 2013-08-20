@@ -8,12 +8,12 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class SeriesModel : BaseDomainObjectCrudModel<Series>
+    public class EditSeriesModel : EditEntityModel<Series>
     {
-        public SeriesModel() : base()
+        public EditSeriesModel() : base()
         { }
 
-        public SeriesModel(Series entity) : base(entity)
+        public EditSeriesModel(Series entity) : base(entity)
         {
             Title = entity.Title;
             Subtitle = entity.Subtitle;

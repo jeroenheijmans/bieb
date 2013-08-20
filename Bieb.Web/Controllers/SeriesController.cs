@@ -5,7 +5,7 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class SeriesController : EntityController<Series, SeriesModel>
+    public class SeriesController : EntityController<Series, EditSeriesModel>
     {
         public SeriesController(IEntityRepository<Series> repository)
             : base(repository)

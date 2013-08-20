@@ -8,7 +8,7 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class BooksController : EntityController<Book, BookModel>
+    public class BooksController : EntityController<Book, EditBookModel>
     {
         public BooksController(IEntityRepository<Book> repository)
             : base(repository)

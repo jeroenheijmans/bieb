@@ -6,7 +6,7 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class StoriesController : EntityController<Story, StoryModel>
+    public class StoriesController : EntityController<Story, EditStoryModel>
     {
         public StoriesController(IEntityRepository<Story> repository)
             : base(repository)

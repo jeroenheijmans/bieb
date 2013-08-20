@@ -6,9 +6,9 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class PersonReviewModel : BaseDomainObjectCrudModel<Review<Person>>
+    public class EditStoryModel : EditEntityModel<Story>
     {
-        protected override Review<Person> MergeWithEntitySpecifics(Review<Person> existingEntity)
+        protected override Story MergeWithEntitySpecifics(Story existingEntity)
         {
             throw new NotImplementedException();
         }

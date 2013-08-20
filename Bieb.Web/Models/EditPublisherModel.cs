@@ -7,12 +7,12 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public class PublisherModel : BaseDomainObjectCrudModel<Publisher>
+    public class EditPublisherModel : EditEntityModel<Publisher>
     {
-        public PublisherModel() : base()
+        public EditPublisherModel() : base()
         { }
 
-        public PublisherModel(Publisher entity) : base(entity)
+        public EditPublisherModel(Publisher entity) : base(entity)
         {
             Name = entity.Name;
         }

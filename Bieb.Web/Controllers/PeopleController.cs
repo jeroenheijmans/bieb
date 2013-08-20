@@ -10,7 +10,7 @@ using Bieb.Web.Models;
 
 namespace Bieb.Web.Controllers
 {
-    public class PeopleController : EntityController<Person, PersonModel>
+    public class PeopleController : EntityController<Person, EditPersonModel>
     {
         private const int MaxNumberOfBirthDates = 5;
 

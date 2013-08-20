@@ -84,15 +84,15 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<BookModel>());
-            Assert.That(((BookModel)vResult.Model).Id, Is.EqualTo(0));
+            Assert.That(vResult.Model, Is.InstanceOf<EditBookModel>());
+            Assert.That(((EditBookModel)vResult.Model).Id, Is.EqualTo(0));
         }
 
 
         [Test]
         public void Can_Create_New_Item()
         {
-            var newBookModel = new BookModel();
+            var newBookModel = new EditBookModel();
 
             var result = booksController.Create(newBookModel);
 
@@ -195,7 +195,7 @@ namespace Bieb.Tests.Controllers
         public void Save_Action_Will_Call_NotifyChanges_In_Repository()
         {
             var person = new Person();
-            var viewModel = new PersonModel(person);
+            var viewModel = new EditPersonModel(person);
             var mock = new Mock<IEntityRepository<Person>>();
             var controller = new PeopleController(mock.Object);
 
@@ -213,7 +213,7 @@ namespace Bieb.Tests.Controllers
             var mock = new Mock<IEntityRepository<Person>>();
             var controller = new PeopleController(mock.Object);
             var person = new Person { Id = 1 };
-            var viewModel = new PersonModel(person);
+            var viewModel = new EditPersonModel(person);
             mock.Setup(repo => repo.GetItem(1)).Returns(person);
 
             var result = controller.Save(viewModel);
@@ -229,7 +229,7 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Save_Action_Will_Redirect_To_Details_For_New_Item()
         {
-            var model = new BookModel {Id = 0};
+            var model = new EditBookModel {Id = 0};
 
             var result = booksController.Save(model);
 
