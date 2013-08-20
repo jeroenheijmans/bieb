@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <ul id="menu">
+                <li>@Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")</li>
+                <li>@Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")</li>
+            </ul>
+        </nav>
+        <div class="utilities">
+            <div id="search">
+                @Html.Partial("_SearchBoxPartial")
+            </div>
+            <div id="account">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        <div class="title">
+            @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <section id="main">
+            @RenderBody()
+        </section>
+    </div>
+
+    <footer>
+        <p>
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.About, "About", "Home")</span>
+            |
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.Disclaimer, "Disclaimer", "Home")</span>
+            |
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.SiteMap, "SiteMap", "Home")</span>
+            
+            <span id="powered-by">@BiebResources.SharedStrings.PoweredBy <a href="http://bieb.codeplex.com" target="_blank">bieb.codeplex.com</a></span>
+        </p>
+        <hr />
+    </footer>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

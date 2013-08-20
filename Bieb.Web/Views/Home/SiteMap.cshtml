@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "SiteMap";
+}
+
+<h1>@BiebResources.HomeStrings.SiteMap</h1>
+
+<p>@BiebResources.HomeStrings.SiteMapIntro</p>
+
+<dl>
+    <dt>@Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")</dt>
+    <dd>@BiebResources.SharedStrings.HomeMenuItemDescription</dd>
+    
+    <dt>@Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")</dt>
+    <dd>@BiebResources.SharedStrings.PeopleMenuItemDescription</dd>
+    
+    <dt>@Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")</dt>
+    <dd>@BiebResources.SharedStrings.BooksMenuItemDescription</dd>
+    
+    <dt>@Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")</dt>
+    <dd>@BiebResources.SharedStrings.SeriesMenuItemDescription</dd>
+    
+    <dt>@Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")</dt>
+    <dd>@BiebResources.SharedStrings.PublishersMenuItemDescription</dd>
+    
+    <dt>@Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")</dt>
+    <dd>@BiebResources.SharedStrings.SurpriseMeMenuItemDescription</dd>
+</dl>

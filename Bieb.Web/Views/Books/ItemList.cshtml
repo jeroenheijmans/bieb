@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Bieb.Domain.Entities.Book>
+
+<ul>
+@foreach (var book in Model) 
+{
+    <li>
+        <h6>@Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })</h6>
+                
+        <span>@book.BookType</span>
+
+        @if (!string.IsNullOrWhiteSpace(book.Isbn))
+        {
+            <span>, @BiebResources.SharedStrings.Isbn: @book.Isbn</span>
+        }
+    </li>
+}
+</ul>

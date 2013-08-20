@@ -1,0 +1,32 @@
+﻿@model Bieb.Web.Models.RegisterModel
+
+@{
+    ViewBag.Title = BiebResources.AccountStrings.RegisterTitle;
+}
+
+@* TODO: Localize the placeholder texts *@
+
+<div class="account-form">
+
+    @using (Html.BeginForm("Register"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <div class="register">
+            <h4>@BiebResources.AccountStrings.RegisterHeader</h4>
+
+            <div class="username">
+                @Html.TextBoxFor(m => m.NewUserName, new { placeholder = "username" })
+            </div>
+            <div class="password">
+                @Html.PasswordFor(m => m.NewPassword, new { placeholder = "password" })
+            </div>
+            <div class="confirm-password">
+                @Html.PasswordFor(m => m.ConfirmNewPassword, new { placeholder = "confirm password" })
+            </div>
+
+            <input type="submit" value="Register" />
+        </div>
+    }
+</div>

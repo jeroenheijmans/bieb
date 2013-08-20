@@ -1,0 +1,67 @@
+﻿@model Bieb.Web.Models.EditBookModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<h1>@Model.Title</h1>
+
+@using (Html.BeginForm("Save", "Books")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="edit-form book">
+        <section id="book-main-data">
+            <div class="field">
+                @Html.EditorFor(model => model.Title)
+                @Html.LabelFor(model => model.Title)
+            </div>
+            <div class="field">
+                @Html.EditorFor(model => model.Subtitle)
+                @Html.LabelFor(model => model.Subtitle)
+            </div>
+        </section>
+
+        <section id="book-publishing-data">
+            <div class="field">
+                @*TODO: This should be a drop down list with option to add a new Publisher*@
+                <select disabled id="Publisher"><option>@Html.Raw(Model.Publisher == null ? "" : Model.Publisher.Name)</option></select>
+                @Html.LabelFor(model => model.Publisher)
+            </div>
+            <div class="field">
+                @Html.EditorFor(model => model.Year)
+                @Html.LabelFor(model => model.Year)
+            </div>
+        </section>
+
+        <section id="book-isbn-data">
+            <div class="field">
+                @Html.EditorFor(model => model.Isbn)
+                @Html.LabelFor(model => model.Isbn)
+            </div>
+            <div class="field">
+                @Html.EditorFor(model => model.IsbnLanguage)
+                @Html.LabelFor(model => model.IsbnLanguage)
+            </div>
+        </section>
+
+        <section id="book-status">
+            <div class="field">
+                @Html.DropDownListFor(model => model.LibraryStatus, new SelectList(Enum.GetValues(typeof(Bieb.Domain.Entities.LibraryStatus))))
+                @Html.LabelFor(model => model.LibraryStatus)
+            </div>
+        </section>
+        
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ModifiedDateTicks)
+        
+        @Html.ValidationSummary()
+
+        <p>
+            <input type="submit" value="@BiebResources.SharedStrings.Save" />
+        </p>
+    </div>
+}
