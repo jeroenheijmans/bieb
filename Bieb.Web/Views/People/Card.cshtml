@@ -3,7 +3,7 @@
 <div class="card">
     @if (User.Identity.IsAuthenticated)
     {
-        <span class="edit-link">@Html.ActionLink("Edit", "Edit", new {Model.Id})</span>
+        <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
     }
 
     <h1>
