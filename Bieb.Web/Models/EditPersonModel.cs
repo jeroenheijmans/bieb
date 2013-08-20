@@ -10,33 +10,6 @@ namespace Bieb.Web.Models
 {
     public class EditPersonModel : EditEntityModel<Person>
     {
-        public EditPersonModel() : base() 
-        { }
-
-        public EditPersonModel(Person entity) : base(entity)
-        {
-            Title = entity.Title;
-            FirstName = entity.FirstName;
-            Prefix = entity.Prefix;
-            Surname = entity.Surname;
-            
-            Gender = entity.Gender;
-            Nationality = entity.Nationality;
-
-            PlaceOfBirth = entity.PlaceOfBirth;
-            PlaceOfDeath = entity.PlaceOfDeath;
-
-            BirthDay = entity.DateOfBirth.Day;
-            BirthMonth = entity.DateOfBirth.Month;
-            BirthYear = entity.DateOfBirth.Year;
-
-            DeathDay = entity.DateOfDeath.Day;
-            DeathMonth = entity.DateOfDeath.Month;
-            DeathYear = entity.DateOfDeath.Year;
-
-            FullName = entity.FullName;
-        }
-
         public string FullName { get; set; }
 
         [Display(Name = "Gender", ResourceType = typeof(BiebResources.PeopleStrings))]
@@ -81,24 +54,5 @@ namespace Bieb.Web.Models
 
         [Display(Name = "Day", Prompt = "DayPlaceholder", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? BirthDay { get; set; }
-
-        protected override Person MergeWithEntitySpecifics(Person existingEntity)
-        {
-            existingEntity.Title = Title;
-            existingEntity.FirstName = FirstName;
-            existingEntity.Prefix = Prefix;
-            existingEntity.Surname = Surname;
-
-            existingEntity.Gender = Gender;
-            existingEntity.Nationality = Nationality;
-
-            existingEntity.PlaceOfBirth = PlaceOfBirth;
-            existingEntity.PlaceOfDeath = PlaceOfDeath;
-
-            existingEntity.DateOfBirth = new UncertainDate(BirthYear, BirthMonth, BirthDay);
-            existingEntity.DateOfDeath = new UncertainDate(DeathYear, DeathMonth, DeathDay);
-
-            return existingEntity;
-        }
     }
 }

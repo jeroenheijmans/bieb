@@ -8,8 +8,8 @@ namespace Bieb.Web.Controllers
 {
     public class PublishersController : EntityController<Publisher, EditPublisherModel>
     {
-        public PublishersController(IEntityRepository<Publisher> repository)
-            : base(repository)
+        public PublishersController(IEntityRepository<Publisher> repository, EditEntityModelMapper<Publisher, EditPublisherModel> editEntityModelMapper)
+            : base(repository, editEntityModelMapper)
         { }
         
         protected override System.Linq.Expressions.Expression<Func<Publisher, IComparable>> SortFunc

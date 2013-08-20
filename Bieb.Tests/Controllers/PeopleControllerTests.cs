@@ -24,7 +24,7 @@ namespace Bieb.Tests.Controllers
         public void SetUp()
         {
             repositoryMock = new Mock<IEntityRepository<Person>>();
-            controller = new PeopleController(repositoryMock.Object);
+            controller = new PeopleController(repositoryMock.Object, null);
         }
 
 

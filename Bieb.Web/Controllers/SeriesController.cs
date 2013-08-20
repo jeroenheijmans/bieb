@@ -7,11 +7,10 @@ namespace Bieb.Web.Controllers
 {
     public class SeriesController : EntityController<Series, EditSeriesModel>
     {
-        public SeriesController(IEntityRepository<Series> repository)
-            : base(repository)
+        public SeriesController(IEntityRepository<Series> repository, EditEntityModelMapper<Series, EditSeriesModel> editEntityModelMapper)
+            : base(repository, editEntityModelMapper)
         { }
-
-
+        
 
         protected override System.Linq.Expressions.Expression<Func<Series, IComparable>> SortFunc
         {
