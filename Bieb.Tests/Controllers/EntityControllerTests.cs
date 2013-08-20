@@ -84,20 +84,21 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<Book>());
-            Assert.That(((Book)vResult.Model).Id, Is.EqualTo(0));
+            Assert.That(vResult.Model, Is.InstanceOf<BookModel>());
+            Assert.That(((BookModel)vResult.Model).Id, Is.EqualTo(0));
         }
 
 
         [Test]
         public void Can_Create_New_Item()
         {
-            var result = booksController.Create(someBook);
+            var newBookModel = new BookModel();
+
+            var result = booksController.Create(newBookModel);
 
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
             var redirectResult = (RedirectToRouteResult)result;
             Assert.That(redirectResult.RouteValues.ContainsKey("id"));
-            Assert.That(redirectResult.RouteValues["id"], Is.Not.EqualTo(0));
         }
 
 
@@ -222,6 +223,19 @@ namespace Bieb.Tests.Controllers
             var redirectResult = (RedirectToRouteResult)result;
             Assert.That(redirectResult.RouteValues["action"], Is.EqualTo("Details"));
             Assert.That(redirectResult.RouteValues["id"], Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Save_Action_Will_Redirect_To_Details_For_New_Item()
+        {
+            var model = new BookModel {Id = 0};
+
+            var result = booksController.Save(model);
+
+            Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
+            var redirectResult = (RedirectToRouteResult)result;
+            Assert.That(redirectResult.RouteValues["action"], Is.EqualTo("Details"));
         }
 
 

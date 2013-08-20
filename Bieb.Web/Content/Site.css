@@ -206,6 +206,9 @@ footer {
 table.stories {
   width: 40em; }
 
+.edit-link {
+  float: right; }
+
 .card {
   width: 19em;
   position: relative;
@@ -223,8 +226,6 @@ table.stories {
     color: #ffd8ed; }
     .card a:hover {
       color: #ff0080; }
-  .card .edit-link {
-    float: right; }
 
 .cover {
   display: inline-block;

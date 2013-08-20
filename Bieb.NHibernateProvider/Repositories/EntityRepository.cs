@@ -22,8 +22,6 @@ namespace Bieb.NHibernateProvider.Repositories
 
         public T GetItem(int id)
         {
-            if (id == 0) throw new ArgumentException("GetItem of id 0 will not yield any results.");
-
             return CurrentSession.Get<T>(id);
         }
 

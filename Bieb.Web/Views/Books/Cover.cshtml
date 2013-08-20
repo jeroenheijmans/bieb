@@ -5,7 +5,10 @@
 <div class="cover">
     <div class="back">
         <p class="publisher">
-            @Model.Publisher.Name
+            @if (Model.Publisher != null)
+            {
+                @Model.Publisher.Name
+            }
         </p>
     </div>
     <div class="front">

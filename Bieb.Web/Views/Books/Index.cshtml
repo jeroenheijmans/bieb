@@ -4,6 +4,12 @@
     ViewBag.Title = "All Books";
 }
 
+
+@if (User.Identity.IsAuthenticated)
+{
+    <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")</span>
+}
+
 <p>@BiebResources.BookStrings.IndexIntroduction</p>
 
 <table class="listing">
