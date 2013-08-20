@@ -81,15 +81,17 @@ namespace Bieb.Web.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            return View(new TEntity());
+            var model = GetEditViewModel(new TEntity());
+            return View("Edit", model);
         }
 
 
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TEntity item)
+        public ActionResult Create(TViewModel model)
         {
+            var item = model.MergeWithEntity(new TEntity());
             Repository.Add(item);
             return RedirectToAction("Details", new { id = item.Id });
         }
@@ -105,8 +107,13 @@ namespace Bieb.Web.Controllers
                 return PageNotFound();
             }
 
-            var model = Activator.CreateInstance(typeof(TViewModel), new object[] { item });
+            var model = GetEditViewModel(item);
             return View(model);
+        }
+
+        private static object GetEditViewModel(TEntity entity)
+        {
+            return Activator.CreateInstance(typeof(TViewModel), new object[] { entity });
         }
 
 
@@ -114,15 +121,26 @@ namespace Bieb.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(TViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var existingEntity = Repository.GetItem(model.Id);
-                var entity = model.MergeWithEntity(existingEntity);
-                Repository.NotifyItemWasChanged(entity);
-                return RedirectToAction("Details", new { id = entity.Id });
+                return View("Edit", model);
             }
+            
+            var existingEntity = Repository.GetItem(model.Id);
 
-            return View("Edit", model);
+            if (existingEntity == null)
+            {
+                return Create(model);
+            }
+         
+            return SaveExistingEntity(model, existingEntity);
+        }
+
+        private ActionResult SaveExistingEntity(TViewModel model, TEntity existingEntity)
+        {
+            var entity = model.MergeWithEntity(existingEntity);
+            Repository.NotifyItemWasChanged(entity);
+            return RedirectToAction("Details", new {id = entity.Id});
         }
     }
 }

@@ -284,6 +284,10 @@ table.stories {
 	width: $wrapper-width - $gutter - $card-width;
 }
 
+.edit-link {
+	float: right;
+}
+
 .card {
 	width: $card-width;
 	position: relative;
@@ -299,10 +303,6 @@ table.stories {
 	a {
 		color: $inverted-action-color;
 		&:hover { color: $action-color; }
-	}
-
-	.edit-link {
-		float: right;
 	}
 }
 
