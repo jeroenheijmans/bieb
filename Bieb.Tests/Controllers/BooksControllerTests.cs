@@ -22,7 +22,7 @@ namespace Bieb.Tests.Controllers
         public void SetUp()
         {
             repositoryMock = new Mock<IEntityRepository<Book>>();
-            controller = new BooksController(repositoryMock.Object);
+            controller = new BooksController(repositoryMock.Object, null);
         }
 
 

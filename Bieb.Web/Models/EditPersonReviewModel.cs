@@ -8,9 +8,5 @@ namespace Bieb.Web.Models
 {
     public class EditPersonReviewModel : EditEntityModel<Review<Person>>
     {
-        protected override Review<Person> MergeWithEntitySpecifics(Review<Person> existingEntity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

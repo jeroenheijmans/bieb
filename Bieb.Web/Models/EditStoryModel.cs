@@ -8,9 +8,5 @@ namespace Bieb.Web.Models
 {
     public class EditStoryModel : EditEntityModel<Story>
     {
-        protected override Story MergeWithEntitySpecifics(Story existingEntity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -9,20 +9,6 @@ namespace Bieb.Web.Models
 {
     public class EditBookModel : EditEntityModel<Book>
     {
-        public EditBookModel() : base()
-        { }
-
-        public EditBookModel(Book entity) : base(entity)
-        {
-            Isbn = entity.Isbn;
-            IsbnLanguage = entity.IsbnLanguage;
-            Title = entity.Title;
-            Subtitle = entity.Subtitle;
-            Year = entity.Year;
-            LibraryStatus = entity.LibraryStatus;
-            Publisher = entity.Publisher;
-        }
-
         [Display(Name = "Isbn", Prompt = "IsbnPlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
         public string Isbn { get; set; }
 
@@ -43,18 +29,5 @@ namespace Bieb.Web.Models
 
         [Display(Name = "PublishedBy", ResourceType = typeof(BiebResources.BookStrings))]
         public Publisher Publisher { get; set; }
-
-        protected override Book MergeWithEntitySpecifics(Book existingEntity)
-        {
-            existingEntity.Isbn = Isbn;
-            existingEntity.IsbnLanguage = IsbnLanguage;
-            existingEntity.Title = Title;
-            existingEntity.Subtitle = Subtitle;
-            existingEntity.Year = Year;
-            existingEntity.LibraryStatus = LibraryStatus;
-            // existingEntity.Publisher = Publisher; // TODO
-
-            return existingEntity;
-        }
     }
 }

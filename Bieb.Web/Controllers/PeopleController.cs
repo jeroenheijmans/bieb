@@ -14,8 +14,8 @@ namespace Bieb.Web.Controllers
     {
         private const int MaxNumberOfBirthDates = 5;
 
-        public PeopleController(IEntityRepository<Person> repository)
-            : base(repository)
+        public PeopleController(IEntityRepository<Person> repository, EditEntityModelMapper<Person, EditPersonModel> editEntityModelMapper)
+            : base(repository, editEntityModelMapper)
         { }
         
         protected override System.Linq.Expressions.Expression<Func<Person, IComparable>> SortFunc

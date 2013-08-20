@@ -8,8 +8,8 @@ namespace Bieb.Web.Controllers
 {
     public class StoriesController : EntityController<Story, EditStoryModel>
     {
-        public StoriesController(IEntityRepository<Story> repository)
-            : base(repository)
+        public StoriesController(IEntityRepository<Story> repository, EditEntityModelMapper<Story, EditStoryModel> editEntityModelMapper)
+            : base(repository, editEntityModelMapper)
         { }
 
         public override ActionResult Index(int pageSize = 25, int page = 1)

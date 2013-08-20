@@ -24,6 +24,8 @@ namespace Bieb.Tests.Controllers
         private Mock<HttpResponseBase> responseMock;
         private BooksController booksController;
 
+        private EditBookModelMapper editBookModelMapper;
+
         private LibraryBook someBook;
         private LibraryBook otherBook;
         
@@ -33,7 +35,8 @@ namespace Bieb.Tests.Controllers
         {
             bookRepositoryMock = new Mock<IEntityRepository<Book>>();
             responseMock = new Mock<HttpResponseBase>();
-            booksController = new BooksController(bookRepositoryMock.Object, responseMock.Object);
+            editBookModelMapper = new EditBookModelMapper();
+            booksController = new BooksController(bookRepositoryMock.Object, editBookModelMapper, responseMock.Object);
 
             someBook = new LibraryBook
             {
@@ -194,14 +197,16 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Save_Action_Will_Call_NotifyChanges_In_Repository()
         {
-            var person = new Person();
-            var viewModel = new EditPersonModel(person);
+            var person = new Person { Id = 42, ModifiedDate = DateTime.Now };
+            var mapper = new EditPersonModelMapper();
+            var model = mapper.ModelFromEntity(person);
+
             var mock = new Mock<IEntityRepository<Person>>();
-            var controller = new PeopleController(mock.Object);
+            var controller = new PeopleController(mock.Object, mapper);
 
-            mock.Setup(repo => repo.GetItem(0)).Returns(person);
+            mock.Setup(repo => repo.GetItem(person.Id)).Returns(person);
 
-            controller.Save(viewModel);
+            controller.Save(model);
 
             mock.Verify(repo => repo.NotifyItemWasChanged(person));
         }
@@ -211,12 +216,15 @@ namespace Bieb.Tests.Controllers
         public void Save_Action_Will_Redirect_To_Details_Action()
         {
             var mock = new Mock<IEntityRepository<Person>>();
-            var controller = new PeopleController(mock.Object);
+            var mapper = new EditPersonModelMapper();
+            var controller = new PeopleController(mock.Object, mapper);
+
             var person = new Person { Id = 1 };
-            var viewModel = new EditPersonModel(person);
+            var model = mapper.ModelFromEntity(person);
+            
             mock.Setup(repo => repo.GetItem(1)).Returns(person);
 
-            var result = controller.Save(viewModel);
+            var result = controller.Save(model);
 
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());

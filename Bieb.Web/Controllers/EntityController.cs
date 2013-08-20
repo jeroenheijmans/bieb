@@ -17,18 +17,21 @@ namespace Bieb.Web.Controllers
         protected int[] AvailablePageSizes = new[] { 10, 25, 50, 100 };
         protected int DefaultPageSize = 25;
         protected IEntityRepository<TEntity> Repository { get; set; }
+        protected EditEntityModelMapper<TEntity, TViewModel> EditEntityModelMapper { get; set; }
 
 
-        protected EntityController(IEntityRepository<TEntity> repository)
+        protected EntityController(IEntityRepository<TEntity> repository, EditEntityModelMapper<TEntity, TViewModel> editEntityModelMapper)
             : base(null)
         {
             this.Repository = repository;
+            this.EditEntityModelMapper = editEntityModelMapper;
         }
 
-        protected EntityController(IEntityRepository<TEntity> repository, HttpResponseBase customResponse)
+        protected EntityController(IEntityRepository<TEntity> repository, EditEntityModelMapper<TEntity, TViewModel> editEntityModelMapper, HttpResponseBase customResponse)
             : base(customResponse)
         {
             this.Repository = repository;
+            this.EditEntityModelMapper = editEntityModelMapper;
         }
         
 
@@ -81,7 +84,7 @@ namespace Bieb.Web.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            var model = GetEditViewModel(new TEntity());
+            var model = EditEntityModelMapper.ModelFromEntity(new TEntity());
             return View("Edit", model);
         }
 
@@ -91,9 +94,10 @@ namespace Bieb.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TViewModel model)
         {
-            var item = model.MergeWithEntity(new TEntity());
-            Repository.Add(item);
-            return RedirectToAction("Details", new { id = item.Id });
+            var entity = new TEntity();
+            EditEntityModelMapper.MergeEntityWithModel(entity, model);
+            Repository.Add(entity);
+            return RedirectToAction("Details", new { id = entity.Id });
         }
 
 
@@ -107,13 +111,8 @@ namespace Bieb.Web.Controllers
                 return PageNotFound();
             }
 
-            var model = GetEditViewModel(item);
+            var model = EditEntityModelMapper.ModelFromEntity(item);
             return View(model);
-        }
-
-        private static object GetEditViewModel(TEntity entity)
-        {
-            return Activator.CreateInstance(typeof(TViewModel), new object[] { entity });
         }
 
 
@@ -138,9 +137,9 @@ namespace Bieb.Web.Controllers
 
         private ActionResult SaveExistingEntity(TViewModel model, TEntity existingEntity)
         {
-            var entity = model.MergeWithEntity(existingEntity);
-            Repository.NotifyItemWasChanged(entity);
-            return RedirectToAction("Details", new {id = entity.Id});
+            EditEntityModelMapper.MergeEntityWithModel(existingEntity, model);
+            Repository.NotifyItemWasChanged(existingEntity);
+            return RedirectToAction("Details", new { id = existingEntity.Id });
         }
     }
 }
