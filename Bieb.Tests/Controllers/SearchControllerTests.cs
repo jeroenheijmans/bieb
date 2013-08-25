@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Web.Mvc;
+using Bieb.Tests.Mocks;
 using NUnit.Framework;
 using Moq;
 using Bieb.Domain.Entities;
@@ -12,19 +13,20 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class SearchControllerTests
     {
-        private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
-        private Mock<IEntityRepository<Person>> peopleRepositoryMock;
-        private Mock<IEntityRepository<Story>> storyRepositoryMock;
+        private IEntityRepository<LibraryBook> bookRepository;
+        private IEntityRepository<Person> peopleRepository;
+        private IEntityRepository<Story> storyRepository;
         private SearchController controller;
 
 
         [SetUp]
         public void SetUp()
         {
-            bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
-            peopleRepositoryMock = new Mock<IEntityRepository<Person>>();
-            storyRepositoryMock = new Mock<IEntityRepository<Story>>();
-            controller = new SearchController(peopleRepositoryMock.Object, bookRepositoryMock.Object, storyRepositoryMock.Object);
+            peopleRepository = new RepositoryMock<Person>();
+            bookRepository = new RepositoryMock<LibraryBook>();
+            storyRepository = new RepositoryMock<Story>();
+
+            controller = new SearchController(peopleRepository, bookRepository, storyRepository);
         }
 
 
@@ -35,9 +37,9 @@ namespace Bieb.Tests.Controllers
             var markmanship = new LibraryBook { Title = "Markmanship" };
             var martinTheEarthling = new LibraryBook { Title = "Martin the Earthling" };
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(new[] { markTheMartian, martinTheEarthling, markmanship }.AsQueryable());
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new Person[] {}.AsQueryable());
-            storyRepositoryMock.Setup(repo => repo.Items).Returns(new Story[] {}.AsQueryable());
+            bookRepository.Add(markTheMartian);
+            bookRepository.Add(martinTheEarthling);
+            bookRepository.Add(markmanship);
 
             var result = (ViewResult)controller.Basic("Mark");
             var searchResults = (BasicSearchResultModel)result.Model;
@@ -54,9 +56,8 @@ namespace Bieb.Tests.Controllers
             var aldiss = new Person { FirstName = "Brian", Surname = "Aldiss" };
             var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new[] { aldiss, asimov }.AsQueryable());
-            storyRepositoryMock.Setup(repo => repo.Items).Returns(new Story[] { }.AsQueryable());
+            peopleRepository.Add(aldiss);
+            peopleRepository.Add(asimov);
 
             var result = (ViewResult)controller.Basic("is");
 
@@ -78,9 +79,9 @@ namespace Bieb.Tests.Controllers
             bundle.Stories.Add(0, story1);
             bundle.Stories.Add(1, story2);
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
-            storyRepositoryMock.Setup(repo => repo.Items).Returns(new[] { story1, story2, story3 }.AsQueryable());
+            storyRepository.Add(story1);
+            storyRepository.Add(story2);
+            storyRepository.Add(story3);
 
 
             var result = (ViewResult)controller.Basic("ever");
@@ -99,9 +100,7 @@ namespace Bieb.Tests.Controllers
             var story = new Story { Title = "Best book ever", Book = novel };
             novel.Stories.Add(0, story);
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
-            storyRepositoryMock.Setup(repo => repo.Items).Returns(new[] { story }.AsQueryable());
+            storyRepository.Add(story);
 
             var result = (ViewResult)controller.Basic("ever");
             
@@ -115,9 +114,7 @@ namespace Bieb.Tests.Controllers
         {
             var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new[] { asimov }.AsQueryable());
-            storyRepositoryMock.Setup(repo => repo.Items).Returns(new Story[] { }.AsQueryable());
+            peopleRepository.Add(asimov);
 
             var result = (RedirectToRouteResult)controller.Basic("asimov");
 
@@ -131,9 +128,7 @@ namespace Bieb.Tests.Controllers
         {
             var markTheMartian = new LibraryBook { Title = "Mark the Martian" };
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(new[] { markTheMartian }.AsQueryable());
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
-            storyRepositoryMock.Setup(repo => repo.Items).Returns(new Story[] { }.AsQueryable());
+            bookRepository.Add(markTheMartian);
 
             var result = (RedirectToRouteResult)controller.Basic("Mark");
 
@@ -151,9 +146,8 @@ namespace Bieb.Tests.Controllers
             bundle.Stories.Add(0, story1);
             bundle.Stories.Add(1, story2);
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(new LibraryBook[] { }.AsQueryable());
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns(new Person[] { }.AsQueryable());
-            storyRepositoryMock.Setup(repo => repo.Items).Returns(new[] { story1, story2 }.AsQueryable());
+            storyRepository.Add(story1);
+            storyRepository.Add(story2);
 
             var result = (RedirectToRouteResult)controller.Basic("ever");
 
