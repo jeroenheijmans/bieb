@@ -14,18 +14,22 @@
     @Html.AntiForgeryToken()
     
     <div class="edit-form book">
-        <section id="book-main-data">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.BookStrings.Title</div>
             <div class="field">
                 @Html.EditorFor(model => model.Title)
-                @Html.LabelFor(model => model.Title)
-            </div>
-            <div class="field">
-                @Html.EditorFor(model => model.Subtitle)
-                @Html.LabelFor(model => model.Subtitle)
             </div>
         </section>
 
-        <section id="book-publishing-data">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.BookStrings.Subtitle</div>
+            <div class="field">
+                @Html.EditorFor(model => model.Subtitle)
+            </div>
+        </section>
+
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.BookStrings.Published</div>
             <div class="field">
                 @Html.DropDownListFor(model => model.PublisherId, Model.AvailablePublishers)
                 @Html.LabelFor(model => model.PublisherId)
@@ -36,7 +40,8 @@
             </div>
         </section>
 
-        <section id="book-isbn-data">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.BookStrings.Isbn</div>
             <div class="field">
                 @Html.EditorFor(model => model.Isbn)
                 @Html.LabelFor(model => model.Isbn)
@@ -47,10 +52,10 @@
             </div>
         </section>
 
-        <section id="book-status">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.BookStrings.LibraryStatus</div>
             <div class="field">
                 @Html.DropDownListFor(model => model.LibraryStatus, new SelectList(Enum.GetValues(typeof(Bieb.Domain.Entities.LibraryStatus))))
-                @Html.LabelFor(model => model.LibraryStatus)
             </div>
         </section>
         
@@ -58,9 +63,9 @@
         @Html.HiddenFor(model => model.ModifiedDateTicks)
         
         @Html.ValidationSummary()
-
-        <p>
+        
+        <div class="form-actions">
             <input type="submit" value="@BiebResources.SharedStrings.Save" />
-        </p>
+        </div>
     </div>
 }

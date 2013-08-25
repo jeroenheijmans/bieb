@@ -13,6 +13,7 @@ $footer-height: 1.5em;
 $base-line-height: 1.5em;
 $gutter: 2em;
 $text-gutter: 0.5em;
+$form-group-label-width: 10em;
 
 $card-width: ($wrapper-width - (2 * $gutter)) / 3;
 
@@ -428,6 +429,14 @@ iframe.goodreads {
 .edit-form {
 	@include form-base;
 
+	.field-group-label {
+		display: inline-block;
+		text-align: right;
+		vertical-align: top;
+		padding-right: $text-gutter;
+		width: $form-group-label-width;
+	}
+
 	div.field {
 		display: inline-block;	
 	}
@@ -438,6 +447,11 @@ iframe.goodreads {
 		font-size: 0.6em;
 		line-height: 1.5em;
 		color: $main-color-lighter;
+	}
+
+	.form-actions {
+		margin-top: $gutter;
+		margin-left: $form-group-label-width;
 	}
 }
 
