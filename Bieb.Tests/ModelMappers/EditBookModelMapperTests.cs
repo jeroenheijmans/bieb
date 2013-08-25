@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using Bieb.Tests.Mocks;
 using Bieb.Web.Models;
-using Moq;
 using NUnit.Framework;
 
 namespace Bieb.Tests.ModelMappers
@@ -15,8 +14,7 @@ namespace Bieb.Tests.ModelMappers
     public class EditBookModelMapperTests
     {
         private Publisher somePublisher;
-        private IList<Publisher> publishers; 
-        private Mock<IEntityRepository<Publisher>> publishersMock;
+        private IEntityRepository<Publisher> publishers;
         private EditBookModelMapper mapper;
 
         
@@ -24,10 +22,8 @@ namespace Bieb.Tests.ModelMappers
         public void SetUp()
         {
             somePublisher = new Publisher { Id = 42, Name = "Penguin Books" };
-            publishersMock = new Mock<IEntityRepository<Publisher>>();
-            publishers = new List<Publisher>();
-            publishersMock.Setup(p => p.Items).Returns(publishers.AsQueryable);
-            mapper = new EditBookModelMapper(publishersMock.Object);
+            publishers = new RepositoryMock<Publisher>();
+            mapper = new EditBookModelMapper(publishers);
         }
 
 

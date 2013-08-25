@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
 using Bieb.Web.Models;
 using Moq;
@@ -19,7 +20,7 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class EntityControllerTests
     {
-        private Mock<IEntityRepository<Book>> bookRepositoryMock;
+        private IEntityRepository<Book> bookRepository;
 
         private Mock<HttpResponseBase> responseMock;
         private BooksController booksController;
@@ -27,7 +28,7 @@ namespace Bieb.Tests.Controllers
         private EditBookModelMapper editBookModelMapper;
 
         private IList<Publisher> publishers;
-        private Mock<IEntityRepository<Publisher>> publishersMock;
+        private IEntityRepository<Publisher> publishersRepository;
 
         private LibraryBook someBook;
         private LibraryBook otherBook;
@@ -36,13 +37,14 @@ namespace Bieb.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            bookRepositoryMock = new Mock<IEntityRepository<Book>>();
+            bookRepository = new RepositoryMock<Book>();
+
             responseMock = new Mock<HttpResponseBase>();
-            publishersMock = new Mock<IEntityRepository<Publisher>>();
-            publishers = new List<Publisher>();
-            publishersMock.Setup(p => p.Items).Returns(publishers.AsQueryable);
-            editBookModelMapper = new EditBookModelMapper(publishersMock.Object);
-            booksController = new BooksController(bookRepositoryMock.Object, editBookModelMapper, responseMock.Object);
+
+            publishersRepository = new RepositoryMock<Publisher>();
+            editBookModelMapper = new EditBookModelMapper(publishersRepository);
+
+            booksController = new BooksController(bookRepository, editBookModelMapper, responseMock.Object);
 
             someBook = new LibraryBook
             {
@@ -61,7 +63,7 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Can_Get_Item_Details()
         {
-            bookRepositoryMock.Setup(repo => repo.GetItem(It.IsAny<int>())).Returns(() => someBook);
+            bookRepository.Add(someBook);
 
             var result = booksController.Details(someBook.Id);
 
@@ -75,7 +77,9 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Can_List_All_Items()
         {
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(Enumerable.Repeat(someBook, 3).AsQueryable());
+            bookRepository.Add(someBook);
+            bookRepository.Add(someBook);
+            bookRepository.Add(someBook);
 
             var result = booksController.Index();
 
@@ -114,7 +118,10 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Index_Will_Have_Default_Page_Size_Of_25_On_PageNumber_1()
         {
-            bookRepositoryMock.Setup(repo => repo.Items).Returns(Enumerable.Repeat(new LibraryBook(), 100).AsQueryable());
+            for (int i = 0; i < 100; i++)
+            {
+                bookRepository.Add(new LibraryBook());
+            }
 
             var result = booksController.Index();
 
@@ -145,7 +152,8 @@ namespace Bieb.Tests.Controllers
             otherBook.Id = 2;
             otherBook.CreatedDate = insertionDateEarly;
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns((new[] { someBook, otherBook }).AsQueryable());
+            bookRepository.Add(someBook);
+            bookRepository.Add(otherBook);
 
             var result = booksController.RecentlyAdded();
 
@@ -169,7 +177,8 @@ namespace Bieb.Tests.Controllers
             var libraryBook1 = new LibraryBook { Title = "Zoltan the Great", Id = 1, CreatedDate = bulkInsertDate };
             var libraryBook2 = new LibraryBook { Title = "Middle-man", Id = 2, CreatedDate = bulkInsertDate };
 
-            bookRepositoryMock.Setup(repo => repo.Items).Returns((new[] { libraryBook1, libraryBook2 }).AsQueryable());
+            bookRepository.Add(libraryBook1);
+            bookRepository.Add(libraryBook2);
 
             var result = booksController.RecentlyAdded();
             Assert.That(result, Is.Not.Null);
@@ -188,8 +197,6 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void RecentlyAdded_Action_Will_Return_Null_If_Repository_Is_Empty()
         {
-            bookRepositoryMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
-
             var result = booksController.RecentlyAdded();
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<PartialViewResult>());

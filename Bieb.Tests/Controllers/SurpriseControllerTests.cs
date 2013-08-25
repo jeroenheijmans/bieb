@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
 using Moq;
 using NUnit.Framework;
@@ -14,8 +15,8 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class SurpriseControllerTests
     {
-        private Mock<IEntityRepository<LibraryBook>> bookRepositoryMock;
-        private Mock<IEntityRepository<Person>> peopleRepositoryMock;
+        private IEntityRepository<LibraryBook> bookRepository;
+        private IEntityRepository<Person> peopleRepository;
         private SurpriseController controller;
         private LibraryBook testBook;
         private Person testPerson;
@@ -24,9 +25,10 @@ namespace Bieb.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            bookRepositoryMock = new Mock<IEntityRepository<LibraryBook>>();
-            peopleRepositoryMock = new Mock<IEntityRepository<Person>>();
-            controller = new SurpriseController(peopleRepositoryMock.Object, bookRepositoryMock.Object);
+            peopleRepository = new RepositoryMock<Person>();
+            bookRepository = new RepositoryMock<LibraryBook>();
+
+            controller = new SurpriseController(peopleRepository, bookRepository);
             testBook = new LibraryBook();
             testPerson = new Person();
         }
@@ -35,21 +37,17 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Index_Will_Redirect_To_Empty_Database_Page_If_No_Books_In_Database()
         {
-            bookRepositoryMock.Setup(repo => repo.Items).Returns((new LibraryBook[] { }).AsQueryable());
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns((new Person[] { }).AsQueryable());
-
             ActionResult result = controller.Index();
 
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
         }
 
+
         [Test]
         public void Index_Will_Redirect_To_Books_Controller_For_Surprise_Books()
         {
-            peopleRepositoryMock.Setup(repo => repo.Items).Returns((new [] { testPerson }).AsQueryable());
-            bookRepositoryMock.Setup(repo => repo.Items).Returns((new [] { testBook }).AsQueryable());
-
-            bookRepositoryMock.Setup(repo => repo.GetRandomItem()).Returns(testBook);
+            peopleRepository.Add(testPerson);
+            bookRepository.Add(testBook);
             
             var randomEntityPickerMock = new Mock<IRandomEntityPicker>();
             randomEntityPickerMock.Setup(picker => picker.GetRandomEntityType()).Returns(typeof(LibraryBook));

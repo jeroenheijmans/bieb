@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
-using Moq;
 using NUnit.Framework;
 using PagedList;
 
@@ -14,15 +14,15 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class BooksControllerTests
     {
-        private Mock<IEntityRepository<Book>> repositoryMock;
+        private IEntityRepository<Book> repository;
         private BooksController controller;
 
 
         [SetUp]
         public void SetUp()
         {
-            repositoryMock = new Mock<IEntityRepository<Book>>();
-            controller = new BooksController(repositoryMock.Object, null);
+            repository = new RepositoryMock<Book>();
+            controller = new BooksController(repository, null);
         }
 
 
@@ -32,8 +32,10 @@ namespace Bieb.Tests.Controllers
             var libraryBook1 = new LibraryBook { Title = "Zoltan the Great" };
             var libraryBook2 = new LibraryBook { Title = "Middle-man" };
             var libraryBook3 = new LibraryBook { Title = "Alpha came before Omega" };
-
-            repositoryMock.Setup(repo => repo.Items).Returns((new[] { libraryBook1, libraryBook2, libraryBook3 }).AsQueryable());
+            
+            repository.Add(libraryBook1);
+            repository.Add(libraryBook2);
+            repository.Add(libraryBook3);
 
             ActionResult result = controller.Index();
 
@@ -52,7 +54,8 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Index_Will_Only_Show_Library_Books()
         {
-            repositoryMock.Setup(repo => repo.Items).Returns((new Book[] { new LibraryBook(), new ReferenceBook() }).AsQueryable());
+            repository.Add(new LibraryBook());
+            repository.Add(new ReferenceBook());
 
             var result = (ViewResult) controller.Index();
             var books = result.Model as IEnumerable<Book>;
