@@ -14,14 +14,16 @@
     @Html.AntiForgeryToken()
 
     <div class="edit-form series">
-        <section id="series-title">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.SeriesStrings.Title</div>
             <div class="field">
                 @Html.EditorFor(model => model.Title)
-                @Html.LabelFor(model => model.Title)
             </div>
+        </section>
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.SeriesStrings.Subtitle</div>
             <div class="field">
                 @Html.EditorFor(model => model.Subtitle)
-                @Html.LabelFor(model => model.Subtitle)
             </div>
         </section>
 
@@ -29,9 +31,9 @@
         @Html.HiddenFor(model => model.ModifiedDateTicks)
 
         @Html.ValidationSummary()
-
-        <p>
+        
+        <div class="form-actions">
             <input type="submit" value="@BiebResources.SharedStrings.Save" />
-        </p>
+        </div>
     </div>
 }

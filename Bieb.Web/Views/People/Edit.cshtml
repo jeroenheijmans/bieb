@@ -14,7 +14,8 @@
     @Html.AntiForgeryToken()
 
     <div class="edit-form person">
-        <section id="person-name">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.PeopleStrings.NameGroupLabel</div>
             <div class="field">
                 @Html.EditorFor(model => model.Title)
                 @Html.LabelFor(model => model.Title)
@@ -36,19 +37,22 @@
             </div>
         </section>
         
-        <section id="person-details">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.PeopleStrings.Gender</div>
             <div class="field">
                 @Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof(Bieb.Domain.Entities.Gender))))
-                @Html.LabelFor(model => model.Gender)
             </div>
-            
+        </section>
+
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.PeopleStrings.Nationality</div>
             <div class="field">
                 @Html.EditorFor(model => model.Nationality)
-                @Html.LabelFor(model => model.Nationality)
             </div>
         </section>
         
-        <section id="person-life">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.PeopleStrings.BornOn</div>
             <div class="field">
                 @Html.EditorFor(model => model.PlaceOfBirth)
                 @Html.LabelFor(model => model.PlaceOfBirth)
@@ -67,7 +71,8 @@
             </div>
         </section>
         
-        <section id="person-death">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.PeopleStrings.DiedOn</div>
             <div class="field">
                 @Html.EditorFor(model => model.PlaceOfDeath)
                 @Html.LabelFor(model => model.PlaceOfDeath)
@@ -91,8 +96,8 @@
         
         @Html.ValidationSummary()
 
-        <p>
+        <div class="form-actions">
             <input type="submit" value="@BiebResources.SharedStrings.Save" />
-        </p>
+        </div>
     </div>
 }

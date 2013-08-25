@@ -318,6 +318,12 @@ iframe.goodreads {
   padding: 1em;
   border: 1px solid #eeeeee;
   background-color: white; }
+  .edit-form .field-group-label {
+    display: inline-block;
+    text-align: right;
+    vertical-align: top;
+    padding-right: 0.5em;
+    width: 10em; }
   .edit-form div.field {
     display: inline-block; }
   .edit-form label {
@@ -326,6 +332,9 @@ iframe.goodreads {
     font-size: 0.6em;
     line-height: 1.5em;
     color: #666666; }
+  .edit-form .form-actions {
+    margin-top: 2em;
+    margin-left: 10em; }
 
 .validation-summary-errors {
   color: #e82300; }

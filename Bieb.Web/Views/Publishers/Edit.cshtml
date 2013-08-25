@@ -14,10 +14,10 @@
     @Html.AntiForgeryToken()
 
     <div class="edit-form publisher">
-        <section id="publisher-name">
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.PublisherStrings.Name</div>
             <div class="field">
                 @Html.EditorFor(model => model.Name)
-                @Html.LabelFor(model => model.Name)
             </div>
         </section>
         
@@ -25,10 +25,10 @@
         @Html.HiddenFor(model => model.ModifiedDateTicks)
         
         @Html.ValidationSummary()
-
-        <p>
+        
+        <div class="form-actions">
             <input type="submit" value="@BiebResources.SharedStrings.Save" />
-        </p>
+        </div>
 
     </div>
 }

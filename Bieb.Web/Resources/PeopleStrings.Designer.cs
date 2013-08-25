@@ -79,7 +79,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Born at.
+        ///   Looks up a localized string similar to At.
         /// </summary>
         public static string BornAt {
             get {
@@ -124,7 +124,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Died at.
+        ///   Looks up a localized string similar to At.
         /// </summary>
         public static string DiedAt {
             get {
@@ -219,6 +219,15 @@ namespace BiebResources {
         public static string MonthPlaceholder {
             get {
                 return ResourceManager.GetString("MonthPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string NameGroupLabel {
+            get {
+                return ResourceManager.GetString("NameGroupLabel", resourceCulture);
             }
         }
         

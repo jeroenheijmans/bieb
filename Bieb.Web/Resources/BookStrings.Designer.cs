@@ -223,7 +223,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Published By.
+        ///   Looks up a localized string similar to By.
         /// </summary>
         public static string PublishedBy {
             get {
