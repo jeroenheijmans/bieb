@@ -26,6 +26,9 @@ namespace Bieb.Tests.Controllers
 
         private EditBookModelMapper editBookModelMapper;
 
+        private IList<Publisher> publishers;
+        private Mock<IEntityRepository<Publisher>> publishersMock;
+
         private LibraryBook someBook;
         private LibraryBook otherBook;
         
@@ -35,7 +38,10 @@ namespace Bieb.Tests.Controllers
         {
             bookRepositoryMock = new Mock<IEntityRepository<Book>>();
             responseMock = new Mock<HttpResponseBase>();
-            editBookModelMapper = new EditBookModelMapper();
+            publishersMock = new Mock<IEntityRepository<Publisher>>();
+            publishers = new List<Publisher>();
+            publishersMock.Setup(p => p.Items).Returns(publishers.AsQueryable);
+            editBookModelMapper = new EditBookModelMapper(publishersMock.Object);
             booksController = new BooksController(bookRepositoryMock.Object, editBookModelMapper, responseMock.Object);
 
             someBook = new LibraryBook

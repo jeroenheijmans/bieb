@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Bieb.Domain.Entities;
+using Bieb.Domain.Repositories;
 
 namespace Bieb.Web.Models
 {
     public class EditBookModelMapper : EditEntityModelMapper<Book, EditBookModel>
     {
+        private readonly IEnumerable<Publisher> publishers;
+
+        public EditBookModelMapper(IEntityRepository<Publisher> publishers)
+        {
+            this.publishers = publishers.Items.OrderBy(p => p.Name);
+        }
+
         public override void MergeEntityWithModel(Book entity, EditBookModel model)
         {
             base.MergeEntityWithModel(entity, model);
@@ -18,12 +27,15 @@ namespace Bieb.Web.Models
             entity.Subtitle = model.Subtitle;
             entity.Year = model.Year;
             entity.LibraryStatus = model.LibraryStatus;
-            // entity.Publisher = Publisher; // TODO
+
+            entity.Publisher = publishers.FirstOrDefault(p => p.Id == model.PublisherId);
         }
 
         public override EditBookModel ModelFromEntity(Book entity)
         {
             var model = base.ModelFromEntity(entity);
+
+            model.AvailablePublishers = new SelectList(publishers, "Id", "Name");
 
             model.Isbn = entity.Isbn;
             model.IsbnLanguage = entity.IsbnLanguage;
@@ -31,7 +43,8 @@ namespace Bieb.Web.Models
             model.Subtitle = entity.Subtitle;
             model.Year = entity.Year;
             model.LibraryStatus = entity.LibraryStatus;
-            model.Publisher = entity.Publisher;
+
+            model.PublisherId = entity.Publisher == null ? (int?)null : entity.Publisher.Id;
 
             return model;
         }

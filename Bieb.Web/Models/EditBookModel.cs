@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
@@ -28,6 +29,8 @@ namespace Bieb.Web.Models
         public int? IsbnLanguage { get; set; }
 
         [Display(Name = "PublishedBy", ResourceType = typeof(BiebResources.BookStrings))]
-        public Publisher Publisher { get; set; }
+        public int? PublisherId { get; set; }
+
+        public SelectList AvailablePublishers { get; set; }
     }
 }
