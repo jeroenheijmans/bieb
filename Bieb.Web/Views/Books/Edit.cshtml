@@ -27,9 +27,8 @@
 
         <section id="book-publishing-data">
             <div class="field">
-                @*TODO: This should be a drop down list with option to add a new Publisher*@
-                <select disabled id="Publisher"><option>@Html.Raw(Model.Publisher == null ? "" : Model.Publisher.Name)</option></select>
-                @Html.LabelFor(model => model.Publisher)
+                @Html.DropDownListFor(model => model.PublisherId, Model.AvailablePublishers)
+                @Html.LabelFor(model => model.PublisherId)
             </div>
             <div class="field">
                 @Html.EditorFor(model => model.Year)
