@@ -32,5 +32,7 @@ namespace Bieb.Web.Models
         public int? PublisherId { get; set; }
 
         public SelectList AvailablePublishers { get; set; }
+
+        public SelectList AvailablePeople { get; set; }
     }
 }

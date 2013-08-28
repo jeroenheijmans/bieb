@@ -15,7 +15,11 @@ namespace Bieb.Tests.ModelMappers
     {
         private Publisher somePublisher;
         private IEntityRepository<Publisher> publishers;
+        private IEntityRepository<Person> people;
         private EditBookModelMapper mapper;
+        private Person asimov;
+        private Person adams;
+        private Person wyndham;
 
         
         [SetUp]
@@ -23,7 +27,12 @@ namespace Bieb.Tests.ModelMappers
         {
             somePublisher = new Publisher { Id = 42, Name = "Penguin Books" };
             publishers = new RepositoryMock<Publisher>();
-            mapper = new EditBookModelMapper(publishers);
+            people = new RepositoryMock<Person>();
+            mapper = new EditBookModelMapper(publishers, people);
+
+            asimov = new Person {Id = 1, FirstName = "Isaac", Surname = "Asimov"};
+            adams = new Person {Id = 2, FirstName = "Douglas", Surname = "Adams"};
+            wyndham = new Person {Id = 3, FirstName = "John", Surname = "Wyndham"};
         }
 
 
@@ -83,6 +92,38 @@ namespace Bieb.Tests.ModelMappers
             Assert.That(model.AvailablePublishers.Skip(0).First().Value, Is.EqualTo(alpha.Id.ToString()));
             Assert.That(model.AvailablePublishers.Skip(1).First().Value, Is.EqualTo(bruna.Id.ToString()));
             Assert.That(model.AvailablePublishers.Skip(2).First().Value, Is.EqualTo(calda.Id.ToString()));
+        }
+
+
+        [Test]
+        public void Will_Have_Available_Authors()
+        {
+            people.Add(asimov);
+            people.Add(adams);
+
+            var model = mapper.ModelFromEntity(new Book());
+
+            Assert.That(model.AvailablePeople.Count(), Is.EqualTo(2));
+
+            var includedIds = model.AvailablePeople.Select(p => p.Value);
+
+            Assert.That(includedIds, Contains.Item(asimov.Id.ToString()));
+            Assert.That(includedIds, Contains.Item(adams.Id.ToString()));
+        }
+
+
+        [Test]
+        public void Will_Sort_Available_Authors()
+        {
+            people.Add(wyndham);
+            people.Add(asimov);
+            people.Add(adams);
+
+            var model = mapper.ModelFromEntity(new Book());
+
+            Assert.That(model.AvailablePeople.Skip(0).First().Value, Is.EqualTo(adams.Id.ToString()));
+            Assert.That(model.AvailablePeople.Skip(1).First().Value, Is.EqualTo(asimov.Id.ToString()));
+            Assert.That(model.AvailablePeople.Skip(2).First().Value, Is.EqualTo(wyndham.Id.ToString()));
         }
     }
 }
