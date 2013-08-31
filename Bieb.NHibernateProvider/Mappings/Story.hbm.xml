@@ -26,19 +26,19 @@
     <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" />
     <property name="PositionInBook" not-null="true" />
 
-    <bag name="Authors" table="StoryAuthor" lazy="true">
+    <bag name="Authors" table="StoryAuthor">
       <key column="StoryId" foreign-key="FK_StoryAuthor_Story" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryAuthor_Person" />
     </bag>
 
-    <bag name="Translators" table="StoryTranslator" lazy="true">
+    <bag name="Translators" table="StoryTranslator">
       <key column="StoryId" foreign-key="FK_StoryTranslator_Story" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryTranslator_Person" />
     </bag>
 
     <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Story_Publisher" />
 
-    <bag name="Tags" table="StoryTag" lazy="true">
+    <bag name="Tags" table="StoryTag">
       <key column="StoryId" foreign-key="FK_StoryTag_Story" />
       <many-to-many column="TagId" class="Tag" foreign-key="FK_StoryTag_Tag" />
     </bag>
