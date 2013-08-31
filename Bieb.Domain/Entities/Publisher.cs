@@ -7,16 +7,16 @@ namespace Bieb.Domain.Entities
     {
         public virtual string Name { get; set; }
 
-        private IList<LibraryBook> _libraryBooks = new List<LibraryBook>();
-        public virtual IList<LibraryBook> LibraryBooks
+        private readonly ISet<LibraryBook> libraryBooks = new HashSet<LibraryBook>();
+        public virtual ISet<LibraryBook> LibraryBooks
         {
-            get { return _libraryBooks; }
+            get { return libraryBooks; }
         }
 
-        private IList<ReferenceBook> _referenceBooks = new List<ReferenceBook>();
-        public virtual IList<ReferenceBook> ReferenceBooks
+        private readonly ISet<ReferenceBook> referenceBooks = new HashSet<ReferenceBook>();
+        public virtual ISet<ReferenceBook> ReferenceBooks
         {
-            get { return _referenceBooks; }
+            get { return referenceBooks; }
         }
 
         public virtual IEnumerable<Book> Books
@@ -27,10 +27,10 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IList<Story> _stories = new List<Story>();
-        public virtual IEnumerable<Story> Stories
+        private readonly ISet<Story> stories = new HashSet<Story>();
+        public virtual ISet<Story> Stories
         {
-            get { return _stories; }
+            get { return stories; }
         }
 
         public override string ToString()

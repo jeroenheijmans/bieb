@@ -18,20 +18,20 @@
     
     <property name="Name" not-null="true" index="IX_Publisher_Name"/>
 
-    <bag name="LibraryBooks" access="field.camelcase-underscore">
+    <set name="LibraryBooks" access="field.camelcase">
       <key column="PublisherId" foreign-key="FK_Book_Publisher" />
       <one-to-many class="LibraryBook" />
-    </bag>
+    </set>
     
-    <bag name="ReferenceBooks" access="field.camelcase-underscore">
+    <set name="ReferenceBooks" access="field.camelcase">
       <key column="PublisherId" foreign-key="FK_Book_Publisher" />
       <one-to-many class="ReferenceBook" />
-    </bag>
+    </set>
 
-    <bag name="Stories" table="Story" access="field.camelcase-underscore">
+    <set name="Stories" table="Story" access="field.camelcase">
       <key column="PublisherId" foreign-key="FK_Story_Publisher" />
       <one-to-many class="Story" />
-    </bag>
+    </set>
     
   </class>
 
