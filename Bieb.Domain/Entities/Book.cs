@@ -25,11 +25,10 @@ namespace Bieb.Domain.Entities
             set { _stories = value; }
         }
 
-        private IList<Person> _editors = new List<Person>();
-        public virtual IList<Person> Editors
+        private readonly ISet<Person> editors = new HashSet<Person>();
+        public virtual ISet<Person> Editors
         {
-            get { return _editors; }
-            set { _editors = value; }
+            get { return editors; }
         }
 
         // Blast it. Wanted to name the collection with plural form, and the public property singular, but for "Series" there is no singular form :(. Hence the "db" prefix.

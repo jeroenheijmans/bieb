@@ -125,5 +125,86 @@ namespace Bieb.Tests.ModelMappers
             Assert.That(model.AvailablePeople.Skip(1).First().Value, Is.EqualTo(asimov.Id.ToString()));
             Assert.That(model.AvailablePeople.Skip(2).First().Value, Is.EqualTo(wyndham.Id.ToString()));
         }
+
+
+        [Test]
+        public void Model_Will_Have_Editor_Ids_From_Domain_Book()
+        {
+            var book = new Book();
+
+            book.Editors.Add(asimov);
+            book.Editors.Add(wyndham);
+
+            var model = mapper.ModelFromEntity(book);
+
+            Assert.That(model.EditorIds.Contains(asimov.Id));
+            Assert.That(model.EditorIds.Contains(wyndham.Id));
+        }
+
+
+        [Test]
+        public void Domain_Book_Will_Get_Editors_From_Model()
+        {
+            people.Add(asimov);
+            people.Add(wyndham);
+
+            var model = new EditBookModel()
+                            {
+                                EditorIds = people.Items.Select(p => p.Id).ToArray()
+                            };
+
+            var book = new Book();
+
+            mapper.MergeEntityWithModel(book, model);
+
+            Assert.That(book.Editors, Contains.Item(asimov));
+            Assert.That(book.Editors, Contains.Item(wyndham));
+        }
+
+
+        [Test]
+        public void Will_Throw_When_Provided_With_NonExisting_Editor_Id()
+        {
+            var model = new EditBookModel { EditorIds = new[] {-42} };
+
+            var book = new Book();
+
+            Assert.Throws<MappingException>(() => mapper.MergeEntityWithModel(book, model));
+        }
+
+
+        [Test]
+        public void Will_Default_Have_Empty_EditorIds_List()
+        {
+            // This test is here because MVC will instantiate a default model upon
+            // posting a form to an action, and the mapper needs an empty list instead
+            // of a null value.
+            var model = new EditBookModel();
+            var book = new Book();
+            mapper.MergeEntityWithModel(book, model);
+            Assert.That(book.Editors.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Will_Remove_Editors_No_Longer_In_Model()
+        {
+            var book = new Book();
+
+            book.Editors.Add(wyndham);
+            book.Editors.Add(asimov);
+
+            people.Add(wyndham);
+            people.Add(asimov);
+
+            var model = mapper.ModelFromEntity(book);
+
+            // Act! Upon postback only one of the IDs will still be selected:
+            model.EditorIds = new[] { asimov.Id };
+
+            mapper.MergeEntityWithModel(book, model);
+            Assert.That(book.Editors.Count(), Is.EqualTo(1));
+            Assert.That(book.Editors.FirstOrDefault(), Is.EqualTo(asimov));
+        }
     }
 }

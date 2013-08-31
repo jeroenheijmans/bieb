@@ -171,6 +171,7 @@
     <Compile Include="Models\EditSeriesModelMapper.cs" />
     <Compile Include="Models\EditStoryModel.cs" />
     <Compile Include="Models\EditStoryModelMapper.cs" />
+    <Compile Include="Models\MappingException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AccountStrings.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -88,6 +88,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editors.
+        /// </summary>
+        public static string Editors {
+            get {
+                return ResourceManager.GetString("Editors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Find this book on.
         /// </summary>
         public static string FindBookOn {

@@ -31,6 +31,20 @@ namespace Bieb.Web.Models
             entity.LibraryStatus = model.LibraryStatus;
 
             entity.Publisher = publishers.FirstOrDefault(p => p.Id == model.PublisherId);
+
+            entity.Editors.Clear();
+
+            foreach (var editorId in model.EditorIds)
+            {
+                var person = people.FirstOrDefault(p => p.Id == editorId);
+
+                if (person == null)
+                {
+                    throw new MappingException("Provided Editor Id could not be traced to any person in the database.");
+                }
+
+                entity.Editors.Add(person);
+            }
         }
 
         public override EditBookModel ModelFromEntity(Book entity)
@@ -48,6 +62,8 @@ namespace Bieb.Web.Models
             model.LibraryStatus = entity.LibraryStatus;
 
             model.PublisherId = entity.Publisher == null ? (int?)null : entity.Publisher.Id;
+
+            model.EditorIds = entity.Editors.Select(e => e.Id).ToArray();
 
             return model;
         }
