@@ -89,6 +89,7 @@
     <Compile Include="Domain\UncertainDateTests.cs" />
     <Compile Include="Mocks\RepositoryMock.cs" />
     <Compile Include="ModelMappers\EditBookModelMapperTests.cs" />
+    <Compile Include="ModelMappers\EditSeriesModelMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing\AccountRoutingTests.cs" />
     <Compile Include="Routing\BookRoutingTests.cs" />

@@ -16,5 +16,7 @@ namespace Bieb.Web.Models
 
         [Display(Name = "Subtitle", Prompt = "SubtitlePlaceholder", ResourceType = typeof(BiebResources.SeriesStrings))]
         public string Subtitle { get; set; }
+
+        public SelectList AvailableBooks { get; set; }
     }
 }
