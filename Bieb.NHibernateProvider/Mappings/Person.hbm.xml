@@ -31,26 +31,26 @@
     <property name="DateOfDeathFrom" type="Date" />
     <property name="DateOfDeathUntil" type="Date" />
 
-    <bag name="EditedBooks" table="BookEditor" lazy="true">
+    <set name="EditedBooks" table="BookEditor" lazy="true" access="field.camelcase">
       <key column="PersonId" foreign-key="FK_BookEditor_Person" />
       <many-to-many column="BookId" class="LibraryBook" foreign-key="FK_BookEditor_Book" />
-    </bag>
+    </set>
 
-    <bag name="AuthoredStories" table="StoryAuthor" lazy="true">
+    <set name="AuthoredStories" table="StoryAuthor" lazy="true" access="field.camelcase">
       <key column="PersonId" foreign-key="FK_StoryAuthor_Person" />
       <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryAuthor_Story" />
-    </bag>
+    </set>
 
-    <bag name="TranslatedStories" table="StoryTranslator" lazy="true">
+    <set name="TranslatedStories" table="StoryTranslator" lazy="true" access="field.camelcase">
       <key column="PersonId" foreign-key="FK_StoryTranslator_Person" />
       <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryTranslator_Story" />
-    </bag>
+    </set>
 
     <!-- Fully qualified name on the generic type needed, see:  Posted it on SO: http://stackoverflow.com/q/12547084/419956 -->
-    <bag name="Reviews" table="Review">
+    <set name="Reviews" table="Review" access="field.camelcase">
       <key column="PersonId" foreign-key="FK_Review_Person" />
       <one-to-many class="Review`1[Bieb.Domain.Entities.Person, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
-    </bag>
+    </set>
     
   </class>
 
