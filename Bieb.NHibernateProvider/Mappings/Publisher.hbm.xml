@@ -18,17 +18,17 @@
     
     <property name="Name" not-null="true" index="IX_Publisher_Name"/>
 
-    <bag name="LibraryBooks" lazy="true" access="field.camelcase-underscore">
+    <bag name="LibraryBooks" access="field.camelcase-underscore">
       <key column="PublisherId" foreign-key="FK_Book_Publisher" />
       <one-to-many class="LibraryBook" />
     </bag>
     
-    <bag name="ReferenceBooks" lazy="true" access="field.camelcase-underscore">
+    <bag name="ReferenceBooks" access="field.camelcase-underscore">
       <key column="PublisherId" foreign-key="FK_Book_Publisher" />
       <one-to-many class="ReferenceBook" />
     </bag>
 
-    <bag name="Stories" table="Story" lazy="true" access="field.camelcase-underscore">
+    <bag name="Stories" table="Story" access="field.camelcase-underscore">
       <key column="PublisherId" foreign-key="FK_Story_Publisher" />
       <one-to-many class="Story" />
     </bag>
