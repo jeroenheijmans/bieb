@@ -15,8 +15,8 @@ namespace Bieb.Web.Models
 
         public EditBookModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people)
         {
-            this.publishers = publishers.Items.OrderBy(p => p.Name);
-            this.people = people.Items.OrderBy(p => p.Surname).ThenBy(p => p.FirstName);
+            this.publishers = publishers.Items;
+            this.people = people.Items;
         }
 
         public override void MergeEntityWithModel(Book entity, EditBookModel model)
@@ -51,8 +51,8 @@ namespace Bieb.Web.Models
         {
             var model = base.ModelFromEntity(entity);
 
-            model.AvailablePublishers = new SelectList(publishers, "Id", "Name");
-            model.AvailablePeople = new SelectList(people, "Id", "FullNameAlphabetical");
+            model.AvailablePublishers = new SelectList(publishers.OrderBy(p => p.Name), "Id", "Name");
+            model.AvailablePeople = new SelectList(people.OrderBy(p => p.Surname).ThenBy(p => p.FirstName), "Id", "FullNameAlphabetical");
 
             model.Isbn = entity.Isbn;
             model.IsbnLanguage = entity.IsbnLanguage;
