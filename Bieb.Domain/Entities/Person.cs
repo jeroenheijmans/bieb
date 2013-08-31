@@ -104,25 +104,23 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IList<LibraryBook> _editedBooks = new List<LibraryBook>();
-        public virtual IList<LibraryBook> EditedBooks
+        private readonly ISet<LibraryBook> editedBooks = new HashSet<LibraryBook>();
+        public virtual ISet<LibraryBook> EditedBooks
         {
-            get { return _editedBooks; }
-            set { _editedBooks = value; }
+            get { return editedBooks; }
         }
 
-        private IList<Story> _authoredStories = new List<Story>();
-        public virtual IList<Story> AuthoredStories
+        private readonly ISet<Story> authoredStories = new HashSet<Story>();
+        public virtual ISet<Story> AuthoredStories
         {
-            get { return _authoredStories; }
-            set { _authoredStories = value; }
+            get { return authoredStories; }
         }
 
         public virtual IEnumerable<Story> AuthoredShortStories
         {
             get
             {
-                return _authoredStories
+                return authoredStories
                         .Where(s => s.Book != null && s.Book.BookType != BookType.Novel)
                         .Select(s => s);
             }
@@ -132,25 +130,24 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                return _authoredStories
+                return authoredStories
                         .Select(s => s.Book)
                         .Where(b => b != null && b.BookType == BookType.Novel)
                         .Distinct();
             }
         }
 
-        private IList<Story> _translatedStories = new List<Story>();
-        public virtual IList<Story> TranslatedStories
+        private readonly ISet<Story> translatedStories = new HashSet<Story>();
+        public virtual ISet<Story> TranslatedStories
         {
-            get { return _translatedStories; }
-            set { _translatedStories = value; }
+            get { return translatedStories; }
         }
 
         public virtual IEnumerable<Story> TranslatedShortStories
         {
             get
             {
-                return _translatedStories
+                return translatedStories
                         .Where(s => s.Book.BookType == BookType.Anthology || s.Book.BookType == BookType.Collection);
             }
         }
@@ -159,25 +156,24 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                return _translatedStories
+                return translatedStories
                         .Select(s => s.Book)
                         .Where(b => b != null && b.BookType == BookType.Novel)
                         .Distinct();
             }
         }
 
-        private IList<Review<Person>> _reviews = new List<Review<Person>>();
-        public virtual IList<Review<Person>> Reviews
+        private readonly ISet<Review<Person>> reviews = new HashSet<Review<Person>>();
+        public virtual ISet<Review<Person>> Reviews
         {
-            get { return _reviews; }
-            set { _reviews = value; }
+            get { return reviews; }
         }
 
         public virtual IEnumerable<LibraryBook> AuthoredCollections
         {
             get 
             {
-                return _authoredStories
+                return authoredStories
                         .Select(s => s.Book)
                         .Where(b => b != null && b.BookType == BookType.Collection)
                         .Distinct();
