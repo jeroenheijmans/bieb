@@ -126,6 +126,9 @@
   <data name="CoverFrontAlt" xml:space="preserve">
     <value>front cover</value>
   </data>
+  <data name="Editors" xml:space="preserve">
+    <value>Editors</value>
+  </data>
   <data name="FindBookOn" xml:space="preserve">
     <value>Find this book on</value>
   </data>

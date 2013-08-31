@@ -10,6 +10,11 @@ namespace Bieb.Web.Models
 {
     public class EditBookModel : EditEntityModel<Book>
     {
+        public EditBookModel()
+        {
+            EditorIds = new int[0];
+        }
+
         [Display(Name = "Isbn", Prompt = "IsbnPlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
         public string Isbn { get; set; }
 
@@ -32,6 +37,9 @@ namespace Bieb.Web.Models
         public int? PublisherId { get; set; }
 
         public SelectList AvailablePublishers { get; set; }
+
+        [Display(Name = "Editors", ResourceType = typeof(BiebResources.BookStrings))]
+        public int[] EditorIds { get; set; } 
 
         public SelectList AvailablePeople { get; set; }
     }

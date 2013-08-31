@@ -52,6 +52,10 @@ namespace Bieb.NHibernateProvider
                                             db.ConnectionStringName = "BiebDatabase";
                                             db.Dialect<MsSql2008Dialect>();
                                         })
+
+                // This must be done before adding the mappings, of course...
+               .SetProperty(Environment.CollectionTypeFactoryClass, typeof(Net4CollectionTypeFactory).AssemblyQualifiedName)
+
                .AddAssembly(Assembly.GetExecutingAssembly())
                .CurrentSessionContext<WebSessionContext>();
 
