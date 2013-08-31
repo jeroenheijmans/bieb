@@ -27,7 +27,26 @@ namespace Bieb.Domain.Entities
                     ).Trim();
             }
         }
-        
+
+        public virtual string FullNameAlphabetical
+        {
+            get
+            {
+                var secondPart = (string.IsNullOrEmpty(Title) ? "" : Title + " ")
+                                 +
+                                 (string.IsNullOrEmpty(FirstName) ? "" : FirstName + " ")
+                                 +
+                                 Prefix;
+
+                if (!string.IsNullOrEmpty(secondPart))
+                {
+                    return Surname +  ", " + secondPart.Trim();
+                }
+
+                return Surname;
+            }
+        }
+
         public virtual Gender Gender { get; set; }
 
         public virtual char GenderChar 

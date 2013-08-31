@@ -194,5 +194,56 @@ namespace Bieb.Tests.Domain
             Assert.That(person.DateOfBirthFrom, Is.EqualTo(fromDateTime));
             Assert.That(person.DateOfBirthUntil, Is.EqualTo(untilDateTime));
         }
+
+
+        [Test]
+        public void Can_Generate_Alphabetical_Fullname_With_All_Parts()
+        {
+            var person = new Person
+            {
+                Title = "Sir",
+                FirstName = "Arthur",
+                Prefix = "von",
+                Surname = "Munchhausen"
+            };
+
+            Assert.That(person.FullNameAlphabetical, Is.EqualTo("Munchhausen, Sir Arthur von"));
+        }
+
+        [Test]
+        public void Can_Generate_Alphabetical_Fullname_For_Just_Surname()
+        {
+            var person = new Person
+            {
+                Surname = "Johnsson"
+            };
+
+            Assert.That(person.FullNameAlphabetical, Is.EqualTo("Johnsson"));
+        }
+
+        [Test]
+        public void Can_Generate_Alphabetical_Fullname_For_First_Prefix_Surname()
+        {
+            var person = new Person
+            {
+                FirstName = "Karl",
+                Prefix = "des",
+                Surname = "Warnstein"
+            };
+
+            Assert.That(person.FullNameAlphabetical, Is.EqualTo("Warnstein, Karl des"));
+        }
+
+        [Test]
+        public void Can_Generate_Alphabetical_Fullname_For_First_Surname()
+        {
+            var person = new Person
+            {
+                FirstName = "Isaac",
+                Surname = "Asimov"
+            };
+
+            Assert.That(person.FullNameAlphabetical, Is.EqualTo("Asimov, Isaac"));
+        }
     }
 }
