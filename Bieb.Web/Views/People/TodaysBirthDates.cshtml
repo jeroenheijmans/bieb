@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Bieb.Domain.Entities.Person>
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var person in Model)
+        {
+            <li>
+                @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+            </li>
+        }
+    </ul>   
+}
+else
+{
+    <p>@BiebResources.PeopleStrings.NobodyBornToday</p>
+    <blockquote>@BiebResources.PeopleStrings.NobodyQuote</blockquote>
+}

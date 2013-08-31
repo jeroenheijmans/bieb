@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Person">
+    
+    <id name="Id" column="PersonId">
+      <generator class="native" />
+    </id>
+
+    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime2">
+      <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
+    </version>
+    <property name="CreatedDate" generated="always" type="DateTime2">
+      <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
+    </property>
+
+    <property name="Title" />
+    <property name="FirstName" />
+    <property name="Prefix" />
+    <property name="Surname" />
+    
+    <property name="Gender" not-null="true" />
+    <property name="Nationality" />
+    <property name="PlaceOfBirth" />
+    <property name="PlaceOfDeath" />
+
+    <property name="DateOfBirthFrom" type="Date" />
+    <property name="DateOfBirthUntil" type="Date" />
+    <property name="DateOfDeathFrom" type="Date" />
+    <property name="DateOfDeathUntil" type="Date" />
+
+    <set name="EditedBooks" table="BookEditor" access="field.camelcase">
+      <key column="PersonId" foreign-key="FK_BookEditor_Person" />
+      <many-to-many column="BookId" class="LibraryBook" foreign-key="FK_BookEditor_Book" />
+    </set>
+
+    <set name="AuthoredStories" table="StoryAuthor" access="field.camelcase">
+      <key column="PersonId" foreign-key="FK_StoryAuthor_Person" />
+      <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryAuthor_Story" />
+    </set>
+
+    <set name="TranslatedStories" table="StoryTranslator" access="field.camelcase">
+      <key column="PersonId" foreign-key="FK_StoryTranslator_Person" />
+      <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryTranslator_Story" />
+    </set>
+
+    <!-- Fully qualified name on the generic type needed, see:  Posted it on SO: http://stackoverflow.com/q/12547084/419956 -->
+    <set name="Reviews" table="Review" access="field.camelcase">
+      <key column="PersonId" foreign-key="FK_Review_Person" />
+      <one-to-many class="Review`1[Bieb.Domain.Entities.Person, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
+    </set>
+    
+  </class>
+
+  <database-object>
+    <create>
+      GO
+      CREATE TRIGGER TR_PersonInserted ON Person AFTER INSERT AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Person 
+        SET    ModifiedDate = GetDate(), CreatedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Person.PersonId = inserted.PersonId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+      CREATE TRIGGER TR_PersonUpdated ON Person AFTER UPDATE AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Person 
+        SET    ModifiedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Person.PersonId = inserted.PersonId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+
+</hibernate-mapping>

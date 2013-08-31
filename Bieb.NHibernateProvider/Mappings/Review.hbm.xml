@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <!-- BOOK -->
+  <class name="Review`1[Book]" table="Review">
+    <id name="Id" column="ReviewId">
+      <generator class="native" />
+    </id>
+
+    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime2">
+      <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
+    </version>
+    <property name="CreatedDate" generated="always" type="DateTime2">
+      <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
+    </property>
+    
+    <property name="ReviewText" type="StringClob" />
+    <property name="Rating" />
+
+    <many-to-one name="Subject" column="BookId" foreign-key="FK_Review_Book" class="LibraryBook" />
+  </class>
+
+  <!-- PERSON -->
+  <class name="Review`1[Bieb.Domain.Entities.Person, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" table="Review">
+    <id name="Id" column="ReviewId">
+      <generator class="native" />
+    </id>
+
+    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime">
+      <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
+    </version>
+    <property name="CreatedDate" generated="always" type="DateTime">
+      <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
+    </property>
+    
+    <property name="ReviewText" type="StringClob" />
+    <property name="Rating" />
+
+    <many-to-one 
+      name="Subject" 
+      column="PersonId" 
+      foreign-key="FK_Review_Person" 
+      class="Person" />
+  </class>
+
+  <database-object>
+    <create>
+      GO
+      CREATE TRIGGER TR_ReviewInserted ON Review AFTER INSERT AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Review 
+        SET    ModifiedDate = GetDate(), CreatedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Review.ReviewId = inserted.ReviewId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+      CREATE TRIGGER TR_ReviewUpdated ON Review AFTER UPDATE AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Review 
+        SET    ModifiedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Review.ReviewId = inserted.ReviewId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+  
+</hibernate-mapping>

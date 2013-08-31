@@ -1,0 +1,21 @@
+﻿@model Bieb.Domain.Entities.Book
+
+@if (Model != null)
+{
+    <p>
+        @Html.ActionLink(Model.Title, "Details", new { id = Model.Id })
+        @if (Model.Authors.Count() <= 3 && Model.Authors.Any())
+        {
+            @Html.Raw("(")
+            @BiebResources.BookStrings.WrittenBy
+            @Html.Raw(" ")
+            @Html.Raw(@String.Join(", ", Model.Authors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
+            @Html.Raw(")")
+        }
+        @BiebResources.BookStrings.WasRecentlyAdded.
+    </p>
+}
+else
+{
+    <p>@BiebResources.BookStrings.NoBooksInDatabase</p>
+}

@@ -1,0 +1,4 @@
+﻿@using (Html.BeginForm("Basic", "Search", FormMethod.Get)) {
+    <input type="text" class="search" name="q" placeholder="@BiebResources.SearchStrings.SearchInputPlaceholder" value="@Request.QueryString["q"]" />
+    <input type="submit" value=">" />
+}
