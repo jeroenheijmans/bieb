@@ -52,7 +52,7 @@ namespace Bieb.Web.Models
             var model = base.ModelFromEntity(entity);
 
             model.AvailablePublishers = new SelectList(publishers, "Id", "Name");
-            model.AvailablePeople = new SelectList(people, "Id", "FullName");
+            model.AvailablePeople = new SelectList(people, "Id", "FullNameAlphabetical");
 
             model.Isbn = entity.Isbn;
             model.IsbnLanguage = entity.IsbnLanguage;
