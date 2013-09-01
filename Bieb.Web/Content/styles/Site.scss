@@ -42,7 +42,6 @@ $card-width: ($wrapper-width - (2 * $gutter)) / 3;
 		 url('../fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
 }
 
-
 /* Basic HTML elements */
 body {
 	font-weight: normal;
@@ -123,6 +122,10 @@ input[type="text"], input[type="password"] {
 	padding: ($text-gutter / 4) ($text-gutter / 2);
 }
 
+.fancy-select-container, .fancy-select-dropdown {
+	font-size: 13px;
+	font-family: sans-serif;
+}
 
 /* Custom text selection color */
 @mixin custom-text-selection-settings {
@@ -486,6 +489,7 @@ iframe.goodreads {
 	input#IsbnLanguage	{ width: 3em; }
 	input#Year			{ width: 4em; }
 	select#Publisher	{ width: 24em; }
+	.fancy-select		{ width: 24em; }
 }
 
 .publisher.edit-form {
