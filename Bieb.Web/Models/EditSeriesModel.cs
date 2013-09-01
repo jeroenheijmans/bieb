@@ -18,5 +18,8 @@ namespace Bieb.Web.Models
         public string Subtitle { get; set; }
 
         public SelectList AvailableBooks { get; set; }
+
+        [Display(Name = "Books", ResourceType = typeof(BiebResources.SeriesStrings))]
+        public int[] BookIds { get; set; }
     }
 }

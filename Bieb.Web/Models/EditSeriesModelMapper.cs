@@ -23,6 +23,24 @@ namespace Bieb.Web.Models
 
             entity.Title = model.Title;
             entity.Subtitle = model.Subtitle;
+
+            var i = 0;
+
+            entity.Books.Clear();
+            
+            foreach (var bookId in model.BookIds)
+            {
+                var book = books.FirstOrDefault(b => b.Id == bookId);
+                
+                if (book == null)
+                {
+                    throw new MappingException("Provided book Id could not be found in the list of available books.");
+                }
+
+                entity.Books.Add(i, book);
+
+                i++;
+            }
         }
 
         public override EditSeriesModel ModelFromEntity(Series entity)
@@ -33,6 +51,8 @@ namespace Bieb.Web.Models
             model.Subtitle = entity.Subtitle;
 
             model.AvailableBooks = new SelectList(books.OrderBy(b => b.Title), "Id", "TitleSort");
+
+            model.BookIds = entity.Books.Select(book => book.Value.Id).ToArray();
 
             return model;
         }
