@@ -25,7 +25,7 @@ namespace Bieb.Web.App_Start
                             new { controller = "Search", action = "Basic" });
 
             routes.MapRoute(
-                "Details for a LibraryBook by ID", // Route name
+                "Details for a Book by ID", // Route name
                 "Books/{id}", // URL with parameters
                 new { controller = "Books", action = "Details", id = UrlParameter.Optional }, // Parameter defaults
                 new { id = @"\d+" }

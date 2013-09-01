@@ -10,9 +10,9 @@ namespace Bieb.Web.Controllers
     public class SurpriseController : Controller
     {
         private IEntityRepository<Person> PersonRepository { get; set; }
-        private IEntityRepository<LibraryBook> BookRepository { get; set; }
+        private IEntityRepository<Book> BookRepository { get; set; }
 
-        public SurpriseController(IEntityRepository<Person> personRepository, IEntityRepository<LibraryBook> bookRepository)
+        public SurpriseController(IEntityRepository<Person> personRepository, IEntityRepository<Book> bookRepository)
         {
             this.PersonRepository = personRepository;
             this.BookRepository = bookRepository;

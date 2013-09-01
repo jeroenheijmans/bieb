@@ -64,7 +64,7 @@ namespace Bieb.Tests.Domain
             var story2 = new Story { Tags = new[] { cool, old } };
             var story3 = new Story { Tags = new[] { sweet } };
 
-            var someBook = new LibraryBook();
+            var someBook = new Book();
             someBook.Stories.Add(1, story3);
 
             var tolkien = new Person();
@@ -86,7 +86,7 @@ namespace Bieb.Tests.Domain
         {
             var sybrenPolet = new Person { FirstName = "Sybren", Surname = "Polet" };
             var story = new Story();
-            var book = new LibraryBook();
+            var book = new Book();
 
             sybrenPolet.AuthoredStories.Add(story);
             sybrenPolet.TranslatedStories.Add(story);
@@ -108,13 +108,13 @@ namespace Bieb.Tests.Domain
             var shortStory2 = new Story();
             var novelStory = new Story();
 
-            var collection = new LibraryBook();
+            var collection = new Book();
             collection.Stories.Add(0, shortStory1);
             collection.Stories.Add(1, shortStory2);
             shortStory1.Book = collection;
             shortStory2.Book = collection;
 
-            var novel = new LibraryBook();
+            var novel = new Book();
             novel.Stories.Add(0, novelStory);
             novelStory.Book = novel;
 
@@ -140,13 +140,13 @@ namespace Bieb.Tests.Domain
             var shortStory2 = new Story();
             var novelStory = new Story();
 
-            var collection = new LibraryBook();
+            var collection = new Book();
             collection.Stories.Add(0, shortStory1);
             collection.Stories.Add(1, shortStory2);
             shortStory1.Book = collection;
             shortStory2.Book = collection;
 
-            var novel = new LibraryBook();
+            var novel = new Book();
             novel.Stories.Add(0, novelStory);
             novelStory.Book = novel;
 

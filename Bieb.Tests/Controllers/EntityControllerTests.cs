@@ -29,10 +29,10 @@ namespace Bieb.Tests.Controllers
 
         private IEntityRepository<Publisher> publishersRepository;
 
-        private IEntityRepository<Person> peopleRepository; 
+        private IEntityRepository<Person> peopleRepository;
 
-        private LibraryBook someBook;
-        private LibraryBook otherBook;
+        private Book someBook;
+        private Book otherBook;
         
 
         [SetUp]
@@ -48,13 +48,13 @@ namespace Bieb.Tests.Controllers
 
             booksController = new BooksController(bookRepository, editBookModelMapper, responseMock.Object);
 
-            someBook = new LibraryBook
+            someBook = new Book
             {
                 Id = 42,
                 Title = "Hitching Guide"
             };
 
-            otherBook = new LibraryBook
+            otherBook = new Book
             {
                 Id = 9000,
                 Title = "It's over!"
@@ -71,8 +71,8 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<LibraryBook>());
-            Assert.That(((LibraryBook)vResult.Model).Id, Is.EqualTo(someBook.Id));
+            Assert.That(vResult.Model, Is.InstanceOf<Book>());
+            Assert.That(((Book)vResult.Model).Id, Is.EqualTo(someBook.Id));
         }
 
 
@@ -122,7 +122,7 @@ namespace Bieb.Tests.Controllers
         {
             for (int i = 0; i < 100; i++)
             {
-                bookRepository.Add(new LibraryBook());
+                bookRepository.Add(new Book());
             }
 
             var result = booksController.Index();
@@ -133,11 +133,11 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(vresult.Model, Is.InstanceOf<PagedList<Book>>());
 
-            var libraryBookList = (PagedList<Book>)vresult.Model;
+            var bookList = (PagedList<Book>)vresult.Model;
 
-            Assert.That(libraryBookList.PageNumber, Is.EqualTo(1));
-            Assert.That(libraryBookList.PageSize, Is.EqualTo(25));
-            Assert.That(libraryBookList.Count, Is.EqualTo(25));
+            Assert.That(bookList.PageNumber, Is.EqualTo(1));
+            Assert.That(bookList.PageSize, Is.EqualTo(25));
+            Assert.That(bookList.Count, Is.EqualTo(25));
         }
 
 
@@ -163,11 +163,11 @@ namespace Bieb.Tests.Controllers
 
             var vresult = (PartialViewResult)result;
 
-            Assert.That(vresult.Model, Is.InstanceOf<LibraryBook>());
+            Assert.That(vresult.Model, Is.InstanceOf<Book>());
 
-            var libraryBook = (LibraryBook)vresult.Model;
+            var book = (Book)vresult.Model;
 
-            Assert.That(libraryBook.Id, Is.EqualTo(1));
+            Assert.That(book.Id, Is.EqualTo(1));
         }
 
 
@@ -176,11 +176,11 @@ namespace Bieb.Tests.Controllers
         {
             var bulkInsertDate = new DateTime(2013, 01, 10);
 
-            var libraryBook1 = new LibraryBook { Title = "Zoltan the Great", Id = 1, CreatedDate = bulkInsertDate };
-            var libraryBook2 = new LibraryBook { Title = "Middle-man", Id = 2, CreatedDate = bulkInsertDate };
+            var book1 = new Book { Title = "Zoltan the Great", Id = 1, CreatedDate = bulkInsertDate };
+            var book2 = new Book { Title = "Middle-man", Id = 2, CreatedDate = bulkInsertDate };
 
-            bookRepository.Add(libraryBook1);
-            bookRepository.Add(libraryBook2);
+            bookRepository.Add(book1);
+            bookRepository.Add(book2);
 
             var result = booksController.RecentlyAdded();
             Assert.That(result, Is.Not.Null);
@@ -188,11 +188,11 @@ namespace Bieb.Tests.Controllers
 
             var vresult = (PartialViewResult)result;
 
-            Assert.That(vresult.Model, Is.InstanceOf<LibraryBook>());
+            Assert.That(vresult.Model, Is.InstanceOf<Book>());
 
-            var libraryBook = (LibraryBook)vresult.Model;
+            var book = (Book)vresult.Model;
 
-            Assert.That(libraryBook.Id, Is.EqualTo(2));
+            Assert.That(book.Id, Is.EqualTo(2));
         }
 
 

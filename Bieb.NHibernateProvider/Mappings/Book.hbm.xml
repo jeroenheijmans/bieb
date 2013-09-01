@@ -3,14 +3,11 @@
                    assembly="Bieb.Domain"
                    namespace="Bieb.Domain.Entities">
 
-  <!-- Discriminator-value is required by NH. We set it to NULL; the discriminator-column is not nullable, but the base class is abstract anyways. -->
-  <class name="Book" discriminator-value="null"> 
+  <class name="Book"> 
     
     <id name="Id" column="BookId">
       <generator class="native" />
     </id>
-
-    <discriminator column="LibraryStatus" not-null="true" type="System.Int32" force="true" />
     
     <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime2">
       <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
@@ -51,18 +48,12 @@
       <one-to-many class="Review`1[Bieb.Domain.Entities.Book, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
     </bag>
 
-    <!-- REFERENCE BOOKS -->
-    <subclass discriminator-value="0" name="ReferenceBook">
-      <bag name="ReferencedByBooks" access="field.camelcase-underscore">
-        <key column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
-        <one-to-many class="LibraryBook" />
-      </bag>
-    </subclass>
-    
-    <!-- LIBRARY BOOKS -->
-    <subclass discriminator-value="1" name="LibraryBook">
-      <many-to-one name="ReferenceBook" column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
-    </subclass>
+    <many-to-one name="ReferenceBook" column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
+
+    <bag name="ReferencedByBooks" access="field.camelcase-underscore">
+      <key column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
+      <one-to-many class="Book" />
+    </bag>
        
   </class>
 

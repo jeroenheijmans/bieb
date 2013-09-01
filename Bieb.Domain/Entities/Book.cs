@@ -5,6 +5,11 @@ namespace Bieb.Domain.Entities
 {
     public class Book : Publishable, IReviewable
     {
+        public Book()
+        {
+            this.LibraryStatus = LibraryStatus.InPosession;
+        }
+
         public virtual string Isbn { get; set; }
 
         /// <summary>
@@ -82,6 +87,14 @@ namespace Bieb.Domain.Entities
         {
             get { return _reviews; }
             set { _reviews = value; }
+        }
+
+        public virtual Book ReferenceBook { get; set; }
+
+        private IList<Book> _referencedByBooks = new List<Book>();
+        public virtual IList<Book> ReferencedByBooks
+        {
+            get { return _referencedByBooks; }
         }
 
         public override string ToString()

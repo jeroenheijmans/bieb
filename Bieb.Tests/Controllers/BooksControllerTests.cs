@@ -29,13 +29,13 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Index_Will_Have_Default_TitleSort_Sorting()
         {
-            var libraryBook1 = new LibraryBook { Title = "Zoltan the Great" };
-            var libraryBook2 = new LibraryBook { Title = "Middle-man" };
-            var libraryBook3 = new LibraryBook { Title = "Alpha came before Omega" };
+            var book1 = new Book { Title = "Zoltan the Great" };
+            var book2 = new Book { Title = "Middle-man" };
+            var book3 = new Book { Title = "Alpha came before Omega" };
             
-            repository.Add(libraryBook1);
-            repository.Add(libraryBook2);
-            repository.Add(libraryBook3);
+            repository.Add(book1);
+            repository.Add(book2);
+            repository.Add(book3);
 
             ActionResult result = controller.Index();
 
@@ -43,24 +43,23 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(vresult.Model, Is.InstanceOf<PagedList<Book>>());
 
-            var libraryBookList = (PagedList<Book>)vresult.Model;
+            var bookList = (PagedList<Book>)vresult.Model;
 
-            Assert.That(libraryBookList[0], Is.EqualTo(libraryBook3));
-            Assert.That(libraryBookList[1], Is.EqualTo(libraryBook2));
-            Assert.That(libraryBookList[2], Is.EqualTo(libraryBook1));
+            Assert.That(bookList[0], Is.EqualTo(book3));
+            Assert.That(bookList[1], Is.EqualTo(book2));
+            Assert.That(bookList[2], Is.EqualTo(book1));
         }
 
 
         [Test]
-        public void Index_Will_Only_Show_Library_Books()
+        public void Index_Will_Not_Show_Reference_Only_Books()
         {
-            repository.Add(new LibraryBook());
-            repository.Add(new ReferenceBook());
+            repository.Add(new Book {LibraryStatus = LibraryStatus.InPosession});
+            repository.Add(new Book {LibraryStatus = LibraryStatus.OnlyForReference});
 
             var result = (ViewResult) controller.Index();
-            var books = result.Model as IEnumerable<Book>;
+            var books = (IEnumerable<Book>) result.Model;
 
-            Assert.That(books, Is.Not.Null);
             Assert.That(books.Count(), Is.EqualTo(1));
         }
     }
