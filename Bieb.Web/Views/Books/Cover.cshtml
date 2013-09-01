@@ -16,9 +16,10 @@
             @if (Model.Editors.Any())
             {
                 @Html.Raw(string.Join(", ", Model.Editors.Select(person => person.FullName)))
-            } else if (Model.Authors.Any())
+            }
+            else if (Model.AllAuthors.Any())
             {
-                @Html.Raw(string.Join(", ", Model.Authors.Select(person => person.FullName)))
+                @Html.Raw(string.Join(", ", Model.AllAuthors.Select(person => person.FullName)))
             }
         </p>
         <p class="title">

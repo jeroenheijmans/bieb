@@ -26,10 +26,10 @@ namespace Bieb.Tests.Domain
             story1.Tags.Add(tag2);
             story2.Tags.Add(tag1);
 
-            Assert.That(myBook.Tags.Count(), Is.EqualTo(2));
-            Assert.That(myBook.Tags.ToList(), Has.Member(tag1));
-            Assert.That(myBook.Tags.ToList(), Has.Member(tag2));
-            Assert.That(myBook.Tags.ToList(), Has.No.Member(unusedTag));
+            Assert.That(myBook.AllTags.Count(), Is.EqualTo(2));
+            Assert.That(myBook.AllTags.ToList(), Has.Member(tag1));
+            Assert.That(myBook.AllTags.ToList(), Has.Member(tag2));
+            Assert.That(myBook.AllTags.ToList(), Has.No.Member(unusedTag));
         }
 
 
@@ -44,8 +44,8 @@ namespace Bieb.Tests.Domain
             var person = new Person();
             story.Authors.Add(person);
             
-            Assert.That(novel.Authors.Count(), Is.EqualTo(1));
-            Assert.That(novel.Authors.First(), Is.EqualTo(person));
+            Assert.That(novel.AllAuthors.Count(), Is.EqualTo(1));
+            Assert.That(novel.AllAuthors.First(), Is.EqualTo(person));
         }
 
 
@@ -65,9 +65,9 @@ namespace Bieb.Tests.Domain
             myBook.Stories.Add(1, story1);
             myBook.Stories.Add(2, story2);
 
-            Assert.That(myBook.Authors.Count(), Is.EqualTo(2));
-            Assert.That(myBook.Authors.ToList(), Has.Member(asimov));
-            Assert.That(myBook.Authors.ToList(), Has.Member(tolkien));
+            Assert.That(myBook.AllAuthors.Count(), Is.EqualTo(2));
+            Assert.That(myBook.AllAuthors.ToList(), Has.Member(asimov));
+            Assert.That(myBook.AllAuthors.ToList(), Has.Member(tolkien));
         }
 
 
@@ -85,9 +85,9 @@ namespace Bieb.Tests.Domain
             story1.Authors.Add(sonOfTolkien);
             myBook.Stories.Add(1, story1);
 
-            Assert.That(myBook.Authors.Count(), Is.EqualTo(2));
-            Assert.That(myBook.Authors.ToList(), Has.Member(tolkien));
-            Assert.That(myBook.Authors.ToList(), Has.Member(sonOfTolkien));
+            Assert.That(myBook.AllAuthors.Count(), Is.EqualTo(2));
+            Assert.That(myBook.AllAuthors.ToList(), Has.Member(tolkien));
+            Assert.That(myBook.AllAuthors.ToList(), Has.Member(sonOfTolkien));
         }
 
 
@@ -175,11 +175,11 @@ namespace Bieb.Tests.Domain
             theHobbit.Stories.Add(1, story2);
             theHobbit.Stories.Add(2, story3);            
 
-            Assert.That(theHobbit.Tags.Contains(cool));
-            Assert.That(theHobbit.Tags.Contains(hot));
-            Assert.That(theHobbit.Tags.Contains(old));
-            Assert.That(theHobbit.Tags.Contains(sweet));
-            Assert.That(theHobbit.Tags.Count(), Is.EqualTo(4));
+            Assert.That(theHobbit.AllTags.Contains(cool));
+            Assert.That(theHobbit.AllTags.Contains(hot));
+            Assert.That(theHobbit.AllTags.Contains(old));
+            Assert.That(theHobbit.AllTags.Contains(sweet));
+            Assert.That(theHobbit.AllTags.Count(), Is.EqualTo(4));
         }
     }
 }

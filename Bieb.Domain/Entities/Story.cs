@@ -11,14 +11,14 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                if (_isbnLanguage == null && Book != null)
+                if (isbnLanguage == null && Book != null)
                     return Book.IsbnLanguage;
 
-                return _isbnLanguage;
+                return isbnLanguage;
             }
             set
             {
-                _isbnLanguage = value;
+                isbnLanguage = value;
             }
         }
 

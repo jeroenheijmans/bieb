@@ -12,14 +12,20 @@ namespace Bieb.Domain.Entities
 
         public virtual string Isbn { get; set; }
 
-        /// <summary>
-        /// All the Tags from all the Stories in this book
-        /// </summary>
-        public virtual IEnumerable<Tag> Tags
+        private readonly ISet<Tag> bookTags = new HashSet<Tag>(); 
+        public virtual ISet<Tag> BookTags
+        {
+            get { return bookTags; }
+        } 
+
+        public virtual IEnumerable<Tag> AllTags
         {
             get
             {
-                return Stories.SelectMany(item => item.Value.Tags).Distinct();
+                return Stories
+                    .SelectMany(item => item.Value.Tags)
+                    .Union(BookTags)
+                    .Distinct();
             }
         }
 
@@ -52,11 +58,20 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public virtual IEnumerable<Person> Authors
+        private readonly ISet<Person> bookAuthors = new HashSet<Person>(); 
+        public virtual ISet<Person> BookAuthors
+        {
+            get { return bookAuthors; }
+        }
+
+        public virtual IEnumerable<Person> AllAuthors
         {
             get
             {
-                return Stories.SelectMany(item => item.Value.Authors).Distinct();
+                return Stories
+                    .SelectMany(item => item.Value.Authors)
+                    .Union(BookAuthors)
+                    .Distinct();
             }
         }
 
@@ -75,7 +90,7 @@ namespace Bieb.Domain.Entities
                 if (Stories.Count <= 1)
                     return BookType.Novel;
 
-                if (Stories.SelectMany(s => Authors).Distinct().Count() == 1)
+                if (Stories.SelectMany(s => AllAuthors).Distinct().Count() == 1)
                     return BookType.Collection;
 
                 return BookType.Anthology;
@@ -91,10 +106,10 @@ namespace Bieb.Domain.Entities
 
         public virtual Book ReferenceBook { get; set; }
 
-        private IList<Book> _referencedByBooks = new List<Book>();
+        private readonly IList<Book> referencedByBooks = new List<Book>();
         public virtual IList<Book> ReferencedByBooks
         {
-            get { return _referencedByBooks; }
+            get { return referencedByBooks; }
         }
 
         public override string ToString()

@@ -39,9 +39,9 @@
             <li>@BiebResources.SharedStrings.Isbn: @Html.DisplayFor(model => model.Isbn)</li>
         }
 
-        @if (Model.Tags.Any())
+        @if (Model.AllTags.Any())
         { 
-            <li>@BiebResources.SharedStrings.Tags: @string.Join(", ", Model.Tags)</li>
+            <li>@BiebResources.SharedStrings.Tags: @string.Join(", ", Model.AllTags)</li>
         }
 
         @if (Model.Series != null)
@@ -64,12 +64,12 @@
             </li>
         }
 
-        @if (Model.Authors.Any())
+        @if (Model.AllAuthors.Any())
         {
             <li>
                 <h6>@BiebResources.SharedStrings.Authors</h6>
                 <ul>
-                    @foreach (var person in Model.Authors)
+                    @foreach (var person in Model.AllAuthors)
                     {
                         <li>
                             @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })

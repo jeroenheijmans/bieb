@@ -48,7 +48,7 @@
         <td>
             @if (book.BookType == Bieb.Domain.Entities.BookType.Novel) 
             {
-                @Html.Raw(string.Join(", ", book.Authors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
+                @Html.Raw(string.Join(", ", book.AllAuthors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
             }
             else
             {
