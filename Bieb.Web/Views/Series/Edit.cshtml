@@ -20,10 +20,18 @@
                 @Html.EditorFor(model => model.Title)
             </div>
         </section>
+
         <section class="field-group">
             <div class="field-group-label">@BiebResources.SeriesStrings.Subtitle</div>
             <div class="field">
                 @Html.EditorFor(model => model.Subtitle)
+            </div>
+        </section>
+
+        <section class="field-group">
+            <div class="field-group-label">@BiebResources.SeriesStrings.Books</div>
+            <div class="field">
+                @Html.ListBoxFor(model => model.BookIds, Model.AvailableBooks)
             </div>
         </section>
 
