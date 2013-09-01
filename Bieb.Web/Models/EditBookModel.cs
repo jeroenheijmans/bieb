@@ -42,5 +42,8 @@ namespace Bieb.Web.Models
         public int[] EditorIds { get; set; } 
 
         public SelectList AvailablePeople { get; set; }
+
+        [Display(Name = "Authors", ResourceType = typeof(BiebResources.BookStrings))]
+        public int[] AuthorIds { get; set; }
     }
 }

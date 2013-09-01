@@ -61,6 +61,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authors.
+        /// </summary>
+        public static string Authors {
+            get {
+                return ResourceManager.GetString("Authors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to by.
         /// </summary>
         public static string By {

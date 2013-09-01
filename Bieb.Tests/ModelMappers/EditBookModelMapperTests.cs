@@ -96,7 +96,7 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Will_Have_Available_Authors()
+        public void Will_Have_Available_People()
         {
             people.Add(asimov);
             people.Add(adams);
@@ -113,7 +113,7 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Will_Sort_Available_Authors()
+        public void Will_Sort_Available_People()
         {
             people.Add(wyndham);
             people.Add(asimov);
@@ -205,6 +205,34 @@ namespace Bieb.Tests.ModelMappers
             mapper.MergeEntityWithModel(book, model);
             Assert.That(book.Editors.Count(), Is.EqualTo(1));
             Assert.That(book.Editors.FirstOrDefault(), Is.EqualTo(asimov));
+        }
+
+
+        [Test]
+        public void Model_Will_Have_Author_Ids_From_Domain_Book()
+        {
+            var book = new Book();
+            book.BookAuthors.Add(asimov);
+            book.BookAuthors.Add(adams);
+
+            var model = mapper.ModelFromEntity(book);
+
+            Assert.That(model.AuthorIds.Contains(asimov.Id));
+            Assert.That(model.AuthorIds.Contains(adams.Id));
+        }
+
+
+        [Test]
+        public void Domain_Book_Will_Get_Authors_From_Model()
+        {
+            var book = new Book();
+            var model = mapper.ModelFromEntity(book);
+            model.AuthorIds = new[] {asimov.Id};
+            people.Add(asimov);
+
+            mapper.MergeEntityWithModel(book, model);
+
+            Assert.That(book.BookAuthors, Contains.Item(asimov));
         }
     }
 }

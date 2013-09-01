@@ -32,6 +32,7 @@ namespace Bieb.Web.Models
 
             entity.Publisher = publishers.FirstOrDefault(p => p.Id == model.PublisherId);
 
+
             entity.Editors.Clear();
 
             foreach (var editorId in model.EditorIds)
@@ -44,6 +45,21 @@ namespace Bieb.Web.Models
                 }
 
                 entity.Editors.Add(person);
+            }
+
+            // TODO: Refactor, the code below is copy-paste from the above
+            entity.BookAuthors.Clear();
+
+            foreach (var authorId in model.AuthorIds)
+            {
+                var person = people.FirstOrDefault(p => p.Id == authorId);
+
+                if (person == null)
+                {
+                    throw new MappingException("Provided Author Id could not be traced to any person in the database.");
+                }
+
+                entity.BookAuthors.Add(person);
             }
         }
 
@@ -64,6 +80,7 @@ namespace Bieb.Web.Models
             model.PublisherId = entity.Publisher == null ? (int?)null : entity.Publisher.Id;
 
             model.EditorIds = entity.Editors.Select(e => e.Id).ToArray();
+            model.AuthorIds = entity.BookAuthors.Select(a => a.Id).ToArray();
 
             return model;
         }
