@@ -26,20 +26,20 @@ $card-width: ($wrapper-width - (2 * $gutter)) / 3;
 
 @font-face {
     font-family: "handwriting-draft_regular";
-    src: url('fonts/handwriting-draft_free-version-webfont.eot');
-    src: url('fonts/handwriting-draft_free-version-webfont.eot?#iefix') format('embedded-opentype'), 
-		 url('fonts/handwriting-draft_free-version-webfont.woff') format('woff'), 
-		 url('fonts/handwriting-draft_free-version-webfont.ttf') format('truetype'), 
-		 url('fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular') format('svg');
+    src: url('../fonts/handwriting-draft_free-version-webfont.eot');
+    src: url('../fonts/handwriting-draft_free-version-webfont.eot?#iefix') format('embedded-opentype'), 
+		 url('../fonts/handwriting-draft_free-version-webfont.woff') format('woff'), 
+		 url('../fonts/handwriting-draft_free-version-webfont.ttf') format('truetype'), 
+		 url('../fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular') format('svg');
 }
 
 @font-face {
     font-family: "MuseoSans500Regular";
-    src: url('fonts/museo_sans500-webfont.eot');
-    src: url('fonts/museo_sans500-webfont.eot?#iefix') format('embedded-opentype'), 
-		 url('fonts/museo_sans500-webfont.woff') format('woff'), 
-		 url('fonts/museo_sans500-webfont.ttf') format('truetype'), 
-		 url('fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
+    src: url('../fonts/museo_sans500-webfont.eot');
+    src: url('../fonts/museo_sans500-webfont.eot?#iefix') format('embedded-opentype'), 
+		 url('../fonts/museo_sans500-webfont.woff') format('woff'), 
+		 url('../fonts/museo_sans500-webfont.ttf') format('truetype'), 
+		 url('../fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
 }
 
 
