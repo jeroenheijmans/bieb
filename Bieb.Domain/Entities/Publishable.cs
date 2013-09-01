@@ -13,11 +13,11 @@ namespace Bieb.Domain.Entities
         public virtual LibraryStatus LibraryStatus { get; set; }
         public virtual Publisher Publisher { get; set; }
 
-        protected int? _isbnLanguage;
+        protected int? isbnLanguage;
         public virtual int? IsbnLanguage 
         {
-            get { return _isbnLanguage; }
-            set { _isbnLanguage = value; }
+            get { return isbnLanguage; }
+            set { isbnLanguage = value; }
         }
 
         private string _titleSort;

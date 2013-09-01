@@ -188,7 +188,7 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                return EditedBooks.SelectMany(book => book.Tags)
+                return EditedBooks.SelectMany(book => book.AllTags)
                         .Union(
                             AuthoredStories.SelectMany(story => story.Tags)
                         )

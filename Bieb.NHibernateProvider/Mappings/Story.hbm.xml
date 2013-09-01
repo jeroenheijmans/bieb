@@ -20,7 +20,7 @@
     <property name="TitleSort" column="TitleSort" generated="always" />
     <property name="Subtitle" />
     <property name="LibraryStatus" not-null="true" />
-    <property name="IsbnLanguage" access="field.camelcase-underscore" />
+    <property name="IsbnLanguage" access="field.camelcase" />
     <property name="Year" />
     
     <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" />
