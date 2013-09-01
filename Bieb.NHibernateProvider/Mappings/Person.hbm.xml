@@ -33,7 +33,7 @@
 
     <set name="EditedBooks" table="BookEditor" access="field.camelcase">
       <key column="PersonId" foreign-key="FK_BookEditor_Person" />
-      <many-to-many column="BookId" class="LibraryBook" foreign-key="FK_BookEditor_Book" />
+      <many-to-many column="BookId" class="Book" foreign-key="FK_BookEditor_Book" />
     </set>
 
     <set name="AuthoredStories" table="StoryAuthor" access="field.camelcase">

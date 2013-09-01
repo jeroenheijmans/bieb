@@ -11,11 +11,11 @@
     <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
 }
 
-@if (Model.LibraryBooks.Any())
+@if (Model.MyBooks.Any())
 {
     <section class="item-list">
         <h4>@BiebResources.PublisherStrings.BooksFromThisPublisher</h4>
-        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.LibraryBooks); }
+        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.MyBooks); }
     </section>
 }
 

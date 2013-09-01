@@ -13,7 +13,7 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class SearchControllerTests
     {
-        private IEntityRepository<LibraryBook> bookRepository;
+        private IEntityRepository<Book> bookRepository;
         private IEntityRepository<Person> peopleRepository;
         private IEntityRepository<Story> storyRepository;
         private SearchController controller;
@@ -23,7 +23,7 @@ namespace Bieb.Tests.Controllers
         public void SetUp()
         {
             peopleRepository = new RepositoryMock<Person>();
-            bookRepository = new RepositoryMock<LibraryBook>();
+            bookRepository = new RepositoryMock<Book>();
             storyRepository = new RepositoryMock<Story>();
 
             controller = new SearchController(peopleRepository, bookRepository, storyRepository);
@@ -33,9 +33,9 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Can_Find_Book_With_Basic_Search()
         {
-            var markTheMartian = new LibraryBook { Title = "Mark the Martian" };
-            var markmanship = new LibraryBook { Title = "Markmanship" };
-            var martinTheEarthling = new LibraryBook { Title = "Martin the Earthling" };
+            var markTheMartian = new Book { Title = "Mark the Martian" };
+            var markmanship = new Book { Title = "Markmanship" };
+            var martinTheEarthling = new Book { Title = "Martin the Earthling" };
 
             bookRepository.Add(markTheMartian);
             bookRepository.Add(martinTheEarthling);
@@ -72,7 +72,7 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Can_Find_Story_With_Basic_Search()
         {
-            var bundle = new LibraryBook();
+            var bundle = new Book();
             var story1 = new Story { Title = "The first story ever", Book = bundle };
             var story2 = new Story { Title = "The very second story", Book = bundle };
             var story3 = new Story { Title = "The third ever story", Book = bundle };
@@ -96,7 +96,7 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Will_Not_Show_Stories_From_Novels_With_Basic_Search()
         {
-            var novel = new LibraryBook { };
+            var novel = new Book { };
             var story = new Story { Title = "Best book ever", Book = novel };
             novel.Stories.Add(0, story);
 
@@ -126,7 +126,7 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Single_Book_Result_Will_Redirect_To_Appropriate_Details_Page()
         {
-            var markTheMartian = new LibraryBook { Title = "Mark the Martian" };
+            var markTheMartian = new Book { Title = "Mark the Martian" };
 
             bookRepository.Add(markTheMartian);
 
@@ -140,7 +140,7 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Single_Story_Result_Will_Redirect_To_Appropriate_Details_Page()
         {
-            var bundle = new LibraryBook();
+            var bundle = new Book();
             var story1 = new Story { Title = "The first story ever", Book = bundle };
             var story2 = new Story { Title = "The very second story", Book = bundle };
             bundle.Stories.Add(0, story1);

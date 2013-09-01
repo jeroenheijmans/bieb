@@ -104,8 +104,8 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private readonly ISet<LibraryBook> editedBooks = new HashSet<LibraryBook>();
-        public virtual ISet<LibraryBook> EditedBooks
+        private readonly ISet<Book> editedBooks = new HashSet<Book>();
+        public virtual ISet<Book> EditedBooks
         {
             get { return editedBooks; }
         }
@@ -126,7 +126,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public virtual IEnumerable<LibraryBook> AuthoredNovels
+        public virtual IEnumerable<Book> AuthoredNovels
         {
             get
             {
@@ -152,7 +152,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public virtual IEnumerable<LibraryBook> TranslatedNovels
+        public virtual IEnumerable<Book> TranslatedNovels
         {
             get
             {
@@ -169,7 +169,7 @@ namespace Bieb.Domain.Entities
             get { return reviews; }
         }
 
-        public virtual IEnumerable<LibraryBook> AuthoredCollections
+        public virtual IEnumerable<Book> AuthoredCollections
         {
             get 
             {

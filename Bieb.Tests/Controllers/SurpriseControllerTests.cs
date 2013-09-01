@@ -15,10 +15,10 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class SurpriseControllerTests
     {
-        private IEntityRepository<LibraryBook> bookRepository;
+        private IEntityRepository<Book> bookRepository;
         private IEntityRepository<Person> peopleRepository;
         private SurpriseController controller;
-        private LibraryBook testBook;
+        private Book testBook;
         private Person testPerson;
 
 
@@ -26,10 +26,10 @@ namespace Bieb.Tests.Controllers
         public void SetUp()
         {
             peopleRepository = new RepositoryMock<Person>();
-            bookRepository = new RepositoryMock<LibraryBook>();
+            bookRepository = new RepositoryMock<Book>();
 
             controller = new SurpriseController(peopleRepository, bookRepository);
-            testBook = new LibraryBook();
+            testBook = new Book();
             testPerson = new Person();
         }
 
@@ -50,7 +50,7 @@ namespace Bieb.Tests.Controllers
             bookRepository.Add(testBook);
             
             var randomEntityPickerMock = new Mock<IRandomEntityPicker>();
-            randomEntityPickerMock.Setup(picker => picker.GetRandomEntityType()).Returns(typeof(LibraryBook));
+            randomEntityPickerMock.Setup(picker => picker.GetRandomEntityType()).Returns(typeof(Book));
 
             var result = (RedirectToRouteResult)controller.Index(randomEntityPickerMock.Object);
 

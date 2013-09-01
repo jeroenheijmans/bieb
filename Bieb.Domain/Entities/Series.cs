@@ -20,8 +20,8 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private readonly IDictionary<int, LibraryBook> books = new SortedList<int, LibraryBook>();
-        public virtual IDictionary<int, LibraryBook> Books
+        private readonly IDictionary<int, Book> books = new SortedList<int, Book>();
+        public virtual IDictionary<int, Book> Books
         {
             get { return books; }
         }

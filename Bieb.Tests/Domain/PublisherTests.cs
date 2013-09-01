@@ -11,17 +11,19 @@ namespace Bieb.Tests.Domain
     public class PublisherTests
     {
         [Test]
-        public void Books_Is_LibraryBooks_And_ReferenceBooks_Joined()
+        public void Books_Is_MyBooks_And_ReferenceBooks_Joined()
         {
-            var book1 = new LibraryBook();
-            var book2 = new ReferenceBook();
+            var book1 = new Book{ LibraryStatus = LibraryStatus.InPosession };
+            var book2 = new Book { LibraryStatus = LibraryStatus.OnlyForReference };
             var publisher = new Publisher();
-            publisher.LibraryBooks.Add(book1);
-            publisher.ReferenceBooks.Add(book2);
+            publisher.Books.Add(book1);
+            publisher.Books.Add(book2);
 
-            Assert.That(publisher.Books.Count(), Is.EqualTo(2));
-            CollectionAssert.Contains(publisher.Books, book1);
-            CollectionAssert.Contains(publisher.Books, book2);
+            Assert.That(publisher.MyBooks.Count(), Is.EqualTo(1));
+            CollectionAssert.Contains(publisher.MyBooks, book1);
+
+            Assert.That(publisher.ReferenceBooks.Count(), Is.EqualTo(1));
+            CollectionAssert.Contains(publisher.ReferenceBooks, book2);
         }
     }
 }

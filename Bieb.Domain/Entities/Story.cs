@@ -4,7 +4,7 @@ namespace Bieb.Domain.Entities
 {
     public class Story : Publishable
     {
-        public virtual LibraryBook Book { get; set; }
+        public virtual Book Book { get; set; }
         public virtual int PositionInBook { get; set; }
 
         public override int? IsbnLanguage

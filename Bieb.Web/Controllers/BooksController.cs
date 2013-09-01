@@ -30,7 +30,7 @@ namespace Bieb.Web.Controllers
         {
             get
             {
-                return book => book is LibraryBook;
+                return book => book.LibraryStatus != LibraryStatus.OnlyForReference;
             }
         }
     }

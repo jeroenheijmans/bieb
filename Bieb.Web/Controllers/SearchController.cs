@@ -10,13 +10,13 @@ namespace Bieb.Web.Controllers
     public class SearchController : Controller
     {
         protected IEntityRepository<Person> PersonRepository { get; set; }
-        protected IEntityRepository<LibraryBook> BookRepository { get; set; }
+        protected IEntityRepository<Book> BookRepository { get; set; }
         protected IEntityRepository<Story> StoryRepository { get; set; }
 
         // TODO: Make these dependencies more flexible. For now, as a workaround, the controller is dependent
         // on the three most basic repositories. With something like NHibernate Search the approach will be 
         // completely different anyways, but this set up will (have to) do for now.
-        public SearchController(IEntityRepository<Person> PersonRepository, IEntityRepository<LibraryBook> BookRepository, IEntityRepository<Story> StoryRepository)
+        public SearchController(IEntityRepository<Person> PersonRepository, IEntityRepository<Book> BookRepository, IEntityRepository<Story> StoryRepository)
         {
             this.PersonRepository = PersonRepository;
             this.BookRepository = BookRepository;
@@ -47,7 +47,7 @@ namespace Bieb.Web.Controllers
                 .OrderBy(p => p.Surname)
                 .Select(p => p);
 
-            IEnumerable<LibraryBook> books = BookRepository
+            IEnumerable<Book> books = BookRepository
                 .Items
                 .Where(b => b.Title.ToLower().Contains(queryLowerCased))
                 .OrderBy(b => b.Title)

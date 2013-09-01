@@ -7,24 +7,20 @@ namespace Bieb.Domain.Entities
     {
         public virtual string Name { get; set; }
 
-        private readonly ISet<LibraryBook> libraryBooks = new HashSet<LibraryBook>();
-        public virtual ISet<LibraryBook> LibraryBooks
+        private readonly ISet<Book> books = new HashSet<Book>();
+        public virtual ISet<Book> Books
         {
-            get { return libraryBooks; }
+            get { return books; }
         }
 
-        private readonly ISet<ReferenceBook> referenceBooks = new HashSet<ReferenceBook>();
-        public virtual ISet<ReferenceBook> ReferenceBooks
+        public virtual IEnumerable<Book> MyBooks
         {
-            get { return referenceBooks; }
+            get { return books.Where(b => b.LibraryStatus != LibraryStatus.OnlyForReference); }
         }
 
-        public virtual IEnumerable<Book> Books
+        public virtual IEnumerable<Book> ReferenceBooks
         {
-            get
-            {
-                return new Book[]{}.Concat(LibraryBooks).Concat(ReferenceBooks);
-            }
+            get { return books.Where(b => b.LibraryStatus == LibraryStatus.OnlyForReference); }
         }
 
         private readonly ISet<Story> stories = new HashSet<Story>();
