@@ -13,6 +13,7 @@ namespace Bieb.Web.Models
         public EditBookModel()
         {
             EditorIds = new int[0];
+            AuthorIds = new int[0];
         }
 
         [Display(Name = "Isbn", Prompt = "IsbnPlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
