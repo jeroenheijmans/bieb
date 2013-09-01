@@ -33,6 +33,13 @@
         </section>
 
         <section class="field-group">
+            <div class="field-group-label">@BiebResources.BookStrings.Translators</div>
+            <div class="field">
+                @Html.ListBoxFor(model => model.TranslatorIds, Model.AvailablePeople, new { @class = "fancy-select" })
+            </div>
+        </section>
+
+        <section class="field-group">
             <div class="field-group-label">@BiebResources.BookStrings.Editors</div>
             <div class="field">
                 @Html.ListBoxFor(model => model.EditorIds, Model.AvailablePeople, new { @class = "fancy-select" })

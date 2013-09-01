@@ -195,6 +195,9 @@
   <data name="TitlePlaceholder" xml:space="preserve">
     <value>Enter a title</value>
   </data>
+  <data name="Translators" xml:space="preserve">
+    <value>Translators</value>
+  </data>
   <data name="TypeHeader" xml:space="preserve">
     <value>Type</value>
   </data>

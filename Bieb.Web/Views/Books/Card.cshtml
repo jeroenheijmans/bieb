@@ -79,12 +79,12 @@
             </li>
         }
 
-        @if (Model.Translators.Any())
+        @if (Model.AllTranslators.Any())
         {
             <li>
                 <h6>@BiebResources.SharedStrings.Translators</h6>
                 <ul>
-                    @foreach (var person in Model.Translators)
+                    @foreach (var person in Model.AllTranslators)
                     {
                         <li>
                             @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })

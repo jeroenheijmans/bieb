@@ -14,7 +14,9 @@ namespace Bieb.Web.Models
         {
             EditorIds = new int[0];
             AuthorIds = new int[0];
+            TranslatorIds = new int[0];
         }
+
 
         [Display(Name = "Isbn", Prompt = "IsbnPlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
         public string Isbn { get; set; }
@@ -34,17 +36,22 @@ namespace Bieb.Web.Models
         [Display(Name = "IsbnLanguage", Prompt = "IsbnLanguagePlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
         public int? IsbnLanguage { get; set; }
 
+
+        public SelectList AvailablePublishers { get; set; }
+
         [Display(Name = "PublishedBy", ResourceType = typeof(BiebResources.BookStrings))]
         public int? PublisherId { get; set; }
 
-        public SelectList AvailablePublishers { get; set; }
+
+        public SelectList AvailablePeople { get; set; }
 
         [Display(Name = "Editors", ResourceType = typeof(BiebResources.BookStrings))]
         public int[] EditorIds { get; set; } 
 
-        public SelectList AvailablePeople { get; set; }
-
         [Display(Name = "Authors", ResourceType = typeof(BiebResources.BookStrings))]
         public int[] AuthorIds { get; set; }
+
+        [Display(Name = "Translators", ResourceType = typeof(BiebResources.BookStrings))]
+        public int[] TranslatorIds { get; set; }
     }
 }

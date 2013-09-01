@@ -75,11 +75,23 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        public virtual IEnumerable<Person> Translators
+        private readonly ISet<Person> bookTranslators = new HashSet<Person>();
+        public virtual ISet<Person> BookTranslators
+        {
+            get 
+            {
+                return bookTranslators; 
+            }
+        }
+
+        public virtual IEnumerable<Person> AllTranslators
         {
             get
             {
-                return Stories.SelectMany(item => item.Value.Translators).Distinct();
+                return Stories
+                    .SelectMany(item => item.Value.Translators)
+                    .Union(BookTranslators)
+                    .Distinct();
             }
         }
 
