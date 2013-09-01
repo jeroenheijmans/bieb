@@ -5,7 +5,8 @@
     <title>@ViewBag.Title</title>
     <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
     <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/styles")
+    @Styles.Render("~/Content/styles/select2")
 </head>
 <body>
     
@@ -52,7 +53,12 @@
         <hr />
     </footer>
     
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/jqueryplugins")
     @RenderSection("scripts", required: false)
+    
+    <script>
+        $(document).ready(function () { $(".fancy-select").select2(); });
+    </script>
 </body>
 </html>
