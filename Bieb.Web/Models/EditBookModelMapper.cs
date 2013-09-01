@@ -61,6 +61,21 @@ namespace Bieb.Web.Models
 
                 entity.BookAuthors.Add(person);
             }
+
+            // TODO: Refactor, the code below is copy-paste from the above
+            entity.BookTranslators.Clear();
+
+            foreach (var translatorId in model.TranslatorIds)
+            {
+                var person = people.FirstOrDefault(p => p.Id == translatorId);
+
+                if (person == null)
+                {
+                    throw new MappingException("Provided Author Id could not be traced to any person in the database.");
+                }
+
+                entity.BookTranslators.Add(person);
+            }
         }
 
         public override EditBookModel ModelFromEntity(Book entity)
@@ -81,6 +96,7 @@ namespace Bieb.Web.Models
 
             model.EditorIds = entity.Editors.Select(e => e.Id).ToArray();
             model.AuthorIds = entity.BookAuthors.Select(a => a.Id).ToArray();
+            model.TranslatorIds = entity.BookTranslators.Select(t => t.Id).ToArray();
 
             return model;
         }

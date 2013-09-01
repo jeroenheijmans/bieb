@@ -227,12 +227,40 @@ namespace Bieb.Tests.ModelMappers
         {
             var book = new Book();
             var model = mapper.ModelFromEntity(book);
-            model.AuthorIds = new[] {asimov.Id};
+            model.AuthorIds = new[] { asimov.Id };
             people.Add(asimov);
 
             mapper.MergeEntityWithModel(book, model);
 
             Assert.That(book.BookAuthors, Contains.Item(asimov));
+        }
+
+
+        [Test]
+        public void Model_Will_Have_Translator_Ids_From_Domain_Book()
+        {
+            var book = new Book();
+            book.BookTranslators.Add(asimov);
+            book.BookTranslators.Add(adams);
+
+            var model = mapper.ModelFromEntity(book);
+
+            Assert.That(model.TranslatorIds.Contains(asimov.Id));
+            Assert.That(model.TranslatorIds.Contains(adams.Id));
+        }
+
+
+        [Test]
+        public void Domain_Book_Will_Get_Translators_From_Model()
+        {
+            var book = new Book();
+            var model = mapper.ModelFromEntity(book);
+            model.TranslatorIds = new[] { asimov.Id };
+            people.Add(asimov);
+
+            mapper.MergeEntityWithModel(book, model);
+
+            Assert.That(book.BookTranslators, Contains.Item(asimov));
         }
     }
 }

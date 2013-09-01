@@ -108,9 +108,9 @@ namespace Bieb.Tests.Domain
             myBook.Stories.Add(1, story1);
             myBook.Stories.Add(2, story2);
 
-            Assert.That(myBook.Translators.Count(), Is.EqualTo(2));
-            Assert.That(myBook.Translators.ToList(), Has.Member(pjotr));
-            Assert.That(myBook.Translators.ToList(), Has.Member(michelle));
+            Assert.That(myBook.AllTranslators.Count(), Is.EqualTo(2));
+            Assert.That(myBook.AllTranslators.ToList(), Has.Member(pjotr));
+            Assert.That(myBook.AllTranslators.ToList(), Has.Member(michelle));
         }
 
         
