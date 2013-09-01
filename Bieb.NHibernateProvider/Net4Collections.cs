@@ -707,28 +707,28 @@ namespace Bieb.NHibernateProvider
 		#region Nested type: SetSnapShot
 
 		[Serializable]
-		private class SetSnapShot<T> : ISetSnapshot<T>
+		private class SetSnapShot<TSnapshot> : ISetSnapshot<TSnapshot>
 		{
-			private readonly List<T> elements;
+			private readonly List<TSnapshot> elements;
 
 			private SetSnapShot()
 			{
-				elements = new List<T>();
+				elements = new List<TSnapshot>();
 			}
 
 			public SetSnapShot(int capacity)
 			{
-				elements = new List<T>(capacity);
+				elements = new List<TSnapshot>(capacity);
 			}
 
-			public SetSnapShot(IEnumerable<T> collection)
+			public SetSnapShot(IEnumerable<TSnapshot> collection)
 			{
-				elements = new List<T>(collection);
+				elements = new List<TSnapshot>(collection);
 			}
 
 			#region ISetSnapshot<T> Members
 
-			public IEnumerator<T> GetEnumerator()
+			public IEnumerator<TSnapshot> GetEnumerator()
 			{
 				return elements.GetEnumerator();
 			}
@@ -738,7 +738,7 @@ namespace Bieb.NHibernateProvider
 				return GetEnumerator();
 			}
 
-			public void Add(T item)
+			public void Add(TSnapshot item)
 			{
 				elements.Add(item);
 			}
@@ -748,17 +748,17 @@ namespace Bieb.NHibernateProvider
 				throw new InvalidOperationException();
 			}
 
-			public bool Contains(T item)
+			public bool Contains(TSnapshot item)
 			{
 				return elements.Contains(item);
 			}
 
-			public void CopyTo(T[] array, int arrayIndex)
+			public void CopyTo(TSnapshot[] array, int arrayIndex)
 			{
 				elements.CopyTo(array, arrayIndex);
 			}
 
-			public bool Remove(T item)
+			public bool Remove(TSnapshot item)
 			{
 				throw new InvalidOperationException();
 			}
@@ -783,17 +783,17 @@ namespace Bieb.NHibernateProvider
 				get { return ((ICollection) elements).IsSynchronized; }
 			}
 
-			int ICollection<T>.Count
+			int ICollection<TSnapshot>.Count
 			{
 				get { return elements.Count; }
 			}
 
 			public bool IsReadOnly
 			{
-				get { return ((ICollection<T>) elements).IsReadOnly; }
+				get { return ((ICollection<TSnapshot>) elements).IsReadOnly; }
 			}
 
-			public T this[T element]
+			public TSnapshot this[TSnapshot element]
 			{
 				get
 				{
@@ -802,7 +802,7 @@ namespace Bieb.NHibernateProvider
 					{
 						return elements[idx];
 					}
-					return default(T);
+					return default(TSnapshot);
 				}
 			}
 
