@@ -697,9 +697,9 @@ namespace Bieb.NHibernateProvider
 
 		#region Nested type: ISetSnapshot
 
-		private interface ISetSnapshot<T> : ICollection<T>, ICollection
+		private interface ISetSnapshot<TCollection> : ICollection<TCollection>, ICollection
 		{
-			T this[T element] { get; }
+			TCollection this[TCollection element] { get; }
 		}
 
 		#endregion
