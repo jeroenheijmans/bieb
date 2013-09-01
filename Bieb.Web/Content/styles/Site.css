@@ -84,6 +84,10 @@ th {
 input[type="text"], input[type="password"] {
   padding: 0.125em 0.25em; }
 
+.fancy-select-container, .fancy-select-dropdown {
+  font-size: 13px;
+  font-family: sans-serif; }
+
 /* Custom text selection color */
 ::selection {
   background: #ff0080;
@@ -378,6 +382,8 @@ iframe.goodreads {
 .series.edit-form input#Year, .book.edit-form input#Year {
   width: 4em; }
 .series.edit-form select#Publisher, .book.edit-form select#Publisher {
+  width: 24em; }
+.series.edit-form .fancy-select, .book.edit-form .fancy-select {
   width: 24em; }
 
 .publisher.edit-form input#Name {

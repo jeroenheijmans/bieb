@@ -28,7 +28,7 @@
         <section class="field-group">
             <div class="field-group-label">@BiebResources.SeriesStrings.Books</div>
             <div class="field">
-                @Html.ListBoxFor(model => model.BookIds, Model.AvailableBooks)
+                @Html.ListBoxFor(model => model.BookIds, Model.AvailableBooks, new { @class = "fancy-select" })
             </div>
         </section>
 
