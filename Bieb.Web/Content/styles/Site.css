@@ -324,7 +324,6 @@ iframe.goodreads {
   background-color: white; }
   .edit-form .field-group-label {
     display: inline-block;
-    text-align: right;
     vertical-align: top;
     padding-right: 0.5em;
     width: 10em; }
@@ -371,9 +370,9 @@ iframe.goodreads {
 .person.edit-form input#DeathYear {
   width: 5em; }
 
-.series.edit-form input#Title, .book.edit-form input#Title {
+.series.edit-form .title input, .book.edit-form .title input {
   width: 24em; }
-.series.edit-form input#Subtitle, .book.edit-form input#Subtitle {
+.series.edit-form .subtitle input, .book.edit-form .subtitle input {
   width: 24em; }
 .series.edit-form input#Isbn, .book.edit-form input#Isbn {
   width: 12em; }
