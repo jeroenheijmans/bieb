@@ -434,7 +434,6 @@ iframe.goodreads {
 
 	.field-group-label {
 		display: inline-block;
-		text-align: right;
 		vertical-align: top;
 		padding-right: $text-gutter;
 		width: $form-group-label-width;
@@ -483,8 +482,8 @@ iframe.goodreads {
 }
 
 .series.edit-form, .book.edit-form {
-	input#Title			{ width: 24em; }
-	input#Subtitle		{ width: 24em; }
+	.title input		{ width: 24em; }
+	.subtitle input		{ width: 24em; }
 	input#Isbn			{ width: 12em; }
 	input#IsbnLanguage	{ width: 3em; }
 	input#Year			{ width: 4em; }
