@@ -23,32 +23,32 @@
         <section class="books">
         @if (Model.AuthoredNovels.Any())
         { 
-            <section class="item-list authoredNovels">
-                <h4>@BiebResources.SharedStrings.Novels</h4>
+            <section class="row item-list authoredNovels">
+                <h2>@BiebResources.SharedStrings.Novels</h2>
                 @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredNovels); }
             </section>
         }
 
         @if (Model.EditedBooks.Count > 0)
         { 
-            <section class="item-list editedBooks">
-                <h4>@BiebResources.PeopleStrings.EditedBooks</h4>
+            <section class="row item-list editedBooks">
+                <h2>@BiebResources.PeopleStrings.EditedBooks</h2>
                 @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.EditedBooks); }
             </section>
         }
     
         @if (Model.AuthoredCollections.Any())
         { 
-            <section class="item-list authoredCollections">
-                <h4>@BiebResources.PeopleStrings.AuthoredCollections</h4>
+            <section class="row item-list authoredCollections">
+                <h2>@BiebResources.PeopleStrings.AuthoredCollections</h2>
                 @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredCollections); }
             </section>
         }
     
         @if (Model.TranslatedNovels.Any())
         { 
-            <section class="item-list authoredCollections">
-                <h4>@BiebResources.PeopleStrings.TranslatedNovels</h4>
+            <section class="row item-list authoredCollections">
+                <h2>@BiebResources.PeopleStrings.TranslatedNovels</h2>
                 @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.TranslatedNovels); }
             </section>
         }
@@ -61,7 +61,7 @@
         @if (Model.TranslatedShortStories.Any())
         { 
             <section class="item-list translatedStories">
-                <h4>@BiebResources.PeopleStrings.TranslatedShortStories</h4>
+                <h2>@BiebResources.PeopleStrings.TranslatedShortStories</h2>
                 @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.TranslatedShortStories); }
             </section>
         }
@@ -70,7 +70,7 @@
         {
             // TODO: Split between short stories and novels
             <section class="item-list authoredShortStories">
-                <h4>@BiebResources.PeopleStrings.AuthoredShortStories</h4>
+                <h2>@BiebResources.PeopleStrings.AuthoredShortStories</h2>
                 @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.AuthoredShortStories); }
             </section>
         }

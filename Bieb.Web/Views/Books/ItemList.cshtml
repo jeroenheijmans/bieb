@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<Bieb.Domain.Entities.Book>
 
-<ul>
 @foreach (var book in Model) 
 {
-    <li>
-        <h6>@Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })</h6>
+    <div class="col-md-4 panel">
+        <p class="lead">@Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })</p>
                 
         <span>@book.BookType</span>
 
@@ -12,6 +11,5 @@
         {
             <span>, @BiebResources.SharedStrings.Isbn: @book.Isbn</span>
         }
-    </li>
+    </div>
 }
-</ul>

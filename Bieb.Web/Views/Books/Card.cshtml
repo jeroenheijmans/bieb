@@ -1,7 +1,7 @@
 ﻿@using Bieb.Domain.Entities
 @model Bieb.Domain.Entities.Book
 
-<div class="card">
+<div class="card col-md-4 pull-right">
     @if (User.Identity.IsAuthenticated)
     {
         <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>

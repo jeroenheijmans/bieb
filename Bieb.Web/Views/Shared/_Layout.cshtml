@@ -4,41 +4,39 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     @Styles.Render("~/Content/styles")
     @Styles.Render("~/Content/styles/select2")
 </head>
-<body>
+<body class="container">
     
     <header>
-        <nav>
-            <ul id="menu">
-                <li>@Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")</li>
-            </ul>
+        <nav class="row">
+            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")</div>
+            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")</div>
+            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")</div>
+            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")</div>
+            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")</div>
+            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")</div>
         </nav>
-        <div class="utilities">
-            <div id="search">
+
+        <div class="pull-right col-md-4">
+            <div class="row">
                 @Html.Partial("_SearchBoxPartial")
             </div>
-            <div id="account">
+            <div class="row">
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
+        
         <div class="title">
             @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
         </div>
     </header>
 
-    <div class="wrapper">
-        <section id="main">
-            @RenderBody()
-        </section>
-    </div>
+    @RenderBody()
+    
+    <hr />
 
     <footer>
         <p>
@@ -50,10 +48,10 @@
             
             <span id="powered-by">@BiebResources.SharedStrings.PoweredBy <a href="http://bieb.codeplex.com" target="_blank">bieb.codeplex.com</a></span>
         </p>
-        <hr />
     </footer>
     
     @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/bootstrap")
     @Scripts.Render("~/Scripts/jqueryplugins")
     @RenderSection("scripts", required: false)
     
