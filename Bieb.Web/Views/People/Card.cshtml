@@ -1,6 +1,6 @@
 ﻿@model Bieb.Domain.Entities.Person
 
-<div class="card">
+<div class="card col-md-4 pull-right">
     @if (User.Identity.IsAuthenticated)
     {
         <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
@@ -10,7 +10,7 @@
         @Html.DisplayFor(model => model.FullName)
     </h1>
     
-    <h2>
+    <p class="lead">
         @if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
         {
             @Model.GenderChar
@@ -22,7 +22,7 @@
         }
         
         @string.Join(", ", Model.Roles)
-    </h2>
+    </p>
 
     <ul>
         <li>

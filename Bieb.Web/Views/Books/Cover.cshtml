@@ -3,7 +3,7 @@
 @* Placeholder view. We need infrastructure for actual cover pictures before we can finish this view. *@
 
 <div class="cover">
-    <div class="back">
+    <div class="back col-xs-4">
         <p class="publisher">
             @if (Model.Publisher != null)
             {
@@ -11,7 +11,7 @@
             }
         </p>
     </div>
-    <div class="front">
+    <div class="front col-xs-4">
         <p class="main-person">
             @if (Model.Editors.Any())
             {
@@ -26,6 +26,4 @@
             @Model.Title
         </p>
     </div>
-    
-    <div class="clearfix"></div>
 </div>

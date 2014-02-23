@@ -150,6 +150,9 @@
   <data name="ErrorOccurredTitle" xml:space="preserve">
     <value>Sorry, an error occurred while processing your request. Enjoy this quote instead:</value>
   </data>
+  <data name="FirstPage" xml:space="preserve">
+    <value>&lt;&lt;</value>
+  </data>
   <data name="HomeMenuItem" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -165,8 +168,11 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="Next" xml:space="preserve">
-    <value>Next</value>
+  <data name="LastPage" xml:space="preserve">
+    <value>&gt;&gt;</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>&gt;</value>
   </data>
   <data name="Novels" xml:space="preserve">
     <value>Novels</value>
@@ -192,8 +198,8 @@
   <data name="PoweredBy" xml:space="preserve">
     <value>Powered by</value>
   </data>
-  <data name="Previous" xml:space="preserve">
-    <value>Previous</value>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>&lt;</value>
   </data>
   <data name="Published" xml:space="preserve">
     <value>Published</value>

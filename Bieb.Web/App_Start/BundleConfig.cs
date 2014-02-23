@@ -13,6 +13,9 @@ namespace Bieb.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/bootstrap").Include(
+                        "~/Content/bootstrap/js/bootstrap.js"));
+
             bundles.Add(new ScriptBundle("~/Scripts/jqueryplugins").Include(
                         "~/Scripts/select2.js"));
 
@@ -21,7 +24,7 @@ namespace Bieb.Web.App_Start
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/styles").Include(
-                        "~/Content/styles/reset.css",
+                        "~/Content/bootstrap/css/bootstrap.css",
                         "~/Content/styles/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/styles/select2").Include(
