@@ -11,7 +11,7 @@
 
 <p>@BiebResources.PeopleStrings.IndexIntroduction</p>
 
-<table class="table table-bordered table-striped table-hover table-condensed">
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
     <tr>
         <th>
             <span class="hidden-xs hidden-sm">
@@ -42,7 +42,7 @@
                 @Html.ImageFlagFor(person)
             }
         </td>
-        <td class="main-column">
+        <td class="main-topic">
             @Html.ActionLink(person.FullName, "Details", new { id=person.Id })
         </td>
         <td> 

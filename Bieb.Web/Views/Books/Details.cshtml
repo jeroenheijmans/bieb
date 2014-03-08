@@ -4,27 +4,35 @@
     ViewBag.Title = Model.Title;
 }
 
-@{ Html.RenderPartial("Card", Model); }
+<div class="row">
 
-@*Bootstrapping should be better to show this:*@
-@*@{ Html.RenderPartial("Cover", Model); }*@
+    <div class="col-md-4">
+        @{ Html.RenderPartial("Card", Model); }
+    </div>
 
-@if (Model.Reviews.Any())
-{
-    <section class="reviews">
-        @foreach (var review in Model.Reviews)
-        { 
-            <p>@review.ReviewText</p>
+    <div class="col-md-8">
+        @*Fix BS/CSS to show this again:*@
+        @*@{ Html.RenderPartial("Cover", Model); }*@
+
+        @if (Model.Reviews.Any())
+        {
+            <section class="reviews">
+                @foreach (var review in Model.Reviews)
+                { 
+                    <p>@review.ReviewText</p>
+                }
+            </section>
         }
-    </section>
-}
 
-@if (Model.BookType != Bieb.Domain.Entities.BookType.Novel)
-{
-    <section class="item-list">
-        <h4>@BiebResources.SharedStrings.Stories:</h4>
-        @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories.Values); }
-    </section>
-}
+        @if (Model.BookType != Bieb.Domain.Entities.BookType.Novel)
+        {
+            <section class="item-list">
+                <h4>@BiebResources.SharedStrings.Stories:</h4>
+                @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories.Values); }
+            </section>
+        }
 
-@{ Html.RenderPartial("MoreInfo", Model); }
+        @{ Html.RenderPartial("MoreInfo", Model); }
+    </div>
+    
+</div>

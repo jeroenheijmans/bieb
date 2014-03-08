@@ -43,17 +43,19 @@ a {
 	border: 1px solid $main-color;
 }
 
-table {
-	td, th {
-		white-space: nowrap;
-	}
 
-	.main-column {
-		white-space: normal;
-		width: 100%;
+@media (min-width: 992px) { 
+	.single-topic-table {
+		td, th {
+			white-space: nowrap;
+		}
+
+		.main-topic {
+			white-space: normal;
+			width: 100%;
+		}
 	}
 }
-
 
 nav {
 	background: $main-color;
@@ -91,9 +93,27 @@ nav {
 	}
 }
 
-.card {
+.panel {
 	color: $background-color;
 	background-color: $main-color;
+
+	h1 {
+		font-size: 1.65em;
+		margin-top: $text-gutter / 2;
+	}
+
+	h2 {
+		font-size: 1.3em;
+		margin-top: 0;
+	}
+	
+	a {
+		color: $action-color-lighter;
+		&:hover { 
+			text-decoration: none;
+			color: $action-color;
+		}
+	}
 }
 
 .cover {
@@ -104,4 +124,9 @@ nav {
 		border: 1px solid #BBB;
 		height: 300px;
 	}
+}
+
+.goodreads {
+	border: 1px solid $background-color-darker;
+	background-color: $background-color;
 }
