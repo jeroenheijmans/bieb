@@ -28,12 +28,12 @@ a {
 .img-bordered {
   border: 1px solid #333333; }
 
-table td, table th {
-  white-space: nowrap; }
-table .main-column {
-  white-space: normal;
-  width: 100%; }
-
+@media (min-width: 992px) {
+  .single-topic-table td, .single-topic-table th {
+    white-space: nowrap; }
+  .single-topic-table .main-topic {
+    white-space: normal;
+    width: 100%; } }
 nav {
   background: #333333;
   margin-bottom: 0.375em; }
@@ -61,9 +61,20 @@ nav {
     .title a:hover {
       color: #ff0080; }
 
-.card {
+.panel {
   color: white;
   background-color: #333333; }
+  .panel h1 {
+    font-size: 1.65em;
+    margin-top: 0.375em; }
+  .panel h2 {
+    font-size: 1.3em;
+    margin-top: 0; }
+  .panel a {
+    color: #ffd8ed; }
+    .panel a:hover {
+      text-decoration: none;
+      color: #ff0080; }
 
 .cover {
   margin-right: 50px; }
@@ -71,4 +82,8 @@ nav {
     background-color: #eeeeee;
     border: 1px solid #BBB;
     height: 300px; }
+
+.goodreads {
+  border: 1px solid #eeeeee;
+  background-color: white; }
 

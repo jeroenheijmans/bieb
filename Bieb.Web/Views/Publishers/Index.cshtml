@@ -9,7 +9,7 @@
     @Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")
 }
 
-<table class="table table-bordered table-striped table-hover table-condensed">
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
     <tr>
         <th>
             @BiebResources.SharedStrings.Publisher
@@ -24,7 +24,7 @@
 
 @foreach (var publisher in Model) {
     <tr>
-        <td class="main-column">
+        <td class="main-topic">
             @Html.ActionLink(publisher.Name, "Details", new { id = publisher.Id, controller = "Publishers"})
         </td>
         <td>

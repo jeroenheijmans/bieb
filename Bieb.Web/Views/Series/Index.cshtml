@@ -11,7 +11,7 @@
 
 <p>@BiebResources.SeriesStrings.IndexIntroduction</p>
 
-<table class="table table-bordered table-striped table-hover table-condensed">
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
     <tr>
         <th>
             @BiebResources.SeriesStrings.TitleHeader
@@ -26,7 +26,7 @@
         <td>
             @Html.ActionLink(series.Title, "Details", new { id=series.Id })
         </td>
-        <td class="main-column">
+        <td class="main-topic">
             @string.Join(", ", series.Books.Values)
         </td>
     </tr>

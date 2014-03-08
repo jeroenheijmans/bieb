@@ -12,7 +12,7 @@
 
 <p>@BiebResources.BookStrings.IndexIntroduction</p>
 
-<table class="table table-bordered table-striped table-hover table-condensed">
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
     <tr>
         <th>
             @BiebResources.BookStrings.TypeHeader
@@ -36,7 +36,7 @@
         <td>
             @Html.DisplayFor(modelbook => book.BookType)
         </td>
-        <td class="main-column">
+        <td class="main-topic">
             @Html.ActionLink(book.Title, "Details", new { id=book.Id })
         </td>
         <td>
