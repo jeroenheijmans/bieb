@@ -237,6 +237,9 @@
   <data name="SiteTitleLong" xml:space="preserve">
     <value>Bieb: My Library</value>
   </data>
+  <data name="SiteTitleShort" xml:space="preserve">
+    <value>Bieb</value>
+  </data>
   <data name="Stories" xml:space="preserve">
     <value>Stories</value>
   </data>
