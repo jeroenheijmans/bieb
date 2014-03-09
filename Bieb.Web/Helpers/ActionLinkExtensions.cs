@@ -22,5 +22,15 @@ namespace Bieb.Web.Helpers
             return htmlHelper.ActionLink(linkText, actionName, controllerName, null, htmlAttributes);
         }
 
+
+        public static string GetCssClass(this HtmlHelper htmlHelper, string controllerName)
+        {
+            string currentController = htmlHelper.ViewContext.RouteData.GetRequiredString("controller");
+            if (controllerName == currentController)
+            {
+                return "active";
+            }
+            return "";
+        }
     }
 }
