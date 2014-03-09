@@ -4,7 +4,7 @@
 @foreach (var person in Model) 
 {
     <li>
-        <h6>@Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })</h6>
+        <span>@Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })</span>
         <p>
             @if (person.Gender != Bieb.Domain.Entities.Gender.Unkown)
             {

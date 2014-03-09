@@ -1,43 +1,49 @@
 ﻿@model PagedList.IPagedList<Bieb.Domain.Entities.BaseEntity>
 
 
-<div class="paging">
-    <span class="pageNumberIndication">
-        @BiebResources.SharedStrings.Page 
-        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-        @BiebResources.SharedStrings.Of 
-        @Model.PageCount
-    </span>
-    
-    <span class="pagingLinks previous">
+<p class="pageNumberIndication">
+    @BiebResources.SharedStrings.Page 
+    @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    @BiebResources.SharedStrings.Of 
+    @Model.PageCount
+</p>
+
+<ul class="pagination">
     @if (Model.HasPreviousPage)
     {
-        @Html.ActionLink("<<", "Index", new { page = 1 })
-        @Html.Raw(" ");
-        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1 })
+        <li>
+            @Html.ActionLink(BiebResources.SharedStrings.FirstPage, "Index", new { page = 1 })
+        </li>
+        <li>
+            @Html.ActionLink(BiebResources.SharedStrings.PreviousPage, "Index", new { page = Model.PageNumber - 1 })
+        </li>
     }
     else
     {
-        @:<<
-        @Html.Raw(" ");
-        @:< @BiebResources.SharedStrings.Previous
+        <li class="disabled">
+            <a href="#">@BiebResources.SharedStrings.FirstPage</a>
+        </li>
+        <li class="disabled">
+            <a href="#">@BiebResources.SharedStrings.PreviousPage</a>
+        </li>
     }
-    </span>
 
-    <span class="pagingSeparator">...</span>
-     
-    <span class="pagingLinks next">
     @if (Model.HasNextPage)
     {
-        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1 })
-        @Html.Raw(" ");
-        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+        <li>
+            @Html.ActionLink(BiebResources.SharedStrings.NextPage, "Index", new { page = Model.PageNumber + 1 })
+        </li>
+        <li>
+            @Html.ActionLink(BiebResources.SharedStrings.LastPage, "Index", new { page = Model.PageCount })
+        </li>
     }
     else
     {
-        @:@BiebResources.SharedStrings.Next >
-        @Html.Raw(" ")
-        @:>>
+        <li class="disabled">
+            <a href="#">@BiebResources.SharedStrings.NextPage</a>
+        </li>
+        <li class="disabled">
+            <a href="#">@BiebResources.SharedStrings.LastPage</a>
+        </li>
     }
-    </span>
-</div>
+</ul>
