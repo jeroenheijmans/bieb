@@ -26,6 +26,10 @@ body {
     background-image: url('/Content/images/background-sprite.png');
 }
 
+header {
+	margin-bottom: $text-gutter;
+}
+
 blockquote {
 	font-size: inherit;
 	font-style: italic;
@@ -54,6 +58,12 @@ a {
 			white-space: normal;
 			width: 100%;
 		}
+	}
+}
+
+@media (min-width: 768px) { 
+	.search-box {
+		padding: 0;
 	}
 }
 

@@ -421,6 +421,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bieb.
+        /// </summary>
+        public static string SiteTitleShort {
+            get {
+                return ResourceManager.GetString("SiteTitleShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stories.
         /// </summary>
         public static string Stories {
