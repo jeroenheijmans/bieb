@@ -6,18 +6,22 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")</span>
+    @Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")
 }
 
 <p>@BiebResources.PeopleStrings.IndexIntroduction</p>
 
-<table class="listing">
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
     <tr>
         <th>
-            @BiebResources.PeopleStrings.Gender
+            <span class="hidden-xs hidden-sm">
+                @BiebResources.PeopleStrings.Gender
+            </span>
         </th>
         <th>
-            @BiebResources.PeopleStrings.NationalityHeader
+            <span class="hidden-xs hidden-sm">
+                @BiebResources.PeopleStrings.NationalityHeader
+            </span>
         </th>
         <th>
             @BiebResources.PeopleStrings.NameHeader
@@ -29,19 +33,19 @@
 
 @foreach (var person in Model) {
     <tr>
-        <td class="icon">
+        <td>
             @Html.DisplayFor(modelperson => person.GenderChar)
         </td>
-        <td class="icon">
+        <td>
             @if (!string.IsNullOrWhiteSpace(person.Nationality))
             { 
                 @Html.ImageFlagFor(person)
             }
         </td>
-        <td class="mainColumn text">
+        <td class="main-topic">
             @Html.ActionLink(person.FullName, "Details", new { id=person.Id })
         </td>
-        <td class="text"> 
+        <td> 
             @string.Join(", ", person.Roles)
         </td>
     </tr>

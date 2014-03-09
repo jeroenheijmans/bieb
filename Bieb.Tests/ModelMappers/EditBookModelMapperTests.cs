@@ -16,10 +16,10 @@ namespace Bieb.Tests.ModelMappers
         private Publisher somePublisher;
         private IEntityRepository<Publisher> publishers;
         private IEntityRepository<Person> people;
+        private EditStoryModelMapper storyMapper;
         private EditBookModelMapper mapper;
-        private Person asimov;
-        private Person adams;
-        private Person wyndham;
+        private Person asimov, adams, wyndham;
+        private Story story1, story2, story3;
 
         
         [SetUp]
@@ -28,11 +28,16 @@ namespace Bieb.Tests.ModelMappers
             somePublisher = new Publisher { Id = 42, Name = "Penguin Books" };
             publishers = new RepositoryMock<Publisher>();
             people = new RepositoryMock<Person>();
-            mapper = new EditBookModelMapper(publishers, people);
+            storyMapper = new EditStoryModelMapper();
+            mapper = new EditBookModelMapper(publishers, people, storyMapper);
 
             asimov = new Person {Id = 1, FirstName = "Isaac", Surname = "Asimov"};
             adams = new Person {Id = 2, FirstName = "Douglas", Surname = "Adams"};
             wyndham = new Person {Id = 3, FirstName = "John", Surname = "Wyndham"};
+
+            story1 = new Story { Id = 1, Title = "Some short story" };
+            story2 = new Story { Id = 2, Title = "Another story" };
+            story3 = new Story { Id = 3, Title = "A totally different short story" };
         }
 
 
@@ -261,6 +266,44 @@ namespace Bieb.Tests.ModelMappers
             mapper.MergeEntityWithModel(book, model);
 
             Assert.That(book.BookTranslators, Contains.Item(asimov));
+        }
+
+
+        [Test]
+        public void Model_Will_Have_SubModels_For_Stories()
+        {
+            var book = new Book();
+
+            book.Stories.Add(1, story1);
+            book.Stories.Add(2, story2);
+            book.Stories.Add(3, story3);
+
+            var model = mapper.ModelFromEntity(book);
+
+            Assert.That(model.Stories.Skip(0).First().Id, Is.EqualTo(story1.Id));
+            Assert.That(model.Stories.Skip(1).First().Id, Is.EqualTo(story2.Id));
+            Assert.That(model.Stories.Skip(2).First().Id, Is.EqualTo(story3.Id));
+        }
+
+
+        [Test]
+        public void Merge_With_Entity_Will_Synch_Existing_Story_Updates()
+        {
+            var bookEntity = new Book();
+            var storyEntity = new Story() {Id = 1, Title = "Gasp!"};
+            bookEntity.Stories.Add(1, storyEntity);
+
+            var bookModel = mapper.ModelFromEntity(bookEntity);
+
+            // Act! Change the title
+            bookModel.Stories.First().Title = "Gasp, what a Wasp!";
+
+            // Check that the "Act!" was succesful
+            Assert.That(bookModel.Stories.First().Title, Is.EqualTo("Gasp, what a Wasp!"));
+
+            mapper.MergeEntityWithModel(bookEntity, bookModel);
+
+            Assert.That(bookEntity.Stories.First().Value.Title, Is.EqualTo("Gasp, what a Wasp!"));
         }
     }
 }

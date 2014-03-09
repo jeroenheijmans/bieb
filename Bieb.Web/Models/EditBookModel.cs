@@ -15,6 +15,7 @@ namespace Bieb.Web.Models
             EditorIds = new int[0];
             AuthorIds = new int[0];
             TranslatorIds = new int[0];
+            Stories = new List<EditStoryModel>();
         }
 
 
@@ -53,5 +54,9 @@ namespace Bieb.Web.Models
 
         [Display(Name = "Translators", ResourceType = typeof(BiebResources.BookStrings))]
         public int[] TranslatorIds { get; set; }
+
+
+        [Display(Name = "Stories", ResourceType = typeof(BiebResources.BookStrings))]
+        public List<EditStoryModel> Stories { get; set; }
     }
 }

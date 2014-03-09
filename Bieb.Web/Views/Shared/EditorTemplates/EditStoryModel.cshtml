@@ -1,0 +1,20 @@
+﻿@model Bieb.Web.Models.EditStoryModel
+
+<section class="field-group">
+    <div class="field-group-label">@BiebResources.StoryStrings.Title</div>
+    <div class="field title">
+        @Html.EditorFor(model => model.Title)
+    </div>
+</section>
+
+<section class="field-group">
+    <div class="field-group-label">@BiebResources.StoryStrings.Subtitle</div>
+    <div class="field subtitle">
+        @Html.EditorFor(model => model.Subtitle)
+    </div>
+</section>
+        
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.ModifiedDateTicks)
+
+<hr />

@@ -1,60 +1,62 @@
 ﻿@model Bieb.Domain.Entities.Person
 
-<div class="card">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
-    }
-
-    <h1>
-        @Html.DisplayFor(model => model.FullName)
-    </h1>
-    
-    <h2>
-        @if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
+<div class="panel panel-default">
+    <div class="panel-body">
+        @if (User.Identity.IsAuthenticated)
         {
-            @Model.GenderChar
+            <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new { Model.Id })</span>
         }
 
-        @if (Model.Nationality != null)
-        {
-            @Html.ImageFlagFor(Model)
-        }
-        
-        @string.Join(", ", Model.Roles)
-    </h2>
+        <h1>
+            @Html.DisplayFor(model => model.FullName)
+        </h1>
 
-    <ul>
-        <li>
-            @BiebResources.PeopleStrings.BornOn: @Model.DateOfBirth.ToString()
-        </li>
+        <p class="lead">
+            @if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
+            {
+                @Model.GenderChar
+            }
 
-        @if (Model.PlaceOfBirth != null)
-        {
+            @if (Model.Nationality != null)
+            {
+                @Html.ImageFlagFor(Model)
+            }
+
+            @string.Join(", ", Model.Roles)
+        </p>
+
+        <ul>
             <li>
-                @BiebResources.PeopleStrings.BornAt: @Html.DisplayFor(model => model.PlaceOfBirth)
+                @BiebResources.PeopleStrings.BornOn: @Model.DateOfBirth.ToString()
             </li>
-        }
-        
-        <li>
-            @BiebResources.PeopleStrings.DiedOn: @Model.DateOfDeath.ToString()
-        </li>
 
-        @if (Model.PlaceOfDeath != null)
-        {
+            @if (Model.PlaceOfBirth != null)
+            {
+                <li>
+                    @BiebResources.PeopleStrings.BornAt: @Html.DisplayFor(model => model.PlaceOfBirth)
+                </li>
+            }
+
             <li>
-                @BiebResources.PeopleStrings.DiedAt: @Html.DisplayFor(model => model.PlaceOfDeath)
+                @BiebResources.PeopleStrings.DiedOn: @Model.DateOfDeath.ToString()
             </li>
-        }
-        
-        @if (Model.Tags.Any())
-        { 
-            <li>
-                @BiebResources.SharedStrings.Tags:
+
+            @if (Model.PlaceOfDeath != null)
+            {
+                <li>
+                    @BiebResources.PeopleStrings.DiedAt: @Html.DisplayFor(model => model.PlaceOfDeath)
+                </li>
+            }
+
+            @if (Model.Tags.Any())
+            { 
+                <li>
+                    @BiebResources.SharedStrings.Tags:
                 @string.Join(", ", Model.Tags)
-            </li>
-        }
-    </ul>
+                </li>
+            }
+        </ul>
 
-    <p>@BiebResources.PeopleStrings.RequestForAdditionalInfo</p>
+        <p>@BiebResources.PeopleStrings.RequestForAdditionalInfo</p>
+    </div>
 </div>

@@ -180,6 +180,9 @@
   <data name="PublishedBy" xml:space="preserve">
     <value>By</value>
   </data>
+  <data name="Stories" xml:space="preserve">
+    <value>Stories</value>
+  </data>
   <data name="Subtitle" xml:space="preserve">
     <value>Subtitle</value>
   </data>

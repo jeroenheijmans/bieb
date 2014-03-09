@@ -1,134 +1,135 @@
 ﻿@using Bieb.Domain.Entities
 @model Bieb.Domain.Entities.Book
 
-<div class="card">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
-    }
-
-    <h1>@Html.DisplayFor(model => model.Title)</h1>
-    
-    @if (Model.Subtitle != null)
-    { 
-        <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
-    }
-
-    <ul class="info-points">
-        @if (Model.Publisher != null || Model.Year != null || Model.Language != null)
+<div class="panel panel-default">
+    <div class="panel-body">
+        @if (User.Identity.IsAuthenticated)
         {
-            <li>
-                @BiebResources.BookStrings.Published: 
-                @if (Model.Year != null)
-                {
-                    <span>@Model.Year,</span>
-                }
-                @if (Model.Publisher != null)
-                {
-                    <span>@Html.ActionLink(Model.Publisher.Name, "Details", new { id = Model.Publisher.Id, controller = "Publishers"}),</span>
-                }
-                @if (@Model.Language != null)
-                {
-                    <span>in @Model.Language</span>
-                }
-            </li>
+            <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
         }
+
+        <h1>@Html.DisplayFor(model => model.Title)</h1>
+    
+        @if (Model.Subtitle != null)
+        { 
+            <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
+        }
+
+        <ul class="list-unstyled">
+            @if (Model.Publisher != null || Model.Year != null || Model.Language != null)
+            {
+                <li>
+                    @BiebResources.BookStrings.Published: 
+                    @if (Model.Year != null)
+                    {
+                        <span>@Model.Year,</span>
+                    }
+                    @if (Model.Publisher != null)
+                    {
+                        <span>@Html.ActionLink(Model.Publisher.Name, "Details", new { id = Model.Publisher.Id, controller = "Publishers"}),</span>
+                    }
+                    @if (@Model.Language != null)
+                    {
+                        <span>in @Model.Language</span>
+                    }
+                </li>
+            }
             
-        @if (Model.Isbn != null)
-        { 
-            <li>@BiebResources.SharedStrings.Isbn: @Html.DisplayFor(model => model.Isbn)</li>
-        }
+            @if (Model.Isbn != null)
+            { 
+                <li>@BiebResources.SharedStrings.Isbn: @Html.DisplayFor(model => model.Isbn)</li>
+            }
 
-        @if (Model.AllTags.Any())
-        { 
-            <li>@BiebResources.SharedStrings.Tags: @string.Join(", ", Model.AllTags)</li>
-        }
+            @if (Model.AllTags.Any())
+            { 
+                <li>@BiebResources.SharedStrings.Tags: @string.Join(", ", Model.AllTags)</li>
+            }
 
-        @if (Model.Series != null)
-        {
-            <li>@BiebResources.SharedStrings.Series: @Html.ActionLink(Model.Series.Title, "Details", new { id = Model.Series.Id, controller = "series" })</li>
-        }
+            @if (Model.Series != null)
+            {
+                <li>@BiebResources.SharedStrings.Series: @Html.ActionLink(Model.Series.Title, "Details", new { id = Model.Series.Id, controller = "series" })</li>
+            }
         
-        @if (Model.Editors.Any())
-        {
-            <li>
-                <h6>@BiebResources.SharedStrings.Editors</h6>
-                <ul>
-                    @foreach (var person in Model.Editors)
-                    {
-                        <li>
-                            @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
-                        </li>
-                    }
-                </ul>
-            </li>
-        }
+            @if (Model.Editors.Any())
+            {
+                <li>
+                    <span>@BiebResources.SharedStrings.Editors</span>
+                    <ul>
+                        @foreach (var person in Model.Editors)
+                        {
+                            <li>
+                                @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
 
-        @if (Model.AllAuthors.Any())
-        {
-            <li>
-                <h6>@BiebResources.SharedStrings.Authors</h6>
-                <ul>
-                    @foreach (var person in Model.AllAuthors)
-                    {
-                        <li>
-                            @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
-                        </li>
-                    }
-                </ul>
-            </li>
-        }
+            @if (Model.AllAuthors.Any())
+            {
+                <li>
+                    <span>@BiebResources.SharedStrings.Authors</span>
+                    <ul>
+                        @foreach (var person in Model.AllAuthors)
+                        {
+                            <li>
+                                @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
 
-        @if (Model.AllTranslators.Any())
-        {
-            <li>
-                <h6>@BiebResources.SharedStrings.Translators</h6>
-                <ul>
-                    @foreach (var person in Model.AllTranslators)
-                    {
-                        <li>
-                            @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
-                        </li>
-                    }
-                </ul>
-            </li>
-        }
-    </ul>
+            @if (Model.AllTranslators.Any())
+            {
+                <li>
+                    <span>@BiebResources.SharedStrings.Translators</span>
+                    <ul>
+                        @foreach (var person in Model.AllTranslators)
+                        {
+                            <li>
+                                @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
     
-    @*Hmm, not very clean View - should move this to the model and/or controller*@
-    @if (Model is Book)
-    {
-        var Book = Model as Book;
-        if (Book.ReferenceBook != null)
-         {
-             <h2>@BiebResources.SharedStrings.Original:</h2>
-             <ul>
-                 @if (Book.ReferenceBook.Title != null)
-                 {
-                     <li>@BiebResources.SharedStrings.Title: @Book.ReferenceBook.Title</li>
-                 }
-                 @if (Book.ReferenceBook.Subtitle != null)
-                 {
-                     <li>@BiebResources.SharedStrings.Subtitle: @Book.ReferenceBook.Subtitle</li>
-                 }
-                 @if (Book.ReferenceBook.Isbn != null)
-                 {
-                     <li>@BiebResources.SharedStrings.Isbn: @Book.ReferenceBook.Isbn</li>
-                 }
-                 @if (Book.ReferenceBook.IsbnLanguage.HasValue)
-                 {
-                     <li>@BiebResources.SharedStrings.Language: @Book.ReferenceBook.Language</li>
-                 }
-                 @if (Book.ReferenceBook.Year.HasValue)
-                 {
-                     <li>@BiebResources.SharedStrings.Published: @Book.ReferenceBook.Year</li>
-                 }
-                 @if (Book.ReferenceBook.Publisher != null)
-                 {
-                     <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Book.ReferenceBook.Publisher.Name, "Details", new {id = Book.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
-                 }
-             </ul>
-         }
-    }
-
+        @*Hmm, not very clean View - should move this to the model and/or controller*@
+        @if (Model is Book)
+        {
+            var Book = Model as Book;
+            if (Book.ReferenceBook != null)
+            {
+                <h2>@BiebResources.SharedStrings.Original:</h2>
+                <ul>
+                    @if (Book.ReferenceBook.Title != null)
+                    {
+                        <li>@BiebResources.SharedStrings.Title: @Book.ReferenceBook.Title</li>
+                    }
+                    @if (Book.ReferenceBook.Subtitle != null)
+                    {
+                        <li>@BiebResources.SharedStrings.Subtitle: @Book.ReferenceBook.Subtitle</li>
+                    }
+                    @if (Book.ReferenceBook.Isbn != null)
+                    {
+                        <li>@BiebResources.SharedStrings.Isbn: @Book.ReferenceBook.Isbn</li>
+                    }
+                    @if (Book.ReferenceBook.IsbnLanguage.HasValue)
+                    {
+                        <li>@BiebResources.SharedStrings.Language: @Book.ReferenceBook.Language</li>
+                    }
+                    @if (Book.ReferenceBook.Year.HasValue)
+                    {
+                        <li>@BiebResources.SharedStrings.Published: @Book.ReferenceBook.Year</li>
+                    }
+                    @if (Book.ReferenceBook.Publisher != null)
+                    {
+                        <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Book.ReferenceBook.Publisher.Name, "Details", new {id = Book.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
+                    }
+                </ul>
+            }
+        }
+    </div>
 </div>

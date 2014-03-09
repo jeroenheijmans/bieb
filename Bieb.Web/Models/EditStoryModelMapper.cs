@@ -12,16 +12,18 @@ namespace Bieb.Web.Models
         {
             base.MergeEntityWithModel(entity, model);
 
-            throw new NotImplementedException();
+            entity.Title = model.Title;
+            entity.Subtitle = model.Subtitle;
         }
 
         public override EditStoryModel ModelFromEntity(Story entity)
         {
             var model = base.ModelFromEntity(entity);
 
-            throw new NotImplementedException();
+            model.Title = entity.Title;
+            model.Subtitle = entity.Subtitle;
 
-            //return model;
+            return model;
         }
     }
 }

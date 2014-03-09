@@ -44,7 +44,7 @@ namespace Bieb.Tests.Controllers
             responseMock = new Mock<HttpResponseBase>();
 
             publishersRepository = new RepositoryMock<Publisher>();
-            editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository);
+            editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository, null);
 
             booksController = new BooksController(bookRepository, editBookModelMapper, responseMock.Object);
 
