@@ -12,12 +12,24 @@
     
     <header>
         <nav class="row">
-            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")</div>
-            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")</div>
-            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")</div>
-            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")</div>
-            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")</div>
-            <div class="col-xs-2">@Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")</div>
+            <div class="col-xs-2">
+                @Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")
+            </div>
+            <div class="col-xs-2">
+                @Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")
+            </div>
+            <div class="col-xs-2">
+                @Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")
+            </div>
+            <div class="col-xs-2">
+                @Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")
+            </div>
+            <div class="col-xs-2">
+                @Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")
+            </div>
+            <div class="col-xs-2">
+                @Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")
+            </div>
         </nav>
 
         <div class="pull-right col-md-4">
@@ -29,7 +41,7 @@
             </div>
         </div>
         
-        <div class="title">
+        <div class="title hidden-sm hidden-xs">
             @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
         </div>
     </header>
