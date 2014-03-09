@@ -7,12 +7,12 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")</span>
+    @Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")
 }
 
 <p>@BiebResources.BookStrings.IndexIntroduction</p>
 
-<table class="listing">
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
     <tr>
         <th>
             @BiebResources.BookStrings.TypeHeader
@@ -36,7 +36,7 @@
         <td>
             @Html.DisplayFor(modelbook => book.BookType)
         </td>
-        <td class="mainColumn">
+        <td class="main-topic">
             @Html.ActionLink(book.Title, "Details", new { id=book.Id })
         </td>
         <td>

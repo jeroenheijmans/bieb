@@ -11,12 +11,14 @@ namespace Bieb.Web.Models
     public class EditBookModelMapper : EditEntityModelMapper<Book, EditBookModel>
     {
         private readonly IEnumerable<Publisher> publishers;
-        private readonly IEnumerable<Person> people; 
+        private readonly IEnumerable<Person> people;
+        private readonly EditStoryModelMapper storyMapper;
 
-        public EditBookModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people)
+        public EditBookModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, EditStoryModelMapper storyMapper)
         {
             this.publishers = publishers.Items;
             this.people = people.Items;
+            this.storyMapper = storyMapper;
         }
 
         public override void MergeEntityWithModel(Book entity, EditBookModel model)
@@ -33,6 +35,7 @@ namespace Bieb.Web.Models
             entity.Publisher = publishers.FirstOrDefault(p => p.Id == model.PublisherId);
 
 
+            // TODO: Refactor, the code below is copy-pasted from this
             entity.Editors.Clear();
 
             foreach (var editorId in model.EditorIds)
@@ -76,6 +79,21 @@ namespace Bieb.Web.Models
 
                 entity.BookTranslators.Add(person);
             }
+
+
+            foreach (var storyModel in model.Stories)
+            {
+                var storyEntity = entity.Stories.FirstOrDefault(s => s.Value.Id == storyModel.Id).Value;
+
+                if (storyEntity == null)
+                {
+                    storyEntity = new Story();
+                    entity.Stories.Add(0, storyEntity);
+                }
+
+                storyMapper.MergeEntityWithModel(storyEntity, storyModel);
+            }
+            
         }
 
         public override EditBookModel ModelFromEntity(Book entity)
@@ -97,6 +115,8 @@ namespace Bieb.Web.Models
             model.EditorIds = entity.Editors.Select(e => e.Id).ToArray();
             model.AuthorIds = entity.BookAuthors.Select(a => a.Id).ToArray();
             model.TranslatorIds = entity.BookTranslators.Select(t => t.Id).ToArray();
+
+            model.Stories = entity.Stories.Select(s => storyMapper.ModelFromEntity(s.Value)).ToList();
 
             return model;
         }
