@@ -11,42 +11,56 @@
 <body class="container">
     
     <header>
-        <nav class="row">
-            <div class="col-xs-2">
-                <a href="@Url.Action("Index", "Home")" class="@Html.GetCssClass("Home")">
-                    <i class="glyphicon glyphicon-home"></i>
-                    <span class="hidden-xs hidden-sm">@BiebResources.SharedStrings.HomeMenuItem</span>
-                </a>
-            </div>
-            <div class="col-xs-2">
-                <a href="@Url.Action("Index", "People")" class="@Html.GetCssClass("People")">
-                    <i class="glyphicon glyphicon-user"></i>
-                    <span class="hidden-xs hidden-sm">@BiebResources.SharedStrings.PeopleMenuItem</span>
-                </a>
-            </div>
-            <div class="col-xs-2">
-                <a href="@Url.Action("Index", "Books")" class="@Html.GetCssClass("Books")">
-                    <i class="glyphicon glyphicon-book"></i>
-                    <span class="hidden-xs hidden-sm">@BiebResources.SharedStrings.BooksMenuItem</span>
-                </a>
-            </div>
-            <div class="col-xs-2">
-                <a href="@Url.Action("Index", "Series")" class="@Html.GetCssClass("Series")">
-                    <i class="glyphicon glyphicon-list "></i>
-                    <span class="hidden-xs hidden-sm">@BiebResources.SharedStrings.SeriesMenuItem</span>
-                </a>
-            </div>
-            <div class="col-xs-2">
-                <a href="@Url.Action("Index", "Publishers")" class="@Html.GetCssClass("Publishers")">
-                    <i class="glyphicon glyphicon-briefcase"></i>
-                    <span class="hidden-xs hidden-sm">@BiebResources.SharedStrings.PublishersMenuItem</span>
-                </a>
-            </div>
-            <div class="col-xs-2">
-                <a href="@Url.Action("Index", "Surprise")" class="@Html.GetCssClass("Surprise")">
-                    <i class="glyphicon glyphicon-gift"></i>
-                    <span class="hidden-xs hidden-sm">@BiebResources.SharedStrings.SurpriseMeMenuItem</span>
-                </a>
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-main-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-main-navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="@Html.GetCssClass("Home")">
+                            <a href="@Url.Action("Index", "Home")">
+                                <i class="glyphicon glyphicon-home"></i>
+                                <span>@BiebResources.SharedStrings.HomeMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("People")">
+                            <a href="@Url.Action("Index", "People")">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>@BiebResources.SharedStrings.PeopleMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("Books")">
+                            <a href="@Url.Action("Index", "Books")">
+                                <i class="glyphicon glyphicon-book"></i>
+                                <span>@BiebResources.SharedStrings.BooksMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("Series")">
+                            <a href="@Url.Action("Index", "Series")">
+                                <i class="glyphicon glyphicon-list "></i>
+                                <span>@BiebResources.SharedStrings.SeriesMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("Publishers")">
+                            <a href="@Url.Action("Index", "Publishers")">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                                <span>@BiebResources.SharedStrings.PublishersMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("Surprise")">
+                            <a href="@Url.Action("Index", "Surprise")">
+                                <i class="glyphicon glyphicon-gift"></i>
+                                <span>@BiebResources.SharedStrings.SurpriseMeMenuItem</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 

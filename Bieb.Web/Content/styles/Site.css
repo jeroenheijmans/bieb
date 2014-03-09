@@ -13,7 +13,9 @@ body {
   font-size: 1.5em;
   color: #333333;
   background: white;
-  background-image: url("/Content/images/background-sprite.png"); }
+  background-image: url("/Content/images/background-sprite.png");
+  padding-top: 60px;
+  /* required for BS .navbar-fixed */ }
 
 header {
   margin-bottom: 0.75em; }
@@ -37,24 +39,14 @@ a {
   .single-topic-table .main-topic {
     white-space: normal;
     width: 100%; } }
-@media (min-width: 768px) {
-  .search-box {
-    padding: 0; } }
-nav {
-  background: #333333;
-  margin-bottom: 0.375em; }
-  nav .col-xs-2 {
-    padding: 0; }
-  nav div + div {
-    border-left: 1px solid #ff0080; }
-  nav a {
-    display: block;
-    width: 100%;
-    padding: 0.75em;
-    color: white; }
-  nav a:hover, nav a.active {
-    color: white;
-    background: #ff0080; }
+.navbar-inverse {
+  background-color: #333333; }
+
+.navbar-inverse .navbar-nav li > a {
+  color: white; }
+.navbar-inverse .navbar-nav li:hover, .navbar-inverse .navbar-nav li.active > a {
+  color: white;
+  background: #ff0080; }
 
 .title {
   border-bottom: 1px solid #eeeeee;
