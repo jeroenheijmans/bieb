@@ -6,12 +6,12 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")</span>
+    @Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")
 }
 
 <p>@BiebResources.SeriesStrings.IndexIntroduction</p>
 
-<table class="listing">
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
     <tr>
         <th>
             @BiebResources.SeriesStrings.TitleHeader
@@ -26,7 +26,7 @@
         <td>
             @Html.ActionLink(series.Title, "Details", new { id=series.Id })
         </td>
-        <td class="mainColumn">
+        <td class="main-topic">
             @string.Join(", ", series.Books.Values)
         </td>
     </tr>

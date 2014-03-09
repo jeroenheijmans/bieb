@@ -69,6 +69,36 @@ namespace Bieb.Tests.WebHelpers
             Assert.That(actual, Is.Not.Null);
             Assert.That(actual.ToHtmlString(), Contains.Substring("class=\"active\""));
         }
+
+
+        [Test]
+        public void Can_Generate_Active_CssClass_For_Current_Controller()
+        {
+            var routeData = new RouteData();
+            routeData.Values.Add("controller", "Home");
+            routeData.Values.Add("action", "Index");
+
+            HtmlHelper htmlHelper = CreateHtmlHelper(new ViewDataDictionary("Home link"), routeData);
+
+            var cssClass = htmlHelper.GetCssClass("Home");
+
+            Assert.That(cssClass, Is.EqualTo("active"));
+        }
+
+
+        [Test]
+        public void Will_Not_Generate_Active_CssClass_For_NonCurrent_Controller()
+        {
+            var routeData = new RouteData();
+            routeData.Values.Add("controller", "Home");
+            routeData.Values.Add("action", "Index");
+
+            HtmlHelper htmlHelper = CreateHtmlHelper(new ViewDataDictionary("Home link"), routeData);
+
+            var cssClass = htmlHelper.GetCssClass("Books");
+
+            Assert.That(cssClass, Is.Not.StringContaining("active"));
+        }
     }
 
 }

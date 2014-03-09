@@ -1,4 +1,11 @@
-﻿@using (Html.BeginForm("Basic", "Search", FormMethod.Get)) {
-    <input type="text" class="search" name="q" placeholder="@BiebResources.SearchStrings.SearchInputPlaceholder" value="@Request.QueryString["q"]" />
-    <input type="submit" value=">" />
+﻿@using (Html.BeginForm("Basic", "Search", FormMethod.Get))
+{
+    <div class="input-group">
+        <input type="text" class="form-control " name="q" placeholder="@BiebResources.SearchStrings.SearchInputPlaceholder" value="@Request.QueryString["q"]" />
+        <div class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+    </div>
 }

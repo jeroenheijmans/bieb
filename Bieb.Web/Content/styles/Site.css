@@ -1,390 +1,87 @@
 @font-face {
-  font-family: "handwriting-draft_regular";
-  src: url("../fonts/handwriting-draft_free-version-webfont.eot");
-  src: url("../fonts/handwriting-draft_free-version-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/handwriting-draft_free-version-webfont.woff") format("woff"), url("../fonts/handwriting-draft_free-version-webfont.ttf") format("truetype"), url("../fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular") format("svg"); }
-
-@font-face {
   font-family: "MuseoSans500Regular";
   src: url("../fonts/museo_sans500-webfont.eot");
   src: url("../fonts/museo_sans500-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/museo_sans500-webfont.woff") format("woff"), url("../fonts/museo_sans500-webfont.ttf") format("truetype"), url("../fonts/museo_sans500-webfont.svg#MuseoSans500Regular") format("svg"); }
 
-/* Basic HTML elements */
+@font-face {
+  font-family: "handwriting-draft_regular";
+  src: url("../fonts/handwriting-draft_free-version-webfont.eot");
+  src: url("../fonts/handwriting-draft_free-version-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/handwriting-draft_free-version-webfont.woff") format("woff"), url("../fonts/handwriting-draft_free-version-webfont.ttf") format("truetype"), url("../fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular") format("svg"); }
+
 body {
-  font-weight: normal;
-  font-size: 100%;
-  line-height: 1.5em;
   font-family: "MuseoSans500Regular", Georgia, serif;
+  font-size: 1.5em;
   color: #333333;
   background: white;
-  background-image: url("/Content/images/background-sprite.png"); }
+  background-image: url("/Content/images/background-sprite.png");
+  padding-top: 60px;
+  /* required for BS .navbar-fixed */ }
+
+header {
+  margin-bottom: 0.75em; }
 
 blockquote {
+  font-size: inherit;
   font-style: italic; }
 
-small {
-  font-size: 0.70em; }
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2em;
-  margin-bottom: 0.3em; }
-
-h5, h6 {
-  margin-bottom: 0; }
-
-h1 {
-  font-size: 2.0em; }
-
-h2 {
-  font-size: 1.8em; }
-
-h3 {
-  font-size: 1.4em; }
-
-h4 {
-  font-size: 1.2em; }
-
-h5 {
-  font-size: 1.1em; }
-
-h6 {
-  font-size: 1.0em; }
-
 a {
-  color: #6e0030; }
+  color: #89003d; }
   a:hover {
+    text-decoration: none;
     color: #ff0080; }
 
-dl {
-  margin: 2em; }
-  dl dt {
-    font-weight: bold; }
-  dl dd + dt {
-    margin-top: 0.5em; }
+.img-bordered {
+  border: 1px solid #333333; }
 
-p + p,
-ul + p,
-table + p {
-  margin-top: 0.5em; }
+@media (min-width: 992px) {
+  .single-topic-table td, .single-topic-table th {
+    white-space: nowrap; }
+  .single-topic-table .main-topic {
+    white-space: normal;
+    width: 100%; } }
+.navbar-inverse {
+  background-color: #333333; }
 
-section + section {
-  margin-top: 1.0em; }
-
-td,
-th {
-  padding: 0 0.5em;
-  background-color: white;
-  border: solid 1px #eeeeee;
-  vertical-align: middle;
-  font-size: 0.9375em; }
-
-th {
-  background-color: #eeeeee;
-  text-align: left; }
-
-input[type="text"], input[type="password"] {
-  padding: 0.125em 0.25em; }
-
-.fancy-select-container, .fancy-select-dropdown {
-  font-size: 13px;
-  font-family: sans-serif; }
-
-/* Custom text selection color */
-::selection {
-  background: #ff0080;
+.navbar-inverse .navbar-nav li > a {
+  color: white; }
+.navbar-inverse .navbar-nav li:hover, .navbar-inverse .navbar-nav li.active > a {
   color: white;
-  text-shadow: none; }
+  background: #ff0080; }
 
-::-webkit-selection {
-  background: #ff0080;
+.title {
+  border-bottom: 1px solid #eeeeee;
+  clear: both;
+  margin-bottom: 0.75em; }
+  .title a {
+    color: #666666;
+    font-size: 3.5em;
+    font-family: 'handwriting-draft_regular', Verdana, serif; }
+    .title a:hover {
+      color: #ff0080; }
+
+.panel {
   color: white;
-  text-shadow: none; }
-
-::-moz-selection {
-  background: #ff0080;
-  color: white;
-  text-shadow: none; }
-
-/* Structure */
-.wrapper {
-  width: 61em;
-  margin: 0 auto;
-  min-height: 100%;
-  padding-bottom: 1.5em; }
-
-#main {
-  overflow: auto;
-  padding: 14em 0 2em 0;
-  margin-bottom: 2em;
-  width: 100%; }
-
-/* Header */
-header {
-  width: 100%;
-  position: absolute; }
-  header .utilities {
-    margin: 3.2em auto;
-    width: 61em; }
-    header .utilities #account, header .utilities #search {
-      float: right;
-      margin-left: 1em; }
-  header .title {
-    clear: both;
-    margin: 0 auto;
-    padding: 0;
-    width: 61em;
-    border-bottom: 1px solid #eeeeee; }
-    header .title a {
-      color: #666666;
-      font-size: 3.5em;
-      line-height: 1.5em;
-      font-family: 'handwriting-draft_regular', Verdana, serif; }
-      header .title a:hover {
-        color: #ff0080; }
-
-/* Nav */
-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #333333; }
-  nav #menu {
-    position: relative;
-    width: 61em;
-    margin: 0 auto; }
-  nav li {
-    position: relative;
-    float: left;
-    display: inline-block;
-    width: 10.16667em;
-    border-right: 1px solid #ff0080; }
-    nav li a {
-      display: inline-block;
-      color: white;
-      padding: 0.75em;
-      width: 100%; }
-      nav li a:hover, nav li a.active {
-        background-color: #ff0080;
-        color: white; }
-    nav li:first-child {
-      border-left: 1px solid #ff0080; }
-
-/* Footer */
-footer {
-  position: relative;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #333333;
-  color: white;
-  height: 1.5em;
-  margin-top: -1.5em;
-  clear: both; }
-  footer p {
-    width: 61em;
-    margin: 0 auto;
-    padding: 0 0.5em;
-    border-left: 1px solid #ff0080;
-    border-right: 1px solid #ff0080; }
-  footer span {
-    color: background-color-darker; }
-  footer a {
+  background-color: #333333; }
+  .panel h1 {
+    font-size: 1.65em;
+    margin-top: 0.375em; }
+  .panel h2 {
+    font-size: 1.3em;
+    margin-top: 0; }
+  .panel a {
     color: #ffd8ed; }
-  footer #powered-by {
-    float: right; }
-
-/* Login */
-.account-form {
-  padding: 1em;
-  border: 1px solid #eeeeee;
-  background-color: white; }
-  .account-form input[type="text"], .account-form input[type="password"] {
-    width: 14em; }
-  .account-form .remember-me {
-    margin-bottom: 0.5em;
-    font-size: 0.70em; }
-    .account-form .remember-me * {
-      vertical-align: middle; }
-
-/* Specific styles */
-table.stories {
-  width: 40em; }
-
-.edit-link {
-  float: right; }
-
-.card {
-  width: 19em;
-  position: relative;
-  float: left;
-  background: #333333;
-  color: white;
-  padding: 1em;
-  margin: 0 2em 2em 0; }
-  .card h1 {
-    font-size: 1.5em; }
-  .card h2 {
-    font-size: 1.1em;
-    margin-top: 1em; }
-  .card a {
-    color: #ffd8ed; }
-    .card a:hover {
+    .panel a:hover {
+      text-decoration: none;
       color: #ff0080; }
 
 .cover {
-  display: inline-block;
-  margin-bottom: 2em;
-  border: 1px solid #dddddd;
-  opacity: 0.8; }
-  .cover .front, .cover .back {
-    position: relative;
-    float: left;
-    display: inline-block;
+  margin-right: 50px; }
+  .cover .back, .cover .front {
     background-color: #eeeeee;
-    height: 23.75em;
-    width: 19em;
-    padding: 1.5em; }
-  .cover .back {
-    border-right: 8px solid #dddddd; }
-    .cover .back .publisher {
-      position: absolute;
-      bottom: 2em;
-      font-size: 0.7em; }
-  .cover .front .title {
-    font-size: 1.5em; }
+    border: 1px solid #BBB;
+    height: 300px; }
 
-.details {
-  display: inline-block;
-  width: 40em; }
-
-.info-points h6 {
-  margin-top: 0.5em; }
-
-.listing {
-  margin: 1.5em 0;
-  width: 100%; }
-  .listing td, .listing th {
-    white-space: nowrap; }
-  .listing .mainColumn {
-    white-space: normal;
-    width: 100%; }
-  .listing .icon {
-    text-align: center;
-    vertical-align: middle; }
-
-.item-list li {
-  background-color: #eeeeee;
-  padding: 0.5em 0.5em;
-  margin: 0 0.5em 1em 0;
-  display: inline-block;
-  width: 19em;
-  min-height: 6em;
-  vertical-align: bottom; }
-
-ul.search-results > li {
-  padding: 0.5em 0; }
-  ul.search-results > li:first-child {
-    padding-top: 0; }
-
-ul.search-options li {
-  display: inline-block; }
-  ul.search-options li a {
-    display: block;
-    background: #333333;
-    padding: 1em;
-    color: #ffd8ed; }
-    ul.search-options li a:hover {
-      color: #ff0080; }
-
-#home-explanation p {
-  margin-top: 1.5em; }
-
-#home-image {
-  margin: 0 0 2em 2em;
-  border: 1px solid #333333;
-  float: right; }
-
-.teaser-articles {
-  border-top: 1px solid #eeeeee;
-  clear: both; }
-  .teaser-articles article {
-    display: inline-block;
-    width: 33%;
-    padding: 2em 2em 0 0;
-    vertical-align: top; }
-
-iframe.goodreads {
-  width: 40em;
-  height: 30em; }
-
-/* Editing */
-.edit-form {
-  padding: 1em;
+.goodreads {
   border: 1px solid #eeeeee;
   background-color: white; }
-  .edit-form .field-group-label {
-    display: inline-block;
-    vertical-align: top;
-    padding-right: 0.5em;
-    width: 10em; }
-  .edit-form div.field {
-    display: inline-block; }
-  .edit-form label {
-    display: block;
-    width: auto;
-    font-size: 0.6em;
-    line-height: 1.5em;
-    color: #666666; }
-  .edit-form .form-actions {
-    margin-top: 2em;
-    margin-left: 10em; }
-
-.validation-summary-errors {
-  color: #e82300; }
-
-.input-validation-error {
-  border: 1px solid #e82300; }
-
-.person.edit-form input#Gender {
-  width: 5em; }
-.person.edit-form input#Title {
-  width: 5em; }
-.person.edit-form input#FirstName {
-  width: 8em; }
-.person.edit-form input#Prefix {
-  width: 5em; }
-.person.edit-form input#Surname {
-  width: 14em; }
-.person.edit-form input#Nationality {
-  width: 3em; }
-.person.edit-form input#BirthDay {
-  width: 4em; }
-.person.edit-form input#BirthMonth {
-  width: 4em; }
-.person.edit-form input#BirthYear {
-  width: 5em; }
-.person.edit-form input#DeathDay {
-  width: 4em; }
-.person.edit-form input#DeathMonth {
-  width: 4em; }
-.person.edit-form input#DeathYear {
-  width: 5em; }
-
-.series.edit-form .title input, .book.edit-form .title input {
-  width: 24em; }
-.series.edit-form .subtitle input, .book.edit-form .subtitle input {
-  width: 24em; }
-.series.edit-form input#Isbn, .book.edit-form input#Isbn {
-  width: 12em; }
-.series.edit-form input#IsbnLanguage, .book.edit-form input#IsbnLanguage {
-  width: 3em; }
-.series.edit-form input#Year, .book.edit-form input#Year {
-  width: 4em; }
-.series.edit-form select#Publisher, .book.edit-form select#Publisher {
-  width: 24em; }
-.series.edit-form .fancy-select, .book.edit-form .fancy-select {
-  width: 24em; }
-
-.publisher.edit-form input#Name {
-  width: 24em; }
 

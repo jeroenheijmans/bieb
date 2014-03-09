@@ -221,6 +221,14 @@
     <Compile Include="TypeExtensions\EnumExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\styles\select2\select2-spinner.gif" />
     <Content Include="Content\styles\select2\select2.css" />
     <Content Include="Content\styles\select2\select2.png" />
@@ -242,7 +250,19 @@
     <Content Include="Content\images\flags\us-icon.png" />
     <Content Include="Content\images\home-image.jpg" />
     <Content Include="Content\styles\Reset.css" />
+    <Content Include="Content\styles\site-variables.css">
+      <DependentUpon>site-variables.scss</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\styles\site-variables.scss" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
@@ -259,7 +279,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Content\styles\Site.css">
-      <DependentUpon>Site.scss</DependentUpon>
+      <DependentUpon>site.scss</DependentUpon>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -376,7 +396,7 @@
     <Content Include="Views\Publishers\Index.cshtml" />
     <Content Include="Views\People\MoreInfo.cshtml" />
     <Content Include="Content\images\favicon.pdn" />
-    <Content Include="Content\styles\Site.scss" />
+    <Content Include="Content\styles\site.scss" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

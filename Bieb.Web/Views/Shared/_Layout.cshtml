@@ -2,46 +2,85 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
+    <title>@BiebResources.SharedStrings.SiteTitleShort: @ViewBag.Title</title>
     <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     @Styles.Render("~/Content/styles")
     @Styles.Render("~/Content/styles/select2")
 </head>
-<body>
+<body class="container">
     
     <header>
-        <nav>
-            <ul id="menu">
-                <li>@Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")</li>
-                <li>@Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")</li>
-            </ul>
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-main-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-main-navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="@Html.GetCssClass("Home")">
+                            <a href="@Url.Action("Index", "Home")">
+                                <i class="glyphicon glyphicon-home"></i>
+                                <span>@BiebResources.SharedStrings.HomeMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("People")">
+                            <a href="@Url.Action("Index", "People")">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>@BiebResources.SharedStrings.PeopleMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("Books")">
+                            <a href="@Url.Action("Index", "Books")">
+                                <i class="glyphicon glyphicon-book"></i>
+                                <span>@BiebResources.SharedStrings.BooksMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("Series")">
+                            <a href="@Url.Action("Index", "Series")">
+                                <i class="glyphicon glyphicon-list "></i>
+                                <span>@BiebResources.SharedStrings.SeriesMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("Publishers")">
+                            <a href="@Url.Action("Index", "Publishers")">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                                <span>@BiebResources.SharedStrings.PublishersMenuItem</span>
+                            </a>
+                        </li>
+                        <li class="@Html.GetCssClass("Surprise")">
+                            <a href="@Url.Action("Index", "Surprise")">
+                                <i class="glyphicon glyphicon-gift"></i>
+                                <span>@BiebResources.SharedStrings.SurpriseMeMenuItem</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-        <div class="utilities">
-            <div id="search">
+
+        <div class="row">
+            <div class="col-md-3 pull-right search-box">
                 @Html.Partial("_SearchBoxPartial")
             </div>
-            <div id="account">
-                @Html.Partial("_LoginPartial")
-            </div>
         </div>
-        <div class="title">
+        
+        <div class="title hidden-sm hidden-xs">
             @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
         </div>
     </header>
 
-    <div class="wrapper">
-        <section id="main">
-            @RenderBody()
-        </section>
-    </div>
+    @RenderBody()
+    
+    <hr />
 
-    <footer>
-        <p>
+    <footer class="row">
+        <div class="col-md-8">
             <span>@Html.ActionLink(@BiebResources.SharedStrings.About, "About", "Home")</span>
             |
             <span>@Html.ActionLink(@BiebResources.SharedStrings.Disclaimer, "Disclaimer", "Home")</span>
@@ -49,11 +88,14 @@
             <span>@Html.ActionLink(@BiebResources.SharedStrings.SiteMap, "SiteMap", "Home")</span>
             
             <span id="powered-by">@BiebResources.SharedStrings.PoweredBy <a href="http://bieb.codeplex.com" target="_blank">bieb.codeplex.com</a></span>
-        </p>
-        <hr />
+        </div>
+        <div class="col-md-4">
+            @Html.Partial("_LoginPartial")
+        </div>
     </footer>
     
     @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/bootstrap")
     @Scripts.Render("~/Scripts/jqueryplugins")
     @RenderSection("scripts", required: false)
     

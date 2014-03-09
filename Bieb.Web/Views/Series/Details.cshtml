@@ -16,7 +16,9 @@
     <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
 }
 
-<section class="item-list">
-    <h4>@BiebResources.SharedStrings.Books</h4>
-    @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.Books.Values); }
-</section>
+<div class="row">
+    <div class="col-xs-12">
+        <h4>@BiebResources.SharedStrings.Books</h4>
+        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.Books.Values); }
+    </div>
+</div>
