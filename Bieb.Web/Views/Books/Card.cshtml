@@ -1,11 +1,10 @@
-﻿@using Bieb.Domain.Entities
-@model Bieb.Domain.Entities.Book
+﻿@model Bieb.Domain.Entities.Book
 
 <div class="panel panel-default">
     <div class="panel-body">
         @if (User.Identity.IsAuthenticated)
         {
-            <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
+            @Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})
         }
 
         <h1>@Html.DisplayFor(model => model.Title)</h1>
@@ -96,40 +95,35 @@
             }
         </ul>
     
-        @*Hmm, not very clean View - should move this to the model and/or controller*@
-        @if (Model is Book)
+        @if (Model.ReferenceBook != null)
         {
-            var Book = Model as Book;
-            if (Book.ReferenceBook != null)
-            {
-                <h2>@BiebResources.SharedStrings.Original:</h2>
-                <ul>
-                    @if (Book.ReferenceBook.Title != null)
-                    {
-                        <li>@BiebResources.SharedStrings.Title: @Book.ReferenceBook.Title</li>
-                    }
-                    @if (Book.ReferenceBook.Subtitle != null)
-                    {
-                        <li>@BiebResources.SharedStrings.Subtitle: @Book.ReferenceBook.Subtitle</li>
-                    }
-                    @if (Book.ReferenceBook.Isbn != null)
-                    {
-                        <li>@BiebResources.SharedStrings.Isbn: @Book.ReferenceBook.Isbn</li>
-                    }
-                    @if (Book.ReferenceBook.IsbnLanguage.HasValue)
-                    {
-                        <li>@BiebResources.SharedStrings.Language: @Book.ReferenceBook.Language</li>
-                    }
-                    @if (Book.ReferenceBook.Year.HasValue)
-                    {
-                        <li>@BiebResources.SharedStrings.Published: @Book.ReferenceBook.Year</li>
-                    }
-                    @if (Book.ReferenceBook.Publisher != null)
-                    {
-                        <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Book.ReferenceBook.Publisher.Name, "Details", new {id = Book.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
-                    }
-                </ul>
-            }
+            <h2>@BiebResources.SharedStrings.Original:</h2>
+            <ul>
+                @if (Model.ReferenceBook.Title != null)
+                {
+                    <li>@BiebResources.SharedStrings.Title: @Model.ReferenceBook.Title</li>
+                }
+                @if (Model.ReferenceBook.Subtitle != null)
+                {
+                    <li>@BiebResources.SharedStrings.Subtitle: @Model.ReferenceBook.Subtitle</li>
+                }
+                @if (Model.ReferenceBook.Isbn != null)
+                {
+                    <li>@BiebResources.SharedStrings.Isbn: @Model.ReferenceBook.Isbn</li>
+                }
+                @if (Model.ReferenceBook.IsbnLanguage.HasValue)
+                {
+                    <li>@BiebResources.SharedStrings.Language: @Model.ReferenceBook.Language</li>
+                }
+                @if (Model.ReferenceBook.Year.HasValue)
+                {
+                    <li>@BiebResources.SharedStrings.Published: @Model.ReferenceBook.Year</li>
+                }
+                @if (Model.ReferenceBook.Publisher != null)
+                {
+                    <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Model.ReferenceBook.Publisher.Name, "Details", new {id = Model.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
+                }
+            </ul>
         }
     </div>
 </div>

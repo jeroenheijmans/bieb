@@ -1,7 +1,6 @@
 ﻿@model PagedList.IPagedList<Bieb.Domain.Entities.BaseEntity>
 
-
-<p class="pageNumberIndication">
+<p>
     @BiebResources.SharedStrings.Page 
     @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
     @BiebResources.SharedStrings.Of 

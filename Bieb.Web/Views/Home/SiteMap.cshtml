@@ -7,21 +7,47 @@
 <p>@BiebResources.HomeStrings.SiteMapIntro</p>
 
 <dl>
-    <dt>@Html.MenuLink(BiebResources.SharedStrings.HomeMenuItem, "", "Home")</dt>
+    <dt>
+        <a href="@Url.Action("Index", "Home")">
+            <i class="glyphicon glyphicon-home"></i>
+            <span>@BiebResources.SharedStrings.HomeMenuItem</span>
+        </a></dt>
     <dd>@BiebResources.SharedStrings.HomeMenuItemDescription</dd>
     
-    <dt>@Html.MenuLink(BiebResources.SharedStrings.PeopleMenuItem, "Index", "People")</dt>
+    <dt><a href="@Url.Action("Index", "People")">
+            <i class="glyphicon glyphicon-user"></i>
+            <span>@BiebResources.SharedStrings.PeopleMenuItem</span>
+        </a>
+    </dt>
     <dd>@BiebResources.SharedStrings.PeopleMenuItemDescription</dd>
     
-    <dt>@Html.MenuLink(BiebResources.SharedStrings.BooksMenuItem, "Index", "Books")</dt>
+    <dt><a href="@Url.Action("Index", "Books")">
+            <i class="glyphicon glyphicon-book"></i>
+            <span>@BiebResources.SharedStrings.BooksMenuItem</span>
+        </a>
+    </dt>
     <dd>@BiebResources.SharedStrings.BooksMenuItemDescription</dd>
     
-    <dt>@Html.MenuLink(BiebResources.SharedStrings.SeriesMenuItem, "Index", "Series")</dt>
+    <dt><a href="@Url.Action("Index", "Series")">
+            <i class="glyphicon glyphicon-list "></i>
+            <span>@BiebResources.SharedStrings.SeriesMenuItem</span>
+        </a>
+    </dt>
     <dd>@BiebResources.SharedStrings.SeriesMenuItemDescription</dd>
     
-    <dt>@Html.MenuLink(BiebResources.SharedStrings.PublishersMenuItem, "Index", "Publishers")</dt>
+    <dt>
+        <a href="@Url.Action("Index", "Publishers")">
+            <i class="glyphicon glyphicon-briefcase"></i>
+            <span>@BiebResources.SharedStrings.PublishersMenuItem</span>
+        </a>
+    </dt>
     <dd>@BiebResources.SharedStrings.PublishersMenuItemDescription</dd>
     
-    <dt>@Html.MenuLink(BiebResources.SharedStrings.SurpriseMeMenuItem, "Index", "Surprise")</dt>
+    <dt>
+        <a href="@Url.Action("Index", "Surprise")">
+            <i class="glyphicon glyphicon-gift"></i>
+            <span>@BiebResources.SharedStrings.SurpriseMeMenuItem</span>
+        </a>
+    </dt>
     <dd>@BiebResources.SharedStrings.SurpriseMeMenuItemDescription</dd>
 </dl>

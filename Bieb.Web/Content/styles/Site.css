@@ -82,6 +82,8 @@ a {
     height: 300px; }
 
 .goodreads {
-  border: 1px solid #eeeeee;
-  background-color: white; }
+  margin: 0; }
+  .goodreads iframe {
+    border: 1px solid #eeeeee;
+    background-color: white; }
 
