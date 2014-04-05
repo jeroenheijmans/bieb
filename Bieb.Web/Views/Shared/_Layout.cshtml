@@ -53,13 +53,13 @@
                                 <span>@BiebResources.SharedStrings.PublishersMenuItem</span>
                             </a>
                         </li>
-                        <li class="@Html.GetCssClass("Surprise")">
-                            <a href="@Url.Action("Index", "Surprise")">
-                                <i class="glyphicon glyphicon-gift"></i>
-                                <span>@BiebResources.SharedStrings.SurpriseMeMenuItem</span>
-                            </a>
-                        </li>
                     </ul>
+                    <div class="navbar-form navbar-right">
+                        <a href="@Url.Action("Index", "Surprise")" class="btn btn-default">
+                            <i class="glyphicon glyphicon-gift"></i>
+                            <span>@BiebResources.SharedStrings.SurpriseMeMenuItem</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
