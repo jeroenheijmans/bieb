@@ -125,6 +125,10 @@ a {
 }
 
 .goodreads {
-	border: 1px solid $background-color-darker;
-	background-color: $background-color;
+	margin: 0;
+
+	iframe {
+		border: 1px solid $background-color-darker;
+		background-color: $background-color;
+	}
 }

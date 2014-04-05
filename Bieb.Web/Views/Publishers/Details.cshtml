@@ -8,29 +8,23 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
+    @Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})
 }
 
 @if (Model.MyBooks.Any())
 {
-    <section class="item-list">
-        <h4>@BiebResources.PublisherStrings.BooksFromThisPublisher</h4>
-        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.MyBooks); }
-    </section>
+    <h4>@BiebResources.PublisherStrings.BooksFromThisPublisher</h4>
+    Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.MyBooks);
 }
 
 @if (Model.Stories.Any())
 {
-    <section class="item-list">
-        <h4>@BiebResources.PublisherStrings.StoriesFromThisPublisher</h4>
-        @{ Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories); }
-    </section>
+    <h4>@BiebResources.PublisherStrings.StoriesFromThisPublisher</h4>
+    Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories);
 }
 
 @if (Model.ReferenceBooks.Any())
 {
-    <section class="item-list">
-        <h4>@BiebResources.PublisherStrings.ReferenceBooksFromThisPublisher</h4>
-        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.ReferenceBooks); }
-    </section>
+    <h4>@BiebResources.PublisherStrings.ReferenceBooksFromThisPublisher</h4>
+    Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.ReferenceBooks);
 }

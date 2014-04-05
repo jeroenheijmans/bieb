@@ -13,7 +13,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <span class="edit-link">@Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})</span>
+    @Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})
 }
 
 <div class="row">

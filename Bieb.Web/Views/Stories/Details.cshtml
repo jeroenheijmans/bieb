@@ -13,18 +13,14 @@
     <div class="col-md-8">
         @if (Model.Authors.Any())
         {
-            <section class="item-list">
-                <h4>@BiebResources.SharedStrings.Authors</h4>
-                @{ Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Authors); }
-            </section>
+            <h4>@BiebResources.SharedStrings.Authors</h4>
+            Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Authors);
         }
 
         @if (Model.Translators.Any())
         {
-            <section class="item-list">
-                <h4>@BiebResources.SharedStrings.Translators</h4>
-                @{ Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Translators); }
-            </section>
+            <h4>@BiebResources.SharedStrings.Translators</h4>
+            Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Translators);
         }
     </div>
 
