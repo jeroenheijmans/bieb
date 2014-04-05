@@ -10,22 +10,15 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="edit-form publisher">
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.PublisherStrings.Name</div>
-            <div class="field">
-                @Html.EditorFor(model => model.Name)
-            </div>
-        </section>
-        
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.ModifiedDateTicks)
-        
-        @Html.ValidationSummary()
-        
-        <div class="form-actions">
-            <input type="submit" value="@BiebResources.SharedStrings.Save" />
-        </div>
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
     </div>
+
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ModifiedDateTicks)
+
+    @Html.ValidationSummary()
+
+    <input type="submit" value="@BiebResources.SharedStrings.Save" class="btn btn-default" />
 }

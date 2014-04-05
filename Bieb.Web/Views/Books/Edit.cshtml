@@ -10,91 +10,67 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="edit-form book">
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.Title</div>
-            <div class="field title">
-                @Html.EditorFor(model => model.Title)
-            </div>
-        </section>
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.Subtitle</div>
-            <div class="field subtitle">
-                @Html.EditorFor(model => model.Subtitle)
-            </div>
-        </section>
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.Published</div>
-            <div class="field">
-                @Html.DropDownListFor(model => model.PublisherId, Model.AvailablePublishers)
-                @Html.LabelFor(model => model.PublisherId)
-            </div>
-            <div class="field">
-                @Html.EditorFor(model => model.Year)
-                @Html.LabelFor(model => model.Year)
-            </div>
-        </section>
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.Isbn</div>
-            <div class="field">
-                @Html.EditorFor(model => model.Isbn)
-                @Html.LabelFor(model => model.Isbn)
-            </div>
-            <div class="field">
-                @Html.EditorFor(model => model.IsbnLanguage)
-                @Html.LabelFor(model => model.IsbnLanguage)
-            </div>
-        </section>
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.LibraryStatus</div>
-            <div class="field">
-                @Html.DropDownListFor(model => model.LibraryStatus, new SelectList(Enum.GetValues(typeof(Bieb.Domain.Entities.LibraryStatus))))
-            </div>
-        </section>
-        
-        <hr />
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.Authors</div>
-            <div class="field">
-                @Html.ListBoxFor(model => model.AuthorIds, Model.AvailablePeople, new { @class = "fancy-select" })
-            </div>
-        </section>
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.Translators</div>
-            <div class="field">
-                @Html.ListBoxFor(model => model.TranslatorIds, Model.AvailablePeople, new { @class = "fancy-select" })
-            </div>
-        </section>
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.Editors</div>
-            <div class="field">
-                @Html.ListBoxFor(model => model.EditorIds, Model.AvailablePeople, new { @class = "fancy-select" })
-            </div>
-        </section>
-        
-        <hr />
-        
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.BookStrings.Stories</div>
-            <div class="field">
-                @Html.EditorFor(model => model.Stories)
-            </div>
-        </section>
-        
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.ModifiedDateTicks)
-        
-        @Html.ValidationSummary()
-        
-        <div class="form-actions">
-            <input type="submit" value="@BiebResources.SharedStrings.Save" />
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title)
+        @Html.EditorFor(model => model.Title)
     </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Subtitle)
+        @Html.EditorFor(model => model.Subtitle)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PublisherId)
+        @Html.DropDownListFor(model => model.PublisherId, Model.AvailablePublishers, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Year)
+        @Html.EditorFor(model => model.Year)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Isbn)
+        @Html.EditorFor(model => model.Isbn)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsbnLanguage)
+        @Html.EditorFor(model => model.IsbnLanguage)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.LibraryStatus)
+        @Html.DropDownListFor(model => model.LibraryStatus, new SelectList(Enum.GetValues(typeof(Bieb.Domain.Entities.LibraryStatus))), new { @class = "form-control" })
+    </div>
+        
+    <hr />
+    
+    <div class="form-group">
+        <label>@BiebResources.BookStrings.Authors</label>
+        @Html.ListBoxFor(model => model.AuthorIds, Model.AvailablePeople, new { @class = "form-control fancy-select" })
+    </div>
+
+    <div class="form-group">
+        <label>@BiebResources.BookStrings.Translators</label>
+        @Html.ListBoxFor(model => model.TranslatorIds, Model.AvailablePeople, new { @class = "form-control fancy-select" })
+    </div>
+
+    <div class="form-group">
+        <label>@BiebResources.BookStrings.Editors</label>
+        @Html.ListBoxFor(model => model.EditorIds, Model.AvailablePeople, new { @class = "form-control fancy-select" })
+    </div>
+        
+    <hr />
+        
+    <h2>@BiebResources.BookStrings.Stories</h2>
+    @Html.EditorFor(model => model.Stories)
+        
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ModifiedDateTicks)
+        
+    @Html.ValidationSummary()
+        
+    <input type="submit" value="@BiebResources.SharedStrings.Save" class="btn btn-default" />
 }

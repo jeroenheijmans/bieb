@@ -10,35 +10,25 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="edit-form series">
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.SeriesStrings.Title</div>
-            <div class="field title">
-                @Html.EditorFor(model => model.Title)
-            </div>
-        </section>
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.SeriesStrings.Subtitle</div>
-            <div class="field subtitle">
-                @Html.EditorFor(model => model.Subtitle)
-            </div>
-        </section>
-
-        <section class="field-group">
-            <div class="field-group-label">@BiebResources.SeriesStrings.Books</div>
-            <div class="field">
-                @Html.ListBoxFor(model => model.BookIds, Model.AvailableBooks, new { @class = "fancy-select" })
-            </div>
-        </section>
-
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.ModifiedDateTicks)
-
-        @Html.ValidationSummary()
-        
-        <div class="form-actions">
-            <input type="submit" value="@BiebResources.SharedStrings.Save" />
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title)
+        @Html.EditorFor(model => model.Title)
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Subtitle)
+        @Html.EditorFor(model => model.Subtitle)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.BookIds)
+        @Html.ListBoxFor(model => model.BookIds, Model.AvailableBooks, new {@class = "form-control fancy-select"})
+    </div>
+
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ModifiedDateTicks)
+
+    @Html.ValidationSummary()
+
+    <input type="submit" value="@BiebResources.SharedStrings.Save" class="btn btn-default" />
 }
