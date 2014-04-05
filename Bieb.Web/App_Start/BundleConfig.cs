@@ -28,7 +28,7 @@ namespace Bieb.Web.App_Start
                         "~/Content/styles/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/styles/select2").Include(
-                        "~/Content/styles/select2/select2.css"));
+                        "~/Content/css/select2.css"));
         }
     }
 }

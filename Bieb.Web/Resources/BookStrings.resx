@@ -178,7 +178,7 @@
     <value>Published</value>
   </data>
   <data name="PublishedBy" xml:space="preserve">
-    <value>By</value>
+    <value>Published By</value>
   </data>
   <data name="Stories" xml:space="preserve">
     <value>Stories</value>

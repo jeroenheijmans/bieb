@@ -124,13 +124,13 @@
     <value>Authored Short Stories</value>
   </data>
   <data name="BornAt" xml:space="preserve">
-    <value>At</value>
+    <value>Born At</value>
   </data>
   <data name="BornAtPlaceholder" xml:space="preserve">
     <value>New York</value>
   </data>
   <data name="BornOn" xml:space="preserve">
-    <value>Born</value>
+    <value>Born On</value>
   </data>
   <data name="Day" xml:space="preserve">
     <value>Day</value>
@@ -139,13 +139,13 @@
     <value>d</value>
   </data>
   <data name="DiedAt" xml:space="preserve">
-    <value>At</value>
+    <value>Died At</value>
   </data>
   <data name="DiedAtPlaceholder" xml:space="preserve">
     <value>Madagascar</value>
   </data>
   <data name="DiedOn" xml:space="preserve">
-    <value>Died</value>
+    <value>Died On</value>
   </data>
   <data name="EditedBooks" xml:space="preserve">
     <value>Edited Books</value>
