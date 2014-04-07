@@ -135,6 +135,22 @@ namespace Bieb.Web.Controllers
             return SaveExistingEntity(model, existingEntity);
         }
 
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var item = Repository.GetItem(id);
+
+            if (item == null)
+            {
+                return PageNotFound();
+            }
+
+            Repository.Remove(item);
+            return RedirectToRoute(new {action = "Index"});
+        }
+
         private ActionResult SaveExistingEntity(TViewModel model, TEntity existingEntity)
         {
             EditEntityModelMapper.MergeEntityWithModel(existingEntity, model);

@@ -2,11 +2,6 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        @if (User.Identity.IsAuthenticated)
-        {
-            @Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new { Model.Id })
-        }
-
         <h1>
             @Html.DisplayFor(model => model.FullName)
         </h1>

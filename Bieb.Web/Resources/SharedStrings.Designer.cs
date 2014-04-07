@@ -115,6 +115,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete this item.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disclaimer.
         /// </summary>
         public static string Disclaimer {
@@ -124,7 +133,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit.
+        ///   Looks up a localized string similar to Edit this item.
         /// </summary>
         public static string Edit {
             get {
@@ -399,6 +408,15 @@ namespace BiebResources {
         public static string SeriesMenuItemDescription {
             get {
                 return ResourceManager.GetString("SeriesMenuItemDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure?.
+        /// </summary>
+        public static string SimpleConfirmQuestion {
+            get {
+                return ResourceManager.GetString("SimpleConfirmQuestion", resourceCulture);
             }
         }
         

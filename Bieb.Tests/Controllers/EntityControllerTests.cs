@@ -118,6 +118,25 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
+        public void Can_Delete_Item()
+        {
+            bookRepository.Add(someBook);
+            booksController.Delete(someBook.Id);
+            Assert.That(bookRepository.GetItem(someBook.Id), Is.Null);
+        }
+
+
+        [Test]
+        public void Delete_Will_Redirect_To_Index()
+        {
+            bookRepository.Add(someBook);
+            var result = booksController.Delete(someBook.Id) as RedirectToRouteResult;
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
+
+
+        [Test]
         public void Index_Will_Have_Default_Page_Size_Of_25_On_PageNumber_1()
         {
             for (int i = 0; i < 100; i++)
@@ -274,6 +293,13 @@ namespace Bieb.Tests.Controllers
         public void Details_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
         {
             var result = (ViewResult)booksController.Details(123456789);
+            Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
+        }
+
+        [Test]
+        public void Delete_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
+        {
+            var result = (ViewResult)booksController.Delete(123456);
             Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
         }
 

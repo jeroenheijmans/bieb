@@ -4,6 +4,34 @@
     ViewBag.Title = Model.Title;
 }
 
+@if (User.Identity.IsAuthenticated)
+{
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            @using (Html.BeginForm("Delete", "Books", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                
+                <a href="@Url.Action("Create", "Books")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.CreateNew</span>
+                </a>
+                
+                <a href="@Url.Action("Edit", "Books", new { Model.Id })" class="btn btn-default">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.Edit</span>
+                </a>
+                
+                <button class="btn btn-default" type="submit" onclick="return confirm('@BiebResources.SharedStrings.SimpleConfirmQuestion')">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.Delete</span>
+                </button>
+            }
+        </div>
+    </nav>
+}
+
 <div class="row">
 
     <div class="col-md-4">
