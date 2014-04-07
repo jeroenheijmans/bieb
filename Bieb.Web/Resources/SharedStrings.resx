@@ -135,11 +135,14 @@
   <data name="CreateNew" xml:space="preserve">
     <value>Create new item</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete this item</value>
+  </data>
   <data name="Disclaimer" xml:space="preserve">
     <value>Disclaimer</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Edit this item</value>
   </data>
   <data name="Editors" xml:space="preserve">
     <value>Editors</value>
@@ -230,6 +233,9 @@
   </data>
   <data name="SeriesMenuItemDescription" xml:space="preserve">
     <value>Some of my books are part of a series. All the series that are related to books in my libraries can be found here.</value>
+  </data>
+  <data name="SimpleConfirmQuestion" xml:space="preserve">
+    <value>Are you sure?</value>
   </data>
   <data name="SiteMap" xml:space="preserve">
     <value>Site Map</value>

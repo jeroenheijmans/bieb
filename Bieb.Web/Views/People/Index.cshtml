@@ -6,7 +6,16 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    @Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-form">
+                <a href="@Url.Action("Create", "People")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.CreateNew</span>
+                </a>
+            </div>
+        </div>
+    </nav>
 }
 
 <p>@BiebResources.PeopleStrings.IndexIntroduction</p>
@@ -31,7 +40,8 @@
         </th>
     </tr>
 
-@foreach (var person in Model) {
+@foreach (var person in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelperson => person.GenderChar)
@@ -43,7 +53,7 @@
             }
         </td>
         <td class="main-topic">
-            @Html.ActionLink(person.FullName, "Details", new { id=person.Id })
+            @Html.ActionLink(person.FullName, "Details", new { id = person.Id })
         </td>
         <td> 
             @string.Join(", ", person.Roles)
