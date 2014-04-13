@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.NHibernateProvider", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Framework", "Bieb.Framework\Bieb.Framework.csproj", "{705A6B64-A200-4C69-BE44-7EC71FD13FCB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{008254FB-A667-44CE-A6F9-FC15A403E79A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbIntegrationTests", "DbIntegrationTests\DbIntegrationTests.csproj", "{09DEB276-9B44-4169-9088-1522EA76BE61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,8 +94,22 @@ Global
 		{705A6B64-A200-4C69-BE44-7EC71FD13FCB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{705A6B64-A200-4C69-BE44-7EC71FD13FCB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{705A6B64-A200-4C69-BE44-7EC71FD13FCB}.Release|x86.ActiveCfg = Release|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{09DEB276-9B44-4169-9088-1522EA76BE61}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B7A88C23-7EC2-4329-AB3E-5E2B7288079A} = {008254FB-A667-44CE-A6F9-FC15A403E79A}
+		{09DEB276-9B44-4169-9088-1522EA76BE61} = {008254FB-A667-44CE-A6F9-FC15A403E79A}
 	EndGlobalSection
 EndGlobal
