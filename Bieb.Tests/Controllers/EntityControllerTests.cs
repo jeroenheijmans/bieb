@@ -127,11 +127,19 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
+        public void Delete_Will_Return_RedirectResult()
+        {
+            bookRepository.Add(someBook);
+            var result = booksController.Delete(someBook.Id);
+            Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
+        }
+
+
+        [Test]
         public void Delete_Will_Redirect_To_Index()
         {
             bookRepository.Add(someBook);
-            var result = booksController.Delete(someBook.Id) as RedirectToRouteResult;
-            Assert.That(result, Is.Not.Null);
+            var result = (RedirectToRouteResult)booksController.Delete(someBook.Id);
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }
 

@@ -4,16 +4,39 @@
     ViewBag.Title = "Details";
 }
 
+@if (User.Identity.IsAuthenticated)
+{
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            @using (Html.BeginForm("Delete", "Series", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                
+                <a href="@Url.Action("Create", "Series")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.CreateNew</span>
+                </a>
+                
+                <a href="@Url.Action("Edit", "Series", new { Model.Id })" class="btn btn-default">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.Edit</span>
+                </a>
+                
+                <button class="btn btn-default" type="submit" onclick="return confirm('@BiebResources.SharedStrings.SimpleConfirmQuestion')">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.Delete</span>
+                </button>
+            }
+        </div>
+    </nav>
+}
+
 <h1>@Html.DisplayFor(model => model.Title)</h1>
 
 @if (!string.IsNullOrEmpty(Model.Subtitle))
 { 
     <h2>@Model.Subtitle</h2>
-}
-
-@if (User.Identity.IsAuthenticated)
-{
-    @Html.ActionLink(BiebResources.SharedStrings.Edit, "Edit", new {Model.Id})
 }
 
 <div class="row">

@@ -10,6 +10,11 @@ namespace Bieb.Web.Models
 {
     public class EditSeriesModel : EditEntityModel<Series>
     {
+        public EditSeriesModel()
+        {
+            BookIds = new int[0];
+        }
+
         [Required]
         [Display(Name = "Title", Prompt = "TitlePlaceholder", ResourceType = typeof(BiebResources.SeriesStrings))]
         public string Title { get; set; }

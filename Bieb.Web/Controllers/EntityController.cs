@@ -148,7 +148,7 @@ namespace Bieb.Web.Controllers
             }
 
             Repository.Remove(item);
-            return RedirectToRoute(new {action = "Index"});
+            return RedirectToAction("Index");
         }
 
         private ActionResult SaveExistingEntity(TViewModel model, TEntity existingEntity)
