@@ -104,6 +104,12 @@ namespace Bieb.Domain.Entities
             }
         }
 
+        private readonly ISet<Book> authoredBooks = new HashSet<Book>();
+        public virtual ISet<Book> AuthoredBooks
+        {
+            get { return authoredBooks; }
+        }
+
         private readonly ISet<Book> editedBooks = new HashSet<Book>();
         public virtual ISet<Book> EditedBooks
         {

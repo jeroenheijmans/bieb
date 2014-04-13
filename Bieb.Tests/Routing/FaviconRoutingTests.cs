@@ -12,7 +12,6 @@ namespace Bieb.Tests.Routing
     public class FaviconRoutingTests : RoutingTests
     {
         [Test]
-        [Category("Test")]
         public void Basic_Favicon_Route_Is_Ignored()
         {
             var routeData = GetRouteDataForPath("~/favicon.ico");
