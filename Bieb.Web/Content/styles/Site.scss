@@ -91,7 +91,7 @@ a {
 	}
 }
 
-.panel {
+.panel-primary {
 	color: $background-color;
 	background-color: $main-color;
 
@@ -112,6 +112,10 @@ a {
 			color: $action-color;
 		}
 	}
+}
+
+.panel-default {
+	background-color: $background-color-darker;
 }
 
 .cover {

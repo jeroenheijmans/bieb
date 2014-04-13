@@ -59,20 +59,23 @@ a {
     .title a:hover {
       color: #ff0080; }
 
-.panel {
+.panel-primary {
   color: white;
   background-color: #333333; }
-  .panel h1 {
+  .panel-primary h1 {
     font-size: 1.65em;
     margin-top: 0.375em; }
-  .panel h2 {
+  .panel-primary h2 {
     font-size: 1.3em;
     margin-top: 0; }
-  .panel a {
+  .panel-primary a {
     color: #ffd8ed; }
-    .panel a:hover {
+    .panel-primary a:hover {
       text-decoration: none;
       color: #ff0080; }
+
+.panel-default {
+  background-color: #eeeeee; }
 
 .cover {
   margin-right: 50px; }
