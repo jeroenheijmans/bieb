@@ -6,7 +6,16 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    @Html.ActionLink(BiebResources.SharedStrings.CreateNew, "Create")
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-form">
+                <a href="@Url.Action("Create", "Series")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.CreateNew</span>
+                </a>
+            </div>
+        </div>
+    </nav>
 }
 
 <p>@BiebResources.SeriesStrings.IndexIntroduction</p>

@@ -55,11 +55,11 @@
       ALTER TABLE Story
       ADD TitleSort AS (
         CASE
-          WHEN LEFT(Title, 3) = 'De '  THEN RIGHT(Title, LEN(Title)-3) + ', De'
-          WHEN LEFT(Title, 4) = 'Het ' THEN RIGHT(Title, LEN(Title)-4) + ', Het'
-          WHEN LEFT(Title, 4) = 'Een ' THEN RIGHT(Title, LEN(Title)-4) + ', Een'
-          WHEN LEFT(Title, 4) = 'The ' THEN RIGHT(Title, LEN(Title)-4) + ', The'
-          WHEN LEFT(Title, 2) = 'A '   THEN RIGHT(Title, LEN(Title)-2) + ', A'
+          WHEN LEFT(Title, 3) = 'De '  AND LEN(Title) >= 3 THEN RIGHT(Title, LEN(Title)-3) + ', De'
+          WHEN LEFT(Title, 4) = 'Het ' AND LEN(Title) >= 4 THEN RIGHT(Title, LEN(Title)-4) + ', Het'
+          WHEN LEFT(Title, 4) = 'Een ' AND LEN(Title) >= 4 THEN RIGHT(Title, LEN(Title)-4) + ', Een'
+          WHEN LEFT(Title, 4) = 'The ' AND LEN(Title) >= 4 THEN RIGHT(Title, LEN(Title)-4) + ', The'
+          WHEN LEFT(Title, 2) = 'A '   AND LEN(Title) >= 2 THEN RIGHT(Title, LEN(Title)-2) + ', A'
           ELSE Title
         END
       ) PERSISTED
