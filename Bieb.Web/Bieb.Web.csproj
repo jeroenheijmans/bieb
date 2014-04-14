@@ -446,6 +446,8 @@
     <Content Include="Views\Home\SiteMap.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EditStoryModel.cshtml" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Views\Shared\_NavigationPartial.cshtml" />
+    <Content Include="Views\Shared\_NavigationAdminPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

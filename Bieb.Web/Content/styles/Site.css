@@ -39,12 +39,21 @@ a {
   .single-topic-table .main-topic {
     white-space: normal;
     width: 100%; } }
-.navbar-inverse {
+.navbar-inverse,
+.navbar-inverse .dropdown-menu {
   background-color: #333333; }
 
-.navbar-inverse .navbar-nav li > a {
+.navbar-inverse .navbar-nav li > a,
+.navbar-inverse .dropdown-menu li > a {
   color: white; }
-.navbar-inverse .navbar-nav li:hover, .navbar-inverse .navbar-nav li.active > a {
+.navbar-inverse .navbar-nav li:hover,
+.navbar-inverse .navbar-nav li.active > a,
+.navbar-inverse .navbar-nav li.active > a:hover,
+.navbar-inverse .navbar-nav li > a:hover,
+.navbar-inverse .dropdown-menu li:hover,
+.navbar-inverse .dropdown-menu li.active > a,
+.navbar-inverse .dropdown-menu li.active > a:hover,
+.navbar-inverse .dropdown-menu li > a:hover {
   color: white;
   background: #ff0080; }
 
