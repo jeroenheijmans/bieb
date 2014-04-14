@@ -63,16 +63,21 @@ a {
 }
 
 
-.navbar-inverse {
+.navbar-inverse,
+.navbar-inverse .dropdown-menu {
 	background-color: $main-color;
 }
 
-.navbar-inverse .navbar-nav {
+.navbar-inverse .navbar-nav,
+.navbar-inverse .dropdown-menu {
 	li > a {
 		color: $background-color;
 	}
-
-	li:hover, li.active > a {
+	
+	li:hover, 
+	li.active > a, 
+	li.active > a:hover,
+	li > a:hover {
 		color: $background-color;
 		background: $action-color;
 	}

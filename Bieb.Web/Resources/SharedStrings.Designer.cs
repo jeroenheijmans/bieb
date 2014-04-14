@@ -196,6 +196,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show All.
+        /// </summary>
+        public static string Index {
+            get {
+                return ResourceManager.GetString("Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ISBN.
         /// </summary>
         public static string Isbn {

@@ -9,59 +9,17 @@
     @Styles.Render("~/Content/styles/select2")
 </head>
 <body class="container">
-    
+
     <header>
         <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-main-navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-main-navbar">
-                    <ul class="nav navbar-nav">
-                        <li class="@Html.GetCssClass("Home")">
-                            <a href="@Url.Action("Index", "Home")">
-                                <i class="glyphicon glyphicon-home"></i>
-                                <span>@BiebResources.SharedStrings.HomeMenuItem</span>
-                            </a>
-                        </li>
-                        <li class="@Html.GetCssClass("People")">
-                            <a href="@Url.Action("Index", "People")">
-                                <i class="glyphicon glyphicon-user"></i>
-                                <span>@BiebResources.SharedStrings.PeopleMenuItem</span>
-                            </a>
-                        </li>
-                        <li class="@Html.GetCssClass("Books")">
-                            <a href="@Url.Action("Index", "Books")">
-                                <i class="glyphicon glyphicon-book"></i>
-                                <span>@BiebResources.SharedStrings.BooksMenuItem</span>
-                            </a>
-                        </li>
-                        <li class="@Html.GetCssClass("Series")">
-                            <a href="@Url.Action("Index", "Series")">
-                                <i class="glyphicon glyphicon-list "></i>
-                                <span>@BiebResources.SharedStrings.SeriesMenuItem</span>
-                            </a>
-                        </li>
-                        <li class="@Html.GetCssClass("Publishers")">
-                            <a href="@Url.Action("Index", "Publishers")">
-                                <i class="glyphicon glyphicon-briefcase"></i>
-                                <span>@BiebResources.SharedStrings.PublishersMenuItem</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="navbar-form navbar-right">
-                        <a href="@Url.Action("Index", "Surprise")" class="btn btn-default">
-                            <i class="glyphicon glyphicon-gift"></i>
-                            <span>@BiebResources.SharedStrings.SurpriseMeMenuItem</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.Partial("_NavigationAdminPartial")
+            }
+            else
+            {
+                @Html.Partial("_NavigationPartial")
+            }
         </nav>
 
         <div class="row">
@@ -69,14 +27,14 @@
                 @Html.Partial("_SearchBoxPartial")
             </div>
         </div>
-        
+
         <div class="title hidden-sm hidden-xs">
             @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
         </div>
     </header>
 
     @RenderBody()
-    
+
     <hr />
 
     <footer class="row">
@@ -86,19 +44,19 @@
             <span>@Html.ActionLink(@BiebResources.SharedStrings.Disclaimer, "Disclaimer", "Home")</span>
             |
             <span>@Html.ActionLink(@BiebResources.SharedStrings.SiteMap, "SiteMap", "Home")</span>
-            
+
             <span id="powered-by">@BiebResources.SharedStrings.PoweredBy <a href="http://bieb.codeplex.com" target="_blank">bieb.codeplex.com</a></span>
         </div>
         <div class="col-md-4">
             @Html.Partial("_LoginPartial")
         </div>
     </footer>
-    
+
     @Scripts.Render("~/Scripts/jquery")
     @Scripts.Render("~/Scripts/bootstrap")
     @Scripts.Render("~/Scripts/jqueryplugins")
     @RenderSection("scripts", required: false)
-    
+
     <script>
         $(document).ready(function () {
             $(".fancy-select").select2({

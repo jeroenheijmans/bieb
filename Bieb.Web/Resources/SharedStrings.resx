@@ -162,6 +162,9 @@
   <data name="HomeMenuItemDescription" xml:space="preserve">
     <value>The site's starting grounds. No site can do without one, even if it tried.</value>
   </data>
+  <data name="Index" xml:space="preserve">
+    <value>Show All</value>
+  </data>
   <data name="Isbn" xml:space="preserve">
     <value>ISBN</value>
   </data>
