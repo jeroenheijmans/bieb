@@ -22,7 +22,7 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Gender)
-        @Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof (Bieb.Domain.Entities.Gender))), new {@class = "form-control"})
+        @Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof (Bieb.Domain.Entities.Gender))), new {@class = "form-control fancy-select"})
     </div>
 
     <div class="form-group">
