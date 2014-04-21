@@ -61,20 +61,20 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Authored Collections.
+        ///   Looks up a localized string similar to Authored.
         /// </summary>
-        public static string AuthoredCollections {
+        public static string AuthoredBooks {
             get {
-                return ResourceManager.GetString("AuthoredCollections", resourceCulture);
+                return ResourceManager.GetString("AuthoredBooks", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Authored Short Stories.
+        ///   Looks up a localized string similar to Authored.
         /// </summary>
-        public static string AuthoredShortStories {
+        public static string AuthoredStories {
             get {
-                return ResourceManager.GetString("AuthoredShortStories", resourceCulture);
+                return ResourceManager.GetString("AuthoredStories", resourceCulture);
             }
         }
         
@@ -151,7 +151,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edited Books.
+        ///   Looks up a localized string similar to Edited.
         /// </summary>
         public static string EditedBooks {
             get {
@@ -367,20 +367,20 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translated Novels.
+        ///   Looks up a localized string similar to Translated.
         /// </summary>
-        public static string TranslatedNovels {
+        public static string TranslatedBooks {
             get {
-                return ResourceManager.GetString("TranslatedNovels", resourceCulture);
+                return ResourceManager.GetString("TranslatedBooks", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translated Short Stories.
+        ///   Looks up a localized string similar to Translated.
         /// </summary>
-        public static string TranslatedShortStories {
+        public static string TranslatedStories {
             get {
-                return ResourceManager.GetString("TranslatedShortStories", resourceCulture);
+                return ResourceManager.GetString("TranslatedStories", resourceCulture);
             }
         }
         

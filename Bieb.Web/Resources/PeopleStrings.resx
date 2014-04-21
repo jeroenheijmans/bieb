@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AuthoredCollections" xml:space="preserve">
-    <value>Authored Collections</value>
+  <data name="AuthoredBooks" xml:space="preserve">
+    <value>Authored</value>
   </data>
-  <data name="AuthoredShortStories" xml:space="preserve">
-    <value>Authored Short Stories</value>
+  <data name="AuthoredStories" xml:space="preserve">
+    <value>Authored</value>
   </data>
   <data name="BornAt" xml:space="preserve">
     <value>Born At</value>
@@ -148,7 +148,7 @@
     <value>Died On</value>
   </data>
   <data name="EditedBooks" xml:space="preserve">
-    <value>Edited Books</value>
+    <value>Edited</value>
   </data>
   <data name="FindPersonOn" xml:space="preserve">
     <value>Find this person on</value>
@@ -219,11 +219,11 @@
   <data name="TitlePlaceholder" xml:space="preserve">
     <value>Dr.</value>
   </data>
-  <data name="TranslatedNovels" xml:space="preserve">
-    <value>Translated Novels</value>
+  <data name="TranslatedBooks" xml:space="preserve">
+    <value>Translated</value>
   </data>
-  <data name="TranslatedShortStories" xml:space="preserve">
-    <value>Translated Short Stories</value>
+  <data name="TranslatedStories" xml:space="preserve">
+    <value>Translated</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Year</value>

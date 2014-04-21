@@ -34,62 +34,49 @@
 }
 
 <div class="row">
-    
+
     <div class="col-md-4">
         @{ Html.RenderPartial("Card", Model); }
     </div>
-    
+
     <div class="col-md-8">
         @if (Model.Reviews.Any())
         {
             foreach (var review in Model.Reviews)
             { 
-                <p>@review.ReviewText</p>
+            <p>@review.ReviewText</p>
             }
         }
-
-
-        @if (Model.AuthoredNovels.Any() || Model.EditedBooks.Any() || Model.AuthoredCollections.Any() || Model.TranslatedNovels.Any())
+        
+        @if (Model.AuthoredBooks.Any())
         {
-            if (Model.AuthoredNovels.Any())
-            {
-                <h2>@BiebResources.SharedStrings.Novels</h2>
-                Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredNovels);
-            }
-
-            if (Model.EditedBooks.Count > 0)
-            {
-                <h2>@BiebResources.PeopleStrings.EditedBooks</h2>
-                Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.EditedBooks);
-            }
-
-            if (Model.AuthoredCollections.Any())
-            {
-                <h2>@BiebResources.PeopleStrings.AuthoredCollections</h2>
-                Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredCollections);
-            }
-
-            if (Model.TranslatedNovels.Any())
-            {
-                <h2>@BiebResources.PeopleStrings.TranslatedNovels</h2>
-                Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.TranslatedNovels);
-            }
+            <h2>@BiebResources.PeopleStrings.AuthoredBooks</h2>
+            Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredBooks);
         }
 
-        @if (Model.TranslatedShortStories.Any() || Model.AuthoredShortStories.Any())
+        @if (Model.EditedBooks.Count > 0)
         {
-            if (Model.TranslatedShortStories.Any())
-            {
-                <h2>@BiebResources.PeopleStrings.TranslatedShortStories</h2>
-                Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.TranslatedShortStories);
-            }
+            <h2>@BiebResources.PeopleStrings.EditedBooks</h2>
+            Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.EditedBooks);
+        }
 
-            if (Model.AuthoredShortStories.Any())
-            {
-                // TODO: Split between short stories and novels
-                <h2>@BiebResources.PeopleStrings.AuthoredShortStories</h2>
-                Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.AuthoredShortStories);
-            }
+        @if (Model.TranslatedBooks.Any())
+        {
+            <h2>@BiebResources.PeopleStrings.TranslatedBooks</h2>
+            Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.TranslatedBooks);
+        }
+
+        @if (Model.TranslatedStories.Any())
+        {
+            <h2>@BiebResources.PeopleStrings.TranslatedStories</h2>
+            Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.TranslatedStories);
+        }
+
+        @if (Model.AuthoredStories.Any())
+        {
+            // TODO: Split between short stories and novels
+            <h2>@BiebResources.PeopleStrings.AuthoredStories</h2>
+            Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.AuthoredStories);
         }
 
         @{ Html.RenderPartial("MoreInfo", Model); }
