@@ -110,6 +110,12 @@ namespace Bieb.Domain.Entities
             get { return authoredBooks; }
         }
 
+        private readonly ISet<Book> translatedBooks = new HashSet<Book>();
+        public virtual ISet<Book> TranslatedBooks
+        {
+            get { return translatedBooks; }
+        }
+
         private readonly ISet<Book> editedBooks = new HashSet<Book>();
         public virtual ISet<Book> EditedBooks
         {
@@ -121,69 +127,17 @@ namespace Bieb.Domain.Entities
         {
             get { return authoredStories; }
         }
-
-        public virtual IEnumerable<Story> AuthoredShortStories
-        {
-            get
-            {
-                return authoredStories
-                        .Where(s => s.Book != null && s.Book.BookType != BookType.Novel)
-                        .Select(s => s);
-            }
-        }
-
-        public virtual IEnumerable<Book> AuthoredNovels
-        {
-            get
-            {
-                return authoredStories
-                        .Select(s => s.Book)
-                        .Where(b => b != null && b.BookType == BookType.Novel)
-                        .Distinct();
-            }
-        }
-
+        
         private readonly ISet<Story> translatedStories = new HashSet<Story>();
         public virtual ISet<Story> TranslatedStories
         {
             get { return translatedStories; }
         }
 
-        public virtual IEnumerable<Story> TranslatedShortStories
-        {
-            get
-            {
-                return translatedStories
-                        .Where(s => s.Book.BookType == BookType.Anthology || s.Book.BookType == BookType.Collection);
-            }
-        }
-
-        public virtual IEnumerable<Book> TranslatedNovels
-        {
-            get
-            {
-                return translatedStories
-                        .Select(s => s.Book)
-                        .Where(b => b != null && b.BookType == BookType.Novel)
-                        .Distinct();
-            }
-        }
-
         private readonly ISet<Review<Person>> reviews = new HashSet<Review<Person>>();
         public virtual ISet<Review<Person>> Reviews
         {
             get { return reviews; }
-        }
-
-        public virtual IEnumerable<Book> AuthoredCollections
-        {
-            get 
-            {
-                return authoredStories
-                        .Select(s => s.Book)
-                        .Where(b => b != null && b.BookType == BookType.Collection)
-                        .Distinct();
-            }
         }
 
 
