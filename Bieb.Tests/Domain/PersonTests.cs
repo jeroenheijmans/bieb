@@ -82,20 +82,60 @@ namespace Bieb.Tests.Domain
 
 
         [Test]
-        public void Gets_Roles_From_Stories_And_Books()
+        public void Can_Derive_Author_Role_From_AuthoredBooks()
         {
-            var sybrenPolet = new Person { FirstName = "Sybren", Surname = "Polet" };
-            var story = new Story();
-            var book = new Book();
+            var person = new Person();
+            person.AuthoredBooks.Add(new Book());
 
-            sybrenPolet.AuthoredStories.Add(story);
-            sybrenPolet.TranslatedStories.Add(story);
-            sybrenPolet.EditedBooks.Add(book);
+            Assert.That(person.Roles.Contains(Role.Author));
+        }
 
-            Assert.That(sybrenPolet.Roles.Contains(Role.Author));
-            Assert.That(sybrenPolet.Roles.Contains(Role.Editor));
-            Assert.That(sybrenPolet.Roles.Contains(Role.Translator));
-            Assert.That(sybrenPolet.Roles.Count(), Is.EqualTo(3));
+
+        [Test]
+        public void Can_Derive_Author_Role_From_AuthoredStories()
+        {
+            var person = new Person();
+            person.AuthoredStories.Add(new Story());
+
+            Assert.That(person.Roles.Contains(Role.Author));
+        }
+
+
+        [Test]
+        public void Can_Derive_Translator_Role_From_TranslatedStories()
+        {
+            var person = new Person();
+            person.TranslatedStories.Add(new Story());
+
+            Assert.That(person.Roles.Contains(Role.Translator));
+        }
+
+
+        [Test]
+        public void Can_Derive_Translator_Role_From_TranslatedBooks()
+        {
+            var person = new Person();
+            person.TranslatedBooks.Add(new Book());
+
+            Assert.That(person.Roles.Contains(Role.Translator));
+        }
+
+
+        [Test]
+        public void Can_Derive_Editor_Role_From_EditedBooks()
+        {
+            var person = new Person();
+            person.EditedBooks.Add(new Book());
+
+            Assert.That(person.Roles.Contains(Role.Editor));
+        }
+
+
+        [Test]
+        public void Fresh_Person_Will_Have_No_Roles()
+        {
+            var person = new Person();
+            Assert.That(person.Roles, Is.Empty);
         }
 
 

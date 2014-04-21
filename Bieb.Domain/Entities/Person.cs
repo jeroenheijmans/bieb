@@ -164,9 +164,9 @@ namespace Bieb.Domain.Entities
             {
                 var roles = new List<Role>();
 
-                if (AuthoredStories.Count > 0) roles.Add(Role.Author);
+                if (AuthoredBooks.Count > 0 || AuthoredStories.Count > 0) roles.Add(Role.Author);
                 if (EditedBooks.Count > 0) roles.Add(Role.Editor);
-                if (TranslatedStories.Count > 0) roles.Add(Role.Translator);
+                if (TranslatedBooks.Count > 0 || TranslatedStories.Count > 0) roles.Add(Role.Translator);
 
                 return roles;
             }
