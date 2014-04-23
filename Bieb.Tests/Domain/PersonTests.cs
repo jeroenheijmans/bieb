@@ -69,9 +69,9 @@ namespace Bieb.Tests.Domain
 
             var tolkien = new Person();
 
-            tolkien.AuthoredStories.Add(story1);
-            tolkien.TranslatedStories.Add(story2);
-            tolkien.EditedBooks.Add(someBook);
+            tolkien.AddAuthoredStory(story1);
+            tolkien.AddTranslatedStory(story2);
+            tolkien.AddEditedBook(someBook);
 
             Assert.That(tolkien.Tags.Contains(cool));
             Assert.That(tolkien.Tags.Contains(hot));
@@ -85,7 +85,7 @@ namespace Bieb.Tests.Domain
         public void Can_Derive_Author_Role_From_AuthoredBooks()
         {
             var person = new Person();
-            person.AuthoredBooks.Add(new Book());
+            person.AddAuthoredBook(new Book());
 
             Assert.That(person.Roles.Contains(Role.Author));
         }
@@ -95,7 +95,7 @@ namespace Bieb.Tests.Domain
         public void Can_Derive_Author_Role_From_AuthoredStories()
         {
             var person = new Person();
-            person.AuthoredStories.Add(new Story());
+            person.AddAuthoredStory(new Story());
 
             Assert.That(person.Roles.Contains(Role.Author));
         }
@@ -105,7 +105,7 @@ namespace Bieb.Tests.Domain
         public void Can_Derive_Translator_Role_From_TranslatedStories()
         {
             var person = new Person();
-            person.TranslatedStories.Add(new Story());
+            person.AddTranslatedStory(new Story());
 
             Assert.That(person.Roles.Contains(Role.Translator));
         }
@@ -115,7 +115,7 @@ namespace Bieb.Tests.Domain
         public void Can_Derive_Translator_Role_From_TranslatedBooks()
         {
             var person = new Person();
-            person.TranslatedBooks.Add(new Book());
+            person.AddTranslatedBook(new Book());
 
             Assert.That(person.Roles.Contains(Role.Translator));
         }
@@ -125,7 +125,7 @@ namespace Bieb.Tests.Domain
         public void Can_Derive_Editor_Role_From_EditedBooks()
         {
             var person = new Person();
-            person.EditedBooks.Add(new Book());
+            person.AddEditedBook(new Book());
 
             Assert.That(person.Roles.Contains(Role.Editor));
         }

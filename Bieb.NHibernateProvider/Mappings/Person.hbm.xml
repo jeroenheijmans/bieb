@@ -31,29 +31,29 @@
     <property name="DateOfDeathFrom" type="Date" />
     <property name="DateOfDeathUntil" type="Date" />
 
-    <set name="AuthoredBooks" table="BookAuthor" access="field.camelcase">
-      <key column="PersonId" foreign-key="FK_BookAuthor_Person" />
-      <many-to-many column="BookId" class="Book" foreign-key="FK_BookAuthor_Book" />
+    <set name="AuthoredBooks" table="BookAuthor" access="field.camelcase" inverse="true" cascade="delete">
+      <key column="PersonId" />
+      <many-to-many column="BookId" class="Book" />
     </set>
 
-    <set name="TranslatedBooks" table="BookTranslator" access="field.camelcase">
-      <key column="PersonId" foreign-key="FK_BookTranslator_Person" />
-      <many-to-many column="BookId" class="Book" foreign-key="FK_BookTranslator_Person" />
+    <set name="TranslatedBooks" table="BookTranslator" access="field.camelcase" inverse="true" cascade="delete">
+      <key column="PersonId" />
+      <many-to-many column="BookId" class="Book" />
     </set>
 
-    <set name="EditedBooks" table="BookEditor" access="field.camelcase">
-      <key column="PersonId" foreign-key="FK_BookEditor_Person" />
-      <many-to-many column="BookId" class="Book" foreign-key="FK_BookEditor_Book" />
+    <set name="EditedBooks" table="BookEditor" access="field.camelcase" inverse="true" cascade="delete">
+      <key column="PersonId" />
+      <many-to-many column="BookId" class="Book" />
     </set>
 
-    <set name="AuthoredStories" table="StoryAuthor" access="field.camelcase">
-      <key column="PersonId" foreign-key="FK_StoryAuthor_Person" />
-      <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryAuthor_Story" />
+    <set name="AuthoredStories" table="StoryAuthor" access="field.camelcase" inverse="true" cascade="delete">
+      <key column="PersonId" />
+      <many-to-many column="StoryId" class="Story" />
     </set>
 
-    <set name="TranslatedStories" table="StoryTranslator" access="field.camelcase">
-      <key column="PersonId" foreign-key="FK_StoryTranslator_Person" />
-      <many-to-many column="StoryId" class="Story" foreign-key="FK_StoryTranslator_Story" />
+    <set name="TranslatedStories" table="StoryTranslator" access="field.camelcase" inverse="true" cascade="delete">
+      <key column="PersonId" />
+      <many-to-many column="StoryId" class="Story" />
     </set>
 
     <!-- Fully qualified name on the generic type needed, see:  Posted it on SO: http://stackoverflow.com/q/12547084/419956 -->

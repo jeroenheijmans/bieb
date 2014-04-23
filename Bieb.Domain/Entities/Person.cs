@@ -105,33 +105,63 @@ namespace Bieb.Domain.Entities
         }
 
         private readonly ISet<Book> authoredBooks = new HashSet<Book>();
-        public virtual ISet<Book> AuthoredBooks
+        public virtual IEnumerable<Book> AuthoredBooks
         {
             get { return authoredBooks; }
         }
 
+        public virtual void AddAuthoredBook(Book book)
+        {
+            book.Authors.Add(this);
+            authoredBooks.Add(book);
+        }
+
         private readonly ISet<Book> translatedBooks = new HashSet<Book>();
-        public virtual ISet<Book> TranslatedBooks
+        public virtual IEnumerable<Book> TranslatedBooks
         {
             get { return translatedBooks; }
         }
 
+        public virtual void AddTranslatedBook(Book book)
+        {
+            book.Translators.Add(this);
+            translatedBooks.Add(book);
+        }
+
         private readonly ISet<Book> editedBooks = new HashSet<Book>();
-        public virtual ISet<Book> EditedBooks
+        public virtual IEnumerable<Book> EditedBooks
         {
             get { return editedBooks; }
         }
 
+        public virtual void AddEditedBook(Book book)
+        {
+            book.Editors.Add(this);
+            editedBooks.Add(book);
+        }
+
         private readonly ISet<Story> authoredStories = new HashSet<Story>();
-        public virtual ISet<Story> AuthoredStories
+        public virtual IEnumerable<Story> AuthoredStories
         {
             get { return authoredStories; }
         }
+
+        public virtual void AddAuthoredStory(Story story)
+        {
+            story.Authors.Add(this);
+            authoredStories.Add(story);
+        }
         
         private readonly ISet<Story> translatedStories = new HashSet<Story>();
-        public virtual ISet<Story> TranslatedStories
+        public virtual IEnumerable<Story> TranslatedStories
         {
             get { return translatedStories; }
+        }
+
+        public virtual void AddTranslatedStory(Story story)
+        {
+            story.Translators.Add(this);
+            translatedStories.Add(story);
         }
 
         private readonly ISet<Review<Person>> reviews = new HashSet<Review<Person>>();
@@ -164,9 +194,9 @@ namespace Bieb.Domain.Entities
             {
                 var roles = new List<Role>();
 
-                if (AuthoredBooks.Count > 0 || AuthoredStories.Count > 0) roles.Add(Role.Author);
-                if (EditedBooks.Count > 0) roles.Add(Role.Editor);
-                if (TranslatedBooks.Count > 0 || TranslatedStories.Count > 0) roles.Add(Role.Translator);
+                if (AuthoredBooks.Any() || AuthoredStories.Any()) roles.Add(Role.Author);
+                if (EditedBooks.Any()) roles.Add(Role.Editor);
+                if (TranslatedBooks.Any() || TranslatedStories.Any()) roles.Add(Role.Translator);
 
                 return roles;
             }

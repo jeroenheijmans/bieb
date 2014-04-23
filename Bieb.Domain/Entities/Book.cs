@@ -12,10 +12,10 @@ namespace Bieb.Domain.Entities
 
         public virtual string Isbn { get; set; }
 
-        private readonly ISet<Tag> bookTags = new HashSet<Tag>(); 
-        public virtual ISet<Tag> BookTags
+        private readonly ISet<Tag> tags = new HashSet<Tag>(); 
+        public virtual ISet<Tag> Tags
         {
-            get { return bookTags; }
+            get { return tags; }
         } 
 
         public virtual IEnumerable<Tag> AllTags
@@ -24,7 +24,7 @@ namespace Bieb.Domain.Entities
             {
                 return Stories
                     .SelectMany(item => item.Value.Tags)
-                    .Union(BookTags)
+                    .Union(Tags)
                     .Distinct();
             }
         }
@@ -58,10 +58,10 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private readonly ISet<Person> bookAuthors = new HashSet<Person>(); 
-        public virtual ISet<Person> BookAuthors
+        private readonly ISet<Person> authors = new HashSet<Person>(); 
+        public virtual ISet<Person> Authors
         {
-            get { return bookAuthors; }
+            get { return authors; }
         }
 
         public virtual IEnumerable<Person> AllAuthors
@@ -70,17 +70,17 @@ namespace Bieb.Domain.Entities
             {
                 return Stories
                     .SelectMany(item => item.Value.Authors)
-                    .Union(BookAuthors)
+                    .Union(Authors)
                     .Distinct();
             }
         }
 
-        private readonly ISet<Person> bookTranslators = new HashSet<Person>();
-        public virtual ISet<Person> BookTranslators
+        private readonly ISet<Person> translators = new HashSet<Person>();
+        public virtual ISet<Person> Translators
         {
             get 
             {
-                return bookTranslators; 
+                return translators; 
             }
         }
 
@@ -90,7 +90,7 @@ namespace Bieb.Domain.Entities
             {
                 return Stories
                     .SelectMany(item => item.Value.Translators)
-                    .Union(BookTranslators)
+                    .Union(Translators)
                     .Distinct();
             }
         }

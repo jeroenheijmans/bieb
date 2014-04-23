@@ -54,7 +54,7 @@
             Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.AuthoredBooks);
         }
 
-        @if (Model.EditedBooks.Count > 0)
+        @if (Model.EditedBooks.Any())
         {
             <h2>@BiebResources.PeopleStrings.EditedBooks</h2>
             Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.EditedBooks);

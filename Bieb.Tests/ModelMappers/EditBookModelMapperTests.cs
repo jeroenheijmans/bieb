@@ -217,8 +217,8 @@ namespace Bieb.Tests.ModelMappers
         public void Model_Will_Have_Author_Ids_From_Domain_Book()
         {
             var book = new Book();
-            book.BookAuthors.Add(asimov);
-            book.BookAuthors.Add(adams);
+            book.Authors.Add(asimov);
+            book.Authors.Add(adams);
 
             var model = mapper.ModelFromEntity(book);
 
@@ -237,7 +237,7 @@ namespace Bieb.Tests.ModelMappers
 
             mapper.MergeEntityWithModel(book, model);
 
-            Assert.That(book.BookAuthors, Contains.Item(asimov));
+            Assert.That(book.Authors, Contains.Item(asimov));
         }
 
 
@@ -245,8 +245,8 @@ namespace Bieb.Tests.ModelMappers
         public void Model_Will_Have_Translator_Ids_From_Domain_Book()
         {
             var book = new Book();
-            book.BookTranslators.Add(asimov);
-            book.BookTranslators.Add(adams);
+            book.Translators.Add(asimov);
+            book.Translators.Add(adams);
 
             var model = mapper.ModelFromEntity(book);
 
@@ -265,7 +265,7 @@ namespace Bieb.Tests.ModelMappers
 
             mapper.MergeEntityWithModel(book, model);
 
-            Assert.That(book.BookTranslators, Contains.Item(asimov));
+            Assert.That(book.Translators, Contains.Item(asimov));
         }
 
 

@@ -7,6 +7,7 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Tool.hbm2ddl;
+using NUnit.Framework;
 
 namespace DbIntegrationTests
 {
@@ -37,9 +38,23 @@ namespace DbIntegrationTests
                 _factory = _configuration.BuildSessionFactory();
             }
 
-            Session = _factory.OpenSession();
-            new SchemaExport(_configuration).Execute(true, true, false, Session.Connection, Console.Out);
+            using (var schemaCreationSession = _factory.OpenSession())
+            {
+                new SchemaExport(_configuration).Execute(true, true, false, schemaCreationSession.Connection, Console.Out);
+            }
         }
+
+        [SetUp]
+        public virtual void SetUp()
+        {
+            if (Session != null && Session.IsOpen)
+            {
+                Session.Close();
+            }
+
+            Session = _factory.OpenSession();
+        }
+
 
         public void Dispose()
         {
