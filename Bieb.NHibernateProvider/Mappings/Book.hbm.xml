@@ -37,12 +37,12 @@
       <many-to-many column="PersonId" class="Person" foreign-key="FK_BookEditor_Person" />
     </set>
 
-    <set name="BookAuthors" table="BookAuthor" access="field.camelcase">
+    <set name="Authors" table="BookAuthor" access="field.camelcase">
       <key column="BookId" foreign-key="FK_BookAuthor_Book" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_BookAuthor_Person" />
     </set>
 
-    <set name="BookTranslators" table="BookTranslator" access="field.camelcase">
+    <set name="Translators" table="BookTranslator" access="field.camelcase">
       <key column="BookId" foreign-key="FK_BookTranslator_Book" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_BookTranslator_Person" />
     </set>
@@ -52,7 +52,7 @@
       <many-to-many column="SeriesId" class="Series" foreign-key="FK_SeriesBook_Series" />
     </bag>
 
-    <set name="BookTags" table="BookTag" access="field.camelcase">
+    <set name="Tags" table="BookTag" access="field.camelcase">
       <key column="BookId" foreign-key="FK_BookTag_Story" />
       <many-to-many column="TagId" class="Tag" foreign-key="FK_BookTag_Tag" />
     </set>

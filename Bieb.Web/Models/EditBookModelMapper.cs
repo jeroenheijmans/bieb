@@ -51,7 +51,7 @@ namespace Bieb.Web.Models
             }
 
             // TODO: Refactor, the code below is copy-paste from the above
-            entity.BookAuthors.Clear();
+            entity.Authors.Clear();
 
             foreach (var authorId in model.AuthorIds)
             {
@@ -62,11 +62,11 @@ namespace Bieb.Web.Models
                     throw new MappingException("Provided Author Id could not be traced to any person in the database.");
                 }
 
-                entity.BookAuthors.Add(person);
+                entity.Authors.Add(person);
             }
 
             // TODO: Refactor, the code below is copy-paste from the above
-            entity.BookTranslators.Clear();
+            entity.Translators.Clear();
 
             foreach (var translatorId in model.TranslatorIds)
             {
@@ -77,7 +77,7 @@ namespace Bieb.Web.Models
                     throw new MappingException("Provided Author Id could not be traced to any person in the database.");
                 }
 
-                entity.BookTranslators.Add(person);
+                entity.Translators.Add(person);
             }
 
 
@@ -113,8 +113,8 @@ namespace Bieb.Web.Models
             model.PublisherId = entity.Publisher == null ? (int?)null : entity.Publisher.Id;
 
             model.EditorIds = entity.Editors.Select(e => e.Id).ToArray();
-            model.AuthorIds = entity.BookAuthors.Select(a => a.Id).ToArray();
-            model.TranslatorIds = entity.BookTranslators.Select(t => t.Id).ToArray();
+            model.AuthorIds = entity.Authors.Select(a => a.Id).ToArray();
+            model.TranslatorIds = entity.Translators.Select(t => t.Id).ToArray();
 
             model.Stories = entity.Stories.Select(s => storyMapper.ModelFromEntity(s.Value)).ToList();
 
