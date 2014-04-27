@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Bieb.Domain.Entities;
 using NUnit.Framework;
 
-namespace DbIntegrationTests.Cascades
+namespace Bieb.DbIntegrationTests.Cascades
 {
     [TestFixture]
     public class PersonCascadeTests : DatabaseIntegrationTest

@@ -9,7 +9,7 @@ using NHibernate.Dialect;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
 
-namespace DbIntegrationTests
+namespace Bieb.DbIntegrationTests
 {
     public class DatabaseIntegrationTest
     {
