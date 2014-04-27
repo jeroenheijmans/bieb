@@ -14,24 +14,31 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
         
-        <div class="login">
-            <h4>@BiebResources.AccountStrings.LoginHeader</h4>
-
-            <div class="username">
-                @Html.TextBoxFor(m => m.UserName, new { placeholder = "username" })
+        
+        <h4>@BiebResources.AccountStrings.LoginHeader</h4>
+        
+        <div class="row">
+            <div class="form-group col-sm-6 col-md-4">
+                @Html.TextBoxFor(m => m.UserName, new { placeholder = "username", @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.UserName)
             </div>
-            <div class="password">
-                @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6 col-md-4">
+                @Html.PasswordFor(m => m.Password, new { placeholder = "password", @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Password)
             </div>
-            <div class="remember-me">
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe)
-            </div>
-
-            <input type="submit" value="Log in" />
         </div>
+        <div class="row">
+            <div class="form-group col-sm-6 col-md-4">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+            </div>
+        </div>
+        
+        <input type="submit" value="Log in" class="btn btn-default" />
     }
     
     <hr />
