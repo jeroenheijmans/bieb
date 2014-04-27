@@ -45,7 +45,7 @@ namespace Bieb.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            WebSecurity.InitializeDatabaseConnection("BiebDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            WebSecurityInitialization.Initialize();
 
             Logger.LogInformation("Application started.");
         }
