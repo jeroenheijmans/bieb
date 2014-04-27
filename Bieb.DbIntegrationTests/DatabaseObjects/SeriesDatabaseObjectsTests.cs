@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Bieb.Domain.Entities;
 using NUnit.Framework;
 
-namespace DbIntegrationTests.DatabaseObjects
+namespace Bieb.DbIntegrationTests.DatabaseObjects
 {
     // This class might be mergeable into PublishableEntityDatabaseObjectsTests, if the series
     // and book/story would share an inheritance ancestor that has the Title and Subtitle property.

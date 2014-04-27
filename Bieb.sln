@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Framework", "Bieb.Fram
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{008254FB-A667-44CE-A6F9-FC15A403E79A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbIntegrationTests", "DbIntegrationTests\DbIntegrationTests.csproj", "{09DEB276-9B44-4169-9088-1522EA76BE61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.DbIntegrationTests", "Bieb.DbIntegrationTests\Bieb.DbIntegrationTests.csproj", "{09DEB276-9B44-4169-9088-1522EA76BE61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

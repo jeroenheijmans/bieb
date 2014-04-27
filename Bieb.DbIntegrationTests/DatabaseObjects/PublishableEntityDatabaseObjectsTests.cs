@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Bieb.Domain.Entities;
 using NUnit.Framework;
 
-namespace DbIntegrationTests.DatabaseObjects
+namespace Bieb.DbIntegrationTests.DatabaseObjects
 {
     public class PublishableEntityDatabaseObjectsTests<T> : DatabaseIntegrationTest where T : Publishable, new()
     {
