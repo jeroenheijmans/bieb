@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Search;
 
 namespace Bieb.Web.Controllers
 {

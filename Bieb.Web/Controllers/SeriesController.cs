@@ -2,6 +2,7 @@
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Series;
 
 namespace Bieb.Web.Controllers
 {

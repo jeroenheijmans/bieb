@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
-using Bieb.Domain.CustomDataTypes;
 using Bieb.Domain.Entities;
 
-namespace Bieb.Web.Models
+namespace Bieb.Web.Models.People
 {
     public class EditPersonModel : EditEntityModel<Person>
     {

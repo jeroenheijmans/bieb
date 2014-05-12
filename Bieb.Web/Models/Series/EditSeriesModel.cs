@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Bieb.Domain.Entities;
 
-namespace Bieb.Web.Models
+namespace Bieb.Web.Models.Series
 {
-    public class EditSeriesModel : EditEntityModel<Series>
+    public class EditSeriesModel : EditEntityModel<Domain.Entities.Series>
     {
         public EditSeriesModel()
         {

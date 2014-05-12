@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
+using Bieb.Web.Models.Stories;
 
-namespace Bieb.Web.Models
+namespace Bieb.Web.Models.Books
 {
     public class EditBookModel : EditEntityModel<Book>
     {

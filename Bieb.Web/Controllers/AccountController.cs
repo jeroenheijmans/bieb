@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Account;
 using WebMatrix.WebData;
 
 namespace Bieb.Web.Controllers

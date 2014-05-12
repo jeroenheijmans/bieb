@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Bieb.Domain.Entities;
 
-namespace Bieb.Web.Models
+namespace Bieb.Web.Models.Publishers
 {
     public class EditPublisherModelMapper : EditEntityModelMapper<Publisher, EditPublisherModel>
     {

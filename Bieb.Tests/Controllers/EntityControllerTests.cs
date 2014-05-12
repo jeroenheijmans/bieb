@@ -10,6 +10,8 @@ using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Books;
+using Bieb.Web.Models.People;
 using Moq;
 using NUnit.Framework;
 using PagedList;

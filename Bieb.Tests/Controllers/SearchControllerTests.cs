@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Bieb.Tests.Mocks;
+using Bieb.Web.Models.Search;
 using NUnit.Framework;
 using Moq;
 using Bieb.Domain.Entities;
