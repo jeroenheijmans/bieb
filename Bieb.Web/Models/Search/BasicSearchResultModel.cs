@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Bieb.Domain.Entities;
 
-namespace Bieb.Web.Models
+namespace Bieb.Web.Models.Search
 {
     public class BasicSearchResultModel
     {

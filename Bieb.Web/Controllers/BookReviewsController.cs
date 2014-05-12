@@ -2,6 +2,7 @@
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Books;
 
 namespace Bieb.Web.Controllers
 {

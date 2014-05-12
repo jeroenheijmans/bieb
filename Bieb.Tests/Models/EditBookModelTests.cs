@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Books;
 
 namespace Bieb.Tests.Models
 {

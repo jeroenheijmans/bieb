@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 
-namespace Bieb.Web.Models
+namespace Bieb.Web.Models.Series
 {
-    public class EditSeriesModelMapper : EditEntityModelMapper<Series, EditSeriesModel>
+    public class EditSeriesModelMapper : EditEntityModelMapper<Domain.Entities.Series, EditSeriesModel>
     {
         private IEnumerable<Book> books; 
 
@@ -17,7 +16,7 @@ namespace Bieb.Web.Models
             this.books = books.Items;
         }
 
-        public override void MergeEntityWithModel(Series entity, EditSeriesModel model)
+        public override void MergeEntityWithModel(Domain.Entities.Series entity, EditSeriesModel model)
         {
             base.MergeEntityWithModel(entity, model);
 
@@ -43,7 +42,7 @@ namespace Bieb.Web.Models
             }
         }
 
-        public override EditSeriesModel ModelFromEntity(Series entity)
+        public override EditSeriesModel ModelFromEntity(Domain.Entities.Series entity)
         {
             var model = base.ModelFromEntity(entity);
 

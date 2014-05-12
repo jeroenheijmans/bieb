@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using Bieb.Domain.Entities;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Books;
+using Bieb.Web.Models.People;
+using Bieb.Web.Models.Publishers;
+using Bieb.Web.Models.Series;
+using Bieb.Web.Models.Stories;
 using Ninject.Modules;
 
 namespace Bieb.Web.Infrastructure.NinjectModules

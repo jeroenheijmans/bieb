@@ -6,6 +6,8 @@ using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Books;
+using Bieb.Web.Models.Stories;
 using NUnit.Framework;
 
 namespace Bieb.Tests.ModelMappers
