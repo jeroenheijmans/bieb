@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
+using Bieb.Web.Localization;
 using Bieb.Web.Models;
 using Bieb.Web.Models.Books;
 using Bieb.Web.Models.Stories;
+using Moq;
 using NUnit.Framework;
 
 namespace Bieb.Tests.ModelMappers
@@ -18,6 +19,7 @@ namespace Bieb.Tests.ModelMappers
         private Publisher somePublisher;
         private IEntityRepository<Publisher> publishers;
         private IEntityRepository<Person> people;
+        private IBookRepository books;
         private EditStoryModelMapper storyMapper;
         private EditBookModelMapper mapper;
         private Person asimov, adams, wyndham;
@@ -30,8 +32,10 @@ namespace Bieb.Tests.ModelMappers
             somePublisher = new Publisher { Id = 42, Name = "Penguin Books" };
             publishers = new RepositoryMock<Publisher>();
             people = new RepositoryMock<Person>();
+            books = new BookRepositoryMock();
             storyMapper = new EditStoryModelMapper();
-            mapper = new EditBookModelMapper(publishers, people, storyMapper);
+
+            mapper = new EditBookModelMapper(publishers, people, books, storyMapper, new Mock<IIsbnLanguageDisplayer>().Object);
 
             asimov = new Person {Id = 1, FirstName = "Isaac", Surname = "Asimov"};
             adams = new Person {Id = 2, FirstName = "Douglas", Surname = "Adams"};
@@ -306,6 +310,39 @@ namespace Bieb.Tests.ModelMappers
             mapper.MergeEntityWithModel(bookEntity, bookModel);
 
             Assert.That(bookEntity.Stories.First().Value.Title, Is.EqualTo("Gasp, what a Wasp!"));
+        }
+
+
+        [Test]
+        public void Can_Map_Isbn_Language()
+        {
+            var book = new Book {IsbnLanguage = 1};
+            var model = mapper.ModelFromEntity(book);
+
+            Assert.That(model.IsbnLanguage, Is.EqualTo(book.IsbnLanguage));
+        }
+
+
+        [Test]
+        public void Can_Map_Available_Isbn_Languages()
+        {
+            var model = mapper.ModelFromEntity(new Book());
+
+            Assert.That(model.AvailableIsbnLanguages, Is.Not.Null);
+            Assert.That(model.AvailableIsbnLanguages, Is.Not.Empty);
+        }
+
+
+        [Test]
+        public void Will_Map_Available_Isbn_Languages_From_BookRepository()
+        {
+            var model = mapper.ModelFromEntity(new Book());
+
+            foreach (var isbnLanguage in books.IsbnLanguages)
+            {
+                Assert.That(model.AvailableIsbnLanguages.Any(item => item.Value == isbnLanguage.ToString()),
+                            "Expected isbn language {0} wasn't found in a list of {1} languages.", isbnLanguage.ToString(), model.AvailableIsbnLanguages.Count());
+            }
         }
     }
 }
