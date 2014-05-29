@@ -14,6 +14,7 @@ namespace Bieb.Tests.Models
         {
             this.PropertiesNotNeedingDisplay.Add("AvailablePublishers");
             this.PropertiesNotNeedingDisplay.Add("AvailablePeople");
+            this.PropertiesNotNeedingDisplay.Add("AvailableIsbnLanguages");
         }
     }
 }

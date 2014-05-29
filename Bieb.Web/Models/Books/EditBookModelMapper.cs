@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using Bieb.Web.Localization;
 using Bieb.Web.Models.Stories;
 
 namespace Bieb.Web.Models.Books
@@ -12,13 +13,17 @@ namespace Bieb.Web.Models.Books
     {
         private readonly IEnumerable<Publisher> publishers;
         private readonly IEnumerable<Person> people;
+        private readonly IBookRepository bookRepository;
         private readonly EditStoryModelMapper storyMapper;
+        private readonly IIsbnLanguageDisplayer isbnLanguageDisplayer;
 
-        public EditBookModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, EditStoryModelMapper storyMapper)
+        public EditBookModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, IBookRepository books, EditStoryModelMapper storyMapper, IIsbnLanguageDisplayer isbnLanguageDisplayer)
         {
             this.publishers = publishers.Items;
             this.people = people.Items;
+            this.bookRepository = books;
             this.storyMapper = storyMapper;
+            this.isbnLanguageDisplayer = isbnLanguageDisplayer;
         }
 
         public override void MergeEntityWithModel(Book entity, EditBookModel model)
@@ -102,6 +107,10 @@ namespace Bieb.Web.Models.Books
 
             model.AvailablePublishers = new SelectList(publishers.OrderBy(p => p.Name), "Id", "Name");
             model.AvailablePeople = new SelectList(people.OrderBy(p => p.Surname).ThenBy(p => p.FirstName), "Id", "FullNameAlphabetical");
+
+            model.AvailableIsbnLanguages =
+                new SelectList(bookRepository.IsbnLanguages.Select(l => new {Value = l, Text = isbnLanguageDisplayer.GetLocalizedIsbnLanguageResource(l)}),
+                               "Value", "Text");
 
             model.Isbn = entity.Isbn;
             model.IsbnLanguage = entity.IsbnLanguage;

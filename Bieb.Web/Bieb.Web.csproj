@@ -186,12 +186,15 @@
     <Compile Include="Infrastructure\Filters\LogActionFilter.cs" />
     <Compile Include="Infrastructure\Filters\LogExceptionFilter.cs" />
     <Compile Include="Infrastructure\NinjectModules\DomainModule.cs" />
+    <Compile Include="Infrastructure\NinjectModules\LocalizationModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\LoggingModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\ModelMapperModule.cs" />
+    <Compile Include="Localization\IIsbnLanguageDisplayer.cs" />
     <Compile Include="Models\Account\AccountModels.cs" />
     <Compile Include="Models\Books\EditBookModelMapper.cs" />
     <Compile Include="Models\Books\EditBookReviewModelMapper.cs" />
     <Compile Include="Models\EditEntityModel.cs" />
+    <Compile Include="Localization\IsbnLanguageDisplayer.cs" />
     <Compile Include="Models\Publishers\EditPublisherModel.cs" />
     <Compile Include="Models\Publishers\EditPublisherModelMapper.cs" />
     <Compile Include="Models\Search\BasicSearchResultModel.cs" />

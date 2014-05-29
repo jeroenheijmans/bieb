@@ -34,6 +34,9 @@ namespace Bieb.Web.Models.Books
         [Display(Name = "LibraryStatus", ResourceType = typeof(BiebResources.BookStrings))]
         public LibraryStatus LibraryStatus { get; set; }
 
+
+        public SelectList AvailableIsbnLanguages { get; set; }
+        
         [Display(Name = "IsbnLanguage", Prompt = "IsbnLanguagePlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
         public int? IsbnLanguage { get; set; }
 

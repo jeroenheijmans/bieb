@@ -110,6 +110,7 @@
     <Compile Include="Domain\PublisherTests.cs" />
     <Compile Include="Domain\StoryTests.cs" />
     <Compile Include="Domain\UncertainDateTests.cs" />
+    <Compile Include="Mocks\BookRepositoryMock.cs" />
     <Compile Include="Mocks\RepositoryMock.cs" />
     <Compile Include="ModelMappers\EditBookModelMapperTests.cs" />
     <Compile Include="ModelMappers\EditSeriesModelMapperTests.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Models\EditPublisherModelTests.cs" />
     <Compile Include="Models\EditSeriesModelTests.cs" />
     <Compile Include="Models\EditStoryModelTests.cs" />
+    <Compile Include="Models\IsbnLanguageDisplayerTests.cs" />
     <Compile Include="Models\ModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing\AccountRoutingTests.cs" />
@@ -136,7 +138,6 @@
     <Compile Include="WebHelpers\ActionLinkExtensionsTests.cs" />
     <Compile Include="TypeExtensions\EnumExtensionsTests.cs" />
     <Compile Include="WebHelpers\HtmlHelperTests.cs" />
-    <Compile Include="WebHelpers\ImageExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bieb.Domain\Bieb.Domain.csproj">

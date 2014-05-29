@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
-using Bieb.Web.Models;
+using Bieb.Web.Localization;
 using Bieb.Web.Models.Books;
 using Bieb.Web.Models.People;
 using Moq;
@@ -22,7 +20,7 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class EntityControllerTests
     {
-        private IEntityRepository<Book> bookRepository;
+        private BookRepositoryMock bookRepository;
 
         private Mock<HttpResponseBase> responseMock;
         private BooksController booksController;
@@ -40,13 +38,13 @@ namespace Bieb.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            bookRepository = new RepositoryMock<Book>();
+            bookRepository = new BookRepositoryMock();
             peopleRepository = new RepositoryMock<Person>();
 
             responseMock = new Mock<HttpResponseBase>();
 
             publishersRepository = new RepositoryMock<Publisher>();
-            editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository, null);
+            editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository, bookRepository, null, new Mock<IIsbnLanguageDisplayer>().Object);
 
             booksController = new BooksController(bookRepository, editBookModelMapper, responseMock.Object);
 
