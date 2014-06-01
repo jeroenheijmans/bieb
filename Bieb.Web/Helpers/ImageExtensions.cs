@@ -8,12 +8,12 @@ namespace Bieb.Web.Helpers
     {
         // TODO: Need to wrap VirtualPathUtility in an interface/class to be able to mock it?
 
-        public static IHtmlString ImageFlagFor(this HtmlHelper htmlHelper, Person person)
+        public static IHtmlString ImageFlagFor(this HtmlHelper htmlHelper, string Nationality)
         {
             var tagBuilder = new TagBuilder("img");
-            tagBuilder.Attributes.Add("alt", person.Nationality);
-            tagBuilder.Attributes.Add("title", person.Nationality);
-            tagBuilder.Attributes.Add("src", VirtualPathUtility.ToAbsolute("~/Content/images/flags/" + person.Nationality + "-icon.png"));
+            tagBuilder.Attributes.Add("alt", Nationality);
+            tagBuilder.Attributes.Add("title", Nationality);
+            tagBuilder.Attributes.Add("src", VirtualPathUtility.ToAbsolute("~/Content/images/flags/" + Nationality + "-icon.png"));
             tagBuilder.Attributes.Add("class", "flag icon");
             return new HtmlString(tagBuilder.ToString(TagRenderMode.SelfClosing));
         }

@@ -5,7 +5,7 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models.People
 {
-    public class LinkablePersonModel : LinkableRootEntityModel<Person>
+    public class LinkablePersonModel : LinkableEntityModel<Person>
     {
         public LinkablePersonModel(Person person)
         {

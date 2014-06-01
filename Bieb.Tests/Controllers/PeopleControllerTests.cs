@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
-using Moq;
+using Bieb.Web.Models;
+using Bieb.Web.Models.People;
 using NUnit.Framework;
 
 
@@ -19,13 +18,17 @@ namespace Bieb.Tests.Controllers
     {
         private IEntityRepository<Person> repository;
         private PeopleController controller;
+        private IViewEntityModelMapper<Person, ViewPersonModel> viewEntityModelMapper;
+        private IEditEntityModelMapper<Person, EditPersonModel> editEntityModelMapper;
 
-        
+            
         [SetUp]
         public void SetUp()
         {
             repository = new RepositoryMock<Person>();
-            controller = new PeopleController(repository, null);
+            viewEntityModelMapper = new ViewPersonModelMapper();
+            editEntityModelMapper = new EditPersonModelMapper();
+            controller = new PeopleController(repository, viewEntityModelMapper, editEntityModelMapper);
         }
 
 
@@ -43,9 +46,10 @@ namespace Bieb.Tests.Controllers
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
             var partialViewResult = (PartialViewResult)result;
-            Assert.That(partialViewResult.Model, Is.InstanceOf<IEnumerable<Person>>());
 
-            var model = (IEnumerable<Person>)partialViewResult.Model;
+            var model = partialViewResult.Model as IEnumerable<LinkablePersonModel>;
+
+            Assert.That(model, Is.Not.Null);
             Assert.That(model.Count(), Is.EqualTo(5));
         }
 
@@ -54,7 +58,7 @@ namespace Bieb.Tests.Controllers
         public void TodaysBirthDates_Will_Skip_People_Without_Birth_Date()
         {
             var dateOfBirth = new DateTime(1950, 11, 11);
-            repository.Add(new Person { DateOfBirthFrom = dateOfBirth, DateOfBirthUntil = dateOfBirth });
+            repository.Add(new Person { Id = 42, DateOfBirthFrom = dateOfBirth, DateOfBirthUntil = dateOfBirth });
             repository.Add(new Person { });
 
             var result = controller.BirthDates(dateOfBirth);
@@ -62,11 +66,12 @@ namespace Bieb.Tests.Controllers
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
             var partialViewResult = (PartialViewResult)result;
-            Assert.That(partialViewResult.Model, Is.InstanceOf<IEnumerable<Person>>());
 
-            var model = (IEnumerable<Person>)partialViewResult.Model;
+            var model = partialViewResult.Model as IQueryable<LinkablePersonModel>;
+
+            Assert.That(model, Is.Not.Null);
             Assert.That(model.Count(), Is.EqualTo(1));
-            Assert.That(model.First().DateOfBirthFrom, Is.EqualTo(dateOfBirth));
+            Assert.That(model.First().Id, Is.EqualTo(42));
         }
 
 
@@ -86,9 +91,10 @@ namespace Bieb.Tests.Controllers
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
             var partialViewResult = (PartialViewResult)result;
-            Assert.That(partialViewResult.Model, Is.InstanceOf<IEnumerable<Person>>());
 
-            var model = (IEnumerable<Person>)partialViewResult.Model;
+            var model = partialViewResult.Model as IQueryable<LinkablePersonModel>;
+
+            Assert.That(model, Is.Not.Null);
             Assert.That(model.Count(), Is.EqualTo(0));
         }
     }

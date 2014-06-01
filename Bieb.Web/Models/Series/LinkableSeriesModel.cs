@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Bieb.Web.Models.Series
 {
-    public class LinkableSeriesModel : LinkableRootEntityModel<Domain.Entities.Series>
+    public class LinkableSeriesModel : LinkableEntityModel<Domain.Entities.Series>
     {
         public LinkableSeriesModel(Domain.Entities.Series series)
         {

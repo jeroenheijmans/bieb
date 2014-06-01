@@ -10,7 +10,7 @@ using Bieb.Web.Models.Stories;
 
 namespace Bieb.Web.Models.Books
 {
-    public class ViewBookModelMapper : ViewEntityModelMapper<Book, ViewBookModel>
+    public class ViewBookModelMapper : IViewEntityModelMapper<Book, ViewBookModel>
     {
         private readonly IIsbnLanguageDisplayer isbnLanguageDisplayer;
 
@@ -19,7 +19,7 @@ namespace Bieb.Web.Models.Books
             this.isbnLanguageDisplayer = isbnLanguageDisplayer;
         }
 
-        public override ViewBookModel ModelFromEntity(Book entity)
+        public ViewBookModel ModelFromEntity(Book entity)
         {
             var model = new ViewBookModel(entity)
                             {
@@ -33,6 +33,7 @@ namespace Bieb.Web.Models.Books
                                 Series = entity.Series.AsLinkableSeriesModel(),
                                 Editors = entity.Editors.Select(p => p.AsLinkablePersonModel()),
                                 Authors = entity.AllAuthors.Select(p => p.AsLinkablePersonModel()),
+                                CoverPeople = entity.BookType == BookType.Anthology ? entity.Editors.Select(p => p.AsLinkablePersonModel()) : entity.AllAuthors.Select(p => p.AsLinkablePersonModel()),
                                 Translators = entity.AllTranslators.Select(p => p.AsLinkablePersonModel()),
                                 Reviews =  entity.Reviews.Select(r => new ViewBookReviewModel(r)),
                                 ShowStoriesList = entity.BookType != BookType.Novel,

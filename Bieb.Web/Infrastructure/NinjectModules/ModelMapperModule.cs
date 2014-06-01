@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Bieb.Domain.Entities;
 using Bieb.Web.Models;
 using Bieb.Web.Models.Books;
@@ -17,13 +16,21 @@ namespace Bieb.Web.Infrastructure.NinjectModules
     {
         public override void Load()
         {
-            Bind<EditEntityModelMapper<Book, EditBookModel>>().To<EditBookModelMapper>();
-            Bind<EditEntityModelMapper<Review<Book>, EditBookReviewModel>>().To<EditBookReviewModelMapper>();
-            Bind<EditEntityModelMapper<Person, EditPersonModel>>().To<EditPersonModelMapper>();
-            Bind<EditEntityModelMapper<Review<Person>, EditPersonReviewModel>>().To<EditPersonReviewModelMapper>();
-            Bind<EditEntityModelMapper<Publisher, EditPublisherModel>>().To<EditPublisherModelMapper>();
-            Bind<EditEntityModelMapper<Series, EditSeriesModel>>().To<EditSeriesModelMapper>();
-            Bind<EditEntityModelMapper<Story, EditStoryModel>>().To<EditStoryModelMapper>();
+            Bind<IViewEntityModelMapper<Book, ViewBookModel>>().To<ViewBookModelMapper>();
+            Bind<IViewEntityModelMapper<Review<Book>, ViewBookReviewModel>>().To<ViewBookReviewModelMapper>();
+            Bind<IViewEntityModelMapper<Person, ViewPersonModel>>().To<ViewPersonModelMapper>();
+            Bind<IViewEntityModelMapper<Review<Person>, ViewPersonReviewModel>>().To<ViewPersonReviewModelMapper>();
+            Bind<IViewEntityModelMapper<Publisher, ViewPublisherModel>>().To<ViewPublisherModelMapper>();
+            Bind<IViewEntityModelMapper<Series, ViewSeriesModel>>().To<ViewSeriesModelMapper>();
+            Bind<IViewEntityModelMapper<Story, ViewStoryModel>>().To<ViewStoryModelMapper>();
+
+            Bind<IEditEntityModelMapper<Book, EditBookModel>>().To<EditBookModelMapper>();
+            Bind<IEditEntityModelMapper<Review<Book>, EditBookReviewModel>>().To<EditBookReviewModelMapper>();
+            Bind<IEditEntityModelMapper<Person, EditPersonModel>>().To<EditPersonModelMapper>();
+            Bind<IEditEntityModelMapper<Review<Person>, EditPersonReviewModel>>().To<EditPersonReviewModelMapper>();
+            Bind<IEditEntityModelMapper<Publisher, EditPublisherModel>>().To<EditPublisherModelMapper>();
+            Bind<IEditEntityModelMapper<Series, EditSeriesModel>>().To<EditSeriesModelMapper>();
+            Bind<IEditEntityModelMapper<Story, EditStoryModel>>().To<EditStoryModelMapper>();
         }
     }
 }

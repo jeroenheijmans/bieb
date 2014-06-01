@@ -6,6 +6,10 @@ using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
+using Bieb.Web.Localization;
+using Bieb.Web.Models;
+using Bieb.Web.Models.Books;
+using Moq;
 using NUnit.Framework;
 using PagedList;
 
@@ -22,7 +26,9 @@ namespace Bieb.Tests.Controllers
         public void SetUp()
         {
             repository = new RepositoryMock<Book>();
-            controller = new BooksController(repository, null);
+            var viewModelMapper = new ViewBookModelMapper(new Mock<IIsbnLanguageDisplayer>().Object);
+            var editModelMapper = new Mock<IEditEntityModelMapper<Book, EditBookModel>>().Object;
+            controller = new BooksController(repository, viewModelMapper, editModelMapper);
         }
 
 
@@ -39,15 +45,12 @@ namespace Bieb.Tests.Controllers
 
             ActionResult result = controller.Index();
 
-            var vresult = (ViewResult)result;
+            var bookList = ((ViewResult)result).Model as StaticPagedList<ViewBookModel>;
 
-            Assert.That(vresult.Model, Is.InstanceOf<PagedList<Book>>());
-
-            var bookList = (PagedList<Book>)vresult.Model;
-
-            Assert.That(bookList[0], Is.EqualTo(book3));
-            Assert.That(bookList[1], Is.EqualTo(book2));
-            Assert.That(bookList[2], Is.EqualTo(book1));
+            Assert.That(bookList, Is.Not.Null);
+            Assert.That(bookList[0].Title, Is.EqualTo(book3.Title));
+            Assert.That(bookList[1].Title, Is.EqualTo(book2.Title));
+            Assert.That(bookList[2].Title, Is.EqualTo(book1.Title));
         }
 
 
@@ -58,7 +61,7 @@ namespace Bieb.Tests.Controllers
             repository.Add(new Book {LibraryStatus = LibraryStatus.OnlyForReference});
 
             var result = (ViewResult) controller.Index();
-            var books = (IEnumerable<Book>) result.Model;
+            var books = (IEnumerable<ViewBookModel>) result.Model;
 
             Assert.That(books.Count(), Is.EqualTo(1));
         }

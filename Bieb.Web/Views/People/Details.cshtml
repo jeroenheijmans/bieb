@@ -1,4 +1,4 @@
-﻿@model Bieb.Domain.Entities.Person
+﻿@model Bieb.Web.Models.People.ViewPersonModel
 
 @{
     ViewBag.Title = Model.FullName;
@@ -40,12 +40,9 @@
     </div>
 
     <div class="col-md-8">
-        @if (Model.Reviews.Any())
-        {
-            foreach (var review in Model.Reviews)
-            { 
+        @foreach (var review in Model.Reviews)
+        { 
             <p>@review.ReviewText</p>
-            }
         }
         
         @if (Model.AuthoredBooks.Any())

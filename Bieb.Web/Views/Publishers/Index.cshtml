@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Publisher>
+﻿@model PagedList.IPagedList<Bieb.Web.Models.Publishers.ViewPublisherModel>
 
 @{
     ViewBag.Title = "Index";
@@ -37,7 +37,7 @@
             @Html.ActionLink(publisher.Name, "Details", new { id = publisher.Id, controller = "Publishers"})
         </td>
         <td>
-            @publisher.Books.Count()
+            @publisher.MyBooks.Count()
         </td>
         <td>
             @publisher.Stories.Count()

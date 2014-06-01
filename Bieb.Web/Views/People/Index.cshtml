@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Person>
+﻿@model PagedList.IPagedList<Bieb.Web.Models.People.ViewPersonModel>
 
 @{
     ViewBag.Title = "All People";
@@ -44,19 +44,19 @@
 {
     <tr>
         <td>
-            @Html.DisplayFor(modelperson => person.GenderChar)
+            @Html.DisplayFor(modelperson => person.Gender)
         </td>
         <td>
-            @if (!string.IsNullOrWhiteSpace(person.Nationality))
+            @if (person.IsNationalityKnown)
             { 
-                @Html.ImageFlagFor(person)
+                @Html.ImageFlagFor(person.Nationality)
             }
         </td>
         <td class="main-topic">
             @Html.ActionLink(person.FullName, "Details", new { id = person.Id })
         </td>
         <td> 
-            @string.Join(", ", person.Roles)
+            @person.Roles
         </td>
     </tr>
 }

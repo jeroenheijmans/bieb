@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Book>
+﻿@model PagedList.IPagedList<Bieb.Web.Models.Books.ViewBookModel>
 
 @{
     ViewBag.Title = "All Books";
@@ -55,14 +55,7 @@
             @Html.DisplayFor(modelbook => book.Year)
         </td>
         <td>
-            @if (book.BookType == Bieb.Domain.Entities.BookType.Novel) 
-            {
-                @Html.Raw(string.Join(", ", book.AllAuthors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
-            }
-            else
-            {
-                @Html.Raw(string.Join(", ", book.Editors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
-            }
+            @Html.Raw(string.Join(", ", book.CoverPeople.Select(person => Html.ActionLink(person.Text, "Details", new { id=person.Id, controller="People" }))))
         </td>
     </tr>
 }

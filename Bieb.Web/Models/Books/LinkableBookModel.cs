@@ -5,7 +5,7 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models.Books
 {
-    public class LinkableBookModel : LinkableRootEntityModel<Book>
+    public class LinkableBookModel : LinkableEntityModel<Book>
     {
         public LinkableBookModel(Book book)
         {

@@ -7,16 +7,16 @@ using Bieb.Domain.Repositories;
 using Bieb.Web.Models;
 using Bieb.Web.Models.People;
 
-[assembly: InternalsVisibleTo("Bieb.Tests")]
-
 namespace Bieb.Web.Controllers
 {
-    public class PeopleController : EntityController<Person, EditPersonModel>
+    public class PeopleController : EntityController<Person, ViewPersonModel, EditPersonModel>
     {
         private const int MaxNumberOfBirthDates = 5;
 
-        public PeopleController(IEntityRepository<Person> repository, EditEntityModelMapper<Person, EditPersonModel> editEntityModelMapper)
-            : base(repository, editEntityModelMapper)
+        public PeopleController(IEntityRepository<Person> repository,
+                                IViewEntityModelMapper<Person, ViewPersonModel> viewEntityModelMapper,
+                                IEditEntityModelMapper<Person, EditPersonModel> editEntityModelMapper)
+            : base(repository, viewEntityModelMapper, editEntityModelMapper)
         { }
         
         protected override System.Linq.Expressions.Expression<Func<Person, IComparable>> SortFunc
@@ -29,7 +29,7 @@ namespace Bieb.Web.Controllers
             return BirthDates(DateTime.Now);
         }
 
-        internal ActionResult BirthDates(DateTime referenceDate)
+        public ActionResult BirthDates(DateTime referenceDate)
         {
             var people = Repository.Items
                             .Where(p => p.DateOfBirthFrom.HasValue
@@ -37,7 +37,8 @@ namespace Bieb.Web.Controllers
                                         && p.DateOfBirthFrom.Value.Equals(p.DateOfBirthUntil.Value) // would prefer p.DateOfBirth.IsCertain, but that won't roll with NHibernate
                                         && p.DateOfBirthFrom.Value.Day == referenceDate.Day
                                         && p.DateOfBirthFrom.Value.Month == referenceDate.Month)
-                            .Take(MaxNumberOfBirthDates);
+                            .Take(MaxNumberOfBirthDates)
+                            .Select(p => p.AsLinkablePersonModel());
 
             return PartialView(people);
         }

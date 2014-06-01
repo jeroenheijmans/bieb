@@ -14,6 +14,7 @@ namespace Bieb.Web.Models.Books
         public ViewBookModel(Book book) : base(book)
         { }
 
+        public string BookType { get; set; } // TODO: Set this in the mapper.
         public string Title { get; set; }
         public string Subtitle { get; set; }
 
@@ -26,6 +27,11 @@ namespace Bieb.Web.Models.Books
         public string Tags { get; set; }
 
         public LinkableSeriesModel Series { get; set; }
+
+        /// <summary>
+        /// Name(s) on the cover (editors for collections, authors for novels and anthologies)
+        /// </summary>
+        public IEnumerable<LinkablePersonModel> CoverPeople { get; set; } // TODO: Set this in the mapper.
 
         public IEnumerable<LinkablePersonModel> Editors { get; set; }
         public IEnumerable<LinkablePersonModel> Authors { get; set; }

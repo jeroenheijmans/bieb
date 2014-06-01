@@ -1,4 +1,4 @@
-﻿@model Bieb.Domain.Entities.Person
+﻿@model Bieb.Web.Models.People.ViewPersonModel
 
 <div class="panel panel-primary">
     <div class="panel-body">
@@ -7,14 +7,14 @@
         </h1>
 
         <p class="lead">
-            @if (Model.Gender != Bieb.Domain.Entities.Gender.Unkown)
+            @if (Model.IsGenderKnown)
             {
-                @Model.GenderChar
+                @Model.Gender
             }
 
             @if (Model.Nationality != null)
             {
-                @Html.ImageFlagFor(Model)
+                @Html.ImageFlagFor(Model.Nationality)
             }
 
             @string.Join(", ", Model.Roles)
@@ -22,7 +22,7 @@
 
         <ul>
             <li>
-                @BiebResources.PeopleStrings.BornOn: @Model.DateOfBirth.ToString()
+                @BiebResources.PeopleStrings.BornOn: @Model.DateOfBirth
             </li>
 
             @if (Model.PlaceOfBirth != null)
@@ -33,7 +33,7 @@
             }
 
             <li>
-                @BiebResources.PeopleStrings.DiedOn: @Model.DateOfDeath.ToString()
+                @BiebResources.PeopleStrings.DiedOn: @Model.DateOfDeath
             </li>
 
             @if (Model.PlaceOfDeath != null)
