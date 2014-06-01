@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Series>
+﻿@model PagedList.IPagedList<Bieb.Web.Models.Series.ViewSeriesModel>
 
 @{
     ViewBag.Title = "All Series";
@@ -36,7 +36,7 @@
             @Html.ActionLink(series.Title, "Details", new { id=series.Id })
         </td>
         <td class="main-topic">
-            @string.Join(", ", series.Books.Values)
+            @string.Join(", ", series.Books)
         </td>
     </tr>
 }

@@ -6,10 +6,12 @@ using Bieb.Web.Models.Books;
 
 namespace Bieb.Web.Controllers
 {
-    public class BookReviewsController : EntityController<Review<Book>, EditBookReviewModel> 
+    public class BookReviewsController : EntityController<Review<Book>, ViewBookReviewModel, EditBookReviewModel> 
     {
-        public BookReviewsController(IEntityRepository<Review<Book>> repository, EditEntityModelMapper<Review<Book>, EditBookReviewModel> editEntityModelMapper)
-            : base(repository, editEntityModelMapper)
+        public BookReviewsController(IEntityRepository<Review<Book>> repository, 
+                                     IViewEntityModelMapper<Review<Book>, ViewBookReviewModel> viewEntityModelMapper,
+                                     IEditEntityModelMapper<Review<Book>, EditBookReviewModel> editEntityModelMapper)
+            : base(repository, viewEntityModelMapper, editEntityModelMapper)
         { }
 
         protected override System.Linq.Expressions.Expression<Func<Review<Book>, IComparable>> SortFunc

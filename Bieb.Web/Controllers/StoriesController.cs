@@ -7,10 +7,12 @@ using Bieb.Web.Models.Stories;
 
 namespace Bieb.Web.Controllers
 {
-    public class StoriesController : EntityController<Story, EditStoryModel>
+    public class StoriesController : EntityController<Story, ViewStoryModel, EditStoryModel>
     {
-        public StoriesController(IEntityRepository<Story> repository, EditEntityModelMapper<Story, EditStoryModel> editEntityModelMapper)
-            : base(repository, editEntityModelMapper)
+        public StoriesController(IEntityRepository<Story> repository,
+                                 IViewEntityModelMapper<Story, ViewStoryModel> viewStoryModelMapper,
+                                 IEditEntityModelMapper<Story, EditStoryModel> editEntityModelMapper)
+            : base(repository, viewStoryModelMapper, editEntityModelMapper)
         { }
 
         public override ActionResult Index(int pageSize = 25, int page = 1)

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bieb.Domain.Entities.Person>
+﻿@model IEnumerable<Bieb.Web.Models.People.ViewPersonModel>
     
 <div class="row">
 @foreach (var person in Model) 
@@ -7,17 +7,17 @@
         <div class="panel panel-default panel-body">
             <h4>@Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })</h4>
             <p>
-                @if (person.Gender != Bieb.Domain.Entities.Gender.Unkown)
+                @if (person.IsGenderKnown)
                 {
-                    @person.GenderChar
+                    @person.Gender
                 }
 
-                @if (person.Nationality != null)
+                @if (person.IsNationalityKnown)
                 {
-                    @Html.ImageFlagFor(person)
+                    @Html.ImageFlagFor(person.Nationality)
                 }
         
-                @string.Join(", ", person.Roles)
+                @person.Roles
             </p>
         </div>
     </div>

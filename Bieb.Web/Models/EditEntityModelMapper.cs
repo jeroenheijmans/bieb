@@ -5,7 +5,7 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models
 {
-    public abstract class EditEntityModelMapper<TEntity, TModel> 
+    public abstract class EditEntityModelMapper<TEntity, TModel> : IEditEntityModelMapper<TEntity, TModel>
         where TEntity : BaseEntity
         where TModel : EditEntityModel<TEntity>, new()
     {

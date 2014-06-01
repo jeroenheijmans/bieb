@@ -8,6 +8,7 @@ using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
 using Bieb.Web.Localization;
+using Bieb.Web.Models;
 using Bieb.Web.Models.Books;
 using Bieb.Web.Models.People;
 using Moq;
@@ -26,6 +27,7 @@ namespace Bieb.Tests.Controllers
         private BooksController booksController;
 
         private EditBookModelMapper editBookModelMapper;
+        private ViewBookModelMapper viewBookModelMapper;
 
         private IEntityRepository<Publisher> publishersRepository;
 
@@ -45,8 +47,9 @@ namespace Bieb.Tests.Controllers
 
             publishersRepository = new RepositoryMock<Publisher>();
             editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository, bookRepository, null, new Mock<IIsbnLanguageDisplayer>().Object);
+            viewBookModelMapper = new ViewBookModelMapper(new Mock<IIsbnLanguageDisplayer>().Object);
 
-            booksController = new BooksController(bookRepository, editBookModelMapper, responseMock.Object);
+            booksController = new BooksController(bookRepository, viewBookModelMapper, editBookModelMapper, responseMock.Object);
 
             someBook = new Book
             {
@@ -63,6 +66,28 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
+        public void Will_Guard_Against_Null_For_ViewModelMapper()
+        {
+            Assert.Throws<ArgumentNullException>(
+                () =>
+                {
+                    new BooksController(new BookRepositoryMock(), null, new Mock<IEditEntityModelMapper<Book, EditBookModel>>().Object);
+                });
+        }
+
+
+        [Test]
+        public void Will_Guard_Against_Null_For_EditModelMapper()
+        {
+            Assert.Throws<ArgumentNullException>(
+                () =>
+                {
+                    new BooksController(new BookRepositoryMock(), new Mock<IViewEntityModelMapper<Book, ViewBookModel>>().Object, null);
+                });
+        }
+
+
+        [Test]
         public void Can_Get_Item_Details()
         {
             bookRepository.Add(someBook);
@@ -71,8 +96,8 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<Book>());
-            Assert.That(((Book)vResult.Model).Id, Is.EqualTo(someBook.Id));
+            Assert.That(vResult.Model, Is.InstanceOf<ViewBookModel>());
+            Assert.That(((ViewBookModel)vResult.Model).Id, Is.EqualTo(someBook.Id));
         }
 
 
@@ -87,8 +112,8 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
-            Assert.That(vResult.Model, Is.InstanceOf<IEnumerable<Book>>());
-            Assert.That(((IEnumerable<Book>)vResult.Model).Count(), Is.EqualTo(3));
+            Assert.That(vResult.Model, Is.InstanceOf<IEnumerable<ViewBookModel>>());
+            Assert.That(((IEnumerable<ViewBookModel>)vResult.Model).Count(), Is.EqualTo(3));
         }
 
 
@@ -156,15 +181,12 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
 
-            var vresult = (ViewResult)result;
+            var model = ((ViewResult)result).Model as StaticPagedList<ViewBookModel>;
 
-            Assert.That(vresult.Model, Is.InstanceOf<PagedList<Book>>());
-
-            var bookList = (PagedList<Book>)vresult.Model;
-
-            Assert.That(bookList.PageNumber, Is.EqualTo(1));
-            Assert.That(bookList.PageSize, Is.EqualTo(25));
-            Assert.That(bookList.Count, Is.EqualTo(25));
+            Assert.That(model, Is.Not.Null);
+            Assert.That(model.PageNumber, Is.EqualTo(1));
+            Assert.That(model.PageSize, Is.EqualTo(25));
+            Assert.That(model.Count, Is.EqualTo(25));
         }
 
 
@@ -188,12 +210,9 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
-            var vresult = (PartialViewResult)result;
+            var book = ((PartialViewResult)result).Model as ViewBookModel;
 
-            Assert.That(vresult.Model, Is.InstanceOf<Book>());
-
-            var book = (Book)vresult.Model;
-
+            Assert.That(book, Is.Not.Null);
             Assert.That(book.Id, Is.EqualTo(1));
         }
 
@@ -213,12 +232,9 @@ namespace Bieb.Tests.Controllers
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
-            var vresult = (PartialViewResult)result;
+            var book = ((PartialViewResult)result).Model as ViewBookModel;
 
-            Assert.That(vresult.Model, Is.InstanceOf<Book>());
-
-            var book = (Book)vresult.Model;
-
+            Assert.That(book, Is.Not.Null);
             Assert.That(book.Id, Is.EqualTo(2));
         }
 
@@ -239,32 +255,30 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Save_Action_Will_Call_NotifyChanges_In_Repository()
         {
-            var person = new Person { Id = 42, ModifiedDate = DateTime.Now };
-            var mapper = new EditPersonModelMapper();
-            var model = mapper.ModelFromEntity(person);
+            var book = new Book { Id = 42, ModifiedDate = DateTime.Now };
+            var model = editBookModelMapper.ModelFromEntity(book);
 
-            var mock = new Mock<IEntityRepository<Person>>();
-            var controller = new PeopleController(mock.Object, mapper);
+            var mock = new Mock<IEntityRepository<Book>>();
+            var controller = new BooksController(mock.Object, viewBookModelMapper, editBookModelMapper);
 
-            mock.Setup(repo => repo.GetItem(person.Id)).Returns(person);
+            mock.Setup(repo => repo.GetItem(book.Id)).Returns(book);
 
             controller.Save(model);
 
-            mock.Verify(repo => repo.NotifyItemWasChanged(person));
+            mock.Verify(repo => repo.NotifyItemWasChanged(book));
         }
 
 
         [Test]
         public void Save_Action_Will_Redirect_To_Details_Action()
         {
-            var mock = new Mock<IEntityRepository<Person>>();
-            var mapper = new EditPersonModelMapper();
-            var controller = new PeopleController(mock.Object, mapper);
+            var mock = new Mock<IEntityRepository<Book>>();
+            var controller = new BooksController(mock.Object, viewBookModelMapper, editBookModelMapper);
 
-            var person = new Person { Id = 1 };
-            var model = mapper.ModelFromEntity(person);
+            var book = new Book { Id = 1 };
+            var model = editBookModelMapper.ModelFromEntity(book);
             
-            mock.Setup(repo => repo.GetItem(1)).Returns(person);
+            mock.Setup(repo => repo.GetItem(1)).Returns(book);
 
             var result = controller.Save(model);
 

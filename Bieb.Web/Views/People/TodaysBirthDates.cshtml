@@ -1,11 +1,11 @@
-﻿@model IEnumerable<Bieb.Domain.Entities.Person>
+﻿@model IEnumerable<Bieb.Web.Models.People.LinkablePersonModel>
 @if (Model.Any())
 {
     <ul>
         @foreach (var person in Model)
         {
             <li>
-                @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                @Html.ActionLink(person.Text, "Details", new { id = person.Id, controller = "People" })
             </li>
         }
     </ul>   

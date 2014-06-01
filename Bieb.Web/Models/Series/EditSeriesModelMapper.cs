@@ -9,7 +9,7 @@ namespace Bieb.Web.Models.Series
 {
     public class EditSeriesModelMapper : EditEntityModelMapper<Domain.Entities.Series, EditSeriesModel>
     {
-        private IEnumerable<Book> books; 
+        private readonly IEnumerable<Book> books; 
 
         public EditSeriesModelMapper(IEntityRepository<Book> books)
         {

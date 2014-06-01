@@ -9,14 +9,19 @@ using Bieb.Web.Models.Books;
 
 namespace Bieb.Web.Controllers
 {
-    public class BooksController : EntityController<Book, EditBookModel>
+    public class BooksController : EntityController<Book, ViewBookModel, EditBookModel>
     {
-        public BooksController(IEntityRepository<Book> repository, EditEntityModelMapper<Book, EditBookModel> editEntityModelMapper)
-            : base(repository, editEntityModelMapper)
+        public BooksController(IEntityRepository<Book> repository,
+                               IViewEntityModelMapper<Book, ViewBookModel> viewEntityModelMapper,
+                               IEditEntityModelMapper<Book, EditBookModel> editEntityModelMapper)
+            : base(repository, viewEntityModelMapper, editEntityModelMapper)
         { }
 
-        public BooksController(IEntityRepository<Book> repository, EditEntityModelMapper<Book, EditBookModel> editEntityModelMapper, HttpResponseBase customResponse)
-            : base(repository, editEntityModelMapper, customResponse)
+        public BooksController(IEntityRepository<Book> repository,
+                               IViewEntityModelMapper<Book, ViewBookModel> viewEntityModelMapper,
+                               IEditEntityModelMapper<Book, EditBookModel> editEntityModelMapper, 
+                               HttpResponseBase customResponse)
+            : base(repository, viewEntityModelMapper, editEntityModelMapper, customResponse)
         { }
 
         protected override System.Linq.Expressions.Expression<Func<Book, IComparable>> SortFunc

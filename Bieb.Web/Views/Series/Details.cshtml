@@ -1,4 +1,4 @@
-﻿@model Bieb.Domain.Entities.Series
+﻿@model Bieb.Web.Models.Series.ViewSeriesModel
 
 @{
     ViewBag.Title = "Details";
@@ -42,6 +42,6 @@
 <div class="row">
     <div class="col-xs-12">
         <h4>@BiebResources.SharedStrings.Books</h4>
-        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.Books.Values); }
+        @{ Html.RenderPartial("~/Views/Books/ItemList.cshtml", Model.Books); }
     </div>
 </div>

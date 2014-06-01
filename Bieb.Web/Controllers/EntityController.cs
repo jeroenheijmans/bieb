@@ -10,28 +10,43 @@ using PagedList;
 
 namespace Bieb.Web.Controllers
 {
-    public abstract class EntityController<TEntity, TViewModel> : BaseController 
+    public abstract class EntityController<TEntity, TViewModel, TEditModel> : BaseController 
         where TEntity : BaseEntity, new()
-        where TViewModel : EditEntityModel<TEntity>, new()
+        where TViewModel : ViewEntityModel<TEntity>
+        where TEditModel : EditEntityModel<TEntity>, new()
     {
         protected int[] AvailablePageSizes = new[] { 10, 25, 50, 100 };
         protected int DefaultPageSize = 25;
         protected IEntityRepository<TEntity> Repository { get; set; }
-        protected EditEntityModelMapper<TEntity, TViewModel> EditEntityModelMapper { get; set; }
+        protected IEditEntityModelMapper<TEntity, TEditModel> EditEntityModelMapper { get; set; }
+        protected IViewEntityModelMapper<TEntity, TViewModel> ViewEntityModelMapper { get; set; }
 
 
-        protected EntityController(IEntityRepository<TEntity> repository, EditEntityModelMapper<TEntity, TViewModel> editEntityModelMapper)
-            : base(null)
-        {
-            this.Repository = repository;
-            this.EditEntityModelMapper = editEntityModelMapper;
-        }
+        protected EntityController(IEntityRepository<TEntity> repository,
+                                   IViewEntityModelMapper<TEntity, TViewModel> viewEntityModelMapper,
+                                   IEditEntityModelMapper<TEntity, TEditModel> editEntityModelMapper)
+            : this(repository, viewEntityModelMapper, editEntityModelMapper, null)
+        {}
 
-        protected EntityController(IEntityRepository<TEntity> repository, EditEntityModelMapper<TEntity, TViewModel> editEntityModelMapper, HttpResponseBase customResponse)
+        protected EntityController(IEntityRepository<TEntity> repository,
+                                   IViewEntityModelMapper<TEntity, TViewModel> viewEntityModelMapper,
+                                   IEditEntityModelMapper<TEntity, TEditModel> editEntityModelMapper, 
+                                   HttpResponseBase customResponse)
             : base(customResponse)
         {
+            if (viewEntityModelMapper == null)
+            {
+                throw new ArgumentNullException("viewEntityModelMapper");
+            }
+
+            if (editEntityModelMapper == null)
+            {
+                throw new ArgumentNullException("editEntityModelMapper");
+            }
+
             this.Repository = repository;
             this.EditEntityModelMapper = editEntityModelMapper;
+            this.ViewEntityModelMapper = viewEntityModelMapper;
         }
         
 
@@ -40,10 +55,20 @@ namespace Bieb.Web.Controllers
             var items = Repository
                         .Items
                         .Where(IndexFilterFunc)
-                        .OrderBy(SortFunc)
-                        .ToPagedList(page, pageSize);
+                        .OrderBy(SortFunc);
+
+            var totalItemCount = items.Count();
+
+            var pageIndex = page - 1; // Linq "Skip" expects first page to be zero
             
-            return View(items);
+            var viewModels = items
+                             .Skip(pageIndex * pageSize)
+                             .Take(pageSize)
+                             .Select(i => ViewEntityModelMapper.ModelFromEntity(i));
+
+            var pagedList = new StaticPagedList<TViewModel>(viewModels, page, pageSize, totalItemCount);
+            
+            return View(pagedList);
         }
 
 
@@ -64,7 +89,9 @@ namespace Bieb.Web.Controllers
                 return PageNotFound();
             }
 
-            return View(item);
+            var model = ViewEntityModelMapper.ModelFromEntity(item);
+
+            return View(model);
         }
 
 
@@ -76,7 +103,14 @@ namespace Bieb.Web.Controllers
                 .ThenByDescending(i => i.Id)
                 .FirstOrDefault();
 
-            return PartialView(item);
+            if (item == null)
+            {
+                return PartialView(null);
+            }
+
+            var model = ViewEntityModelMapper.ModelFromEntity(item);
+
+            return PartialView(model);
         }
 
 
@@ -92,11 +126,14 @@ namespace Bieb.Web.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TViewModel model)
+        public ActionResult Create(TEditModel model)
         {
             var entity = new TEntity();
+
             EditEntityModelMapper.MergeEntityWithModel(entity, model);
+
             Repository.Add(entity);
+
             return RedirectToAction("Details", new { id = entity.Id });
         }
 
@@ -112,13 +149,14 @@ namespace Bieb.Web.Controllers
             }
 
             var model = EditEntityModelMapper.ModelFromEntity(item);
+
             return View(model);
         }
 
 
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(TViewModel model)
+        public ActionResult Save(TEditModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -151,7 +189,7 @@ namespace Bieb.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        private ActionResult SaveExistingEntity(TViewModel model, TEntity existingEntity)
+        private ActionResult SaveExistingEntity(TEditModel model, TEntity existingEntity)
         {
             EditEntityModelMapper.MergeEntityWithModel(existingEntity, model);
             Repository.NotifyItemWasChanged(existingEntity);

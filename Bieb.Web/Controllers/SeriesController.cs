@@ -6,12 +6,14 @@ using Bieb.Web.Models.Series;
 
 namespace Bieb.Web.Controllers
 {
-    public class SeriesController : EntityController<Series, EditSeriesModel>
+    public class SeriesController : EntityController<Series, ViewSeriesModel, EditSeriesModel>
     {
-        public SeriesController(IEntityRepository<Series> repository, EditEntityModelMapper<Series, EditSeriesModel> editEntityModelMapper)
-            : base(repository, editEntityModelMapper)
+        public SeriesController(IEntityRepository<Series> repository, 
+                                IViewEntityModelMapper<Series, ViewSeriesModel> viewEntityModelMapper,
+                                IEditEntityModelMapper<Series, EditSeriesModel> editEntityModelMapper)
+            : base(repository, viewEntityModelMapper, editEntityModelMapper)
         { }
-        
+
 
         protected override System.Linq.Expressions.Expression<Func<Series, IComparable>> SortFunc
         {

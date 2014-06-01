@@ -48,26 +48,7 @@ namespace Bieb.Domain.Entities
         }
 
         public virtual Gender Gender { get; set; }
-
-        public virtual char GenderChar 
-        { 
-            get
-            {
-                switch (Gender)
-                {
-                    case Gender.None:
-                        return '-';
-                    case Gender.Male:
-                        return '♂';
-                    case Gender.Female:
-                        return '♀';
-                    case Gender.Unkown:
-                    default:
-                        return '?';
-                }
-            }
-        }
-
+        
         public virtual string Nationality { get; set; }
 
         public virtual string PlaceOfDeath { get; set; }

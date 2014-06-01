@@ -1,4 +1,4 @@
-﻿@model Bieb.Domain.Entities.Story
+﻿@model Bieb.Web.Models.Stories.ViewStoryModel
 
 <div class="panel panel-primary">
     <div class="panel-body">
@@ -10,15 +10,15 @@
         <ul>
             @if (Model.Book != null)
             {
-                <li>@BiebResources.StoryStrings.From @Html.ActionLink(Model.Book.Title, "Details", new { id = Model.Book.Id, controller = "Books" })</li>
+                <li>@BiebResources.StoryStrings.From @Html.ActionLink(Model.Book.Text, "Details", new { id = Model.Book.Id, controller = "Books" })</li>
             }
-            @if (Model.Tags.Count > 0)
+            @if (Model.HasTags)
             { 
-                <li>@BiebResources.SharedStrings.Tags:  @string.Join(", ", Model.Tags)</li>
+                <li>@BiebResources.SharedStrings.Tags: @Model.Tags</li>
             }
             @if (Model.Publisher != null)
             {
-                <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Model.Publisher.Name, "Details", new { id = Model.Publisher.Id, controller = "Publishers" })</li>
+                <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Model.Publisher.Text, "Details", new { id = Model.Publisher.Id, controller = "Publishers" })</li>
             }
         </ul>
 
@@ -35,21 +35,21 @@
                 {
                     <li>
                         @BiebResources.SharedStrings.Publisher: 
-                @Html.ActionLink(Model.ReferenceStory.Publisher.Name, "Details", new { id = Model.ReferenceStory.Publisher.Id, controller = "Publishers" })
+                @Html.ActionLink(Model.ReferenceStory.Publisher.Text, "Details", new { id = Model.ReferenceStory.Publisher.Id, controller = "Publishers" })
                     </li>
                 }
                 @if (Model.ReferenceStory.Year.HasValue)
                 {
                     <li>
                         @BiebResources.SharedStrings.Published:
-                <span>@Model.ReferenceStory.Year.Value</span>
+                        <span>@Model.ReferenceStory.Year.Value</span>
                     </li>
                 }
-                @if (Model.ReferenceStory.IsbnLanguage.HasValue)
+                @if (Model.ReferenceStory.HasLanguage)
                 {
                     <li>
                         @BiebResources.SharedStrings.Language:
-                <span>@Model.ReferenceStory.Language</span>
+                        <span>@Model.ReferenceStory.Language</span>
                     </li>
                 }
             </ul>

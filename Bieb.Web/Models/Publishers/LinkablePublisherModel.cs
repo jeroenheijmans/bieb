@@ -5,7 +5,7 @@ using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models.Publishers
 {
-    public class LinkablePublisherModel : LinkableRootEntityModel<Publisher>
+    public class LinkablePublisherModel : LinkableEntityModel<Publisher>
     {
         public LinkablePublisherModel(Publisher publisher)
         {
