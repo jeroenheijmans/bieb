@@ -54,5 +54,12 @@ namespace Bieb.Tests.Models
             var result = displayer.GetLocalizedIsbnLanguageResource(90);
             Assert.That(result.Contains("90"));
         }
+
+        [Test]
+        public void Can_Translate_Null_Key_As_Unkown_Language()
+        {
+            var result = displayer.GetLocalizedIsbnLanguageResource(null);
+            Assert.That(result, Is.Not.Null.Or.Empty);
+        }
     }
 }

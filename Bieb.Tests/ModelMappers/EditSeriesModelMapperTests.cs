@@ -54,8 +54,8 @@ namespace Bieb.Tests.ModelMappers
 
             var availableIds = model.AvailableBooks.Select(book => book.Value);
 
-            Assert.That(availableIds.Skip(0).First(), Is.EqualTo(dracula.Id.ToString()));
-            Assert.That(availableIds.Skip(1).First(), Is.EqualTo(frankenstein.Id.ToString()));
+            Assert.That(availableIds.First(), Is.EqualTo(dracula.Id.ToString()));
+            Assert.That(availableIds.Second(), Is.EqualTo(frankenstein.Id.ToString()));
         }
 
 

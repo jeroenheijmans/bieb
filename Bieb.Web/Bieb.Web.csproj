@@ -193,10 +193,17 @@
     <Compile Include="Models\Account\AccountModels.cs" />
     <Compile Include="Models\Books\EditBookModelMapper.cs" />
     <Compile Include="Models\Books\EditBookReviewModelMapper.cs" />
+    <Compile Include="Models\Books\LinkableBookModel.cs" />
+    <Compile Include="Models\Books\ViewBookModel.cs" />
+    <Compile Include="Models\Books\ViewBookModelMapper.cs" />
+    <Compile Include="Models\Books\ViewBookReviewModel.cs" />
     <Compile Include="Models\EditEntityModel.cs" />
     <Compile Include="Localization\IsbnLanguageDisplayer.cs" />
+    <Compile Include="Models\LinkableRootEntityModel.cs" />
+    <Compile Include="Models\People\LinkablePersonModel.cs" />
     <Compile Include="Models\Publishers\EditPublisherModel.cs" />
     <Compile Include="Models\Publishers\EditPublisherModelMapper.cs" />
+    <Compile Include="Models\Publishers\LinkablePublisherModel.cs" />
     <Compile Include="Models\Search\BasicSearchResultModel.cs" />
     <Compile Include="Models\Books\EditBookReviewModel.cs" />
     <Compile Include="Models\EditEntityModelMapper.cs" />
@@ -208,8 +215,12 @@
     <Compile Include="Models\Series\EditSeriesModel.cs" />
     <Compile Include="Models\Series\EditSeriesModelMapper.cs" />
     <Compile Include="Models\MappingException.cs" />
+    <Compile Include="Models\Series\LinkableSeriesModel.cs" />
     <Compile Include="Models\Stories\EditStoryModel.cs" />
     <Compile Include="Models\Stories\EditStoryModelMapper.cs" />
+    <Compile Include="Models\Stories\ViewStoryModel.cs" />
+    <Compile Include="Models\ViewEntityModel.cs" />
+    <Compile Include="Models\ViewEntityModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AccountStrings.Designer.cs">
       <AutoGen>True</AutoGen>

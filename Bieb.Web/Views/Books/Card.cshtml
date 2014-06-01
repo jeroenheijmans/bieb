@@ -1,16 +1,16 @@
-﻿@model Bieb.Domain.Entities.Book
+﻿@model Bieb.Web.Models.Books.ViewBookModel
 
 <div class="panel panel-primary">
     <div class="panel-body">
-        <h1>@Html.DisplayFor(model => model.Title)</h1>
+    <h1>@Html.DisplayFor(model => model.Title)</h1>
     
-        @if (Model.Subtitle != null)
-        { 
-            <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
-        }
+    @if (Model.Subtitle != null)
+    { 
+        <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
+    }
 
         <ul class="list-unstyled">
-            @if (Model.Publisher != null || Model.Year != null || Model.Language != null)
+            @if (Model.ShowPublishingInfo)
             {
                 <li>
                     @BiebResources.BookStrings.Published: 
@@ -20,7 +20,7 @@
                     }
                     @if (Model.Publisher != null)
                     {
-                        <span>@Html.ActionLink(Model.Publisher.Name, "Details", new { id = Model.Publisher.Id, controller = "Publishers"}),</span>
+                        <span>@Html.ActionLink(Model.Publisher.Text, "Details", new { id = Model.Publisher.Id, controller = "Publishers"}),</span>
                     }
                     @if (@Model.Language != null)
                     {
@@ -34,14 +34,14 @@
                 <li>@BiebResources.SharedStrings.Isbn: @Html.DisplayFor(model => model.Isbn)</li>
             }
 
-            @if (Model.AllTags.Any())
+            @if (!string.IsNullOrEmpty(Model.Tags))
             { 
-                <li>@BiebResources.SharedStrings.Tags: @string.Join(", ", Model.AllTags)</li>
+                <li>@BiebResources.SharedStrings.Tags: @Model.Tags</li>
             }
 
             @if (Model.Series != null)
             {
-                <li>@BiebResources.SharedStrings.Series: @Html.ActionLink(Model.Series.Title, "Details", new { id = Model.Series.Id, controller = "series" })</li>
+                <li>@BiebResources.SharedStrings.Series: @Html.ActionLink(Model.Series.Text, "Details", new { id = Model.Series.Id, controller = "series" })</li>
             }
         
             @if (Model.Editors.Any())
@@ -52,37 +52,37 @@
                         @foreach (var person in Model.Editors)
                         {
                             <li>
-                                @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                                @Html.ActionLink(person.Text, "Details", new { id = person.Id, controller = "People" })
                             </li>
                         }
                     </ul>
                 </li>
             }
 
-            @if (Model.AllAuthors.Any())
+            @if (Model.Authors.Any())
             {
                 <li>
                     <span>@BiebResources.SharedStrings.Authors</span>
                     <ul>
-                        @foreach (var person in Model.AllAuthors)
+                        @foreach (var person in Model.Authors)
                         {
                             <li>
-                                @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                                @Html.ActionLink(person.Text, "Details", new { id = person.Id, controller = "People" })
                             </li>
                         }
                     </ul>
                 </li>
             }
 
-            @if (Model.AllTranslators.Any())
+            @if (Model.Translators.Any())
             {
                 <li>
                     <span>@BiebResources.SharedStrings.Translators</span>
                     <ul>
-                        @foreach (var person in Model.AllTranslators)
+                        @foreach (var person in Model.Translators)
                         {
                             <li>
-                                @Html.ActionLink(person.FullName, "Details", new { id = person.Id, controller = "People" })
+                                @Html.ActionLink(person.Text, "Details", new { id = person.Id, controller = "People" })
                             </li>
                         }
                     </ul>
@@ -106,7 +106,7 @@
                 {
                     <li>@BiebResources.SharedStrings.Isbn: @Model.ReferenceBook.Isbn</li>
                 }
-                @if (Model.ReferenceBook.IsbnLanguage.HasValue)
+                @if (!string.IsNullOrEmpty(Model.ReferenceBook.Language))
                 {
                     <li>@BiebResources.SharedStrings.Language: @Model.ReferenceBook.Language</li>
                 }
@@ -116,7 +116,7 @@
                 }
                 @if (Model.ReferenceBook.Publisher != null)
                 {
-                    <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Model.ReferenceBook.Publisher.Name, "Details", new {id = Model.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
+                    <li>@BiebResources.SharedStrings.Publisher: @Html.ActionLink(Model.ReferenceBook.Publisher.Text, "Details", new {id = Model.ReferenceBook.Publisher.Id, controller = "Publishers"})</li>
                 }
             </ul>
         }

@@ -34,9 +34,11 @@ namespace Bieb.Web.Localization
                                                                   };
 
 
-        public string GetLocalizedIsbnLanguageResource(int isbnLanguageIdentifier)
+        public string GetLocalizedIsbnLanguageResource(int? isbnLanguageIdentifier)
         {
-            return string.Format("{0} ({1})", resources[isbnLanguageIdentifier], isbnLanguageIdentifier);
+            return isbnLanguageIdentifier.HasValue
+                ? string.Format("{0} ({1})", resources[isbnLanguageIdentifier.Value], isbnLanguageIdentifier)
+                : "Uknown";
         }
     }
 }

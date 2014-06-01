@@ -1,4 +1,4 @@
-﻿@model Bieb.Domain.Entities.Book
+﻿@model Bieb.Web.Models.Books.ViewBookModel
 
 @{
     ViewBag.Title = Model.Title;
@@ -42,18 +42,15 @@
         @*Fix BS/CSS to show this again:*@
         @*@{ Html.RenderPartial("Cover", Model); }*@
 
-        @if (Model.Reviews.Any())
+        @foreach (var review in Model.Reviews)
         {
-            foreach (var review in Model.Reviews)
-            {
-                <p>@review.ReviewText</p>
-            }
+            <p>@review.Text</p>
         }
 
-        @if (Model.BookType != Bieb.Domain.Entities.BookType.Novel)
+        @if (Model.ShowStoriesList)
         {
             <h4>@BiebResources.SharedStrings.Stories:</h4>
-            Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories.Values);
+            Html.RenderPartial("~/Views/Stories/ItemList.cshtml", Model.Stories);
         }
 
         @{ Html.RenderPartial("MoreInfo", Model); }

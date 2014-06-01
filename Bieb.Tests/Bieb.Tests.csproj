@@ -114,6 +114,7 @@
     <Compile Include="Mocks\RepositoryMock.cs" />
     <Compile Include="ModelMappers\EditBookModelMapperTests.cs" />
     <Compile Include="ModelMappers\EditSeriesModelMapperTests.cs" />
+    <Compile Include="ModelMappers\ViewBookModelMapperTests.cs" />
     <Compile Include="Models\EditBookModelTests.cs" />
     <Compile Include="Models\EditPersonModelTests.cs" />
     <Compile Include="Models\EditPersonReviewModelTests.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Routing\SeriesRoutingTests.cs" />
     <Compile Include="Routing\StoriesRoutingTests.cs" />
     <Compile Include="Routing\SurpriseRoutingTests.cs" />
+    <Compile Include="TestExtensions.cs" />
     <Compile Include="WebHelpers\ActionLinkExtensionsTests.cs" />
     <Compile Include="TypeExtensions\EnumExtensionsTests.cs" />
     <Compile Include="WebHelpers\HtmlHelperTests.cs" />

@@ -43,18 +43,18 @@ namespace Bieb.Domain.Entities
         }
 
         // Blast it. Wanted to name the collection with plural form, and the public property singular, but for "Series" there is no singular form :(. Hence the "db" prefix.
-        protected virtual ICollection<Series> DBSeries { get; set; }
+        protected virtual ICollection<Series> DbSeries { get; set; }
 
         public virtual Series Series 
         { 
             get
             {
-                return DBSeries.FirstOrDefault();
+                return DbSeries == null ? null : DbSeries.FirstOrDefault();
             }
             set
             {
-                DBSeries.Clear();
-                DBSeries.Add(value);
+                DbSeries.Clear();
+                DbSeries.Add(value);
             }
         }
 
