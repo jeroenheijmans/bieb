@@ -1,0 +1,66 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Person>
+
+@{
+    ViewBag.Title = "All People";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-form">
+                <a href="@Url.Action("Create", "People")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.CreateNew</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+}
+
+<p>@BiebResources.PeopleStrings.IndexIntroduction</p>
+
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
+    <tr>
+        <th>
+            <span class="hidden-xs hidden-sm">
+                @BiebResources.PeopleStrings.Gender
+            </span>
+        </th>
+        <th>
+            <span class="hidden-xs hidden-sm">
+                @BiebResources.PeopleStrings.NationalityHeader
+            </span>
+        </th>
+        <th>
+            @BiebResources.PeopleStrings.NameHeader
+        </th>
+        <th>
+            @BiebResources.PeopleStrings.RolesHeader
+        </th>
+    </tr>
+
+@foreach (var person in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelperson => person.GenderChar)
+        </td>
+        <td>
+            @if (!string.IsNullOrWhiteSpace(person.Nationality))
+            { 
+                @Html.ImageFlagFor(person)
+            }
+        </td>
+        <td class="main-topic">
+            @Html.ActionLink(person.FullName, "Details", new { id = person.Id })
+        </td>
+        <td> 
+            @string.Join(", ", person.Roles)
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

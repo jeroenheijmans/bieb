@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Bieb.Domain.Entities.Person>
+    
+<div class="row">
+@foreach (var person in Model) 
+{
+    <div class="col-lg-4 col-sm-6">
+        <div class="panel panel-default panel-body">
+            <h4>@Html.ActionLink(person.FullName, "Details", new { controller = "People", id = person.Id })</h4>
+            <p>
+                @if (person.Gender != Bieb.Domain.Entities.Gender.Unkown)
+                {
+                    @person.GenderChar
+                }
+
+                @if (person.Nationality != null)
+                {
+                    @Html.ImageFlagFor(person)
+                }
+        
+                @string.Join(", ", person.Roles)
+            </p>
+        </div>
+    </div>
+}
+</div>

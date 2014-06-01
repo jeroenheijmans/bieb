@@ -1,0 +1,50 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Publisher>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-form">
+                <a href="@Url.Action("Create", "Publishers")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.CreateNew</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+}
+
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
+    <tr>
+        <th>
+            @BiebResources.SharedStrings.Publisher
+        </th>
+        <th>
+            @BiebResources.SharedStrings.Books
+        </th>
+        <th>
+            @BiebResources.SharedStrings.Stories
+        </th>
+    </tr>
+
+@foreach (var publisher in Model) {
+    <tr>
+        <td class="main-topic">
+            @Html.ActionLink(publisher.Name, "Details", new { id = publisher.Id, controller = "Publishers"})
+        </td>
+        <td>
+            @publisher.Books.Count()
+        </td>
+        <td>
+            @publisher.Stories.Count()
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

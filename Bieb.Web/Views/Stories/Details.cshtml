@@ -1,0 +1,27 @@
+﻿@model Bieb.Domain.Entities.Story
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+
+    <div class="col-md-4">
+        @{ Html.RenderPartial("Card", Model); }
+    </div>
+
+    <div class="col-md-8">
+        @if (Model.Authors.Any())
+        {
+            <h4>@BiebResources.SharedStrings.Authors</h4>
+            Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Authors);
+        }
+
+        @if (Model.Translators.Any())
+        {
+            <h4>@BiebResources.SharedStrings.Translators</h4>
+            Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Translators);
+        }
+    </div>
+
+</div>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bieb.Domain"
+                   namespace="Bieb.Domain.Entities">
+
+  <class name="Series">
+    
+    <id name="Id" column="SeriesId">
+      <generator class="native" />
+    </id>
+
+    <version name="ModifiedDate" unsaved-value="null" generated="always" type="DateTime2">
+      <column name="ModifiedDate" not-null="false" sql-type="DATETIME2" />
+    </version>
+    <property name="CreatedDate" generated="always" type="DateTime2">
+      <column name="CreatedDate" not-null="false" sql-type="DATETIME2" />
+    </property>
+    
+    <property name="Title" not-null="true" index="IX_Series_Title" />
+    <property name="TitleSort" column="TitleSort" generated="always" />
+    <property name="Subtitle" />
+
+    <map name="Books" table="SeriesBook" access="field.camelcase">
+      <key column="SeriesId" foreign-key="FK_SeriesBook_Series" />
+      <index column="Position" type="Int32" />
+      <many-to-many column="BookId" class="Book" foreign-key="FK_SeriesBook_Book" />
+    </map>
+    
+  </class>
+
+
+  <database-object>
+    <create>
+      ALTER TABLE Series DROP COLUMN TitleSort
+      GO
+
+      ALTER TABLE Series
+      ADD TitleSort AS (
+        CASE
+          WHEN LEFT(Title, 3) = 'De '  AND LEN(Title) >= 3 THEN RIGHT(Title, LEN(Title)-3) + ', De'
+          WHEN LEFT(Title, 4) = 'Het ' AND LEN(Title) >= 4 THEN RIGHT(Title, LEN(Title)-4) + ', Het'
+          WHEN LEFT(Title, 4) = 'Een ' AND LEN(Title) >= 4 THEN RIGHT(Title, LEN(Title)-4) + ', Een'
+          WHEN LEFT(Title, 4) = 'The ' AND LEN(Title) >= 4 THEN RIGHT(Title, LEN(Title)-4) + ', The'
+          WHEN LEFT(Title, 2) = 'A '   AND LEN(Title) >= 2 THEN RIGHT(Title, LEN(Title)-2) + ', A'
+          ELSE Title
+        END
+      ) PERSISTED
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+
+  <database-object>
+    <create>
+      GO
+      CREATE TRIGGER TR_SeriesInserted ON Series AFTER INSERT AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Series 
+        SET    ModifiedDate = GetDate(), CreatedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Series.SeriesId = inserted.SeriesId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+      CREATE TRIGGER TR_SeriesUpdated ON Series AFTER UPDATE AS
+      BEGIN
+        SET NOCOUNT ON
+        
+        UPDATE Series 
+        SET    ModifiedDate = GetDate() 
+        FROM   inserted 
+        WHERE  Series.SeriesId = inserted.SeriesId
+        
+        SET NOCOUNT OFF
+      END
+      GO
+    </create>
+    <drop>
+    </drop>
+  </database-object>
+</hibernate-mapping>

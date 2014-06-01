@@ -1,0 +1,71 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Book>
+
+@{
+    ViewBag.Title = "All Books";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-form">
+                <a href="@Url.Action("Create", "Books")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.CreateNew</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+}
+
+<p>@BiebResources.BookStrings.IndexIntroduction</p>
+
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
+    <tr>
+        <th>
+            @BiebResources.BookStrings.TypeHeader
+        </th>
+        <th>
+            @BiebResources.BookStrings.TitleHeader
+        </th>
+        <th>
+            @BiebResources.BookStrings.LanguageHeader
+        </th>
+        <th>
+            @BiebResources.BookStrings.YearHeader
+        </th>
+        <th>
+            @BiebResources.BookStrings.PeopleInvolved
+        </th>
+    </tr>
+
+@foreach (var book in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelbook => book.BookType)
+        </td>
+        <td class="main-topic">
+            @Html.ActionLink(book.Title, "Details", new { id=book.Id })
+        </td>
+        <td>
+            @Html.DisplayFor(modelbook => book.Language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelbook => book.Year)
+        </td>
+        <td>
+            @if (book.BookType == Bieb.Domain.Entities.BookType.Novel) 
+            {
+                @Html.Raw(string.Join(", ", book.AllAuthors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
+            }
+            else
+            {
+                @Html.Raw(string.Join(", ", book.Editors.Select(person => Html.ActionLink(person.FullName, "Details", new { id=person.Id, controller="People" }))))
+            }
+        </td>
+    </tr>
+}
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

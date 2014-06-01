@@ -1,0 +1,18 @@
+﻿@model Bieb.Web.Models.Stories.EditStoryModel
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Title)
+        @Html.EditorFor(model => model.Title)
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Subtitle)
+        @Html.EditorFor(model => model.Subtitle)
+    </div>
+</div>
+
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.ModifiedDateTicks)
+
+<hr />

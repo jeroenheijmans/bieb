@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@BiebResources.SharedStrings.SiteTitleShort: @ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @Styles.Render("~/Content/styles")
+    @Styles.Render("~/Content/styles/select2")
+</head>
+<body class="container">
+
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.Partial("_NavigationAdminPartial")
+            }
+            else
+            {
+                @Html.Partial("_NavigationPartial")
+            }
+        </nav>
+
+        <div class="row">
+            <div class="col-md-3 pull-right">
+                @Html.Partial("_SearchBoxPartial")
+            </div>
+        </div>
+
+        <div class="title hidden-sm hidden-xs">
+            @Html.ActionLink(BiebResources.SharedStrings.SiteTitleLong, "Index", "Home")
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <hr />
+
+    <footer class="row">
+        <div class="col-md-8">
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.About, "About", "Home")</span>
+            |
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.Disclaimer, "Disclaimer", "Home")</span>
+            |
+            <span>@Html.ActionLink(@BiebResources.SharedStrings.SiteMap, "SiteMap", "Home")</span>
+
+            <span id="powered-by">@BiebResources.SharedStrings.PoweredBy <a href="http://bieb.codeplex.com" target="_blank">bieb.codeplex.com</a></span>
+        </div>
+        <div class="col-md-4">
+            @Html.Partial("_LoginPartial")
+        </div>
+    </footer>
+
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/bootstrap")
+    @Scripts.Render("~/Scripts/jqueryplugins")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            $(".fancy-select").select2({
+                containerCssClass: 'fancy-select-container',
+                dropdownCssClass: 'fancy-select-dropdown'
+            });
+        });
+    </script>
+</body>
+</html>

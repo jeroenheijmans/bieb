@@ -1,0 +1,41 @@
+﻿@model Bieb.Web.Models.Account.LoginModel
+
+@{
+    ViewBag.Title = BiebResources.AccountStrings.LoginTitle;
+}
+
+
+@* TODO: Localize the placeholder texts *@
+
+
+@using (Html.BeginForm(new { ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        
+        
+    <h4>@BiebResources.AccountStrings.LoginHeader</h4>
+        
+    <div class="row">
+        <div class="form-group col-sm-6 col-md-4">
+            @Html.TextBoxFor(m => m.UserName, new { placeholder = "username", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6 col-md-4">
+            @Html.PasswordFor(m => m.Password, new { placeholder = "password", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6 col-md-4">
+            <div class="checkbox">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+            </div>
+        </div>
+    </div>
+        
+    <input type="submit" value="Log in" class="btn btn-default" />
+}

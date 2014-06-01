@@ -1,0 +1,46 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.Series>
+
+@{
+    ViewBag.Title = "All Series";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-form">
+                <a href="@Url.Action("Create", "Series")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.CreateNew</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+}
+
+<p>@BiebResources.SeriesStrings.IndexIntroduction</p>
+
+<table class="table table-bordered table-striped table-hover table-condensed single-topic-table">
+    <tr>
+        <th>
+            @BiebResources.SeriesStrings.TitleHeader
+        </th>
+        <th>
+            @BiebResources.SeriesStrings.BooksInThisSeries
+        </th>
+    </tr>
+
+@foreach (var series in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(series.Title, "Details", new { id=series.Id })
+        </td>
+        <td class="main-topic">
+            @string.Join(", ", series.Books.Values)
+        </td>
+    </tr>
+}
+
+</table>
+
+@{ Html.RenderPartial("PagerPartial", Model); }

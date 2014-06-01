@@ -1,0 +1,30 @@
+﻿@model Bieb.Web.Models.Publishers.EditPublisherModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>@Model.Name</h1>
+
+@using (Html.BeginForm("Save", "Publishers"))
+{
+    <div class="form-horizontal">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">@Html.EditorFor(model => model.Name)</div>
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ModifiedDateTicks)
+
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <input type="submit" value="@BiebResources.SharedStrings.Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

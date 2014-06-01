@@ -1,0 +1,23 @@
+﻿@model Bieb.Domain.Entities.Book
+
+<h4>@BiebResources.BookStrings.FindBookOn</h4>
+<ul>
+    <li><a href="http://www.google.com/search?q=Book+@Url.Encode(Model.Title)">Google</a></li>
+    <li><a href="http://en.wikipedia.org/wiki/Special:Search?search=@Url.Encode(Model.Title)">Wikipedia</a></li>
+    <li><a href="http://www.amazon.com/s?url=search-alias%3Daps&field-keywords=@Url.Encode(Model.Title)">Amazon</a></li>
+    <li><a href="http://www.goodreads.com/search?query=@Url.Encode(Model.Title)">Goodreads</a></li>
+            
+</ul>
+
+@if (!String.IsNullOrEmpty(Model.Isbn))
+{
+    <h4>@BiebResources.BookStrings.GoodReadsReviews</h4>
+    <small>@BiebResources.BookStrings.GoodReadsDescription</small>
+    <div class="row goodreads">
+        <iframe 
+            class="col-md-8 col-xs-12"
+            style="height: 400px;"
+            src="http://www.goodreads.com/api/reviews_widget_iframe?isbn=@Model.Isbn&links=6E0030&min_rating=&num_reviews=2&review_back=ffffff&stars=FF0080&text=333333">
+        </iframe>
+    </div>
+}

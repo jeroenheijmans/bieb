@@ -1,0 +1,48 @@
+﻿@model PagedList.IPagedList<Bieb.Domain.Entities.BaseEntity>
+
+<p>
+    @BiebResources.SharedStrings.Page 
+    @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    @BiebResources.SharedStrings.Of 
+    @Model.PageCount
+</p>
+
+<ul class="pagination">
+    @if (Model.HasPreviousPage)
+    {
+        <li>
+            @Html.ActionLink(BiebResources.SharedStrings.FirstPage, "Index", new { page = 1 })
+        </li>
+        <li>
+            @Html.ActionLink(BiebResources.SharedStrings.PreviousPage, "Index", new { page = Model.PageNumber - 1 })
+        </li>
+    }
+    else
+    {
+        <li class="disabled">
+            <a href="#">@BiebResources.SharedStrings.FirstPage</a>
+        </li>
+        <li class="disabled">
+            <a href="#">@BiebResources.SharedStrings.PreviousPage</a>
+        </li>
+    }
+
+    @if (Model.HasNextPage)
+    {
+        <li>
+            @Html.ActionLink(BiebResources.SharedStrings.NextPage, "Index", new { page = Model.PageNumber + 1 })
+        </li>
+        <li>
+            @Html.ActionLink(BiebResources.SharedStrings.LastPage, "Index", new { page = Model.PageCount })
+        </li>
+    }
+    else
+    {
+        <li class="disabled">
+            <a href="#">@BiebResources.SharedStrings.NextPage</a>
+        </li>
+        <li class="disabled">
+            <a href="#">@BiebResources.SharedStrings.LastPage</a>
+        </li>
+    }
+</ul>

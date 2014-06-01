@@ -1,0 +1,73 @@
+﻿@model Bieb.Web.Models.People.EditPersonModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1>@Model.FullName</h1>
+
+@using (Html.BeginForm("Save", "People"))
+{
+    <div class="form-horizontal">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@BiebResources.PeopleStrings.NameGroupLabel</label>
+            <div class="row col-sm-10">
+                <div class="col-sm-2">@Html.EditorFor(model => model.Title)</div>
+                <div class="col-sm-3">@Html.EditorFor(model => model.FirstName)</div>
+                <div class="col-sm-2">@Html.EditorFor(model => model.Prefix)</div>
+                <div class="col-sm-4">@Html.EditorFor(model => model.Surname)</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">@Html.DropDownListFor(model => model.Gender, new SelectList(Enum.GetValues(typeof(Bieb.Domain.Entities.Gender))), new { @class = "form-control fancy-select" })</div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nationality, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">@Html.EditorFor(model => model.Nationality)</div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PlaceOfBirth, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">@Html.EditorFor(model => model.PlaceOfBirth)</div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@BiebResources.PeopleStrings.BornOn</label>
+            <div class="row col-sm-10">
+                <div class="col-sm-3">@Html.EditorFor(model => model.BirthDay)</div>
+                <div class="col-sm-3">@Html.EditorFor(model => model.BirthMonth)</div>
+                <div class="col-sm-5">@Html.EditorFor(model => model.BirthYear)</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PlaceOfDeath, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">@Html.EditorFor(model => model.PlaceOfDeath)</div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@BiebResources.PeopleStrings.DiedOn</label>
+            <div class="row col-sm-10">
+                <div class="col-xs-3">@Html.EditorFor(model => model.DeathDay)</div>
+                <div class="col-xs-3">@Html.EditorFor(model => model.DeathMonth)</div>
+                <div class="col-xs-5">@Html.EditorFor(model => model.DeathYear)</div>
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ModifiedDateTicks)
+
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <input type="submit" value="@BiebResources.SharedStrings.Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
