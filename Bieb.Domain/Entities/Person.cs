@@ -159,12 +159,16 @@ namespace Bieb.Domain.Entities
         {
             get
             {
+                // TODO: It's probably better if the data access layer handles this logic.
                 return EditedBooks.SelectMany(book => book.AllTags)
                         .Union(
                             AuthoredStories.SelectMany(story => story.Tags)
                         )
                         .Union(
                             TranslatedStories.SelectMany(story => story.Tags)
+                        )
+                        .Union(
+                            AuthoredBooks.SelectMany(book => book.Tags)
                         );
             }
         }
@@ -173,6 +177,7 @@ namespace Bieb.Domain.Entities
         {
             get
             {
+                // TODO: Perhaps we should let the data access layer handle this logic.
                 var roles = new List<Role>();
 
                 if (AuthoredBooks.Any() || AuthoredStories.Any()) roles.Add(Role.Author);

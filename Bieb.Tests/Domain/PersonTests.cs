@@ -82,6 +82,19 @@ namespace Bieb.Tests.Domain
 
 
         [Test]
+        public void Has_Tags_From_Authored_Books()
+        {
+            var cool = new Tag("Cool");
+            var person = new Person();
+            var book = new Book();
+            book.Tags.Add(cool);
+            person.AddAuthoredBook(book);
+
+            Assert.That(person.Tags.FirstOrDefault(), Is.EqualTo(cool));
+        }
+
+
+        [Test]
         public void Can_Derive_Author_Role_From_AuthoredBooks()
         {
             var person = new Person();

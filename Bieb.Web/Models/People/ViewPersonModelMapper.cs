@@ -9,16 +9,25 @@ namespace Bieb.Web.Models.People
 {
     public class ViewPersonModelMapper : IViewEntityModelMapper<Person, ViewPersonModel>
     {
+        private readonly IViewEntityModelMapper<Book, ViewBookModel> bookMapper;
+        private readonly IViewEntityModelMapper<Story, ViewStoryModel> storyMapper;
+
+        public ViewPersonModelMapper(IViewEntityModelMapper<Book, ViewBookModel> bookMapper, IViewEntityModelMapper<Story, ViewStoryModel> storyMapper)
+        {
+            this.bookMapper = bookMapper;
+            this.storyMapper = storyMapper;
+        }
+
         public ViewPersonModel ModelFromEntity(Person entity)
         {
             return new ViewPersonModel(entity)
                        {
                            FullName = entity.FullName,
-                           IsGenderKnown = entity.Gender == Gender.Unkown,
+                           IsGenderKnown = entity.Gender != Gender.Unkown,
                            Gender = GenderCharacter(entity.Gender),
                            IsNationalityKnown = !string.IsNullOrEmpty(entity.Nationality),
                            Nationality = entity.Nationality,
-                           Roles = string.Join(", ", entity.Roles),
+                           Roles = string.Join(", ", entity.Roles), // TODO: Localize this
                            IsPlaceOfBirthKnown = !string.IsNullOrEmpty(entity.PlaceOfBirth),
                            PlaceOfBirth = entity.PlaceOfBirth,
                            DateOfBirth = entity.DateOfBirth.ToString(),
@@ -28,11 +37,11 @@ namespace Bieb.Web.Models.People
                            HasTags = entity.Tags.Any(),
                            Tags = string.Join(", ", entity.Tags),
                            Reviews = entity.Reviews.Select(r => new ViewPersonReviewModel(r)),
-                           AuthoredBooks = new List<ViewBookModel>(), // TODO!
-                           EditedBooks = new List<ViewBookModel>(), // TODO!
-                           TranslatedBooks = new List<ViewBookModel>(), // TODO!
-                           TranslatedStories = new List<ViewStoryModel>(), // TODO!
-                           AuthoredStories = new List<ViewStoryModel>(), // TODO!
+                           AuthoredBooks = entity.AuthoredBooks.Select(b => bookMapper.ModelFromEntity(b)),
+                           EditedBooks = entity.EditedBooks.Select(b => bookMapper.ModelFromEntity(b)),
+                           TranslatedBooks = entity.TranslatedBooks.Select(b => bookMapper.ModelFromEntity(b)),
+                           TranslatedStories = entity.TranslatedStories.Select(s => storyMapper.ModelFromEntity(s)),
+                           AuthoredStories = entity.AuthoredStories.Select(s => storyMapper.ModelFromEntity(s))
                        };
         }
 
