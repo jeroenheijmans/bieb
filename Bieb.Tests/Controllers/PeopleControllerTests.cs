@@ -6,8 +6,12 @@ using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
 using Bieb.Web.Controllers;
+using Bieb.Web.Localization;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Books;
 using Bieb.Web.Models.People;
+using Bieb.Web.Models.Stories;
+using Moq;
 using NUnit.Framework;
 
 
@@ -25,8 +29,12 @@ namespace Bieb.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
+            var isbnLanguageDisplayer = new Mock<IIsbnLanguageDisplayer>().Object;
+            var bookMapper = new ViewBookModelMapper(isbnLanguageDisplayer);
+            var storyMapper = new ViewStoryModelMapper(isbnLanguageDisplayer);
+
             repository = new RepositoryMock<Person>();
-            viewEntityModelMapper = new ViewPersonModelMapper();
+            viewEntityModelMapper = new ViewPersonModelMapper(bookMapper, storyMapper);
             editEntityModelMapper = new EditPersonModelMapper();
             controller = new PeopleController(repository, viewEntityModelMapper, editEntityModelMapper);
         }

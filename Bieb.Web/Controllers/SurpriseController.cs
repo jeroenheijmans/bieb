@@ -20,10 +20,10 @@ namespace Bieb.Web.Controllers
 
         public ActionResult Index()
         {
-            return Index(new RandomTypePicker());
+            return RandomItem(new RandomTypePicker());
         }
 
-        public ActionResult Index(IRandomEntityPicker randomTypeGenerator)
+        public ActionResult RandomItem(IRandomEntityPicker randomTypeGenerator)
         {
             if (!PersonRepository.Items.Any() || !BookRepository.Items.Any())
                 return RedirectToAction("EmptyDatabase", "Home");

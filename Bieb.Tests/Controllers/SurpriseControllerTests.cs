@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
@@ -52,7 +51,7 @@ namespace Bieb.Tests.Controllers
             var randomEntityPickerMock = new Mock<IRandomEntityPicker>();
             randomEntityPickerMock.Setup(picker => picker.GetRandomEntityType()).Returns(typeof(Book));
 
-            var result = (RedirectToRouteResult)controller.Index(randomEntityPickerMock.Object);
+            var result = (RedirectToRouteResult)controller.RandomItem(randomEntityPickerMock.Object);
 
             Assert.That(result.RouteValues["controller"], Is.EqualTo("Books"));
         }
