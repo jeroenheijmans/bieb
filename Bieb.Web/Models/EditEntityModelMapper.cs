@@ -12,6 +12,7 @@ namespace Bieb.Web.Models
         public virtual void MergeEntityWithModel(TEntity entity, TModel model)
         {
             if (entity == null) throw new ArgumentNullException("entity");
+            if (model == null) throw new ArgumentNullException("model");
 
             if (model.ModifiedDateTicks.HasValue)
             {

@@ -60,9 +60,13 @@ namespace Bieb.Tests.Domain
         {
             Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
 
-            var story1 = new Story { Tags = new[] { cool, hot } };
-            var story2 = new Story { Tags = new[] { cool, old } };
-            var story3 = new Story { Tags = new[] { sweet } };
+            Story story1 = new Story(), story2 = new Story(), story3 = new Story();
+
+            story1.Tags.Add(cool);
+            story1.Tags.Add(hot);
+            story2.Tags.Add(cool);
+            story2.Tags.Add(old);
+            story3.Tags.Add(sweet);
 
             var someBook = new Book();
             someBook.Stories.Add(1, story3);
@@ -233,6 +237,25 @@ namespace Bieb.Tests.Domain
             };
 
             Assert.That(person.FullNameAlphabetical, Is.EqualTo("Asimov, Isaac"));
+        }
+
+
+        [Test]
+        public void ToString_Will_Return_FullName()
+        {
+            var entity = new Person() {FirstName = "John", Surname = "Doe"};
+            Assert.That(entity.ToString(), Is.EqualTo(entity.FullName));
+        }
+
+
+        [Test]
+        public void Can_Set_Date_Of_Death()
+        {
+            var person = new Person {DateOfDeath = new UncertainDate(2014, 12, 25)};
+
+            Assert.That(person.DateOfDeath.Year, Is.EqualTo(2014));
+            Assert.That(person.DateOfDeath.Month, Is.EqualTo(12));
+            Assert.That(person.DateOfDeath.Day, Is.EqualTo(25));
         }
     }
 }

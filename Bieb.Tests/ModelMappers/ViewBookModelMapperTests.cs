@@ -127,5 +127,73 @@ namespace Bieb.Tests.ModelMappers
             Assert.That(result.Stories.First().Title, Is.EqualTo(book.Stories.First().Value.Title));
             Assert.That(result.Stories.Second().Title, Is.EqualTo(book.Stories.Second().Value.Title));
         }
+
+
+        [Test]
+        public void Will_Map_All_Editors()
+        {
+            var book = new Book();
+            book.Editors.Add(new Person());
+            var result = mapper.ModelFromEntity(book);
+            Assert.That(result.Editors.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Will_Map_All_Authors()
+        {
+            var book = new Book();
+            book.Authors.Add(new Person());
+            var result = mapper.ModelFromEntity(book);
+            Assert.That(result.Authors.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Will_Map_All_Translators()
+        {
+            var book = new Book();
+            book.Translators.Add(new Person());
+            var result = mapper.ModelFromEntity(book);
+            Assert.That(result.Translators.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Will_Map_ReferenceBook()
+        {
+            var book = new Book {ReferenceBook = new Book {Id = 42}};
+            var result = mapper.ModelFromEntity(book);
+            Assert.That(result.ReferenceBook.Id, Is.EqualTo(book.ReferenceBook.Id));
+        }
+
+
+        [Test]
+        public void Will_Map_Editors_As_CoverPeople_If_Available()
+        {
+            var book = new Book();
+            book.Editors.Add(new Person {Id = 42});
+            var model = mapper.ModelFromEntity(book);
+            Assert.That(model.CoverPeople.First().Id, Is.EqualTo(42));
+        }
+
+
+        [Test]
+        public void Will_Map_Authors_As_CoverPeople_If_No_Editors_Available()
+        {
+            var book = new Book();
+            book.Authors.Add(new Person { Id = 42 });
+            var model = mapper.ModelFromEntity(book);
+            Assert.That(model.CoverPeople.First().Id, Is.EqualTo(42));
+        }
+
+
+        [Test]
+        public void Will_Map_Series()
+        {
+            var book = new Book {Series = new Series {Id = 42}};
+            var model = mapper.ModelFromEntity(book);
+            Assert.That(model.Series.Id, Is.EqualTo(book.Series.Id));
+        }
     }
 }

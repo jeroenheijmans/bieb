@@ -313,6 +313,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rating.
+        /// </summary>
+        public static string Rating {
+            get {
+                return ResourceManager.GetString("Rating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you have additional information about this person? Please let me know!.
         /// </summary>
         public static string RequestForAdditionalInfo {
@@ -345,6 +354,15 @@ namespace BiebResources {
         public static string SurnamePlaceholder {
             get {
                 return ResourceManager.GetString("SurnamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        public static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
             }
         }
         

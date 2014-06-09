@@ -140,9 +140,11 @@ namespace Bieb.Tests.Domain
             var asimov = new Person { Surname = "Asimov" };
             var clarke = new Person { Surname = "Clarke" };
 
-            var asimovStory1 = new Story { Authors = new[] { asimov } };
-            var asimovStory2 = new Story { Authors = new[] { asimov } };
-            var clarkeStory = new Story { Authors = new[] { clarke } };
+            Story asimovStory1 = new Story(), asimovStory2 = new Story(), clarkeStory = new Story();
+
+            asimovStory1.Authors.Add(asimov);
+            asimovStory2.Authors.Add(asimov);
+            clarkeStory.Authors.Add(clarke);
 
             var novel = new Book { Title = "How Novel!" };
             var collection = new Book { Stories = new Dictionary<int, Story>() };
@@ -165,10 +167,13 @@ namespace Bieb.Tests.Domain
         public void Is_Tagged_Based_On_All_Stories()
         {
             Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
+            Story story1 = new Story(), story2 = new Story(), story3 = new Story();
 
-            var story1 = new Story { Tags = new[] { cool, hot } };
-            var story2 = new Story { Tags = new[] { cool, old } };
-            var story3 = new Story { Tags = new[] { sweet } };
+            story1.Tags.Add(cool);
+            story1.Tags.Add(hot);
+            story2.Tags.Add(cool);
+            story2.Tags.Add(old);
+            story3.Tags.Add(sweet);
 
             var theHobbit = new Book();
             theHobbit.Stories.Add(0, story1);
@@ -180,6 +185,42 @@ namespace Bieb.Tests.Domain
             Assert.That(theHobbit.AllTags.Contains(old));
             Assert.That(theHobbit.AllTags.Contains(sweet));
             Assert.That(theHobbit.AllTags.Count(), Is.EqualTo(4));
+        }
+
+
+        [Test]
+        public void Can_Set_And_Retrieve_Series()
+        {
+            var book = new Book();
+            var series = new Series();
+
+            book.Series = series;
+
+            Assert.That(book.Series, Is.EqualTo(series));
+        }
+
+
+        [Test]
+        public void ToString_Will_Return_Name()
+        {
+            var entity = new Book() { Title = "Xyz" };
+            Assert.That(entity.ToString(), Is.EqualTo(entity.Title));
+        }
+
+
+        [Test]
+        public void ToString_Can_Handle_Null_Name()
+        {
+            var entity = new Book() { Title = null };
+            Assert.That(entity.ToString(), Is.Not.Null.Or.Empty);
+        }
+
+
+        [Test]
+        public void Can_Add_Reference_Books_To_New_Book()
+        {
+            var book = new Book();
+            Assert.DoesNotThrow(() => book.ReferencedByBooks.Add(book));
         }
     }
 }

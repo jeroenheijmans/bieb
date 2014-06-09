@@ -344,5 +344,33 @@ namespace Bieb.Tests.ModelMappers
                             "Expected isbn language {0} wasn't found in a list of {1} languages.", isbnLanguage.ToString(), model.AvailableIsbnLanguages.Count());
             }
         }
+
+
+        [Test]
+        public void Will_Throw_Mapping_Exception_If_Model_Refers_To_Nonexistent_Author()
+        {
+            var book = new Book();
+            var model = new EditBookModel { AuthorIds = new[] { 1234 } };
+            Assert.Throws<MappingException>(() => mapper.MergeEntityWithModel(book, model));
+        }
+
+
+        [Test]
+        public void Will_Throw_Mapping_Exception_If_Model_Refers_To_Nonexistent_Translator()
+        {
+            var book = new Book();
+            var model = new EditBookModel { TranslatorIds = new[] { 1234 } };
+            Assert.Throws<MappingException>(() => mapper.MergeEntityWithModel(book, model));
+        }
+
+
+        [Test]
+        public void Will_Create_New_Story_If_It_Did_Not_Exist_Yet()
+        {
+            var book = new Book();
+            var model = new EditBookModel() {Stories = new[] {new EditStoryModel()}.ToList()};
+            mapper.MergeEntityWithModel(book, model);
+            Assert.That(book.Stories.Count(), Is.EqualTo(1));
+        }
     }
 }

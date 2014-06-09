@@ -17,7 +17,7 @@
     </property>
     
     <property name="Title" not-null="true" index="IX_Series_Title" />
-    <property name="TitleSort" column="TitleSort" generated="always" />
+    <property name="TitleSort" column="TitleSort" generated="always" access="field.camelcase" />
     <property name="Subtitle" />
 
     <map name="Books" table="SeriesBook" access="field.camelcase">

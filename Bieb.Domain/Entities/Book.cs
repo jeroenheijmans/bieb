@@ -42,9 +42,14 @@ namespace Bieb.Domain.Entities
             get { return editors; }
         }
 
-        // Blast it. Wanted to name the collection with plural form, and the public property singular, but for "Series" there is no singular form :(. Hence the "db" prefix.
-        protected virtual ICollection<Series> DbSeries { get; set; }
-
+        
+        // TODO: Fix this dichotomy between Series being a collection or just one thing.
+        // Probably the second option is the way to go, and the first one must begone!
+        private readonly IList<Series> dbSeries = new List<Series>();
+        protected virtual IList<Series> DbSeries
+        {
+            get { return dbSeries; }
+        }
         public virtual Series Series 
         { 
             get
@@ -109,11 +114,10 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IList<Review<Book>> _reviews = new List<Review<Book>>();
+        private IList<Review<Book>> reviews = new List<Review<Book>>();
         public virtual IList<Review<Book>> Reviews
         {
-            get { return _reviews; }
-            set { _reviews = value; }
+            get { return reviews; }
         }
 
         public virtual Book ReferenceBook { get; set; }

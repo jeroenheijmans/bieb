@@ -28,5 +28,21 @@ namespace Bieb.Tests.Domain
 
             Assert.That(story.IsbnLanguage, Is.EqualTo(1));
         }
+
+
+        [Test]
+        public void ToString_Will_Return_Name()
+        {
+            var entity = new Story() { Title = "Xyz" };
+            Assert.That(entity.ToString(), Is.EqualTo(entity.Title));
+        }
+
+
+        [Test]
+        public void ToString_Can_Handle_Null_Name()
+        {
+            var entity = new Story() { Title = null };
+            Assert.That(entity.ToString(), Is.Not.Null.Or.Empty);
+        }
     }
 }

@@ -48,16 +48,8 @@ namespace Bieb.Tests.Controllers
                 repository.Add(new Person { DateOfBirthFrom = DateTime.Now, DateOfBirthUntil = DateTime.Now });
             }
 
-            var result = controller.TodaysBirthDates();
-
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.InstanceOf<PartialViewResult>());
-
-            var partialViewResult = (PartialViewResult)result;
-
-            var model = partialViewResult.Model as IEnumerable<LinkablePersonModel>;
-
-            Assert.That(model, Is.Not.Null);
+            var result = (PartialViewResult)controller.TodaysBirthDates();
+            var model = (IEnumerable<LinkablePersonModel>)result.Model;
             Assert.That(model.Count(), Is.EqualTo(5));
         }
 
@@ -69,15 +61,9 @@ namespace Bieb.Tests.Controllers
             repository.Add(new Person { Id = 42, DateOfBirthFrom = dateOfBirth, DateOfBirthUntil = dateOfBirth });
             repository.Add(new Person { });
 
-            var result = controller.BirthDates(dateOfBirth);
+            var result = (PartialViewResult)controller.BirthDates(dateOfBirth);
+            var model = (IQueryable<LinkablePersonModel>)result.Model;
 
-            Assert.That(result, Is.InstanceOf<PartialViewResult>());
-
-            var partialViewResult = (PartialViewResult)result;
-
-            var model = partialViewResult.Model as IQueryable<LinkablePersonModel>;
-
-            Assert.That(model, Is.Not.Null);
             Assert.That(model.Count(), Is.EqualTo(1));
             Assert.That(model.First().Id, Is.EqualTo(42));
         }
@@ -88,22 +74,28 @@ namespace Bieb.Tests.Controllers
         {
             var dateOfBirthFrom = new DateTime(1950, 11, 11);
             var dateOfBirthUntil = new DateTime(1950, 11, 12);
-            var people = new[] { new Person { DateOfBirthFrom = dateOfBirthFrom, DateOfBirthUntil = dateOfBirthUntil },
-                                 new Person { } };
 
-            repository = new RepositoryMock<Person>(people);
+            repository.Add(new Person {DateOfBirthFrom = dateOfBirthFrom, DateOfBirthUntil = dateOfBirthUntil});
+            repository.Add(new Person());
 
-            var result = controller.BirthDates(dateOfBirthFrom);
+            var result = (PartialViewResult)controller.BirthDates(dateOfBirthFrom);
+            var model = (IQueryable<LinkablePersonModel>)result.Model;
 
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.InstanceOf<PartialViewResult>());
-
-            var partialViewResult = (PartialViewResult)result;
-
-            var model = partialViewResult.Model as IQueryable<LinkablePersonModel>;
-
-            Assert.That(model, Is.Not.Null);
             Assert.That(model.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Will_Sort_By_Surname()
+        {
+            repository.Add(new Person {Surname = "Zoltan"});
+            repository.Add(new Person {Surname = "Alfa"});
+
+            var result = (ViewResult)controller.Index();
+            var model = (IEnumerable<ViewPersonModel>)result.Model;
+
+            Assert.That(model.First().FullName, Is.EqualTo("Alfa"));
+            Assert.That(model.Second().FullName, Is.EqualTo("Zoltan"));
         }
     }
 }

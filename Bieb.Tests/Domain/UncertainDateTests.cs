@@ -168,5 +168,21 @@ namespace Bieb.Tests.Domain
             Assert.That(toDate.Value.Month, Is.EqualTo(february));
             Assert.That(toDate.Value.Day, Is.EqualTo(29));
         }
+
+
+        [Test]
+        public void Null_Year_Is_Automatically_Uknown_FromDate()
+        {
+            var date = new UncertainDate(null, 12, 25);
+            Assert.That(date.FromDate, Is.Null);
+        }
+
+
+        [Test]
+        public void Null_Year_Is_Automatically_Uknown_UntilDate()
+        {
+            var date = new UncertainDate(null, 12, 25);
+            Assert.That(date.UntilDate, Is.Null);
+        }
     }
 }
