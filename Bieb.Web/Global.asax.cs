@@ -8,7 +8,6 @@ using Bieb.Framework.Logging;
 using Bieb.Web.App_Start;
 using Ninject;
 using Ninject.Web.Common;
-using WebMatrix.WebData;
 
 namespace Bieb.Web
 {
