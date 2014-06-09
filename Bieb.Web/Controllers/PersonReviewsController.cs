@@ -16,7 +16,7 @@ namespace Bieb.Web.Controllers
 
         protected override System.Linq.Expressions.Expression<Func<Review<Person>, IComparable>> SortFunc
         {
-            get { return pr => pr.Rating; }
+            get { return pr => -pr.Rating; }
         }
     }
 }

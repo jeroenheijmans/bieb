@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Web.Mvc;
 using Bieb.Domain.Entities;
@@ -42,6 +43,7 @@ namespace Bieb.Web.Controllers
             }
         }
 
+        [ExcludeFromCodeCoverage]
         private class RandomTypePicker : IRandomEntityPicker
         {
             readonly Random random = new Random();
