@@ -18,7 +18,7 @@ namespace Bieb.Web.Controllers
         {
             get 
             {
-                return br => br.Rating;            
+                return br => -br.Rating;
             }
         }
     }

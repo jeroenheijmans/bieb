@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Bieb.Web.Models;
 using Bieb.Web.Models.Account;
 using WebMatrix.WebData;
 
 namespace Bieb.Web.Controllers
 {
-    // TODO: Bring this under test by factoring out the WebSecurity dependency
+    // TODO: Bring this under test. It's a spinoff of the default scaffolding currently.
 
     [Authorize]
     public class AccountController : Controller

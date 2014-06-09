@@ -100,10 +100,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\BookReviewsControllerTests.cs" />
     <Compile Include="Controllers\BooksControllerTests.cs" />
+    <Compile Include="Controllers\PersonReviewsControllerTests.cs" />
     <Compile Include="Controllers\EntityControllerTests.cs" />
+    <Compile Include="Controllers\HomeControllerTests.cs" />
     <Compile Include="Controllers\PeopleControllerTests.cs" />
     <Compile Include="Controllers\SearchControllerTests.cs" />
+    <Compile Include="Controllers\SeriesControllerTests.cs" />
+    <Compile Include="Controllers\StoriesControllerTests.cs" />
     <Compile Include="Controllers\SurpriseControllerTests.cs" />
     <Compile Include="Domain\BaseEntityTests.cs" />
     <Compile Include="Domain\PersonTests.cs" />
