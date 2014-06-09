@@ -79,7 +79,7 @@ namespace Bieb.Web.Models.Books
 
                 if (person == null)
                 {
-                    throw new MappingException("Provided Author Id could not be traced to any person in the database.");
+                    throw new MappingException("Provided Translator Id could not be traced to any person in the database.");
                 }
 
                 entity.Translators.Add(person);

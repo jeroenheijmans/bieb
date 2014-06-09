@@ -9,7 +9,7 @@ namespace Bieb.Web.Models.People
     {
         public ViewPersonReviewModel ModelFromEntity(Review<Person> entity)
         {
-            throw new NotImplementedException();
+            return new ViewPersonReviewModel(entity);
         }
     }
 }

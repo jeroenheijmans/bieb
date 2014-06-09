@@ -203,7 +203,6 @@
     <Compile Include="Models\IEditEntityModelMapper.cs" />
     <Compile Include="Models\LinkableEntityModel.cs" />
     <Compile Include="Models\People\LinkablePersonModel.cs" />
-    <Compile Include="Models\People\LinkablePersonReviewModel.cs" />
     <Compile Include="Models\People\ViewPersonModel.cs" />
     <Compile Include="Models\People\ViewPersonModelMapper.cs" />
     <Compile Include="Models\People\ViewPersonReviewModel.cs" />

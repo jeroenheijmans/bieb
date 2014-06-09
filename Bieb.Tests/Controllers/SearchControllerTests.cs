@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 using Bieb.Tests.Mocks;
@@ -154,6 +155,14 @@ namespace Bieb.Tests.Controllers
 
             Assert.That(result.RouteValues["controller"], Is.EqualTo("Books"));
             Assert.That(result.RouteValues["action"], Is.EqualTo("Details"));
+        }
+
+
+        [Test]
+        public void Can_Handle_Null_Query()
+        {
+            var result = controller.Basic(null) as ViewResult;
+            Assert.That(result.Model, Is.InstanceOf<BasicSearchResultModel>());
         }
     }
 }

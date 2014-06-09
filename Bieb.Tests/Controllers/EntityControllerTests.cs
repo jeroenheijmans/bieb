@@ -10,7 +10,7 @@ using Bieb.Web.Controllers;
 using Bieb.Web.Localization;
 using Bieb.Web.Models;
 using Bieb.Web.Models.Books;
-using Bieb.Web.Models.People;
+using Bieb.Web.Models.Publishers;
 using Moq;
 using NUnit.Framework;
 using PagedList;
@@ -21,17 +21,13 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class EntityControllerTests
     {
-        private BookRepositoryMock bookRepository;
+        private BookRepositoryMock repository;
 
         private Mock<HttpResponseBase> responseMock;
-        private BooksController booksController;
+        private BooksController controller;
 
         private EditBookModelMapper editBookModelMapper;
         private ViewBookModelMapper viewBookModelMapper;
-
-        private IEntityRepository<Publisher> publishersRepository;
-
-        private IEntityRepository<Person> peopleRepository;
 
         private Book someBook;
         private Book otherBook;
@@ -40,16 +36,17 @@ namespace Bieb.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            bookRepository = new BookRepositoryMock();
-            peopleRepository = new RepositoryMock<Person>();
+            repository = new BookRepositoryMock();
 
             responseMock = new Mock<HttpResponseBase>();
 
-            publishersRepository = new RepositoryMock<Publisher>();
-            editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository, bookRepository, null, new Mock<IIsbnLanguageDisplayer>().Object);
+            var peopleRepository = new RepositoryMock<Person>();
+            var publishersRepository = new RepositoryMock<Publisher>();
+
+            editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository, repository, null, new Mock<IIsbnLanguageDisplayer>().Object);
             viewBookModelMapper = new ViewBookModelMapper(new Mock<IIsbnLanguageDisplayer>().Object);
 
-            booksController = new BooksController(bookRepository, viewBookModelMapper, editBookModelMapper, responseMock.Object);
+            controller = new BooksController(repository, viewBookModelMapper, editBookModelMapper, responseMock.Object);
 
             someBook = new Book
             {
@@ -62,6 +59,14 @@ namespace Bieb.Tests.Controllers
                 Id = 9000,
                 Title = "It's over!"
             };
+        }
+
+
+        [Test]
+        public void Can_Create_Basic_Controller()
+        {
+            // Smoke test
+            Assert.DoesNotThrow(() => new BaseController());
         }
 
 
@@ -90,9 +95,9 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Can_Get_Item_Details()
         {
-            bookRepository.Add(someBook);
+            repository.Add(someBook);
 
-            var result = booksController.Details(someBook.Id);
+            var result = controller.Details(someBook.Id);
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
@@ -104,11 +109,11 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Can_List_All_Items()
         {
-            bookRepository.Add(someBook);
-            bookRepository.Add(someBook);
-            bookRepository.Add(someBook);
+            repository.Add(someBook);
+            repository.Add(someBook);
+            repository.Add(someBook);
 
-            var result = booksController.Index();
+            var result = controller.Index();
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
@@ -118,9 +123,23 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
+        public void Controller_Without_IndexFilter_Will_Use_Default_Func()
+        {
+            var simpleController = new PublishersController(
+                new RepositoryMock<Publisher>(new[] { new Publisher() }),
+                new Mock<IViewEntityModelMapper<Publisher, ViewPublisherModel>>().Object,
+                new Mock<EditPublisherModelMapper>().Object);
+
+            var result = (ViewResult)simpleController.Index();
+            Assert.That(result.Model, Is.InstanceOf<IEnumerable<ViewPublisherModel>>());
+            Assert.That(((IEnumerable<ViewPublisherModel>)result.Model).Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
         public void Can_Start_Creating_New_Item()
         {
-            var result = booksController.Create();
+            var result = controller.Create();
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
             var vResult = (ViewResult)result;
@@ -134,7 +153,7 @@ namespace Bieb.Tests.Controllers
         {
             var newBookModel = new EditBookModel();
 
-            var result = booksController.Create(newBookModel);
+            var result = controller.Create(newBookModel);
 
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
             var redirectResult = (RedirectToRouteResult)result;
@@ -145,17 +164,17 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Can_Delete_Item()
         {
-            bookRepository.Add(someBook);
-            booksController.Delete(someBook.Id);
-            Assert.That(bookRepository.GetItem(someBook.Id), Is.Null);
+            repository.Add(someBook);
+            controller.Delete(someBook.Id);
+            Assert.That(repository.GetItem(someBook.Id), Is.Null);
         }
 
 
         [Test]
         public void Delete_Will_Return_RedirectResult()
         {
-            bookRepository.Add(someBook);
-            var result = booksController.Delete(someBook.Id);
+            repository.Add(someBook);
+            var result = controller.Delete(someBook.Id);
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
         }
 
@@ -163,8 +182,8 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Delete_Will_Redirect_To_Index()
         {
-            bookRepository.Add(someBook);
-            var result = (RedirectToRouteResult)booksController.Delete(someBook.Id);
+            repository.Add(someBook);
+            var result = (RedirectToRouteResult)controller.Delete(someBook.Id);
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }
 
@@ -174,10 +193,10 @@ namespace Bieb.Tests.Controllers
         {
             for (int i = 0; i < 100; i++)
             {
-                bookRepository.Add(new Book());
+                repository.Add(new Book());
             }
 
-            var result = booksController.Index();
+            var result = controller.Index();
 
             Assert.That(result, Is.InstanceOf<ViewResult>());
 
@@ -203,10 +222,10 @@ namespace Bieb.Tests.Controllers
             otherBook.Id = 2;
             otherBook.CreatedDate = insertionDateEarly;
 
-            bookRepository.Add(someBook);
-            bookRepository.Add(otherBook);
+            repository.Add(someBook);
+            repository.Add(otherBook);
 
-            var result = booksController.RecentlyAdded();
+            var result = controller.RecentlyAdded();
 
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
@@ -225,10 +244,10 @@ namespace Bieb.Tests.Controllers
             var book1 = new Book { Title = "Zoltan the Great", Id = 1, CreatedDate = bulkInsertDate };
             var book2 = new Book { Title = "Middle-man", Id = 2, CreatedDate = bulkInsertDate };
 
-            bookRepository.Add(book1);
-            bookRepository.Add(book2);
+            repository.Add(book1);
+            repository.Add(book2);
 
-            var result = booksController.RecentlyAdded();
+            var result = controller.RecentlyAdded();
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
@@ -242,7 +261,7 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void RecentlyAdded_Action_Will_Return_Null_If_Repository_Is_Empty()
         {
-            var result = booksController.RecentlyAdded();
+            var result = controller.RecentlyAdded();
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.InstanceOf<PartialViewResult>());
 
@@ -295,7 +314,7 @@ namespace Bieb.Tests.Controllers
         {
             var model = new EditBookModel {Id = 0};
 
-            var result = booksController.Save(model);
+            var result = controller.Save(model);
 
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
             var redirectResult = (RedirectToRouteResult)result;
@@ -304,24 +323,46 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
+        public void Save_Will_Return_Edit_View_If_State_Invalid()
+        {
+            controller.ModelState.AddModelError("", "");
+            var model = new EditBookModel {Id = 13};
+            var result = (ViewResult)controller.Save(model);
+            Assert.That(result.ViewName, Is.EqualTo("Edit"));
+            Assert.That(result.Model, Is.EqualTo(model));
+        }
+
+
+        [Test]
         public void Edit_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
         {
-            var result = (ViewResult)booksController.Edit(123456789);
+            var result = (ViewResult)controller.Edit(123456789);
             Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
+        }
+
+
+        [Test]
+        public void Edit_Will_Call_Return_View_With_Mapped_Model()
+        {
+            repository.Add(someBook);
+            var result = controller.Edit(someBook.Id) as ViewResult;
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Model, Is.InstanceOf<EditBookModel>());
         }
 
 
         [Test]
         public void Details_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
         {
-            var result = (ViewResult)booksController.Details(123456789);
+            var result = (ViewResult)controller.Details(123456789);
             Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
         }
+
 
         [Test]
         public void Delete_Will_Give_Throw_HttpError_404_On_Id_Not_Found()
         {
-            var result = (ViewResult)booksController.Delete(123456);
+            var result = (ViewResult)controller.Delete(123456);
             Assert.That(result.ViewName, Is.EqualTo("PageNotFound"));
         }
 
@@ -330,7 +371,7 @@ namespace Bieb.Tests.Controllers
         public void Http404_Will_Set_Response_Code()
         {
             responseMock.SetupProperty(response => response.StatusCode);
-            booksController.PageNotFound();
+            controller.PageNotFound();
             Assert.That(responseMock.Object.StatusCode, Is.EqualTo(404));
         }
     }

@@ -25,5 +25,21 @@ namespace Bieb.Tests.Domain
             Assert.That(publisher.ReferenceBooks.Count(), Is.EqualTo(1));
             CollectionAssert.Contains(publisher.ReferenceBooks, book2);
         }
+
+
+        [Test]
+        public void ToString_Will_Return_Name()
+        {
+            var entity = new Publisher {Name = "Xyz"};
+            Assert.That(entity.ToString(), Is.EqualTo(entity.Name));
+        }
+
+
+        [Test]
+        public void ToString_Can_Handle_Null_Name()
+        {
+            var entity = new Publisher {Name = null};
+            Assert.That(entity.ToString(), Is.Not.Null.Or.Empty);
+        }
     }
 }

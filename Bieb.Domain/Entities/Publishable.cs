@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Bieb.Domain.Entities
 {
@@ -20,16 +19,12 @@ namespace Bieb.Domain.Entities
             set { isbnLanguage = value; }
         }
 
-        private string _titleSort;
+        private string titleSort;
         public virtual string TitleSort
         {
             get
             {
-                return _titleSort ?? Title;
-            }
-            protected internal set
-            {
-                _titleSort = value;
+                return titleSort ?? Title;
             }
         }
     }

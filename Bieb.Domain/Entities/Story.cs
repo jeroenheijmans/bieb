@@ -22,25 +22,22 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IList<Tag> _tags = new List<Tag>();
+        private IList<Tag> tags = new List<Tag>();
         public virtual IList<Tag> Tags
         {
-            get { return _tags; }
-            set { _tags = value; }
+            get { return tags; }
         }
 
-        private IList<Person> _authors = new List<Person>();
+        private IList<Person> authors = new List<Person>();
         public virtual IList<Person> Authors
         {
-            get { return _authors; }
-            set { _authors = value; }
+            get { return authors; }
         }
 
-        private IList<Person> _translators = new List<Person>();
+        private readonly IList<Person> translators = new List<Person>();
         public virtual IList<Person> Translators 
         {
-            get { return _translators; }
-            set { _translators = value; }
+            get { return translators; }
         }
 
         public virtual Story ReferenceStory

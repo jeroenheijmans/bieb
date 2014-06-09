@@ -201,6 +201,9 @@
   <data name="PrefixPlaceholder" xml:space="preserve">
     <value>von</value>
   </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
   <data name="RequestForAdditionalInfo" xml:space="preserve">
     <value>Do you have additional information about this person? Please let me know!</value>
   </data>
@@ -212,6 +215,9 @@
   </data>
   <data name="SurnamePlaceholder" xml:space="preserve">
     <value>Graffenwald</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>

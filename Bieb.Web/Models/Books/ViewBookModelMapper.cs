@@ -33,7 +33,7 @@ namespace Bieb.Web.Models.Books
                                 Series = entity.Series.AsLinkableSeriesModel(),
                                 Editors = entity.Editors.Select(p => p.AsLinkablePersonModel()),
                                 Authors = entity.AllAuthors.Select(p => p.AsLinkablePersonModel()),
-                                CoverPeople = entity.BookType == BookType.Anthology ? entity.Editors.Select(p => p.AsLinkablePersonModel()) : entity.AllAuthors.Select(p => p.AsLinkablePersonModel()),
+                                CoverPeople = entity.Editors.Any() ? entity.Editors.Select(p => p.AsLinkablePersonModel()) : entity.AllAuthors.Select(p => p.AsLinkablePersonModel()),
                                 Translators = entity.AllTranslators.Select(p => p.AsLinkablePersonModel()),
                                 Reviews =  entity.Reviews.Select(r => new ViewBookReviewModel(r)),
                                 ShowStoriesList = entity.BookType != BookType.Novel,
