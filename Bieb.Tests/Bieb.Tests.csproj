@@ -158,6 +158,7 @@
     <Compile Include="WebHelpers\ActionLinkExtensionsTests.cs" />
     <Compile Include="TypeExtensions\EnumExtensionsTests.cs" />
     <Compile Include="WebHelpers\HtmlHelperTests.cs" />
+    <Compile Include="WebHelpers\ImageExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bieb.Domain\Bieb.Domain.csproj">
