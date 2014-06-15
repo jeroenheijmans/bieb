@@ -490,7 +490,7 @@
       <Project>{705a6b64-a200-4c69-be44-7ec71fd13fcb}</Project>
       <Name>Bieb.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bieb.NHibernateProvider\Bieb.DataAccess.csproj">
+    <ProjectReference Include="..\Bieb.DataAccess\Bieb.DataAccess.csproj">
       <Project>{A98CA5A5-29DB-4E2F-BC94-9FB9C7309AD1}</Project>
       <Name>Bieb.DataAccess</Name>
     </ProjectReference>
