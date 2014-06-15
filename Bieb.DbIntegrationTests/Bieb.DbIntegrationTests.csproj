@@ -68,7 +68,7 @@
       <Project>{fd033d56-3912-4b0f-af94-24234d5e4389}</Project>
       <Name>Bieb.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bieb.NHibernateProvider\Bieb.DataAccess.csproj">
+    <ProjectReference Include="..\Bieb.DataAccess\Bieb.DataAccess.csproj">
       <Project>{a98ca5a5-29db-4e2f-bc94-9fb9c7309ad1}</Project>
       <Name>Bieb.DataAccess</Name>
     </ProjectReference>
