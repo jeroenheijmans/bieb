@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
 
-namespace Bieb.NHibernateProvider
+namespace Bieb.DataAccess
 {
     public interface ISessionProvider
     {

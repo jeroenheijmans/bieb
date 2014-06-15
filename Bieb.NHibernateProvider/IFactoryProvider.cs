@@ -1,6 +1,6 @@
 ﻿using NHibernate;
 
-namespace Bieb.NHibernateProvider
+namespace Bieb.DataAccess
 {
     public interface IFactoryProvider
     {

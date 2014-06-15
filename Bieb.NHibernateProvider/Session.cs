@@ -1,7 +1,7 @@
 ﻿using System;
 using NHibernate;
 
-namespace Bieb.NHibernateProvider
+namespace Bieb.DataAccess
 {
     public class SessionProvider : ISessionProvider, IDisposable
     {

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
-using NHibernate;
 
-namespace Bieb.NHibernateProvider.Repositories
+namespace Bieb.DataAccess.Repositories
 {
     public class BookRepository : EntityRepository<Book>, IBookRepository
     {

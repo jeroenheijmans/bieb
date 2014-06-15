@@ -14,7 +14,7 @@ namespace Bieb.Web.Infrastructure.NinjectModules
         public override void Load()
         {
             // TODO: For this the Log4netLogger has to be public, but it may be better to make it internal to Bieb.Framework?
-            this.Bind<ILogger>().To<Log4netLogger>().InSingletonScope();
+            this.Bind<ILogger>().To<Log4NetLogger>().InSingletonScope();
 
             this.BindFilter<LogExceptionFilter>(FilterScope.Controller, 0)
                 .WithConstructorArgument("logLevel", Level.Error);

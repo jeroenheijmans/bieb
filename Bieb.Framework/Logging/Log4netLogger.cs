@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using log4net;
 
 namespace Bieb.Framework.Logging
@@ -11,11 +9,11 @@ namespace Bieb.Framework.Logging
     /// <summary>
     /// ILogger implementation using the log4net package. Configuration of log4net is placed in the AssemblyInfo file.
     /// </summary>
-    public class Log4netLogger : ILogger
+    public class Log4NetLogger : ILogger
     {
-        private ILog logger;
+        private readonly ILog logger;
 
-        public Log4netLogger()
+        public Log4NetLogger()
         {
             logger = LogManager.GetLogger(this.GetType());
         }

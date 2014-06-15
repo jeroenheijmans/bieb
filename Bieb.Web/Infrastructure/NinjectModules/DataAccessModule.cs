@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bieb.Domain.Repositories;
-using Bieb.NHibernateProvider;
-using Bieb.NHibernateProvider.Repositories;
+using Bieb.DataAccess;
+using Bieb.DataAccess.Repositories;
 using Ninject.Modules;
 using Ninject.Web.Common;
 

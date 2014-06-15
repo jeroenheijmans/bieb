@@ -7,7 +7,7 @@ using NHibernate.Criterion;
 using NHibernate.Linq;
 using NHibernate.SqlCommand;
 
-namespace Bieb.NHibernateProvider.Repositories
+namespace Bieb.DataAccess.Repositories
 {
     public class EntityRepository<T> : IEntityRepository<T> where T : BaseEntity
     {

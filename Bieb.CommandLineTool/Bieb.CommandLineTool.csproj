@@ -53,9 +53,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bieb.NHibernateProvider\Bieb.NHibernateProvider.csproj">
+    <ProjectReference Include="..\Bieb.NHibernateProvider\Bieb.DataAccess.csproj">
       <Project>{a98ca5a5-29db-4e2f-bc94-9fb9c7309ad1}</Project>
-      <Name>Bieb.NHibernateProvider</Name>
+      <Name>Bieb.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
