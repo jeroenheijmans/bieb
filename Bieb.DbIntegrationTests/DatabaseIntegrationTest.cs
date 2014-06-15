@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Bieb.NHibernateProvider;
+using Bieb.DataAccess;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
@@ -32,7 +31,7 @@ namespace Bieb.DbIntegrationTests
                                                            db.Dialect<MsSql2008Dialect>();
                                                        })
                               .SetProperty(NHibernate.Cfg.Environment.CollectionTypeFactoryClass, typeof (Net4CollectionTypeFactory).AssemblyQualifiedName)
-                              .AddAssembly(typeof(Bieb.NHibernateProvider.FactoryProvider).Assembly)
+                              .AddAssembly(typeof(Bieb.DataAccess.FactoryProvider).Assembly)
                               .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>();
 
                 _factory = _configuration.BuildSessionFactory();

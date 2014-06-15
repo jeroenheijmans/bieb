@@ -13,7 +13,7 @@ using NHibernate.Persister.Collection;
 using NHibernate.Type;
 using NHibernate.Util;
 
-namespace Bieb.NHibernateProvider
+namespace Bieb.DataAccess
 {
 	public class Net4CollectionTypeFactory : DefaultCollectionTypeFactory
 	{

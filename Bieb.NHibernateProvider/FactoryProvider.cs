@@ -5,7 +5,7 @@ using NHibernate.Cfg;
 using NHibernate.Context;
 using NHibernate.Dialect;
 
-namespace Bieb.NHibernateProvider
+namespace Bieb.DataAccess
 {
     /// <summary>
     /// This class is expensive to create, it's preferred to create it as a singleton in the composition root.
