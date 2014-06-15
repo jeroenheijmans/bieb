@@ -55,11 +55,5 @@ namespace Bieb.Web
 
             Logger.LogInformation("Application stopped.");
         }
-
-        protected void Application_EndRequest(object sender, EventArgs args)
-        {
-            // TODO: Refactor/replace with DI solution
-            NHibernateProvider.Session.CloseSession();
-        }
     }
 }

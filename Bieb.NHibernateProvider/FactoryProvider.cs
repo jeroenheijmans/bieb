@@ -1,29 +1,24 @@
-﻿using NHibernate.Cfg;
-using NHibernate;
-using NHibernate.Dialect;
+﻿using System.IO;
 using System.Reflection;
+using NHibernate;
+using NHibernate.Cfg;
 using NHibernate.Context;
-using System.IO;
-using System.Diagnostics;
+using NHibernate.Dialect;
 
 namespace Bieb.NHibernateProvider
 {
-    public static class Factory
+    /// <summary>
+    /// This class is expensive to create, it's preferred to create it as a singleton in the composition root.
+    /// </summary>
+    public class FactoryProvider : IFactoryProvider
     {
-        static Factory() 
+        public FactoryProvider()
         {
-            _instance = CreateSessionFactory();
+            var configuration = GetConfiguration();
+            Current = configuration.BuildSessionFactory();
         }
 
-        private static ISessionFactory _instance;
-        public static ISessionFactory Instance
-        {
-            get
-            {
-                Debug.Assert(_instance != null, "Session factory was not yet created, even though it should have been created in the static constructor.");
-                return _instance;
-            }
-        }
+        public ISessionFactory Current { get; private set; }
 
         public static void CreateSchema(bool executeOnDatabase)
         {
@@ -34,12 +29,6 @@ namespace Bieb.NHibernateProvider
             {
                 schemaExport.Execute(true, executeOnDatabase, false, null, writer);
             }
-        }
-
-        private static ISessionFactory CreateSessionFactory()
-        {
-            var configuration = GetConfiguration();
-            return configuration.BuildSessionFactory();
         }
 
         private static Configuration GetConfiguration()
@@ -53,7 +42,7 @@ namespace Bieb.NHibernateProvider
                                             db.Dialect<MsSql2008Dialect>();
                                         })
 
-                // This must be done before adding the mappings, of course...
+                // This must be done *before* adding the mappings, of course...
                .SetProperty(Environment.CollectionTypeFactoryClass, typeof(Net4CollectionTypeFactory).AssemblyQualifiedName)
 
                .AddAssembly(Assembly.GetExecutingAssembly())

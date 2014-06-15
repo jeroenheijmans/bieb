@@ -185,7 +185,7 @@
     <Compile Include="Helpers\ImageExtensions.cs" />
     <Compile Include="Infrastructure\Filters\LogActionFilter.cs" />
     <Compile Include="Infrastructure\Filters\LogExceptionFilter.cs" />
-    <Compile Include="Infrastructure\NinjectModules\DomainModule.cs" />
+    <Compile Include="Infrastructure\NinjectModules\DataAccessModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\LocalizationModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\LoggingModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\ModelMapperModule.cs" />
