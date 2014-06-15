@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Tests", "Bieb.Tests\Bi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.CommandLineTool", "Bieb.CommandLineTool\Bieb.CommandLineTool.csproj", "{35B4B99C-C0F6-445E-8420-E94DA41C35B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.DataAccess", "Bieb.NHibernateProvider\Bieb.DataAccess.csproj", "{A98CA5A5-29DB-4E2F-BC94-9FB9C7309AD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.DataAccess", "Bieb.DataAccess\Bieb.DataAccess.csproj", "{A98CA5A5-29DB-4E2F-BC94-9FB9C7309AD1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bieb.Framework", "Bieb.Framework\Bieb.Framework.csproj", "{705A6B64-A200-4C69-BE44-7EC71FD13FCB}"
 EndProject
