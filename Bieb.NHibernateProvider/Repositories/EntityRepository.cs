@@ -1,33 +1,31 @@
 ﻿using System;
 using System.Linq;
+using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using NHibernate;
-using NHibernate.Linq;
-using Bieb.Domain.Entities;
 using NHibernate.Criterion;
+using NHibernate.Linq;
 using NHibernate.SqlCommand;
 
 namespace Bieb.NHibernateProvider.Repositories
 {
     public class EntityRepository<T> : IEntityRepository<T> where T : BaseEntity
     {
-        // This is static... for now, as long as it's merely referring to the static singleton anyhow
-        private static ISession CurrentSession
+        public EntityRepository(ISessionProvider sessionProvider)
         {
-            get
-            {
-                return Session.Instance;
-            }
+            currentSession = sessionProvider.Current;
         }
+
+        private readonly ISession currentSession;
 
         public T GetItem(int id)
         {
-            return CurrentSession.Get<T>(id);
+            return currentSession.Get<T>(id);
         }
 
         public T GetRandomItem()
         {
-            return CurrentSession
+            return currentSession
                     .CreateCriteria<T>()
                     .AddOrder(new RandomOrder())
                     .SetMaxResults(1)
@@ -36,16 +34,16 @@ namespace Bieb.NHibernateProvider.Repositories
 
         public IQueryable<T> Items
         {
-            get { return CurrentSession.Query<T>(); }
+            get { return currentSession.Query<T>(); }
         }
 
         public void Add(T item)
         {
             if (item == null) throw new ArgumentNullException("item");
 
-            using (var transaction = CurrentSession.BeginTransaction())
+            using (var transaction = currentSession.BeginTransaction())
             {
-                CurrentSession.Save(item);
+                currentSession.Save(item);
                 transaction.Commit();
             }
         }
@@ -54,9 +52,9 @@ namespace Bieb.NHibernateProvider.Repositories
         {
             if (item == null) throw new ArgumentNullException("item");
 
-            using (var transaction = CurrentSession.BeginTransaction())
+            using (var transaction = currentSession.BeginTransaction())
             {
-                CurrentSession.Delete(item);
+                currentSession.Delete(item);
                 transaction.Commit();
             }
         }
@@ -65,9 +63,9 @@ namespace Bieb.NHibernateProvider.Repositories
         {
             if (item == null) throw new ArgumentNullException("item");
 
-            using (var transaction = CurrentSession.BeginTransaction())
+            using (var transaction = currentSession.BeginTransaction())
             {
-                CurrentSession.Update(item);
+                currentSession.Update(item);
                 transaction.Commit();
             }
         }

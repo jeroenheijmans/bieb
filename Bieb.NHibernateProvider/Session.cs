@@ -1,36 +1,22 @@
-﻿using System.Web;
+﻿using System;
 using NHibernate;
 
 namespace Bieb.NHibernateProvider
 {
-    public sealed class Session
+    public class SessionProvider : ISessionProvider, IDisposable
     {
-        private Session() { }
-
-        // TODO: Refactor this to a DI approach
-        internal static ISession Instance
+        public SessionProvider(IFactoryProvider factoryProvider)
         {
-            get
-            {
-                var session = (ISession)HttpContext.Current.Items["NHibernateSession"];
-                if (session == null) {
-                    session = Factory.Instance.OpenSession();
-                    HttpContext.Current.Items.Add("NHibernateSession", session);
-                }
-                return session;
-            }
+            Current = factoryProvider.Current.OpenSession();
         }
 
-        public static void CloseSession()
+        public ISession Current { get; private set; }
+
+        public void Dispose()
         {
-            var session = (ISession)HttpContext.Current.Items["NHibernateSession"];
-            if (session != null)
+            if (Current != null && Current.IsOpen)
             {
-                if (session.IsOpen)
-                {
-                    session.Close();
-                }
-                HttpContext.Current.Items.Remove("NHibernateSession");
+                Current.Close();
             }
         }
     }

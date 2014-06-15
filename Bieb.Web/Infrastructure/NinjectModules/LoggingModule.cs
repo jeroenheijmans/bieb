@@ -7,7 +7,7 @@ using Bieb.Web.Infrastructure.Filters;
 using Ninject.Modules;
 using Ninject.Web.Mvc.FilterBindingSyntax;
 
-namespace Bieb.Web.Infrastructure
+namespace Bieb.Web.Infrastructure.NinjectModules
 {
     public class LoggingModule : NinjectModule
     {

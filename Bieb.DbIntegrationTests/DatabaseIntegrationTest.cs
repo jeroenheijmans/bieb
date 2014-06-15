@@ -32,7 +32,7 @@ namespace Bieb.DbIntegrationTests
                                                            db.Dialect<MsSql2008Dialect>();
                                                        })
                               .SetProperty(NHibernate.Cfg.Environment.CollectionTypeFactoryClass, typeof (Net4CollectionTypeFactory).AssemblyQualifiedName)
-                              .AddAssembly(typeof(Bieb.NHibernateProvider.Factory).Assembly)
+                              .AddAssembly(typeof(Bieb.NHibernateProvider.FactoryProvider).Assembly)
                               .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>();
 
                 _factory = _configuration.BuildSessionFactory();

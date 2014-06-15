@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using NHibernate;
 
 namespace Bieb.NHibernateProvider.Repositories
 {
     public class BookRepository : EntityRepository<Book>, IBookRepository
     {
+        public BookRepository(ISessionProvider sessionProvider)
+            : base(sessionProvider)
+        { }
+
         public IQueryable<int> IsbnLanguages
         {
             get
