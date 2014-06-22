@@ -69,7 +69,7 @@ namespace Bieb.Tests.Domain
             story3.Tags.Add(sweet);
 
             var someBook = new Book();
-            someBook.Stories.Add(1, story3);
+            someBook.AddStory(1, story3);
 
             var tolkien = new Person();
 

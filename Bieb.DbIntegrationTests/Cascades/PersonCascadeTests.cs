@@ -83,12 +83,13 @@ namespace Bieb.DbIntegrationTests.Cascades
         [Test]
         public void Delete_Person_Will_Cascade_To_Authored_Stories()
         {
+            testStory.Book = testBook;
             testPerson.AddAuthoredStory(testStory);
 
             using (var transaction = Session.BeginTransaction())
             {
                 Session.Save(testPerson);
-                Session.Save(testStory);
+                Session.Save(testBook);
                 transaction.Commit();
             }
 
@@ -102,11 +103,12 @@ namespace Bieb.DbIntegrationTests.Cascades
         public void Delete_Person_Will_Cascade_To_Translated_Stories()
         {
             testPerson.AddTranslatedStory(testStory);
+            testPerson.AddAuthoredStory(testStory);
 
             using (var transaction = Session.BeginTransaction())
             {
                 Session.Save(testPerson);
-                Session.Save(testStory);
+                Session.Save(testBook);
                 transaction.Commit();
             }
 

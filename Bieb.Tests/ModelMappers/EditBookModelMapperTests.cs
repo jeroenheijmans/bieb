@@ -280,9 +280,9 @@ namespace Bieb.Tests.ModelMappers
         {
             var book = new Book();
 
-            book.Stories.Add(1, story1);
-            book.Stories.Add(2, story2);
-            book.Stories.Add(3, story3);
+            book.AddStory(1, story1);
+            book.AddStory(2, story2);
+            book.AddStory(3, story3);
 
             var model = mapper.ModelFromEntity(book);
 
@@ -297,7 +297,7 @@ namespace Bieb.Tests.ModelMappers
         {
             var bookEntity = new Book();
             var storyEntity = new Story() {Id = 1, Title = "Gasp!"};
-            bookEntity.Stories.Add(1, storyEntity);
+            bookEntity.AddStory(1, storyEntity);
 
             var bookModel = mapper.ModelFromEntity(bookEntity);
 

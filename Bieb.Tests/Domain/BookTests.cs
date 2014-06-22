@@ -20,8 +20,8 @@ namespace Bieb.Tests.Domain
             var tag2 = new Tag { Name = "Fantasy" };
             var unusedTag = new Tag { Name = "Educational" };
 
-            myBook.Stories.Add(1, story1);
-            myBook.Stories.Add(2, story2);
+            myBook.AddStory(1, story1);
+            myBook.AddStory(2, story2);
             story1.Tags.Add(tag1);
             story1.Tags.Add(tag2);
             story2.Tags.Add(tag1);
@@ -39,7 +39,7 @@ namespace Bieb.Tests.Domain
             var novel = new Book();
 
             var story = new Story();
-            novel.Stories.Add(1, story);
+            novel.AddStory(1, story);
 
             var person = new Person();
             story.Authors.Add(person);
@@ -62,8 +62,8 @@ namespace Bieb.Tests.Domain
 
             story1.Authors.Add(asimov);
             story2.Authors.Add(tolkien);
-            myBook.Stories.Add(1, story1);
-            myBook.Stories.Add(2, story2);
+            myBook.AddStory(1, story1);
+            myBook.AddStory(2, story2);
 
             Assert.That(myBook.AllAuthors.Count(), Is.EqualTo(2));
             Assert.That(myBook.AllAuthors.ToList(), Has.Member(asimov));
@@ -83,7 +83,7 @@ namespace Bieb.Tests.Domain
 
             story1.Authors.Add(tolkien);
             story1.Authors.Add(sonOfTolkien);
-            myBook.Stories.Add(1, story1);
+            myBook.AddStory(1, story1);
 
             Assert.That(myBook.AllAuthors.Count(), Is.EqualTo(2));
             Assert.That(myBook.AllAuthors.ToList(), Has.Member(tolkien));
@@ -105,8 +105,8 @@ namespace Bieb.Tests.Domain
             story1.Translators.Add(pjotr);
             story2.Translators.Add(pjotr);
             story2.Translators.Add(michelle);
-            myBook.Stories.Add(1, story1);
-            myBook.Stories.Add(2, story2);
+            myBook.AddStory(1, story1);
+            myBook.AddStory(2, story2);
 
             Assert.That(myBook.AllTranslators.Count(), Is.EqualTo(2));
             Assert.That(myBook.AllTranslators.ToList(), Has.Member(pjotr));
@@ -128,7 +128,7 @@ namespace Bieb.Tests.Domain
         {
             var myBook = new Book();
             var story = new Story();
-            myBook.Stories.Add(1, story);
+            myBook.AddStory(1, story);
 
             Assert.That(myBook.BookType, Is.EqualTo(BookType.Novel));
         }
@@ -147,15 +147,14 @@ namespace Bieb.Tests.Domain
             clarkeStory.Authors.Add(clarke);
 
             var novel = new Book { Title = "How Novel!" };
-            var collection = new Book { Stories = new Dictionary<int, Story>() };
-            var anthology = new Book { Stories = new Dictionary<int, Story>() };
 
-            collection.Stories.Add(0, asimovStory1);
-            collection.Stories.Add(1, asimovStory2);
+            var collection = new Book();
+            collection.AddStory(0, asimovStory1);
+            collection.AddStory(1, asimovStory2);
 
-            anthology.Stories.Add(0, asimovStory1);
-            anthology.Stories.Add(1, asimovStory2);
-            anthology.Stories.Add(2, clarkeStory);
+            var anthology = new Book();
+            anthology.AddStory(0, asimovStory1);
+            anthology.AddStory(1, clarkeStory);
 
             Assert.That(novel.BookType, Is.EqualTo(BookType.Novel));
             Assert.That(collection.BookType, Is.EqualTo(BookType.Collection));
@@ -176,9 +175,9 @@ namespace Bieb.Tests.Domain
             story3.Tags.Add(sweet);
 
             var theHobbit = new Book();
-            theHobbit.Stories.Add(0, story1);
-            theHobbit.Stories.Add(1, story2);
-            theHobbit.Stories.Add(2, story3);            
+            theHobbit.AddStory(0, story1);
+            theHobbit.AddStory(1, story2);
+            theHobbit.AddStory(2, story3);            
 
             Assert.That(theHobbit.AllTags.Contains(cool));
             Assert.That(theHobbit.AllTags.Contains(hot));

@@ -4,6 +4,14 @@ namespace Bieb.Domain.Entities
 {
     public class Story : Publishable
     {
+        public Story()
+            : base("")
+        { }
+
+        public Story(string title)
+            : base(title)
+        { }
+
         public virtual Book Book { get; set; }
         public virtual int PositionInBook { get; set; }
 

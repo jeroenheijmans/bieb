@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cascades\BookCascadeTests.cs" />
     <Compile Include="Cascades\PersonCascadeTests.cs" />
     <Compile Include="DatabaseIntegrationTest.cs" />
     <Compile Include="DatabaseObjects\SeriesDatabaseObjectsTests.cs" />

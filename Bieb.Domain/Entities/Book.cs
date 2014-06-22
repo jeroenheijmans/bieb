@@ -6,17 +6,27 @@ namespace Bieb.Domain.Entities
     public class Book : Publishable, IReviewable
     {
         public Book()
-        {
-            this.LibraryStatus = LibraryStatus.InPosession;
-        }
+            : base("")
+        { }
+
+        public Book(string title)
+            : base(title)
+        { }
 
         public virtual string Isbn { get; set; }
 
-        private readonly ISet<Tag> tags = new HashSet<Tag>(); 
+        private LibraryStatus libraryStatus = LibraryStatus.InPosession;
+        public virtual LibraryStatus LibraryStatus
+        {
+            get { return libraryStatus; }
+            set { libraryStatus = value; }
+        }
+
+        private readonly ISet<Tag> tags = new HashSet<Tag>();
         public virtual ISet<Tag> Tags
         {
             get { return tags; }
-        } 
+        }
 
         public virtual IEnumerable<Tag> AllTags
         {
@@ -29,11 +39,20 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IDictionary<int, Story> _stories = new SortedList<int, Story>();
-        public virtual IDictionary<int, Story> Stories 
+        private IDictionary<int, Story> stories = new SortedList<int, Story>();
+        public virtual IEnumerable<KeyValuePair<int, Story>> Stories 
         {
-            get { return _stories; }
-            set { _stories = value; }
+            get { return stories; }
+        }
+
+        public virtual void AddStory(Story story)
+        {
+            stories.Add(0, story);
+        }
+
+        public virtual void AddStory(int index, Story story)
+        {
+            stories.Add(index, story);
         }
 
         private readonly ISet<Person> editors = new HashSet<Person>();
@@ -46,7 +65,8 @@ namespace Bieb.Domain.Entities
         // TODO: Fix this dichotomy between Series being a collection or just one thing.
         // Probably the second option is the way to go, and the first one must begone!
         private readonly IList<Series> dbSeries = new List<Series>();
-        protected virtual IList<Series> DbSeries
+
+        private IList<Series> DbSeries
         {
             get { return dbSeries; }
         }
@@ -63,7 +83,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private readonly ISet<Person> authors = new HashSet<Person>(); 
+        private readonly ISet<Person> authors = new HashSet<Person>();
         public virtual ISet<Person> Authors
         {
             get { return authors; }
@@ -104,7 +124,7 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                if (Stories.Count <= 1)
+                if (Stories.Count() <= 1)
                     return BookType.Novel;
 
                 if (Stories.SelectMany(s => AllAuthors).Distinct().Count() == 1)
