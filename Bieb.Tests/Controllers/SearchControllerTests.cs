@@ -78,8 +78,8 @@ namespace Bieb.Tests.Controllers
             var story1 = new Story { Title = "The first story ever", Book = bundle };
             var story2 = new Story { Title = "The very second story", Book = bundle };
             var story3 = new Story { Title = "The third ever story", Book = bundle };
-            bundle.Stories.Add(0, story1);
-            bundle.Stories.Add(1, story2);
+            bundle.AddStory(0, story1);
+            bundle.AddStory(1, story2);
 
             storyRepository.Add(story1);
             storyRepository.Add(story2);
@@ -100,7 +100,7 @@ namespace Bieb.Tests.Controllers
         {
             var novel = new Book { };
             var story = new Story { Title = "Best book ever", Book = novel };
-            novel.Stories.Add(0, story);
+            novel.AddStory(0, story);
 
             storyRepository.Add(story);
 
@@ -145,8 +145,8 @@ namespace Bieb.Tests.Controllers
             var bundle = new Book();
             var story1 = new Story { Title = "The first story ever", Book = bundle };
             var story2 = new Story { Title = "The very second story", Book = bundle };
-            bundle.Stories.Add(0, story1);
-            bundle.Stories.Add(1, story2);
+            bundle.AddStory(0, story1);
+            bundle.AddStory(1, story2);
 
             storyRepository.Add(story1);
             storyRepository.Add(story2);

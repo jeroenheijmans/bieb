@@ -93,7 +93,7 @@ namespace Bieb.Web.Models.Books
                 if (storyEntity == null)
                 {
                     storyEntity = new Story();
-                    entity.Stories.Add(0, storyEntity);
+                    entity.AddStory(storyEntity);
                 }
 
                 storyMapper.MergeEntityWithModel(storyEntity, storyModel);
