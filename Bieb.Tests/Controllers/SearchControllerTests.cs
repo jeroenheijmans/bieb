@@ -46,9 +46,9 @@ namespace Bieb.Tests.Controllers
             var result = (ViewResult)controller.Basic("Mark");
             var searchResults = (BasicSearchResultModel)result.Model;
 
-            Assert.That(searchResults.books.Count(), Is.EqualTo(2));
-            Assert.That(searchResults.books, Contains.Item(markTheMartian));
-            Assert.That(searchResults.books, Contains.Item(markmanship));
+            Assert.That(searchResults.Books.Count(), Is.EqualTo(2));
+            Assert.That(searchResults.Books, Contains.Item(markTheMartian));
+            Assert.That(searchResults.Books, Contains.Item(markmanship));
         }
 
 
@@ -65,9 +65,9 @@ namespace Bieb.Tests.Controllers
 
             var searchResults = (BasicSearchResultModel)result.Model;
 
-            Assert.That(searchResults.people.Count(), Is.EqualTo(2));
-            Assert.That(searchResults.people, Contains.Item(aldiss));
-            Assert.That(searchResults.people, Contains.Item(asimov));
+            Assert.That(searchResults.People.Count(), Is.EqualTo(2));
+            Assert.That(searchResults.People, Contains.Item(aldiss));
+            Assert.That(searchResults.People, Contains.Item(asimov));
         }
 
 
@@ -89,9 +89,9 @@ namespace Bieb.Tests.Controllers
             var result = (ViewResult)controller.Basic("ever");
             var searchResults = (BasicSearchResultModel)result.Model;
 
-            Assert.That(searchResults.stories.Count(), Is.EqualTo(2));
-            Assert.That(searchResults.stories, Contains.Item(story1));
-            Assert.That(searchResults.stories, Contains.Item(story3));
+            Assert.That(searchResults.Stories.Count(), Is.EqualTo(2));
+            Assert.That(searchResults.Stories, Contains.Item(story1));
+            Assert.That(searchResults.Stories, Contains.Item(story3));
         }
 
 
@@ -107,7 +107,7 @@ namespace Bieb.Tests.Controllers
             var result = (ViewResult)controller.Basic("ever");
             
             var searchResults = (BasicSearchResultModel)result.Model;
-            Assert.That(searchResults.stories.Count(), Is.EqualTo(0));
+            Assert.That(searchResults.Stories.Count(), Is.EqualTo(0));
         }
 
 

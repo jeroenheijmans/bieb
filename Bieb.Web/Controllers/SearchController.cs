@@ -4,7 +4,10 @@ using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Models;
+using Bieb.Web.Models.Books;
+using Bieb.Web.Models.People;
 using Bieb.Web.Models.Search;
+using Bieb.Web.Models.Stories;
 
 namespace Bieb.Web.Controllers
 {
@@ -29,10 +32,10 @@ namespace Bieb.Web.Controllers
             if (query == null)
                 return View(new BasicSearchResultModel
                 {
-                    books = new Book[] { }.AsEnumerable(),
-                    people = new Person[] { }.AsEnumerable(),
-                    stories = new Story[] { }.AsEnumerable(),
-                    query = null
+                    Books = new LinkableBookModel[] { },
+                    People = new LinkablePersonModel[] { },
+                    Stories = new LinkableStoryModel[] { },
+                    Query = null
                 });
 
             var queryLowerCased = query.ToLower();
@@ -64,10 +67,10 @@ namespace Bieb.Web.Controllers
 
             var model = new BasicSearchResultModel()
                             {
-                                people = people,
-                                books = books,
-                                stories = stories,
-                                query = query
+                                People = people.Select(p => p.AsLinkablePersonModel()),
+                                Books = books.Select(b => b.AsLinkableBookModel()),
+                                Stories = stories.Select(s => s.AsLinkableStoryModel()),
+                                Query = query
                             };
 
             if (people.Count() == 1 && !books.Any() && !stories.Any())

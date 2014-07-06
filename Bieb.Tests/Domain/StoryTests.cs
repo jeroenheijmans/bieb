@@ -11,6 +11,14 @@ namespace Bieb.Tests.Domain
     public class StoryTests
     {
         [Test]
+        public void Story_Can_Accept_Title_In_Constructor()
+        {
+            var story = new Story("Madness");
+            Assert.That(story.Title, Is.EqualTo("Madness"));
+        }
+
+
+        [Test]
         public void Story_Without_Own_Language_Will_Use_Language_From_Book()
         {
             var book = new Book { IsbnLanguage = 90 };

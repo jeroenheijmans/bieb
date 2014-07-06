@@ -6,9 +6,6 @@ namespace Bieb.Domain.Entities
 {
     public abstract class Publishable : BaseEntity
     {
-        protected Publishable()
-        { }
-
         protected Publishable(string title)
         {
             this.title = title;

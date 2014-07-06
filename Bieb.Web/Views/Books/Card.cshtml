@@ -2,18 +2,16 @@
 
 <div class="panel panel-primary">
     <div class="panel-body">
-    <h1>@Html.DisplayFor(model => model.Title)</h1>
-    
-    @if (Model.Subtitle != null)
-    { 
-        <h2>@Html.DisplayFor(model => model.Subtitle)</h2>
-    }
+        <h1>@Html.DisplayFor(model => model.Title)</h1>
+        
+        @Html.ShowIfNotNull(Model.Subtitle, "h2")
 
         <ul class="list-unstyled">
             @if (Model.ShowPublishingInfo)
             {
                 <li>
                     @BiebResources.BookStrings.Published: 
+                    
                     @if (Model.Year != null)
                     {
                         <span>@Model.Year,</span>
