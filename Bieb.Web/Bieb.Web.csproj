@@ -183,6 +183,7 @@
     </Compile>
     <Compile Include="Helpers\ActionLinkExtensions.cs" />
     <Compile Include="Helpers\ImageExtensions.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Infrastructure\Filters\LogActionFilter.cs" />
     <Compile Include="Infrastructure\Filters\LogExceptionFilter.cs" />
     <Compile Include="Infrastructure\NinjectModules\DataAccessModule.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Models\Series\ViewSeriesModelMapper.cs" />
     <Compile Include="Models\Stories\EditStoryModel.cs" />
     <Compile Include="Models\Stories\EditStoryModelMapper.cs" />
+    <Compile Include="Models\Stories\LinkableStoryModel.cs" />
     <Compile Include="Models\Stories\ViewStoryModel.cs" />
     <Compile Include="Models\Stories\ViewStoryModelMapper.cs" />
     <Compile Include="Models\ViewEntityModel.cs" />
