@@ -31,7 +31,10 @@ namespace Bieb.Domain.Entities
             set { isbnLanguage = value; }
         }
 
+#pragma warning disable 649
+        // NHibernate uses this.
         private string titleSort;
+#pragma warning restore 649
         public virtual string TitleSort
         {
             get
