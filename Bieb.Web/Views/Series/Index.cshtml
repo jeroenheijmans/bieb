@@ -36,7 +36,7 @@
             @Html.ActionLink(series.Title, "Details", new { id=series.Id })
         </td>
         <td class="main-topic">
-            @string.Join(", ", series.Books)
+            @string.Join(", ", series.Books.Select(s => s.Title))
         </td>
     </tr>
 }
