@@ -30,7 +30,6 @@ namespace Bieb.DbIntegrationTests
                                                            db.ConnectionStringName = "BiebDbIntegrationTests";
                                                            db.Dialect<MsSql2008Dialect>();
                                                        })
-                              .SetProperty(NHibernate.Cfg.Environment.CollectionTypeFactoryClass, typeof (Net4CollectionTypeFactory).AssemblyQualifiedName)
                               .AddAssembly(typeof(FactoryProvider).Assembly)
                               .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>();
 
