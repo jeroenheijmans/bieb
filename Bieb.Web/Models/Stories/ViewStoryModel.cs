@@ -19,9 +19,9 @@ namespace Bieb.Web.Models.Stories
             HasTags = story.Tags.Any();
             Tags = string.Join(", ", story.Tags);
             Book = story.Book.AsLinkableBookModel();
-            Publisher = story.Publisher.AsLinkablePublisherModel();
             Authors = story.Authors.Select(a => a.AsLinkablePersonModel());
-            Translators = story.Translators.Select(t => t.AsLinkablePersonModel());
+            Translators = story.Translators.Select(a => a.AsLinkablePersonModel());
+            Publisher = story.Publisher.AsLinkablePublisherModel();
             ReferenceStory = story.ReferenceStory.AsViewStoryModel();
         }
 

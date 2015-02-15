@@ -2,17 +2,15 @@
   font-family: "MuseoSans500Regular";
   src: url("../fonts/museo_sans500-webfont.eot");
   src: url("../fonts/museo_sans500-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/museo_sans500-webfont.woff") format("woff"), url("../fonts/museo_sans500-webfont.ttf") format("truetype"), url("../fonts/museo_sans500-webfont.svg#MuseoSans500Regular") format("svg"); }
-
 @font-face {
   font-family: "handwriting-draft_regular";
   src: url("../fonts/handwriting-draft_free-version-webfont.eot");
   src: url("../fonts/handwriting-draft_free-version-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/handwriting-draft_free-version-webfont.woff") format("woff"), url("../fonts/handwriting-draft_free-version-webfont.ttf") format("truetype"), url("../fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular") format("svg"); }
-
 body {
   font-family: "MuseoSans500Regular", Georgia, serif;
   font-size: 1.5em;
   color: #333333;
-  background: white;
+  background: #FFFFFF;
   background-image: url("/Content/images/background-sprite.png");
   padding-top: 60px;
   /* required for BS .navbar-fixed */ }
@@ -25,10 +23,10 @@ blockquote {
   font-style: italic; }
 
 a {
-  color: #89003d; }
+  color: #89003D; }
   a:hover {
     text-decoration: none;
-    color: #ff0080; }
+    color: #FF0080; }
 
 .img-bordered {
   border: 1px solid #333333; }
@@ -45,7 +43,7 @@ a {
 
 .navbar-inverse .navbar-nav li > a,
 .navbar-inverse .dropdown-menu li > a {
-  color: white; }
+  color: #FFFFFF; }
 .navbar-inverse .navbar-nav li:hover,
 .navbar-inverse .navbar-nav li.active > a,
 .navbar-inverse .navbar-nav li.active > a:hover,
@@ -54,11 +52,11 @@ a {
 .navbar-inverse .dropdown-menu li.active > a,
 .navbar-inverse .dropdown-menu li.active > a:hover,
 .navbar-inverse .dropdown-menu li > a:hover {
-  color: white;
-  background: #ff0080; }
+  color: #FFFFFF;
+  background: #FF0080; }
 
 .title {
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #EEEEEE;
   clear: both;
   margin-bottom: 0.75em; }
   .title a {
@@ -66,11 +64,12 @@ a {
     font-size: 3.5em;
     font-family: 'handwriting-draft_regular', Verdana, serif; }
     .title a:hover {
-      color: #ff0080; }
+      color: #FF0080; }
 
 .panel-primary {
-  color: white;
-  background-color: #333333; }
+  color: #FFFFFF;
+  background-color: #333333;
+  border-width: 0; }
   .panel-primary h1 {
     font-size: 1.65em;
     margin-top: 0.375em; }
@@ -78,26 +77,26 @@ a {
     font-size: 1.3em;
     margin-top: 0; }
   .panel-primary a {
-    color: #ffd8ed; }
+    color: #FFD8ED; }
     .panel-primary a:hover {
       text-decoration: none;
-      color: #ff0080; }
+      color: #FF0080; }
 
 .panel-default {
-  background-color: #eeeeee; }
+  background-color: #EEEEEE; }
 
 .cover {
   margin-right: 50px; }
   .cover .back, .cover .front {
-    background-color: #eeeeee;
+    background-color: #EEEEEE;
     border: 1px solid #BBB;
     height: 300px; }
 
 .goodreads {
   margin: 0; }
   .goodreads iframe {
-    border: 1px solid #eeeeee;
-    background-color: white; }
+    border: 1px solid #EEEEEE;
+    background-color: #FFFFFF; }
 
 /* Including a Select2/BS3 fix from https://github.com/ivaynberg/select2/issues/1588 */
 .form-control .select2-choice {
@@ -122,3 +121,4 @@ a {
   border: 0 !important;
   border-radius: 3px; }
 
+/*# sourceMappingURL=site.css.map */

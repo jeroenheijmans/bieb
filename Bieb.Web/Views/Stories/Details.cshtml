@@ -14,13 +14,23 @@
         @if (Model.Authors.Any())
         {
             <h4>@BiebResources.SharedStrings.Authors</h4>
-            Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Authors);
+            <ul>
+            @foreach (var person in Model.Authors)
+            {
+                <li>@Html.ActionLink(person.Text, "Details", new { controller = "people", id = person.Id })</li>
+            }
+            </ul>
         }
 
         @if (Model.Translators.Any())
         {
             <h4>@BiebResources.SharedStrings.Translators</h4>
-            Html.RenderPartial("~/Views/People/ItemList.cshtml", Model.Translators);
+            <ul>
+            @foreach (var person in Model.Translators)
+            {
+                <li>@Html.ActionLink(person.Text, "Details", new { controller = "people", id = person.Id })</li>
+            }
+            </ul>
         }
     </div>
 
