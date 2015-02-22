@@ -13,6 +13,8 @@ namespace Bieb.Domain.Entities
         { }
 
         public virtual Book Book { get; set; }
+
+        // TODO: Evaluate if this property is even necessary.
         public virtual int PositionInBook { get; set; }
 
         public override int? IsbnLanguage

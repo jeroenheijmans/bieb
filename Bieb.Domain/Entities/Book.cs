@@ -48,11 +48,15 @@ namespace Bieb.Domain.Entities
         public virtual void AddStory(Story story)
         {
             stories.Add(0, story);
+            story.Book = this;
+            story.PositionInBook = 0;
         }
 
         public virtual void AddStory(int index, Story story)
         {
             stories.Add(index, story);
+            story.Book = this;
+            story.PositionInBook = index;
         }
 
         private readonly ISet<Person> editors = new HashSet<Person>();

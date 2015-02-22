@@ -23,6 +23,7 @@ namespace Bieb.Web.Models.Stories
             Translators = story.Translators.Select(a => a.AsLinkablePersonModel());
             Publisher = story.Publisher.AsLinkablePublisherModel();
             ReferenceStory = story.ReferenceStory.AsViewStoryModel();
+            SiblingStories = story.Book == null ? new List<LinkableStoryModel>() : story.Book.Stories.Where(s => s.Value != story).Select(s => s.Value.AsLinkableStoryModel());
         }
 
         public string Title { get; set; }
@@ -38,6 +39,7 @@ namespace Bieb.Web.Models.Stories
         public LinkablePublisherModel Publisher { get; set; }
         public IEnumerable<LinkablePersonModel> Authors { get; set; }
         public IEnumerable<LinkablePersonModel> Translators { get; set; }
+        public IEnumerable<LinkableStoryModel> SiblingStories { get; set; } 
 
         public ViewStoryModel ReferenceStory { get; set; }
     }

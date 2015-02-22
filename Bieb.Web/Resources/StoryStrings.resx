@@ -126,6 +126,9 @@
   <data name="FromHeader" xml:space="preserve">
     <value>From</value>
   </data>
+  <data name="Siblings" xml:space="preserve">
+    <value>Other stories in the same book</value>
+  </data>
   <data name="Subtitle" xml:space="preserve">
     <value>Subtitle</value>
   </data>

@@ -49,5 +49,18 @@ namespace Bieb.Tests.ModelMappers
             var result = mapper.ModelFromEntity(story);
             Assert.That(result.Translators.Count(), Is.EqualTo(1));
         }
+
+
+        [Test]
+        public void Can_Map_Sibling_Stories()
+        {
+            var story = new Story { Id = 1 };
+            var siblingstory = new Story { Id = 2 };
+            var book = new Book();
+            book.AddStory(0, story);
+            book.AddStory(1, siblingstory);
+            var result = mapper.ModelFromEntity(story);
+            Assert.That(result.SiblingStories.Single().Id, Is.EqualTo(siblingstory.Id));
+        }
     }
 }
