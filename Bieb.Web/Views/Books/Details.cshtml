@@ -42,11 +42,8 @@
         @*Fix BS/CSS to show this again:*@
         @*@{ Html.RenderPartial("Cover", Model); }*@
 
-        @foreach (var review in Model.Reviews)
-        {
-            <p>@review.Text</p>
-        }
-
+        <p>@Model.ReviewText</p>
+        
         @if (Model.ShowStoriesList)
         {
             <h4>@BiebResources.SharedStrings.Stories:</h4>

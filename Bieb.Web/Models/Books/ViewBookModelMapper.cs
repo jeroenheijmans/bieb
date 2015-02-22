@@ -35,7 +35,7 @@ namespace Bieb.Web.Models.Books
                                 Authors = entity.AllAuthors.Select(p => p.AsLinkablePersonModel()),
                                 CoverPeople = entity.Editors.Any() ? entity.Editors.Select(p => p.AsLinkablePersonModel()) : entity.AllAuthors.Select(p => p.AsLinkablePersonModel()),
                                 Translators = entity.AllTranslators.Select(p => p.AsLinkablePersonModel()),
-                                Reviews =  entity.Reviews.Select(r => new ViewBookReviewModel(r)),
+                                ReviewText =  entity.ReviewText,
                                 ShowStoriesList = entity.BookType != BookType.Novel,
                                 Stories = entity.Stories.Select(s => new ViewStoryModel(s.Value))
                             };

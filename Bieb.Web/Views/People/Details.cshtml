@@ -40,10 +40,7 @@
     </div>
 
     <div class="col-md-8">
-        @foreach (var review in Model.Reviews)
-        { 
-            <p>@review.ReviewText</p>
-        }
+        <p>@Model.ReviewText</p>
         
         @if (Model.AuthoredBooks.Any())
         {

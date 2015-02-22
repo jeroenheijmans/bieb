@@ -90,17 +90,13 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Can_Include_Reviews()
+        public void Can_Include_Review()
         {
-            var review = new Review<Book>() {Rating = 8, ReviewText = "Sublime!"};
-            var book = new Book();
-            book.Reviews.Add(review);
+            var book = new Book { ReviewText = "Good book!!" };
 
             var result = mapper.ModelFromEntity(book);
 
-            Assert.That(result.Reviews.Count() == 1, "There should be exactly one review in the model.");
-            Assert.That(result.Reviews.First().Text == review.ReviewText, "Review text should come from entity.");
-            Assert.That(result.Reviews.First().Rating == review.Rating, "Rating should come from entity.");
+            Assert.That(result.ReviewText, Is.EqualTo(book.ReviewText));
         }
 
 

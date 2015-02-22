@@ -5,7 +5,7 @@ using Bieb.Domain.CustomDataTypes;
 
 namespace Bieb.Domain.Entities
 {
-    public class Person : BaseEntity, IReviewable
+    public class Person : BaseEntity
     {
         public virtual string Title { get; set; }
         public virtual string FirstName { get; set; }
@@ -145,12 +145,7 @@ namespace Bieb.Domain.Entities
             translatedStories.Add(story);
         }
 
-        private readonly ISet<Review<Person>> reviews = new HashSet<Review<Person>>();
-        public virtual ISet<Review<Person>> Reviews
-        {
-            get { return reviews; }
-        }
-
+        public virtual string ReviewText { get; set; }
 
         /// <summary>
         /// All the tags from stories in edited books, plus those from translated- and authored stories

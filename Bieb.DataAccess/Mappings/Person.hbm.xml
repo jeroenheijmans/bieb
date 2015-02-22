@@ -31,6 +31,8 @@
     <property name="DateOfDeathFrom" type="Date" />
     <property name="DateOfDeathUntil" type="Date" />
 
+    <property name="ReviewText" length="4000" />
+    
     <set name="AuthoredBooks" table="BookAuthor" access="field.camelcase" inverse="true" cascade="delete">
       <key column="PersonId" />
       <many-to-many column="BookId" class="Book" />
@@ -54,12 +56,6 @@
     <set name="TranslatedStories" table="StoryTranslator" access="field.camelcase" inverse="true" cascade="delete">
       <key column="PersonId" />
       <many-to-many column="StoryId" class="Story" />
-    </set>
-
-    <!-- Fully qualified name on the generic type needed, see:  Posted it on SO: http://stackoverflow.com/q/12547084/419956 -->
-    <set name="Reviews" table="Review" access="field.camelcase">
-      <key column="PersonId" foreign-key="FK_Review_Person" />
-      <one-to-many class="Review`1[Bieb.Domain.Entities.Person, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
     </set>
     
   </class>
