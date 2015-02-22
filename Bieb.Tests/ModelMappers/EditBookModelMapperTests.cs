@@ -7,6 +7,7 @@ using Bieb.Tests.Mocks;
 using Bieb.Web.Localization;
 using Bieb.Web.Models;
 using Bieb.Web.Models.Books;
+using Bieb.Web.Models.People;
 using Bieb.Web.Models.Stories;
 using Moq;
 using NUnit.Framework;
@@ -371,6 +372,25 @@ namespace Bieb.Tests.ModelMappers
             var model = new EditBookModel() {Stories = new[] {new EditStoryModel()}.ToList()};
             mapper.MergeEntityWithModel(book, model);
             Assert.That(book.Stories.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Can_Create_Model_With_ReviewText()
+        {
+            var book = new Book { ReviewText = "Great book!" };
+            var model = mapper.ModelFromEntity(book);
+            Assert.That(model.ReviewText, Is.EqualTo(book.ReviewText));
+        }
+
+
+        [Test]
+        public void Can_Merge_ReviewText_Into_Entity()
+        {
+            var book = new Book();
+            var model = new EditBookModel { ReviewText = "Terrible book." };
+            mapper.MergeEntityWithModel(book, model);
+            Assert.That(book.ReviewText, Is.EqualTo(model.ReviewText));
         }
     }
 }

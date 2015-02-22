@@ -331,6 +331,24 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Review.
+        /// </summary>
+        public static string ReviewText {
+            get {
+                return ResourceManager.GetString("ReviewText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write something interesting about this person; your opinion, an anecdote, etc..
+        /// </summary>
+        public static string ReviewTextPlaceholder {
+            get {
+                return ResourceManager.GetString("ReviewTextPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Roles.
         /// </summary>
         public static string RolesHeader {

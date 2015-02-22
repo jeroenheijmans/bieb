@@ -180,6 +180,12 @@
   <data name="PublishedBy" xml:space="preserve">
     <value>Published By</value>
   </data>
+  <data name="ReviewText" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="ReviewTextPlaceholder" xml:space="preserve">
+    <value>Write something interesting about this book; your opinion, an anecdote, etc.</value>
+  </data>
   <data name="Stories" xml:space="preserve">
     <value>Stories</value>
   </data>

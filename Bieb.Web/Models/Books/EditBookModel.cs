@@ -61,5 +61,10 @@ namespace Bieb.Web.Models.Books
 
         [Display(Name = "Stories", ResourceType = typeof(BiebResources.BookStrings))]
         public List<EditStoryModel> Stories { get; set; }
+
+
+        [Display(Name = "ReviewText", Prompt = "ReviewTextPlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
+        [DataType(DataType.MultilineText)]
+        public string ReviewText { get; set; }
     }
 }
