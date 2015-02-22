@@ -32,6 +32,17 @@
             }
             </ul>
         }
+        
+        @if (Model.SiblingStories.Any())
+        {
+            <h4>@BiebResources.StoryStrings.Siblings</h4>
+            <ul>
+            @foreach (var story in Model.SiblingStories)
+            {
+                <li>@Html.ActionLink(story.Text, "Details", new { controller = "story", id = story.Id })</li>
+            }
+            </ul>
+        }
     </div>
 
 </div>
