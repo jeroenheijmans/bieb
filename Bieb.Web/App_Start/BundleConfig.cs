@@ -18,7 +18,6 @@ namespace Bieb.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/jqueryplugins").Include(
                         "~/Scripts/select2.js"));
 
-            // TODO: Generate custom Modernizr build
             bundles.Add(new ScriptBundle("~/jsbundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
