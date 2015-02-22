@@ -25,6 +25,8 @@ namespace Bieb.Web.Models.People
 
             entity.DateOfBirth = new UncertainDate(model.BirthYear, model.BirthMonth, model.BirthDay);
             entity.DateOfDeath = new UncertainDate(model.DeathYear, model.DeathMonth, model.DeathDay);
+
+            entity.ReviewText = model.ReviewText;
         }
 
         public override EditPersonModel ModelFromEntity(Person entity)
@@ -51,6 +53,8 @@ namespace Bieb.Web.Models.People
             model.DeathYear = entity.DateOfDeath.Year;
 
             model.FullName = entity.FullName;
+
+            model.ReviewText = entity.ReviewText;
 
             return model;
         }

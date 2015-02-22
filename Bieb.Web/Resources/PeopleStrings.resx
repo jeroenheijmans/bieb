@@ -207,6 +207,12 @@
   <data name="RequestForAdditionalInfo" xml:space="preserve">
     <value>Do you have additional information about this person? Please let me know!</value>
   </data>
+  <data name="ReviewText" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="ReviewTextPlaceholder" xml:space="preserve">
+    <value>Write something interesting about this person; your opinion, an anecdote, etc.</value>
+  </data>
   <data name="RolesHeader" xml:space="preserve">
     <value>Roles</value>
   </data>

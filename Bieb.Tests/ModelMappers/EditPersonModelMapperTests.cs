@@ -49,5 +49,24 @@ namespace Bieb.Tests.ModelMappers
             mapper.MergeEntityWithModel(person, model);
             Assert.That(person.DateOfDeath, Is.EqualTo(new UncertainDate(1950, 5, 20)));
         }
+
+
+        [Test]
+        public void Can_Create_Model_With_ReviewText()
+        {
+            var person = new Person {ReviewText = "Great author!"};
+            var model = mapper.ModelFromEntity(person);
+            Assert.That(model.ReviewText, Is.EqualTo(person.ReviewText));
+        }
+
+
+        [Test]
+        public void Can_Merge_ReviewText_Into_Entity()
+        {
+            var person = new Person();
+            var model = new EditPersonModel {ReviewText = "Terrible author."};
+            mapper.MergeEntityWithModel(person, model);
+            Assert.That(person.ReviewText, Is.EqualTo(model.ReviewText));
+        }
     }
 }

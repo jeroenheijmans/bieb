@@ -36,6 +36,7 @@ namespace Bieb.Web.Models.Books
             entity.Subtitle = model.Subtitle;
             entity.Year = model.Year;
             entity.LibraryStatus = model.LibraryStatus;
+            entity.ReviewText = model.ReviewText;
 
             entity.Publisher = publishers.FirstOrDefault(p => p.Id == model.PublisherId);
 
@@ -118,6 +119,7 @@ namespace Bieb.Web.Models.Books
             model.Subtitle = entity.Subtitle;
             model.Year = entity.Year;
             model.LibraryStatus = entity.LibraryStatus;
+            model.ReviewText = entity.ReviewText;
 
             model.PublisherId = entity.Publisher == null ? (int?)null : entity.Publisher.Id;
 

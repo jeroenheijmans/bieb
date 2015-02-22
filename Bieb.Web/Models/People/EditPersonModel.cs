@@ -52,5 +52,9 @@ namespace Bieb.Web.Models.People
 
         [Display(Name = "Day", Prompt = "DayPlaceholder", ResourceType = typeof(BiebResources.PeopleStrings))]
         public int? BirthDay { get; set; }
+
+        [Display(Name = "ReviewText", Prompt = "ReviewTextPlaceholder", ResourceType = typeof(BiebResources.PeopleStrings))]
+        [DataType(DataType.MultilineText)]
+        public string ReviewText { get; set; }
     }
 }
