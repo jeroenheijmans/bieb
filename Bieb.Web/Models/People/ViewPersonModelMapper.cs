@@ -36,7 +36,7 @@ namespace Bieb.Web.Models.People
                            DateOfDeath = entity.DateOfDeath.ToString(),
                            HasTags = entity.Tags.Any(),
                            Tags = string.Join(", ", entity.Tags),
-                           Reviews = entity.Reviews.Select(r => new ViewPersonReviewModel(r)),
+                           ReviewText = entity.ReviewText,
                            AuthoredBooks = entity.AuthoredBooks.Select(b => bookMapper.ModelFromEntity(b)),
                            EditedBooks = entity.EditedBooks.Select(b => bookMapper.ModelFromEntity(b)),
                            TranslatedBooks = entity.TranslatedBooks.Select(b => bookMapper.ModelFromEntity(b)),

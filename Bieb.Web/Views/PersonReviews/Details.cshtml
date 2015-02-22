@@ -1,8 +1,0 @@
-﻿@model Bieb.Domain.Entities.Review<Bieb.Web.Models.People.ViewPersonReviewModel>
-
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>@BiebResources.SharedStrings.Review: @Html.ActionLink(Model.Person.Text, "Details", new { controller = "People", id = Model.Subject.Id })</h2>
-<p>@Model.ReviewText</p>

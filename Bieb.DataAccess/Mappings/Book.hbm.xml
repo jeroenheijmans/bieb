@@ -23,6 +23,7 @@
     <property name="Isbn" />
     <property name="IsbnLanguage" access="field.camelcase" />
     <property name="Year" />
+    <property name="ReviewText" length="4000" />
 
     <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Book_Publisher" />
 
@@ -56,12 +57,6 @@
       <key column="BookId" foreign-key="FK_BookTag_Story" />
       <many-to-many column="TagId" class="Tag" foreign-key="FK_BookTag_Tag" />
     </set>
-
-    <!-- Fully qualified name on the generic type needed, see: http://stackoverflow.com/q/12547084/419956 -->
-    <bag name="Reviews" table="Review" access="field.camelcase">
-      <key column="BookId" foreign-key="FK_Review_Book" />
-      <one-to-many class="Review`1[Bieb.Domain.Entities.Book, Bieb.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]" />
-    </bag>
 
     <many-to-one name="ReferenceBook" column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
 

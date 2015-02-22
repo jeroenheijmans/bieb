@@ -165,16 +165,6 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Will_Have_Same_Number_Of_Reviews_As_Source_Entity()
-        {
-            var person = new Person();
-            person.Reviews.Add(new Review<Person>() { Subject = person });
-            var model = mapper.ModelFromEntity(person);
-            Assert.That(model.Reviews.Count(), Is.EqualTo(1));
-        }
-
-
-        [Test]
         public void Will_Have_Same_Number_Of_AuthoredBooks_As_Source_Entity()
         {
             var person = new Person();

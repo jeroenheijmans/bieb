@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Bieb.Domain.Entities
 {
-    public class Book : Publishable, IReviewable
+    public class Book : Publishable
     {
         public Book()
             : base("")
@@ -134,11 +134,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IList<Review<Book>> reviews = new List<Review<Book>>();
-        public virtual IList<Review<Book>> Reviews
-        {
-            get { return reviews; }
-        }
+        public virtual string ReviewText { get; set; }
 
         public virtual Book ReferenceBook { get; set; }
 

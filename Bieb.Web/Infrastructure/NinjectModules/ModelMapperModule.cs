@@ -17,17 +17,13 @@ namespace Bieb.Web.Infrastructure.NinjectModules
         public override void Load()
         {
             Bind<IViewEntityModelMapper<Book, ViewBookModel>>().To<ViewBookModelMapper>();
-            Bind<IViewEntityModelMapper<Review<Book>, ViewBookReviewModel>>().To<ViewBookReviewModelMapper>();
             Bind<IViewEntityModelMapper<Person, ViewPersonModel>>().To<ViewPersonModelMapper>();
-            Bind<IViewEntityModelMapper<Review<Person>, ViewPersonReviewModel>>().To<ViewPersonReviewModelMapper>();
             Bind<IViewEntityModelMapper<Publisher, ViewPublisherModel>>().To<ViewPublisherModelMapper>();
             Bind<IViewEntityModelMapper<Series, ViewSeriesModel>>().To<ViewSeriesModelMapper>();
             Bind<IViewEntityModelMapper<Story, ViewStoryModel>>().To<ViewStoryModelMapper>();
 
             Bind<IEditEntityModelMapper<Book, EditBookModel>>().To<EditBookModelMapper>();
-            Bind<IEditEntityModelMapper<Review<Book>, EditBookReviewModel>>().To<EditBookReviewModelMapper>();
             Bind<IEditEntityModelMapper<Person, EditPersonModel>>().To<EditPersonModelMapper>();
-            Bind<IEditEntityModelMapper<Review<Person>, EditPersonReviewModel>>().To<EditPersonReviewModelMapper>();
             Bind<IEditEntityModelMapper<Publisher, EditPublisherModel>>().To<EditPublisherModelMapper>();
             Bind<IEditEntityModelMapper<Series, EditSeriesModel>>().To<EditSeriesModelMapper>();
             Bind<IEditEntityModelMapper<Story, EditStoryModel>>().To<EditStoryModelMapper>();

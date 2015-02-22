@@ -34,7 +34,7 @@ namespace Bieb.Web.Models.People
         public bool HasTags { get; set; }
         public string Tags { get; set; }
 
-        public IEnumerable<ViewPersonReviewModel> Reviews { get; set; }
+        public string ReviewText { get; set; }
 
         public IEnumerable<ViewBookModel> AuthoredBooks { get; set; }
         public IEnumerable<ViewBookModel> EditedBooks { get; set; }

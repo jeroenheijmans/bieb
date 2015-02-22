@@ -35,11 +35,11 @@ namespace Bieb.Web.Models.Books
 
         public IEnumerable<LinkablePersonModel> Editors { get; set; }
         public IEnumerable<LinkablePersonModel> Authors { get; set; }
-        public IEnumerable<LinkablePersonModel> Translators { get; set; } 
+        public IEnumerable<LinkablePersonModel> Translators { get; set; }
 
         public ViewBookModel ReferenceBook { get; set; }
 
-        public IEnumerable<ViewBookReviewModel> Reviews { get; set; }
+        public string ReviewText { get; set; }
 
         public bool ShowStoriesList { get; set; }
         public IEnumerable<ViewStoryModel> Stories { get; set; } 
