@@ -39,26 +39,9 @@
             @BiebResources.BookStrings.PeopleInvolved
         </th>
     </tr>
-
-@foreach (var book in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelbook => book.BookType)
-        </td>
-        <td class="main-topic">
-            @Html.ActionLink(book.Title, "Details", new { id=book.Id })
-        </td>
-        <td>
-            @Html.DisplayFor(modelbook => book.Language)
-        </td>
-        <td>
-            @Html.DisplayFor(modelbook => book.Year)
-        </td>
-        <td>
-            @Html.Raw(string.Join(", ", book.CoverPeople.Select(person => Html.ActionLink(person.Text, "Details", new { id=person.Id, controller="People" }))))
-        </td>
-    </tr>
-}
+    <tbody>
+        @Html.DisplayForModel()
+    </tbody>
 </table>
 
 @{ Html.RenderPartial("PagerPartial", Model); }

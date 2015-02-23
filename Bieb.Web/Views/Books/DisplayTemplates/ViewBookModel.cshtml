@@ -1,0 +1,19 @@
+﻿@model Bieb.Web.Models.Books.ViewBookModel
+
+<tr>
+    <td>
+        @Html.DisplayFor(model => model.BookType)
+    </td>
+    <td class="main-topic">
+        @Html.ActionLink(Model.Title, "Details", new { id = Model.Id })
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.Language)
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.Year)
+    </td>
+    <td>
+        @Html.Raw(string.Join(", ", Model.CoverPeople.Select(person => Html.ActionLink(person.Text, "Details", new { id = person.Id, controller = "People" }))))
+    </td>
+</tr>
