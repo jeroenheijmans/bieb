@@ -392,5 +392,16 @@ namespace Bieb.Tests.ModelMappers
             mapper.MergeEntityWithModel(book, model);
             Assert.That(book.ReviewText, Is.EqualTo(model.ReviewText));
         }
+
+
+        [Test]
+        public void Will_Add_New_Stories_With_Title_Into_Entity()
+        {
+            var book = new Book();
+            var model = new EditBookModel();
+            model.NewStories.First().Title = "Great story!";
+            mapper.MergeEntityWithModel(book, model);
+            Assert.That(book.Stories.Single().Value.Title, Is.EqualTo("Great story!"));
+        }
     }
 }

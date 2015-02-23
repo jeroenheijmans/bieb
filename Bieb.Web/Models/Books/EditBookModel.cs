@@ -16,6 +16,7 @@ namespace Bieb.Web.Models.Books
             AuthorIds = new int[0];
             TranslatorIds = new int[0];
             Stories = new List<EditStoryModel>();
+            NewStories = Enumerable.Range(0, 10).Select(x => new EditStoryModel()).ToList();
         }
 
 
@@ -61,6 +62,10 @@ namespace Bieb.Web.Models.Books
 
         [Display(Name = "Stories", ResourceType = typeof(BiebResources.BookStrings))]
         public List<EditStoryModel> Stories { get; set; }
+
+        // I'm not happy with this solution, but it allows me to postpone setting up client side code for editing items, so it'll have to do for now.
+        [Display(Name = "NewStories", ResourceType = typeof(BiebResources.BookStrings))]
+        public List<EditStoryModel> NewStories { get; set; }
 
 
         [Display(Name = "ReviewText", Prompt = "ReviewTextPlaceholder", ResourceType = typeof(BiebResources.BookStrings))]

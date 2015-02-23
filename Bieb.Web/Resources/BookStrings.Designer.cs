@@ -214,6 +214,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add some new stories.
+        /// </summary>
+        public static string NewStories {
+            get {
+                return ResourceManager.GetString("NewStories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are no books in the database yet..
         /// </summary>
         public static string NoBooksInDatabase {
