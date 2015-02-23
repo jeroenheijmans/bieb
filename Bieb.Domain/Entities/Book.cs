@@ -128,10 +128,10 @@ namespace Bieb.Domain.Entities
         {
             get
             {
-                if (Stories.Count() <= 1)
+                if (!Stories.Any())
                     return BookType.Novel;
 
-                if (Stories.SelectMany(s => AllAuthors).Distinct().Count() == 1)
+                if (Stories.SelectMany(s => AllAuthors).Distinct().Count() <= 1)
                     return BookType.Collection;
 
                 return BookType.Anthology;

@@ -124,13 +124,13 @@ namespace Bieb.Tests.Domain
 
 
         [Test]
-        public void Is_Novel_If_Book_Has_One_Story()
+        public void Is_Collection_If_Book_Has_Stories()
         {
             var myBook = new Book();
             var story = new Story();
             myBook.AddStory(1, story);
 
-            Assert.That(myBook.BookType, Is.EqualTo(BookType.Novel));
+            Assert.That(myBook.BookType, Is.EqualTo(BookType.Collection));
         }
 
 

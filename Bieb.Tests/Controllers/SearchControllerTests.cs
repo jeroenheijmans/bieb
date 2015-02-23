@@ -95,18 +95,24 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
-        public void Will_Not_Show_Stories_From_Novels_With_Basic_Search()
+        public void Will_Show_Solo_Stories_From_Books_With_Basic_Search()
         {
-            var novel = new Book { };
-            var story = new Story { Title = "Best book ever", Book = novel };
-            novel.AddStory(0, story);
+            var book1 = new Book();
+            var book2 = new Book();
 
-            storyRepository.Add(story);
+            var story1 = new Story { Title = "Best book ever" };
+            book1.AddStory(0, story1);
+
+            var story2 = new Story { Title = "Best book ever" };
+            book2.AddStory(0, story2);
+
+            storyRepository.Add(story1);
+            storyRepository.Add(story2);
 
             var result = (ViewResult)controller.Basic("ever");
-            
+
             var searchResults = (BasicSearchResultModel)result.Model;
-            Assert.That(searchResults.Stories.Count(), Is.EqualTo(0));
+            Assert.That(searchResults.Stories.Count(), Is.EqualTo(2));
         }
 
 

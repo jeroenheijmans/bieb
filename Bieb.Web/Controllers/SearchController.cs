@@ -61,9 +61,7 @@ namespace Bieb.Web.Controllers
                 .Items
                 .Where(s => s.Title.ToLower().Contains(queryLowerCased))
                 .OrderBy(s => s.Title)
-                .Select(s => s)
-                .ToList() // Workaround, because the upcoming "Where" won't work with NHibernate (the stories are going to be enumerated anyways)
-                .Where(s => s.Book == null || s.Book.BookType != BookType.Novel);
+                .Select(s => s);
 
             var model = new BasicSearchResultModel()
                             {
