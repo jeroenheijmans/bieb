@@ -99,7 +99,13 @@ namespace Bieb.Web.Models.Books
 
                 storyMapper.MergeEntityWithModel(storyEntity, storyModel);
             }
-            
+
+            foreach (var storyModel in model.NewStories.Where(s => !string.IsNullOrEmpty(s.Title)))
+            {
+                var storyEntity = new Story();
+                entity.AddStory(storyEntity);
+                storyMapper.MergeEntityWithModel(storyEntity, storyModel);
+            }
         }
 
         public override EditBookModel ModelFromEntity(Book entity)

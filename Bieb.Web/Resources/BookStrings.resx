@@ -168,6 +168,9 @@
   <data name="LibraryStatus" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="NewStories" xml:space="preserve">
+    <value>Add some new stories</value>
+  </data>
   <data name="NoBooksInDatabase" xml:space="preserve">
     <value>There are no books in the database yet.</value>
   </data>
