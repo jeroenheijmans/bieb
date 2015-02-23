@@ -14,7 +14,7 @@ namespace Bieb.Web.Models.Books
         public ViewBookModel(Book book) : base(book)
         { }
 
-        public string BookType { get; set; } // TODO: Set this in the mapper.
+        public string BookType { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
 

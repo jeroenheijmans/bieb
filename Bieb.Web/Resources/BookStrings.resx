@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Anthology" xml:space="preserve">
+    <value>Anthology</value>
+  </data>
   <data name="Authors" xml:space="preserve">
     <value>Authors</value>
   </data>
   <data name="By" xml:space="preserve">
     <value>by</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>Collection</value>
   </data>
   <data name="CoverBackAlt" xml:space="preserve">
     <value>back cover</value>
@@ -173,6 +179,9 @@
   </data>
   <data name="NoBooksInDatabase" xml:space="preserve">
     <value>There are no books in the database yet.</value>
+  </data>
+  <data name="Novel" xml:space="preserve">
+    <value>Novel</value>
   </data>
   <data name="PeopleInvolved" xml:space="preserve">
     <value>Author / Editor</value>

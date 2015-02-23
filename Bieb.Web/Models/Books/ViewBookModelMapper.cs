@@ -37,7 +37,8 @@ namespace Bieb.Web.Models.Books
                                 Translators = entity.AllTranslators.Select(p => p.AsLinkablePersonModel()),
                                 ReviewText =  entity.ReviewText,
                                 ShowStoriesList = entity.BookType != BookType.Novel,
-                                Stories = entity.Stories.Select(s => new ViewStoryModel(s.Value))
+                                Stories = entity.Stories.Select(s => new ViewStoryModel(s.Value)),
+                                BookType = LocalizeBookType(entity.BookType)
                             };
 
             if (entity.ReferenceBook != null)
@@ -46,6 +47,22 @@ namespace Bieb.Web.Models.Books
             }
 
             return model;
+        }
+
+        private static string LocalizeBookType(BookType bookType)
+        {
+            switch (bookType)
+            {
+                case BookType.Anthology:
+                    return BiebResources.BookStrings.Anthology;
+
+                case BookType.Collection:
+                    return BiebResources.BookStrings.Collection;
+
+                case BookType.Novel:
+                default:
+                    return BiebResources.BookStrings.Novel;
+            }
         }
     }
 }
