@@ -22,7 +22,7 @@ namespace Bieb.Tests.Models
         public void Can_Display_English()
         {
             var result = displayer.GetLocalizedIsbnLanguageResource(1); // English
-            Assert.That(result, Is.Not.Null.Or.Empty);
+            Assert.That(result, Is.EqualTo("English"));
         }
 
         [Test]
@@ -46,13 +46,6 @@ namespace Bieb.Tests.Models
                 int keyForTestDelegateClosure = key;
                 Assert.DoesNotThrow(() => displayer.GetLocalizedIsbnLanguageResource(keyForTestDelegateClosure), "Key {0} could not be displayed.", key);
             }
-        }
-
-        [Test]
-        public void Will_Include_LanguageId_In_Resource()
-        {
-            var result = displayer.GetLocalizedIsbnLanguageResource(90);
-            Assert.That(result.Contains("90"));
         }
 
         [Test]
