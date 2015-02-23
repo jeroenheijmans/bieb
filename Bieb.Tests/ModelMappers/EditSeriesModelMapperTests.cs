@@ -99,5 +99,13 @@ namespace Bieb.Tests.ModelMappers
             Assert.That(model.BookIds[0], Is.EqualTo(dracula.Id));
             Assert.That(model.BookIds[1], Is.EqualTo(frankenstein.Id));
         }
+
+
+        [Test]
+        public void Model_Will_Have_Available_Books()
+        {
+            var model = mapper.ModelFromEntity(new Series());
+            Assert.That(model.AvailableBooks.Count(), Is.EqualTo(books.Items.Count()));
+        }
     }
 }
