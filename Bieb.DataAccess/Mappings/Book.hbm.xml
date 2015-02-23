@@ -27,7 +27,7 @@
 
     <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Book_Publisher" />
 
-    <map name="Stories" table="Story" access="field.camelcase" cascade="all">
+    <map name="Stories" table="Story" access="field.camelcase" cascade="all-delete-orphan" inverse="true">
       <key column="BookId" foreign-key="FK_Story_Book" />
       <index column="PositionInBook" type="Int32" />
       <one-to-many class="Story" />
