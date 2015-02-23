@@ -56,7 +56,7 @@
                 @foreach (var story in Model.Stories)
                 {
                     <li>
-                        @Html.ActionLink(story.Text, "Details", new { controller = "People", id = story.Id })
+                        @Html.ActionLink(story.Text, "Details", new { controller = "Stories", id = story.Id })
                     </li>
                 }
             </ul>
