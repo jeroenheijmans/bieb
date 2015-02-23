@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
+using NHibernate;
+using NHibernate.Criterion;
 
 namespace Bieb.DataAccess.Repositories
 {
@@ -11,6 +13,11 @@ namespace Bieb.DataAccess.Repositories
         public BookRepository(ISessionProvider sessionProvider)
             : base(sessionProvider)
         { }
+
+        protected override ICriteria AmendGetRandomItemCriterion(ICriteria input)
+        {
+            return input.Add(Restrictions.Where<Book>(b => b.LibraryStatus != LibraryStatus.OnlyForReference));
+        }
 
         public IQueryable<int> IsbnLanguages
         {
