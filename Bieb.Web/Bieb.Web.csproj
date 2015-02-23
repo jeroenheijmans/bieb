@@ -446,6 +446,7 @@
     <Content Include="Views\Shared\_NavigationPartial.cshtml" />
     <Content Include="Views\Shared\_NavigationAdminPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
+    <Content Include="Views\Books\DisplayTemplates\ViewBookModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
