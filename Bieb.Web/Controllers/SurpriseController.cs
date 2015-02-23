@@ -13,7 +13,7 @@ namespace Bieb.Web.Controllers
         private IEntityRepository<Person> PersonRepository { get; set; }
         private IEntityRepository<Book> BookRepository { get; set; }
 
-        public SurpriseController(IEntityRepository<Person> personRepository, IEntityRepository<Book> bookRepository)
+        public SurpriseController(IEntityRepository<Person> personRepository, IBookRepository bookRepository)
         {
             this.PersonRepository = personRepository;
             this.BookRepository = bookRepository;
@@ -28,7 +28,7 @@ namespace Bieb.Web.Controllers
         {
             if (!PersonRepository.Items.Any() || !BookRepository.Items.Any())
                 return RedirectToAction("EmptyDatabase", "Home");
-
+            
             if (randomTypeGenerator.GetRandomEntityType() == typeof(Person))
             {
                 var person = PersonRepository.GetRandomItem();

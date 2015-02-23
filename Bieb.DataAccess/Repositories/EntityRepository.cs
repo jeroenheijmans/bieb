@@ -18,6 +18,11 @@ namespace Bieb.DataAccess.Repositories
 
         private readonly ISession currentSession;
 
+        protected virtual ICriteria AmendGetRandomItemCriterion(ICriteria input)
+        {
+            return input;
+        }
+
         public T GetItem(int id)
         {
             return currentSession.Get<T>(id);
@@ -25,8 +30,7 @@ namespace Bieb.DataAccess.Repositories
 
         public T GetRandomItem()
         {
-            return currentSession
-                    .CreateCriteria<T>()
+            return this.AmendGetRandomItemCriterion(currentSession.CreateCriteria<T>())
                     .AddOrder(new RandomOrder())
                     .SetMaxResults(1)
                     .UniqueResult<T>();

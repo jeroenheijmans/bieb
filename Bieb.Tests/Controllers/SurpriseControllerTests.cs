@@ -15,7 +15,7 @@ namespace Bieb.Tests.Controllers
     [TestFixture]
     public class SurpriseControllerTests
     {
-        private IEntityRepository<Book> bookRepository;
+        private IBookRepository bookRepository;
         private IEntityRepository<Person> peopleRepository;
         private SurpriseController controller;
         private Book testBook;
@@ -26,7 +26,7 @@ namespace Bieb.Tests.Controllers
         public void SetUp()
         {
             peopleRepository = new RepositoryMock<Person>();
-            bookRepository = new RepositoryMock<Book>();
+            bookRepository = new BookRepositoryMock();
 
             controller = new SurpriseController(peopleRepository, bookRepository);
             testBook = new Book();
