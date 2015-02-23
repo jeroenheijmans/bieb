@@ -61,6 +61,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Anthology.
+        /// </summary>
+        public static string Anthology {
+            get {
+                return ResourceManager.GetString("Anthology", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Authors.
         /// </summary>
         public static string Authors {
@@ -75,6 +84,15 @@ namespace BiebResources {
         public static string By {
             get {
                 return ResourceManager.GetString("By", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collection.
+        /// </summary>
+        public static string Collection {
+            get {
+                return ResourceManager.GetString("Collection", resourceCulture);
             }
         }
         
@@ -228,6 +246,15 @@ namespace BiebResources {
         public static string NoBooksInDatabase {
             get {
                 return ResourceManager.GetString("NoBooksInDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Novel.
+        /// </summary>
+        public static string Novel {
+            get {
+                return ResourceManager.GetString("Novel", resourceCulture);
             }
         }
         
