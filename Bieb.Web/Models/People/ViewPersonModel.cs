@@ -16,7 +16,8 @@ namespace Bieb.Web.Models.People
         public string FullName { get; set; }
 
         public bool IsGenderKnown { get; set; }
-        public char Gender { get; set; }
+        public string Gender { get; set; }
+        public string GenderTooltip { get; set; }
 
         public bool IsNationalityKnown { get; set; }
         public string Nationality { get; set; }

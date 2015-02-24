@@ -38,13 +38,21 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Will_Set_Nondefault_Char_For_Gender()
+        public void Will_Set_Nondefault_String_For_Gender()
         {
             foreach (var gender in (Gender[])Enum.GetValues(typeof(Gender)))
             {
                 var model = mapper.ModelFromEntity(new Person { Gender = gender });
-                Assert.That(model.Gender != default(char), "Gender '{0}' should have non-default char to represent it.", gender);
+                Assert.That(model.Gender != default(string), "Gender '{0}' should have non-default char to represent it.", gender);
             }
+        }
+
+
+        [Test]
+        public void Has_Different_NonEmpty_Tooltip_For_Each_Gender()
+        {
+            var models = ((Gender[])Enum.GetValues(typeof(Gender))).Select(g => mapper.ModelFromEntity(new Person { Gender = g }));
+            Assert.That(models.Count(), Is.EqualTo(models.Select(m => m.GenderTooltip).Distinct().Count()));
         }
 
 

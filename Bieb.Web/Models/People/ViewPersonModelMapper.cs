@@ -24,7 +24,8 @@ namespace Bieb.Web.Models.People
                        {
                            FullName = entity.FullName,
                            IsGenderKnown = entity.Gender != Gender.Unkown,
-                           Gender = GenderCharacter(entity.Gender),
+                           Gender = GenderText(entity.Gender),
+                           GenderTooltip = GenderTooltip(entity.Gender),
                            IsNationalityKnown = !string.IsNullOrEmpty(entity.Nationality),
                            Nationality = entity.Nationality,
                            Roles = string.Join(", ", entity.Roles), // TODO: Localize this
@@ -45,19 +46,35 @@ namespace Bieb.Web.Models.People
                        };
         }
 
-        private static char GenderCharacter(Gender gender)
+        private static string GenderText(Gender gender)
         {
             switch (gender)
             {
                 case Gender.None:
-                    return '-';
+                    return "♂/♀";
                 case Gender.Male:
-                    return '♂';
+                    return "♂";
                 case Gender.Female:
-                    return '♀';
+                    return "♀";
                 case Gender.Unkown:
                 default:
-                    return '?';
+                    return "?";
+            }
+        }
+
+        private static string GenderTooltip(Gender gender)
+        {
+            switch (gender)
+            {
+                case Gender.None:
+                    return BiebResources.PeopleStrings.GenderTooltipNone;
+                case Gender.Male:
+                    return BiebResources.PeopleStrings.GenderTooltipMale;
+                case Gender.Female:
+                    return BiebResources.PeopleStrings.GenderTooltipFemale;
+                case Gender.Unkown:
+                default:
+                    return BiebResources.PeopleStrings.GenderTooltipUnkown;
             }
         }
     }

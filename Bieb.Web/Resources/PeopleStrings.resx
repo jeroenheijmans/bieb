@@ -162,6 +162,18 @@
   <data name="Gender" xml:space="preserve">
     <value>Gender</value>
   </data>
+  <data name="GenderTooltipFemale" xml:space="preserve">
+    <value>Female.</value>
+  </data>
+  <data name="GenderTooltipMale" xml:space="preserve">
+    <value>Male.</value>
+  </data>
+  <data name="GenderTooltipNone" xml:space="preserve">
+    <value>No explicit gender, e.g. this "person" represents multiple actual people.</value>
+  </data>
+  <data name="GenderTooltipUnkown" xml:space="preserve">
+    <value>Gender of this person is not known.</value>
+  </data>
   <data name="IndexIntroduction" xml:space="preserve">
     <value>These are all the authors, editors, and translators from books in my collection.</value>
   </data>
