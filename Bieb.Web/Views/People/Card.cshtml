@@ -9,7 +9,7 @@
         <p class="lead">
             @if (Model.IsGenderKnown)
             {
-                @Model.Gender
+                <span title="@Model.GenderTooltip">@Model.Gender</span>
             }
 
             @if (Model.Nationality != null)

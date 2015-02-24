@@ -196,6 +196,42 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Female..
+        /// </summary>
+        public static string GenderTooltipFemale {
+            get {
+                return ResourceManager.GetString("GenderTooltipFemale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Male..
+        /// </summary>
+        public static string GenderTooltipMale {
+            get {
+                return ResourceManager.GetString("GenderTooltipMale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No explicit gender, e.g. this &quot;person&quot; represents multiple actual people..
+        /// </summary>
+        public static string GenderTooltipNone {
+            get {
+                return ResourceManager.GetString("GenderTooltipNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gender of this person is not known..
+        /// </summary>
+        public static string GenderTooltipUnkown {
+            get {
+                return ResourceManager.GetString("GenderTooltipUnkown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to These are all the authors, editors, and translators from books in my collection..
         /// </summary>
         public static string IndexIntroduction {
