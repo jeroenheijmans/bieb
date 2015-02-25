@@ -221,5 +221,14 @@ namespace Bieb.Tests.Domain
             var book = new Book();
             Assert.DoesNotThrow(() => book.ReferencedByBooks.Add(book));
         }
+
+
+        [Test]
+        public void Can_Determine_Position_In_Book_For_Stories_Automatically()
+        {
+            var book = new Book();
+            Assert.DoesNotThrow(() => book.AddStory(new Story()));
+            Assert.DoesNotThrow(() => book.AddStory(new Story()));
+        }
     }
 }
