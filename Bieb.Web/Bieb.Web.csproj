@@ -237,6 +237,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookStrings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\IsbnLanguagesStrings.Designer.cs">
+      <DependentUpon>IsbnLanguagesStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\HomeStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -544,6 +549,12 @@
     <EmbeddedResource Include="Resources\BookStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BookStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>BiebResources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\IsbnLanguagesStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IsbnLanguagesStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>

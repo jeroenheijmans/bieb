@@ -116,7 +116,7 @@ namespace Bieb.Web.Models.Books
             model.AvailablePeople = new SelectList(people.OrderBy(p => p.Surname).ThenBy(p => p.FirstName), "Id", "FullNameAlphabetical");
 
             model.AvailableIsbnLanguages =
-                new SelectList(bookRepository.IsbnLanguages.Select(l => new {Value = l, Text = isbnLanguageDisplayer.GetLocalizedIsbnLanguageResource(l)}),
+                new SelectList(bookRepository.IsbnLanguages.Select(l => new {Value = l, Text = isbnLanguageDisplayer.GetLocalizedIsbnLanguageResourceForAdmins(l)}),
                                "Value", "Text");
 
             model.Isbn = entity.Isbn;
