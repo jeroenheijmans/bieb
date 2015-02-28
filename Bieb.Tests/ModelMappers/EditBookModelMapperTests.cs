@@ -7,7 +7,6 @@ using Bieb.Tests.Mocks;
 using Bieb.Web.Localization;
 using Bieb.Web.Models;
 using Bieb.Web.Models.Books;
-using Bieb.Web.Models.People;
 using Bieb.Web.Models.Stories;
 using Moq;
 using NUnit.Framework;
