@@ -10,9 +10,16 @@ namespace Bieb.Tests.Mocks
 {
     public class BookRepositoryMock : RepositoryMock<Book>, IBookRepository
     {
+        private IList<int> languages = new List<int>(new[] { 1, 2, 3 });  
+
+        public void SetNewIsbnLanguageIds(IEnumerable<int> newIds)
+        {
+            languages = new List<int>(newIds);
+        }
+
         public IQueryable<int> IsbnLanguages
         {
-            get { return new [] {1, 2, 3}.AsQueryable(); }
+            get { return languages.AsQueryable(); }
         }
     }
 }
