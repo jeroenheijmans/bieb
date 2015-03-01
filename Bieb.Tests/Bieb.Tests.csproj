@@ -140,7 +140,8 @@
     <Compile Include="Models\EditPublisherModelTests.cs" />
     <Compile Include="Models\EditSeriesModelTests.cs" />
     <Compile Include="Models\EditStoryModelTests.cs" />
-    <Compile Include="Models\IsbnLanguageDisplayerTests.cs" />
+    <Compile Include="Localization\EnumDisplayerTests.cs" />
+    <Compile Include="Localization\IsbnLanguageDisplayerTests.cs" />
     <Compile Include="Models\ModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routing\AccountRoutingTests.cs" />

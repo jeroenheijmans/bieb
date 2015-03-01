@@ -37,6 +37,9 @@ a {
   .single-topic-table .main-topic {
     white-space: normal;
     width: 100%; } }
+.label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
 .navbar-inverse,
 .navbar-inverse .dropdown-menu {
   background-color: #333333; }

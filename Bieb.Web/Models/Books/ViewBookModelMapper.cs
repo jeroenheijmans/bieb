@@ -25,6 +25,7 @@ namespace Bieb.Web.Models.Books
                             {
                                 Title = entity.Title,
                                 Subtitle = entity.Subtitle,
+                                LibraryStatus = EnumDisplayer.GetResource(entity.LibraryStatus),
                                 Tags = string.Join(", ", entity.Tags.Select(t => t.Name)),
                                 ShowPublishingInfo = (entity.Publisher != null) || (entity.Year.HasValue) || (entity.IsbnLanguage.HasValue),
                                 Publisher = entity.Publisher.AsLinkablePublisherModel(),

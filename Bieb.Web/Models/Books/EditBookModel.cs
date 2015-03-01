@@ -32,6 +32,9 @@ namespace Bieb.Web.Models.Books
         [Display(Name = "Year", Prompt = "YearPlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
         public int? Year { get; set; }
 
+
+        public SelectList AvailableLibraryStatuses { get; set; }
+
         [Display(Name = "LibraryStatus", ResourceType = typeof(BiebResources.BookStrings))]
         public LibraryStatus LibraryStatus { get; set; }
 

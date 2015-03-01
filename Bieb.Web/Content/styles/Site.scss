@@ -62,6 +62,8 @@ a {
 	}
 }
 
+// Fix, the site's font does not show well with Bootstrap's label styling
+.label { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 .navbar-inverse,
 .navbar-inverse .dropdown-menu {
