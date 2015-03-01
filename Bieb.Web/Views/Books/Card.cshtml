@@ -14,13 +14,13 @@
                     
                     @if (Model.Year != null)
                     {
-                        <span>@Model.Year,</span>
+                        <span>@Model.Year</span>
                     }
                     @if (Model.Publisher != null)
                     {
-                        <span>@Html.ActionLink(Model.Publisher.Text, "Details", new { id = Model.Publisher.Id, controller = "Publishers"}),</span>
+                        <span>by @Html.ActionLink(Model.Publisher.Text, "Details", new { id = Model.Publisher.Id, controller = "Publishers"})</span>
                     }
-                    @if (@Model.Language != null)
+                    @if (@Model.IsLanguageKnown)
                     {
                         <span>in @Model.Language</span>
                     }

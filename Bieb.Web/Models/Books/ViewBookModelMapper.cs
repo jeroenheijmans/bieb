@@ -29,6 +29,7 @@ namespace Bieb.Web.Models.Books
                                 ShowPublishingInfo = (entity.Publisher != null) || (entity.Year.HasValue) || (entity.IsbnLanguage.HasValue),
                                 Publisher = entity.Publisher.AsLinkablePublisherModel(),
                                 Year = entity.Year,
+                                IsLanguageKnown = entity.IsbnLanguage.HasValue,
                                 Language = isbnLanguageDisplayer.GetLocalizedIsbnLanguageResource(entity.IsbnLanguage),
                                 Series = entity.Series.AsLinkableSeriesModel(),
                                 Editors = entity.Editors.Select(p => p.AsLinkablePersonModel()),
