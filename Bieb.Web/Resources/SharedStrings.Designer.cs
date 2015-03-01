@@ -259,6 +259,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -none-.
+        /// </summary>
+        public static string NullOption {
+            get {
+                return ResourceManager.GetString("NullOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to of.
         /// </summary>
         public static string Of {

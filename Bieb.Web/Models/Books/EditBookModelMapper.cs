@@ -115,9 +115,7 @@ namespace Bieb.Web.Models.Books
             model.AvailablePublishers = new SelectList(publishers.OrderBy(p => p.Name), "Id", "Name");
             model.AvailablePeople = new SelectList(people.OrderBy(p => p.Surname).ThenBy(p => p.FirstName), "Id", "FullNameAlphabetical");
 
-            model.AvailableIsbnLanguages =
-                new SelectList(bookRepository.IsbnLanguages.Select(l => new {Value = l, Text = isbnLanguageDisplayer.GetLocalizedIsbnLanguageResourceForAdmins(l)}),
-                               "Value", "Text");
+            model.AvailableIsbnLanguages = new SelectList(GetLanguageOptions(), "Key", "Value");
 
             model.Isbn = entity.Isbn;
             model.IsbnLanguage = entity.IsbnLanguage;
@@ -136,6 +134,12 @@ namespace Bieb.Web.Models.Books
             model.Stories = entity.Stories.Select(s => storyMapper.ModelFromEntity(s.Value)).ToList();
 
             return model;
+        }
+
+
+        private IDictionary<string, string> GetLanguageOptions()
+        {
+            return bookRepository.IsbnLanguages.ToDictionary(id => id.ToString(), id => isbnLanguageDisplayer.GetLocalizedIsbnLanguageResourceForAdmins(id));
         }
     }
 }

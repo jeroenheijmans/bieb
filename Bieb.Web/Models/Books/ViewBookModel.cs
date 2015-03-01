@@ -20,6 +20,7 @@ namespace Bieb.Web.Models.Books
 
         public bool ShowPublishingInfo { get; set; }
         public LinkablePublisherModel Publisher { get; set; }
+        public bool IsLanguageKnown { get; set; }
         public string Language { get; set; }
         public string Isbn { get; set; }
         public int? Year { get; set; }

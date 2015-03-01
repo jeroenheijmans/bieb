@@ -183,6 +183,9 @@
   <data name="Novels" xml:space="preserve">
     <value>Novels</value>
   </data>
+  <data name="NullOption" xml:space="preserve">
+    <value>-none-</value>
+  </data>
   <data name="Of" xml:space="preserve">
     <value>of</value>
   </data>
