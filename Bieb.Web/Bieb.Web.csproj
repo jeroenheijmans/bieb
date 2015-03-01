@@ -190,6 +190,7 @@
     <Compile Include="Infrastructure\NinjectModules\LocalizationModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\LoggingModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\ModelMapperModule.cs" />
+    <Compile Include="Localization\EnumDisplayer.cs" />
     <Compile Include="Localization\IIsbnLanguageDisplayer.cs" />
     <Compile Include="Models\Account\AccountModels.cs" />
     <Compile Include="Models\Books\EditBookModelMapper.cs" />
@@ -236,6 +237,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BookStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Enums.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Enums.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\IsbnLanguagesStrings.Designer.cs">
       <DependentUpon>IsbnLanguagesStrings.resx</DependentUpon>
@@ -551,6 +557,11 @@
       <LastGenOutput>BookStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Enums.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Enums.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>BiebResources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\IsbnLanguagesStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

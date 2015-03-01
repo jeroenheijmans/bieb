@@ -117,6 +117,8 @@ namespace Bieb.Web.Models.Books
 
             model.AvailableIsbnLanguages = new SelectList(GetLanguageOptions(), "Key", "Value");
 
+            model.AvailableLibraryStatuses = new SelectList(GetLibraryStatusOptions(), "Key", "Value");
+
             model.Isbn = entity.Isbn;
             model.IsbnLanguage = entity.IsbnLanguage;
             model.Title = entity.Title;
@@ -137,9 +139,15 @@ namespace Bieb.Web.Models.Books
         }
 
 
-        private IDictionary<string, string> GetLanguageOptions()
+        private IEnumerable<KeyValuePair<string, string>> GetLanguageOptions()
         {
             return bookRepository.IsbnLanguages.ToDictionary(id => id.ToString(), id => isbnLanguageDisplayer.GetLocalizedIsbnLanguageResourceForAdmins(id));
         }
+
+
+        private static IEnumerable<KeyValuePair<LibraryStatus, string>> GetLibraryStatusOptions()
+        {
+            return Enum.GetValues(typeof (LibraryStatus)).Cast<LibraryStatus>().ToDictionary(s => s, EnumDisplayer.GetResource);
+        } 
     }
 }

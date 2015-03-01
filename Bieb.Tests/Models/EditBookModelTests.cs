@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Bieb.Web.Models;
 using Bieb.Web.Models.Books;
 
 namespace Bieb.Tests.Models
@@ -15,6 +13,7 @@ namespace Bieb.Tests.Models
             this.PropertiesNotNeedingDisplay.Add("AvailablePublishers");
             this.PropertiesNotNeedingDisplay.Add("AvailablePeople");
             this.PropertiesNotNeedingDisplay.Add("AvailableIsbnLanguages");
+            this.PropertiesNotNeedingDisplay.Add("AvailableLibraryStatuses");
         }
     }
 }

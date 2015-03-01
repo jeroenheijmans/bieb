@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bieb.Web.Localization;
-using Bieb.Web.Models;
 using NUnit.Framework;
 
-namespace Bieb.Tests.Models
+namespace Bieb.Tests.Localization
 {
     [TestFixture]
     public class IsbnLanguageDisplayerTests
@@ -15,7 +14,7 @@ namespace Bieb.Tests.Models
         // List retrieved from http://en.wikipedia.org/wiki/List_of_ISBN_identifier_groups
         // Taken only the 1 and 2 digit identifiers
         private readonly int[] wikipediasIsbnLanguages = new[] { 0, 1, 2, 3, 4, 5, 7, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94 };
-        private const int isbnIdForEnglish = 1;
+        private const int IsbnIdForEnglish = 1;
 
 
         [SetUp]
@@ -28,7 +27,7 @@ namespace Bieb.Tests.Models
         [Test]
         public void Can_Display_English()
         {
-            var result = displayer.GetLocalizedIsbnLanguageResource(isbnIdForEnglish); // English
+            var result = displayer.GetLocalizedIsbnLanguageResource(IsbnIdForEnglish); // English
             StringAssert.Contains("English", result);
         }
 
@@ -36,9 +35,9 @@ namespace Bieb.Tests.Models
         [Test]
         public void Can_Display_English_For_Admins()
         {
-            var result = displayer.GetLocalizedIsbnLanguageResourceForAdmins(isbnIdForEnglish); // English
+            var result = displayer.GetLocalizedIsbnLanguageResourceForAdmins(IsbnIdForEnglish); // English
             StringAssert.Contains("English", result);
-            StringAssert.Contains(isbnIdForEnglish.ToString(), result);
+            StringAssert.Contains(IsbnIdForEnglish.ToString(), result);
         }
 
 

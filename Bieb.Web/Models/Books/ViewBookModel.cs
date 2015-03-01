@@ -17,6 +17,7 @@ namespace Bieb.Web.Models.Books
         public string BookType { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
+        public string LibraryStatus { get; set; }
 
         public bool ShowPublishingInfo { get; set; }
         public LinkablePublisherModel Publisher { get; set; }

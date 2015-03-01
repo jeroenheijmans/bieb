@@ -417,14 +417,6 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Will_Not_Give_Model_Available_Option_To_Set_Language_Unknown()
-        {
-            var model = mapper.ModelFromEntity(new Book());
-            Assert.That(model.AvailableIsbnLanguages.Items.Cast<SelectListItem>().Count(x => x.Value == null), Is.EqualTo(0), "Expecting zero options to represent NULL language (this should be added in the View with the correct DropDownListFor overload).");
-        }
-
-
-        [Test]
         public void Will_Allow_Setting_Publisher_To_Null()
         {
             var book = new Book { Publisher = new Publisher() };
