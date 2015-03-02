@@ -29,7 +29,7 @@ namespace Bieb.Web.Models.People
                            GenderTooltip = GenderTooltip(entity.Gender),
                            IsNationalityKnown = !string.IsNullOrEmpty(entity.Nationality),
                            Nationality = entity.Nationality,
-                           Roles = string.Join(", ", entity.Roles), // TODO: Localize this
+                           Roles = string.Join(", ", entity.Roles.Select(EnumDisplayer.GetResource)),
                            IsPlaceOfBirthKnown = !string.IsNullOrEmpty(entity.PlaceOfBirth),
                            PlaceOfBirth = entity.PlaceOfBirth,
                            DateOfBirth = entity.DateOfBirth.ToString(),

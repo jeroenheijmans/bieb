@@ -131,5 +131,32 @@ namespace BiebResources {
                 return ResourceManager.GetString("LibraryStatus3", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        public static string Role0 {
+            get {
+                return ResourceManager.GetString("Role0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Translator.
+        /// </summary>
+        public static string Role1 {
+            get {
+                return ResourceManager.GetString("Role1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editor.
+        /// </summary>
+        public static string Role2 {
+            get {
+                return ResourceManager.GetString("Role2", resourceCulture);
+            }
+        }
     }
 }

@@ -17,6 +17,11 @@ namespace Bieb.Web.Localization
             return BiebResources.Enums.ResourceManager.GetString("Gender" + GetEnumId(gender));
         }
 
+        public static string GetResource(Role role)
+        {
+            return BiebResources.Enums.ResourceManager.GetString("Role" + GetEnumId(role));
+        }
+
         private static object GetEnumId(Enum status)
         {
             return Convert.ChangeType(status, status.GetTypeCode());
