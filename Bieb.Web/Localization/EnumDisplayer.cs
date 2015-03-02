@@ -9,8 +9,17 @@ namespace Bieb.Web.Localization
     {
         public static string GetResource(LibraryStatus status)
         {
-            var id = Convert.ChangeType(status, status.GetTypeCode());
-            return BiebResources.Enums.ResourceManager.GetString("LibraryStatus" + id);
+            return BiebResources.Enums.ResourceManager.GetString("LibraryStatus" + GetEnumId(status));
+        }
+
+        public static string GetResource(Gender gender)
+        {
+            return BiebResources.Enums.ResourceManager.GetString("Gender" + GetEnumId(gender));
+        }
+
+        private static object GetEnumId(Enum status)
+        {
+            return Convert.ChangeType(status, status.GetTypeCode());
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bieb.Domain.Entities;
+using Bieb.Web.Localization;
 using Bieb.Web.Models.Books;
 using Bieb.Web.Models.Stories;
 
@@ -24,7 +25,7 @@ namespace Bieb.Web.Models.People
                        {
                            FullName = entity.FullName,
                            IsGenderKnown = entity.Gender != Gender.Unkown,
-                           Gender = GenderText(entity.Gender),
+                           Gender = EnumDisplayer.GetResource(entity.Gender),
                            GenderTooltip = GenderTooltip(entity.Gender),
                            IsNationalityKnown = !string.IsNullOrEmpty(entity.Nationality),
                            Nationality = entity.Nationality,
@@ -44,22 +45,6 @@ namespace Bieb.Web.Models.People
                            TranslatedStories = entity.TranslatedStories.Select(s => storyMapper.ModelFromEntity(s)),
                            AuthoredStories = entity.AuthoredStories.Select(s => storyMapper.ModelFromEntity(s))
                        };
-        }
-
-        private static string GenderText(Gender gender)
-        {
-            switch (gender)
-            {
-                case Gender.None:
-                    return "♂/♀";
-                case Gender.Male:
-                    return "♂";
-                case Gender.Female:
-                    return "♀";
-                case Gender.Unkown:
-                default:
-                    return "?";
-            }
         }
 
         private static string GenderTooltip(Gender gender)

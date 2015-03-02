@@ -61,6 +61,42 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ?.
+        /// </summary>
+        public static string Gender0 {
+            get {
+                return ResourceManager.GetString("Gender0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ♂.
+        /// </summary>
+        public static string Gender1 {
+            get {
+                return ResourceManager.GetString("Gender1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ♀.
+        /// </summary>
+        public static string Gender2 {
+            get {
+                return ResourceManager.GetString("Gender2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ♂/♀.
+        /// </summary>
+        public static string Gender3 {
+            get {
+                return ResourceManager.GetString("Gender3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Just for reference.
         /// </summary>
         public static string LibraryStatus0 {
