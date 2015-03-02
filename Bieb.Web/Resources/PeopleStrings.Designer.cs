@@ -295,7 +295,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to us.
+        ///   Looks up a localized string similar to us, gb, nl, etc..
         /// </summary>
         public static string NationalityPlaceholder {
             get {

@@ -180,6 +180,9 @@
   <data name="NoBooksInDatabase" xml:space="preserve">
     <value>There are no books in the database yet.</value>
   </data>
+  <data name="NoStoriesYet" xml:space="preserve">
+    <value>There are no short stories for this book yet to edit. Add some new ones below.</value>
+  </data>
   <data name="Novel" xml:space="preserve">
     <value>Novel</value>
   </data>
