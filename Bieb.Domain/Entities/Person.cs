@@ -203,8 +203,8 @@ namespace Bieb.Domain.Entities
 
     public enum Role
     {
-        Author,
-        Translator,
-        Editor
+        Author = 0,
+        Translator = 1,
+        Editor = 2
     }
 }

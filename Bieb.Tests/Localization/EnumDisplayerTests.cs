@@ -11,10 +11,6 @@ namespace Bieb.Tests.Localization
     [TestFixture]
     public class EnumDisplayerTests
     {
-        private readonly IEnumerable<LibraryStatus> libraryStatuses = Enum.GetValues(typeof(LibraryStatus)).Cast<LibraryStatus>();
-        private readonly IEnumerable<Gender> genders = Enum.GetValues(typeof (Gender)).Cast<Gender>();
-
-        
         [Test]
         public void Can_Display_LibraryStatus_OnlyForReference()
         {
@@ -28,7 +24,7 @@ namespace Bieb.Tests.Localization
         [Test]
         public void Will_Display_Text_For_Any_LibraryStatus()
         {
-            var texts = libraryStatuses.Select(EnumDisplayer.GetResource);
+            var texts = Enum.GetValues(typeof(LibraryStatus)).Cast<LibraryStatus>().Select(EnumDisplayer.GetResource);
             Assert.That(texts, Is.All.Not.Null.And.Not.Empty);
         }
 
@@ -44,7 +40,23 @@ namespace Bieb.Tests.Localization
         [Test]
         public void Will_Display_Text_For_Any_Gender()
         {
-            var texts = genders.Select(EnumDisplayer.GetResource);
+            var texts = Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(EnumDisplayer.GetResource);
+            Assert.That(texts, Is.All.Not.Null.And.Not.Empty);
+        }
+
+
+        [Test]
+        public void Can_Display_Author_Role_Text()
+        {
+            var resource = EnumDisplayer.GetResource(Role.Author);
+            Assert.That(resource, Is.EqualTo("Author"));
+        }
+
+
+        [Test]
+        public void Will_Display_Text_For_Any_Role()
+        {
+            var texts = Enum.GetValues(typeof(Role)).Cast<Role>().Select(EnumDisplayer.GetResource);
             Assert.That(texts, Is.All.Not.Null.And.Not.Empty);
         }
     }
