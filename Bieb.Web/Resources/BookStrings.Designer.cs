@@ -250,6 +250,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no short stories for this book yet to edit. Add some new ones below..
+        /// </summary>
+        public static string NoStoriesYet {
+            get {
+                return ResourceManager.GetString("NoStoriesYet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Novel.
         /// </summary>
         public static string Novel {

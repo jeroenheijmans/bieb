@@ -196,7 +196,7 @@
     <value>Nationality</value>
   </data>
   <data name="NationalityPlaceholder" xml:space="preserve">
-    <value>us</value>
+    <value>us, gb, nl, etc.</value>
   </data>
   <data name="NobodyBornToday" xml:space="preserve">
     <value>Nobody.</value>
