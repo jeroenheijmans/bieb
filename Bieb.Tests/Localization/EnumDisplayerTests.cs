@@ -12,6 +12,8 @@ namespace Bieb.Tests.Localization
     public class EnumDisplayerTests
     {
         private readonly IEnumerable<LibraryStatus> libraryStatuses = Enum.GetValues(typeof(LibraryStatus)).Cast<LibraryStatus>();
+        private readonly IEnumerable<Gender> genders = Enum.GetValues(typeof (Gender)).Cast<Gender>();
+
         
         [Test]
         public void Can_Display_LibraryStatus_OnlyForReference()
@@ -24,9 +26,25 @@ namespace Bieb.Tests.Localization
 
 
         [Test]
-        public void Will_Display_Text_For_LibraryStatus_Enum()
+        public void Will_Display_Text_For_Any_LibraryStatus()
         {
             var texts = libraryStatuses.Select(EnumDisplayer.GetResource);
+            Assert.That(texts, Is.All.Not.Null.And.Not.Empty);
+        }
+
+
+        [Test]
+        public void Can_Display_Gender_Male_Symbol()
+        {
+            var resource = EnumDisplayer.GetResource(Gender.Male);
+            Assert.That(resource, Is.EqualTo("♂"));
+        }
+
+
+        [Test]
+        public void Will_Display_Text_For_Any_Gender()
+        {
+            var texts = genders.Select(EnumDisplayer.GetResource);
             Assert.That(texts, Is.All.Not.Null.And.Not.Empty);
         }
     }
