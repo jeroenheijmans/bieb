@@ -26,10 +26,18 @@
     <property name="PlaceOfBirth" />
     <property name="PlaceOfDeath" />
 
-    <property name="DateOfBirthFrom" type="Date" />
-    <property name="DateOfBirthUntil" type="Date" />
-    <property name="DateOfDeathFrom" type="Date" />
-    <property name="DateOfDeathUntil" type="Date" />
+    <property name="DateOfBirthFrom" type="DateTime2">
+      <column name="DateOfBirthFrom" sql-type="DATE" />
+    </property>
+    <property name="DateOfBirthUntil" type="DateTime2">
+      <column name="DateOfBirthUntil" sql-type="DATE" />
+    </property>
+    <property name="DateOfDeathFrom" type="DateTime2">
+      <column name="DateOfDeathFrom" sql-type="DATE" />
+    </property>
+    <property name="DateOfDeathUntil" type="DateTime2">
+      <column name="DateOfDeathUntil" sql-type="DATE" />
+    </property>
 
     <property name="ReviewText" length="4000" />
     

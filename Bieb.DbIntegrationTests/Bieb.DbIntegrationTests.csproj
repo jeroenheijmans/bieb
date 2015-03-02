@@ -66,6 +66,7 @@
     <Compile Include="DatabaseObjects\PublishableEntityDatabaseObjectsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatabaseObjects\BookDatabaseObjectsTests.cs" />
+    <Compile Include="PropertyPersistance\PersonPropertyPersistanceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bieb.Domain\Bieb.Domain.csproj">
