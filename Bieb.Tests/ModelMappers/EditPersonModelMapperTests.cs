@@ -68,5 +68,15 @@ namespace Bieb.Tests.ModelMappers
             mapper.MergeEntityWithModel(person, model);
             Assert.That(person.ReviewText, Is.EqualTo(model.ReviewText));
         }
+
+
+        [Test]
+        public void Can_Merge_MiddleAges_DoB_Into_Entity()
+        {
+            var person = new Person();
+            var model = new EditPersonModel {BirthDay = 1, BirthMonth = 1, BirthYear = 1600};
+            mapper.MergeEntityWithModel(person, model);
+            Assert.That(person.DateOfBirth, Is.EqualTo(new UncertainDate(1600, 1, 1)));
+        }
     }
 }
