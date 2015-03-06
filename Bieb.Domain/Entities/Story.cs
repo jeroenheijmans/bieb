@@ -32,22 +32,10 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IList<Tag> tags = new List<Tag>();
-        public virtual IList<Tag> Tags
+        private readonly ISet<Tag> tags = new HashSet<Tag>();
+        public virtual ISet<Tag> Tags
         {
             get { return tags; }
-        }
-
-        private IList<Person> authors = new List<Person>();
-        public virtual IList<Person> Authors
-        {
-            get { return authors; }
-        }
-
-        private readonly IList<Person> translators = new List<Person>();
-        public virtual IList<Person> Translators 
-        {
-            get { return translators; }
         }
 
         public virtual Story ReferenceStory
@@ -59,7 +47,7 @@ namespace Bieb.Domain.Entities
 
         public override string ToString()
         {
-            return Title ?? base.ToString();
+            return string.IsNullOrEmpty(Title) ? base.ToString() : Title;
         }
     }
 }

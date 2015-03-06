@@ -129,6 +129,7 @@
     <Compile Include="ModelMappers\EditPersonModelMapperTests.cs" />
     <Compile Include="ModelMappers\EditPublisherModelMapperTests.cs" />
     <Compile Include="ModelMappers\EditSeriesModelMapperTests.cs" />
+    <Compile Include="ModelMappers\EditStoryModelMapperTests.cs" />
     <Compile Include="ModelMappers\ViewBookModelMapperTests.cs" />
     <Compile Include="ModelMappers\ViewPersonModelMapperTests.cs" />
     <Compile Include="ModelMappers\ViewPublisherModelMapperTests.cs" />

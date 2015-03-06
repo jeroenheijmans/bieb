@@ -13,6 +13,11 @@
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(model => model.Id)
                 
+                <a href="@Url.Action("Edit", "Stories", new { Model.Id })" class="btn btn-default">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span class="hidden-xs">@BiebResources.SharedStrings.Edit</span>
+                </a>
+                
                 <button class="btn btn-default" type="submit" onclick="return confirm('@BiebResources.SharedStrings.SimpleConfirmQuestion')">
                     <i class="glyphicon glyphicon-trash"></i>
                     <span class="hidden-xs">@BiebResources.SharedStrings.Delete</span>
@@ -57,7 +62,7 @@
             <ul>
             @foreach (var story in Model.SiblingStories)
             {
-                <li>@Html.ActionLink(story.Text, "Details", new { controller = "story", id = story.Id })</li>
+                <li>@Html.ActionLink(story.Text, "Details", new { controller = "Stories", id = story.Id })</li>
             }
             </ul>
         }

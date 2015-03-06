@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using NUnit.Framework;
 
 namespace Bieb.Tests.Models
@@ -13,14 +14,24 @@ namespace Bieb.Tests.Models
         // with associated resource. The base class and its descendants can 
         // optionally exclude certain properties (e.g. because they will be
         // hidden).
-        protected List<string> PropertiesNotNeedingDisplay = new List<string>(new[] {"Id", "ModifiedDateTicks"});
+        private readonly string[] propertiesNotNeedingDisplay = new[] 
+        { 
+            "Id",
+            "ModifiedDateTicks", 
+            "AvailablePublishers", 
+            "AvailablePeople", 
+            "AvailableIsbnLanguages", 
+            "AvailableLibraryStatuses",
+            "FullName",
+            "BookTitle",
+        };
 
 
         [Test]
         public void All_Public_Model_Properties_Have_Display_Attribute()
         {
             var model = new T();
-            foreach (var propertyInfo in model.GetType().GetProperties().Where(pi => !PropertiesNotNeedingDisplay.Contains(pi.Name)))
+            foreach (var propertyInfo in model.GetType().GetProperties().Where(RequiresDisplay))
             {
                 var hasProperAttribute = false;
 
@@ -37,6 +48,16 @@ namespace Bieb.Tests.Models
 
                 Assert.That(hasProperAttribute, string.Format("Missing DisplayAttribute (with reqruied Name and ResourceType arguments) for property [{0}]. Either provided an attribute with localized resource, or exclude this property from needing to do so in the test fixture.", propertyInfo.Name));
             }
+        }
+
+        private bool RequiresDisplay(PropertyInfo propertyInfo)
+        {
+            if (propertiesNotNeedingDisplay.Contains(propertyInfo.Name))
+            {
+                return false;
+            }
+
+            return !(propertyInfo.SetMethod == null || propertyInfo.SetMethod.IsPublic);
         }
     }
 }

@@ -31,6 +31,22 @@ namespace Bieb.Domain.Entities
             set { isbnLanguage = value; }
         }
 
+
+        private readonly ISet<Person> authors = new HashSet<Person>();
+        public virtual ISet<Person> Authors
+        {
+            get { return authors; }
+        }
+
+        private readonly ISet<Person> translators = new HashSet<Person>();
+        public virtual ISet<Person> Translators
+        {
+            get
+            {
+                return translators;
+            }
+        }
+
 #pragma warning disable 649
         // NHibernate uses this.
         private string titleSort;
