@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Bieb.Domain.Entities;
 
 namespace Bieb.Web.Models.Stories
 {
-    public class EditStoryModel : EditEntityModel<Story>
+    public class EditStoryModel : EditPublishableModel<Story>
     {
-        [Display(Name = "Title", ResourceType = typeof(BiebResources.StoryStrings))]
-        public string Title { get; set; }
+        public EditStoryModel()
+        { }
 
-        [Display(Name = "Subtitle", ResourceType = typeof(BiebResources.StoryStrings))]
-        public string Subtitle { get; set; }
+        public EditStoryModel(string bookTitle)
+        {
+            this.BookTitle = bookTitle;
+        }
+
+        public string BookTitle { get; internal set; }
     }
 }

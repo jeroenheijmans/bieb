@@ -47,9 +47,11 @@ namespace Bieb.Tests.Mocks
             items.Remove(item);
         }
 
+        public T NotifyItemWasChangedLastCalledWith { get; private set; }
+
         public void NotifyItemWasChanged(T item)
         {
-            throw new NotImplementedException();
+            NotifyItemWasChangedLastCalledWith = item;
         }
     }
 }

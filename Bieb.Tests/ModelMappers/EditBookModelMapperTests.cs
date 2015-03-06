@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Tests.Mocks;
@@ -34,9 +33,11 @@ namespace Bieb.Tests.ModelMappers
             publishers = new RepositoryMock<Publisher>();
             people = new RepositoryMock<Person>();
             books = new BookRepositoryMock();
-            storyMapper = new EditStoryModelMapper();
 
-            mapper = new EditBookModelMapper(publishers, people, books, storyMapper, new Mock<IIsbnLanguageDisplayer>().Object);
+            var isbnLanguageDisplayer = new Mock<IIsbnLanguageDisplayer>();
+
+            storyMapper = new EditStoryModelMapper(publishers, people, books, isbnLanguageDisplayer.Object);
+            mapper = new EditBookModelMapper(publishers, people, books, storyMapper, isbnLanguageDisplayer.Object);
 
             asimov = new Person {Id = 1, FirstName = "Isaac", Surname = "Asimov"};
             adams = new Person {Id = 2, FirstName = "Douglas", Surname = "Adams"};

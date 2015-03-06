@@ -17,14 +17,16 @@ namespace Bieb.Tests.Controllers
     public class StoriesControllerTests
     {
         private StoriesController controller;
-        private IEntityRepository<Story> repository;
+        private RepositoryMock<Story> repository;
+        private Mock<IEditEntityModelMapper<Story, EditStoryModel>> editMapperMock;
 
 
         [SetUp]
         public void SetUp()
         {
             var viewMapperMock = new Mock<IViewEntityModelMapper<Story, ViewStoryModel>>();
-            var editMapperMock = new Mock<IEditEntityModelMapper<Story, EditStoryModel>>();
+            
+            editMapperMock = new Mock<IEditEntityModelMapper<Story, EditStoryModel>>();
 
             repository = new RepositoryMock<Story>();
             controller = new StoriesController(repository, viewMapperMock.Object, editMapperMock.Object);
@@ -38,5 +40,15 @@ namespace Bieb.Tests.Controllers
             Assert.That(result, Is.InstanceOf<RedirectToRouteResult>());
         }
 
+
+        [Test]
+        public void Save_Will_Call_NotifyItemWasChanged()
+        {
+            var story = new Story {Id = 42};
+            var model = new EditStoryModel {Id = 42};
+            repository.Add(story);
+            controller.Save(model);
+            Assert.That(repository.NotifyItemWasChangedLastCalledWith, Is.EqualTo(story));
+        }
     }
 }

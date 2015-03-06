@@ -174,6 +174,9 @@
   <data name="LibraryStatus" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="LibraryStatusHeader" xml:space="preserve">
+    <value>Status</value>
+  </data>
   <data name="NewStories" xml:space="preserve">
     <value>Add some new stories</value>
   </data>

@@ -232,6 +232,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string LibraryStatusHeader {
+            get {
+                return ResourceManager.GetString("LibraryStatusHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add some new stories.
         /// </summary>
         public static string NewStories {

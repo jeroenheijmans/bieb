@@ -86,12 +86,6 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private readonly ISet<Person> authors = new HashSet<Person>();
-        public virtual ISet<Person> Authors
-        {
-            get { return authors; }
-        }
-
         public virtual IEnumerable<Person> AllAuthors
         {
             get
@@ -100,15 +94,6 @@ namespace Bieb.Domain.Entities
                     .SelectMany(item => item.Value.Authors)
                     .Union(Authors)
                     .Distinct();
-            }
-        }
-
-        private readonly ISet<Person> translators = new HashSet<Person>();
-        public virtual ISet<Person> Translators
-        {
-            get 
-            {
-                return translators; 
             }
         }
 

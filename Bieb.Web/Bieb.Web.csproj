@@ -197,6 +197,8 @@
     <Compile Include="Models\Books\LinkableBookModel.cs" />
     <Compile Include="Models\Books\ViewBookModel.cs" />
     <Compile Include="Models\Books\ViewBookModelMapper.cs" />
+    <Compile Include="Models\EditPublishableModelMapper.cs" />
+    <Compile Include="Models\EditPublishableModel.cs" />
     <Compile Include="Models\EditEntityModel.cs" />
     <Compile Include="Localization\IsbnLanguageDisplayer.cs" />
     <Compile Include="Models\IEditEntityModelMapper.cs" />
@@ -458,6 +460,7 @@
     <Content Include="Views\Shared\_NavigationAdminPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
     <Content Include="Views\Books\DisplayTemplates\ViewBookModel.cshtml" />
+    <Content Include="Views\Stories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

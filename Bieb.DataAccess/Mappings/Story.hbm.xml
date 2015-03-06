@@ -25,22 +25,22 @@
     <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" />
     <property name="PositionInBook" not-null="true" />
 
-    <bag name="Authors" table="StoryAuthor" access="field.camelcase" >
+    <set name="Authors" table="StoryAuthor" access="field.camelcase" >
       <key column="StoryId" foreign-key="FK_StoryAuthor_Story" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryAuthor_Person" />
-    </bag>
+    </set>
 
-    <bag name="Translators" table="StoryTranslator" access="field.camelcase">
+    <set name="Translators" table="StoryTranslator" access="field.camelcase">
       <key column="StoryId" foreign-key="FK_StoryTranslator_Story" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryTranslator_Person" />
-    </bag>
+    </set>
 
     <many-to-one name="Publisher" column="PublisherId" foreign-key="FK_Story_Publisher" />
 
-    <bag name="Tags" table="StoryTag" access="field.camelcase">
+    <set name="Tags" table="StoryTag" access="field.camelcase">
       <key column="StoryId" foreign-key="FK_StoryTag_Story" />
       <many-to-many column="TagId" class="Tag" foreign-key="FK_StoryTag_Tag" />
-    </bag>
+    </set>
 
     <many-to-one name="ReferenceStory" column="ReferenceStoryId" foreign-key="FK_Story_ReferenceStory" />
 
