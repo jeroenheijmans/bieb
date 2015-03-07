@@ -41,27 +41,27 @@
 
     <property name="ReviewText" length="4000" />
     
-    <set name="AuthoredBooks" table="BookAuthor" access="field.camelcase" inverse="true" cascade="delete">
+    <set name="AuthoredBooks" table="BookAuthor" access="field.camelcase">
       <key column="PersonId" />
       <many-to-many column="BookId" class="Book" />
     </set>
 
-    <set name="TranslatedBooks" table="BookTranslator" access="field.camelcase" inverse="true" cascade="delete">
+    <set name="TranslatedBooks" table="BookTranslator" access="field.camelcase">
       <key column="PersonId" />
       <many-to-many column="BookId" class="Book" />
     </set>
 
-    <set name="EditedBooks" table="BookEditor" access="field.camelcase" inverse="true" cascade="delete">
+    <set name="EditedBooks" table="BookEditor" access="field.camelcase">
       <key column="PersonId" />
       <many-to-many column="BookId" class="Book" />
     </set>
 
-    <set name="AuthoredStories" table="StoryAuthor" access="field.camelcase" inverse="true" cascade="delete">
+    <set name="AuthoredStories" table="StoryAuthor" access="field.camelcase">
       <key column="PersonId" />
       <many-to-many column="StoryId" class="Story" />
     </set>
 
-    <set name="TranslatedStories" table="StoryTranslator" access="field.camelcase" inverse="true" cascade="delete">
+    <set name="TranslatedStories" table="StoryTranslator" access="field.camelcase">
       <key column="PersonId" />
       <many-to-many column="StoryId" class="Story" />
     </set>

@@ -10,7 +10,7 @@ namespace Bieb.DbIntegrationTests.Cascades
     public class BookCascadeTests : DatabaseIntegrationTest
     {
         [Test]
-        public void Save_Book_Will_Cascade_To_Stories()
+        public void Save_Book_With_Story_Will_Not_Throw_Exception()
         {
             var book = new Book("March of the machines");
             var story = new Story();
@@ -22,7 +22,7 @@ namespace Bieb.DbIntegrationTests.Cascades
         }
 
         [Test]
-        public void Delete_Book_Will_Cascade_To_Stories()
+        public void Delete_Book_With_Stories_Will_Not_Throw_Exception()
         {
             var book = new Book("Jupiter vs Pluto");
             var story = new Story();
@@ -33,6 +33,53 @@ namespace Bieb.DbIntegrationTests.Cascades
             Session.Delete(book);
 
             Assert.DoesNotThrow(Session.Flush);
+        }
+
+
+        [Test]
+        public void Can_Save_Book()
+        {
+            var book = new Book
+                           {
+                               Title = "The Hobbit",
+                               Subtitle = "and other stories",
+                               Isbn = "1234567890"
+                           };
+
+            Session.Save(book);
+            Session.Flush();
+            Session.Refresh(book);
+
+            Assert.That(book.Title, Is.EqualTo("The Hobbit"));
+            Assert.That(book.Subtitle, Is.EqualTo("and other stories"));
+            Assert.That(book.Isbn, Is.EqualTo("1234567890"));
+        }
+
+
+        [Test]
+        public void Save_Will_Cascade_To_BookStories()
+        {
+            var book = new Book("Collection X");
+            var story1 = new Story("Short story 1");
+            book.AddStory(story1);
+            Session.Save(book);
+            Session.Flush();
+            Session.Refresh(book);
+            Assert.That(story1.Id, Is.Not.EqualTo(0));
+        }
+
+        
+        [Test]
+        public void Save_Will_Cascade_To_BookAuthors()
+        {
+            var person = new Person {Surname = "Asimov"};
+            var book = new Book {Title = "Robot Dreams"};
+            book.AddAuthor(person);
+            Session.Save(person);
+            Session.Save(book);
+            Session.Flush();
+            Session.Refresh(book);
+            Assert.That(book.Authors.Count(), Is.EqualTo(1));
         }
     }
 }

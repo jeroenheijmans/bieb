@@ -91,22 +91,10 @@ namespace Bieb.Domain.Entities
             get { return authoredBooks; }
         }
 
-        public virtual void AddAuthoredBook(Book book)
-        {
-            book.Authors.Add(this);
-            authoredBooks.Add(book);
-        }
-
         private readonly ISet<Book> translatedBooks = new HashSet<Book>();
         public virtual IEnumerable<Book> TranslatedBooks
         {
             get { return translatedBooks; }
-        }
-
-        public virtual void AddTranslatedBook(Book book)
-        {
-            book.Translators.Add(this);
-            translatedBooks.Add(book);
         }
 
         private readonly ISet<Book> editedBooks = new HashSet<Book>();
@@ -115,34 +103,66 @@ namespace Bieb.Domain.Entities
             get { return editedBooks; }
         }
 
-        public virtual void AddEditedBook(Book book)
-        {
-            book.Editors.Add(this);
-            editedBooks.Add(book);
-        }
-
         private readonly ISet<Story> authoredStories = new HashSet<Story>();
         public virtual IEnumerable<Story> AuthoredStories
         {
             get { return authoredStories; }
         }
 
-        public virtual void AddAuthoredStory(Story story)
-        {
-            story.Authors.Add(this);
-            authoredStories.Add(story);
-        }
-        
         private readonly ISet<Story> translatedStories = new HashSet<Story>();
         public virtual IEnumerable<Story> TranslatedStories
         {
             get { return translatedStories; }
         }
 
-        public virtual void AddTranslatedStory(Story story)
+        protected internal virtual void AddAuthoredBook(Book book)
         {
-            story.Translators.Add(this);
+            authoredBooks.Add(book);
+        }
+
+        protected internal virtual void RemoveAuthoredBook(Book book)
+        {
+            authoredBooks.Remove(book);
+        }
+
+        protected internal virtual void AddTranslatedBook(Book book)
+        {
+            translatedBooks.Add(book);
+        }
+
+        protected internal virtual void RemoveTranslatedBook(Book book)
+        {
+            translatedBooks.Remove(book);
+        }
+
+        protected internal virtual void AddEditedBook(Book book)
+        {
+            editedBooks.Add(book);
+        }
+
+        protected internal virtual void RemoveEditedBook(Book book)
+        {
+            editedBooks.Remove(book);
+        }
+
+        protected internal virtual void AddAuthoredStory(Story story)
+        {
+            authoredStories.Add(story);
+        }
+
+        protected internal virtual void RemoveAuthoredStory(Story story)
+        {
+            authoredStories.Remove(story);
+        }
+
+        protected internal virtual void AddTranslatedStory(Story story)
+        {
             translatedStories.Add(story);
+        }
+
+        protected internal virtual void RemoveTranslatedStory(Story story)
+        {
+            translatedStories.Remove(story);
         }
 
         public virtual string ReviewText { get; set; }

@@ -72,7 +72,7 @@ namespace Bieb.Tests.ModelMappers
             var book = new Book();
             book.Tags.Add(new Tag("SF"));
             book.Tags.Add(new Tag("Fantasy"));
-            person.AddAuthoredBook(book);
+            book.AddAuthor(person);
 
             var model = mapper.ModelFromEntity(person);
 
@@ -96,7 +96,8 @@ namespace Bieb.Tests.ModelMappers
             var model = mapper.ModelFromEntity(person);
             var book = new Book();
             book.Tags.Add(new Tag("SF"));
-            person.AddAuthoredBook(book);
+            book.AddAuthor(person);
+
             Assert.That(model.HasTags, Is.False);
         }
 
@@ -109,8 +110,11 @@ namespace Bieb.Tests.ModelMappers
             // than nothing.
 
             var person = new Person();
-            person.AddAuthoredBook(new Book());
-            person.AddEditedBook(new Book());
+            var book1 = new Book();
+            var book2 = new Book();
+
+            book1.AddAuthor(person);
+            book2.AddEditor(person);
 
             var model = mapper.ModelFromEntity(person);
 
@@ -176,7 +180,8 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Have_Same_Number_Of_AuthoredBooks_As_Source_Entity()
         {
             var person = new Person();
-            person.AddAuthoredBook(new Book());
+            var book = new Book();
+            book.AddAuthor(person);
             var model = mapper.ModelFromEntity(person);
             Assert.That(model.AuthoredBooks.Count(), Is.EqualTo(1));
         }
@@ -186,7 +191,8 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Have_Same_Number_Of_EditedBooks_As_Source_Entity()
         {
             var person = new Person();
-            person.AddEditedBook(new Book());
+            var book = new Book();
+            book.AddEditor(person);
             var model = mapper.ModelFromEntity(person);
             Assert.That(model.EditedBooks.Count(), Is.EqualTo(1));
         }
@@ -196,7 +202,8 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Have_Same_Number_Of_TranslatedBook_As_Source_Entity()
         {
             var person = new Person();
-            person.AddTranslatedBook(new Book());
+            var book = new Book();
+            book.AddTranslator(person);
             var model = mapper.ModelFromEntity(person);
             Assert.That(model.TranslatedBooks.Count(), Is.EqualTo(1));
         }
@@ -206,7 +213,8 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Have_Same_Number_Of_TranslatedStories_As_Source_Entity()
         {
             var person = new Person();
-            person.AddTranslatedStory(new Story());
+            var story = new Story();
+            story.AddTranslator(person);
             var model = mapper.ModelFromEntity(person);
             Assert.That(model.TranslatedStories.Count(), Is.EqualTo(1));
         }
@@ -216,7 +224,8 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Have_Same_Number_Of_AuthoredStories_As_Source_Entity()
         {
             var person = new Person();
-            person.AddAuthoredStory(new Story());
+            var story = new Story();
+            story.AddAuthor(person);
             var model = mapper.ModelFromEntity(person);
             Assert.That(model.AuthoredStories.Count(), Is.EqualTo(1));
         }

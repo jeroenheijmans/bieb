@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Cascades\BookCascadeTests.cs" />
     <Compile Include="Cascades\PersonCascadeTests.cs" />
+    <Compile Include="Cascades\StoryCascadeTests.cs" />
     <Compile Include="DatabaseIntegrationTest.cs" />
     <Compile Include="DatabaseObjects\SeriesDatabaseObjectsTests.cs" />
     <Compile Include="DatabaseObjects\StoryDatabaseObjectsTests.cs" />

@@ -44,6 +44,50 @@ namespace Bieb.Domain.Entities
             set;
         }
 
+        public override void AddAuthor(Person person)
+        {
+            authors.Add(person);
+            person.AddAuthoredStory(this);
+        }
+
+        public override void AddTranslator(Person person)
+        {
+            translators.Add(person);
+            person.AddTranslatedStory(this);
+        }
+
+        public override void RemoveAuthor(Person person)
+        {
+            authors.Remove(person);
+            person.RemoveAuthoredStory(this);
+        }
+
+        public override void RemoveTranslator(Person person)
+        {
+            translators.Remove(person);
+            person.RemoveTranslatedStory(this);
+        }
+
+        public override void ClearAuthors()
+        {
+            foreach (var person in Authors)
+            {
+                person.RemoveAuthoredStory(this);
+            }
+
+            translators.Clear();
+        }
+
+        public override void ClearTranslators()
+        {
+            foreach (var person in Translators)
+            {
+                person.RemoveTranslatedStory(this);
+            }
+
+            translators.Clear();
+        }
+
 
         public override string ToString()
         {

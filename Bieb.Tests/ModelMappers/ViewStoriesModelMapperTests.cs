@@ -35,7 +35,8 @@ namespace Bieb.Tests.ModelMappers
         public void Can_Map_Authors()
         {
             var story = new Story();
-            story.Authors.Add(new Person());
+            var person = new Person();
+            story.AddAuthor(person);
             var result = mapper.ModelFromEntity(story);
             Assert.That(result.Authors.Count(), Is.EqualTo(1));
         }
