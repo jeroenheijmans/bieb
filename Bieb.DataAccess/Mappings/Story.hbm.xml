@@ -25,12 +25,12 @@
     <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" />
     <property name="PositionInBook" not-null="true" />
 
-    <set name="Authors" table="StoryAuthor" access="field.camelcase" >
+    <set name="Authors" table="StoryAuthor" access="field.camelcase" inverse="true">
       <key column="StoryId" foreign-key="FK_StoryAuthor_Story" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryAuthor_Person" />
     </set>
 
-    <set name="Translators" table="StoryTranslator" access="field.camelcase">
+    <set name="Translators" table="StoryTranslator" access="field.camelcase" inverse="true">
       <key column="StoryId" foreign-key="FK_StoryTranslator_Story" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_StoryTranslator_Person" />
     </set>

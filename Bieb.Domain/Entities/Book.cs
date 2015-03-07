@@ -108,6 +108,63 @@ namespace Bieb.Domain.Entities
             }
         }
 
+
+        public override void AddAuthor(Person person)
+        {
+            authors.Add(person);
+            person.AddAuthoredBook(this);
+        }
+
+        public override void AddTranslator(Person person)
+        {
+            translators.Add(person);
+            person.AddTranslatedBook(this);
+        }
+        
+        public virtual void AddEditor(Person person)
+        {
+            editors.Add(person);
+            person.AddEditedBook(this);
+        }
+
+        public override void RemoveAuthor(Person person)
+        {
+            authors.Remove(person);
+            person.RemoveAuthoredBook(this);
+        }
+
+        public override void RemoveTranslator(Person person)
+        {
+            translators.Remove(person);
+            person.RemoveTranslatedBook(this);
+        }
+
+        public virtual void RemoveEditor(Person person)
+        {
+            editors.Remove(person);
+            person.RemoveEditedBook(this);
+        }
+
+        public override void ClearAuthors()
+        {
+            foreach (var person in Authors)
+            {
+                person.RemoveAuthoredBook(this);
+            }
+
+            translators.Clear();
+        }
+
+        public override void ClearTranslators()
+        {
+            foreach (var person in Translators)
+            {
+                person.RemoveTranslatedBook(this);
+            }
+
+            translators.Clear();
+        }
+
         public virtual BookType BookType
         {
             get

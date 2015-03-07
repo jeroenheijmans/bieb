@@ -225,8 +225,8 @@ namespace Bieb.Tests.ModelMappers
         public void Model_Will_Have_Author_Ids_From_Domain_Book()
         {
             var book = new Book();
-            book.Authors.Add(asimov);
-            book.Authors.Add(adams);
+            book.AddAuthor(asimov);
+            book.AddAuthor(adams);
 
             var model = mapper.ModelFromEntity(book);
 

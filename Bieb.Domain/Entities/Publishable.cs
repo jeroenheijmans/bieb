@@ -30,15 +30,14 @@ namespace Bieb.Domain.Entities
             get { return isbnLanguage; }
             set { isbnLanguage = value; }
         }
-
-
-        private readonly ISet<Person> authors = new HashSet<Person>();
-        public virtual ISet<Person> Authors
+        
+        protected readonly ISet<Person> authors = new HashSet<Person>();
+        public virtual IEnumerable<Person> Authors
         {
             get { return authors; }
         }
 
-        private readonly ISet<Person> translators = new HashSet<Person>();
+        protected readonly ISet<Person> translators = new HashSet<Person>();
         public virtual ISet<Person> Translators
         {
             get
@@ -46,6 +45,13 @@ namespace Bieb.Domain.Entities
                 return translators;
             }
         }
+
+        public abstract void AddAuthor(Person person);
+        public abstract void RemoveAuthor(Person person);
+        public abstract void ClearAuthors();
+        public abstract void AddTranslator(Person person);
+        public abstract void RemoveTranslator(Person person);
+        public abstract void ClearTranslators();
 
 #pragma warning disable 649
         // NHibernate uses this.

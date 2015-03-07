@@ -29,7 +29,7 @@ namespace Bieb.DbIntegrationTests.Cascades
         [Test]
         public void Delete_Person_Will_Cascade_To_Authored_Books()
         {
-            testPerson.AddAuthoredBook(testBook);
+            testBook.AddAuthor(testPerson);
 
             using (var transaction = Session.BeginTransaction())
             {
@@ -47,7 +47,7 @@ namespace Bieb.DbIntegrationTests.Cascades
         [Test]
         public void Delete_Person_Will_Cascade_To_Edited_Books()
         {
-            testPerson.AddEditedBook(testBook);
+            testBook.AddEditor(testPerson);
 
             using (var transaction = Session.BeginTransaction())
             {
@@ -65,7 +65,7 @@ namespace Bieb.DbIntegrationTests.Cascades
         [Test]
         public void Delete_Person_Will_Cascade_To_Translated_Books()
         {
-            testPerson.AddTranslatedBook(testBook);
+            testBook.AddTranslator(testPerson);
 
             using (var transaction = Session.BeginTransaction())
             {
@@ -81,18 +81,15 @@ namespace Bieb.DbIntegrationTests.Cascades
 
 
         [Test]
-        public void Delete_Person_Will_Cascade_To_Authored_Stories()
+        public void Delete_Person_Will_Not_Throw_Exception()
         {
             testStory.Book = testBook;
-            testPerson.AddAuthoredStory(testStory);
+            testStory.AddAuthor(testPerson);
 
-            using (var transaction = Session.BeginTransaction())
-            {
-                Session.Save(testPerson);
-                Session.Save(testBook);
-                transaction.Commit();
-            }
-
+            Session.Save(testPerson);
+            Session.Save(testStory);
+            Session.Save(testBook);
+            Session.Flush();
             Session.Refresh(testPerson);
 
             Assert.DoesNotThrow(() => TransactionWrappedDelete(testPerson));
@@ -100,18 +97,14 @@ namespace Bieb.DbIntegrationTests.Cascades
 
 
         [Test]
-        public void Delete_Person_Will_Cascade_To_Translated_Stories()
+        public void Delete_Person_With_TranslatedStory_Will_Not_Throw_Exception()
         {
-            testPerson.AddTranslatedStory(testStory);
-            testPerson.AddAuthoredStory(testStory);
+            testStory.AddTranslator(testPerson);
+            testStory.AddAuthor(testPerson);
 
-            using (var transaction = Session.BeginTransaction())
-            {
-                Session.Save(testPerson);
-                Session.Save(testBook);
-                transaction.Commit();
-            }
-
+            Session.Save(testPerson);
+            Session.Save(testStory);
+            Session.Flush();
             Session.Refresh(testPerson);
 
             Assert.DoesNotThrow(() => TransactionWrappedDelete(testPerson));

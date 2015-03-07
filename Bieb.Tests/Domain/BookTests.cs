@@ -42,7 +42,7 @@ namespace Bieb.Tests.Domain
             novel.AddStory(1, story);
 
             var person = new Person();
-            story.Authors.Add(person);
+            story.AddAuthor(person);
             
             Assert.That(novel.AllAuthors.Count(), Is.EqualTo(1));
             Assert.That(novel.AllAuthors.First(), Is.EqualTo(person));
@@ -60,8 +60,9 @@ namespace Bieb.Tests.Domain
             var asimov = new Person();
             var tolkien = new Person();
 
-            story1.Authors.Add(asimov);
-            story2.Authors.Add(tolkien);
+            story1.AddAuthor(asimov);
+            story2.AddAuthor(tolkien);
+
             myBook.AddStory(1, story1);
             myBook.AddStory(2, story2);
 
@@ -81,8 +82,8 @@ namespace Bieb.Tests.Domain
             var tolkien = new Person();
             var sonOfTolkien = new Person();
 
-            story1.Authors.Add(tolkien);
-            story1.Authors.Add(sonOfTolkien);
+            story1.AddAuthor(tolkien);
+            story1.AddAuthor(sonOfTolkien);
             myBook.AddStory(1, story1);
 
             Assert.That(myBook.AllAuthors.Count(), Is.EqualTo(2));
@@ -142,10 +143,10 @@ namespace Bieb.Tests.Domain
 
             Story asimovStory1 = new Story(), asimovStory2 = new Story(), clarkeStory = new Story();
 
-            asimovStory1.Authors.Add(asimov);
-            asimovStory2.Authors.Add(asimov);
-            clarkeStory.Authors.Add(clarke);
-
+            asimovStory1.AddAuthor(asimov);
+            asimovStory2.AddAuthor(asimov);
+            clarkeStory.AddAuthor(clarke);
+            
             var novel = new Book { Title = "How Novel!" };
 
             var collection = new Book();
@@ -229,6 +230,20 @@ namespace Bieb.Tests.Domain
             var book = new Book();
             Assert.DoesNotThrow(() => book.AddStory(new Story()));
             Assert.DoesNotThrow(() => book.AddStory(new Story()));
+        }
+
+
+        [Test]
+        public void Can_Clear_Authors()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddAuthor(person);
+            Assert.That(book.Authors.Count(), Is.EqualTo(1));
+            Assert.That(person.AuthoredBooks.Count(), Is.EqualTo(1));
+            book.ClearAuthors();
+            Assert.That(book.Authors.Count(), Is.EqualTo(0));
+            Assert.That(person.AuthoredBooks.Count(), Is.EqualTo(0));
         }
     }
 }

@@ -139,7 +139,8 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Map_All_Authors()
         {
             var book = new Book();
-            book.Authors.Add(new Person());
+            var person = new Person();
+            book.AddAuthor(person);
             var result = mapper.ModelFromEntity(book);
             Assert.That(result.Authors.Count(), Is.EqualTo(1));
         }
@@ -178,9 +179,10 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Map_Authors_As_CoverPeople_If_No_Editors_Available()
         {
             var book = new Book();
-            book.Authors.Add(new Person { Id = 42 });
+            var person = new Person {Surname = "Asimov"};
+            book.AddAuthor(person);
             var model = mapper.ModelFromEntity(book);
-            Assert.That(model.CoverPeople.First().Id, Is.EqualTo(42));
+            Assert.That(model.CoverPeople.First().Text, Is.StringContaining(person.Surname));
         }
 
 
