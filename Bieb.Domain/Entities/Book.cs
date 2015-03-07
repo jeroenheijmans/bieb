@@ -22,12 +22,6 @@ namespace Bieb.Domain.Entities
             set { libraryStatus = value; }
         }
 
-        private readonly ISet<Tag> tags = new HashSet<Tag>();
-        public virtual ISet<Tag> Tags
-        {
-            get { return tags; }
-        }
-
         public virtual IEnumerable<Tag> AllTags
         {
             get
@@ -39,7 +33,7 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private IDictionary<int, Story> stories = new SortedList<int, Story>();
+        private readonly IDictionary<int, Story> stories = new SortedList<int, Story>();
         public virtual IEnumerable<KeyValuePair<int, Story>> Stories 
         {
             get { return stories; }
@@ -59,7 +53,7 @@ namespace Bieb.Domain.Entities
         }
 
         private readonly ISet<Person> editors = new HashSet<Person>();
-        public virtual ISet<Person> Editors
+        public virtual IEnumerable<Person> Editors
         {
             get { return editors; }
         }
@@ -163,6 +157,16 @@ namespace Bieb.Domain.Entities
             }
 
             translators.Clear();
+        }
+
+        public virtual void ClearEditors()
+        {
+            foreach (var person in Editors)
+            {
+                person.RemoveEditedBook(this);
+            }
+
+            editors.Clear();
         }
 
         public virtual BookType BookType

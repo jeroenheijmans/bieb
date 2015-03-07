@@ -70,8 +70,8 @@ namespace Bieb.Tests.ModelMappers
         {
             var person = new Person();
             var book = new Book();
-            book.Tags.Add(new Tag("SF"));
-            book.Tags.Add(new Tag("Fantasy"));
+            book.AddTag(new Tag("SF"));
+            book.AddTag(new Tag("Fantasy"));
             book.AddAuthor(person);
 
             var model = mapper.ModelFromEntity(person);
@@ -95,7 +95,7 @@ namespace Bieb.Tests.ModelMappers
             var person = new Person();
             var model = mapper.ModelFromEntity(person);
             var book = new Book();
-            book.Tags.Add(new Tag("SF"));
+            book.AddTag(new Tag("SF"));
             book.AddAuthor(person);
 
             Assert.That(model.HasTags, Is.False);

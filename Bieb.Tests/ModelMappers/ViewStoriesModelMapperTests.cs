@@ -46,7 +46,7 @@ namespace Bieb.Tests.ModelMappers
         public void Can_Map_Translators()
         {
             var story = new Story();
-            story.Translators.Add(new Person());
+            story.AddTranslator(new Person());
             var result = mapper.ModelFromEntity(story);
             Assert.That(result.Translators.Count(), Is.EqualTo(1));
         }

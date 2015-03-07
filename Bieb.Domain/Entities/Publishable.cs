@@ -30,6 +30,12 @@ namespace Bieb.Domain.Entities
             get { return isbnLanguage; }
             set { isbnLanguage = value; }
         }
+
+        private readonly ISet<Tag> tags = new HashSet<Tag>();
+        public virtual IEnumerable<Tag> Tags
+        {
+            get { return tags; }
+        }
         
         protected readonly ISet<Person> authors = new HashSet<Person>();
         public virtual IEnumerable<Person> Authors
@@ -38,7 +44,7 @@ namespace Bieb.Domain.Entities
         }
 
         protected readonly ISet<Person> translators = new HashSet<Person>();
-        public virtual ISet<Person> Translators
+        public virtual IEnumerable<Person> Translators
         {
             get
             {
@@ -52,6 +58,11 @@ namespace Bieb.Domain.Entities
         public abstract void AddTranslator(Person person);
         public abstract void RemoveTranslator(Person person);
         public abstract void ClearTranslators();
+
+        public virtual void AddTag(Tag tag)
+        {
+            this.tags.Add(tag);
+        }
 
 #pragma warning disable 649
         // NHibernate uses this.
