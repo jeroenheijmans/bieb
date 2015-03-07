@@ -145,8 +145,8 @@ namespace Bieb.Tests.ModelMappers
         {
             var book = new Book();
 
-            book.Editors.Add(asimov);
-            book.Editors.Add(wyndham);
+            book.AddEditor(asimov);
+            book.AddEditor(wyndham);
 
             var model = mapper.ModelFromEntity(book);
 
@@ -204,8 +204,8 @@ namespace Bieb.Tests.ModelMappers
         {
             var book = new Book();
 
-            book.Editors.Add(wyndham);
-            book.Editors.Add(asimov);
+            book.AddEditor(wyndham);
+            book.AddEditor(asimov);
 
             people.Add(wyndham);
             people.Add(asimov);
@@ -253,8 +253,8 @@ namespace Bieb.Tests.ModelMappers
         public void Model_Will_Have_Translator_Ids_From_Domain_Book()
         {
             var book = new Book();
-            book.Translators.Add(asimov);
-            book.Translators.Add(adams);
+            book.AddTranslator(asimov);
+            book.AddTranslator(adams);
 
             var model = mapper.ModelFromEntity(book);
 

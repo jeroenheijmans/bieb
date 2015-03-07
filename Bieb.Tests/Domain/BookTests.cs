@@ -22,9 +22,9 @@ namespace Bieb.Tests.Domain
 
             myBook.AddStory(1, story1);
             myBook.AddStory(2, story2);
-            story1.Tags.Add(tag1);
-            story1.Tags.Add(tag2);
-            story2.Tags.Add(tag1);
+            story1.AddTag(tag1);
+            story1.AddTag(tag2);
+            story2.AddTag(tag1);
 
             Assert.That(myBook.AllTags.Count(), Is.EqualTo(2));
             Assert.That(myBook.AllTags.ToList(), Has.Member(tag1));
@@ -103,9 +103,9 @@ namespace Bieb.Tests.Domain
             var pjotr = new Person();
             var michelle = new Person();
 
-            story1.Translators.Add(pjotr);
-            story2.Translators.Add(pjotr);
-            story2.Translators.Add(michelle);
+            story1.AddTranslator(pjotr);
+            story2.AddTranslator(pjotr);
+            story2.AddTranslator(michelle);
             myBook.AddStory(1, story1);
             myBook.AddStory(2, story2);
 
@@ -169,11 +169,11 @@ namespace Bieb.Tests.Domain
             Tag cool = new Tag(), hot = new Tag(), old = new Tag(), sweet = new Tag();
             Story story1 = new Story(), story2 = new Story(), story3 = new Story();
 
-            story1.Tags.Add(cool);
-            story1.Tags.Add(hot);
-            story2.Tags.Add(cool);
-            story2.Tags.Add(old);
-            story3.Tags.Add(sweet);
+            story1.AddTag(cool);
+            story1.AddTag(hot);
+            story2.AddTag(cool);
+            story2.AddTag(old);
+            story3.AddTag(sweet);
 
             var theHobbit = new Book();
             theHobbit.AddStory(0, story1);

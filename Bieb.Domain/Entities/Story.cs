@@ -32,12 +32,6 @@ namespace Bieb.Domain.Entities
             }
         }
 
-        private readonly ISet<Tag> tags = new HashSet<Tag>();
-        public virtual ISet<Tag> Tags
-        {
-            get { return tags; }
-        }
-
         public virtual Story ReferenceStory
         {
             get;

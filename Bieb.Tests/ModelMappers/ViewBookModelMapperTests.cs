@@ -25,8 +25,8 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Show_Comma_Separated_Tags()
         {
             var book = new Book();
-            book.Tags.Add(new Tag("SF"));
-            book.Tags.Add(new Tag("Fantasy"));
+            book.AddTag(new Tag("SF"));
+            book.AddTag(new Tag("Fantasy"));
 
             var result = mapper.ModelFromEntity(book);
 
@@ -129,7 +129,7 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Map_All_Editors()
         {
             var book = new Book();
-            book.Editors.Add(new Person());
+            book.AddEditor(new Person());
             var result = mapper.ModelFromEntity(book);
             Assert.That(result.Editors.Count(), Is.EqualTo(1));
         }
@@ -150,7 +150,7 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Map_All_Translators()
         {
             var book = new Book();
-            book.Translators.Add(new Person());
+            book.AddTranslator(new Person());
             var result = mapper.ModelFromEntity(book);
             Assert.That(result.Translators.Count(), Is.EqualTo(1));
         }
@@ -169,7 +169,7 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Map_Editors_As_CoverPeople_If_Available()
         {
             var book = new Book();
-            book.Editors.Add(new Person {Id = 42});
+            book.AddEditor(new Person { Id = 42 });
             var model = mapper.ModelFromEntity(book);
             Assert.That(model.CoverPeople.First().Id, Is.EqualTo(42));
         }

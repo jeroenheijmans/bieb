@@ -30,7 +30,7 @@ namespace Bieb.Web.Models.Books
 
 
             // TODO: Refactor, the code below is copy-pasted from this
-            entity.Editors.Clear();
+            entity.ClearEditors();
 
             foreach (var editorId in model.EditorIds)
             {
@@ -41,7 +41,7 @@ namespace Bieb.Web.Models.Books
                     throw new MappingException("Provided Editor Id could not be traced to any person in the database.");
                 }
 
-                entity.Editors.Add(person);
+                entity.AddEditor(person);
             }
             
             foreach (var storyModel in model.Stories)

@@ -51,7 +51,7 @@ namespace Bieb.Web.Models
             }
 
 
-            entity.Translators.Clear();
+            entity.ClearTranslators();
 
             foreach (var translatorId in model.TranslatorIds)
             {
@@ -62,7 +62,7 @@ namespace Bieb.Web.Models
                     throw new MappingException("Provided Translator Id could not be traced to any person in the database.");
                 }
 
-                entity.Translators.Add(person);
+                entity.AddTranslator(person);
             }
         }
 

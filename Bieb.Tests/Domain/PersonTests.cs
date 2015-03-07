@@ -62,11 +62,11 @@ namespace Bieb.Tests.Domain
 
             Story story1 = new Story(), story2 = new Story(), story3 = new Story();
 
-            story1.Tags.Add(cool);
-            story1.Tags.Add(hot);
-            story2.Tags.Add(cool);
-            story2.Tags.Add(old);
-            story3.Tags.Add(sweet);
+            story1.AddTag(cool);
+            story1.AddTag(hot);
+            story2.AddTag(cool);
+            story2.AddTag(old);
+            story3.AddTag(sweet);
 
             var someBook = new Book();
             someBook.AddStory(1, story3);
@@ -91,7 +91,7 @@ namespace Bieb.Tests.Domain
             var cool = new Tag("Cool");
             var person = new Person();
             var book = new Book();
-            book.Tags.Add(cool);
+            book.AddTag(cool);
             book.AddAuthor(person);
 
             Assert.That(person.Tags.FirstOrDefault(), Is.EqualTo(cool));
