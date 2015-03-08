@@ -42,11 +42,6 @@ namespace Bieb.Domain.Entities
         public virtual void AddStory(Story story)
         {
             var index = this.stories.Any() ? this.stories.Max(s => s.Key) + 1 : 0;
-            AddStory(index, story);
-        }
-
-        public virtual void AddStory(int index, Story story)
-        {
             stories.Add(index, story);
             story.Book = this;
             story.PositionInBook = index;

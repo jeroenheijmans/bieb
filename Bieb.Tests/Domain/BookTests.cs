@@ -20,8 +20,8 @@ namespace Bieb.Tests.Domain
             var tag2 = new Tag { Name = "Fantasy" };
             var unusedTag = new Tag { Name = "Educational" };
 
-            myBook.AddStory(1, story1);
-            myBook.AddStory(2, story2);
+            myBook.AddStory(story1);
+            myBook.AddStory(story2);
             story1.AddTag(tag1);
             story1.AddTag(tag2);
             story2.AddTag(tag1);
@@ -39,7 +39,7 @@ namespace Bieb.Tests.Domain
             var novel = new Book();
 
             var story = new Story();
-            novel.AddStory(1, story);
+            novel.AddStory(story);
 
             var person = new Person();
             story.AddAuthor(person);
@@ -63,8 +63,8 @@ namespace Bieb.Tests.Domain
             story1.AddAuthor(asimov);
             story2.AddAuthor(tolkien);
 
-            myBook.AddStory(1, story1);
-            myBook.AddStory(2, story2);
+            myBook.AddStory(story1);
+            myBook.AddStory(story2);
 
             Assert.That(myBook.AllAuthors.Count(), Is.EqualTo(2));
             Assert.That(myBook.AllAuthors.ToList(), Has.Member(asimov));
@@ -84,7 +84,7 @@ namespace Bieb.Tests.Domain
 
             story1.AddAuthor(tolkien);
             story1.AddAuthor(sonOfTolkien);
-            myBook.AddStory(1, story1);
+            myBook.AddStory(story1);
 
             Assert.That(myBook.AllAuthors.Count(), Is.EqualTo(2));
             Assert.That(myBook.AllAuthors.ToList(), Has.Member(tolkien));
@@ -106,8 +106,8 @@ namespace Bieb.Tests.Domain
             story1.AddTranslator(pjotr);
             story2.AddTranslator(pjotr);
             story2.AddTranslator(michelle);
-            myBook.AddStory(1, story1);
-            myBook.AddStory(2, story2);
+            myBook.AddStory(story1);
+            myBook.AddStory(story2);
 
             Assert.That(myBook.AllTranslators.Count(), Is.EqualTo(2));
             Assert.That(myBook.AllTranslators.ToList(), Has.Member(pjotr));
@@ -129,7 +129,7 @@ namespace Bieb.Tests.Domain
         {
             var myBook = new Book();
             var story = new Story();
-            myBook.AddStory(1, story);
+            myBook.AddStory(story);
 
             Assert.That(myBook.BookType, Is.EqualTo(BookType.Collection));
         }
@@ -150,12 +150,12 @@ namespace Bieb.Tests.Domain
             var novel = new Book { Title = "How Novel!" };
 
             var collection = new Book();
-            collection.AddStory(0, asimovStory1);
-            collection.AddStory(1, asimovStory2);
+            collection.AddStory(asimovStory1);
+            collection.AddStory(asimovStory2);
 
             var anthology = new Book();
-            anthology.AddStory(0, asimovStory1);
-            anthology.AddStory(1, clarkeStory);
+            anthology.AddStory(asimovStory1);
+            anthology.AddStory(clarkeStory);
 
             Assert.That(novel.BookType, Is.EqualTo(BookType.Novel));
             Assert.That(collection.BookType, Is.EqualTo(BookType.Collection));
@@ -176,9 +176,9 @@ namespace Bieb.Tests.Domain
             story3.AddTag(sweet);
 
             var theHobbit = new Book();
-            theHobbit.AddStory(0, story1);
-            theHobbit.AddStory(1, story2);
-            theHobbit.AddStory(2, story3);            
+            theHobbit.AddStory(story1);
+            theHobbit.AddStory(story2);
+            theHobbit.AddStory(story3);            
 
             Assert.That(theHobbit.AllTags.Contains(cool));
             Assert.That(theHobbit.AllTags.Contains(hot));
@@ -398,6 +398,26 @@ namespace Bieb.Tests.Domain
             var book = new Book();
             book.AddStory(new Story());
             Assert.That(book.Stories.Any());
+        }
+
+
+        [Test]
+        public void Add_Story_Will_Set_Position_In_Book()
+        {
+            var book = new Book();
+            book.AddStory(new Story());
+            book.AddStory(new Story());
+            Assert.That(book.Stories.First().Value.PositionInBook, Is.EqualTo(0));
+            Assert.That(book.Stories.Skip(1).First().Value.PositionInBook, Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Add_Story_Will_Set_Book_On_Story()
+        {
+            var book = new Book();
+            book.AddStory(new Story());
+            Assert.That(book.Stories.First().Value.Book, Is.EqualTo(book));
         }
     }
 }
