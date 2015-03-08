@@ -171,7 +171,7 @@
   <data name="GenderTooltipNone" xml:space="preserve">
     <value>No explicit gender, e.g. this "person" represents multiple actual people.</value>
   </data>
-  <data name="GenderTooltipUnkown" xml:space="preserve">
+  <data name="GenderTooltipUnknown" xml:space="preserve">
     <value>Gender of this person is not known.</value>
   </data>
   <data name="IndexIntroduction" xml:space="preserve">

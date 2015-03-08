@@ -24,7 +24,7 @@ namespace Bieb.Web.Models.People
             return new ViewPersonModel(entity)
                        {
                            FullName = entity.FullName,
-                           IsGenderKnown = entity.Gender != Gender.Unkown,
+                           IsGenderKnown = entity.Gender != Gender.Unknown,
                            Gender = EnumDisplayer.GetResource(entity.Gender),
                            GenderTooltip = GenderTooltip(entity.Gender),
                            IsNationalityKnown = !string.IsNullOrEmpty(entity.Nationality),
@@ -57,9 +57,9 @@ namespace Bieb.Web.Models.People
                     return BiebResources.PeopleStrings.GenderTooltipMale;
                 case Gender.Female:
                     return BiebResources.PeopleStrings.GenderTooltipFemale;
-                case Gender.Unkown:
+                case Gender.Unknown:
                 default:
-                    return BiebResources.PeopleStrings.GenderTooltipUnkown;
+                    return BiebResources.PeopleStrings.GenderTooltipUnknown;
             }
         }
     }

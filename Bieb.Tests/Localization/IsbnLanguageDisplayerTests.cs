@@ -42,7 +42,7 @@ namespace Bieb.Tests.Localization
 
 
         [Test]
-        public void Can_Display_Unkown_Language()
+        public void Can_Display_Unknown_Language()
         {
             var result = displayer.GetLocalizedIsbnLanguageResource(-1);
             Assert.That(result, Is.Not.Null.And.Not.Empty);
@@ -50,7 +50,7 @@ namespace Bieb.Tests.Localization
 
 
         [Test]
-        public void Can_Display_Unkown_Language_For_Admins()
+        public void Can_Display_Unknown_Language_For_Admins()
         {
             var result = displayer.GetLocalizedIsbnLanguageResourceForAdmins(-1);
             Assert.That(result, Is.Not.Null.And.Not.Empty);
@@ -58,7 +58,7 @@ namespace Bieb.Tests.Localization
 
         
         [Test]
-        public void Can_Translate_Null_Key_As_Unkown_Language()
+        public void Can_Translate_Null_Key_As_Unknown_Language()
         {
             var result = displayer.GetLocalizedIsbnLanguageResource(null);
             Assert.That(result, Is.Not.Null.Or.Empty);
@@ -66,7 +66,7 @@ namespace Bieb.Tests.Localization
 
 
         [Test]
-        public void Can_Translate_Null_Key_As_Unkown_Language_For_Admins()
+        public void Can_Translate_Null_Key_As_Unknown_Language_For_Admins()
         {
             var result = displayer.GetLocalizedIsbnLanguageResourceForAdmins(null);
             Assert.That(result, Is.Not.Null.Or.Empty);

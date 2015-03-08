@@ -225,9 +225,9 @@ namespace BiebResources {
         /// <summary>
         ///   Looks up a localized string similar to Gender of this person is not known..
         /// </summary>
-        public static string GenderTooltipUnkown {
+        public static string GenderTooltipUnknown {
             get {
-                return ResourceManager.GetString("GenderTooltipUnkown", resourceCulture);
+                return ResourceManager.GetString("GenderTooltipUnknown", resourceCulture);
             }
         }
         

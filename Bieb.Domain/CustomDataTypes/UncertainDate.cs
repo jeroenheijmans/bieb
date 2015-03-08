@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Bieb.Domain.CustomDataTypes
 {
-    // See also: http://stackoverflow.com/questions/6431908/how-to-design-date-of-birth-in-db-and-orm-for-mix-of-known-and-unkown-dates
+    // See also: http://stackoverflow.com/questions/6431908/how-to-design-date-of-birth-in-db-and-orm-for-mix-of-known-and-unknown-dates
     public struct UncertainDate
     {
         public int? Year;
