@@ -55,7 +55,7 @@
       <many-to-many column="TagId" class="Tag" foreign-key="FK_BookTag_Tag" />
     </set>
 
-    <many-to-one name="ReferenceBook" column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />
+    <many-to-one name="ReferenceBook" column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" access="field.camelcase" />
 
     <bag name="ReferencedByBooks" access="field.camelcase">
       <key column="ReferenceBookId" foreign-key="FK_Story_ReferenceBook" />

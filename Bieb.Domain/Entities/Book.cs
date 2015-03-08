@@ -160,10 +160,23 @@ namespace Bieb.Domain.Entities
 
         public virtual string ReviewText { get; set; }
 
-        public virtual Book ReferenceBook { get; set; }
+        private Book referenceBook;
+
+        public virtual Book ReferenceBook
+        {
+            get
+            {
+                return referenceBook;
+            }
+            set
+            {
+                this.referenceBook = value;
+                value.referencedByBooks.Add(this);
+            }
+        }
 
         private readonly IList<Book> referencedByBooks = new List<Book>();
-        public virtual IList<Book> ReferencedByBooks
+        public virtual IEnumerable<Book> ReferencedByBooks
         {
             get { return referencedByBooks; }
         }
