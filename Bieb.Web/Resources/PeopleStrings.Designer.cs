@@ -88,7 +88,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New York.
+        ///   Looks up a localized string similar to E.g. Seattle, Belgium, &quot;St. Mary&apos;s Hospital&quot;.
         /// </summary>
         public static string BornAtPlaceholder {
             get {
@@ -133,7 +133,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Madagascar.
+        ///   Looks up a localized string similar to E.g. Detroit, Madagascar, &quot;His own home&quot;.
         /// </summary>
         public static string DiedAtPlaceholder {
             get {
