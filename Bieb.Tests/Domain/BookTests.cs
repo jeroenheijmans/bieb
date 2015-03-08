@@ -234,16 +234,170 @@ namespace Bieb.Tests.Domain
 
 
         [Test]
-        public void Can_Clear_Authors()
+        public void Can_Add_Author()
         {
             var book = new Book();
             var person = new Person();
             book.AddAuthor(person);
             Assert.That(book.Authors.Count(), Is.EqualTo(1));
             Assert.That(person.AuthoredBooks.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Can_Add_Translator()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddTranslator(person);
+            Assert.That(book.Translators.Count(), Is.EqualTo(1));
+            Assert.That(person.TranslatedBooks.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Can_Add_Editor()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddEditor(person);
+            Assert.That(book.Editors.Count(), Is.EqualTo(1));
+            Assert.That(person.EditedBooks.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Remove_Author_Will_Remove_From_Book_Authors_Property()
+        {
+            var book = new Book();
+            book.AddAuthor(new Person());
+            book.RemoveAuthor(book.Authors.Single());
+            Assert.That(book.Authors.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Remove_Author_Will_Remove_From_Person_AuthoredBooks_Property()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddAuthor(person);
+            book.RemoveAuthor(person);
+            Assert.That(person.AuthoredBooks.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Remove_Translator_Will_Remove_From_Book_Translators_Property()
+        {
+            var book = new Book();
+            book.AddTranslator(new Person());
+            book.RemoveTranslator(book.Translators.Single());
+            Assert.That(book.Translators.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Remove_Translator_Will_Remove_From_Person_TranslatedBooks_Property()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddTranslator(person);
+            book.RemoveTranslator(person);
+            Assert.That(person.TranslatedBooks.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Remove_Editor_Will_Remove_From_Book_Editors_Property()
+        {
+            var book = new Book();
+            book.AddEditor(new Person());
+            book.RemoveEditor(book.Editors.Single());
+            Assert.That(book.Editors.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Remove_Editor_Will_Remove_From_Person_EditedBooks_Property()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddEditor(person);
+            book.RemoveEditor(person);
+            Assert.That(person.EditedBooks.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void ClearAuthors_Will_Make_Authors_Property_Empty()
+        {
+            var book = new Book();
+            book.AddAuthor(new Person());
             book.ClearAuthors();
             Assert.That(book.Authors.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void ClearAuthors_Will_Remove_Book_From_Person_AuthoredBooks()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddAuthor(person);
+            book.ClearAuthors();
             Assert.That(person.AuthoredBooks.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void ClearTranslator_Will_Make_Translators_Property_Empty()
+        {
+            var book = new Book();
+            book.AddTranslator(new Person());
+            book.ClearTranslators();
+            Assert.That(book.Translators.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void ClearTranslators_Will_Remove_Book_From_Person_TranslatedBooks()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddTranslator(person);
+            book.ClearTranslators();
+            Assert.That(person.TranslatedBooks.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void ClearEditors_Will_Make_Editors_Property_Empty()
+        {
+            var book = new Book();
+            book.AddEditor(new Person());
+            book.ClearEditors();
+            Assert.That(book.Editors.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void ClearEditors_Will_Remove_Book_From_Person_EditedBooks()
+        {
+            var book = new Book();
+            var person = new Person();
+            book.AddEditor(person);
+            book.ClearEditors();
+            Assert.That(person.EditedBooks.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Can_Add_Story()
+        {
+            var book = new Book();
+            book.AddStory(new Story());
+            Assert.That(book.Stories.Any());
         }
     }
 }

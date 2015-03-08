@@ -69,7 +69,7 @@ namespace Bieb.Domain.Entities
                 person.RemoveAuthoredStory(this);
             }
 
-            translators.Clear();
+            authors.Clear();
         }
 
         public override void ClearTranslators()
