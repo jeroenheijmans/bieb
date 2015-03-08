@@ -4,8 +4,8 @@
     ViewBag.Title = "Search for \"" + Model.Query + "\"";
 }
 
-<h1>@BiebResources.SearchStrings.BasicSearchHeader</h1>
-<section id="search-form">
+<h1 class="hidden-xs hidden-sm">@BiebResources.SearchStrings.BasicSearchHeader</h1>
+<section id="search-form" class="hidden-xs hidden-sm">
     @Html.Partial("_SearchBoxPartial")
 </section>
 
