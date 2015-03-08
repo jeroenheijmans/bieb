@@ -55,7 +55,9 @@ namespace Bieb.Web.Controllers
                 .Items
                 .Where(b => b.Title.ToLower().Contains(queryLowerCased))
                 .OrderBy(b => b.Title)
-                .Select(b => b);
+                .Select(b => b.ReferenceBook ?? b)
+                .ToList() // Yuck! Leaky abstraction. TODO: Fix this.
+                .Distinct();
 
             IEnumerable<Story> stories = StoryRepository
                 .Items
