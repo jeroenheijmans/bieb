@@ -83,7 +83,7 @@ namespace Bieb.Web.Controllers
 
             if (stories.Count() == 1 && !people.Any() && !books.Any())
             {
-                return RedirectToAction("Details", "Books", new { id = stories.First().Id });
+                return RedirectToAction("Details", "Stories", new { id = stories.First().Id });
             }
 
             return View(model);
