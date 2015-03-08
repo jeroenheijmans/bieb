@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicPersistance\BookPersistanceTests.cs" />
+    <Compile Include="BasicPersistance\PublisherPersistanceTests.cs" />
+    <Compile Include="BasicPersistance\StoryPersistanceTests.cs" />
+    <Compile Include="BasicPersistance\EntityPersistanceTests.cs" />
+    <Compile Include="BasicPersistance\PersonPersistanceTests.cs" />
+    <Compile Include="BasicPersistance\SeriesPersistanceTests.cs" />
     <Compile Include="Cascades\BookCascadeTests.cs" />
     <Compile Include="Cascades\PersonCascadeTests.cs" />
     <Compile Include="Cascades\StoryCascadeTests.cs" />

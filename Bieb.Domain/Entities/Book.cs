@@ -22,6 +22,8 @@ namespace Bieb.Domain.Entities
             set { libraryStatus = value; }
         }
 
+        public virtual Series Series { get; set; }
+
         public virtual IEnumerable<Tag> AllTags
         {
             get
@@ -52,29 +54,7 @@ namespace Bieb.Domain.Entities
         {
             get { return editors; }
         }
-
         
-        // TODO: Fix this dichotomy between Series being a collection or just one thing.
-        // Probably the second option is the way to go, and the first one must begone!
-        private readonly IList<Series> dbSeries = new List<Series>();
-
-        private IList<Series> DbSeries
-        {
-            get { return dbSeries; }
-        }
-        public virtual Series Series 
-        { 
-            get
-            {
-                return DbSeries == null ? null : DbSeries.FirstOrDefault();
-            }
-            set
-            {
-                DbSeries.Clear();
-                DbSeries.Add(value);
-            }
-        }
-
         public virtual IEnumerable<Person> AllAuthors
         {
             get
