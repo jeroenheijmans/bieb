@@ -5,6 +5,15 @@ namespace Bieb.Domain.Entities
 {
     public class Publisher : BaseEntity
     {
+        public Publisher()
+            : this("")
+        { }
+
+        public Publisher(string name)
+        {
+            this.Name = name;
+        }
+
         public virtual string Name { get; set; }
 
         private readonly ISet<Book> books = new HashSet<Book>();

@@ -11,6 +11,14 @@ namespace Bieb.Tests.Domain
     public class PublisherTests
     {
         [Test]
+        public void Default_Constructor_Will_Set_Name_To_Empty_String()
+        {
+            var publisher = new Publisher();
+            Assert.That(publisher.Name, Is.EqualTo(""));
+        }
+
+
+        [Test]
         public void Books_Is_MyBooks_And_ReferenceBooks_Joined()
         {
             var book1 = new Book{ LibraryStatus = LibraryStatus.InPosession };
