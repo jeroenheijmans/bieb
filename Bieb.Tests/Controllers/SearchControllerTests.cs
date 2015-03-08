@@ -1,14 +1,11 @@
-using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
+using NUnit.Framework;
 using Bieb.Tests.Mocks;
 using Bieb.Web.Models.Search;
-using NUnit.Framework;
-using Moq;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 using Bieb.Web.Controllers;
-using Bieb.Web.Models;
 
 namespace Bieb.Tests.Controllers
 {
@@ -117,7 +114,7 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
-        public void Single_Person_Result_Will_Redirect_To_Appropriate_Details_Page()
+        public void Single_Person_Result_Will_Redirect_To_Person_Details_Page()
         {
             var asimov = new Person { FirstName = "Isaac", Surname = "Asimov" };
 
@@ -131,7 +128,7 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
-        public void Single_Book_Result_Will_Redirect_To_Appropriate_Details_Page()
+        public void Single_Book_Result_Will_Redirect_To_Book_Details_Page()
         {
             var markTheMartian = new Book { Title = "Mark the Martian" };
 
@@ -145,7 +142,7 @@ namespace Bieb.Tests.Controllers
 
 
         [Test]
-        public void Single_Story_Result_Will_Redirect_To_Appropriate_Details_Page()
+        public void Single_Story_Result_Will_Redirect_To_Story_Details_Page()
         {
             var bundle = new Book();
             var story1 = new Story { Title = "The first story ever", Book = bundle };
@@ -158,7 +155,7 @@ namespace Bieb.Tests.Controllers
 
             var result = (RedirectToRouteResult)controller.Basic("ever");
 
-            Assert.That(result.RouteValues["controller"], Is.EqualTo("Books"));
+            Assert.That(result.RouteValues["controller"], Is.EqualTo("Stories"));
             Assert.That(result.RouteValues["action"], Is.EqualTo("Details"));
         }
 
