@@ -32,7 +32,7 @@ namespace Bieb.Tests.ModelMappers
             foreach (var gender in (Gender[]) Enum.GetValues(typeof (Gender)))
             {
                 var model = mapper.ModelFromEntity(new Person {Gender = gender});
-                Assert.That((gender == Gender.Unkown && !model.IsGenderKnown) || model.IsGenderKnown, "Should have correct IsGenderKnown for {0}", gender);
+                Assert.That((gender == Gender.Unknown && !model.IsGenderKnown) || model.IsGenderKnown, "Should have correct IsGenderKnown for {0}", gender);
             }
         }
 
@@ -123,7 +123,7 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Place_Of_Birth_Null_Is_Considered_Unkown_Place()
+        public void Place_Of_Birth_Null_Is_Considered_Unknown_Place()
         {
             var person = new Person { PlaceOfBirth = null };
             var model = mapper.ModelFromEntity(person);
@@ -132,7 +132,7 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Place_Of_Birth_Empty_Is_Considered_Unkown_Place()
+        public void Place_Of_Birth_Empty_Is_Considered_Unknown_Place()
         {
             var person = new Person { PlaceOfBirth = "" };
             var model = mapper.ModelFromEntity(person);
@@ -141,7 +141,7 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Place_Of_Birth_Non_Empty_Is_Considered_Unkown_Place()
+        public void Place_Of_Birth_Non_Empty_Is_Considered_Unknown_Place()
         {
             var person = new Person { PlaceOfBirth = "x" };
             var model = mapper.ModelFromEntity(person);
@@ -150,7 +150,7 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Place_Of_Death_Null_Is_Considered_Unkown_Place()
+        public void Place_Of_Death_Null_Is_Considered_Unknown_Place()
         {
             var person = new Person { PlaceOfDeath = null };
             var model = mapper.ModelFromEntity(person);
@@ -159,7 +159,7 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Place_Of_Death_Empty_Is_Considered_Unkown_Place()
+        public void Place_Of_Death_Empty_Is_Considered_Unknown_Place()
         {
             var person = new Person { PlaceOfDeath = "" };
             var model = mapper.ModelFromEntity(person);
@@ -168,7 +168,7 @@ namespace Bieb.Tests.ModelMappers
 
 
         [Test]
-        public void Place_Of_Death_Non_Empty_Is_Considered_Unkown_Place()
+        public void Place_Of_Death_Non_Empty_Is_Considered_Unknown_Place()
         {
             var person = new Person { PlaceOfDeath = "x" };
             var model = mapper.ModelFromEntity(person);

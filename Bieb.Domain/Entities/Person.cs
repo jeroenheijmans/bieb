@@ -211,7 +211,7 @@ namespace Bieb.Domain.Entities
     
     public enum Gender
     {
-        Unkown = 0,
+        Unknown = 0,
         Male = 1,
         Female = 2,
 

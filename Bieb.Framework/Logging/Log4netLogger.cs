@@ -43,7 +43,7 @@ namespace Bieb.Framework.Logging
                     LogFatal(message, exception);
                     break;
                 default:
-                    LogError("Logging called with unkown level '" + level.ToString() + "'. Message will be logged with substitute level 'information'.");
+                    LogError("Logging called with unknown level '" + level.ToString() + "'. Message will be logged with substitute level 'information'.");
                     LogInformation(message);
                     break;
             }
