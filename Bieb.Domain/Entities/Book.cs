@@ -146,7 +146,7 @@ namespace Bieb.Domain.Entities
                 person.RemoveAuthoredBook(this);
             }
 
-            translators.Clear();
+            authors.Clear();
         }
 
         public override void ClearTranslators()
