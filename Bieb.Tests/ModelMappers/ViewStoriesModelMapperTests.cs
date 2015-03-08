@@ -58,8 +58,8 @@ namespace Bieb.Tests.ModelMappers
             var story = new Story { Id = 1 };
             var siblingstory = new Story { Id = 2 };
             var book = new Book();
-            book.AddStory(0, story);
-            book.AddStory(1, siblingstory);
+            book.AddStory(story);
+            book.AddStory(siblingstory);
             var result = mapper.ModelFromEntity(story);
             Assert.That(result.SiblingStories.Single().Id, Is.EqualTo(siblingstory.Id));
         }

@@ -104,8 +104,8 @@ namespace Bieb.Tests.ModelMappers
         public void Will_Show_Stories_If_Book_Has_Multiple_Stories()
         {
             var book = new Book();
-            book.AddStory(1, new Story());
-            book.AddStory(2, new Story());
+            book.AddStory(new Story());
+            book.AddStory(new Story());
             var result = mapper.ModelFromEntity(book);
             Assert.That(result.ShowStoriesList);
         }
@@ -115,8 +115,8 @@ namespace Bieb.Tests.ModelMappers
         public void Has_List_Of_Stories()
         {
             var book = new Book();
-            book.AddStory(0, new Story() { Title = "Raven" });
-            book.AddStory(1, new Story() { Title = "Hammerfall" });
+            book.AddStory(new Story() { Title = "Raven" });
+            book.AddStory(new Story() { Title = "Hammerfall" });
 
             var result = mapper.ModelFromEntity(book);
 
