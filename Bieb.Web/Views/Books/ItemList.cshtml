@@ -1,19 +1,27 @@
 ﻿@model IEnumerable<Bieb.Web.Models.Books.ViewBookModel>
 
-<div class="row">
+<table class="table table-bordered table-condensed table-striped table-hover">
+    <tr>
+        <th>@BiebResources.BookStrings.TitleHeader</th>
+        <th>@BiebResources.BookStrings.PeopleInvolved</th>
+        <th>@BiebResources.BookStrings.TypeHeader</th>
+        <th>@BiebResources.BookStrings.LibraryStatusHeader</th>
+    </tr>
+
 @foreach (var book in Model) 
 {
-    <div class="col-lg-4 col-sm-6">
-        <div class="panel panel-default panel-body">
-            <h4>@Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })</h4>
-                
-            <span>@book.BookType</span>
-
-            @if (!string.IsNullOrWhiteSpace(book.Isbn))
+    <tr>
+        <td>
+            @Html.ActionLink(book.Title, "Details", new { controller = "Books", id = book.Id })
+            @if (!string.IsNullOrWhiteSpace(book.Subtitle))
             {
-                <span>, @BiebResources.SharedStrings.Isbn: @book.Isbn</span>
+                <br />
+                @book.Subtitle
             }
-        </div>
-    </div>
+        </td>
+        <td>@Html.Raw(string.Join(", ", book.CoverPeople.Select(person => Html.ActionLink(person.Text, "Details", new { id = person.Id, controller = "People" }))))</td>
+        <td>@book.BookType</td>
+        <td>@book.LibraryStatus</td>
+    </tr>
 }
-</div>
+</table>
