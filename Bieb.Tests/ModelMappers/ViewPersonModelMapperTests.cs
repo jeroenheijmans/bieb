@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bieb.Domain.CustomDataTypes;
 using Bieb.Domain.Entities;
 using Bieb.Web.Localization;
 using Bieb.Web.Models.Books;
@@ -228,6 +229,24 @@ namespace Bieb.Tests.ModelMappers
             story.AddAuthor(person);
             var model = mapper.ModelFromEntity(person);
             Assert.That(model.AuthoredStories.Count(), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void Will_Set_IsDateOfBirthKnown_If_Known()
+        {
+            var person = new Person { DateOfBirth = new UncertainDate(1990) };
+            var model = mapper.ModelFromEntity(person);
+            Assert.That(model.IsDateOfBirthKnown, Is.True);
+        }
+
+
+        [Test]
+        public void Will_Set_IsDateOfDeathKnown_If_Known()
+        {
+            var person = new Person { DateOfDeath = new UncertainDate(1990) };
+            var model = mapper.ModelFromEntity(person);
+            Assert.That(model.IsDateOfDeathKnown, Is.True);
         }
     }
 }

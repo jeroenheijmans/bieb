@@ -83,5 +83,15 @@ namespace Bieb.Domain.CustomDataTypes
                        Year.HasValue;
             }
         }
+
+        public bool IsCompletelyUnknown
+        {
+            get
+            {
+                return !Year.HasValue &&
+                       !Month.HasValue &&
+                       !Day.HasValue;
+            }
+        }
     }
 }

@@ -21,9 +21,12 @@
         </p>
 
         <ul>
-            <li>
-                @BiebResources.PeopleStrings.BornOn: @Model.DateOfBirth
-            </li>
+            @if (Model.IsDateOfBirthKnown)
+            {
+                <li>
+                    @BiebResources.PeopleStrings.BornOn: @Model.DateOfBirth
+                </li>
+            }
 
             @if (Model.PlaceOfBirth != null)
             {
@@ -31,10 +34,13 @@
                     @BiebResources.PeopleStrings.BornAt: @Html.DisplayFor(model => model.PlaceOfBirth)
                 </li>
             }
-
-            <li>
-                @BiebResources.PeopleStrings.DiedOn: @Model.DateOfDeath
-            </li>
+            
+            @if (Model.IsDateOfDeathKnown)
+            {
+                <li>
+                    @BiebResources.PeopleStrings.DiedOn: @Model.DateOfDeath
+                </li>
+            }
 
             @if (Model.PlaceOfDeath != null)
             {
@@ -47,7 +53,7 @@
             { 
                 <li>
                     @BiebResources.SharedStrings.Tags:
-                @string.Join(", ", Model.Tags)
+                    @string.Join(", ", Model.Tags)
                 </li>
             }
         </ul>

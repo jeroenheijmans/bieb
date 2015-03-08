@@ -26,10 +26,14 @@ namespace Bieb.Web.Models.People
 
         public bool IsPlaceOfBirthKnown { get; set; }
         public string PlaceOfBirth { get; set; }
+
+        public bool IsDateOfBirthKnown { get; set; }
         public string DateOfBirth { get; set; }
 
         public bool IsPlaceOfDeathKnown { get; set; }
         public string PlaceOfDeath { get; set; }
+
+        public bool IsDateOfDeathKnown { get; set; }
         public string DateOfDeath { get; set; }
 
         public bool HasTags { get; set; }

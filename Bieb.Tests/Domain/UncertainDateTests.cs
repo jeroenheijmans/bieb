@@ -184,5 +184,37 @@ namespace Bieb.Tests.Domain
             var date = new UncertainDate(null, 12, 25);
             Assert.That(date.UntilDate, Is.Null);
         }
+
+
+        [Test]
+        public void Is_Default_Completely_Unknown()
+        {
+            var date = new UncertainDate();
+            Assert.That(date.IsCompletelyUnknown, Is.True);
+        }
+
+
+        [Test]
+        public void Is_Not_Completely_Unknown_If_Year_Is_Set()
+        {
+            var date = new UncertainDate(1990);
+            Assert.That(date.IsCompletelyUnknown, Is.False);
+        }
+
+
+        [Test]
+        public void Is_Not_Completely_Unknown_If_Month_Is_Set()
+        {
+            var date = new UncertainDate { Month = 12 };
+            Assert.That(date.IsCompletelyUnknown, Is.False);
+        }
+
+
+        [Test]
+        public void Is_Not_Completely_Unknown_If_Day_Is_Set()
+        {
+            var date = new UncertainDate { Day = 12 };
+            Assert.That(date.IsCompletelyUnknown, Is.False);
+        }
     }
 }
