@@ -217,10 +217,10 @@ namespace Bieb.Tests.Domain
 
 
         [Test]
-        public void Can_Add_Reference_Books_To_New_Book()
+        public void Can_Add_Reference_Book()
         {
             var book = new Book();
-            Assert.DoesNotThrow(() => book.ReferencedByBooks.Add(book));
+            Assert.DoesNotThrow(() => book.ReferenceBook = new Book());
         }
 
 
@@ -418,6 +418,18 @@ namespace Bieb.Tests.Domain
             var book = new Book();
             book.AddStory(new Story());
             Assert.That(book.Stories.First().Value.Book, Is.EqualTo(book));
+        }
+
+
+        [Test]
+        public void Set_ReferenceBook_Will_Change_Originals_References()
+        {
+            var original = new Book("The Hobbit") {IsbnLanguage = 1};
+            var myBook = new Book("De Hobbit") {IsbnLanguage = 90};
+
+            myBook.ReferenceBook = original;
+
+            Assert.That(original.ReferencedByBooks, Contains.Item(myBook));
         }
     }
 }
