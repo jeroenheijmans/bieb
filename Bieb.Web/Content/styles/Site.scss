@@ -20,7 +20,7 @@
 
 body {
 	font-family: "MuseoSans500Regular", Georgia, serif;
-	font-size: 1.5em;
+	font-size: 1.5em; // TODO: This doesn't seem wise. A different selector and/or use of px may be more appropriate?
 	color: $main-color;
 	background: $background-color;
     background-image: url('/Content/images/background-sprite.png');
@@ -60,6 +60,15 @@ a {
 			width: 100%;
 		}
 	}
+}
+
+// Fix for iOS / Android devices zooming in a tiny little bit (and not zooming out anymore). See: http://stackoverflow.com/q/2989263/419956
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+  }
 }
 
 // Fix, the site's font does not show well with Bootstrap's label styling
