@@ -123,6 +123,9 @@
   <data name="From" xml:space="preserve">
     <value>From</value>
   </data>
+  <data name="FromBookHeader" xml:space="preserve">
+    <value>Bundled in Book</value>
+  </data>
   <data name="FromHeader" xml:space="preserve">
     <value>From</value>
   </data>

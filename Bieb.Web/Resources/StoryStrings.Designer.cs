@@ -79,6 +79,15 @@ namespace BiebResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bundled in Book.
+        /// </summary>
+        public static string FromBookHeader {
+            get {
+                return ResourceManager.GetString("FromBookHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
         public static string FromHeader {
