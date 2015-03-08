@@ -127,7 +127,7 @@
     <value>Born At</value>
   </data>
   <data name="BornAtPlaceholder" xml:space="preserve">
-    <value>New York</value>
+    <value>E.g. Seattle, Belgium, "St. Mary's Hospital"</value>
   </data>
   <data name="BornOn" xml:space="preserve">
     <value>Born On</value>
@@ -142,7 +142,7 @@
     <value>Died At</value>
   </data>
   <data name="DiedAtPlaceholder" xml:space="preserve">
-    <value>Madagascar</value>
+    <value>E.g. Detroit, Madagascar, "His own home"</value>
   </data>
   <data name="DiedOn" xml:space="preserve">
     <value>Died On</value>
