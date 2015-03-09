@@ -9,8 +9,8 @@ namespace Bieb.Domain.Repositories
     public interface IBookRepository : IEntityRepository<Book>
     {
         /// <summary>
-        /// Returns a list of integers representing the available ISBN Languages for this repository.
+        /// Returns ISO 639 two-letter identifiers representing the available Languages.
         /// </summary>
-        IQueryable<string> Iso639LanguageIdentifiers { get; }
+        IEnumerable<string> Iso639LanguageIdentifiers { get; }
     }
 }

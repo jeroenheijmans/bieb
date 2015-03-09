@@ -19,16 +19,16 @@ namespace Bieb.DataAccess.Repositories
             return input.Add(Restrictions.Where<Book>(b => b.LibraryStatus != LibraryStatus.OnlyForReference));
         }
 
-        public IQueryable<string> Iso639LanguageIdentifiers
+        public IEnumerable<string> Iso639LanguageIdentifiers
         {
             get
             {
-                // TODO: This should come from another source
                 return new[]
                            {
-                               "en",
-                               "nl"
-                           }.AsQueryable();
+                               "af", "ar", "bn", "bs", "bg", "my", "ca", "zh", "hr", "cs", "da", "nl", "en", "et", "fi", "fr", "ka", "de", "el", "he", "hi",
+                               "hu", "is", "id", "ga", "it", "ja", "jv", "ko", "ku", "lv", "lt", "mk", "ms", "mr", "no", "pa", "fa", "pl", "pt", "ro", "ru",
+                               "sa", "gd", "sr", "sk", "sl", "es", "sv", "ta", "te", "th", "tr", "uk", "ur", "uz", "vi"
+                           };
             }
         }
     }
