@@ -15,7 +15,7 @@ namespace Bieb.Web.Models.Stories
             Title = story.Title;
             Subtitle = story.Subtitle;
             Year = story.Year;
-            HasLanguage = story.IsbnLanguage.HasValue;
+            HasLanguage = !string.IsNullOrEmpty(story.Iso639LanguageId);
             HasTags = story.Tags.Any();
             Tags = string.Join(", ", story.Tags);
             Book = story.Book.AsLinkableBookModel();

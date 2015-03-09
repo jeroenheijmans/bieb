@@ -19,22 +19,15 @@ namespace Bieb.DataAccess.Repositories
             return input.Add(Restrictions.Where<Book>(b => b.LibraryStatus != LibraryStatus.OnlyForReference));
         }
 
-        public IQueryable<int> IsbnLanguages
+        public IQueryable<string> Iso639LanguageIdentifiers
         {
             get
             {
                 // TODO: This should come from another source
                 return new[]
                            {
-                               0, // English
-                               1, // English
-                               2, // French
-                               3, // German
-                               4, // Japanese
-                               5, // Russian,
-                               87, // Danish
-                               90, // Dutch
-                               94 // Dutch
+                               "en",
+                               "nl"
                            }.AsQueryable();
             }
         }

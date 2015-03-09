@@ -17,18 +17,18 @@ namespace Bieb.Domain.Entities
         // TODO: Evaluate if this property is even necessary.
         public virtual int PositionInBook { get; set; }
 
-        public override int? IsbnLanguage
+        public override string Iso639LanguageId
         {
             get
             {
-                if (isbnLanguage == null && Book != null)
-                    return Book.IsbnLanguage;
+                if (iso639LanguageId == null && Book != null)
+                    return Book.Iso639LanguageId;
 
-                return isbnLanguage;
+                return iso639LanguageId;
             }
             set
             {
-                isbnLanguage = value;
+                iso639LanguageId = value;
             }
         }
 

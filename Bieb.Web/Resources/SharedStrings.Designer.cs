@@ -205,7 +205,7 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ISBN.
+        ///   Looks up a localized string similar to Isbn.
         /// </summary>
         public static string Isbn {
             get {

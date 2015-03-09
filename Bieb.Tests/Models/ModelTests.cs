@@ -20,7 +20,7 @@ namespace Bieb.Tests.Models
             "ModifiedDateTicks", 
             "AvailablePublishers", 
             "AvailablePeople", 
-            "AvailableIsbnLanguages", 
+            "AvailableIso639Languages", 
             "AvailableLibraryStatuses",
             "FullName",
             "BookTitle",

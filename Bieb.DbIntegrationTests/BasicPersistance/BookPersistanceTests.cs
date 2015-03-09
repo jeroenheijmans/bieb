@@ -17,7 +17,7 @@ namespace Bieb.DbIntegrationTests.BasicPersistance
                            Subtitle = "and the road ahead",
                            LibraryStatus = LibraryStatus.OnWishlist,
                            Isbn = "0123456789",
-                           IsbnLanguage = 1,
+                           Iso639LanguageId = "en",
                            Year = 2001,
                            ReviewText = "Great book!"
                        };
@@ -29,7 +29,7 @@ namespace Bieb.DbIntegrationTests.BasicPersistance
             Assert.That(actual.Subtitle, Is.EqualTo(expected.Subtitle));
             Assert.That(actual.LibraryStatus, Is.EqualTo(expected.LibraryStatus));
             Assert.That(actual.Isbn, Is.EqualTo(expected.Isbn));
-            Assert.That(actual.IsbnLanguage, Is.EqualTo(expected.IsbnLanguage));
+            Assert.That(actual.Iso639LanguageId, Is.EqualTo(expected.Iso639LanguageId));
             Assert.That(actual.Year, Is.EqualTo(expected.Year));
             Assert.That(actual.ReviewText, Is.EqualTo(expected.ReviewText));
         }

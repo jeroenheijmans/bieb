@@ -14,22 +14,22 @@ namespace Bieb.Web.Models
     {
         private readonly IEnumerable<Publisher> publishers;
         private readonly IBookRepository books;
-        private readonly IIsbnLanguageDisplayer isbnLanguageDisplayer;
+        private readonly IIso639LanguageDisplayer iso639LanguageDisplayer;
         protected readonly IEnumerable<Person> people;
 
-        public EditPublishableModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, IBookRepository books, IIsbnLanguageDisplayer isbnLanguageDisplayer)
+        public EditPublishableModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, IBookRepository books, IIso639LanguageDisplayer iso639LanguageDisplayer)
         {
             this.publishers = publishers.Items;
             this.people = people.Items;
             this.books = books;
-            this.isbnLanguageDisplayer = isbnLanguageDisplayer;
+            this.iso639LanguageDisplayer = iso639LanguageDisplayer;
         }
 
         public override void MergeEntityWithModel(TEntity entity, TModel model)
         {
             base.MergeEntityWithModel(entity, model);
 
-            entity.IsbnLanguage = model.IsbnLanguage;
+            entity.Iso639LanguageId = model.Iso639LanguageId;
             entity.Title = model.Title;
             entity.Subtitle = model.Subtitle;
             entity.Year = model.Year;
@@ -73,9 +73,9 @@ namespace Bieb.Web.Models
             model.AvailablePublishers = new SelectList(publishers.OrderBy(p => p.Name), "Id", "Name");
             model.AvailablePeople = new SelectList(people.OrderBy(p => p.Surname).ThenBy(p => p.FirstName), "Id", "FullNameAlphabetical");
 
-            model.AvailableIsbnLanguages = new SelectList(GetLanguageOptions(), "Key", "Value");
+            model.AvailableIso639Languages = new SelectList(GetLanguageOptions(), "Key", "Value");
 
-            model.IsbnLanguage = entity.IsbnLanguage;
+            model.Iso639LanguageId = entity.Iso639LanguageId;
             model.Title = entity.Title;
             model.Subtitle = entity.Subtitle;
             model.Year = entity.Year;
@@ -91,7 +91,7 @@ namespace Bieb.Web.Models
 
         protected IEnumerable<KeyValuePair<string, string>> GetLanguageOptions()
         {
-            return books.IsbnLanguages.ToDictionary(id => id.ToString(), id => isbnLanguageDisplayer.GetLocalizedIsbnLanguageResourceForAdmins(id));
+            return books.Iso639LanguageIdentifiers.ToDictionary(id => id.ToString(), id => iso639LanguageDisplayer.GetLocalizedIso639LanguageResourceForAdmins(id));
         }
     }
 }

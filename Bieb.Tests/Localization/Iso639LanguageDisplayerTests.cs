@@ -7,27 +7,27 @@ using NUnit.Framework;
 namespace Bieb.Tests.Localization
 {
     [TestFixture]
-    public class IsbnLanguageDisplayerTests
+    public class Iso639LanguageDisplayerTests
     {
-        private IsbnLanguageDisplayer displayer;
+        private Iso639LanguageDisplayer displayer;
 
         // List retrieved from http://en.wikipedia.org/wiki/List_of_ISBN_identifier_groups
         // Taken only the 1 and 2 digit identifiers
-        private readonly int[] wikipediasIsbnLanguages = new[] { 0, 1, 2, 3, 4, 5, 7, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94 };
-        private const int IsbnIdForEnglish = 1;
+        private readonly string[] wikipediasIso639Languages = new[] { "nl", "en", "ru" };
+        private const string Iso639IdForEnglish = "en";
 
 
         [SetUp]
         public void SetUp()
         {
-            displayer = new IsbnLanguageDisplayer();
+            displayer = new Iso639LanguageDisplayer();
         }
 
 
         [Test]
         public void Can_Display_English()
         {
-            var result = displayer.GetLocalizedIsbnLanguageResource(IsbnIdForEnglish); // English
+            var result = displayer.GetLocalizedIso639LanguageResource(Iso639IdForEnglish); // English
             StringAssert.Contains("English", result);
         }
 
@@ -35,16 +35,16 @@ namespace Bieb.Tests.Localization
         [Test]
         public void Can_Display_English_For_Admins()
         {
-            var result = displayer.GetLocalizedIsbnLanguageResourceForAdmins(IsbnIdForEnglish); // English
+            var result = displayer.GetLocalizedIso639LanguageResourceForAdmins(Iso639IdForEnglish); // English
             StringAssert.Contains("English", result);
-            StringAssert.Contains(IsbnIdForEnglish.ToString(), result);
+            StringAssert.Contains(Iso639IdForEnglish.ToString(), result);
         }
 
 
         [Test]
         public void Can_Display_Unknown_Language()
         {
-            var result = displayer.GetLocalizedIsbnLanguageResource(-1);
+            var result = displayer.GetLocalizedIso639LanguageResource("");
             Assert.That(result, Is.Not.Null.And.Not.Empty);
         }
 
@@ -52,7 +52,7 @@ namespace Bieb.Tests.Localization
         [Test]
         public void Can_Display_Unknown_Language_For_Admins()
         {
-            var result = displayer.GetLocalizedIsbnLanguageResourceForAdmins(-1);
+            var result = displayer.GetLocalizedIso639LanguageResourceForAdmins("");
             Assert.That(result, Is.Not.Null.And.Not.Empty);
         }
 
@@ -60,7 +60,7 @@ namespace Bieb.Tests.Localization
         [Test]
         public void Can_Translate_Null_Key_As_Unknown_Language()
         {
-            var result = displayer.GetLocalizedIsbnLanguageResource(null);
+            var result = displayer.GetLocalizedIso639LanguageResource(null);
             Assert.That(result, Is.Not.Null.Or.Empty);
         }
 
@@ -68,7 +68,7 @@ namespace Bieb.Tests.Localization
         [Test]
         public void Can_Translate_Null_Key_As_Unknown_Language_For_Admins()
         {
-            var result = displayer.GetLocalizedIsbnLanguageResourceForAdmins(null);
+            var result = displayer.GetLocalizedIso639LanguageResourceForAdmins(null);
             Assert.That(result, Is.Not.Null.Or.Empty);
         }
 
@@ -76,7 +76,7 @@ namespace Bieb.Tests.Localization
         [Test]
         public void Can_Display_Wikipedia_Languages()
         {
-            var results = wikipediasIsbnLanguages.Select(i => displayer.GetLocalizedIsbnLanguageResource(i));
+            var results = wikipediasIso639Languages.Select(i => displayer.GetLocalizedIso639LanguageResource(i));
             Assert.That(results, Is.All.Not.Null.And.Not.Empty);
         }
 
@@ -84,9 +84,9 @@ namespace Bieb.Tests.Localization
         [Test]
         public void No_Wikipedia_Language_Will_Be_Displayed_As_Unknown()
         {
-            foreach (var id in wikipediasIsbnLanguages)
+            foreach (var id in wikipediasIso639Languages)
             {
-                Assert.That(displayer.GetLocalizedIsbnLanguageResource(id), Is.Not.StringContaining("Unknown"), "Language {0} should not be contain string 'Unknown'.", id);
+                Assert.That(displayer.GetLocalizedIso639LanguageResource(id), Is.Not.StringContaining("Unknown"), "Language {0} should not be contain string 'Unknown'.", id);
             }
         }
 
@@ -96,7 +96,7 @@ namespace Bieb.Tests.Localization
         {
             // Some language codes are for the same language (e.g. 0 and 1 are for English, both), 
             // but the resulting texts should be distinguishable.
-            var results = wikipediasIsbnLanguages.Select(i => displayer.GetLocalizedIsbnLanguageResourceForAdmins(i));
+            var results = wikipediasIso639Languages.Select(i => displayer.GetLocalizedIso639LanguageResourceForAdmins(i));
             Assert.That(results.GroupBy(x => x).Where(x => x.Count() > 1).Select(x => x.Key), Is.Empty, "List of duplicated languages should be empty.");
         }
     }

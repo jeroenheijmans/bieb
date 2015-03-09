@@ -17,7 +17,7 @@ namespace Bieb.Tests.ModelMappers
         [SetUp]
         public void SetUp()
         {
-            mapper = new ViewBookModelMapper(new IsbnLanguageDisplayer());
+            mapper = new ViewBookModelMapper(new Iso639LanguageDisplayer());
         }
 
 
@@ -56,7 +56,7 @@ namespace Bieb.Tests.ModelMappers
         [Test]
         public void Will_Show_Publishing_Info_If_Language_Is_Set()
         {
-            var book = new Book { IsbnLanguage = 90 };
+            var book = new Book { Iso639LanguageId = "nl" };
             var result = mapper.ModelFromEntity(book);
             Assert.That(result.ShowPublishingInfo);
         }
@@ -65,7 +65,7 @@ namespace Bieb.Tests.ModelMappers
         [Test]
         public void Will_Show_Publishing_If_Year_And_Language_Are_Set()
         {
-            var book = new Book { Year = 2001, IsbnLanguage = 90 };
+            var book = new Book { Year = 2001, Iso639LanguageId = "nl" };
             var result = mapper.ModelFromEntity(book);
             Assert.That(result.ShowPublishingInfo);
         }
@@ -83,7 +83,7 @@ namespace Bieb.Tests.ModelMappers
         [Test]
         public void Will_Show_Publishing_If_Language_And_Publisher_Are_Set()
         {
-            var book = new Book { IsbnLanguage = 3, Publisher = new Publisher() };
+            var book = new Book { Iso639LanguageId = "nl", Publisher = new Publisher() };
             var result = mapper.ModelFromEntity(book);
             Assert.That(result.ShowPublishingInfo);
         }

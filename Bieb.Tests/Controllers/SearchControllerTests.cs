@@ -171,10 +171,10 @@ namespace Bieb.Tests.Controllers
         [Test]
         public void Will_Group_Book_Results_By_Original_Book_If_Possible()
         {
-            var referenceBook = new Book("2001") {IsbnLanguage = 90};
+            var referenceBook = new Book("2001") {Iso639LanguageId = "nl"};
 
             bookRepository.Add(new Book("The People of 2001"));
-            bookRepository.Add(new Book("2001") { IsbnLanguage = 1, ReferenceBook = referenceBook });
+            bookRepository.Add(new Book("2001") { Iso639LanguageId = "en", ReferenceBook = referenceBook });
             bookRepository.Add(referenceBook);
 
             var result = (BasicSearchResultModel)((ViewResult)controller.Basic("2001")).Model;

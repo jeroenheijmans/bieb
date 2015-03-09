@@ -424,8 +424,8 @@ namespace Bieb.Tests.Domain
         [Test]
         public void Set_ReferenceBook_Will_Change_Originals_References()
         {
-            var original = new Book("The Hobbit") {IsbnLanguage = 1};
-            var myBook = new Book("De Hobbit") {IsbnLanguage = 90};
+            var original = new Book("The Hobbit") {Iso639LanguageId = "en"};
+            var myBook = new Book("De Hobbit") {Iso639LanguageId = "nl"};
 
             myBook.ReferenceBook = original;
 

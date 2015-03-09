@@ -14,20 +14,20 @@ namespace Bieb.Tests.ModelMappers
     public class ViewStoriesModelMapperTests
     {
         private IViewEntityModelMapper<Story, ViewStoryModel> mapper;
-        private Mock<IIsbnLanguageDisplayer> isbnLanguageDisplayerMock;
+        private Mock<IIso639LanguageDisplayer> iso639LanguageDisplayerMock;
 
         [SetUp]
         public void SetUp()
         {
-            isbnLanguageDisplayerMock = new Mock<IIsbnLanguageDisplayer>();
-            mapper = new ViewStoryModelMapper(isbnLanguageDisplayerMock.Object);
+            iso639LanguageDisplayerMock = new Mock<IIso639LanguageDisplayer>();
+            mapper = new ViewStoryModelMapper(iso639LanguageDisplayerMock.Object);
         }
 
         [Test]
         public void Will_Ask_For_Language_Localization()
         {
-            mapper.ModelFromEntity(new Story{IsbnLanguage = 90});
-            isbnLanguageDisplayerMock.Verify(i => i.GetLocalizedIsbnLanguageResource(90));
+            mapper.ModelFromEntity(new Story {Iso639LanguageId = "nl"});
+            iso639LanguageDisplayerMock.Verify(i => i.GetLocalizedIso639LanguageResource("nl"));
         }
 
 

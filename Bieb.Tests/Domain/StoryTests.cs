@@ -21,20 +21,20 @@ namespace Bieb.Tests.Domain
         [Test]
         public void Story_Without_Own_Language_Will_Use_Language_From_Book()
         {
-            var book = new Book { IsbnLanguage = 90 };
+            var book = new Book { Iso639LanguageId = "nl" };
             var story = new Story { Book = book };
 
-            Assert.That(story.IsbnLanguage, Is.EqualTo(90));
+            Assert.That(story.Iso639LanguageId, Is.EqualTo("nl"));
         }
 
 
         [Test]
         public void Story_With_Own_Language_Will_Use_That_Language_Over_Books_Language()
         {
-            var book = new Book { IsbnLanguage = 90 };
-            var story = new Story { Book = book, IsbnLanguage = 1 };
+            var book = new Book { Iso639LanguageId = "nl" };
+            var story = new Story { Book = book, Iso639LanguageId = "en" };
 
-            Assert.That(story.IsbnLanguage, Is.EqualTo(1));
+            Assert.That(story.Iso639LanguageId, Is.EqualTo("en"));
         }
 
 

@@ -10,8 +10,8 @@ namespace Bieb.Web.Models.Stories
 {
     public class EditStoryModelMapper : EditPublishableModelMapper<Story, EditStoryModel>
     {
-        public EditStoryModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, IBookRepository books, IIsbnLanguageDisplayer isbnLanguageDisplayer)
-            : base(publishers, people, books, isbnLanguageDisplayer)
+        public EditStoryModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, IBookRepository books, IIso639LanguageDisplayer iso639LanguageDisplayer)
+            : base(publishers, people, books, iso639LanguageDisplayer)
         {}
 
         public override void MergeEntityWithModel(Story entity, EditStoryModel model)

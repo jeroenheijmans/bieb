@@ -10,7 +10,7 @@ namespace Bieb.Web.Infrastructure.NinjectModules
     {
         public override void Load()
         {
-            Bind<IIsbnLanguageDisplayer>().To<IsbnLanguageDisplayer>();
+            Bind<IIso639LanguageDisplayer>().To<Iso639LanguageDisplayer>();
         }
     }
 }

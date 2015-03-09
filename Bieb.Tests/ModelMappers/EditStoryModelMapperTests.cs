@@ -32,9 +32,9 @@ namespace Bieb.Tests.ModelMappers
             people = new RepositoryMock<Person>();
             books = new BookRepositoryMock();
 
-            var isbnLanguageDisplayer = new Mock<IIsbnLanguageDisplayer>();
+            var iso639LanguageDisplayer = new Mock<IIso639LanguageDisplayer>();
 
-            mapper = new EditStoryModelMapper(publishers, people, books, isbnLanguageDisplayer.Object);
+            mapper = new EditStoryModelMapper(publishers, people, books, iso639LanguageDisplayer.Object);
 
             asimov = new Person { Id = 1, FirstName = "Isaac", Surname = "Asimov" };
             adams = new Person { Id = 2, FirstName = "Douglas", Surname = "Adams" };
