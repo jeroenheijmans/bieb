@@ -11,9 +11,9 @@ namespace Bieb.Tests.Localization
     {
         private Iso639LanguageDisplayer displayer;
 
-        // List retrieved from http://en.wikipedia.org/wiki/List_of_ISBN_identifier_groups
-        // Taken only the 1 and 2 digit identifiers
-        private readonly string[] wikipediasIso639Languages = new[] { "nl", "en", "ru" };
+        // List retrieved from http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+        // Loosely filtered based on http://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers
+        private readonly string[] wikipediasIso639Languages = new[] { "af", "ar", "bn", "bs", "bg", "my", "ca", "zh", "hr", "cs", "da", "nl", "en", "et", "fi", "fr", "ka", "de", "el", "he", "hi", "hu", "is", "id", "ga", "it", "ja", "jv", "ko", "ku", "lv", "lt", "mk", "ms", "mr", "no", "pa", "fa", "pl", "pt", "ro", "ru", "sa", "gd", "sr", "sk", "sl", "es", "sv", "ta", "te", "th", "tr", "uk", "ur", "uz", "vi" };
         private const string Iso639IdForEnglish = "en";
 
 
