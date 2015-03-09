@@ -8,18 +8,18 @@ namespace Bieb.Web.Models.Stories
 {
     public class ViewStoryModelMapper : IViewEntityModelMapper<Story, ViewStoryModel>
     {
-        private readonly IIsbnLanguageDisplayer isbnLanguageDisplayer;
+        private readonly IIso639LanguageDisplayer iso639LanguageDisplayer;
 
-        public ViewStoryModelMapper(IIsbnLanguageDisplayer isbnLanguageDisplayer)
+        public ViewStoryModelMapper(IIso639LanguageDisplayer iso639LanguageDisplayer)
         {
-            this.isbnLanguageDisplayer = isbnLanguageDisplayer;
+            this.iso639LanguageDisplayer = iso639LanguageDisplayer;
         }
 
         public ViewStoryModel ModelFromEntity(Story entity)
         {
             return new ViewStoryModel(entity)
                        {
-                           Language = isbnLanguageDisplayer.GetLocalizedIsbnLanguageResource(entity.IsbnLanguage)
+                           Language = iso639LanguageDisplayer.GetLocalizedIso639LanguageResource(entity.Iso639LanguageId)
                        };
         }
     }

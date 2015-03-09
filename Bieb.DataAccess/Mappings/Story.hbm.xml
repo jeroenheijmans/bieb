@@ -19,7 +19,7 @@
     <property name="Title" index="IX_Story_Title" not-null="true" />
     <property name="TitleSort" column="TitleSort" generated="always" access="field.camelcase" />
     <property name="Subtitle" />
-    <property name="IsbnLanguage" access="field.camelcase" />
+    <property name="Iso639LanguageId" access="field.camelcase" length="3" />
     <property name="Year" />
     
     <many-to-one name="Book" column="BookId" foreign-key="FK_Story_Book" />

@@ -21,7 +21,7 @@
     <property name="Subtitle" />
     <property name="LibraryStatus" not-null="true" />
     <property name="Isbn" />
-    <property name="IsbnLanguage" access="field.camelcase" />
+    <property name="Iso639LanguageId" access="field.camelcase" length="3" />
     <property name="Year" />
     <property name="ReviewText" length="4000" />
 

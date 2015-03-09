@@ -20,8 +20,8 @@ namespace Bieb.Tests.ModelMappers
         [SetUp]
         public void SetUp()
         {
-            var isbnLanguageDisplayer = new Mock<IIsbnLanguageDisplayer>().Object;
-            var bookMapper = new ViewBookModelMapper(isbnLanguageDisplayer);
+            var iso639LanguageDisplayer = new Mock<IIso639LanguageDisplayer>().Object;
+            var bookMapper = new ViewBookModelMapper(iso639LanguageDisplayer);
             mapper = new ViewSeriesModelMapper(bookMapper);
         }
 

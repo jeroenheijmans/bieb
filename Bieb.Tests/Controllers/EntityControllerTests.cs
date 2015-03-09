@@ -43,8 +43,8 @@ namespace Bieb.Tests.Controllers
             var peopleRepository = new RepositoryMock<Person>();
             var publishersRepository = new RepositoryMock<Publisher>();
 
-            editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository, repository, null, new Mock<IIsbnLanguageDisplayer>().Object);
-            viewBookModelMapper = new ViewBookModelMapper(new Mock<IIsbnLanguageDisplayer>().Object);
+            editBookModelMapper = new EditBookModelMapper(publishersRepository, peopleRepository, repository, null, new Mock<IIso639LanguageDisplayer>().Object);
+            viewBookModelMapper = new ViewBookModelMapper(new Mock<IIso639LanguageDisplayer>().Object);
 
             controller = new BooksController(repository, viewBookModelMapper, editBookModelMapper, responseMock.Object);
 

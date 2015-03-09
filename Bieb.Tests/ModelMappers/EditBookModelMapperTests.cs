@@ -34,10 +34,10 @@ namespace Bieb.Tests.ModelMappers
             people = new RepositoryMock<Person>();
             books = new BookRepositoryMock();
 
-            var isbnLanguageDisplayer = new Mock<IIsbnLanguageDisplayer>();
+            var iso639LanguageDisplayer = new Mock<IIso639LanguageDisplayer>();
 
-            storyMapper = new EditStoryModelMapper(publishers, people, books, isbnLanguageDisplayer.Object);
-            mapper = new EditBookModelMapper(publishers, people, books, storyMapper, isbnLanguageDisplayer.Object);
+            storyMapper = new EditStoryModelMapper(publishers, people, books, iso639LanguageDisplayer.Object);
+            mapper = new EditBookModelMapper(publishers, people, books, storyMapper, iso639LanguageDisplayer.Object);
 
             asimov = new Person {Id = 1, FirstName = "Isaac", Surname = "Asimov"};
             adams = new Person {Id = 2, FirstName = "Douglas", Surname = "Adams"};
@@ -318,10 +318,10 @@ namespace Bieb.Tests.ModelMappers
         [Test]
         public void Can_Map_Isbn_Language()
         {
-            var book = new Book {IsbnLanguage = 1};
+            var book = new Book {Iso639LanguageId = "en"};
             var model = mapper.ModelFromEntity(book);
 
-            Assert.That(model.IsbnLanguage, Is.EqualTo(book.IsbnLanguage));
+            Assert.That(model.Iso639LanguageId, Is.EqualTo(book.Iso639LanguageId));
         }
 
 
@@ -330,8 +330,8 @@ namespace Bieb.Tests.ModelMappers
         {
             var model = mapper.ModelFromEntity(new Book());
 
-            Assert.That(model.AvailableIsbnLanguages, Is.Not.Null);
-            Assert.That(model.AvailableIsbnLanguages, Is.Not.Empty);
+            Assert.That(model.AvailableIso639Languages, Is.Not.Null);
+            Assert.That(model.AvailableIso639Languages, Is.Not.Empty);
         }
 
 
@@ -340,10 +340,10 @@ namespace Bieb.Tests.ModelMappers
         {
             var model = mapper.ModelFromEntity(new Book());
 
-            foreach (var isbnLanguage in books.IsbnLanguages)
+            foreach (var iso639Language in books.Iso639LanguageIdentifiers)
             {
-                Assert.That(model.AvailableIsbnLanguages.Any(item => item.Value == isbnLanguage.ToString()),
-                            "Expected isbn language {0} wasn't found in a list of {1} languages.", isbnLanguage.ToString(), model.AvailableIsbnLanguages.Count());
+                Assert.That(model.AvailableIso639Languages.Any(item => item.Value == iso639Language.ToString()),
+                            "Expected isbn language {0} wasn't found in a list of {1} languages.", iso639Language, model.AvailableIso639Languages.Count());
             }
         }
 
@@ -409,11 +409,11 @@ namespace Bieb.Tests.ModelMappers
         [Test]
         public void Will_Allow_Setting_Language_To_Null()
         {
-            var book = new Book {IsbnLanguage = 1};
+            var book = new Book {Iso639LanguageId = "en"};
             var model = mapper.ModelFromEntity(book);
-            model.IsbnLanguage = null;
+            model.Iso639LanguageId = null;
             mapper.MergeEntityWithModel(book, model);
-            Assert.That(book.IsbnLanguage, Is.Null);
+            Assert.That(book.Iso639LanguageId, Is.Null);
         }
 
 

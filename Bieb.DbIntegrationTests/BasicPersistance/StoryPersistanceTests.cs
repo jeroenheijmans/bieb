@@ -15,7 +15,7 @@ namespace Bieb.DbIntegrationTests.BasicPersistance
                        {
                            Title = "The Long Haul",
                            Subtitle = "and the road ahead",
-                           IsbnLanguage = 1,
+                           Iso639LanguageId = "en",
                            Year = 2001
                        };
         }
@@ -24,7 +24,7 @@ namespace Bieb.DbIntegrationTests.BasicPersistance
         {
             Assert.That(actual.Title, Is.EqualTo(expected.Title));
             Assert.That(actual.Subtitle, Is.EqualTo(expected.Subtitle));
-            Assert.That(actual.IsbnLanguage, Is.EqualTo(expected.IsbnLanguage));
+            Assert.That(actual.Iso639LanguageId, Is.EqualTo(expected.Iso639LanguageId));
             Assert.That(actual.Year, Is.EqualTo(expected.Year));
         }
     }

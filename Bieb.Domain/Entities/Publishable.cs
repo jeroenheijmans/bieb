@@ -24,11 +24,11 @@ namespace Bieb.Domain.Entities
 
         public virtual Publisher Publisher { get; set; }
 
-        protected int? isbnLanguage;
-        public virtual int? IsbnLanguage 
+        protected string iso639LanguageId;
+        public virtual string Iso639LanguageId 
         {
-            get { return isbnLanguage; }
-            set { isbnLanguage = value; }
+            get { return iso639LanguageId; }
+            set { iso639LanguageId = value; }
         }
 
         private readonly ISet<Tag> tags = new HashSet<Tag>();

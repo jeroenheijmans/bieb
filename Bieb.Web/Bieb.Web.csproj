@@ -191,7 +191,7 @@
     <Compile Include="Infrastructure\NinjectModules\LoggingModule.cs" />
     <Compile Include="Infrastructure\NinjectModules\ModelMapperModule.cs" />
     <Compile Include="Localization\EnumDisplayer.cs" />
-    <Compile Include="Localization\IIsbnLanguageDisplayer.cs" />
+    <Compile Include="Localization\IIso639LanguageDisplayer.cs" />
     <Compile Include="Models\Account\AccountModels.cs" />
     <Compile Include="Models\Books\EditBookModelMapper.cs" />
     <Compile Include="Models\Books\LinkableBookModel.cs" />
@@ -200,7 +200,7 @@
     <Compile Include="Models\EditPublishableModelMapper.cs" />
     <Compile Include="Models\EditPublishableModel.cs" />
     <Compile Include="Models\EditEntityModel.cs" />
-    <Compile Include="Localization\IsbnLanguageDisplayer.cs" />
+    <Compile Include="Localization\Iso639LanguageDisplayer.cs" />
     <Compile Include="Models\IEditEntityModelMapper.cs" />
     <Compile Include="Models\LinkableEntityModel.cs" />
     <Compile Include="Models\People\LinkablePersonModel.cs" />
@@ -245,8 +245,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Enums.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\IsbnLanguagesStrings.Designer.cs">
-      <DependentUpon>IsbnLanguagesStrings.resx</DependentUpon>
+    <Compile Include="Resources\Iso639LanguagesStrings.Designer.cs">
+      <DependentUpon>Iso639LanguagesStrings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -566,9 +566,9 @@
       <LastGenOutput>Enums.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\IsbnLanguagesStrings.resx">
+    <EmbeddedResource Include="Resources\Iso639LanguagesStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>IsbnLanguagesStrings.Designer.cs</LastGenOutput>
+      <LastGenOutput>Iso639LanguagesStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>BiebResources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>

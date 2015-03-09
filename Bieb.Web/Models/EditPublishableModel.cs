@@ -24,10 +24,10 @@ namespace Bieb.Web.Models
         [Display(Name = "Year", Prompt = "YearPlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
         public int? Year { get; set; }
 
-        public SelectList AvailableIsbnLanguages { get; internal set; }
+        public SelectList AvailableIso639Languages { get; internal set; }
 
-        [Display(Name = "IsbnLanguage", Prompt = "IsbnLanguagePlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
-        public int? IsbnLanguage { get; set; }
+        [Display(Name = "Iso639Language", Prompt = "Iso639LanguagePlaceholder", ResourceType = typeof(BiebResources.BookStrings))]
+        public string Iso639LanguageId { get; set; }
 
         public SelectList AvailablePublishers { get; internal set; }
 

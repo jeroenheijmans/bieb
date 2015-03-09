@@ -14,8 +14,8 @@ namespace Bieb.Web.Models.Books
         private readonly EditStoryModelMapper storyMapper;
         
 
-        public EditBookModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, IBookRepository books, EditStoryModelMapper storyMapper, IIsbnLanguageDisplayer isbnLanguageDisplayer)
-            : base(publishers, people, books, isbnLanguageDisplayer)
+        public EditBookModelMapper(IEntityRepository<Publisher> publishers, IEntityRepository<Person> people, IBookRepository books, EditStoryModelMapper storyMapper, IIso639LanguageDisplayer iso639LanguageDisplayer)
+            : base(publishers, people, books, iso639LanguageDisplayer)
         {
             this.storyMapper = storyMapper;
         }
@@ -24,7 +24,7 @@ namespace Bieb.Web.Models.Books
         {
             base.MergeEntityWithModel(entity, model);
 
-            entity.Isbn = model.Isbn;
+            entity.Iso639LanguageId = model.Iso639LanguageId;
             entity.LibraryStatus = model.LibraryStatus;
             entity.ReviewText = model.ReviewText;
 
@@ -71,7 +71,7 @@ namespace Bieb.Web.Models.Books
             
             model.AvailableLibraryStatuses = new SelectList(GetLibraryStatusOptions(), "Key", "Value");
 
-            model.Isbn = entity.Isbn;
+            model.Iso639LanguageId = entity.Iso639LanguageId;
             model.LibraryStatus = entity.LibraryStatus;
             model.ReviewText = entity.ReviewText;
 

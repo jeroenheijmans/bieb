@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Bieb.Domain.Entities;
 using Bieb.Domain.Repositories;
 
@@ -10,14 +9,14 @@ namespace Bieb.Tests.Mocks
 {
     public class BookRepositoryMock : RepositoryMock<Book>, IBookRepository
     {
-        private IList<int> languages = new List<int>(new[] { 1, 2, 3 });  
+        private IList<string> languages = new List<string>(new[] { "nl", "en", "ru" });
 
-        public void SetNewIsbnLanguageIds(IEnumerable<int> newIds)
+        public void SetNewIso639LanguageIds(IEnumerable<string> newIds)
         {
-            languages = new List<int>(newIds);
+            languages = new List<string>(newIds);
         }
 
-        public IQueryable<int> IsbnLanguages
+        public IQueryable<string> Iso639LanguageIdentifiers
         {
             get { return languages.AsQueryable(); }
         }

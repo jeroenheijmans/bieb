@@ -159,14 +159,14 @@
   <data name="Isbn" xml:space="preserve">
     <value>ISBN</value>
   </data>
-  <data name="IsbnLanguage" xml:space="preserve">
-    <value>ISBN Language ID</value>
-  </data>
-  <data name="IsbnLanguagePlaceholder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="IsbnPlaceholder" xml:space="preserve">
     <value>978-1-12-123456-1</value>
+  </data>
+  <data name="Iso639Language" xml:space="preserve">
+    <value>ISO 639 Language ID</value>
+  </data>
+  <data name="Iso639LanguagePlaceholder" xml:space="preserve">
+    <value>nl, en, ru, etc.</value>
   </data>
   <data name="LanguageHeader" xml:space="preserve">
     <value>Language</value>

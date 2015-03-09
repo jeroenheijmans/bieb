@@ -12,11 +12,11 @@ namespace Bieb.Web.Models.Books
 {
     public class ViewBookModelMapper : IViewEntityModelMapper<Book, ViewBookModel>
     {
-        private readonly IIsbnLanguageDisplayer isbnLanguageDisplayer;
+        private readonly IIso639LanguageDisplayer iso639LanguageDisplayer;
 
-        public ViewBookModelMapper(IIsbnLanguageDisplayer isbnLanguageDisplayer)
+        public ViewBookModelMapper(IIso639LanguageDisplayer iso639LanguageDisplayer)
         {
-            this.isbnLanguageDisplayer = isbnLanguageDisplayer;
+            this.iso639LanguageDisplayer = iso639LanguageDisplayer;
         }
 
         public ViewBookModel ModelFromEntity(Book entity)
@@ -27,11 +27,11 @@ namespace Bieb.Web.Models.Books
                                 Subtitle = entity.Subtitle,
                                 LibraryStatus = EnumDisplayer.GetResource(entity.LibraryStatus),
                                 Tags = string.Join(", ", entity.Tags.Select(t => t.Name)),
-                                ShowPublishingInfo = (entity.Publisher != null) || (entity.Year.HasValue) || (entity.IsbnLanguage.HasValue),
+                                ShowPublishingInfo = (entity.Publisher != null) || (entity.Year.HasValue) || (!string.IsNullOrEmpty(entity.Iso639LanguageId)),
                                 Publisher = entity.Publisher.AsLinkablePublisherModel(),
                                 Year = entity.Year,
-                                IsLanguageKnown = entity.IsbnLanguage.HasValue,
-                                Language = isbnLanguageDisplayer.GetLocalizedIsbnLanguageResource(entity.IsbnLanguage),
+                                IsLanguageKnown = !string.IsNullOrEmpty(entity.Iso639LanguageId),
+                                Language = iso639LanguageDisplayer.GetLocalizedIso639LanguageResource(entity.Iso639LanguageId),
                                 Series = entity.Series.AsLinkableSeriesModel(),
                                 Editors = entity.Editors.Select(p => p.AsLinkablePersonModel()),
                                 Authors = entity.AllAuthors.Select(p => p.AsLinkablePersonModel()),

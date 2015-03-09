@@ -187,29 +187,29 @@ namespace BiebResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ISBN Language ID.
-        /// </summary>
-        public static string IsbnLanguage {
-            get {
-                return ResourceManager.GetString("IsbnLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 1.
-        /// </summary>
-        public static string IsbnLanguagePlaceholder {
-            get {
-                return ResourceManager.GetString("IsbnLanguagePlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 978-1-12-123456-1.
         /// </summary>
         public static string IsbnPlaceholder {
             get {
                 return ResourceManager.GetString("IsbnPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ISO 639 Language ID.
+        /// </summary>
+        public static string Iso639Language {
+            get {
+                return ResourceManager.GetString("Iso639Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nl, en, ru, etc..
+        /// </summary>
+        public static string Iso639LanguagePlaceholder {
+            get {
+                return ResourceManager.GetString("Iso639LanguagePlaceholder", resourceCulture);
             }
         }
         

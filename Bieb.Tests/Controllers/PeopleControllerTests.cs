@@ -29,9 +29,9 @@ namespace Bieb.Tests.Controllers
         [SetUp]
         public void SetUp()
         {
-            var isbnLanguageDisplayer = new Mock<IIsbnLanguageDisplayer>().Object;
-            var bookMapper = new ViewBookModelMapper(isbnLanguageDisplayer);
-            var storyMapper = new ViewStoryModelMapper(isbnLanguageDisplayer);
+            var iso639LanguageDisplayer = new Mock<IIso639LanguageDisplayer>().Object;
+            var bookMapper = new ViewBookModelMapper(iso639LanguageDisplayer);
+            var storyMapper = new ViewStoryModelMapper(iso639LanguageDisplayer);
 
             repository = new RepositoryMock<Person>();
             viewEntityModelMapper = new ViewPersonModelMapper(bookMapper, storyMapper);
