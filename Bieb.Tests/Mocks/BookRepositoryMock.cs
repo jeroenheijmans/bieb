@@ -16,9 +16,9 @@ namespace Bieb.Tests.Mocks
             languages = new List<string>(newIds);
         }
 
-        public IQueryable<string> Iso639LanguageIdentifiers
+        public IEnumerable<string> Iso639LanguageIdentifiers
         {
-            get { return languages.AsQueryable(); }
+            get { return languages; }
         }
     }
 }
