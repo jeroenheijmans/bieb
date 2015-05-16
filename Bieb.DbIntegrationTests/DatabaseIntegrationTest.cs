@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using Bieb.DataAccess;
 using NHibernate;
@@ -12,33 +14,48 @@ namespace Bieb.DbIntegrationTests
 {
     public class DatabaseIntegrationTest
     {
-        private static Configuration _configuration;
-        private static ISessionFactory _factory;
+        private ISessionFactory _factory;
         protected ISession Session;
 
-        public DatabaseIntegrationTest()
+        private const string SqlSetupCommand = @"IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Tests')
+                                                 BEGIN
+                                                     ALTER DATABASE [Tests] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+                                                     DROP DATABASE [Tests];
+                                                 END
+                                             
+                                                 DECLARE @FileName AS VARCHAR(MAX) = CAST(SERVERPROPERTY('instancedefaultdatapath') AS VARCHAR(MAX)) + 'Tests';
+                                             
+                                                 EXEC ('CREATE DATABASE [Tests] ON PRIMARY (NAME = [Tests], FILENAME = ''' + @FileName + ''')');";
+
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
         {
-            if (_configuration == null)
+            log4net.Config.XmlConfigurator.Configure();
+
+            using (var masterConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["master"].ConnectionString))
             {
-                log4net.Config.XmlConfigurator.Configure();
-
-                _configuration = new Configuration();
-
-                _configuration.DataBaseIntegration(db =>
-                                                       {
-                                                           db.LogFormattedSql = true;
-                                                           db.ConnectionStringName = "BiebDbIntegrationTests";
-                                                           db.Dialect<MsSql2008Dialect>();
-                                                       })
-                              .AddAssembly(typeof(FactoryProvider).Assembly)
-                              .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>();
-
-                _factory = _configuration.BuildSessionFactory();
+                masterConnection.Open();
+                var cmd = new SqlCommand(SqlSetupCommand, masterConnection);
+                cmd.ExecuteNonQuery();
             }
+
+            var configuration = new NHibernate.Cfg.Configuration();
+
+            configuration.DataBaseIntegration(db =>
+            {
+                db.LogFormattedSql = true;
+                db.ConnectionStringName = "tests";
+                db.Dialect<MsSql2008Dialect>();
+            })
+                .AddAssembly(typeof (FactoryProvider).Assembly)
+                .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>();
+
+            _factory = configuration.BuildSessionFactory();
+
 
             using (var schemaCreationSession = _factory.OpenSession())
             {
-                new SchemaExport(_configuration).Execute(true, true, false, schemaCreationSession.Connection, Console.Out);
+                new SchemaExport(configuration).Execute(true, true, false, schemaCreationSession.Connection, Console.Out);
             }
         }
 
@@ -54,10 +71,10 @@ namespace Bieb.DbIntegrationTests
         }
 
 
-        public void Dispose()
+        [TearDown]
+        public void TearDown()
         {
             Session.Dispose();
         }
-
     }
 }
