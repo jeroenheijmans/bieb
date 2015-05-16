@@ -9,7 +9,7 @@ namespace Bieb.CommandLineTool
         {
             if (args.Contains("CreateSchema"))
             {
-                DataAccess.FactoryProvider.CreateSchema(false);
+                DataAccess.FactoryProvider.CreateSchema(true);
                 Console.WriteLine("Press enter to exit.");
                 Console.ReadLine();
             }
