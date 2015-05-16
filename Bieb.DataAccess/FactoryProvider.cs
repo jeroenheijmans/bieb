@@ -27,7 +27,17 @@ namespace Bieb.DataAccess
 
             using (TextWriter writer = File.CreateText("BiebDatabase.sql")) 
             {
-                schemaExport.Execute(true, executeOnDatabase, false, null, writer);
+                if (executeOnDatabase)
+                {
+                    using (var schemaCreationSession = configuration.BuildSessionFactory().OpenSession())
+                    {
+                        schemaExport.Execute(true, true, false, schemaCreationSession.Connection, writer);
+                    }
+                }
+                else
+                {
+                    schemaExport.Execute(true, false, false, null, writer);
+                }
             }
         }
 
