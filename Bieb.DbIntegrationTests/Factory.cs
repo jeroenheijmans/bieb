@@ -21,25 +21,27 @@ namespace Bieb.DbIntegrationTests
 
         private static ISessionFactory _factory;
 
-        private const string SqlSetupCommand = @"IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Tests')
+        private const string SqlSetupCommand = @"IF EXISTS (SELECT * FROM sys.databases WHERE name = '{0}')
                                                  BEGIN
-                                                     ALTER DATABASE [Tests] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-                                                     DROP DATABASE [Tests];
+                                                     ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+                                                     DROP DATABASE [{0}];
                                                  END
                                              
-                                                 DECLARE @FileName AS VARCHAR(MAX) = CAST(SERVERPROPERTY('instancedefaultdatapath') AS VARCHAR(MAX)) + 'Tests';
+                                                 DECLARE @FileName AS VARCHAR(MAX) = CAST(SERVERPROPERTY('instancedefaultdatapath') AS VARCHAR(MAX)) + '{0}';
                                              
-                                                 EXEC ('CREATE DATABASE [Tests] ON PRIMARY (NAME = [Tests], FILENAME = ''' + @FileName + ''')');";
+                                                 EXEC ('CREATE DATABASE [{0}] ON PRIMARY (NAME = [{0}], FILENAME = ''' + @FileName + ''')');";
 
 
         private Factory()
         {
             log4net.Config.XmlConfigurator.Configure();
-
+            
             using (var masterConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["master"].ConnectionString))
             {
                 masterConnection.Open();
-                var cmd = new SqlCommand(SqlSetupCommand, masterConnection);
+                var databaseName = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["tests"].ConnectionString).InitialCatalog;
+                var sql = string.Format(SqlSetupCommand, databaseName);
+                var cmd = new SqlCommand(sql, masterConnection);
                 cmd.ExecuteNonQuery();
             }
 
