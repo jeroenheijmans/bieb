@@ -37,3 +37,4 @@ TestResults/Bieb.TE.Tests_log.ldf
 TestResults/Bieb.TE.Tests.mdf
 Bieb.Web/Web.Debug.config
 *.map
+.vs\**
