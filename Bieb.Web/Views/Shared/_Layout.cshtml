@@ -5,8 +5,16 @@
     <title>@BiebResources.SharedStrings.SiteTitleShort: @ViewBag.Title</title>
     <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    @Styles.Render("~/Content/styles")
-    @Styles.Render("~/Content/styles/select2")
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/MainStyles")
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 </head>
 <body class="container">
 
@@ -52,17 +60,11 @@
         </div>
     </footer>
 
-    @Scripts.Render("~/Scripts/jquery")
-    @Scripts.Render("~/Scripts/bootstrap")
-    @Scripts.Render("~/Scripts/jqueryplugins")
-    @RenderSection("scripts", required: false)
+
 
     <script>
         $(document).ready(function () {
-            $(".fancy-select").select2({
-                containerCssClass: 'fancy-select-container',
-                dropdownCssClass: 'fancy-select-dropdown'
-            });
+            $(".fancy-select").select2();
         });
     </script>
 </body>

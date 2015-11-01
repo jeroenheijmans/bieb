@@ -1,25 +1,7 @@
 @import "site-variables";
 
-@font-face {
-    font-family: "MuseoSans500Regular";
-    src: url('../fonts/museo_sans500-webfont.eot');
-    src: url('../fonts/museo_sans500-webfont.eot?#iefix') format('embedded-opentype'), 
-		 url('../fonts/museo_sans500-webfont.woff') format('woff'), 
-		 url('../fonts/museo_sans500-webfont.ttf') format('truetype'), 
-		 url('../fonts/museo_sans500-webfont.svg#MuseoSans500Regular') format('svg');
-}
-
-@font-face {
-    font-family: "handwriting-draft_regular";
-    src: url('../fonts/handwriting-draft_free-version-webfont.eot');
-    src: url('../fonts/handwriting-draft_free-version-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../fonts/handwriting-draft_free-version-webfont.woff') format('woff'), 
-		 url('../fonts/handwriting-draft_free-version-webfont.ttf') format('truetype'), 
-		 url('../fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular') format('svg');
-}
-
 body {
-	font-family: "MuseoSans500Regular", Georgia, serif;
+	font-family: $MainFontFamily, Georgia, serif;
 	font-size: 1.5em; // TODO: This doesn't seem wise. A different selector and/or use of px may be more appropriate?
 	color: $main-color;
 	background: $background-color;
@@ -102,7 +84,6 @@ a {
 	a { 
 		color: $main-color-lighter; 
 		font-size: 3.5em;
-		font-family: 'handwriting-draft_regular', Verdana, serif;
 		&:hover { color: $action-color; }
 	}
 }
@@ -153,33 +134,3 @@ a {
 		background-color: $background-color;
 	}
 }
-
-
-/* Including a Select2/BS3 fix from https://github.com/ivaynberg/select2/issues/1588 */
-.form-control .select2-choice {
-     border: 0;
-     border-radius: 2px;
- }
- 
- .form-control .select2-choice .select2-arrow {
-     border-radius: 0 2px 2px 0;   
- }
- 
- .form-control.select2-container {
-     height: auto !important;
-     padding: 0px;
- }
- 
- .form-control.select2-container.select2-dropdown-open {
-     border-color: #5897FB;
-     border-radius: 3px 3px 0 0;
- }
- 
- .form-control .select2-container.select2-dropdown-open .select2-choices {
-     border-radius: 3px 3px 0 0;
- }
- 
- .form-control.select2-container .select2-choices {
-     border: 0 !important;
-     border-radius: 3px;
- }
