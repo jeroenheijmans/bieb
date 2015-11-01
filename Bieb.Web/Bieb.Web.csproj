@@ -28,6 +28,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -289,22 +290,6 @@
     <Compile Include="TypeExtensions\EnumExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap\css\bootstrap.css" />
-    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\bootstrap\js\bootstrap.js" />
-    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Content\css\select2-spinner.gif" />
-    <Content Include="Content\css\select2.css" />
-    <Content Include="Content\css\select2.png" />
-    <Content Include="Content\css\select2x2.png" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\fonts\handwriting-draft_free-version-webfont.svg" />
-    <Content Include="Content\fonts\museo500-webfont.svg" />
-    <Content Include="Content\fonts\museo700-webfont.svg" />
-    <Content Include="Content\fonts\museo_sans500-webfont.svg" />
     <Content Include="Content\images\background-sprite.png" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\favicon.png" />
@@ -317,115 +302,17 @@
     <Content Include="Content\images\flags\nl-icon.png" />
     <Content Include="Content\images\flags\us-icon.png" />
     <Content Include="Content\images\home-image.jpg" />
-    <Content Include="Content\styles\Reset.css" />
-    <Content Include="Content\styles\site-variables.css">
-      <DependentUpon>site-variables.scss</DependentUpon>
+    <Content Include="Content\styles\site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
     </Content>
-    <Content Include="Content\themes\base\accordion.css" />
-    <Content Include="Content\themes\base\all.css" />
-    <Content Include="Content\themes\base\autocomplete.css" />
-    <Content Include="Content\themes\base\base.css" />
-    <Content Include="Content\themes\base\button.css" />
-    <Content Include="Content\themes\base\core.css" />
-    <Content Include="Content\themes\base\datepicker.css" />
-    <Content Include="Content\themes\base\dialog.css" />
-    <Content Include="Content\themes\base\draggable.css" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\menu.css" />
-    <Content Include="Content\themes\base\progressbar.css" />
-    <Content Include="Content\themes\base\resizable.css" />
-    <Content Include="Content\themes\base\selectable.css" />
-    <Content Include="Content\themes\base\selectmenu.css" />
-    <Content Include="Content\themes\base\slider.css" />
-    <Content Include="Content\themes\base\sortable.css" />
-    <Content Include="Content\themes\base\spinner.css" />
-    <Content Include="Content\themes\base\tabs.css" />
-    <Content Include="Content\themes\base\theme.css" />
-    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\styles\site-variables.scss" />
-    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
-    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.3.js" />
-    <Content Include="Scripts\jquery-2.1.3.min.js" />
-    <Content Include="Scripts\jquery-2.1.3.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.11.3.js" />
-    <Content Include="Scripts\jquery-ui-1.11.3.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ar.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_az.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_bg.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ca.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_cs.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_da.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_de.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_el.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_es.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_et.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_eu.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_fa.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_fi.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_fr.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_gl.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_he.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_hr.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_hu.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_id.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_is.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_it.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ja.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ka.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ko.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_lt.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_lv.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_mk.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ms.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_nb.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_nl.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_no.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_pl.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_pt-BR.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_pt-PT.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ro.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_rs.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ru.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_sk.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_sv.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_th.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_tr.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ua.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_ug-CN.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_uk.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_vi.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_zh-CN.js" />
-    <Content Include="Scripts\Select2-locales\select2_locale_zh-TW.js" />
-    <Content Include="Scripts\select2.js" />
-    <Content Include="Scripts\select2.min.js" />
+    <None Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\bieb.pubxml" />
     <Content Include="Woops\Woops.html" />
-    <Content Include="Scripts\modernizr-1.7.js" />
-    <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -526,18 +413,6 @@
     <Content Include="Views\Shared\PagerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\fonts\handwriting-draft_free-version-webfont.eot" />
-    <None Include="Content\fonts\handwriting-draft_free-version-webfont.ttf" />
-    <None Include="Content\fonts\handwriting-draft_free-version-webfont.woff" />
-    <None Include="Content\fonts\museo500-webfont.eot" />
-    <None Include="Content\fonts\museo500-webfont.ttf" />
-    <None Include="Content\fonts\museo500-webfont.woff" />
-    <None Include="Content\fonts\museo700-webfont.eot" />
-    <None Include="Content\fonts\museo700-webfont.ttf" />
-    <None Include="Content\fonts\museo700-webfont.woff" />
-    <None Include="Content\fonts\museo_sans500-webfont.eot" />
-    <None Include="Content\fonts\museo_sans500-webfont.ttf" />
-    <None Include="Content\fonts\museo_sans500-webfont.woff" />
     <Content Include="Views\Shared\_SearchBoxPartial.cshtml" />
     <Content Include="Views\Search\Basic.cshtml" />
     <Content Include="Views\Books\MoreInfo.cshtml" />

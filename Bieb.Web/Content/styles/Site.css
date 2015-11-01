@@ -1,13 +1,5 @@
-@font-face {
-  font-family: "MuseoSans500Regular";
-  src: url("../fonts/museo_sans500-webfont.eot");
-  src: url("../fonts/museo_sans500-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/museo_sans500-webfont.woff") format("woff"), url("../fonts/museo_sans500-webfont.ttf") format("truetype"), url("../fonts/museo_sans500-webfont.svg#MuseoSans500Regular") format("svg"); }
-@font-face {
-  font-family: "handwriting-draft_regular";
-  src: url("../fonts/handwriting-draft_free-version-webfont.eot");
-  src: url("../fonts/handwriting-draft_free-version-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/handwriting-draft_free-version-webfont.woff") format("woff"), url("../fonts/handwriting-draft_free-version-webfont.ttf") format("truetype"), url("../fonts/handwriting-draft_free-version-webfont.svg#handwriting-draft_regular") format("svg"); }
-body {
-  font-family: "MuseoSans500Regular", Georgia, serif;
+﻿body {
+  font-family: "Fira Sans", "Arial", "Helvetica", Georgia, serif;
   font-size: 1.5em;
   color: #333333;
   background: #FFFFFF;
@@ -37,11 +29,13 @@ a {
   .single-topic-table .main-topic {
     white-space: normal;
     width: 100%; } }
+
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   select:focus,
   textarea:focus,
   input:focus {
     font-size: 16px; } }
+
 .label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
@@ -52,6 +46,7 @@ a {
 .navbar-inverse .navbar-nav li > a,
 .navbar-inverse .dropdown-menu li > a {
   color: #FFFFFF; }
+
 .navbar-inverse .navbar-nav li:hover,
 .navbar-inverse .navbar-nav li.active > a,
 .navbar-inverse .navbar-nav li.active > a:hover,
@@ -69,8 +64,7 @@ a {
   margin-bottom: 0.75em; }
   .title a {
     color: #666666;
-    font-size: 3.5em;
-    font-family: 'handwriting-draft_regular', Verdana, serif; }
+    font-size: 3.5em; }
     .title a:hover {
       color: #FF0080; }
 
@@ -106,27 +100,3 @@ a {
     border: 1px solid #EEEEEE;
     background-color: #FFFFFF; }
 
-/* Including a Select2/BS3 fix from https://github.com/ivaynberg/select2/issues/1588 */
-.form-control .select2-choice {
-  border: 0;
-  border-radius: 2px; }
-
-.form-control .select2-choice .select2-arrow {
-  border-radius: 0 2px 2px 0; }
-
-.form-control.select2-container {
-  height: auto !important;
-  padding: 0px; }
-
-.form-control.select2-container.select2-dropdown-open {
-  border-color: #5897FB;
-  border-radius: 3px 3px 0 0; }
-
-.form-control .select2-container.select2-dropdown-open .select2-choices {
-  border-radius: 3px 3px 0 0; }
-
-.form-control.select2-container .select2-choices {
-  border: 0 !important;
-  border-radius: 3px; }
-
-/*# sourceMappingURL=site.css.map */
