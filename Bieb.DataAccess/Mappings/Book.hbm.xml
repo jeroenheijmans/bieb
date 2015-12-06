@@ -35,17 +35,17 @@
       <one-to-many class="Story" />
     </map>
 
-    <set name="Editors" table="BookEditor" access="field.camelcase" inverse="true">
+    <set name="Editors" table="BookEditor" access="field.camelcase" inverse="true" cascade="delete">
       <key column="BookId" foreign-key="FK_BookEditor_Book" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_BookEditor_Person" />
     </set>
 
-    <set name="Authors" table="BookAuthor" access="field.camelcase" inverse="true">
+    <set name="Authors" table="BookAuthor" access="field.camelcase" inverse="true" cascade="delete">
       <key column="BookId" foreign-key="FK_BookAuthor_Book" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_BookAuthor_Person" />
     </set>
 
-    <set name="Translators" table="BookTranslator" access="field.camelcase" inverse="true">
+    <set name="Translators" table="BookTranslator" access="field.camelcase" inverse="true" cascade="delete">
       <key column="BookId" foreign-key="FK_BookTranslator_Book" />
       <many-to-many column="PersonId" class="Person" foreign-key="FK_BookTranslator_Person" />
     </set>
