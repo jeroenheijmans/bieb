@@ -296,7 +296,9 @@
     <Content Include="Content\images\flags\au-icon.png" />
     <Content Include="Content\images\flags\be-icon.png" />
     <Content Include="Content\images\flags\ca-icon.png" />
+    <Content Include="Content\images\flags\ch-icon.png" />
     <Content Include="Content\images\flags\de-icon.png" />
+    <Content Include="Content\images\flags\dk-icon.png" />
     <Content Include="Content\images\flags\fr-icon.png" />
     <Content Include="Content\images\flags\gb-icon.png" />
     <Content Include="Content\images\flags\nl-icon.png" />
