@@ -38,3 +38,4 @@ TestResults/Bieb.TE.Tests.mdf
 Bieb.Web/Web.Debug.config
 *.map
 .vs\**
+**.pubxml
