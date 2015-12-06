@@ -81,5 +81,44 @@ namespace Bieb.DbIntegrationTests.Cascades
             Session.Refresh(book);
             Assert.That(book.Authors.Count(), Is.EqualTo(1));
         }
+
+
+        [Test]
+        public void Delete_Will_Cascade_To_BookAuthors()
+        {
+            var person = new Person { Surname = "Asimov" };
+            var book = new Book { Title = "Robot Dreams" };
+            book.AddAuthor(person);
+            Session.Save(person);
+            Session.Save(book);
+            Session.Delete(book);
+            Session.Flush();
+        }
+
+
+        [Test]
+        public void Delete_Will_Cascade_To_BookEditors()
+        {
+            var person = new Person { Surname = "Edi Tor" };
+            var book = new Book { Title = "Robot Dreams" };
+            book.AddEditor(person);
+            Session.Save(person);
+            Session.Save(book);
+            Session.Delete(book);
+            Session.Flush();
+        }
+
+
+        [Test]
+        public void Delete_Will_Cascade_To_BookTranslators()
+        {
+            var person = new Person { Surname = "Trans la Tore" };
+            var book = new Book { Title = "Robot Dreams" };
+            book.AddTranslator(person);
+            Session.Save(person);
+            Session.Save(book);
+            Session.Delete(book);
+            Session.Flush();
+        }
     }
 }
