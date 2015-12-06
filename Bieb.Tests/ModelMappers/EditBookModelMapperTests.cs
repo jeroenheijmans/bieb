@@ -426,5 +426,25 @@ namespace Bieb.Tests.ModelMappers
             mapper.MergeEntityWithModel(book, model);
             Assert.That(book.Publisher, Is.Null);
         }
+
+
+        [Test]
+        public void Will_Show_Current_Isbn()
+        {
+            var book = new Book { Isbn = "123456789" };
+            var model = mapper.ModelFromEntity(book);
+            Assert.That(model.Isbn, Is.EqualTo(book.Isbn));
+        }
+
+
+        [Test]
+        public void Will_Merge_Back_Isbn()
+        {
+            var book = new Book();
+            var model = mapper.ModelFromEntity(book);
+            model.Isbn = "123456789";
+            mapper.MergeEntityWithModel(book, model);
+            Assert.That(book.Isbn, Is.EqualTo(model.Isbn));
+        }
     }
 }

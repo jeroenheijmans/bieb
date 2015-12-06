@@ -29,6 +29,7 @@ namespace Bieb.Web.Models.Books
                                 Tags = string.Join(", ", entity.Tags.Select(t => t.Name)),
                                 ShowPublishingInfo = (entity.Publisher != null) || (entity.Year.HasValue) || (!string.IsNullOrEmpty(entity.Iso639LanguageId)),
                                 Publisher = entity.Publisher.AsLinkablePublisherModel(),
+                                Isbn = entity.Isbn,
                                 Year = entity.Year,
                                 IsLanguageKnown = !string.IsNullOrEmpty(entity.Iso639LanguageId),
                                 Language = iso639LanguageDisplayer.GetLocalizedIso639LanguageResource(entity.Iso639LanguageId),

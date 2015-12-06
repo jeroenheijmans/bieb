@@ -193,5 +193,14 @@ namespace Bieb.Tests.ModelMappers
             var model = mapper.ModelFromEntity(book);
             Assert.That(model.Series.Id, Is.EqualTo(book.Series.Id));
         }
+
+
+        [Test]
+        public void Will_Map_Isbn()
+        {
+            var book = new Book { Isbn = "123456789" };
+            var model = mapper.ModelFromEntity(book);
+            Assert.That(model.Isbn, Is.EqualTo(book.Isbn));
+        }
     }
 }

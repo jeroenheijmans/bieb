@@ -27,6 +27,7 @@ namespace Bieb.Web.Models.Books
             entity.Iso639LanguageId = model.Iso639LanguageId;
             entity.LibraryStatus = model.LibraryStatus;
             entity.ReviewText = model.ReviewText;
+            entity.Isbn = model.Isbn;
 
 
             // TODO: Refactor, the code below is copy-pasted from this
@@ -74,6 +75,7 @@ namespace Bieb.Web.Models.Books
             model.Iso639LanguageId = entity.Iso639LanguageId;
             model.LibraryStatus = entity.LibraryStatus;
             model.ReviewText = entity.ReviewText;
+            model.Isbn = entity.Isbn;
 
             model.PublisherId = entity.Publisher == null ? (int?)null : entity.Publisher.Id;
 
