@@ -18,10 +18,13 @@ Note that this is a work in progress for a personal website (see primary goal, b
 
 Here's what it's supposed to look like, currently:
 
-[image:Bieb-home-example.png]
-[image:Bieb-person-example.png]
-[image:Bieb-books-index-example.png]
-[image:Bieb-book-example.png]
+![Bieb-home-example.png](Bieb-home-example.png)
+
+![Bieb-person-example.png](Bieb-person-example.png)
+
+![Bieb-books-index-example.png](Bieb-books-index-example.png)
+
+![Bieb-book-example.png](Bieb-book-example.png)
 
 ## Primary Objective
 
