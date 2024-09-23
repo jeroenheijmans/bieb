@@ -2,6 +2,10 @@
 
 Website project based on ASP.NET MVC for managing and displaying your personal book collection on the web.
 
+## ⚠️ Notice about updates
+
+Note that this repository is provided "as-is" and will most likely not receive any (security) updates.
+
 ----
 
 ***IMPORTANT NOTE: Development on this project has been discontinued as of December 2015.***
